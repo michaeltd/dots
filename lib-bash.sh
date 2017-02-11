@@ -1,5 +1,23 @@
 #!/bin/bash
 
+function accuWeather {
+
+  URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536' 
+
+  wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", "$12"°" }'| head -1
+
+}
+
+function wttr {
+
+  if [ -z "$1" ]; then
+    curl wttr.in/Athens
+  else
+    curl wttr.in/"$1"
+  fi
+
+}
+
 function mtleb {
   # https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers/
   fgrep -l maintainer-needed /usr/portage/*/*/metadata.xml |cut -d/ -f4-5 |fgrep -x -f <(EIX_LIMIT=0 eix -I --only-names)
@@ -109,6 +127,10 @@ function logMeOut {
 
 # Take a screenshot imagemagic
 function imageMagicScreenShot {
+# Requires Imagemagic Viewnior
   PI=${1-"2"}
-  import -pause ${PI} -window root ~/Pictures/imagemagic-`date +%y%m%d%H%M%S`.png
+  FN="~/Pictures/imagemagic-`date +%y%m%d%H%M%S`.png"
+  import -pause $PI -window root $FN
+  viewnior $FN
+
 }
