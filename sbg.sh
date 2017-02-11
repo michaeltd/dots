@@ -1,0 +1,1 @@
+fbsetbg -r ~/.wallpapers/
