@@ -1,5 +1,49 @@
 #!/bin/bash
 
+function runCmd {
+  
+  DIALOG=${1-"Xdialog"}
+
+  TMPFILE="/tmp/input.box.txt"
+
+  $DIALOG --title "Command Input" \
+  	--inputbox "Enter command to continue" \
+  	10 40 \
+  	command 2> $TMPFILE
+
+  RETVAL=$? #Exit code
+
+  USRINPUT=$(cat ${TMPFILE})
+
+  $USRINPUT
+
+}
+
+function keepParamAlive {
+# Take a parameter and respawn it periodicaly if it crashes. check interval is second param seconds
+  while [ true ]; do       # Endless loop.
+    pid=`pgrep -x ${1}`    # Get a pid.
+    if [[ -z $pid ]]; then # If there is no proc associated with it,
+      ${1} &               # Start Param to background.
+    else                   # else, 
+      sleep ${2-60}        # wait second param seconds
+    fi
+  done
+}
+
+function lol {
+# Pipe furtune or second param throu cowsay and lolcat for some color magic
+# requires fortune cowsay lolcat
+  file=${1-${"tux"}}
+
+  if [[ -z "${2}" ]]; then
+    cmmnd="fortune"
+  else
+    cmmnd="echo -e ${2}"
+  fi
+  $cmmnd |cowsay -f $file |lolcat
+}
+
 # For use with WindowMaker
 # Replace "${APPS}" list with your desired applets.
 function startApps {
