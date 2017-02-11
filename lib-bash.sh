@@ -1,5 +1,10 @@
 #!/bin/bash
 
+function mtleb {
+  # https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers/
+  fgrep -l maintainer-needed /usr/portage/*/*/metadata.xml |cut -d/ -f4-5 |fgrep -x -f <(EIX_LIMIT=0 eix -I --only-names)
+}
+
 function runCmd {
   
   DIALOG=${1-"Xdialog"}
@@ -7,6 +12,7 @@ function runCmd {
   TMPFILE="/tmp/input.box.txt"
 
   $DIALOG --title "Command Input" \
+        --default-button "ok" \
   	--inputbox "Enter command to continue" \
   	10 40 \
   	command 2> $TMPFILE
