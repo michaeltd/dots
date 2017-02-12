@@ -50,7 +50,7 @@ function keepParamAlive {
     if [[ -z $pid ]]; then # If there is no proc associated with it,
       ${1} &               # Start Param to background.
     else                   # else, 
-      sleep ${2-60}        # wait second param seconds
+      sleep ${2-"60"}      # wait 2nd parameters seconds
     fi
   done
 }
@@ -58,7 +58,7 @@ function keepParamAlive {
 function lol {
 # Pipe furtune or second param throu cowsay and lolcat for some color magic
 # requires fortune cowsay lolcat
-  file=${1-${"tux"}}
+  file=${1-"tux"}
 
   if [[ -z "${2}" ]]; then
     cmmnd="fortune"
@@ -92,8 +92,8 @@ function regenMenu {
 # Script to give one comand to extract any kind of file
 # from https://www.facebook.com/TekNinjakevin
 function deflateThat {
-  if [ -f "$1" ] ; then
-    case "$1" in
+  if [ -r "${1}" ] ; then
+    case "${1}" in
       *.7z.7za) 7z "$1" ;;
       *.tar.bz2) tar xjf "$1" ;;
       *.tar.gz) tar xzf "$1" ;;
@@ -112,7 +112,7 @@ function deflateThat {
       *) echo "'$1' cannot be extracted." ;;
     esac
   else
-    echo "'$1' is not a file."
+    echo "'${1}' is not readable."
   fi
 }
 
