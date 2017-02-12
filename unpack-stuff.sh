@@ -1,4 +1,5 @@
 #!/bin/bash
+# From https://www.facebook.com/TekNinjakevin
 # script to give one comand to extract any kind of file
 
 if [ -f "$1" ] ; then
