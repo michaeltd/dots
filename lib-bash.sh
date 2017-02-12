@@ -1,5 +1,11 @@
 #!/bin/bash
 
+function helloWorld {
+  echo -n "Give me a Name:"
+  read name
+  echo "Hello ${name}"
+}
+
 function accuWeather {
 
   URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536' 
