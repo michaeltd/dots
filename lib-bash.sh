@@ -135,7 +135,7 @@ function logMeOut {
 function imageMagicScreenShot {
 # Requires Imagemagic Viewnior
   PI=${1-"2"}
-  FN="/home/${USER}/Pictures/imagemagic-`date +%y%m%d%H%M%S`.png"
+  FN=~/Pictures/imagemagic-`date +%y%m%d%H%M%S`.png
   import -pause $PI -window root $FN
   viewnior $FN
 }
