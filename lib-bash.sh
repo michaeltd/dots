@@ -7,21 +7,16 @@ function helloWorld {
 }
 
 function accuWeather {
-
   URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536' 
-
   wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", "$12"°" }'| head -1
-
 }
 
 function wttr {
-
   if [ -z "$1" ]; then
     curl wttr.in/Athens
   else
     curl wttr.in/"$1"
   fi
-
 }
 
 function mtleb {
@@ -30,23 +25,16 @@ function mtleb {
 }
 
 function runCmd {
-  
   DIALOG=${1-"Xdialog"}
-
   TMPFILE="/tmp/input.box.txt"
-
   $DIALOG --title "Command Input" \
         --default-button "ok" \
   	--inputbox "Enter command to continue" \
   	10 40 \
   	command 2> $TMPFILE
-
   RETVAL=$? #Exit code
-
   USRINPUT=$(cat ${TMPFILE})
-
   $USRINPUT
-
 }
 
 function keepParamAlive {
@@ -65,7 +53,6 @@ function lol {
 # Pipe furtune or second param throu cowsay and lolcat for some color magic
 # requires fortune cowsay lolcat
   file=${1-"tux"}
-
   if [[ -z "${2}" ]]; then
     cmmnd="fortune"
   else
@@ -74,30 +61,30 @@ function lol {
   $cmmnd |cowsay -f $file |lolcat
 }
 
+function startApps {
 # For use with WindowMaker
 # Replace "${APPS}" list with your desired applets.
-function startApps {
-                                           # Fill a list with the applets you need
+  # Fill a list with the applets you need
   APPS="wmfire wmclockmon wmsystray wmMatrix wmbinclock wmbutton wmifinfo wmnd wmmon wmcpuload wmsysmon wmmemload wmacpi wmtime wmcalc wmSpaceWeather wmudmount wmmp3"
   for APP in $APPS ; do
-    killall $APP                           # WM restarts do happen you know ...
+    # Just in case (WM restarts do happen you know ...)
+    killall $APP
     $APP &
   done
 }
 
+function regenMenu {
 # For use with WindowMaker
 # Run this to update your Root menu to reflect themes or apps changes
-function regenMenu {
-					   # Backup Root menu
+  # Backup Root menu
   cp ~/GNUstep/Defaults/WMRootMenu ~/GNUstep/Defaults/`date +%y%m%d%H%M%S`WMRootMenu
-                                           # Write new menu
+  # Write new menu
   wmgenmenu > ~/GNUstep/Defaults/WMRootMenu
-
 }
 
+function deflateThat {
 # Script to give one comand to extract any kind of file
 # from https://www.facebook.com/TekNinjakevin
-function deflateThat {
   if [[ -r "${1}" ]] ; then
     case "${1}" in
       *.7z.7za) 7z "${1}" ;;
@@ -126,13 +113,13 @@ function showUptime {
   echo -ne "${green}$HOSTNAME ${green}uptime is ${green} \t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
-# Call that to logout
 function logMeOut {
+# Call that to logout
   kill -15 -1
 }
 
-# Take a screenshot imagemagic
 function imageMagicScreenShot {
+# Take a screenshot imagemagic
 # Requires Imagemagic Viewnior
   PI=${1-"2"}
   FN=~/Pictures/imagemagic-`date +%y%m%d%H%M%S`.png
