@@ -7,7 +7,7 @@ function helloWorld {
 }
 
 function accuWeather {
-  URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536' 
+  URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536'
   wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", "$12"°" }'| head -1
 }
 
@@ -20,6 +20,7 @@ function wttr {
 }
 
 function mtleb {
+  # (M)ain(T)ainer(L)ess(E)(B)uilds
   # https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers/
   fgrep -l maintainer-needed /usr/portage/*/*/metadata.xml |cut -d/ -f4-5 |fgrep -x -f <(EIX_LIMIT=0 eix -I --only-names)
 }
@@ -29,9 +30,9 @@ function runCmd {
   TMPFILE="/tmp/input.box.txt"
   $DIALOG --title "Command Input" \
         --default-button "ok" \
-  	--inputbox "Enter command to continue" \
-  	10 40 \
-  	command 2> $TMPFILE
+    --inputbox "Enter command to continue" \
+    10 40 \
+    command 2> $TMPFILE
   RETVAL=$? #Exit code
   USRINPUT=$(cat ${TMPFILE})
   $USRINPUT
@@ -43,7 +44,7 @@ function keepParamAlive {
     pid=`pgrep -x ${1}`    # Get a pid.
     if [[ -z $pid ]]; then # If there is no proc associated with it,
       ${1} &               # Start Param to background.
-    else                   # else, 
+    else                   # else,
       sleep ${2-"60"}      # wait 2nd parameters seconds
     fi
   done
