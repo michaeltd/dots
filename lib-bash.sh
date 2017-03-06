@@ -7,11 +7,13 @@ function helloWorld {
 }
 
 function accuWeather {
+  # http://www.accuweather.com/
   URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536'
   wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", "$12"°" }'| head -1
 }
 
 function wttr {
+  # https://twitter.com/igor_chubin
   if [ -z "$1" ]; then
     curl wttr.in/Athens
   else
@@ -44,8 +46,8 @@ function keepParamAlive {
     pid=`pgrep -x ${1}`    # Get a pid.
     if [[ -z $pid ]]; then # If there is no proc associated with it,
       ${1} &               # Start Param to background.
-    else                   # else,
-      sleep ${2-"60"}      # wait 2nd parameters seconds
+    else
+      sleep ${2-"60"}      # wait $second parameter's ''seconds
     fi
   done
 }
