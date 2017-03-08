@@ -21,6 +21,11 @@ function wttr {
   fi
 }
 
+function lteb {
+  # (L)ist(T)esting(E)(B)uilds
+  equery list '*' | sed 's/\(.*\)/=\1 ~amd64/'
+}
+
 function mtleb {
   # (M)ain(T)ainer(L)ess(E)(B)uilds
   # https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers/
