@@ -40,11 +40,11 @@ EOF
     return 1
   fi
 
-  DEFAULT_WPDIR="~/.wallpapers"            # Assign a default wp dir
+  DEFAULT_WPDIR="${HOME}/.wallpapers"      # Assign a default wp dir
   DEFAULT_WAIT="60s"                       # and a default wait interval
 
-  if [ -r ~/.wallpaper.rotate.rc ]; then   # If there is a readable settings file, read it
-    source ~/.wallpaper.rotate.rc
+  if [ -r "${HOME}"/.wallpaper.rotate.rc ]; then   # If there is a readable settings file, read it
+    source "${HOME}"/.wallpaper.rotate.rc
   fi
 
   WPD=${2-${DEFAULT_WPDIR}}                # take second argument as a wp dir or assign a default.
@@ -72,9 +72,9 @@ EOF
 # Call this function with the dir you'd like to add its images as links in "~/.wallpapers"
 # for use with "rotateBg" function. eg: "rbgHelperAddDir /home/user/pictures"
 function rbgHelperAddDir {
-  DEFAULT_WPDIR="~/.wallpapers"            # Assign a default wp dir
-  if [ -r ~/.wallpaper.rotate.rc ]; then   # If there is a readable settings file, read it
-    source ~/.wallpaper.rotate.rc
+  DEFAULT_WPDIR="${HOME}/.wallpapers"            # Assign a default wp dir
+  if [ -r ${HOME}/.wallpaper.rotate.rc ]; then   # If there is a readable settings file, read it
+    source ${HOME}/.wallpaper.rotate.rc
   fi
   mkdir "${DEFAULT_WPDIR}" 2> /dev/null    # What errors?
   for i in `ls "${1}"`; do
@@ -94,9 +94,9 @@ function rbgHelperAddDir {
 # eg: "rbgHelperRemoveDir /home/user/pictures"
 # It is meant to be called interactively and not from within scripts
 function rbgHelperRemoveDir {
-  DEFAULT_WPDIR="~/.wallpapers"           # Assign a default wp dir
-  if [ -r ~/.wallpaper.rotate.rc ]; then  # If there is a readable settings file, read it
-    source ~/.wallpaper.rotate.rc
+  DEFAULT_WPDIR="${HOME}/.wallpapers"           # Assign a default wp dir
+  if [ -r ${HOME}/.wallpaper.rotate.rc ]; then  # If there is a readable settings file, read it
+    source ${HOME}/.wallpaper.rotate.rc
   fi
   for i in `ls "${1}"`; do
     FE=${i:(-4)}                           # Get file extention ${str:(-4)} and lowercase it ${FE,,}
