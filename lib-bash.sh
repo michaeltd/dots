@@ -34,15 +34,19 @@ function mtleb {
 
 function runCmd {
   DIALOG=${1-"Xdialog"}
-  TMPFILE="/tmp/input.box.txt"
-  $DIALOG --title "Command Input" \
-        --default-button "ok" \
+  #TMPFILE="/tmp/input.box.txt"
+  TMPFILE=/tmp/"${RANDOM}".input.box.txt
+
+  $DIALOG \
+    --title "Command Input" \
+    --default-button "ok" \
     --inputbox "Enter command to continue" \
     10 40 \
     command 2> $TMPFILE
   RETVAL=$? #Exit code
   USRINPUT=$(cat ${TMPFILE})
   $USRINPUT
+  return $?
 }
 
 function keepParamAlive {
