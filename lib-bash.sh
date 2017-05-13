@@ -1,4 +1,16 @@
-#!/bin/bash
+#!/bin/env /bin/bash
+
+function servStuff {
+  if [ -z "${1}" ]; then
+    echo "need start or stop parameter"
+    return 1
+  else
+    srvcs="postgresql-9.5 vsftpd apache2"
+    for srvc in $srvcs; do
+        rc-service $srvc $1
+    done
+  fi
+}
 
 function helloWorld {
   echo -n "Give me a Name:"
@@ -119,6 +131,10 @@ function deflateThat {
   else
     echo "'${1}' is not readable."
   fi
+}
+
+function updatedate {
+  ntpdate 0.gentoo.pool.ntp.org
 }
 
 function showUptime {
