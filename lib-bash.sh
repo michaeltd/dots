@@ -1,5 +1,16 @@
 #!/bin/env /bin/bash
 
+function russianRulette {
+  #[ $[ $RANDOM % 6 ] == 0 ] && echo "BOOM!!!" || echo "LUCKY GUY!!!"
+  let "RV = $RANDOM % 6";
+
+  if [[ $RV == 0 ]]; then
+    echo "BOOM!!! You've rolled a ${RV}"
+  else
+    echo "LUCKY GUY!!! You've rolled a ${RV}"
+  fi
+}
+
 function servStuff {
   if [ -z "${1}" ]; then
     echo "need start or stop parameter"
