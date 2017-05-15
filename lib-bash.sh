@@ -144,7 +144,7 @@ function deflateThat {
   fi
 }
 
-function updatedate {
+function updateDate {
   ntpdate 0.gentoo.pool.ntp.org
 }
 
