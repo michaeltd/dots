@@ -1,7 +1,9 @@
 #!/bin/env /bin/bash
 
 function russianRulette {
-  #[ $[ $RANDOM % 6 ] == 0 ] && echo "BOOM!!!" || echo "LUCKY GUY!!!"
+  # https://www.facebook.com/freecodecamp/photos/a.1535523900014339.1073741828.1378350049065059/2006986062868118/?type=3&theater
+  # [ $[ $RANDOM % 6 ] == 0 ] && echo "BOOM!!!" || echo "LUCKY GUY!!!"
+
   let "RV = $RANDOM % 6";
 
   if [[ $RV == 0 ]]; then
@@ -13,12 +15,12 @@ function russianRulette {
 
 function servStuff {
   if [ -z "${1}" ]; then
-    echo "need start or stop parameter"
+    echo "Usage: servStuff start||stop"
     return 1
   else
     srvcs="postgresql-9.5 vsftpd apache2"
     for srvc in $srvcs; do
-        rc-service $srvc $1
+        rc-service $srvc ${1}
     done
   fi
 }
