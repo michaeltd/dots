@@ -9,8 +9,7 @@ cs=0; us=0; ns=0; rd=0
 
 printf "Hello! Welcome to Rock-Paper-Scissors Game!\n"
 while true; do
-  printf "Press 1 for Rock, 2 for Paper, 3 for Scissors or 0 to Quit.\n"
-  read -e -p "Select your weapon of choice from 1 to 3: " ui
+  read -e -p "Rock:1, Paper:2, Scissors:3, Quit:0. What's your pick? : " ui
   let "ui = $ui - 1"
   ci=$(shuf -i 0-2 -n 1)
   if [ "$ui" -eq "-1" ]; then
@@ -27,12 +26,9 @@ while true; do
   let "rd++"
   printf "Round : %d is a %s. You selected %s, while the CPU rolled %s\n" $rd ${rs["${ui}","${ci}"]}  ${op["${ui}"]} ${op["${ci}"]}
   case ${rs["${ui}","${ci}"]} in
-    "Draw")
-      let "ns++";;
-    "Win")
-      let "us++";;
-    "Defeat")
-      let "cs++";;
+    "Draw") let "ns++";;
+    "Win") let "us++";;
+    "Defeat") let "cs++";;
   esac
   printf "Player : %d, CPU : %d, Ties : %d\n" $us $cs $ns
 done
