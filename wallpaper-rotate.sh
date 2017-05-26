@@ -52,7 +52,8 @@ EOF
   WPN=${#WPL[*]}                           # get array upper bound
 
   while true ; do
-    let "RN = $RANDOM % $WPN"              # limit a random num to upper array bounds
+    #let "RN = $RANDOM % $WPN"              # limit a random num to upper array bounds
+    RN=$(shuf -n 1 -i 0-"${WPN}")
     WP="${WPD}/${WPL[$RN]}"                # Get path and name of image
     if [ -d "$WP" ]; then                  # Check if item is a dir
       sleep ${1-${DEFAULT_WAIT}}           # Try again later
