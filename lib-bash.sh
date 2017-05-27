@@ -17,7 +17,7 @@ function rps {
     ci=$(shuf -i 0-2 -n 1)
     if [ "$ui" -eq "-1" ]; then
       if [ "$us" -gt "$cs" ] ; then
-        bbmsg="${oc[0]} the"
+        bbmsg="${oc[0]}"
       elif [ "$us" -lt "$cs" ] ; then
         bbmsg="${oc[1]}ed by"
       elif [ "$us" -eq "$cs" ] ; then
