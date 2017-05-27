@@ -1,24 +1,25 @@
 #!/bin/env /bin/bash
 # Rock Paper Scissors mt 20170525
-declare -a op; declare -A rs
+declare -a op; declare -a oc; declare -A rs
 op=("Rock" "Paper" "Scissors")
-rs[0,0]="Draw";   rs[0,1]="Defeat"; rs[0,2]="Win"
-rs[1,0]="Win";    rs[1,1]="Draw";   rs[1,2]="Defeat"
-rs[2,0]="Defeat"; rs[2,1]="Win";    rs[2,2]="Draw"
+oc=("WIN" "Defeat" "Draw")
+rs[0,0]=${oc[2]}; rs[0,1]=${oc[1]}; rs[0,2]=${oc[0]}
+rs[1,0]=${oc[0]}; rs[1,1]=${oc[2]}; rs[1,2]=${oc[1]}
+rs[2,0]=${oc[1]}; rs[2,1]=${oc[0]}; rs[2,2]=${oc[2]}
 cs=0; us=0; ns=0; rd=0
 
-printf "Hello! Welcome to Rock-Paper-Scissors Game!\n"
+printf "Hello! Welcome to %s %s %s Game!\n" ${op[0]} ${op[1]} ${op[2]}
 while true; do
-  read -e -p "Rock:1, Paper:2, Scissors:3, Quit:0. What's your pick? : " ui
+  read -e -p "${op[0]}:1, ${op[1]}:2, ${op[2]}:3, Quit:0. What's your pick?: " ui
   let "ui = $ui - 1"
   ci=$(shuf -i 0-2 -n 1)
   if [ "$ui" -eq "-1" ]; then
     if [ "$us" -gt "$cs" ] ; then
-      bbmsg="WON"
+      bbmsg="${oc[0]} the"
     elif [ "$us" -lt "$cs" ] ; then
-      bbmsg="lost to"
+      bbmsg="${oc[1]}ed by"
     elif [ "$us" -eq "$cs" ] ; then
-      bbmsg="Tied with"
+      bbmsg="${oc[2]}ed with"
     fi
     printf "After %d rounds, you %s the CPU with %d:%d points and %d ties.\n" $rd "${bbmsg}" $us $cs $ns
     exit 0
@@ -26,9 +27,9 @@ while true; do
   let "rd++"
   printf "Round : %d is a %s. You selected %s, while the CPU rolled %s\n" $rd ${rs["${ui}","${ci}"]}  ${op["${ui}"]} ${op["${ci}"]}
   case ${rs["${ui}","${ci}"]} in
-    "Draw") let "ns++";;
-    "Win") let "us++";;
-    "Defeat") let "cs++";;
+    ${oc[0]}) let "us++";;
+    ${oc[1]}) let "cs++";;
+    ${oc[2]}) let "ns++";;
   esac
   printf "Player : %d, CPU : %d, Ties : %d\n" $us $cs $ns
 done
