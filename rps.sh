@@ -17,7 +17,7 @@ while true; do
     if [ "$us" -gt "$cs" ] ; then
       bbmsg="${oc[0]}"
     elif [ "$us" -lt "$cs" ] ; then
-      bbmsg="${oc[1]}ed by"
+      bbmsg="got ${oc[1]}ed by"
     elif [ "$us" -eq "$cs" ] ; then
       bbmsg="${oc[2]}ed with"
     fi
