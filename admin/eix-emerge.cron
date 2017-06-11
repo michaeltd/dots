@@ -1,0 +1,6 @@
+#!/bin/env /bin/bash
+
+/usr/bin/eix-sync
+
+/usr/bin/emerge --nospinner --verbose --update --deep --newuse --with-bdeps=y @world
+

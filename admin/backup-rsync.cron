@@ -1,0 +1,17 @@
+#!/bin/env /bin/bash
+
+eldir="/mnt/ELEMENTS/linux/gentoo/"
+dtdir="/mnt/DATA/linux/gentoo/"
+bulst="/home/paperjam/.backup.txt"
+
+if [[ -d "${eldir}" && -r "${bulst}" ]]; then
+
+  /bin/tar --exclude="*/emsdk/*" --exclude="*/ImapMail/*" -cvzf /mnt/ELEMENTS/linux/gentoo/"${HOSTNAME}"."${USER}"."$(date +%y%m%d%H%M%S)".tar.gz $(cat ${bulst})
+
+fi
+
+if [[ -d "${eldir}" && -d "${dtdir}" ]]; then
+
+  /usr/bin/rsync --verbose --recursive --times --delete --exclude="*XNXX*" /mnt/ELEMENTS/* /mnt/DATA/
+
+fi
