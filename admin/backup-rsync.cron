@@ -6,7 +6,7 @@ bulst="/home/paperjam/.backup.txt"
 
 if [[ -d "${eldir}" && -r "${bulst}" ]]; then
 
-  /bin/tar --exclude="*/emsdk/*" --exclude="*/ImapMail/*" -cvzf /mnt/ELEMENTS/linux/gentoo/"${HOSTNAME}"."${USER}"."$(date +%y%m%d%H%M%S)".tar.gz $(cat ${bulst})
+  /bin/tar --exclude="*/ImapMail/*" -cvzf /mnt/ELEMENTS/linux/gentoo/"${HOSTNAME}"."${USER}"."$(date +%y%m%d%H%M%S)".tar.gz $(cat ${bulst})
 
 fi
 
