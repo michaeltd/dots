@@ -55,7 +55,7 @@ function servStuff {
     echo "Usage: servStuff start||stop"
     return 1
   else
-    srvcs="postgresql-9.5 vsftpd apache2 sshd rsyncd"
+    srvcs="postgresql-9.5 apache2 vsftpd sshd rsyncd dictd ntpd"
     for srvc in $srvcs; do
         rc-service $srvc ${1}
     done
