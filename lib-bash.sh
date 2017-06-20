@@ -9,7 +9,7 @@ function printMemUsage {
 	availMB=$(expr ${avail} / 1024)
 	usedMB=$(expr ${used} / 1024)
 
-	printf "From a total of %d memory, you are using %d MB's, which leaves you with %d MB free.\n" $totalMB $usedMB $availMB
+	printf "From a total of %dMB, you are using %dMB's, which leaves you with %dMB free memory.\n" $totalMB $usedMB $availMB
 
 }
 
