@@ -1,7 +1,14 @@
 #!/bin/env /bin/bash
 
-function printMemUsage {
+# Report first params directory sizes in human readable format
+function checkDirSizes {
+	for d in $(ls --directory "${1-${HOME}}"/*); do
+		du -hs "${d}"
+	done
+}
 
+#Report Total Used and Available mem in human readable format
+function printMemUsage {
 	total=$(cat /proc/meminfo |head -1 |awk '{print $2}')
 	avail=$(cat /proc/meminfo |head -2 |tail -1 |awk '{print $2}')
 	used=$(expr ${total} - ${avail})
@@ -13,8 +20,8 @@ function printMemUsage {
 
 }
 
+# Rock Paper Scissors mt 20170525
 function rps {
-  # Rock Paper Scissors mt 20170525
   declare -a op; declare -a oc; declare -A rs
   op=("Rock" "Paper" "Scissors")
   oc=("WIN" "Defeat" "Draw")
@@ -50,9 +57,9 @@ function rps {
   done
 }
 
+# https://www.facebook.com/freecodecamp/photos/a.1535523900014339.1073741828.1378350049065059/2006986062868118/?type=3&theater
+# [ $[ $RANDOM % 6 ] == 0 ] && echo "BOOM!!!" || echo "LUCKY GUY!!!"
 function russianRulette {
-  # https://www.facebook.com/freecodecamp/photos/a.1535523900014339.1073741828.1378350049065059/2006986062868118/?type=3&theater
-  # [ $[ $RANDOM % 6 ] == 0 ] && echo "BOOM!!!" || echo "LUCKY GUY!!!"
 
   let "RV = $RANDOM % 6";
 
@@ -81,30 +88,42 @@ function helloWorld {
   echo "Hello ${name}"
 }
 
+# http://www.accuweather.com/
 function accuWeather {
-  # http://www.accuweather.com/
   URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536'
   wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", "$12"°" }'| head -1
 }
 
+# https://twitter.com/igor_chubin # Try wttr moon
 function wttr {
-  # https://twitter.com/igor_chubin
   if [ -z "$1" ]; then
     curl wttr.in/Athens
   else
-    curl wttr.in/"$1"
+    curl wttr.in/"${1}"
   fi
 }
 
+# (L)ist(T)esting(E)(B)uilds
 function lteb {
-  # (L)ist(T)esting(E)(B)uilds
-  equery list '*' | sed 's/\(.*\)/=\1 ~amd64/'
+	ua=$(uname -a|grep -i gentoo)
+	if [ -z "${ua}" ]; then
+    echo "Usage: You need to find a Gentoo box first"
+    return 1
+  else
+		equery list '*' | sed 's/\(.*\)/=\1 ~amd64/'
+	fi
 }
 
+# (M)ain(T)ainer(L)ess(E)(B)uilds
+# https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers/
 function mtleb {
-  # (M)ain(T)ainer(L)ess(E)(B)uilds
-  # https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers/
-  fgrep -l maintainer-needed /usr/portage/*/*/metadata.xml |cut -d/ -f4-5 |fgrep -x -f <(EIX_LIMIT=0 eix -I --only-names)
+	ua=$(uname -a|grep -i gentoo)
+	if [ -z "${ua}" ]; then
+    echo "Usage: You need to find a Gentoo box first"
+    return 1
+	else
+		fgrep -l maintainer-needed /usr/portage/*/*/metadata.xml |cut -d/ -f4-5 |fgrep -x -f <(EIX_LIMIT=0 eix -I --only-names)
+	fi
 }
 
 function runCmd {
@@ -118,27 +137,33 @@ function runCmd {
     --inputbox "Enter command to continue" \
     10 40 \
     command 2> $TMPFILE
-  RETVAL=$? #Exit code
+	#Exit code
+  RETVAL=$?
   USRINPUT=$(cat ${TMPFILE})
   $USRINPUT
   return $?
 }
 
-function keepParamAlive {
 # Take a parameter and respawn it periodicaly if it crashes. check interval is second param seconds
-  while [ true ]; do       # Endless loop.
-    pid=`pgrep -x ${1}`    # Get a pid.
-    if [[ -z $pid ]]; then # If there is no proc associated with it,
-      ${1} &               # Start Param to background.
+function keepParamAlive {
+	# Endless loop.
+  while [ true ]; do
+		# Get a pid.
+    pid=`pgrep -x ${1}`
+		# If there is no proc associated with it,
+    if [[ -z "${pid}" ]]; then
+			# Start Param to background.
+      ${1} &
     else
-      sleep ${2-"60"}      # wait $second parameter's ''seconds
+			# wait $second parameter's ''seconds
+      sleep ${2-"60"}
     fi
   done
 }
 
-function lol {
 # Pipe furtune or second param throu cowsay and lolcat for some color magic
 # requires fortune cowsay lolcat
+function lol {
   file=${1-"tux"}
   if [[ -z "${2}" ]]; then
     cmmnd="fortune"
@@ -148,9 +173,9 @@ function lol {
   $cmmnd |cowsay -f $file |lolcat
 }
 
-function startApps {
 # For use with WindowMaker
 # Replace "${APPS}" list with your desired applets.
+function startApps {
   # Fill a list with the applets you need
   APPS="wmfire wmclockmon wmsystray wmMatrix wmbinclock wmbutton wmifinfo wmnd wmmon wmcpuload wmsysmon wmmemload wmacpi wmtime wmcalc wmSpaceWeather wmudmount wmmp3"
   for APP in $APPS ; do
@@ -160,18 +185,18 @@ function startApps {
   done
 }
 
-function regenMenu {
 # For use with WindowMaker
 # Run this to update your Root menu to reflect themes or apps changes
+function regenMenu {
   # Backup Root menu
   cp ~/GNUstep/Defaults/WMRootMenu ~/GNUstep/Defaults/`date +%y%m%d%H%M%S`WMRootMenu
   # Write new menu
   wmgenmenu > ~/GNUstep/Defaults/WMRootMenu
 }
 
-function deflateThat {
 # Script to give one comand to extract any kind of file
 # from https://www.facebook.com/TekNinjakevin
+function deflateThat {
   if [[ -r "${1}" ]] ; then
     case "${1}" in
       *.7z.7za) 7z "${1}" ;;
@@ -204,14 +229,14 @@ function showUptime {
   echo -ne "${green}$HOSTNAME ${green}uptime is ${green} \t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
-function logMeOut {
 # Call that to logout
+function logMeOut {
   kill -15 -1
 }
 
-function imageMagicScreenShot {
 # Take a screenshot imagemagic
 # Requires Imagemagic Viewnior
+function imageMagicScreenShot {
   PI=${1-"2"}
   FN="${HOME}"/imagemagic-`date +%y%m%d%H%M%S`.png
   import -pause $PI -window root $FN
