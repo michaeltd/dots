@@ -2,9 +2,20 @@
 
 # Report first params directory sizes in human readable format
 function checkDirSizes {
-	for d in $(ls --directory "${1-${HOME}}"/*); do
-		du -hs "${d}"
-	done
+	# Workaround alias issues
+	ls=$(which ls)
+	du=$(which du)
+	# Have real ls
+	if [ -x "${ls}" ]; then
+		# Have real du
+		if [ -x "${du}" ]; then
+			for d in $("${ls}" --directory "${1-${HOME}}"/*); do
+				if [ -d "${d}" ]; then
+					"${du}" -hs "${d}"
+				fi
+			done
+		fi
+	fi
 }
 
 #Report Total Used and Available mem in human readable format
