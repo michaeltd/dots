@@ -1,7 +1,9 @@
 #!/bin/env /bin/bash
 
+MAILTO=root@localhost
+
 /usr/bin/eix-sync
-# > /var/log/eix-sync.$(date +y%m%d%).log
+# > /var/log/eix-sync.$(date +%y%m%d).log
 
 /usr/bin/emerge --nospinner --verbose --update --deep --newuse --with-bdeps=y @world
 # > /var/log/emerge.update.$(date +%y%m%d).log
