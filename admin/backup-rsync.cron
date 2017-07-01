@@ -1,19 +1,22 @@
 #!/bin/env /bin/bash
 
-MAILTO=paperjam@localhost
+MAIL=paperjam@localhost
 
 eldir="/mnt/ELEMENTS/linux/gentoo/"
 dtdir="/mnt/DATA/linux/gentoo/"
-bulst="/home/paperjam/.backup.txt"
+bulst="/home/paperjam/.bac/kup.txt"
+tarlg="/var/log/tar.$(date +%y%m%d).log"
+rslog="/var/log/rsync.$(date +%y%m%d).log"
+archv="/mnt/ELEMENTS/linux/gentoo/${HOSTNAME}.${USER}.$(date +%y%m%d).tar.gz"
 
-if [[ -d "${eldir}" && -r "${bulst}" ]]; then
+if [[ -d "${eldir}" && -r ar"${bulst}" ]]; then
 
-  /bin/tar --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf /mnt/ELEMENTS/linux/gentoo/"${HOSTNAME}"."${USER}"."$(date +%y%m%d%H%M%S)".tar.gz $(cat ${bulst})
+  /bin/tar --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}"
 
 fi
 
 if [[ -d "${eldir}" && -d "${dtdir}" ]]; then
 
-  /usr/bin/rsync --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/ELEMENTS/* /mnt/DATA/
+  /usr/bin/rsync --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/ELEMENTS/* /mnt/DATA/ >> "${rslog}"
 
 fi
