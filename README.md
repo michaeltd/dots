@@ -14,7 +14,6 @@ Script to be used for rolling background images as wallpapers.
 Playground
 
 
-    Reference
+#### Reference
 
-    If there's one book that can teach you bash, then this is it
-[(A)dvanced (B)ash (S)scripting Guide](http://tldp.org/LDP/abs/html/abs-guide.html)
+If I had to pick just ONE book to learn bash from, then this would be it : [Advanced Bash Sscripting Guide](http://www.tldp.org/LDP/abs/abs-guide.pdf)
