@@ -20,14 +20,14 @@ function checkDirSizes {
 
 #Report Total Used and Available mem in human readable format
 function printMemUsage {
-	total=$(cat /proc/meminfo |head -1 |awk '{print $2}')
-	avail=$(cat /proc/meminfo |head -2 |tail -1 |awk '{print $2}')
-	used=$(expr ${total} - ${avail})
-	totalMB=$(expr ${total} / 1024)
-	availMB=$(expr ${avail} / 1024)
-	usedMB=$(expr ${used} / 1024)
+  total=$(cat /proc/meminfo |head -1 |awk '{print $2}')
+  avail=$(cat /proc/meminfo |head -2 |tail -1 |awk '{print $2}')
+  used=$(expr ${total} - ${avail})
+  totalMB=$(expr ${total} / 1024)
+  availMB=$(expr ${avail} / 1024)
+  usedMB=$(expr ${used} / 1024)
 
-	printf "From a total of %dMB, you are using %dMB's, which leaves you with %dMB free memory.\n" $totalMB $usedMB $availMB
+  printf "From a total of %dMB, you are using %dMB's, which leaves you with %dMB free memory.\n" $totalMB $usedMB $availMB
 
 }
 
@@ -82,8 +82,8 @@ function russianRulette {
 }
 
 function servStuff {
-  if [ -z "${1}" ]; then
-    echo "Usage: servStuff start||stop"
+  if [ -z "${1}" -o "${EUID}" -ne "0" ]; then
+    printf "Usage: servStuff start||stop\nRequires root privilages.\n"
     return 1
   else
     srvcs="postgresql-9.5 apache2 vsftpd sshd rsyncd dictd ntpd"
@@ -94,8 +94,7 @@ function servStuff {
 }
 
 function helloWorld {
-  echo -n "Give me a Name:"
-  read name
+  read -e -p "Give me a Name : " name
   echo "Hello ${name}"
 }
 
@@ -233,7 +232,12 @@ function deflateThat {
 }
 
 function updateDate {
-  ntpdate 0.gentoo.pool.ntp.org
+  if [ "${EUID}" -ne "0" ]; then
+    printf "Need root privilages\n"
+    return 1
+  else
+    ntpdate 0.gentoo.pool.ntp.org
+  fi
 }
 
 function showUptime {
@@ -242,7 +246,13 @@ function showUptime {
 
 # Call that to logout
 function logMeOut {
-  kill -15 -1
+  # Can't log out root like that
+  if [ "${EUID}" -eq "0" ]; then
+    printf "Can't log out root this way\n"
+    return 1
+  else
+    kill -15 -1
+  fi
 }
 
 # Take a screenshot imagemagic
