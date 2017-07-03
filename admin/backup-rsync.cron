@@ -4,12 +4,12 @@ MAIL=paperjam@localhost
 
 eldir="/mnt/ELEMENTS/linux/gentoo/"
 dtdir="/mnt/DATA/linux/gentoo/"
-bulst="/home/paperjam/.bac/kup.txt"
+bulst="/home/paperjam/.backup.txt"
 tarlg="/var/log/tar.$(date +%y%m%d).log"
 rslog="/var/log/rsync.$(date +%y%m%d).log"
 archv="/mnt/ELEMENTS/linux/gentoo/${HOSTNAME}.${USER}.$(date +%y%m%d).tar.gz"
 
-if [[ -d "${eldir}" && -r ar"${bulst}" ]]; then
+if [[ -d "${eldir}" && -r "${bulst}" ]]; then
 
   /bin/tar --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}"
 
