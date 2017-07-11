@@ -5,9 +5,9 @@ MAIL=paperjam@localhost
 eldir="/mnt/ELEMENTS/linux/gentoo/"
 dtdir="/mnt/DATA/linux/gentoo/"
 bulst="/home/paperjam/.backup.txt"
-tarlg="/var/log/tar.$(date +%y%m%d).log"
-rslog="/var/log/rsync.$(date +%y%m%d).log"
-archv="/mnt/ELEMENTS/linux/gentoo/${HOSTNAME}.${USER}.$(date +%y%m%d).tar.gz"
+tarlg="/var/log/tar.$(date +%y%m%d.%H%M%S).log"
+rslog="/var/log/rsync.$(date +%y%m%d.%H%M%S).log"
+archv="/mnt/ELEMENTS/linux/gentoo/${HOSTNAME}.${USER}.$(date +%y%m%d.%H%M%S).tar.gz"
 
 if [[ -d "${eldir}" && -r "${bulst}" ]]; then
 
