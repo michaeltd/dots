@@ -82,13 +82,17 @@ function russianRulette {
 }
 
 function servStuff {
-  if [ -z "${1}" -o "${EUID}" -ne "0" ]; then
-    printf "Usage: servStuff start||stop\nRequires root privilages.\n"
+  if [ -z "${1}" ]; then
+    printf "Usage: servStuff start||stop\n"
     return 1
+  elif [ "${EUID}" -ne "0" ]; then
+    printf "servStuff requires root privilages.\n"
+    sudo -E servStuff "${1}"
+    return $?
   else
     srvcs="postgresql-9.5 apache2 vsftpd sshd rsyncd dictd ntpd"
     for srvc in $srvcs; do
-        rc-service $srvc ${1}
+        rc-service "${srvc}" "${1}"
     done
   fi
 }
@@ -234,7 +238,8 @@ function deflateThat {
 function updateDate {
   if [ "${EUID}" -ne "0" ]; then
     printf "Need root privilages\n"
-    return 1
+    sudo -E updateDate
+    return $?
   else
     ntpdate 0.gentoo.pool.ntp.org
   fi
@@ -262,4 +267,8 @@ function imageMagicScreenShot {
   FN="${HOME}"/imagemagic-`date +%y%m%d%H%M%S`.png
   import -pause $PI -window root $FN
   viewnior $FN
+}
+
+function test {
+  echo $0
 }
