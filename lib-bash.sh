@@ -210,7 +210,7 @@ function regenMenu {
 
 # Script to give one comand to extract any kind of file
 # from https://www.facebook.com/TekNinjakevin
-function deflateThat {
+function inflateThat {
   if [[ -r "${1}" ]] ; then
     case "${1}" in
       *.7z.7za) 7z "${1}" ;;
