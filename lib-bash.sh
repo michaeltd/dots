@@ -87,7 +87,7 @@ function servStuff {
     return 1
   elif [ "${EUID}" -ne "0" ]; then
     printf "servStuff requires root privilages.\n"
-    sudo -E servStuff "${1}"
+    sudo -l servStuff "${1}"
     return $?
   else
     srvcs="postgresql-9.5 apache2 vsftpd sshd rsyncd dictd ntpd"
@@ -238,7 +238,7 @@ function inflateThat {
 function updateDate {
   if [ "${EUID}" -ne "0" ]; then
     printf "Need root privilages\n"
-    sudo -E updateDate
+    sudo -l updateDate
     return $?
   else
     ntpdate 0.gentoo.pool.ntp.org
@@ -267,8 +267,4 @@ function imageMagicScreenShot {
   FN="${HOME}"/imagemagic-`date +%y%m%d%H%M%S`.png
   import -pause $PI -window root $FN
   viewnior $FN
-}
-
-function test {
-  echo $0
 }
