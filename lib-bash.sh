@@ -163,7 +163,7 @@ function keepParamAlive {
 	# Endless loop.
   while [ true ]; do
 		# Get a pid.
-    pid=`pgrep -x ${1}`
+    pid=$(pgrep -x ${1})
 		# If there is no proc associated with it,
     if [[ -z "${pid}" ]]; then
 			# Start Param to background.
