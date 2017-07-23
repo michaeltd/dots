@@ -1,0 +1,9 @@
+#!/bin/env /bin/bash
+
+stdoutfile=/var/log/system.update.log
+
+newstamp="############\n`date +%y%m%d`\n############\n"
+
+echo -e $newstamp >> $stdoutfile
+
+/usr/local/bin/system.update.sh >> $stdoutfile 2>&1

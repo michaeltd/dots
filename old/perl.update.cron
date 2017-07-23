@@ -1,0 +1,9 @@
+#!/bin/env /bin/bash
+
+stdoutfile=/var/log/perl.update.log
+
+newstamp="\n############\n`date +%y%m%d`\n############\n"
+
+#echo -e $newstamp >> $stdoutfile
+
+#/usr/local/bin/perl.update.sh >> $stdoutfile 2>&1

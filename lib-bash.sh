@@ -98,7 +98,7 @@ function servStuff {
   else
     srvcs="postgresql-9.5 apache2 vsftpd sshd rsyncd dictd ntpd"
     for srvc in $srvcs; do
-        rc-service "${srvc}" "${1}"
+      rc-service "${srvc}" "${1}"
     done
   fi
 }
@@ -214,15 +214,17 @@ function regenMenu {
   wmgenmenu > ~/GNUstep/Defaults/WMRootMenu
 }
 
-# Script to give one comand to extract any kind of file
+# Script to give one command to extract any kind of file
 # from https://www.facebook.com/TekNinjakevin
 function inflateThat {
-  if [[ -r "${1}" ]] ; then
-    case "${1}" in
+  if [[ -z "${1}" ]] ; then
+		printf "Need one compressed file as parameter\n"
+		return 1
+  elif [[ -f "${1}" && -r "${1}" ]] ; then
+    case "${1,,}" in
       *.7z.7za) 7z "${1}" ;;
       *.tar.bz2) tar xjf "${1}" ;;
       *.tar.gz) tar xzf "${1}" ;;
-      *.tar.Z) tar xzf "${1}" ;;
       *.tar.z) tar xzf "${1}" ;;
       *.tar.xz) tar Jxf "${1}" ;;
       *.bz2) bunzip2 "${1}" ;;
@@ -233,11 +235,15 @@ function inflateThat {
       *.tbz2) tar xjf "${1}" ;;
       *.tgz) tar xzf "${1}" ;;
       *.zip) unzip "${1}" ;;
-      *.Z) uncompress "${1}" ;;
-      *) echo "'${1}' cannot be extracted." ;;
+      *.z) uncompress "${1}" ;;
+      *)
+        printf "%s cannot be extracted.\n" "${1}"
+        return 1
+        ;;
     esac
   else
-    echo "'${1}' is not readable."
+    printf "%s is not a readable file.\n" "${1}"
+		return 1
   fi
 }
 
@@ -273,4 +279,12 @@ function imageMagicScreenShot {
   FN="${HOME}"/imagemagic-`date +%y%m%d%H%M%S`.png
   import -pause $PI -window root $FN
   viewnior $FN
+}
+
+function pingSubnet {
+#for x in {1..254}; do
+for y in {1..254}; do
+  (ping -c 1 -w 2 192.168.1.${y} > /dev/null && echo "UP 192.168.1.${y}" &);
+done
+#done
 }

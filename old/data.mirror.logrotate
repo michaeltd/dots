@@ -1,0 +1,8 @@
+/var/log/data.mirror.log {
+	daily
+	rotate 999
+	olddir data.mirror.old
+	missingok
+	nocreate
+	compress
+}

@@ -1,8 +1,8 @@
-#!/bin/bash
+		#!/bin/bash
 
 DIALOG=${1-"Xdialog"}
 
-TMPFILE="/tmp/input.box.txt"
+TMPFILE=/tmp/"${RANDOM}".input.box.txt
 
 $DIALOG --title "Command Input" \
 	--default-button "ok" \

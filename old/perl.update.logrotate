@@ -1,0 +1,8 @@
+/var/log/perl.update.log {
+	weekly
+	rotate 999
+	olddir perl.update.old
+	missingok
+	nocreate
+	compress
+}
