@@ -13,7 +13,6 @@ Script to be used for rolling background images as wallpapers.
 
 Playground
 
-
 #### Reference
 
-If I had to pick just ONE book to learn bash from, then this would be it : [Advanced Bash Sscripting Guide](http://www.tldp.org/LDP/abs/abs-guide.pdf)
+If I had to pick just ONE book to learn bash from, then this would be it : [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/abs-guide.pdf)
