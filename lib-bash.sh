@@ -96,7 +96,7 @@ function servStuff {
     sudo -l servStuff "${1}"
     return $?
   else
-    srvcs="postgresql-9.5 apache2 vsftpd sshd rsyncd dictd ntpd"
+    srvcs="postgresql-9.6 apache2 vsftpd sshd rsyncd dictd ntpd"
     for srvc in $srvcs; do
       rc-service "${srvc}" "${1}"
     done
