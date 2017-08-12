@@ -14,7 +14,7 @@ if [[ -d "${eldir}" && -r "${bulst}" ]]; then
 
   /bin/tar --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}"
 
-  /bin/tar --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${fparv}" /home/paperjam/ >> "${tarlg}"
+#  /bin/tar --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${fparv}" /home/paperjam/ >> "${tarlg}"
 
 fi
 
