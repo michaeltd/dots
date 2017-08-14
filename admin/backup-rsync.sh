@@ -9,12 +9,13 @@ tarlg="/var/log/tar.$(date +%y%m%d.%H%M%S).log"
 rslog="/var/log/rsync.$(date +%y%m%d.%H%M%S).log"
 archv="/mnt/ELEMENTS/linux/gentoo/${HOSTNAME}.${USER}.$(date +%y%m%d.%H%M%S).tar.gz"
 fparv="/mnt/ELEMENTS/Documents/Videos/full.pj.$(date +%y%m%d.%H%M%S).tar.gz"
+homdr="/home/paperjam/"
 
 if [[ -d "${eldir}" && -r "${bulst}" ]]; then
 
   /bin/tar --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}"
 
-  /bin/tar --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${fparv}" /home/paperjam/ >> "${tarlg}"
+  /bin/tar --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${fparv}" "${homdr}" >> "${tarlg}"
 
 fi
 
