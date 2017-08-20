@@ -12,12 +12,12 @@ rotateBg &
 #if [ -r "${HOME}"/bin/keepConkyAlive.sh ]; then
 #    "${HOME}"/bin/keepConkyAlive.sh &
 #fi
-if [ -r "${HOME}"/bin/conkyStart.sh ]; then
-    "${HOME}"/bin/conkyStart.sh &
+if [ -x "${HOME}"/bin/conkyStart.sh ]; then
+    #"${HOME}"/bin/conkyStart.sh &
 fi
 
 # Start a Menu just in case
-if [ -r /usr/local/bin/TkRootMenu.sh ]; then
+if [ -x /usr/local/bin/TkRootMenu.sh ]; then
     /usr/local/bin/TkRootMenu.sh &
 fi
 
@@ -25,3 +25,4 @@ fi
 xscreensaver-command -exit
 # Start screensaver in the background
 xscreensaver -nosplash &
+
