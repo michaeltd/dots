@@ -1,3 +1,4 @@
 #!/bin/env /bin/bash
 
-python2 /usr/local/bin/TkRootMenu.py &
+python2 ~/git/pythonRootMenu/python/TkRootMenu.py &
+
