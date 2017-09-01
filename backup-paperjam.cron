@@ -1,3 +1,0 @@
-#!/bin/env /bin/bash
-
-/bin/tar -cvzf /mnt/ELEMENTS/linux/gentoo/genbox.paperjam.files.$(date +%y%m%d%H%M%S).tar.gz $(cat /home/paperjam/.backup.list.txt)

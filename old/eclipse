@@ -1,0 +1,4 @@
+#!/bin/env /bin/bash
+
+~/opt/eclipse/eclipse -vm /opt/java/bin/java
+

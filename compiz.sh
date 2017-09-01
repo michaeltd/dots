@@ -2,14 +2,12 @@
 # Start Compiz
 /usr/bin/compiz-manager &
 
-if [ -r ~/bin/start-up.sh ]; then
-    ~/bin/start-up.sh
+if [ -r "${HOME}"/bin/autostart.sh ]; then
+    "${HOME}"/bin/autostart.sh
 fi
 
-# Start Root Menu
-#if [ -r ~/bin/appMenu.sh ]; then
-#    ~/bin/appMenu.sh
-#fi
+# A nice status bar
+tint2 &
 
 # Wait
 sleep 999d

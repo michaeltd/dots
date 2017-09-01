@@ -2,7 +2,7 @@
 # X things
 xrdb -merge ~/.Xresources 2> /dev/null
 
-# import functions
+# import functions (should be auto-imported)
 source /etc/bash/bashrc.d/wallpaper-rotate.sh
 # Add some wallpaper variety for your desktop
 rotateBg &
@@ -17,7 +17,7 @@ if [[ -f "${css}" && -r "${css}" && -x "${css}" ]]; then
     "${css}" &
 fi
 
-tkrms="/usr/local/bin/TkRootMenu.sh"
+tkrms="${HOME}/bin/TkRootMenu.sh"
 # Start a Menu just in case
 if [[ -f "${tkrms}" && -r "${tkrms}" && -x "${tkrms}" ]]; then
     "${tkrms}" &

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>robust - Wiktionary</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"robust","wgTitle":"robust","wgCurRevisionId":47008092,"wgRevisionId":47008092,"wgArticleId":62518,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["etyl cleanup/en","Requests for pronunciation in English entries","Requests for audio pronunciation in English entries","etyl cleanup","English terms derived from Latin","English 2-syllable words","English terms with IPA pronunciation","English terms with audio links","English lemmas","English adjectives","en:Systems engineering","en:Software engineering","en:Statistics","German terms with audio links","German lemmas","German adjectives","Norwegian Bokmål terms derived from Latin","Norwegian Bokmål lemmas","Norwegian Bokmål adjectives","Norwegian Nynorsk terms derived from Latin","Norwegian Nynorsk lemmas","Norwegian Nynorsk adjectives"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"robust","wgRelevantArticleId":62518,"wgRequestId":"Wab18gpAEKkAADE9270AAABD","wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"preview":false,"publish":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":false,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en","usePageImages":true,"usePageDescriptions":true},"wgPreferredVariant":"en","wgMFExpandAllSectionsUserOption":false,"wgMFDisplayWikibaseDescriptions":{"search":true,"nearby":true,"watchlist":true,"tagline":false},"wgULSCurrentAutonym":"English","wgNoticeProject":"wiktionary","wgCentralNoticeCookiesToDelete":[],"wgCentralNoticeCategoriesUsingLegacy":["Fundraising","fundraising"],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgCentralAuthMobileDomain":false,"wgVisualEditorToolbarScrollOffset":0,"wgVisualEditorUnsupportedEditParams":["preload","preloadparams","preloadtitle","undo","undoafter","veswitched"],"wgEditSubmitButtonLabelPublish":true});mw.loader.state({"ext.globalCssJs.user.styles":"ready","ext.globalCssJs.site.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.tmh.thumbnail.styles":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready","ext.globalCssJs.user":"ready","ext.globalCssJs.site":"ready"});mw.loader.implement("user.options@0bhc5ha",function($,jQuery,require,module){mw.user.options.set([]);});mw.loader.implement("user.tokens@1dqfd7l",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/
+
+});mw.loader.load(["mw.MediaWikiPlayer.loader","mw.PopUpMediaTransform","mw.TMHGalleryHook.js","site","mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.toc","mediawiki.searchSuggest","ext.gadget.LegacyScripts","ext.gadget.JavascriptHeadings","ext.gadget.TargetedTranslations","ext.gadget.DocTabs","ext.gadget.BlockInfo","ext.gadget.RevdelInfo","ext.gadget.CodeLinks","ext.gadget.TranslationAdder","ext.gadget.RhymesAdder","ext.gadget.SpecialSearch","ext.centralauth.centralautologin","mmv.head","mmv.bootstrap.autostart","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging.subscriber","ext.wikimediaEvents","ext.navigationTiming","ext.uls.eventlogger","ext.uls.init","ext.uls.compactlinks","ext.uls.interface","ext.centralNotice.geoIP","ext.centralNotice.startUp","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=en&amp;modules=ext.tmh.thumbnail.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.30.0-wmf.15"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/w/index.php?title=robust&amp;action=edit"/>
+<link rel="edit" title="Edit" href="/w/index.php?title=robust&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wiktionary/en.png"/>
+<link rel="shortcut icon" href="/static/favicon/wiktionary/en.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wiktionary (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wiktionary.org/w/api.php?action=rsd"/>
+<link rel="license" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="alternate" type="application/atom+xml" title="Wiktionary Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="canonical" href="https://en.wiktionary.org/wiki/robust"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<!--[if lt IE 9]><script src="/resources/lib/html5shiv/html5shiv.min.js"></script><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-robust rootpage-robust skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
+						<div class="mw-indicators mw-body-content">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">robust</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub" class="noprint">Definition from Wiktionary, the free dictionary</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><p></p>
+<div id="toc" class="toc">
+<div class="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#English"><span class="tocnumber">1</span> <span class="toctext">English</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Etymology"><span class="tocnumber">1.1</span> <span class="toctext">Etymology</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Pronunciation"><span class="tocnumber">1.2</span> <span class="toctext">Pronunciation</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Adjective"><span class="tocnumber">1.3</span> <span class="toctext">Adjective</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="#Usage_notes"><span class="tocnumber">1.3.1</span> <span class="toctext">Usage notes</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#Derived_terms"><span class="tocnumber">1.3.2</span> <span class="toctext">Derived terms</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#See_also"><span class="tocnumber">1.3.3</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#Translations"><span class="tocnumber">1.3.4</span> <span class="toctext">Translations</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="#Anagrams"><span class="tocnumber">1.4</span> <span class="toctext">Anagrams</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#German"><span class="tocnumber">2</span> <span class="toctext">German</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="#Pronunciation_2"><span class="tocnumber">2.1</span> <span class="toctext">Pronunciation</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Adjective_2"><span class="tocnumber">2.2</span> <span class="toctext">Adjective</span></a>
+<ul>
+<li class="toclevel-3 tocsection-13"><a href="#Derived_terms_2"><span class="tocnumber">2.2.1</span> <span class="toctext">Derived terms</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-14"><a href="#Further_reading"><span class="tocnumber">2.3</span> <span class="toctext">Further reading</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="#Norwegian_Bokm.C3.A5l"><span class="tocnumber">3</span> <span class="toctext">Norwegian Bokmål</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="#Etymology_2"><span class="tocnumber">3.1</span> <span class="toctext">Etymology</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="#Adjective_3"><span class="tocnumber">3.2</span> <span class="toctext">Adjective</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#References"><span class="tocnumber">3.3</span> <span class="toctext">References</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-19"><a href="#Norwegian_Nynorsk"><span class="tocnumber">4</span> <span class="toctext">Norwegian Nynorsk</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="#Etymology_3"><span class="tocnumber">4.1</span> <span class="toctext">Etymology</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="#Adjective_4"><span class="tocnumber">4.2</span> <span class="toctext">Adjective</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="#References_2"><span class="tocnumber">4.3</span> <span class="toctext">References</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="English">English</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=1" title="Edit section: English">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Etymology">Etymology</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=2" title="Edit section: Etymology">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>From <span class="etylcleanup"><span class="etyl"><a href="https://en.wikipedia.org/wiki/Latin" class="extiw" title="w:Latin">Latin</a></span></span> <i class="Latn mention" lang="la"><a href="/wiki/robustus#Latin" title="robustus">rōbustus</a></i>, from <i class="Latn mention" lang="la"><a href="/wiki/robur#Latin" title="robur">rōbur</a></i>, <i class="Latn mention" lang="la"><a href="/wiki/robus#Latin" title="robus">rōbus</a></i> <span class="mention-gloss-paren annotation-paren">(</span><span class="mention-gloss-double-quote">“</span><span class="mention-gloss">strength", "hard timber", "oak</span><span class="mention-gloss-double-quote">”</span><span class="mention-gloss-paren annotation-paren">)</span>.</p>
+<h3><span class="mw-headline" id="Pronunciation">Pronunciation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=3" title="Edit section: Pronunciation">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li><span class="ib-brac qualifier-brac">(</span><span class="ib-content qualifier-content"><a href="https://en.wikipedia.org/wiki/General_American" class="extiw" title="w:General American">General American</a></span><span class="ib-brac qualifier-brac">)</span> <a href="/wiki/Wiktionary:International_Phonetic_Alphabet" title="Wiktionary:International Phonetic Alphabet">IPA</a><sup>(<a href="/wiki/Appendix:English_pronunciation" title="Appendix:English pronunciation">key</a>)</sup>: <span class="IPA" lang="">/ɹoʊˈbʌst/</span></li>
+<li>Rhymes: <a href="/wiki/Rhymes:English/%CA%8Cst" title="Rhymes:English/ʌst"><span class="IPA" lang="">-ʌst</span></a></li>
+<li>
+<table class="audiotable" style="vertical-align: top; display:inline-block; list-style:none;line-height: 1em; border-collapse:collapse;">
+<tr>
+<td class="unicode audiolink" style="padding-right:5px; padding-left: 0;">Audio (UK)</td>
+<td class="audiofile">
+<div class="mediaContainer" style="width:175px"><audio id="mwe_player_0" controls="" preload="none" style="width:175px" class="kskin" data-durationhint="1.1377777777778" data-startoffset="0" data-mwtitle="en-uk-robust.ogg" data-mwprovider="wikimediacommons">
+<source src="//upload.wikimedia.org/wikipedia/commons/c/c9/En-uk-robust.ogg" type="audio/ogg; codecs=&quot;vorbis&quot;" data-title="Original Ogg file (190 kbps)" data-shorttitle="Ogg source" data-width="0" data-height="0" data-bandwidth="190146" /></audio></div>
+</td>
+<td class="audiometa" style="font-size: 80%;">(<a href="/wiki/File:en-uk-robust.ogg" title="File:en-uk-robust.ogg">file</a>)</td>
+</tr>
+</table>
+</li>
+</ul>
+<div class="noprint request-box" style="width: auto; margin: 0; padding: 0.5em; border-collapse: collapse;overflow: hidden;">
+<table style="background:#FFFFFF; width:90%; margin: auto; border:1px dashed #999999; text-align:left">
+<tr>
+<td><a href="/wiki/File:Phonetik.svg" class="image"><img alt="Phonetik.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Phonetik.svg/40px-Phonetik.svg.png" width="40" height="16" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Phonetik.svg/60px-Phonetik.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Phonetik.svg/80px-Phonetik.svg.png 2x" data-file-width="250" data-file-height="100" /></a></td>
+<td>This entry needs pronunciation information. If you are familiar with <a href="/wiki/Wiktionary:enPR" class="mw-redirect" title="Wiktionary:enPR">enPR</a> or the <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" class="extiw" title="w:International Phonetic Alphabet">IPA</a> then please add some!</td>
+</tr>
+</table>
+</div>
+<div class="noprint request-box" style="width: auto; margin: 0; padding: 0.5em; border-collapse: collapse;overflow: hidden;">
+<table style="background:#FFFFFF; width:90%; margin: auto; border:1px dashed #999999; text-align:left">
+<tr>
+<td><a href="/wiki/File:Headset_icon.svg" class="image"><img alt="Headset icon.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Headset_icon.svg/20px-Headset_icon.svg.png" width="20" height="23" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Headset_icon.svg/30px-Headset_icon.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Headset_icon.svg/40px-Headset_icon.svg.png 2x" data-file-width="119" data-file-height="136" /></a></td>
+<td>This entry needs <a href="/wiki/Category:Requests_for_audio_pronunciation_in_English_entries" title="Category:Requests for audio pronunciation in English entries">audio files</a>. If you have a microphone, please <a href="/wiki/Help:Audio_pronunciations" title="Help:Audio pronunciations">record some</a> and <a href="https://commons.wikimedia.org/wiki/Special:Upload" class="extiw" title="commons:Special:Upload">upload</a> them. <small>(For audio required quickly, visit <a href="/wiki/Wiktionary:APR" class="mw-redirect" title="Wiktionary:APR">WT:APR</a>.)</small></td>
+</tr>
+</table>
+</div>
+<h3><span class="mw-headline" id="Adjective">Adjective</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=4" title="Edit section: Adjective">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><strong class="Latn headword" lang="en">robust</strong> (<i><a href="/wiki/Appendix:Glossary#comparable" title="Appendix:Glossary">comparative</a></i> <b class="Latn form-of lang-en comparative-form-of" lang="en"><a href="/wiki/robuster#English" title="robuster">robuster</a></b> <i>or</i> <b class="Latn form-of lang-en comparative-form-of" lang="en"><a href="/wiki/more#English" title="more">more</a> robust</b>, <i><a href="/wiki/Appendix:Glossary#comparable" title="Appendix:Glossary">superlative</a></i> <b class="Latn form-of lang-en superlative-form-of" lang="en"><a href="/wiki/robustest#English" title="robustest">robustest</a></b> <i>or</i> <b class="Latn form-of lang-en superlative-form-of" lang="en"><a href="/wiki/most#English" title="most">most</a> robust</b>) <span class="ib-brac qualifier-brac">(</span><span class="ib-content qualifier-content">see usage notes</span><span class="ib-brac qualifier-brac">)</span></p>
+<ol>
+<li><a href="/wiki/evince" title="evince">Evincing</a> <a href="/wiki/strength" title="strength">strength</a> and <a href="/wiki/health" title="health">health</a>; <a href="/wiki/strong" title="strong">strong</a>
+<dl>
+<dd><i>He was a <b>robust</b> man of six feet four.</i></dd>
+<dd><i><b>robust</b> health</i></dd>
+<dd><i>A <b>robust</b> wall was put up.</i></dd>
+</dl>
+<ul>
+<li>Anthony Trollope (1815-1882)
+<dl>
+<dd>She was stronger, larger, more <b>robust</b> physically than he had hitherto conceived.</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><a href="/wiki/violent" title="violent">Violent</a>; <a href="/wiki/rough" title="rough">rough</a>; <a href="/wiki/rude" title="rude">rude</a>.
+<ul>
+<li>
+<div class="citation-whole"><span class="cited-source"><b>2011</b> October 1,  Phil McNulty,  “Everton 0 - 2 Liverpool”, in  <cite>BBC Sport</cite><sup><a rel="nofollow" class="external autonumber" href="http://news.bbc.co.uk/sport2/hi/football/eng_prem/15045708.stm">[1]</a></sup>:</span>
+<dl>
+<dd><span class="cited-passage">As a frenetic opening continued, Cahill - whose <b>robust</b> approach had already prompted Jamie Carragher to register his displeasure to Atkinson - rose above the Liverpool defence to force keeper Pepe Reina into an athletic tip over the top.</span></dd>
+</dl>
+</div>
+</li>
+</ul>
+</li>
+<li><a href="/wiki/require" title="require">Requiring</a> <a href="/wiki/strength" title="strength">strength</a> or <a href="/wiki/vigor" title="vigor">vigor</a>
+<dl>
+<dd><i><b>robust</b> employment</i></dd>
+</dl>
+</li>
+<li><a href="/wiki/sensible" title="sensible">Sensible</a> (of intellect etc.); <a href="/wiki/straightforward" title="straightforward">straightforward</a>, not given to or confused by <a href="/wiki/uncertainty" title="uncertainty">uncertainty</a> or <a href="/wiki/subtlety" title="subtlety">subtlety</a></li>
+<li><span class="ib-brac">(</span><span class="ib-content">systems engineering</span><span class="ib-brac">)</span> Designed or evolved in such a way as to be resistant to total failure despite partial damage.</li>
+<li><span class="ib-brac">(</span><span class="ib-content">software engineering</span><span class="ib-brac">)</span> Resistant or impervious to failure regardless of user input or unexpected conditions.</li>
+<li><span class="ib-brac">(</span><span class="ib-content">statistics</span><span class="ib-brac">)</span> Not greatly influenced by errors in assumptions about the distribution of sample errors.</li>
+</ol>
+<h4><span class="mw-headline" id="Usage_notes">Usage notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=5" title="Edit section: Usage notes">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<ul>
+<li>"More" and "most robust" are much more common than the forms ending in "-er" or "-est".</li>
+</ul>
+<h4><span class="mw-headline" id="Derived_terms">Derived terms</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=6" title="Edit section: Derived terms">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<ul>
+<li><span class="Latn" lang="en"><a href="/wiki/robustness#English" title="robustness">robustness</a></span></li>
+</ul>
+<h4><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=7" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Robust_statistics" title="w:Robust statistics"><img alt="Wikipedia-logo-v2.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/15px-Wikipedia-logo-v2.svg.png" width="15" height="14" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/23px-Wikipedia-logo-v2.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/30px-Wikipedia-logo-v2.svg.png 2x" data-file-width="103" data-file-height="94" /></a> <b class="Latn" lang="en"><a href="https://en.wikipedia.org/wiki/Robust_statistics" class="extiw" title="w:Robust statistics">Robust statistics</a></b> on Wikipedia.<span class="interProject"><a href="https://en.wikipedia.org/wiki/Robust_statistics" class="extiw" title="w:Robust statistics">Wikipedia</a></span></li>
+</ul>
+<h4><span class="mw-headline" id="Translations">Translations</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=8" title="Edit section: Translations">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<div class="NavFrame" id="Translations-evincing_strength">
+<div class="NavHead" style="text-align:left;">evincing strength</div>
+<div class="NavContent">
+<table class="translations" role="presentation" style="width:100%;" data-gloss="evincing strength">
+<tr>
+<td class="translations-cell" style="background-color:#ffffe0; vertical-align:top; width:48%; text-align:left;">
+<ul>
+<li>Dutch: <span class="Latn" lang="nl"><a href="/w/index.php?title=robuust&amp;action=edit&amp;redlink=1" class="new" title="robuust (page does not exist)">robuust</a></span><span class="tpos">&#160;<a href="https://nl.wiktionary.org/wiki/robuust" class="extiw" title="nl:robuust">(nl)</a></span>, <span class="Latn" lang="nl"><a href="/wiki/degelijk#Dutch" title="degelijk">degelijk</a></span><span class="tpos">&#160;<a href="https://nl.wiktionary.org/wiki/degelijk" class="extiw" title="nl:degelijk">(nl)</a></span></li>
+<li>Finnish: <span class="Latn" lang="fi"><a href="/wiki/jykev%C3%A4#Finnish" title="jykevä">jykevä</a></span><span class="tpos">&#160;<a href="https://fi.wiktionary.org/wiki/jykev%C3%A4" class="extiw" title="fi:jykevä">(fi)</a></span>, <span class="Latn" lang="fi"><a href="/wiki/vankka#Finnish" title="vankka">vankka</a></span><span class="tpos">&#160;<a href="https://fi.wiktionary.org/wiki/vankka" class="extiw" title="fi:vankka">(fi)</a></span>, <span class="Latn" lang="fi"><a href="/wiki/roteva#Finnish" title="roteva">roteva</a></span><span class="tpos">&#160;<a href="https://fi.wiktionary.org/wiki/roteva" class="extiw" title="fi:roteva">(fi)</a></span>, <span class="Latn" lang="fi"><a href="/wiki/vahva#Finnish" title="vahva">vahva</a></span><span class="tpos">&#160;<a href="https://fi.wiktionary.org/wiki/vahva" class="extiw" title="fi:vahva">(fi)</a></span></li>
+<li>French: <span class="Latn" lang="fr"><a href="/wiki/robuste#French" title="robuste">robuste</a></span><span class="tpos">&#160;<a href="https://fr.wiktionary.org/wiki/robuste" class="extiw" title="fr:robuste">(fr)</a></span></li>
+<li>German: <span class="Latn" lang="de"><a href="/wiki/robust#German" title="robust">robust</a></span><span class="tpos">&#160;<a href="https://de.wiktionary.org/wiki/robust" class="extiw" title="de:robust">(de)</a></span></li>
+<li>Greek: <span class="Grek" lang="el"><a href="/w/index.php?title=%CF%81%CF%89%CE%BC%CE%B1%CE%BB%CE%AD%CE%BF%CF%82&amp;action=edit&amp;redlink=1" class="new" title="ρωμαλέος (page does not exist)">ρωμαλέος</a></span><span class="tpos">&#160;<a href="https://el.wiktionary.org/wiki/%CF%81%CF%89%CE%BC%CE%B1%CE%BB%CE%AD%CE%BF%CF%82" class="extiw" title="el:ρωμαλέος">(el)</a></span> <span class="mention-gloss-paren annotation-paren">(</span><span lang="el-Latn" class="tr Latn">romaléos</span><span class="mention-gloss-paren annotation-paren">)</span></li>
+<li>Hebrew: <span class="Hebr" lang="he"><a href="/w/index.php?title=%D7%97%D7%A1%D7%95%D7%9F&amp;action=edit&amp;redlink=1" class="new" title="חסון (page does not exist)">חסון</a>‏</span>‎<span class="tpos">&#160;<a href="https://he.wiktionary.org/wiki/%D7%97%D7%A1%D7%95%D7%9F" class="extiw" title="he:חסון">(he)</a></span> <span class="mention-gloss-paren annotation-paren">(</span><span lang="he-Latn" class="tr Latn">chason</span><span class="mention-gloss-paren annotation-paren">)</span>, <span class="Hebr" lang="he"><a href="/wiki/%D7%90%D7%99%D7%AA%D7%9F#Hebrew" title="איתן">איתן</a>‏</span>‎&#160;<span class="gender"><abbr title="masculine gender">m</abbr></span> <span class="mention-gloss-paren annotation-paren">(</span><span lang="he-Latn" class="tr Latn">Eythan</span><span class="mention-gloss-paren annotation-paren">)</span></li>
+<li>Ido: <span class="Latn" lang="io"><a href="/wiki/robusta#Ido" title="robusta">robusta</a></span><span class="tpos">&#160;<a href="https://io.wiktionary.org/wiki/robusta" class="extiw" title="io:robusta">(io)</a></span></li>
+<li>Irish: <span class="Latn" lang="ga"><a href="/wiki/urr%C3%BAnta#Irish" title="urrúnta">urrúnta</a></span></li>
+<li>Maori: <span class="Latn" lang="mi"><a href="/w/index.php?title=ruarangi&amp;action=edit&amp;redlink=1" class="new" title="ruarangi (page does not exist)">ruarangi</a></span>, <span class="Latn" lang="mi"><a href="/w/index.php?title=hiwa&amp;action=edit&amp;redlink=1" class="new" title="hiwa (page does not exist)">hiwa</a></span> <span class="ib-brac qualifier-brac">(</span><span class="ib-content qualifier-content">referring to growth</span><span class="ib-brac qualifier-brac">)</span>, <span class="Latn" lang="mi"><a href="/w/index.php?title=whakap%C5%ABioio&amp;action=edit&amp;redlink=1" class="new" title="whakapūioio (page does not exist)">whakapūioio</a></span>, <span class="Latn" lang="mi"><a href="/w/index.php?title=t%C5%8Dt%C5%8Dp%C5%AB&amp;action=edit&amp;redlink=1" class="new" title="tōtōpū (page does not exist)">tōtōpū</a></span> <span class="ib-brac qualifier-brac">(</span><span class="ib-content qualifier-content">of solid quality</span><span class="ib-brac qualifier-brac">)</span></li>
+<li>Mongolian: <span class="Cyrl" lang="mn"><a href="/wiki/%D0%B1%D3%A9%D1%85#Mongolian" title="бөх">бөх</a></span><span class="tpos">&#160;<a href="https://mn.wiktionary.org/wiki/%D0%B1%D3%A9%D1%85" class="extiw" title="mn:бөх">(mn)</a></span> <span class="mention-gloss-paren annotation-paren">(</span><span lang="mn-Latn" class="tr Latn">böh</span><span class="mention-gloss-paren annotation-paren">)</span></li>
+<li>Norman: <span class="Latn" lang="nrf"><a href="/wiki/fr%C3%AEngant#Norman" title="frîngant">frîngant</a></span></li>
+</ul>
+</td>
+<td style="width:1%;"></td>
+<td class="translations-cell" style="background-color:#ffffe0; vertical-align:top; text-align:left; width:48%;">
+<ul>
+<li>Norwegian:
+<dl>
+<dd>Bokmål: <span class="Latn" lang="nb"><a href="/wiki/robust#Norwegian_Bokm.C3.A5l" title="robust">robust</a></span><span class="tpos">&#160;<a href="https://no.wiktionary.org/wiki/robust" class="extiw" title="no:robust">(no)</a></span></dd>
+<dd>Nynorsk: <span class="Latn" lang="nn"><a href="/wiki/robust#Norwegian_Nynorsk" title="robust">robust</a></span></dd>
+</dl>
+</li>
+<li>Polish: <span class="Latn" lang="pl"><a href="/wiki/krzepki#Polish" title="krzepki">krzepki</a></span><span class="tpos">&#160;<a href="https://pl.wiktionary.org/wiki/krzepki" class="extiw" title="pl:krzepki">(pl)</a></span>, <span class="Latn" lang="pl"><a href="/wiki/silny#Polish" title="silny">silny</a></span><span class="tpos">&#160;<a href="https://pl.wiktionary.org/wiki/silny" class="extiw" title="pl:silny">(pl)</a></span>, <span class="Latn" lang="pl"><a href="/w/index.php?title=rozros%C5%82y&amp;action=edit&amp;redlink=1" class="new" title="rozrosły (page does not exist)">rozrosły</a></span>, <span class="Latn" lang="pl"><a href="/wiki/czerstwy#Polish" title="czerstwy">czerstwy</a></span><span class="tpos">&#160;<a href="https://pl.wiktionary.org/wiki/czerstwy" class="extiw" title="pl:czerstwy">(pl)</a></span>, <span class="Latn" lang="pl"><a href="/w/index.php?title=wysportowany&amp;action=edit&amp;redlink=1" class="new" title="wysportowany (page does not exist)">wysportowany</a></span></li>
+<li>Portuguese: <span class="Latn" lang="pt"><a href="/wiki/robusto#Portuguese" title="robusto">robusto</a></span><span class="tpos">&#160;<a href="https://pt.wiktionary.org/wiki/robusto" class="extiw" title="pt:robusto">(pt)</a></span>&#160;<span class="gender"><abbr title="masculine gender">m</abbr></span></li>
+<li>Romanian: <span class="Latn" lang="ro"><a href="/wiki/robust#Romanian" title="robust">robust</a></span><span class="tpos">&#160;<a href="https://ro.wiktionary.org/wiki/robust" class="extiw" title="ro:robust">(ro)</a></span>&#160;<span class="gender"><abbr title="masculine gender">m</abbr>, <abbr title="neuter gender">n</abbr></span>, <span class="Latn" lang="ro"><a href="/wiki/puternic#Romanian" title="puternic">puternic</a></span><span class="tpos">&#160;<a href="https://ro.wiktionary.org/wiki/puternic" class="extiw" title="ro:puternic">(ro)</a></span>&#160;<span class="gender"><abbr title="masculine gender">m</abbr>, <abbr title="neuter gender">n</abbr></span>, <span class="Latn" lang="ro"><a href="/wiki/v%C3%A2njos#Romanian" title="vânjos">vânjos</a></span><span class="tpos">&#160;<a href="https://ro.wiktionary.org/wiki/v%C3%A2njos" class="extiw" title="ro:vânjos">(ro)</a></span>&#160;<span class="gender"><abbr title="masculine gender">m</abbr>, <abbr title="neuter gender">n</abbr></span>, <span class="Latn" lang="ro"><a href="/w/index.php?title=robust%C4%83&amp;action=edit&amp;redlink=1" class="new" title="robustă (page does not exist)">robustă</a></span>&#160;<span class="gender"><abbr title="feminine gender">f</abbr></span></li>
+<li>Russian: <span class="Cyrl" lang="ru"><a href="/wiki/%D0%BA%D1%80%D0%B5%D0%BF%D0%BA%D0%B8%D0%B9#Russian" title="крепкий">кре́пкий</a></span><span class="tpos">&#160;<a href="https://ru.wiktionary.org/wiki/%D0%BA%D1%80%D0%B5%D0%BF%D0%BA%D0%B8%D0%B9" class="extiw" title="ru:крепкий">(ru)</a></span> <span class="mention-gloss-paren annotation-paren">(</span><span lang="ru-Latn" class="tr Latn">krépkij</span><span class="mention-gloss-paren annotation-paren">)</span>, <span class="Cyrl" lang="ru"><a href="/wiki/%D0%B7%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9#Russian" title="здоровый">здоро́вый</a></span><span class="tpos">&#160;<a href="https://ru.wiktionary.org/wiki/%D0%B7%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9" class="extiw" title="ru:здоровый">(ru)</a></span> <span class="mention-gloss-paren annotation-paren">(</span><span lang="ru-Latn" class="tr Latn">zdoróvyj</span><span class="mention-gloss-paren annotation-paren">)</span></li>
+<li>Scottish Gaelic: <span class="Latn" lang="gd"><a href="/wiki/l%C3%A0idir#Scottish_Gaelic" title="làidir">làidir</a></span></li>
+<li>Slovene: <span class="Latn" lang="sl"><a href="/w/index.php?title=robusten&amp;action=edit&amp;redlink=1" class="new" title="robusten (page does not exist)">robústen</a></span></li>
+<li>Spanish: <span class="Latn" lang="es"><a href="/wiki/robusto#Spanish" title="robusto">robusto</a></span><span class="tpos">&#160;<a href="https://es.wiktionary.org/wiki/robusto" class="extiw" title="es:robusto">(es)</a></span></li>
+<li>Swedish: <span class="Latn" lang="sv"><a href="/wiki/robust#Swedish" title="robust">robust</a></span><span class="tpos">&#160;<a href="https://sv.wiktionary.org/wiki/robust" class="extiw" title="sv:robust">(sv)</a></span></li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<h3><span class="mw-headline" id="Anagrams">Anagrams</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=9" title="Edit section: Anagrams">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li><span class="Latn" lang="en"><a href="/wiki/brotus#English" title="brotus">brotus</a></span>, <span class="Latn" lang="en"><a href="/wiki/turbos#English" title="turbos">turbos</a></span></li>
+</ul>
+<hr />
+<h2><span class="mw-headline" id="German">German</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=10" title="Edit section: German">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Pronunciation_2">Pronunciation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=11" title="Edit section: Pronunciation">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li>
+<table class="audiotable" style="vertical-align: top; display:inline-block; list-style:none;line-height: 1em; border-collapse:collapse;">
+<tr>
+<td class="unicode audiolink" style="padding-right:5px; padding-left: 0;">Audio</td>
+<td class="audiofile">
+<div class="mediaContainer" style="width:175px"><audio id="mwe_player_1" controls="" preload="none" style="width:175px" class="kskin" data-durationhint="0.46439909297052" data-startoffset="0" data-mwtitle="De-robust.ogg" data-mwprovider="wikimediacommons">
+<source src="//upload.wikimedia.org/wikipedia/commons/c/c4/De-robust.ogg" type="audio/ogg; codecs=&quot;vorbis&quot;" data-title="Original Ogg file (510 kbps)" data-shorttitle="Ogg source" data-width="0" data-height="0" data-bandwidth="509768" /></audio></div>
+</td>
+<td class="audiometa" style="font-size: 80%;">(<a href="/wiki/File:De-robust.ogg" title="File:De-robust.ogg">file</a>)</td>
+</tr>
+</table>
+</li>
+</ul>
+<h3><span class="mw-headline" id="Adjective_2">Adjective</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=12" title="Edit section: Adjective">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><strong class="Latn headword" lang="de">robust</strong></p>
+<ol>
+<li><span class="Latn" lang="en"><a href="/wiki/robust#English" title="robust">robust</a></span></li>
+</ol>
+<h4><span class="mw-headline" id="Derived_terms_2">Derived terms</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=13" title="Edit section: Derived terms">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<ul>
+<li><a href="/wiki/Robustheit" title="Robustheit">Robustheit</a></li>
+</ul>
+<h3><span class="mw-headline" id="Further_reading">Further reading</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=14" title="Edit section: Further reading">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://www.duden.de/rechtschreibung/robust">robust</a> in <i>Duden</i> online</li>
+</ul>
+<hr />
+<h2><span class="mw-headline" id="Norwegian_Bokm.C3.A5l">Norwegian Bokmål</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=15" title="Edit section: Norwegian Bokmål">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Etymology_2">Etymology</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=16" title="Edit section: Etymology">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>From <span class="etylcleanup"><span class="etyl"><a href="https://en.wikipedia.org/wiki/Latin" class="extiw" title="w:Latin">Latin</a></span></span> <i class="Latn mention" lang="la"><a href="/wiki/robustus#Latin" title="robustus">robustus</a></i></p>
+<h3><span class="mw-headline" id="Adjective_3">Adjective</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=17" title="Edit section: Adjective">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><strong class="Latn headword" lang="nb">robust</strong> (<i>neuter singular</i> <b class="Latn" lang="nb"><strong class="selflink">robust</strong></b>, <i>definite singular and plural</i> <b class="Latn" lang="nb"><a href="/wiki/robuste#Norwegian_Bokm.C3.A5l" title="robuste">robuste</a></b>)</p>
+<ol>
+<li><span class="Latn" lang="en"><a href="/wiki/robust#English" title="robust">robust</a></span>, <span class="Latn" lang="en"><a href="/wiki/sturdy#English" title="sturdy">sturdy</a></span></li>
+</ol>
+<h3><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=18" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://ordbok.uib.no/perl/ordbok.cgi?OPP=robust&amp;bokmaal=+&amp;ordbok=bokmaal">“robust”</a> in <i>The Bokmål Dictionary</i>.</li>
+</ul>
+<hr />
+<h2><span class="mw-headline" id="Norwegian_Nynorsk">Norwegian Nynorsk</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=19" title="Edit section: Norwegian Nynorsk">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Etymology_3">Etymology</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=20" title="Edit section: Etymology">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>From <span class="etylcleanup"><span class="etyl"><a href="https://en.wikipedia.org/wiki/Latin" class="extiw" title="w:Latin">Latin</a></span></span> <i class="Latn mention" lang="la"><a href="/wiki/robustus#Latin" title="robustus">robustus</a></i></p>
+<h3><span class="mw-headline" id="Adjective_4">Adjective</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=21" title="Edit section: Adjective">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><strong class="Latn headword" lang="nn">robust</strong> (<i>neuter singular</i> <b class="Latn" lang="nn"><strong class="selflink">robust</strong></b>, <i>definite singular and plural</i> <b class="Latn" lang="nn"><a href="/wiki/robuste#Norwegian_Nynorsk" title="robuste">robuste</a></b>)</p>
+<ol>
+<li><span class="Latn" lang="en"><a href="/wiki/robust#English" title="robust">robust</a></span>, <span class="Latn" lang="en"><a href="/wiki/sturdy#English" title="sturdy">sturdy</a></span></li>
+</ol>
+<h3><span class="mw-headline" id="References_2">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=robust&amp;action=edit&amp;section=22" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://ordbok.uib.no/perl/ordbok.cgi?OPP=robust&amp;nynorsk=+&amp;ordbok=nynorsk">“robust”</a> in <i>The Nynorsk Dictionary</i>.</li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1226
+Cached time: 20170830052939
+Cache expiry: 1900800
+Dynamic content: false
+CPU time usage: 0.396 seconds
+Real time usage: 0.515 seconds
+Preprocessor visited node count: 4278/1000000
+Preprocessor generated node count: 0/1500000
+Post‐expand include size: 27968/2097152 bytes
+Template argument size: 3129/2097152 bytes
+Highest expansion depth: 11/40
+Expensive parser function count: 15/500
+Lua time usage: 0.233/10.000 seconds
+Lua memory usage: 12.12 MB/50 MB
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  456.859      1 -total
+ 19.60%   89.529     24 Template:t+
+ 10.92%   49.870     48 Template:redlink_category
+  9.26%   42.303      3 Template:etyl
+  7.68%   35.072      5 Template:m
+  7.12%   32.509      3 Template:lb
+  7.09%   32.407      1 Template:quote-journal
+  7.04%   32.180     13 Template:t
+  6.29%   28.727      1 Template:quote-meta
+  6.03%   27.534      1 Template:en-adj
+-->
+</div>
+<!-- Saved in parser cache with key enwiktionary:pcache:idhash:62518-0!canonical and timestamp 20170830052939 and revision id 47008092
+ -->
+<noscript><img src="//en.wiktionary.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://en.wiktionary.org/w/index.php?title=robust&amp;oldid=47008092">https://en.wiktionary.org/w/index.php?title=robust&amp;oldid=47008092</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:English_terms_derived_from_Latin" title="Category:English terms derived from Latin">English terms derived from Latin</a></li><li><a href="/wiki/Category:English_2-syllable_words" title="Category:English 2-syllable words">English 2-syllable words</a></li><li><a href="/wiki/Category:English_terms_with_IPA_pronunciation" title="Category:English terms with IPA pronunciation">English terms with IPA pronunciation</a></li><li><a href="/wiki/Category:English_terms_with_audio_links" title="Category:English terms with audio links">English terms with audio links</a></li><li><a href="/wiki/Category:English_lemmas" title="Category:English lemmas">English lemmas</a></li><li><a href="/wiki/Category:English_adjectives" title="Category:English adjectives">English adjectives</a></li><li><a href="/wiki/Category:en:Systems_engineering" title="Category:en:Systems engineering">en:Systems engineering</a></li><li><a href="/wiki/Category:en:Software_engineering" title="Category:en:Software engineering">en:Software engineering</a></li><li><a href="/wiki/Category:en:Statistics" title="Category:en:Statistics">en:Statistics</a></li><li><a href="/wiki/Category:German_terms_with_audio_links" title="Category:German terms with audio links">German terms with audio links</a></li><li><a href="/wiki/Category:German_lemmas" title="Category:German lemmas">German lemmas</a></li><li><a href="/wiki/Category:German_adjectives" title="Category:German adjectives">German adjectives</a></li><li><a href="/wiki/Category:Norwegian_Bokm%C3%A5l_terms_derived_from_Latin" title="Category:Norwegian Bokmål terms derived from Latin">Norwegian Bokmål terms derived from Latin</a></li><li><a href="/wiki/Category:Norwegian_Bokm%C3%A5l_lemmas" title="Category:Norwegian Bokmål lemmas">Norwegian Bokmål lemmas</a></li><li><a href="/wiki/Category:Norwegian_Bokm%C3%A5l_adjectives" title="Category:Norwegian Bokmål adjectives">Norwegian Bokmål adjectives</a></li><li><a href="/wiki/Category:Norwegian_Nynorsk_terms_derived_from_Latin" title="Category:Norwegian Nynorsk terms derived from Latin">Norwegian Nynorsk terms derived from Latin</a></li><li><a href="/wiki/Category:Norwegian_Nynorsk_lemmas" title="Category:Norwegian Nynorsk lemmas">Norwegian Nynorsk lemmas</a></li><li><a href="/wiki/Category:Norwegian_Nynorsk_adjectives" title="Category:Norwegian Nynorsk adjectives">Norwegian Nynorsk adjectives</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:etyl_cleanup/en" title="Category:etyl cleanup/en">etyl cleanup/en</a></li><li><a href="/wiki/Category:Requests_for_pronunciation_in_English_entries" title="Category:Requests for pronunciation in English entries">Requests for pronunciation in English entries</a></li><li><a href="/wiki/Category:Requests_for_audio_pronunciation_in_English_entries" title="Category:Requests for audio pronunciation in English entries">Requests for audio pronunciation in English entries</a></li><li><a href="/wiki/Category:etyl_cleanup" title="Category:etyl cleanup">etyl cleanup</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=robust" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=robust" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+														<li id="ca-nstab-main" class="selected"><span><a href="/wiki/robust" title="View the content page [c]" accesskey="c">Entry</a></span></li>
+							<li id="ca-talk" class="new"><span><a href="/w/index.php?title=Talk:robust&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+						</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label">
+							<span>Variants</span>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+														<li id="ca-view" class="selected"><span><a href="/wiki/robust">Read</a></span></li>
+							<li id="ca-edit"><span><a href="/w/index.php?title=robust&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></span></li>
+							<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=robust&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span></li>
+						</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label"><span>More</span></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search Wiktionary" title="Search Wiktionary [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Wiktionary:Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+			<h3 id='p-navigation-label'>Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-text"><a href="/wiki/Wiktionary:Main_Page">Main Page</a></li><li id="n-portal"><a href="/wiki/Wiktionary:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-wiktprefs"><a href="/wiki/Wiktionary:Per-browser_preferences">Preferences</a></li><li id="n-requestedarticles"><a href="/wiki/Wiktionary:Requested_entries">Requested entries</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random page [x]" accesskey="x">Random entry</a></li><li id="n-help"><a href="https://en.wiktionary.org/wiki/Help:Contents" title="The place to find out">Help</a></li><li id="n-Glossary"><a href="/wiki/Appendix:Glossary">Glossary</a></li><li id="n-sitesupport"><a href="//donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wiktionary.org&amp;uselang=en" title="Support us">Donations</a></li><li id="n-contact"><a href="/wiki/Wiktionary:Contact_us">Contact us</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+			<h3 id='p-tb-label'>Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/robust" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/robust" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="//commons.wikimedia.org/wiki/Special:UploadWizard?uselang=en" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=robust&amp;oldid=47008092" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=robust&amp;action=info" title="More information about this page">Page information</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=robust&amp;id=47008092" title="Information on how to cite this page">Cite this page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+			<h3 id='p-lang-label'>In other languages</h3>
+
+			<div class="body">
+									<ul>
+						<li class="interlanguage-link interwiki-az"><a href="https://az.wiktionary.org/wiki/robust" title="robust – Azerbaijani" lang="az" hreflang="az" class="interlanguage-link-target">Azərbaycanca</a></li><li class="interlanguage-link interwiki-ca"><a href="https://ca.wiktionary.org/wiki/robust" title="robust – Catalan" lang="ca" hreflang="ca" class="interlanguage-link-target">Català</a></li><li class="interlanguage-link interwiki-da"><a href="https://da.wiktionary.org/wiki/robust" title="robust – Danish" lang="da" hreflang="da" class="interlanguage-link-target">Dansk</a></li><li class="interlanguage-link interwiki-de"><a href="https://de.wiktionary.org/wiki/robust" title="robust – German" lang="de" hreflang="de" class="interlanguage-link-target">Deutsch</a></li><li class="interlanguage-link interwiki-et"><a href="https://et.wiktionary.org/wiki/robust" title="robust – Estonian" lang="et" hreflang="et" class="interlanguage-link-target">Eesti</a></li><li class="interlanguage-link interwiki-el"><a href="https://el.wiktionary.org/wiki/robust" title="robust – Greek" lang="el" hreflang="el" class="interlanguage-link-target">Ελληνικά</a></li><li class="interlanguage-link interwiki-eo"><a href="https://eo.wiktionary.org/wiki/robust" title="robust – Esperanto" lang="eo" hreflang="eo" class="interlanguage-link-target">Esperanto</a></li><li class="interlanguage-link interwiki-fr"><a href="https://fr.wiktionary.org/wiki/robust" title="robust – French" lang="fr" hreflang="fr" class="interlanguage-link-target">Français</a></li><li class="interlanguage-link interwiki-ko"><a href="https://ko.wiktionary.org/wiki/robust" title="robust – Korean" lang="ko" hreflang="ko" class="interlanguage-link-target">한국어</a></li><li class="interlanguage-link interwiki-hy"><a href="https://hy.wiktionary.org/wiki/robust" title="robust – Armenian" lang="hy" hreflang="hy" class="interlanguage-link-target">Հայերեն</a></li><li class="interlanguage-link interwiki-io"><a href="https://io.wiktionary.org/wiki/robust" title="robust – Ido" lang="io" hreflang="io" class="interlanguage-link-target">Ido</a></li><li class="interlanguage-link interwiki-kn"><a href="https://kn.wiktionary.org/wiki/robust" title="robust – Kannada" lang="kn" hreflang="kn" class="interlanguage-link-target">ಕನ್ನಡ</a></li><li class="interlanguage-link interwiki-ka"><a href="https://ka.wiktionary.org/wiki/robust" title="robust – Georgian" lang="ka" hreflang="ka" class="interlanguage-link-target">ქართული</a></li><li class="interlanguage-link interwiki-ku"><a href="https://ku.wiktionary.org/wiki/robust" title="robust – Kurdish" lang="ku" hreflang="ku" class="interlanguage-link-target">Kurdî</a></li><li class="interlanguage-link interwiki-hu"><a href="https://hu.wiktionary.org/wiki/robust" title="robust – Hungarian" lang="hu" hreflang="hu" class="interlanguage-link-target">Magyar</a></li><li class="interlanguage-link interwiki-mg"><a href="https://mg.wiktionary.org/wiki/robust" title="robust – Malagasy" lang="mg" hreflang="mg" class="interlanguage-link-target">Malagasy</a></li><li class="interlanguage-link interwiki-ml"><a href="https://ml.wiktionary.org/wiki/robust" title="robust – Malayalam" lang="ml" hreflang="ml" class="interlanguage-link-target">മലയാളം</a></li><li class="interlanguage-link interwiki-my"><a href="https://my.wiktionary.org/wiki/robust" title="robust – Burmese" lang="my" hreflang="my" class="interlanguage-link-target">မြန်မာဘာသာ</a></li><li class="interlanguage-link interwiki-no"><a href="https://no.wiktionary.org/wiki/robust" title="robust – Norwegian" lang="no" hreflang="no" class="interlanguage-link-target">Norsk</a></li><li class="interlanguage-link interwiki-pl"><a href="https://pl.wiktionary.org/wiki/robust" title="robust – Polish" lang="pl" hreflang="pl" class="interlanguage-link-target">Polski</a></li><li class="interlanguage-link interwiki-ro"><a href="https://ro.wiktionary.org/wiki/robust" title="robust – Romanian" lang="ro" hreflang="ro" class="interlanguage-link-target">Română</a></li><li class="interlanguage-link interwiki-ru"><a href="https://ru.wiktionary.org/wiki/robust" title="robust – Russian" lang="ru" hreflang="ru" class="interlanguage-link-target">Русский</a></li><li class="interlanguage-link interwiki-sa"><a href="https://sa.wiktionary.org/wiki/robust" title="robust – Sanskrit" lang="sa" hreflang="sa" class="interlanguage-link-target">संस्कृतम्</a></li><li class="interlanguage-link interwiki-simple"><a href="https://simple.wiktionary.org/wiki/robust" title="robust – Simple English" lang="simple" hreflang="simple" class="interlanguage-link-target">Simple English</a></li><li class="interlanguage-link interwiki-fi"><a href="https://fi.wiktionary.org/wiki/robust" title="robust – Finnish" lang="fi" hreflang="fi" class="interlanguage-link-target">Suomi</a></li><li class="interlanguage-link interwiki-sv"><a href="https://sv.wiktionary.org/wiki/robust" title="robust – Swedish" lang="sv" hreflang="sv" class="interlanguage-link-target">Svenska</a></li><li class="interlanguage-link interwiki-ta"><a href="https://ta.wiktionary.org/wiki/robust" title="robust – Tamil" lang="ta" hreflang="ta" class="interlanguage-link-target">தமிழ்</a></li><li class="interlanguage-link interwiki-te"><a href="https://te.wiktionary.org/wiki/robust" title="robust – Telugu" lang="te" hreflang="te" class="interlanguage-link-target">తెలుగు</a></li><li class="interlanguage-link interwiki-chr"><a href="https://chr.wiktionary.org/wiki/robust" title="robust – Cherokee" lang="chr" hreflang="chr" class="interlanguage-link-target">ᏣᎳᎩ</a></li><li class="interlanguage-link interwiki-tr"><a href="https://tr.wiktionary.org/wiki/robust" title="robust – Turkish" lang="tr" hreflang="tr" class="interlanguage-link-target">Türkçe</a></li><li class="interlanguage-link interwiki-vi"><a href="https://vi.wiktionary.org/wiki/robust" title="robust – Vietnamese" lang="vi" hreflang="vi" class="interlanguage-link-target">Tiếng Việt</a></li><li class="interlanguage-link interwiki-zh"><a href="https://zh.wiktionary.org/wiki/robust" title="robust – Chinese" lang="zh" hreflang="zh" class="interlanguage-link-target">中文</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-coll-print_export' aria-labelledby='p-coll-print_export-label'>
+			<h3 id='p-coll-print_export-label'>Print/export</h3>
+
+			<div class="body">
+									<ul>
+						<li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=robust">Create a book</a></li><li id="coll-download-as-rdf2latex"><a href="/w/index.php?title=Special:ElectronPdf&amp;page=robust&amp;action=show-selection-screen&amp;coll-download-url=%2Fw%2Findex.php%3Ftitle%3DSpecial%3ABook%26bookcmd%3Drender_article%26arttitle%3Drobust%26returnto%3Drobust%26oldid%3D47008092%26writer%3Drdf2latex">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=robust&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>					</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last edited on 11 July 2017, at 02:32.</li>
+											<li id="footer-info-copyright">Text is available under the <a href="//creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike License</a>; additional terms may apply.  By using this site, you agree to the <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy.</a></li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="https://wikimediafoundation.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wiktionary:About" class="mw-redirect" title="Wiktionary:About">About Wiktionary</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wiktionary:General_disclaimer" title="Wiktionary:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-cookiestatement"><a href="https://wikimediafoundation.org/wiki/Cookie_statement">Cookie statement</a></li>
+											<li id="footer-places-mobileview"><a href="//en.m.wiktionary.org/w/index.php?title=robust&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+							<a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>						</li>
+											<li id="footer-poweredbyico">
+							<a href="//www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.396","walltime":"0.515","ppvisitednodes":{"value":4278,"limit":1000000},"ppgeneratednodes":{"value":0,"limit":1500000},"postexpandincludesize":{"value":27968,"limit":2097152},"templateargumentsize":{"value":3129,"limit":2097152},"expansiondepth":{"value":11,"limit":40},"expensivefunctioncount":{"value":15,"limit":500},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%  456.859      1 -total"," 19.60%   89.529     24 Template:t+"," 10.92%   49.870     48 Template:redlink_category","  9.26%   42.303      3 Template:etyl","  7.68%   35.072      5 Template:m","  7.12%   32.509      3 Template:lb","  7.09%   32.407      1 Template:quote-journal","  7.04%   32.180     13 Template:t","  6.29%   28.727      1 Template:quote-meta","  6.03%   27.534      1 Template:en-adj"]},"scribunto":{"limitreport-timeusage":{"value":"0.233","limit":"10.000"},"limitreport-memusage":{"value":12705367,"limit":52428800}},"cachereport":{"origin":"mw1226","timestamp":"20170830052939","ttl":1900800,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":63,"wgHostname":"mw1214"});});</script>
+	</body>
+</html>
