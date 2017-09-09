@@ -2,25 +2,29 @@
 
 MAIL=paperjam@localhost
 
+dtstp=$(date +%y%m%d.%H%M%S)
+tarcm=$(which tar)
+rsncm=$(which rsync)
 eldir="/mnt/el/linux/gentoo/"
 dtdir="/mnt/DATA/linux/gentoo/"
-bulst="/home/paperjam/.backup.txt"
-tarlg="/var/log/tar.$(date +%y%m%d.%H%M%S).log"
-rslog="/var/log/rsync.$(date +%y%m%d.%H%M%S).log"
-archv="/mnt/el/linux/gentoo/${HOSTNAME}.${USER}.$(date +%y%m%d.%H%M%S).tar.gz"
-fparv="/mnt/el/Documents/Videos/full.pj.$(date +%y%m%d.%H%M%S).tar.gz"
-homdr="/home/paperjam/"
+homdr="/home/paperjam"
+bulst="${homdr}/.backup.txt"
+excfl="${homdr}/.exclude.txt"
+tarlg="/var/log/tar.${dtstp}.log"
+rslog="/var/log/rsync.${dtstp}.log"
+archv="/mnt/el/linux/gentoo/${HOSTNAME}.${USER}.${dtstp}.tar.gz"
+fparv="/mnt/el/Documents/Videos/full.pj.${dtstp}.tar.gz"
 
-if [[ -d "${eldir}" && -r "${bulst}" ]]; then
+if [[ -d "${eldir}" && -r "${bulst}" && -r "${excfl}"  && -x "${tarcm}" ]]; then
 
-  /bin/tar --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}"
+  "${tarcm}" --exclude-from="${excfl}" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}" 2>&1
 
-  #/bin/tar --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${fparv}" "${homdr}" >> "${tarlg}"
+  #"${tarcm}" --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${fparv}" "${homdr}" >> "${tarlg}" 2>&1
 
 fi
 
-if [[ -d "${eldir}" && -d "${dtdir}" ]]; then
+if [[ -d "${eldir}" && -d "${dtdir}" && -x "${rsncm}" ]]; then
 
-  /usr/bin/rsync --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/ELEMENTS/* /mnt/DATA/ >> "${rslog}"
+  "${rsncm}" --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/el/* /mnt/DATA/ >> "${rslog}" 2>&1
 
 fi

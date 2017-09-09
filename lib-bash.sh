@@ -136,15 +136,15 @@ function lteb {
 
 # (M)ain(T)ainer(L)ess(E)(B)uilds
 # https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers/
-function mtleb {
-	ua=$(uname -a|grep -i gentoo)
-	if [ -z "${ua}" ]; then
-    echo "Usage: You need to find a Gentoo box first"
-    return 1
-	else
-		fgrep -l maintainer-needed /usr/portage/*/*/metadata.xml |cut -d/ -f4-5 |fgrep -x -f <(EIX_LIMIT=0 eix -I --only-names)
-	fi
-}
+#function mtleb {
+#	ua=`uname -a|grep -i gentoo`
+#	if [[ -z "${ua}" ]]; then
+#    echo "Usage: You need to find a Gentoo box first"
+#    return 1
+#	else
+#		#fgrep -l maintainer-needed /usr/portage/*/*/metadata.xml |cut -d/ -f4-5 |fgrep -x -f <(EIX_LIMIT=0 eix -I --only-names)
+#	fi
+#}
 
 function runCmd {
   DIALOG=${1-"Xdialog"}
@@ -195,24 +195,25 @@ function lol {
 
 # For use with WindowMaker
 # Replace "${APPS}" list with your desired applets.
-function startApps {
-  # Fill a list with the applets you need
-  APPS="wmfire wmclockmon wmsystray wmMatrix wmbinclock wmbutton wmifinfo wmnd wmmon wmcpuload wmsysmon wmmemload wmacpi wmtime wmcalc wmSpaceWeather wmudmount wmmp3"
-  for APP in $APPS ; do
-    # Just in case (WM restarts do happen you know ...)
-    killall $APP
-    $APP &
-  done
-}
+#function startApps {
+#  # Fill a list with the applets you need
+#  #APPS="wmfire wmclockmon wmsystray wmMatrix wmbinclock wmbutton wmifinfo wmnd wmmon wmcpuload wmsysmon wmmemload wmacpi wmtime wmcalc wmSpaceWeather wmudmount wmmp3"
+#  APPS="wmfire wmMatrix wmclockmon wmsystemtray"
+#  for APP in $APPS ; do
+#    # Just in case (WM restarts do happen you know ...)
+#    killall $APP
+#    $APP &
+#  done
+#}
 
 # For use with WindowMaker
 # Run this to update your Root menu to reflect themes or apps changes
-function regenMenu {
-  # Backup Root menu
-  cp ~/GNUstep/Defaults/WMRootMenu ~/GNUstep/Defaults/`date +%y%m%d%H%M%S`WMRootMenu
-  # Write new menu
-  wmgenmenu > ~/GNUstep/Defaults/WMRootMenu
-}
+#function regenMenu {
+#  # Backup Root menu
+#  cp ~/GNUstep/Defaults/WMRootMenu ~/GNUstep/Defaults/`date +%y%m%d%H%M%S`WMRootMenu
+#  # Write new menu
+#  wmgenmenu > ~/GNUstep/Defaults/WMRootMenu
+#}
 
 # Script to give one command to extract any kind of file
 # from https://www.facebook.com/TekNinjakevin

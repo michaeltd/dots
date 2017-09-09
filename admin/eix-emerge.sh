@@ -2,9 +2,26 @@
 
 MAIL=paperjam@localhost
 
-eixlog="/var/log/eix-sync.$(date +%y%m%d.%H%M%S).log"
-emrlog="/var/log/emerge.update.$(date +%y%m%d.%H%M%S).log"
+dtstmp=$(date +%y%m%d.%H%M%S)
+eixscm=$(which eix-sync)
+emrgcm=$(which emerge)
+eixlog="/var/log/eix-sync.${dtstmp}.log"
+emrlog="/var/log/emerge.update.${dtstmp}.log"
 
-/usr/bin/eix-sync >> "${eixlog}"
+if [[ -x "${eixscm}" &&  -x "${emrgcm}" ]]; then
 
-/usr/bin/emerge --nospinner --verbose --update --deep --newuse --with-bdeps=y @world >> "${emrlog}"
+  "${eixscm}" >> "${eixlog}" 2>&1
+
+  "${emrgcm}" --nospinner --verbose --update --deep --newuse --with-bdeps=y @world >> "${emrlog}" 2>&1
+
+elif [[ -x "${emrgcm}" ]]; then
+
+  "${emrgcm}" --sync >> "${eixlog}" 2>&1
+
+  "${emrgcm}" --nospinner --verbose --update --deep --newuse --with-bdeps=y @world >> "${emrlog}" 2>&1
+
+else
+
+  printf "Something is missing. %s \n" "${dtstmp}" >> "${emrlog}" 2>&1
+
+fi

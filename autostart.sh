@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env /bin/bash
 # X things
 xrdb -merge ~/.Xresources 2> /dev/null
 
