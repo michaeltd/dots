@@ -27,3 +27,4 @@ fi
 xscreensaver-command -exit
 # Start screensaver in the background
 xscreensaver -nosplash &
+

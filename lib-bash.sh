@@ -27,7 +27,7 @@ function printMemUsage {
   availMB=$(expr ${avail} / 1024)
   usedMB=$(expr ${used} / 1024)
 
-  printf "From a total of %dMB, you are using %dMB's, which leaves you with %dMB free memory.\n" $totalMB $usedMB $availMB
+  printf "From a total of %dMB, you are using %dMB's, which leaves you with %dMB free memory.\n" ${totalMB} ${usedMB} ${availMB}
 
 }
 
@@ -96,7 +96,7 @@ function servStuff {
     sudo -l servStuff "${1}"
     return $?
   else
-    srvcs="postgresql-9.6 apache2 vsftpd sshd rsyncd dictd ntpd"
+    srvcs="postgresql-9.6 apache2 vsftpd sshd rsyncd ntpd"
     for srvc in $srvcs; do
       rc-service "${srvc}" "${1}"
     done
