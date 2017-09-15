@@ -1,6 +1,13 @@
 #!/bin/env /bin/bash
-# Script to give one command to extract any kind of file
+# Script to unify archive extraction in linux CLI environments
 # from https://www.facebook.com/TekNinjakevin
+# tsouchlarakis@gmail.com 2015/12/09
+
+if [[ -x $(which 7z 2> /dev/null) && -x $(which tar 2> /dev/null) && -x $(which bunzip2 2> /dev/null) && -x $(which unrar 2> /dev/null) && -x $(which gunzip 2> /dev/null) && -x $(which unzip 2> /dev/null) && -x $(which uncompress 2> /dev/null) ]]; then
+  printf "OK\n"
+else
+  printf "This script uses 7z, tar, bunzip2, unrar, gunzip, unzip and uncompress commands.\nInstall them for full functionality\n"
+fi
 
 if [[ -z "${1}" ]] ; then
   printf "Need one compressed file as parameter\n"

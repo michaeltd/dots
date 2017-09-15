@@ -2,6 +2,7 @@
 
 MAIL=paperjam@localhost
 
+nice=$(which nice)
 dtstp=$(date +%y%m%d.%H%M%S)
 tarcm=$(which tar)
 rsncm=$(which rsync)
@@ -17,14 +18,14 @@ fparv="/mnt/el/Documents/Videos/full.pj.${dtstp}.tar.gz"
 
 if [[ -d "${eldir}" && -r "${bulst}" && -r "${excfl}"  && -x "${tarcm}" ]]; then
 
-  "${tarcm}" --exclude-from="${excfl}" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}" 2>&1
+  "${nice}" -n 15 "${tarcm}" --exclude-from="${excfl}" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}" 2>&1
 
-  #"${tarcm}" --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${fparv}" "${homdr}" >> "${tarlg}" 2>&1
+  #"${nice}" -n 15 "${tarcm}" --exclude="*/opt/*" --exclude="*/node_modules/*" --exclude="*/ImapMail/*" -cvzf "${fparv}" "${homdr}" >> "${tarlg}" 2>&1
 
 fi
 
 if [[ -d "${eldir}" && -d "${dtdir}" && -x "${rsncm}" ]]; then
 
-  "${rsncm}" --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/el/* /mnt/DATA/ >> "${rslog}" 2>&1
+  "${nice}" -n 15 "${rsncm}" --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/el/* /mnt/DATA/ >> "${rslog}" 2>&1
 
 fi
