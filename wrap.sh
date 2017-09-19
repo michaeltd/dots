@@ -1,4 +1,4 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 
 TS="$(date +%y%m%d.%H%M%S)"
 SIG="${HOST}.${USER}.${TS}"

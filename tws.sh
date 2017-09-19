@@ -3,7 +3,7 @@
 # tws.sh stands for Trivial Web Scrapper Shell Script
 
 # from https://www.joyofdata.de/blog/using-linux-shell-web-scraping/
-#echo "http://www.bbc.com" |
+# echo "http://www.bbc.com" |
 #   wget -O- -i- |
 #   hxnormalize -x |
 #   hxselect -i "div.most_popular_content" |

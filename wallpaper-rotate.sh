@@ -98,7 +98,7 @@ function rbgHelperAddDir {
     # Get file extention ${str:(-4)}
     FE=${i:(-4)}
     # and lowercase it ${str,,}
-    if [[ ${FE,,} == ".jpg" ]] || [[ ${FE,,} == ".png" ]] || [[ ${FE,,} == ".gif" ]] || [[ ${FE,,} == ".bmp" ]]; then
+    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then
       ln -sf "${1}"/"${i}" "${DEFAULT_WPDIR}"/"${i}"
     fi
   done
@@ -116,14 +116,14 @@ function rbgHelperRemoveDir {
   # Assign a default wp dir
   DEFAULT_WPDIR="${HOME}/.wallpapers"
   # If there is a readable settings file, read it
-  if [ -r ${HOME}/.wallpaper.rotate.rc ]; then
+  if [[ -r ${HOME}/.wallpaper.rotate.rc ]]; then
     source ${HOME}/.wallpaper.rotate.rc
   fi
   for i in `ls "${1}"`; do
     # Get file extention ${str:(-4)}
-    FE=${i:(-4)}
+    FE="${i:(-4)}"
     # and lowercase it ${str,,}
-    if [[ ${FE,,} == ".jpg" ]] || [[ ${FE,,} == ".png" ]] || [[ ${FE,,} == ".gif" ]] || [[ ${FE,,} == ".bmp" ]]; then
+    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then
       rm -i "${DEFAULT_WPDIR}"/"${i}"      # rm --interactive just to play it safe, this func
     fi
   done

@@ -217,7 +217,6 @@ function lol {
 
 # #!/bin/env /bin/bash
 # Script to unify archive extraction in linux CLI environments
-# from https://www.facebook.com/TekNinjakevin
 # tsouchlarakis@gmail.com 2015/12/09
 function inflateThat () {
   if [[ -x $(which 7z 2> /dev/null) && -x $(which tar 2> /dev/null) && -x $(which bunzip2 2> /dev/null) && -x $(which unrar 2> /dev/null) && -x $(which gunzip 2> /dev/null) && -x $(which unzip 2> /dev/null) && -x $(which uncompress 2> /dev/null) ]]; then
@@ -232,17 +231,17 @@ function inflateThat () {
   elif [[ -f "${1}" && -r "${1}" ]] ; then
     case "${1,,}" in
       *.7z.7za) 7z "${1}" ;;
-      *.tar.bz2) tar xjf "${1}" ;;
-      *.tar.gz) tar xzf "${1}" ;;
-      *.tar.z) tar xzf "${1}" ;;
-      *.tar.xz) tar Jxf "${1}" ;;
+      *.tar.bz2) tar -xjf "${1}" ;;
+      *.tar.gz) tar -xzf "${1}" ;;
+      *.tar.z) tar -xzf "${1}" ;;
+      *.tar.xz) tar -Jxf "${1}" ;;
       *.bz2) bunzip2 "${1}" ;;
       *.rar) unrar x "${1}" ;;
       *.gz) gunzip "${1}" ;;
       *.jar) unzip "${1}" ;;
-      *.tar) tar xf "${1}" ;;
-      *.tbz2) tar xjf "${1}" ;;
-      *.tgz) tar xzf "${1}" ;;
+      *.tar) tar -xf "${1}" ;;
+      *.tbz2) tar -xjf "${1}" ;;
+      *.tgz) tar -xzf "${1}" ;;
       *.zip) unzip "${1}" ;;
       *.z) uncompress "${1}" ;;
       *)
