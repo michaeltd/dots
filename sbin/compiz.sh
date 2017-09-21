@@ -8,6 +8,10 @@ fi
 
 # A nice status bar
 tint2 &
+#dzen2 -dock &
+
+# Networking
+wicd-gtk -t &
 
 # Wait
 sleep 999d
