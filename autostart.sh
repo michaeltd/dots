@@ -3,13 +3,15 @@
 xrdb -merge ~/.Xresources 2> /dev/null
 
 # import functions (should be auto-imported)
-source /etc/bash/bashrc.d/wallpaper-rotate.sh
+source "${HOME}"/bin/wallpaper-rotate.sh
 # Add some wallpaper variety for your desktop
-rotateBg &
+#rotateBg &
+
+feh --bg-scale ~/.wallpapers/emacs-cheat-sheet.png
 
 # Monitor your box
 #conky -DDDD -b -c ~/.conky.conf/.conkyrc.right.full >> ~/.conky.err/`date +%y%m%d`.conky.err.log 2>&1
-#if [ -r "${HOME}"/bin/keepConkyAlive.sh ]; then
+#if [[ -r "${HOME}"/bin/keepConkyAlive.sh ]]; then
 #    "${HOME}"/bin/keepConkyAlive.sh &
 #fi
 css="${HOME}/bin/conkyStart.sh"
