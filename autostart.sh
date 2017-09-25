@@ -5,9 +5,9 @@ xrdb -merge ~/.Xresources 2> /dev/null
 # import functions (should be auto-imported)
 source "${HOME}"/bin/wallpaper-rotate.sh
 # Add some wallpaper variety for your desktop
-#rotateBg &
+rotateBg &
 
-feh --bg-scale ~/.wallpapers/emacs-cheat-sheet.png
+#feh --bg-scale ~/.wallpapers/emacs-cheat-sheet.png
 
 # Monitor your box
 #conky -DDDD -b -c ~/.conky.conf/.conkyrc.right.full >> ~/.conky.err/`date +%y%m%d`.conky.err.log 2>&1
