@@ -14,6 +14,7 @@ rotateBg &
 #if [[ -r "${HOME}"/bin/keepConkyAlive.sh ]]; then
 #    "${HOME}"/bin/keepConkyAlive.sh &
 #fi
+
 css="${HOME}/bin/conkyStart.sh"
 if [[ -f "${css}" && -r "${css}" && -x "${css}" ]]; then
     "${css}" &

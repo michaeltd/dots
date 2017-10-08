@@ -2,16 +2,17 @@
 # Start Compiz
 /usr/bin/compiz-manager &
 
-if [ -r "${HOME}"/bin/autostart.sh ]; then
-    "${HOME}"/bin/autostart.sh
+assh="${HOME}"/bin/autostart.sh
+if [[ -x "${assh}" ]]; then
+    "${assh}"
 fi
 
 # A nice status bar
-tint2 &
+#tint2 &
 #dzen2 -dock &
 
 # Networking
-wicd-gtk -t &
+#wicd-gtk -t &
 
 # Wait
 sleep 999d

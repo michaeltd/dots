@@ -6,6 +6,7 @@ dtstp=$(date +%y%m%d.%H%M%S)
 nice=$(which nice)
 tarcm=$(which tar)
 rsncm=$(which rsync)
+machn="dell"
 eldir="/mnt/el/linux/gentoo/"
 dtdir="/mnt/DATA/linux/gentoo/"
 homdr="/home/paperjam"
@@ -13,7 +14,7 @@ bulst="${homdr}/.backup.txt"
 excfl="${homdr}/.exclude.txt"
 tarlg="/var/log/tar.${dtstp}.log"
 rslog="/var/log/rsync.${dtstp}.log"
-archv="/mnt/el/linux/gentoo/${HOSTNAME}.${USER}.${dtstp}.tar.gz"
+archv="/mnt/el/linux/gentoo/${machn}.${HOSTNAME}.${USER}.${dtstp}.tar.gz"
 fparv="/mnt/el/Documents/Videos/full.pj.${dtstp}.tar.gz"
 
 if [[ -d "${eldir}" && -r "${bulst}" && -r "${excfl}"  && -x "${tarcm}" ]]; then
