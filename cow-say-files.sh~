@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-fls=`cowsay -l`
-
-for fl in $fls; do
-
-    lol $fl
-done
