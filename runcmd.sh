@@ -1,4 +1,4 @@
-		#!/bin/bash
+#!/bin/bash
 
 DIALOG=${1-"Xdialog"}
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -uoe >> /dev/null
+#set -uoe >> /dev/null
 
 wf=( $(cat "/var/lib/portage/world") )
 uf="/etc/portage/package.use/stuff.use"

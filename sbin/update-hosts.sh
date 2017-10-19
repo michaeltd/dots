@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-set -ueo >> /dev/null
+#!/usr/bin/env /bin/bash
+
+#set -aeu
 
 ts=$(date +%y%m%d.%H%M%S)
 url="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
