@@ -2,7 +2,7 @@
 # Script to unify archive extraction in linux CLI environments
 # inflateThat.sh tsouchlarakis@gmail.com 2015/12/09
 
-if [[ -x $(which 7z 2> /dev/null) && -x $(which tar 2> /dev/null) && -x $(which bunzip2 2> /dev/null) && -x $(which unrar 2> /dev/null) && -x $(which gunzip 2> /dev/null) && -x $(which unzip 2> /dev/null) && -x $(which uncompress 2> /dev/null) ]]; then
+if [[ -x $(which 7z) && -x $(which tar) && -x $(which bunzip2) && -x $(which unrar) && -x $(which gunzip) && -x $(which unzip) && -x $(which uncompress) ]]; then
   printf "OK\n"
 else
   printf "This script uses 7z, tar, bunzip2, unrar, gunzip, unzip and uncompress commands.\nInstall them for full functionality\n"
