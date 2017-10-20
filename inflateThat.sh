@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env /bin/bash
 # Script to unify archive extraction in linux CLI environments
 # inflateThat.sh tsouchlarakis@gmail.com 2015/12/09
 
@@ -13,19 +13,15 @@ if [[ -z "${1}" ]] ; then
   exit 1
 elif [[ -f "${1}" && -r "${1}" ]] ; then
   case "${1,,}" in
-    *.7z.7za) 7z "${1}" ;;
-    *.tar.bz2) tar -xjf "${1}" ;;
-    *.tar.gz) tar -xzf "${1}" ;;
-    *.tar.z) tar -xzf "${1}" ;;
+    *.7z | *.7za) 7z x "${1}" ;;
+    *.tar) tar -xf "${1}" ;;
+    *.tar.gz | *.tar.z | *.tgz) tar -xzf "${1}" ;;
+    *.tar.bz2 | *.tbz2) tar -xjf "${1}" ;;
     *.tar.xz) tar -Jxf "${1}" ;;
     *.bz2) bunzip2 "${1}" ;;
     *.rar) unrar x "${1}" ;;
     *.gz) gunzip "${1}" ;;
-    *.jar) unzip "${1}" ;;
-    *.tar) tar -xf "${1}" ;;
-    *.tbz2) tar -xjf "${1}" ;;
-    *.tgz) tar -xzf "${1}" ;;
-    *.zip) unzip "${1}" ;;
+    *.zip | *.jar) unzip "${1}" ;;
     *.z) uncompress "${1}" ;;
     *)
       printf "%s cannot be extracted.\n" "${1}"
