@@ -1,13 +1,12 @@
-#
 # for f in $(git status --porcelain | grep '^??' | sed 's/^?? //'); do
 #     test -L "$f" && echo $f >> .gitignore; # add symlinks
 #     #test -d "$f" && echo $f\* >> .gitignore; # add new directories as well
 # done
-#
 # find . -type l | sed -e s'/^\.\///g' >> .gitignore
 
 */*~
 *~
+*.txt
 old/*
 atom
 eclipse
@@ -15,7 +14,6 @@ firefox
 firefox-de
 FoxitReader
 foxitreader
-*.txt
 kdevelop
 lighttable
 micro
