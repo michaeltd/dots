@@ -38,3 +38,6 @@ function rrv2 {
 
   printf "chamber no %d has %d bullet and hammer is at %d\n" ${uiCham} ${revolver[${chamber}]} ${uiHamm}
 }
+
+rrv1
+

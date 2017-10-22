@@ -1,4 +1,0 @@
-#!/bin/env /bin/bash
-
-node /home/paperjam/opt/node_modules/slap/slap.js
-

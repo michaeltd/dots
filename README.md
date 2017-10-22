@@ -1,5 +1,5 @@
 #### libBash
-Shell stuff
+Shell stuff [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ###### lib-bash.sh
 script to source for its various functions

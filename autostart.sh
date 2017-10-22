@@ -6,7 +6,6 @@ xrdb -merge ~/.Xresources 2> /dev/null
 source "${HOME}"/bin/wallpaper-rotate.sh
 # Add some wallpaper variety for your desktop
 rotateBg &
-
 #feh --bg-scale ~/.wallpapers/emacs-cheat-sheet.png
 
 # Monitor your box
@@ -20,8 +19,8 @@ if [[ -f "${css}" && -r "${css}" && -x "${css}" ]]; then
     "${css}" &
 fi
 
-tkrms="${HOME}/bin/TkRootMenu.sh"
 # Start a Menu just in case
+tkrms="${HOME}/bin/TkRootMenu.sh"
 if [[ -f "${tkrms}" && -r "${tkrms}" && -x "${tkrms}" ]]; then
     "${tkrms}" &
 fi

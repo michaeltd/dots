@@ -1,3 +1,0 @@
-#!/bin/env /bin/bash
-
-/usr/bin/eix-sync

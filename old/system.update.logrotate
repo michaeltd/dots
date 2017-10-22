@@ -1,8 +1,0 @@
-/var/log/system.update.log {
-	daily
-	rotate 999
-	olddir system.update.old
-	missingok
-	nocreate
-	compress
-}

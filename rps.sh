@@ -1,8 +1,8 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 # Rock Paper Scissors mt 20170525
 declare -a op; declare -a oc; declare -A rs
-op=("Rock" "Paper" "Scissors")
-oc=("WIN" "Defeat" "Draw")
+op=( "Rock" "Paper" "Scissors" )
+oc=( "WIN" "Defeat" "Draw" )
 rs[0,0]=${oc[2]}; rs[0,1]=${oc[1]}; rs[0,2]=${oc[0]}
 rs[1,0]=${oc[0]}; rs[1,1]=${oc[2]}; rs[1,2]=${oc[1]}
 rs[2,0]=${oc[1]}; rs[2,1]=${oc[0]}; rs[2,2]=${oc[2]}
@@ -20,8 +20,7 @@ while true; do
         bbmsg="${oc[2]}ed with"
       fi
       printf "After %d rounds, you %s the CPU with %d:%d points and %d ties.\n" $rd "${bbmsg}" $us $cs $ns
-      exit 0
-      ;;
+      exit 0 ;;
     [1-3])
       let "rd++"
       let "ui = $ui - 1"
@@ -32,10 +31,8 @@ while true; do
         ${oc[1]}) let "cs++";;
         ${oc[2]}) let "ns++";;
       esac
-      printf "Player : %d, CPU : %d, Ties : %d\n" $us $cs $ns
-      ;;
+      printf "Player : %d, CPU : %d, Ties : %d\n" $us $cs $ns ;;
     *)
-      printf "Choose again from 0 to 3\n"
-      ;;
+      printf "Choose again from 0 to 3\n" ;;
   esac
 done

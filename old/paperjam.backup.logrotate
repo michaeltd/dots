@@ -1,8 +1,0 @@
-/var/log/paperjam.backup.log {
-	daily
-	rotate 999
-	olddir paperjam.backup.old
-	missingok
-	nocreate
-	compress
-}
