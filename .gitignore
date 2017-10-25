@@ -8,7 +8,8 @@
 *~
 *.txt
 old/*
-_old/*
+.project
+.pydevproject
 atom
 eclipse
 firefox
