@@ -48,8 +48,7 @@ function rps() {
           bbmsg="${oc[2]}ed with"
         fi
         printf "After %d rounds, you %s the CPU with %d:%d points and %d ties.\n" $rd "${bbmsg}" $us $cs $ns
-        return 0
-        ;;
+        return 0 ;;
       [1-3])
         let "rd++"
         let "ui = $ui - 1"
@@ -60,11 +59,9 @@ function rps() {
           ${oc[1]}) let "cs++";;
           ${oc[2]}) let "ns++";;
         esac
-        printf "Player : %d, CPU : %d, Ties : %d\n" $us $cs $ns
-        ;;
+        printf "Player : %d, CPU : %d, Ties : %d\n" $us $cs $ns ;;
       *)
-        printf "Choose again from 0 to 3\n"
-        ;;
+        printf "Choose again from 0 to 3\n" ;;
     esac
   done
 }
