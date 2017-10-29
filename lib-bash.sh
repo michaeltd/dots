@@ -237,8 +237,8 @@ function inflateThat() {
 function updateDate() {
   if [ "${EUID}" -ne "0" ]; then
     printf "Need root privilages\n"
-    sudo -l updateDate
-    return $?
+    #sudo -l updateDate
+    return 1
   else
     ntpdate 0.gentoo.pool.ntp.org
   fi
