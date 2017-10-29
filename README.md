@@ -1,10 +1,10 @@
 #### libBash [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
-Shell stuff
+Nothing serious, just poking around with shell.
 
-###### lib-bash.sh
+###### [lib-bash.sh](lib-bash.sh)
 script to source for its various functions
 
-###### wallpaper-rotate.sh
+###### [wallpaper-rotate.sh](wallpaper-rotate.sh)
 Script to be used for rolling background images as wallpapers.
 
 ###### everything-else.sh
