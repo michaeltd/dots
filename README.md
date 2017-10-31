@@ -1,5 +1,5 @@
 #### libBash [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
-Nothing serious, just poking around with shell.
+Nothing serious, just poking around with the shell.
 
 ###### [lib-bash.sh](lib-bash.sh)
 script to source for its various functions

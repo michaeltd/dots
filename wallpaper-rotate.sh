@@ -13,21 +13,20 @@
 
 # set -aeu
 
-function rotateBg {
-
-  USAGE=$(cat <<EOF
+WR_USAGE=$(cat <<EOF
 \n
-  Quick and dirty script to rotate backgrounds \n
-  in wm s with out such options (ie NOT kde, gnome or xfce4)\n
+Quick and dirty script to rotate backgrounds \n
+in wm's with out such options (ie NOT kde, gnome or xfce4)\n
 \n
-  Usage: source wallpaper.rotate.sh && rbgHelperAddDir /home/user/pictures && rotateBg\n
-  (rbgHelperAddDir /home/user/pictures needs to be executed only once per pictures directory.)\n
+Usage: source wallpaper-rotate.sh && rbgHelperAddDir /home/user/pictures && rotateBg\n
+(rbgHelperAddDir /home/user/pictures needs to be executed only once per pictures directory.)\n
 \n
-  Alternatively you can source this file in your startup scripts and start it from there.\n
+Alternatively you can source this file in your startup scripts and start it from there.\n
 \n
 EOF
 )
 
+function rotateBg() {
   # Find a setter or die trying
   if [[ -x $(which feh) ]]; then
     BGSETTER="feh --bg-scale "
@@ -44,7 +43,7 @@ EOF
   elif [[ -x $(which xsetroot) ]]; then
     BGSETTER="xsetroot -bitmap "
   else
-    echo -e "${USAGE}"
+    echo -e "${WR_USAGE}"
     return 1
   fi
 
