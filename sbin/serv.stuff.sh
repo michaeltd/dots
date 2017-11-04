@@ -1,5 +1,9 @@
 #!/usr/bin/env /bin/bash
 
+set -aeu
+
+srvcs=( postgresql-9.6 vsftpd apache2 sshd )
+
 if [[ "${EUID}" -ne "0" ]]; then
   printf "Need root privilages\n"
   exit 1
@@ -8,10 +12,8 @@ else
     echo "need start or stop parameter"
     exit 1
   else
-    srvcs="postgresql-9.5 vsftpd apache2"
-    for srvc in $srvcs; do
+    for srvc in "${srvcs[@]}"; do
       rc-service "${srvc}" "${1}"
     done
   fi
 fi
-
