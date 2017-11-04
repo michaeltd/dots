@@ -1,4 +1,14 @@
-#!/usr/bin/env bash
+#!/usr/bin/env /bin/bash
+
+# Returns service listening on given port
+function listenOnPort() {
+  if [[ -z "${1}" ]]; then
+    printf "port number expected\n"
+    return 1
+  else
+    lsof -n -iTCP:"${1}" | grep LISTEN
+  fi
+}
 
 # Report first params directory sizes in human readable format
 function checkDirSizes() {
