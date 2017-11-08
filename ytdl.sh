@@ -14,6 +14,11 @@ set -aeu
 #songs="3DcEMdNbZM4 osHVy_038jw sya1CzmsvLc ZyvwODEjmXw IPMnEmkoPFs KDRRxRm6BmI"
 # Bob Marley
 #songs=( CHekNnySAfM vdB-8eLEW8g S5FCdx7Dn0o LanCLS_hIo4 Mm7muPjevik oFRbZJXjWIA -JhwxTen6yA S3UqvWk8-uw 2XiYUYcpsT4 x59kS2AOrGM L3HQMbQAWRc R8GCc8OhTz8 H5Qda2HS7X0 8WQVb_nuKvs gODh1nsHlPg QrY9eHkXTa4 yLuHE-82o40 QMS5vKarzO0 QQQpkll5aoA on9TXY8kYyk )
+# Bruno Mars
+#songs=( LjhCEhWiKXk fLexgOxsZu0 SR6iYWJxHqs PMivT7MJ41M UqyT8IEBkvY ekzHIouo8Q4 W-w3WfgpcGg 8aRor905cCw e-fA-gBCkj0 nPvuNsRccVw -FyjEnoIgTM AHDtXqjgEj4 34Na4j8AVgA 1iBm60uJXvs m8Ed8in9Qng CyM5AjiZris x94m407UJSI oCtYekG1qBc 9YZpng2PL34 SDPITj1wlkg Yc6T9iY9SOU 2iAsddrkJSs OPf0YbXqDm0 )
+
+# The Beatles
+songs=( NCtzkaL2t_Y A_MjCqQoLLA rblYSKz_VnI S-rB0pHI9fU usNsCeOV4GM Qyclqo_AV2M jenWdylTtzs BGLGzRXY5Bw HuS5NuXRb5Y VJDJs9dumZI yWP6Qki8mWc srwxJUXPHvE -eCh3y5VROM QoF-7VMMihA ODIvONHPqpk ax7krBKzmVI 70-WSgZn1MQ Fk0sY_WiCpA HMAf4Uq9mrs r5nARZKS-AY 1nrT5WLxvZk dsxtImDVMig ukWRRNqMAZ4 sVemUWvl_z4 )
 
 fmt="mp3"
 
