@@ -3,28 +3,28 @@
 # [ $[ $RANDOM % 6 ] == 0 ] && printf "BOOM\n" || printf "LUCKY GUY\n"
 
 # V1.0
-function rrv1 {
+function rrv1() {
+  #let "RV = $RANDOM % 6"
+  export RV=$(shuf -n 1 -i 1-6)
 
-  let "RV = $RANDOM % 6"
-
-  if [[ $RV == 0 ]]; then
-    printf "BOOM!!! You've rolled a %d\n" ${RV}
+  if [[ "${RV}" -eq "0" ]]; then
+    printf "BOOM!!! You've rolled a %d\n" "${RV}"
   else
-    printf "LUCKY GUY!!! You've rolled a %d\n" ${RV}
+    printf "LUCKY GUY!!! You've rolled a %d\n" "${RV}"
   fi
-
 }
 
 # V2.0
 function rrv2 {
+  # TODO
   export revolver
   export bullet
   export possition
 
   function reload {
     revolver=( 0 0 0 0 0 0 )
-    chamber=$(shuf -n 1 -i 0-5)
-    hammer=$(shuf -n 1 -i 0-5)
+    chamber=$(shuf -n 1 -i 1-6)
+    hammer=$(shuf -n 1 -i 1-6)
 
     revolver[${chamber}]=1
 
@@ -40,4 +40,3 @@ function rrv2 {
 }
 
 rrv1
-
