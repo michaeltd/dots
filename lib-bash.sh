@@ -6,7 +6,7 @@ function listenOnPort() {
     printf "port number expected\n"
     return 1
   else
-    lsof -n -iTCP:"${1}" | grep LISTEN
+    lsof -n -iTCP:"${1}" |grep LISTEN
   fi
 }
 
