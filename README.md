@@ -13,5 +13,3 @@ Playground
 
 ###### Reference
 [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/html/abs-guide.html) ([PDF](http://www.tldp.org/LDP/abs/abs-guide.pdf))
-
-
