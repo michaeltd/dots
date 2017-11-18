@@ -8,7 +8,7 @@ tarcm=$(which tar)
 rsncm=$(which rsync)
 machn="dell"
 eldir="/mnt/el/linux/gentoo/"
-dtdir="/mnt/DATA/linux/gentoo/"
+dtdir="/mnt/data/linux/gentoo/"
 homdr="/home/paperjam"
 bulst="${homdr}/.backup.txt"
 excfl="${homdr}/.exclude.txt"
@@ -27,6 +27,6 @@ fi
 
 if [[ -d "${eldir}" && -d "${dtdir}" && -x "${rsncm}" ]]; then
 
-  "${nice}" -n 15 "${rsncm}" --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/el/* /mnt/DATA/ >> "${rslog}" 2>&1
+  "${nice}" -n 15 "${rsncm}" --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/el/* /mnt/data/ >> "${rslog}" 2>&1
 
 fi

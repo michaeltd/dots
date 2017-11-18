@@ -1,5 +1,9 @@
 #!/usr/bin/env /bin/bash
 
+function rmDeadLinks() {
+  find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +
+}
+
 # Returns service listening on given port
 function listenOnPort() {
   if [[ -z "${1}" ]]; then
