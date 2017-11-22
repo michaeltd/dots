@@ -1,4 +1,4 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 
 #conky -DDDD -b -c ~/.conky.conf/timer >> ~/.conky.err/`date +%y%m%d`.log 2>&1
 #conky -DDDD -b -c ~/.conky.conf/qlocktwo >> ~/.conky.err/`date +%y%m%d`.clock.log 2>&1

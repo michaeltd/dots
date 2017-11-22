@@ -1,4 +1,4 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 # X things
 xrdb -merge ~/.Xresources 2> /dev/null
 
@@ -29,4 +29,3 @@ fi
 xscreensaver-command -exit
 # Start screensaver in the background
 xscreensaver -nosplash &
-

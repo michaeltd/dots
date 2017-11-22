@@ -1,4 +1,4 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 
 # tws.sh stands for Trivial Web Scrapper Shell Script
 

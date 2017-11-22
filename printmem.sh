@@ -1,4 +1,4 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 
 total=$(cat /proc/meminfo |head -1 |awk '{print $2}')
 avail=$(cat /proc/meminfo |head -2 |tail -1 |awk '{print $2}')

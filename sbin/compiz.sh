@@ -1,6 +1,13 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 # Start Compiz
-/usr/bin/compiz-manager &
+# /usr/bin/compiz-manager &
+# compiz --replace &
+# fusion-icon &
+# emerald --replace &
+# compiz --replace "$@" &
+
+compiz &
+ck-launch-session dbus-launch compiz ccsm
 
 assh="${HOME}"/bin/autostart.sh
 if [[ -x "${assh}" ]]; then

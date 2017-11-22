@@ -1,5 +1,12 @@
 #!/usr/bin/env /bin/bash
 
+up(){
+  DEEP=$1
+  for i in $(seq 1 ${DEEP:-"1"}); do
+    cd ../
+  done
+}
+
 function rmDeadLinks() {
   find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +
 }

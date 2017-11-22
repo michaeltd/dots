@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env /bin/bash
 
 #set -uoe >> /dev/null
 

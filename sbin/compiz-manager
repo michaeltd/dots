@@ -1,0 +1,345 @@
+#!/bin/bash
+# Compiz Manager wrapper script
+#
+# Copyright (c) 2007 Kristian Lyngstøl <kristian@bohemians.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+#
+#
+# Contributions by: Treviño (3v1n0) <trevi55@gmail.com>, Ubuntu Packages
+#
+# Much of this code is based on Beryl code, also licensed under the GPL.
+# This script will detect what options we need to pass to compiz to get it
+# started, and start a default plugin and possibly window decorator.
+#
+
+
+# LIBDIR differs between x86 and x86_64, arm and aarch64, ppc and ppc64.
+ARCH="$(uname -m)"
+if [ -d '/usr/lib64/' ] && [[ "$ARCH" = *64 ]]; then
+       LIBDIR='/usr/lib64'
+else
+       LIBDIR='/usr/lib'
+fi
+
+COMPIZ_BIN_PATH="$(dirname "$(which compiz)")" # For window decorators and compiz.
+PLUGIN_PATH="$LIBDIR/compiz"
+GLXINFO="$(which glxinfo 2>/dev/null)"
+METACITY="$(which metacity 2>/dev/null)"
+MARCO="$(which marco 2>/dev/null)"
+XFWM="$(which xfwm 2>/dev/null)"
+COMPIZ_NAME="compiz" # Final name for compiz (compiz.real).
+
+# Minimum amount of memory (in kibi bytes) that NVIDIA cards need
+#  to be allowed to start.
+# Set to 262144 to require 256MiB.
+NVIDIA_MEMORY="65536" # 64MiB.
+NVIDIA_SETTINGS="nvidia-settings" # Assume it's in the path by default.
+
+# For detecting what driver is in use, the + is for one or more /'s.
+XORG_DRIVER_PATH="$LIBDIR/xorg/.*/+"
+FALLBACKWM="xterm"
+if [[ "$XDG_CURRENT_DESKTOP" == "MATE" ]] || [ ! -z "$MATE_DESKTOP_SESSION_ID" ]; then
+	FALLBACKWM="$MARCO"
+elif [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]] || [ ! -z "$GNOME_DESKTOP_SESSION_ID" ]; then
+	FALLBACKWM="$METACITY"
+elif ( xprop -root _DT_SAVE_MODE | grep ' = \"xfce4\"$' >/dev/null 2>&1 ); then
+	FALLBACKWM="$XFWM"
+fi
+
+FALLBACKWM_OPTIONS="--replace $@"
+
+COMPIZ_OPTIONS="--ignore-desktop-hints --replace"
+COMPIZ_PLUGINS=""
+ENV=""
+
+# Allow forcing Emerald.
+USE_EMERALD="${USE_EMERALD:-no}"
+
+# Default X.org log if xset q doesn't reveal it.
+XORG_DEFAULT_LOG="/var/log/Xorg.0.log"
+
+# Set to yes to enable verbose.
+VERBOSE="yes"
+
+# Echos the arguments if verbose.
+verbose()
+{
+	if [[ "$VERBOSE" == "yes" ]]; then
+		printf "$*"
+	fi
+}
+
+# Abort script and run fallback window manager.
+abort_with_fallback_wm()
+{
+	if [[ "$SKIP_CHECKS" == "yes" ]]; then
+		verbose "SKIP_CHECKS is yes, so continuing despite problems.\n"
+		return 0
+	fi
+
+	if [[ "$CM_DRY" == "yes" ]]; then
+		verbose "Dry run failed: Problems detected with 3D support.\n"
+		exit 1
+	fi
+
+	verbose "aborting and using fallback: $FALLBACKWM \n"
+
+	if [ -x "$FALLBACKWM" ]; then
+		exec "$FALLBACKWM" $FALLBACKWM_OPTIONS
+	else
+		printf "no $FALLBACKWM found, exiting\n"
+		exit 1
+	fi
+}
+
+# Check for non power of two texture support.
+check_npot_texture()
+{
+	verbose "Checking for non power of two support: "
+	if ( glxinfo 2> /dev/null | egrep -q '(GL_ARB_texture_non_power_of_two|GL_NV_texture_rectangle|GL_EXT_texture_rectangle|GL_ARB_texture_rectangle)' ); then
+		verbose "present. \n"
+		return 0
+	else
+		verbose "Not present. \n"
+		return 1
+	fi
+
+}
+
+# Check for presence of FBConfig.
+check_fbconfig()
+{
+	verbose "Checking for FBConfig: "
+	if [[ "$INDIRECT" == "yes" ]]; then
+		"$GLXINFO" -i | grep -q 'GLX.*fbconfig'
+		FB=$?
+	else
+		"$GLXINFO" | grep -q 'GLX.*fbconfig'
+		FB=$?
+	fi
+
+	if [[ $FB == "0" ]]; then
+		unset FB
+		verbose "present. \n"
+		return 0
+	else
+		unset FB
+		verbose "not present. \n"
+		return 1
+	fi
+}
+
+
+# Check for TFP.
+check_tfp()
+{
+	verbose "Checking for texture_from_pixmap: "
+	if [ $($GLXINFO 2>/dev/null | grep -c 'GLX_EXT_texture_from_pixmap') -gt 2 ]; then
+		verbose "present. \n"
+		return 0
+	else
+		verbose "not present. \n"
+		if [[ "$INDIRECT" == "yes" ]]; then
+			unset LIBGL_ALWAYS_INDIRECT
+			INDIRECT="no"
+			return 1
+		else
+			verbose "Trying again with indirect rendering:\n"
+			INDIRECT="yes"
+			export LIBGL_ALWAYS_INDIRECT=1
+			check_tfp
+			return $?
+		fi
+	fi
+}
+
+# Check for Software Rasteriser.
+check_sw()
+{
+	verbose "Checking for software rasteriser: "
+	if ( "$GLXINFO" 2>/dev/null | grep -q 'Software Rasterizer' ); then
+		verbose "present. \n"
+		return 1
+	else
+		verbose "not present. \n"
+		return 0
+	fi
+}
+
+# Check wether the composite extension is present.
+check_composite()
+{
+	verbose "Checking for Composite extension: "
+	if ( xdpyinfo -queryExtensions | grep -q 'Composite '); then
+		verbose "present. \n"
+		return 0
+	else
+		verbose "not present. \n"
+		return 1
+	fi
+}
+
+# Check if the NVIDIA card has enough video RAM to make sense.
+check_nvidia_memory()
+{
+	MEM=$("$NVIDIA_SETTINGS" -q VideoRam | grep "Attribute 'VideoRam' .*:" | grep -v '])' | cut -d: -f3 | sed 's/[^0-9]//g')
+	if [ "$MEM" -lt "$NVIDIA_MEMORY" ]; then
+		verbose "Less than ${NVIDIA_MEMORY}kb of memory and NVIDIA"
+		return 1
+	fi
+	return 0
+}
+
+# Check for existence if NV-GLX.
+check_nvidia()
+{
+	if [ ! -z "$NVIDIA_INTERNAL_TEST" ]; then
+		return "$NVIDIA_INTERNAL_TEST"
+	fi
+	verbose "Checking for NVIDIA: "
+	if ( xdpyinfo | grep -q 'NV-GLX' ); then
+		verbose "present. \n"
+		NVIDIA_INTERNAL_TEST=0
+		return 0
+	else
+		verbose "not present. \n"
+		NVIDIA_INTERNAL_TEST=1
+		return 1
+	fi
+}
+
+# Check if the max texture size is large enough compared to the
+#  resolution.
+check_texture_size()
+{
+	TEXTURE_LIMIT=$(glxinfo -l | sed -re '/GL_MAX_TEXTURE_SIZE/!d;s/^.*[ \t]([[:digit:]]+)$/\1/;q')
+	RESOLUTION=$(xdpyinfo | sed -re '/dimensions:/!d;s/^.*[ \t]([[:digit:]x]+) pixels.*$/\1/')
+	for res in $RESOLUTION; do
+		HRES=$(echo "$RESOLUTION" | cut -dx -f1)
+		VRES=$(echo "$RESOLUTION" | cut -dx -f2)
+		verbose "Comparing resolution ($res) to maximum 3D texture size ($TEXTURE_LIMIT): ";
+		if [ "$VRES" -gt "$TEXTURE_LIMIT" ] || [ "$HRES" -gt "$TEXTURE_LIMIT" ]; then
+			verbose "Failed.\n"
+			return 1
+		fi
+	done
+	verbose "passed.\n"
+	return 0
+}
+
+build_env()
+{
+	if ( check_nvidia ); then
+		ENV="__GL_YIELD=NOTHING "
+	fi
+	if [[ "$INDIRECT" == "yes" ]]; then
+		ENV="$ENV LIBGL_ALWAYS_INDIRECT=1 "
+	fi
+
+	ENV="$ENV" FROM_WRAPPER="yes"
+
+	if [ -n "$ENV" ]; then
+		export "$ENV"
+	fi
+}
+
+build_args()
+{
+	if [[ "$LIBGL_ALWAYS_INDIRECT" == "1" ]]; then
+		COMPIZ_OPTIONS="$COMPIZ_OPTIONS --indirect-rendering "
+	fi
+	if [ ! -z "$DESKTOP_AUTOSTART_ID" ]; then
+		COMPIZ_OPTIONS="$COMPIZ_OPTIONS --sm-client-id $DESKTOP_AUTOSTART_ID"
+	fi
+	if ( check_nvidia ); then
+		if [[ "$LIBGL_ALWAYS_INDIRECT" != "1" ]]; then
+			COMPIZ_OPTIONS="$COMPIZ_OPTIONS --loose-binding"
+		fi
+	fi
+}
+
+####################
+# Execution begins here.
+
+# Read configuration from XDG paths.
+if [ -z "$XDG_CONFIG_DIRS" ]; then
+	[ -r '/etc/xdg/compiz/compiz-manager' ] && . '/etc/xdg/compiz/compiz-manager'
+else
+	[ -r "$XDG_CONFIG_DIRS/compiz/compiz-manager" ] && . "$XDG_CONFIG_DIRS/compiz/compiz-manager"
+fi
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	[ -r "$HOME/.config/compiz/compiz-manager" ] && . "$HOME/.config/compiz/compiz-manager"
+else
+	[ -r "$XDG_CONFIG_HOME/compiz/compiz-manager" ] && . "$XDG_CONFIG_HOME/compiz/compiz-manager"
+fi
+
+# Check if we have the required bits to run compiz and if not,
+#  fallback.
+if ( ! check_sw ) || ( ! check_tfp ) || ( ! check_npot_texture ) || ( ! check_composite ) || ( ! check_texture_size ); then
+	abort_with_fallback_wm
+fi
+
+if ( check_nvidia ) && ( ! check_nvidia_memory ); then
+	abort_with_fallback_wm
+fi
+
+if ( ! check_fbconfig ); then
+	abort_with_fallback_wm
+fi
+
+# Load the ccp plugin if present.
+if [ -f "$PLUGIN_PATH/libccp.so" ]; then
+	COMPIZ_PLUGINS="$COMPIZ_PLUGINS ccp"
+fi
+
+# In case we are in a mate session, we always want matecompat
+#  plugin loaded (session registering, key bindings).
+if [ -f "$PLUGIN_PATH/libmatecompat.so" ] && ( [ "$XDG_CURRENT_DESKTOP" = "MATE" ] || [ -n "$MATE_DESKTOP_SESSION_ID" ] ); then
+	COMPIZ_PLUGINS="$COMPIZ_PLUGINS matecompat"
+fi
+
+# Get environment.
+build_env
+build_args
+
+if [[ "$CM_DRY" == "yes" ]]; then
+	verbose "Dry run finished: everything should work with regards to Compiz and 3D.\n"
+	verbose "Execute: $COMPIZ_BIN_PATH/$COMPIZ_NAME $COMPIZ_OPTIONS "$@" $COMPIZ_PLUGINS \n"
+	exit 0
+fi
+
+# Start the decorator.
+if [ -x "$COMPIZ_BIN_PATH/emerald" ] && [[ "$USE_EMERALD" == "yes" ]]; then
+	verbose "Starting emerald\n"
+	"$COMPIZ_BIN_PATH/emerald" --replace &
+elif [ -x "$COMPIZ_BIN_PATH/mate-window-decorator" ] && ( [[ "$XDG_CURRENT_DESKTOP" == "MATE" ]] || [ ! -z "$MATE_DESKTOP_SESSION_ID" ] ); then
+	verbose "Starting mate-window-decorator\n"
+	"$COMPIZ_BIN_PATH/mate-window-decorator" --replace &
+elif [ -x "$COMPIZ_BIN_PATH/gtk-window-decorator" ]; then
+	verbose "Starting gtk-window-decorator\n"
+	"$COMPIZ_BIN_PATH/gtk-window-decorator" --replace &
+elif [ -x "$COMPIZ_BIN_PATH/emerald" ]; then
+	verbose "Starting emerald\n"
+	"$COMPIZ_BIN_PATH/emerald" --replace &
+else
+	# Abort completely instead of having no window decoration.
+	echo "No decoration manager found. Aborting..."
+	exit 1
+fi
+
+"$COMPIZ_BIN_PATH/$COMPIZ_NAME" $COMPIZ_OPTIONS "$@" $COMPIZ_PLUGINS || exec "$FALLBACKWM" $FALLBACKWM_OPTIONS

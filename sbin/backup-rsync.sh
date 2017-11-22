@@ -21,5 +21,5 @@ if [[ -d "${eldir}" && -r "${bulst}" && -r "${excfl}"  && -x "${tarcm}" ]]; then
 fi
 
 if [[ -d "${eldir}" && -d "${dtdir}" && -x "${rsncm}" ]]; then
-  "${nice}" -n 15 "${rsncm}" --verbose --recursive --times --delete --exclude="*/Videos/*" /mnt/el/* /mnt/data/ >> "${rslog}" 2>&1
+  "${nice}" -n 15 "${rsncm}" --verbose --recursive --times --delete --exclude="*/XNXX/*" /mnt/el/* /mnt/data/ >> "${rslog}" 2>&1
 fi

@@ -1,4 +1,4 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 
 # Run this from your terminal.
 

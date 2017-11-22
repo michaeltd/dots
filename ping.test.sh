@@ -1,4 +1,4 @@
-#!/bin/env /bin/bash
+#!/usr/bin/env /bin/bash
 #
 #for x in {1..254}; do
   for y in {1..254}; do
