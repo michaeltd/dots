@@ -259,7 +259,6 @@ function inflateThat() {
   fi
 }
 
-
 function updateDate() {
   if [ "${EUID}" -ne "0" ]; then
     printf "Need root privilages\n"
