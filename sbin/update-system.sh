@@ -40,7 +40,7 @@ function get-distro() {
     fi
   done
   echo "unknown"
-  return 1
+  # return 1 # As quit on error is in effect ("set -aoue") it would be wise not to raise one. (lolz?)
 }
 
 # Make things happen.
