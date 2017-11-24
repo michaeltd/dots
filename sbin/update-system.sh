@@ -8,8 +8,9 @@ function update-gentoo() {
   emerge -vuDN --nospinner @world
 }
 
-function update-devuan() {
-  update-debian
+function update-opensuse() {
+  # TODO add "assume-yes" switches here
+  zypper update -ly # -l, --auto-agree-with-licenses / -y, --no-confirm
 }
 
 function update-debian() {
@@ -19,9 +20,8 @@ function update-debian() {
   apt-get -y upgrade # Wet run
 }
 
-function update-opensuse() {
-  # TODO add "assume-yes" switches here
-  zypper update -ly # -l, --auto-agree-with-licenses / -y, --no-confirm
+function update-devuan() {
+  update-debian
 }
 
 function update-unknown() {
@@ -30,7 +30,7 @@ function update-unknown() {
 }
 
 function get-distro() {
-  dists=( "gentoo" "opensuse" "devuan" "debian" )
+  dists=( "gentoo" "opensuse" "debian" "devuan" )
   for dist in "${dists[@]}"; do
     uname -a|grep $dist >> /dev/null # echo'ing stuff can ruin this
     ret=$?
