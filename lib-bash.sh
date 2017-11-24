@@ -228,8 +228,13 @@ function lol() {
 # Script to unify archive extraction in linux CLI environments
 # inflateThat.sh tsouchlarakis@gmail.com 2015/12/09
 function inflateThat() {
-  if [[ ! -x $(which 7z) || ! -x $(which tar) || ! -x $(which bunzip2) || ! -x $(which unrar) || ! -x $(which gunzip) || ! -x $(which unzip) || ! -x $(which uncompress) ]]; then
-    printf "## %s uses the following commands/utilities:\n## 7z, tar, bunzip2, unrar, gunzip, unzip, uncompress.\n## Install them all for full functionality\n" "${0}"
+  if [[ ! -x $(which 7z) || ! -x $(which tar) || ! -x $(which bunzip2) || ! -x $(which rar) || ! -x $(which gunzip) || ! -x $(which unzip) || ! -x $(which uncompress) ]]; then
+    msg="## \"%s\" uses the following commands/utilities:\n## 7z, tar, bunzip2, rar, gunzip, unzip, uncompress.\n## Install them all for full functionality\n"
+    if [[ "${FUNCNAME[0]}" == "inflateThat" ]]; then
+      printf "${msg}" "${FUNCNAME[0]}"
+    else
+      printf "${msg}" "${0}"
+    fi # Function or script?
   fi # Warn for missing decompressors.
 
   if [[ ! -z "${1}" && -f "${1}" && -r "${1}" ]] ; then # Check for arguments and validity.
@@ -240,16 +245,16 @@ function inflateThat() {
       *.tar.bz2 | *.tbz2) tar -xjf "${1}" ;;
       *.tar.xz | *.txz) tar -Jxf "${1}" ;;
       *.bz2) bunzip2 "${1}" ;;
-      *.rar) unrar x "${1}" ;;
+      *.rar) rar x "${1}" ;;
       *.gz) gunzip "${1}" ;;
       *.zip | *.jar) unzip "${1}" ;;
       *.z) uncompress "${1}" ;;
       *) # Exit on unknown extensions.
-        printf "%s cannot be extracted.\n" "${1}"
+        printf "\"%s\" cannot be extracted.\n" "${1}"
         return 1 ;;
     esac
   else # Show error.
-    printf "## Need one compressed file as parameter\n## %s is not a readable file.\n" "${1}"
+    printf "## Need one compressed file as parameter\n## \"%s\" is not a readable file.\n" "${1}"
     return 1
   fi
 }
