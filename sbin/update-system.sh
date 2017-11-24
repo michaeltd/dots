@@ -14,8 +14,9 @@ function update-devuan() {
 
 function update-debian() {
   # TODO add "assume-yes" switches here
-  # apt-get update && apt-get -ys upgrade # Dry run
-  apt-get update && apt-get -y upgrade # Wet run
+  apt-get update
+  #apt-get -ys upgrade # Dry run
+  apt-get -y upgrade # Wet run
 }
 
 function update-opensuse() {
