@@ -6,11 +6,11 @@
 # upd sys     zypper up 	  pacman -Syu 	apt upgrade 	 yum update 	      emerge -uND --with-bdeps=y @world
 MAIL=paperjam@localhost
 
-set -aeou
+set -aou
 
 function update-gentoo() {
   emerge --sync
-  emerge -vuDN --nospinner @world
+  emerge -uDN --with-bdeps=y @world
 }
 
 function update-opensuse() {
@@ -49,7 +49,7 @@ function get-distro() {
     fi
   done
   echo "unknown"
-  # return 1 # As quit on error is in effect ("set -e") it would be wise not to raise one. (lolz?)
+  return 1
 }
 
 # Make things happen.
