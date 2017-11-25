@@ -1,7 +1,7 @@
 #!/usr/bin/env /bin/bash
 # Update Crontab scripts tdm 171124
 
-set -auo # Scratch set -e. We need on error resume next here
+set -aou # Scratch set -e. We need on error resume next here
 
 src="/home/paperjam/bin/sbin"
 crn="/etc/cron.daily"

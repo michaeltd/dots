@@ -23,14 +23,14 @@ function _get-pm(){
   # or otherwise system belonging to big boy who can do as well without our help.
   # So gb and thanks for all the fish. ProTip: Dont install pacman the game.
   echo "unknown"
-  #return 1
+  # return 1
 }
 
 function _update-distro(){
   case $( basename "${1}" ) in
-    "${pms[0]}") "${1}" ref && "${1}" update -ly ;; # zypper TODO add "assume-yes" switches here
+    "${pms[0]}") "${1}" ref && "${1}" update -ly ;; # zypper DONE TODO add "assume-yes" switches here
     "${pms[1]}") "${1}" -Sy && "${1}" -Syu ;; # pacman TODO read the pacman manual, don't just take wikipedia's word for it.
-    "${pms[2]}") "${1}" update && "${1}" -ys upgrade ;; # apt-get TODO add "assume-yes" switches here # -s for Dry run
+    "${pms[2]}") "${1}" update && "${1}" -y upgrade ;; # apt-get DONE TODO add "assume-yes" switches here # -s for Dry run
     "${pms[3]}") "${1}" check-update && "${1}" update ;; # yum TODO read the yum manual, don't just take wikipedia's word for it.
     "${pms[4]}") "${1}" --sync && "${1}" -vuDN --nospinner --with-bdeps=y @world ;; # emerge
     *) echo -e " Nothing to be done for \"unknown\". \n Get your self a real package manager.\n Quiting." ;; # unknown TODO find something usefull to put here.
