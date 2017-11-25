@@ -29,10 +29,6 @@ function update-ubuntu() {
   update-debian
 }
 
-function update-mint() {
-  update-debian
-}
-
 function update-devuan() {
   update-debian
 }
@@ -43,7 +39,7 @@ function update-unknown() {
 }
 
 function get-distro() {
-  dists=( "gentoo" "opensuse" "debian" "ubuntu" "mint" "devuan" )
+  dists=( "gentoo" "opensuse" "debian" "ubuntu" "devuan" )
   for dist in "${dists[@]}"; do
     uname -a|grep $dist >> /dev/null # echo'ing stuff can ruin this
     ret=$?
