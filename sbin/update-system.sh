@@ -41,12 +41,12 @@ function update-yum() {
 
 function update-emerge() {
   emerge --sync
-  emerge -uDN --with-bdeps=y @world
+  emerge -vuDN --nospinner --with-bdeps=y @world
 }
 
 function update-unknown() {
   # TODO find something usefull to put here.
-  echo "Nothing to be done for \"unknown\". Quiting."
+  echo -e " Nothing to be done for \"unknown\". \n Get your self a real package manager \n or uninstall pacman the game \n Quiting."
 }
 
 function get-distro() {
@@ -82,7 +82,10 @@ function get-package-manager(){
     echo "emerge"
     return 0
   else
-    # Only reason to reach final clause would be custom setup, alien installed or otherwise system belonging to big boy who can do as well without our help. So gb and thanks for all the fish.
+    # Only reason to reach final clause would be custom setup, alien installed
+    # or otherwise system belonging to big boy who can do as well without our help.
+    # So gb and thanks for all the fish.
+    # ProTip: Don't install pacman the game.
     echo "unknown"
     return 1
   fi
