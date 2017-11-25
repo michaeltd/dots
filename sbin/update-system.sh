@@ -7,89 +7,36 @@
 # upd sys     zypper up 	  pacman -Syu 	apt upgrade 	 yum update 	      emerge -uND --with-bdeps=y @world
 MAIL=paperjam@localhost
 
-set -aou #e
+set -aeou #e
 
-declare zypper=$( which zypper )
-declare pacman=$( which pacman )
-declare apt-get=$( which apt-get )
-declare yum=$( which yum )
-declare emerge=$( which emerge )
+declare -a pms=( "zypper" "pacman" "apt-get" "yum" "emerge" )
 
-function update-zypper() {
-  # TODO add "assume-yes" switches here
-  zypper update -ly # -l, --auto-agree-with-licenses / -y, --no-confirm
-}
-
-function update-pacman() {
-  # TODO read the pacman manual, don't just take wikipedia's word for it.
-  pacman -Sy
-  pacman -Syu
-}
-
-function update-apt-get() {
-  # TODO add "assume-yes" switches here
-  apt-get update
-  # apt-get -ys upgrade # Dry run
-  apt-get -y upgrade # Wet run
-}
-
-function update-yum() {
-  # TODO read the yum manual, don't just take wikipedia's word for it.
-  yum check-update
-  yum update
-}
-
-function update-emerge() {
-  emerge --sync
-  emerge -vuDN --nospinner --with-bdeps=y @world
-}
-
-function update-unknown() {
-  # TODO find something usefull to put here.
-  echo -e " Nothing to be done for \"unknown\". \n Get your self a real package manager \n or uninstall pacman the game \n Quiting."
-}
-
-function get-distro() {
-  # defunct, kept for reference.
-  dists=( "gentoo" "opensuse" "debian" "ubuntu" "devuan" )
-  for dist in "${dists[@]}"; do
-    uname -a|grep $dist >> /dev/null # echo'ing stuff can ruin this
-    ret=$?
-    if [[ $ret -eq 0 ]]; then
-      echo $dist
-      return 0 # Quit function on match.
-    fi
-  done
-  echo "unknown"
-  return 1
+function update-sys(){
+  case $( basename "${1}" ) in
+    "${pms[0]}") "${1}" ref && "${1}" update -ly ;; # zypper TODO add "assume-yes" switches here
+    "${pms[1]}") "${1}" -Sy && "${1}" -Syu ;; # pacman TODO read the pacman manual, don't just take wikipedia's word for it.
+    "${pms[2]}") "${1}" update && "${1}" -y upgrade ;; # apt-get TODO add "assume-yes" switches here # -s for Dry run
+    "${pms[3]}") "${1}" check-update && "${1}" update ;; # yum TODO read the yum manual, don't just take wikipedia's word for it.
+    "${pms[4]}") "${1}" --sync && "${1}" -vuDN --nospinner --with-bdeps=y @world ;; # emerge
+    *) echo -e " Nothing to be done for \"unknown\". \n Get your self a real package manager.\n Quiting." ;; # unknown TODO find something usefull to put here.
+  esac
 }
 
 function get-package-manager(){
-
-  if [[ ! -z "${zypper}" && -z "${pacman}" && -z "${apt-get}" && -z "${yum}" && -z "${emerge}" ]]; then
-    echo "zypper"
-    return 0
-  elif [[ -z "${zypper}" && ! -z "${pacman}" && -z "${apt-get}" && -z "${yum}" && -z "${emerge}" ]]; then
-    echo "pacman"
-    return 0
-  elif [[ -z "${zypper}" && -z "${pacman}" && ! -z "${apt-get}" && -z "${yum}" && -z "${emerge}" ]]; then
-    echo "apt-get"
-    return 0
-  elif [[ -z "${zypper}" && -z "${pacman}" && -z "${apt-get}" && ! -z "${yum}" && -z "${emerge}" ]]; then
-    echo "yum"
-    return 0
-  elif [[ -z "${zypper}" && -z "${pacman}" && -z "${apt-get}" && -z "${yum}" && ! -z "${emerge}" ]]; then
-    echo "emerge"
-    return 0
-  else
-    # Only reason to reach final clause would be custom setup, alien installed
-    # or otherwise system belonging to big boy who can do as well without our help.
-    # So gb and thanks for all the fish.
-    # ProTip: Don't install pacman the game.
-    echo "unknown"
-    return 1
-  fi
+  for pm in "${pms[@]}"; do
+    temp=$( which "${pm}" )
+    if [[ ! -z "${temp}" ]]; then
+      echo "${temp}"
+      return
+    fi
+  done
+  # Only reason to reach final clause would be custom setup, alien installed
+  # or otherwise system belonging to big boy who can do as well without our help.
+  # So gb and thanks for all the fish.
+  # ProTip: Dont install pacman the game.
+  echo "unknown"
+  #return 1
 }
 
 # Make things happen.
-update-"$( get-package-manager )"
+update-sys "$( get-package-manager )"
