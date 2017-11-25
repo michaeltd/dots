@@ -21,7 +21,7 @@ function update-zypper() {
 }
 
 function update-pacman() {
-  # TODO read the pacman manual
+  # TODO read the pacman manual, don't just take wikipedia's word for it.
   pacman -Sy
   pacman -Syu
 }
@@ -34,7 +34,7 @@ function update-apt-get() {
 }
 
 function update-yum() {
-  # TODO read the yum manual
+  # TODO read the yum manual, don't just take wikipedia's word for it.
   yum check-update
   yum update
 }
@@ -50,6 +50,7 @@ function update-unknown() {
 }
 
 function get-distro() {
+  # defunct, kept for reference.
   dists=( "gentoo" "opensuse" "debian" "ubuntu" "devuan" )
   for dist in "${dists[@]}"; do
     uname -a|grep $dist >> /dev/null # echo'ing stuff can ruin this
