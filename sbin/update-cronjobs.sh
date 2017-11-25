@@ -5,7 +5,7 @@ set -auo # Scratch set -e. We need on error resume next here
 
 src="/home/paperjam/bin/sbin"
 crn="/etc/cron.daily"
-fls=( "backup-rsync.sh" "update-system.sh" "update-hosts.sh" "update-cronjobs.sh" )
+fls=( "backup-rsync.sh" "update-distro.sh" "update-hosts.sh" "update-cronjobs.sh" )
 
 for fl in "${fls[@]}" ; do
   trgt="${src}/${fl}"
