@@ -1,4 +1,9 @@
 #!/usr/bin/env /bin/bash
+# Distro neutral update script tdm 171124
+# From https://en.wikipedia.org/wiki/Package_manager
+# action      zypper        pacman        apt            dnf-yum            emerge
+# upd repo    zypper ref 	  pacman -Sy 	  apt update     yum check-update 	emerge --sync
+# upd sys     zypper up 	  pacman -Syu 	apt upgrade 	 yum update 	      emerge -uND --with-bdeps=y @world
 MAIL=paperjam@localhost
 
 set -aeou
@@ -20,6 +25,14 @@ function update-debian() {
   apt-get -y upgrade # Wet run
 }
 
+function update-ubuntu() {
+  update-debian
+}
+
+function update-mint() {
+  update-debian
+}
+
 function update-devuan() {
   update-debian
 }
@@ -30,7 +43,7 @@ function update-unknown() {
 }
 
 function get-distro() {
-  dists=( "gentoo" "opensuse" "debian" "devuan" )
+  dists=( "gentoo" "opensuse" "debian" "ubuntu" "mint" "devuan" )
   for dist in "${dists[@]}"; do
     uname -a|grep $dist >> /dev/null # echo'ing stuff can ruin this
     ret=$?
