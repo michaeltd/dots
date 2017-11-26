@@ -1,41 +1,39 @@
 #!/usr/bin/env /bin/bash
 # Distro neutral update script tdm 171124
-# DONE TODO Make this package manager dependent rather than distro dependent
 # From https://en.wikipedia.org/wiki/Package_manager
-# action      zypper        pacman        apt            dnf-yum            emerge
-# upd repo    zypper ref 	  pacman -Sy 	  apt update     yum check-update 	emerge --sync
-# upd sys     zypper up 	  pacman -Syu 	apt upgrade 	 yum update 	      emerge -uND --with-bdeps=y @world
 MAIL=paperjam@localhost
 
-set -aeou
+set -au # set -e is out
 
-declare -a pms=( "zypper" "pacman" "apt-get" "yum" "emerge" )
+declare -a zypper=("zypper" "ref" "update" "-ly"); declare -a pacman=("pacman" "-Sy" "-Syu"); declare -a apt_get=("apt-get" "update" "-ys" "upgrade"); declare -a yum=("yum" "check-update" "update"); declare -a emerge=("emerge" "--sync" "-vuDN" "--nospinner" "--with-bdeps=y" "@world");
+declare -a pms=(zypper[@] pacman[@] apt_get[@] yum[@] emerge[@])
 
-function _get-pm(){
-  for pm in "${pms[@]}"; do
-    temp=$( which "${pm}" )
+function _get_pm(){
+  for x in "${!pms[@]}"; do
+    temp=$( which "${!pms[$x]:0:1}" )
     if [[ ! -z "${temp}" ]]; then
-      echo "${temp}"
-      return
+      echo "${x}"
+      return # return on match.
     fi
   done
-  # Only reason to end down here would be custom setup, alien installed
-  # or otherwise system belonging to big boy who can do as well without our help.
-  # So gb and thanks for all the fish. ProTip: Dont install pacman the game.
-  echo "unknown"
-  # return 1
+  echo "999" # No valid package manager found. quit
 }
 
-function _update-distro(){
-  case $( basename "${1}" ) in
-    "${pms[0]}") "${1}" ref && "${1}" update -ly ;; # zypper DONE TODO add "assume-yes" switches here
-    "${pms[1]}") "${1}" -Sy && "${1}" -Syu ;; # pacman TODO read the pacman manual, don't just take wikipedia's word for it.
-    "${pms[2]}") "${1}" update && "${1}" -y upgrade ;; # apt-get DONE TODO add "assume-yes" switches here # -s for Dry run
-    "${pms[3]}") "${1}" check-update && "${1}" update ;; # yum TODO read the yum manual, don't just take wikipedia's word for it.
-    "${pms[4]}") "${1}" --sync && "${1}" -vuDN --nospinner --with-bdeps=y @world ;; # emerge
-    *) echo -e " Nothing to be done for \"unknown\". \n Get your self a real package manager.\n Quiting." ;; # unknown TODO find something usefull to put here.
-  esac
+function _get_upd_opts_no() {
+  cnt=0; idx=2
+  while [[ ! -z ${!pms[$1]:$idx:1} ]]; do
+   (( cnt++, idx++ ))
+  done
+  echo $cnt
+}
+
+function _update_distro() {
+  if [[ "${1}" -eq "999" ]]; then
+    echo -e " Nothing to be done for \"unknown\" package manager. \n Quithing.\n"
+  else
+    "${!pms[$1]:0:1}" "${!pms[$1]:1:1}" && "${!pms[$1]:0:1}" "${!pms[$1]:2:$( _get_upd_opts_no ${1} )}"
+  fi
 }
 
 # Make things happen.
-_update-distro "$( _get-pm )"
+_update_distro "$( _get_pm )"
