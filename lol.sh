@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file=${1-"tux"}
+file=${1-"eyes"}
 
 if [[ -z "${2}" ]]; then
   cmmnd="fortune"
@@ -9,4 +9,3 @@ else
 fi
 
 $cmmnd |cowsay -f $file |lolcat
-

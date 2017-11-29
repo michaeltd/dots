@@ -7,14 +7,14 @@ nice=$(which nice)
 tarcm=$(which tar)
 rsncm=$(which rsync)
 machn="dell"
-eldir="/mnt/el/Documents/bkps"
-dtdir="/mnt/data/Documents/bkps"
+eldir="/mnt/el/Documents/bkps/linux"
+dtdir="/mnt/data/Documents/bkps/linux"
 homdr="/home/paperjam"
 bulst="${homdr}/.backup.txt"
 excfl="${homdr}/.exclude.txt"
 tarlg="/var/log/tar.${dtstp}.log"
 rslog="/var/log/rsync.${dtstp}.log"
-archv="${eldir}/${machn}.${HOSTNAME}.${USER}.${dtstp}.tar.gz"
+archv="${eldir}/${dtstp}.${machn}.${HOSTNAME}.tar.gz"
 
 if [[ -d "${eldir}" && -r "${bulst}" && -r "${excfl}"  && -x "${tarcm}" ]]; then
   "${nice}" -n 15 "${tarcm}" --exclude-from="${excfl}" -cvzf "${archv}" $(cat ${bulst}) >> "${tarlg}" 2>&1
