@@ -1,19 +1,29 @@
 #!/usr/bin/env /bin/bash
-
 MAIL=paperjam@localhost
-
+# Date stamp
 dtstp=$(date +%y%m%d.%H%M%S)
+# Utils
 nice=$(which nice)
 tarcm=$(which tar)
 rsncm=$(which rsync)
+# Hardware
 machn="dell"
-eldir="/mnt/el/Documents/bkps/linux"
-dtdir="/mnt/data/Documents/bkps/linux"
+# Dirs
+mntdr="/mnt"
+elmnt="/el"
+dtmnt="/data"
+locdr="/Documents/bkps/linux"
+eldir="${mntdr}${elmnt}${locdr}"
+dtdir="${mntdr}${dtmnt}${locdr}"
+# Profile
 homdr="/home/paperjam"
+# Backup/Exclude
 bulst="${homdr}/.backup.txt"
 excfl="${homdr}/.exclude.txt"
+# Logs
 tarlg="/var/log/tar.${dtstp}.log"
 rslog="/var/log/rsync.${dtstp}.log"
+# Archive
 archv="${eldir}/${dtstp}.${machn}.${HOSTNAME}.tar.gz"
 
 if [[ -d "${eldir}" && -r "${bulst}" && -r "${excfl}"  && -x "${tarcm}" ]]; then
