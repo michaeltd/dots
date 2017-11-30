@@ -1,5 +1,5 @@
-#!/usr/bin/env /bin/bash
-
+#
+#!/usr/bin/env /bin/bash # I used to be a runnable - Don't judge me.
 up(){
   DEEP=$1
   for i in $(seq 1 ${DEEP:-"1"}); do
