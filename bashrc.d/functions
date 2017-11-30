@@ -1,0 +1,84 @@
+#
+# ~/.bashrc.d/functions
+#
+
+# Create a new alias
+mkalias() {
+    echo "alias $@" >> ${HOME}/.bashrc.d/aliases
+    alias $@
+}
+
+# Remove an alias
+rmalias() {
+    unalias $1 && sed -i "/alias $1\=/d" ~./bashrc.d/aliases
+}
+
+# Color man pages
+man() {
+    env \
+    LESS_TERMCAP_mb=$(printf "${bold}${red}") \
+    LESS_TERMCAP_md=$(printf "${bold}${red}") \
+    LESS_TERMCAP_me=$(printf "${reset}") \
+    LESS_TERMCAP_se=$(printf "${reset}") \
+    LESS_TERMCAP_so=$(printf "${bold}${bg_blue}${yellow}") \
+    LESS_TERMCAP_ue=$(printf "${reset}") \
+    LESS_TERMCAP_us=$(printf "${bold}${green}") \
+    man "$@"
+}
+
+## COMPRESSION FUNCTION ##
+compress() {
+    FILE=$1
+    shift
+    case $FILE in
+        *.tar.bz2) tar cjf $FILE $*  ;;
+        *.tar.gz)  tar czf $FILE $*  ;;
+        *.tgz)     tar czf $FILE $*  ;;
+        *.zip)     zip $FILE $*      ;;
+        *.rar)     rar $FILE $*      ;;
+        *)         echo "Filetype not recognized" ;;
+   esac
+}
+
+## EXTRACT FUNCTION ##
+extract () {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)     echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+## DICTIONARY FUNCTIONS ##
+dwordnet () { curl dict://dict.org/d:${1}:wn; }
+dacron () { curl dict://dict.org/d:${1}:vera; }
+djargon () { curl dict://dict.org/d:${1}:jargon; }
+dfoldoc () { curl dict://dict.org/d:${1}:foldoc; }
+dthesaurus () { curl dict://dict.org/d:${1}:moby-thes; }
+dtranslate () {
+    PS3="${blue}Select the dictionary: ${reset}"
+    local _options="deu-eng eng-deu deu-fra fra-deu deu-ita ita-deu deu-nld nld-deu deu-por por-deu tur-deu lat-deu jpn-deu afr-deu gla-deu exit"
+
+    select i in $_options; do
+        if [ $i == "exit" ]; then
+            return
+        else
+            printf "${blue}Enter the word to translate: ${reset}"
+            read w
+            curl dict://dict.org/d:${w}:fd-${i}
+        fi
+    done
+}

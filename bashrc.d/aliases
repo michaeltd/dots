@@ -1,0 +1,32 @@
+#
+# ~/.bashrc.d/aliases
+#
+
+if [ -x /usr/bin/dircolors ]; then
+    # Color support
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto --group-directories-first'
+    alias la='ls -a --color=auto --group-directories-first'
+    alias ll='ls -l --color=auto --group-directories-first'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto -in'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+else
+    alias ls='ls --group-directories-first'
+    alias la='ls -a --group-directories-first'
+    alias ll='ls -l --group-directories-first'
+    alias grep='grep -in'
+fi
+
+alias install='sudo pacman -S'
+alias update='sudo pacman -Syu'
+alias install-aur='yaourt -S'
+alias update-aur='yaourt -Syua'
+alias start='sudo systemctl start '
+alias restart='sudo systemctl restart '
+alias stop='sudo systemctl stop '
+alias status='systemctl status '
+alias ff='exec firefox && exit 0'
+alias excuse='fortune bofh-excuses'

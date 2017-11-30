@@ -1,0 +1,27 @@
+#
+# ~/.bashrc.d/variables
+#
+
+# Set environment variables
+export VISUAL=`which vim`
+export EDITOR=`which vim`
+#export PAGER=/usr/bin/most
+
+if [ -n "$DISPLAY" ]; then
+    export BROWSER=`which firefox`
+else
+    export BROWSER=`which w3m`
+fi
+
+# Don't put duplicate lines or lines starting with space in the history.
+export HISTCONTROL=ignoreboth
+
+# History lenght
+export HISTSIZE=99999
+export HISTFILESIZE=99999
+
+# Set options for Git prompt
+export GIT_PS1_SHOWDIRTYSTATE=yes
+export GIT_PS1_SHOWSTASHSTATE=yes
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWUPSTREAM=yes
