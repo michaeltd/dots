@@ -5,7 +5,7 @@
 #
 # tsouchlarakis@gmail.com 2016.10.05
 #
-# GNU/GPL https://www.gnu.org/licenses/gpl.html
+# GNU/GPL https://www.gnu.org/licenses/gpl.html (lolz?)
 #
 
 # Simple script to go through a directory of background images
@@ -27,57 +27,41 @@ EOF
 )
 
 function rotateBg() {
-  # Find a setter or die trying
-  if [[ -x $(which feh) ]]; then
-    BGSETTER="feh --bg-scale "
+  if [[ -x $(which feh) ]]; then # Find a setter or die trying
+    BGSETTER="feh --bg-scale"
   elif [[ -x $(which wmsetbg) ]]; then
-    BGSETTER="wmsetbg "
+    BGSETTER="wmsetbg"
   elif [[ -x $(which fvwm-root) ]]; then
-    BGSETTER="fvwm-root "
+    BGSETTER="fvwm-root"
   elif [[ -x $(which fbsetbg) ]]; then
-    BGSETTER="fbsetbg "
+    BGSETTER="fbsetbg"
   elif [[ -x $(which bsetbg) ]]; then
-    BGSETTER="bsetbg "
+    BGSETTER="bsetbg"
   elif [[ -x $(which hsetroot) ]]; then
-    BGSETTER="hsetroot -fill "
+    BGSETTER="hsetroot -fill"
   elif [[ -x $(which xsetroot) ]]; then
-    BGSETTER="xsetroot -bitmap "
+    BGSETTER="xsetroot -bitmap"
   else
     echo -e "${WR_USAGE}"
     return 1
   fi
-
-  # Assign a default wp dir
-  DEFAULT_WPDIR="${HOME}/.wallpaper"
-  # and a default wait interval
-  DEFAULT_WAIT="60s"
-
-  # If there is a readable settings file, read it
-  if [[ -r "${HOME}"/.wallpaper.rotate.rc ]]; then
+  DEFAULT_WPDIR="${HOME}/.wallpapers" # Assign a default wp dir
+  DEFAULT_WAIT="60s" # and a default wait interval
+  if [[ -r "${HOME}"/.wallpaper.rotate.rc ]]; then # If there is a readable settings file, read it
     source "${HOME}"/.wallpaper.rotate.rc
   fi
-
-  # take second argument as a wp dir or assign a default.
-  WPD=${2-${DEFAULT_WPDIR}}
-  # fill array with values
-  WPL=( $(ls ${WPD}) )
-  # get array upper bound
-  WPN=${#WPL[*]}
-
+  WPD=${2-${DEFAULT_WPDIR}} # take second argument as a wp dir or assign a default.
+  WPL=( $(ls ${WPD}) ) # fill array with values
+  WPN=${#WPL[*]} # get array upper bound
   while true ; do
-    # limit a random num to upper array bounds
-    #let "RN = $RANDOM % $WPN"
+    #let "RN = $RANDOM % $WPN" # limit a random num to upper array bounds
     RN=$(shuf -n 1 -i 0-"${WPN}")
-    # Get path and name of image
-    WP="${WPD}/${WPL[$RN]}"
-    # Check if item is a symlink
-    if [[ -L "${WP}" ]]; then
-      # set wallpaper, wait
-      ${BGSETTER} "${WP}"
+    WP="${WPD}/${WPL[$RN]}" # Get path and name of image
+    if [[ -L "${WP}" ]]; then # Check if item is a symlink
+      ${BGSETTER} "${WP}" # set wallpaper, wait
       sleep ${1-${DEFAULT_WAIT}}
     else
-      # Try again later
-      sleep ${1-${DEFAULT_WAIT}}
+      sleep ${1-${DEFAULT_WAIT}} # Try again later
     fi
   done
 }
@@ -91,19 +75,14 @@ function rotateBg() {
 # Call this function with the dir you'd like to add its images as links in "~/.wallpapers"
 # for use with "rotateBg" function. eg: "rbgHelperAddDir /home/user/pictures"
 function rbgHelperAddDir {
-  # Assign a default wp dir
-  DEFAULT_WPDIR="${HOME}/.wallpapers"
-  # If there is a readable settings file, read it
-  if [ -r ${HOME}/.wallpaper.rotate.rc ]; then
+  DEFAULT_WPDIR="${HOME}/.wallpapers" # Assign a default wp dir
+  if [ -r ${HOME}/.wallpaper.rotate.rc ]; then # If there is a readable settings file, read it
     source ${HOME}/.wallpaper.rotate.rc
   fi
-  # What errors?
-  mkdir "${DEFAULT_WPDIR}" 2> /dev/null
+  mkdir "${DEFAULT_WPDIR}" 2> /dev/null # What errors?
   for i in $(ls "${1}"); do
-    # Get file extention ${str:(-4)}
-    FE="${i:(-4)}"
-    # and lowercase it ${str,,}
-    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then
+    FE="${i:(-4)}" # Get file extention ${str:(-4)}
+    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then # and lowercase it ${str,,}
       ln -sf "${1}"/"${i}" "${DEFAULT_WPDIR}"/"${i}"
     fi
   done
@@ -118,18 +97,14 @@ function rbgHelperAddDir {
 # eg: "rbgHelperRemoveDir /home/user/pictures"
 # It is meant to be called interactively and not from within scripts
 function rbgHelperRemoveDir {
-  # Assign a default wp dir
-  DEFAULT_WPDIR="${HOME}/.wallpapers"
-  # If there is a readable settings file, read it
-  if [[ -r ${HOME}/.wallpaper.rotate.rc ]]; then
+  DEFAULT_WPDIR="${HOME}/.wallpapers" # Assign a default wp dir
+  if [[ -r ${HOME}/.wallpaper.rotate.rc ]]; then # If there is a readable settings file, read it
     source ${HOME}/.wallpaper.rotate.rc
   fi
   for i in $(ls "${1}"); do
-    # Get file extention ${str:(-4)}
-    FE="${i:(-4)}"
-    # and lowercase it ${str,,}
-    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then
-      rm -i "${DEFAULT_WPDIR}"/"${i}"      # rm --interactive just to play it safe, this func
+    FE="${i:(-4)}" # Get file extention ${str:(-4)}
+    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then # and lowercase it ${str,,}
+      rm -i "${DEFAULT_WPDIR}"/"${i}" # rm --interactive just to play it safe, this func
     fi
   done
 }

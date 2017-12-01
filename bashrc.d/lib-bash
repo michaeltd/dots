@@ -173,19 +173,20 @@ function runCmd() {
   return $?
 }
 
-# Take a parameter and respawn it periodicaly if it crashes. check interval is second param seconds
 #!/usr/bin/env /bin/bash
+# Take an application (first parameter) and respawn it periodicaly (second parameter) if it crashes
+# EG: "keepParamAlive conky 15" Will check every 15sec if conky is running and launch it if it's not
 function keepParamAlive() {
   if [[ -z "${1}" || -z $(which "${1}") ]]; then # Test param
-    printf "Need an application as parameter.\n%s has not been found in \$PATH env var.\n" "${1}"
+    printf "Need an application as parameter.\n\"%s\" was not found in your PATH.\n" "${1}"
     return 1
   else
     while [[ true ]]; do # Endless loop.
       pid=$(pgrep -x "${1}") # Get a pid.
-      if [[ -z "${pid}" ]]; then # If there is none,
-        "${1}" & # Start Param to background.
-      else # Else
-        sleep ${2-"60"} # Wait.
+      if [[ -z "${pid}" ]]; then # If there is none, start it in the background.
+        "${1}" &
+      else # Else wait.
+        sleep ${2-"60"}
       fi
     done
   fi
@@ -242,7 +243,7 @@ pack_archive() {
 # Script to unify archive extraction in linux CLI environments
 # inflateThat.sh tsouchlarakis@gmail.com 2015/12/09
 function unpack_archive() {
-  if [[ ! -x $(which 7z) || ! -x $(which tar) || ! -x $(which bunzip2) || ! -x $(which rar) || ! -x $(which gunzip) || ! -x $(which unzip_asdf) || ! -x $(which uncompress) ]]; then
+  if [[ ! -x $(which 7z) || ! -x $(which tar) || ! -x $(which bunzip2) || ! -x $(which rar) || ! -x $(which gunzip) || ! -x $(which unzip) || ! -x $(which uncompress) ]]; then
     msg="## \"%s\" uses the following commands/utilities: 7z, tar, bunzip2, rar, gunzip, unzip, uncompress.\n## Install them all for full functionality.\n"
     printf "${msg}" "${FUNCNAME[0]}"
   fi # Warn for missing decompressors.
@@ -302,7 +303,7 @@ function imageMagicScreenShot() {
   PI=${1-"2"}
   FN="${HOME}"/imagemagic-`date +%y%m%d%H%M%S`.png
   import -pause $PI -window root $FN
-  viewnior $FN
+  ristretto $FN
 }
 
 function pingSubnet() {
