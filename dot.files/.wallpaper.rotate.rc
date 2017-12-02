@@ -1,0 +1,4 @@
+# Assign a default wp dir
+DEFAULT_WPDIR="${HOME}/.wallpapers"
+# and a default wait interval
+DEFAULT_WAIT="120s"

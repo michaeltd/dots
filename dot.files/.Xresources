@@ -1,0 +1,340 @@
+! X resources used in FVWM-Crystal project (http://fvwm-crystal.berlios.de/)
+! Written by: Maciej Delmanowski <harnir@post.pl>
+! Put this file as ~/.Xresources in your home directory
+
+! Emacs
+
+Emacs*geometry: 120x40
+
+! ===========================================================================
+! XTerm resources
+
+! Look similar to the Linux Console
+! ---------------------------------------------------------------------------
+XTerm*background: black
+XTerm*foreground: white
+XTerm*cursorColor: yellow
+XTerm*Title: XTerm
+XTerm*transparent: true
+!XTerm*HiForeColor: white
+!XTerm*HiBackColor: #c06077
+XTerm*scrollBar: false
+XTerm*saveLines: 99999
+XTerm*geometry: 80x25
+
+! Fonts for different resolutions and character encodings
+! By default English encoding is set. How to set different encodings:
+! - Polish encoding: apply "-iso8859-2" at the end of the font string
+! ---------------------------------------------------------------------------
+! Englsh encoding
+! 640x480
+!XTerm*font: -misc-fixed-medium-r-normal-*-12-*
+! 800x600
+!XTerm*font: -misc-fixed-medium-r-normal-*-13-*
+! 1024x768
+!XTerm*font: -misc-fixed-medium-r-normal-*-14-*
+! 1152x864
+!XTerm*font: -misc-fixed-medium-r-normal-*-14-*
+XTerm*font: -misc-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*
+! 1280x1024
+!XTerm*font: -misc-fixed-medium-r-normal-*-18-*
+
+
+! Colors similar to those used in Linux Console (ttyX)
+! ---------------------------------------------------------------------------
+XTerm*color0: rgb:0/0/0
+XTerm*color1: rgb:cc/00/00
+XTerm*color2: rgb:00/cc/00
+XTerm*color3: #bd5e01
+XTerm*color4: rgb:00/00/cc
+XTerm*color5: rgb:cc/00/cc
+XTerm*color6: rgb:00/cc/cc
+XTerm*color7: rgb:aa/aa/aa
+XTerm*color8: rgb:33/33/33
+XTerm*color9: rgb:ff/00/00
+XTerm*color10: rgb:00/ff/00
+XTerm*color11: rgb:ff/ff/00
+XTerm*color12: rgb:00/00/ff
+XTerm*color13: rgb:ff/00/ff
+XTerm*color14: rgb:00/ff/ff
+XTerm*color15: rgb:ff/ff/ff
+
+! Default XTerm colors
+! ---------------------------------------------------------------------------
+!XTerm*color0: black
+!XTerm*color1: red3
+!XTerm*color2: green3
+!XTerm*color3: brown
+!XTerm*color4: blue3
+!XTerm*color5: magenta3
+!XTerm*color6: cyan3
+!XTerm*color7: gray90
+!XTerm*color8: gray30
+!XTerm*color9: red
+!XTerm*color10: green
+!XTerm*color11: yellow
+!XTerm*color12: blue
+!XTerm*color13: magenta
+!XTerm*color14: cyan
+!XTerm*color15: white
+
+! Specific settings for QuakeConsole (Alt+`), to get better effect
+! ---------------------------------------------------------------------------
+! 800x600
+!QuakeConsoleNeedsUniqueName*internalBorder: 0
+! 1024x768
+!QuakeConsoleNeedsUniqueName*internalBorder: 0
+! 1152x864
+!QuakeConsoleNeedsUniqueName*internalBorder: 1
+! 1280x1024
+!QuakeConsoleNeedsUniqueName*internalBorder: 0
+
+
+! ===========================================================================
+! Aterm resources
+! Aterm can use XTerm's resources, so look also in there
+! Here are only settings specific to Aterm
+
+! Aterm supports transparency, so it's turned on by default
+! ---------------------------------------------------------------------------
+Aterm.transparent: true
+Aterm.shading: 30
+
+! Specific settings for Aterm-based QuakeConsole
+! ---------------------------------------------------------------------------
+! 1152x864
+!QuakeConsoleNeedsUniqueName*font: -misc-fixed-medium-r-normal-*-12-*
+! 1280x1024
+!QuakeConsoleNeedsUniqueName*font: -misc-fixed-medium-r-normal-*-14-*
+
+
+! ===========================================================================
+! mrxvt resources
+! mrxvt can use XTerm's resources, so look also in there
+! Here are only settings specific to mrxvt
+
+! Similar look to the Linux Console, with corresponding tabs
+! ---------------------------------------------------------------------------
+mrxvt.initTermNumber: 1
+mrxvt.protectSecondary: true
+mrxvt.syncTabTitle: true
+mrxvt.bottomTabbar: true
+mrxvt.hideButtons: true
+mrxvt.tabForeground: white
+mrxvt.tabBackground: black
+mrxvt.itabForeground: white
+mrxvt.itabBackground: #555555
+
+! Settings for mrxvt-based QuakeConsole - strongly recommended :)
+! ---------------------------------------------------------------------------
+!QuakeConsoleNeedsUniqueName.initTermNumber: 1
+!QuakeConsoleNeedsUniqueName.protectSecondary: true
+!QuakeConsoleNeedsUniqueName.syncTabTitle: true
+!QuakeConsoleNeedsUniqueName.bottomTabbar: true
+!QuakeConsoleNeedsUniqueName.hideButtons: true
+!QuakeConsoleNeedsUniqueName.tabForeground: white
+!QuakeConsoleNeedsUniqueName.tabBackground: black
+!QuakeConsoleNeedsUniqueName.itabForeground: white
+!QuakeConsoleNeedsUniqueName.itabBackground: #555555
+
+
+! ===========================================================================
+! URxvt resources
+
+! Look similar to the Linux Console, with transparency
+! ---------------------------------------------------------------------------
+URxvt.background: black
+URxvt.foreground: white
+URxvt.shading: 30
+URxvt.tintColor: white
+URxvt.inheritPixmap: true
+URxvt.scrollBar: false
+URxvt.scrollBar_right:true
+!URxvt.geometry: 120x40
+URxvt.saveLines: 99999
+
+URxvt.perl-ext: tabbed
+URxvt.tabbed.tabbar-fg: <colour-index, default 3>
+URxvt.tabbed.tabbar-bg: <colour-index, default 0>
+URxvt.tabbed.tab-fg:    <colour-index, default 0>
+URxvt.tabbed.tab-bg:    <colour-index, default 1>
+
+! Solarized color scheme for the X Window System
+!
+! http://ethanschoonover.com/solarized
+
+
+! Common
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+
+! Dark
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+
+! Light
+
+! #define S_base03        #fdf6e3
+! #define S_base02        #eee8d5
+! #define S_base01        #93a1a1
+! #define S_base00        #839496
+! #define S_base0         #657b83
+! #define S_base1         #586e75
+! #define S_base2         #073642
+! #define S_base3         #002b36
+
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+URxvt*depth:                   32
+URxvt*background:              rgba:0200/0200/0200/c800
+URxvt*background:              S_base03
+URxvt*foreground:              S_base0
+URxvt*fading:                  40
+URxvt*fadeColor:               S_base03
+URxvt*cursorColor:             S_base1
+URxvt*pointerColorBackground:  S_base01
+URxvt*pointerColorForeground:  S_base1
+
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
+
+
+
+! Font settings
+! URxvt uses UTF-8, so we don't need encoding-specific settings
+! ---------------------------------------------------------------------------
+! 640x480
+!URxvt.font: xft:Monospace:pixelsize=10
+! 800x600
+!URxvt.font: xft:Monospace:pixelsize=10
+! 1024x768
+!URxvt.font: xft:Monospace:pixelsize=11
+! 1152x864
+!URxvt.font: xft:Monospace:pixelsize=12
+! 1280x1024
+!URxvt.font: xft:Monospace:pixelsize=14
+!URxvt.font: pixelsize=14
+URxvt.font: -misc-fixed-medium-r-normal-*-14-*
+
+! Colors similar to Linux console
+! ---------------------------------------------------------------------------
+!URxvt.color0: rgb:0/0/0
+!URxvt.color1: rgb:cc/00/00
+!URxvt.color2: rgb:00/cc/00
+!URxvt.color3: #bd5e01
+!URxvt.color4: rgb:00/00/cc
+!URxvt.color5: rgb:cc/00/cc
+!URxvt.color6: rgb:00/cc/cc
+!URxvt.color7: rgb:aa/aa/aa
+!URxvt.color8: rgb:33/33/33
+!URxvt.color9: rgb:ff/00/00
+!URxvt.color10: rgb:00/ff/00
+!URxvt.color11: rgb:ff/ff/00
+!URxvt.color12: rgb:00/00/ff
+!URxvt.color13: rgb:ff/00/ff
+!URxvt.color14: rgb:00/ff/ff
+!URxvt.color15: rgb:ff/ff/ff
+
+! Default URxvt colors
+! ---------------------------------------------------------------------------
+!URxvt.color0: black
+!URxvt.color1: red3
+!URxvt.color2: green3
+!URxvt.color3: brown
+!URxvt.color4: blue3
+!URxvt.color5: magenta3
+!URxvt.color6: cyan3
+!URxvt.color7: gray90
+!URxvt.color8: gray30
+!URxvt.color9: red
+!URxvt.color10: green
+!URxvt.color11: yellow
+!URxvt.color12: blue
+!URxvt.color13: magenta
+!URxvt.color14: cyan
+!URxvt.color15: gray60
+
+! Specific settings for QuakeConsole
+! ---------------------------------------------------------------------------
+! 1280x1024
+!QuakeConsoleNeedsUniqueName.font: xft:Monospace:pixelsize=12
+! MWM Resources  --  These are only run if you are using the mwm window
+!                    manager.  Run "man mwm" for details.
+
+! Causes icon box to scroll horizontally only
+!Mwm*iconBoxSBDisplayPolicy:     vertical
+! Creates a box to place your icons
+!Mwm*useIconBox:			False
+! Sets the icon box's size and location
+!Mwm*iconBoxGeometry:		10x1+160-0
+! Sets the icon box's title
+!Mwm*iconBoxTitle:		MWM Icon Manager
+! Sets where the icons will appear (on the screen, or in an icon box if it
+! exists)
+!Mwm*iconPlacement:		left top
+! "fades" icon of applications that are active
+!Mwm*fadeNormalIcon:		True
+! Causes whatever your pointer is over to become the active application
+!Mwm*keyboardFocusPolicy:	click
+! Causes all border and title decoration to appear on xclock applications
+!Mwm*XClock.clientDecoration:	+all
+! Causes all border and title decoration to appear on xbiff applications
+!Mwm*xbiff.clientDecoration:	+all
+! Lets you select by hand the location of a new application (unless a specific
+! location is indicated when you run it)
+!Mwm*interactivePlacement:	False
+! Sets a foreground color for every application
+Mwm*foreground:			black
+! Sets a background color for every application
+Mwm*background:			DarkGrey
+! Sets a foreground color for the active application
+Mwm*activeForeground:		white
+! Sets a background color for the active application
+Mwm*activeBackground:		black
+! Sets a foreground color for your menu
+Mwm*menu*foreground:		white
+! Sets a background color for your menu
+Mwm*menu*background:		DarkGrey
+! Default font for your application titles
+!Mwm*fontList:         -adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*
+! Default font for your menus
+!Mwm*menu*fontList:    -adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*
+! Cause the xclock icon not to show up in the icon box
+!Mwm*XClock*clientFunctions:     -minimize
+! Cause the xbiff icon not to show up in the icon box
+!Mwm*xbiff*clientFunctions:    -minimize
+
