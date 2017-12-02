@@ -1,5 +1,5 @@
 #!/usr/bin/env /bin/bash
-#~/.profile and
+# .xsession to loads ~/.profile and ~/.xinit to sessions initiated my xdm's
 
 ~/.profile
 

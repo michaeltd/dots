@@ -22,10 +22,10 @@
 
 export E_COMP_ENGINE=sw
 
-exec dbus-launch --exit-with-session starte16
+#exec dbus-launch --exit-with-session starte16
 #exec dbus-launch --exit-with-session enlightenment_start
 #exec dbus-laynch --exit-with-session startxfce4
 #exec dbus-laynch --exit-with-session kodi-standalone
 #exec dbus-laynch --exit-with-session /usr/local/bin/compiz.sh
-#exec dbus-laynch --exit-with-session `which mwm`
+exec dbus-laynch --exit-with-session `which mwm`
 #exec dbus-laynch --exit-with-session wmaker

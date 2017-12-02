@@ -3,7 +3,8 @@
 xrdb -merge ~/.Xresources 2> /dev/null
 
 # import functions (should be auto-imported)
-source "${HOME}"/bin/wallpaper-rotate.sh
+# Normaly auto sourced from bashrc.d
+source "${HOME}"/bin/bashrc.d/wallpaper-rotate
 # Add some wallpaper variety for your desktop
 rotateBg &
 #feh --bg-scale ~/.wallpapers/emacs-cheat-sheet.png

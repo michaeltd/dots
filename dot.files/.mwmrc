@@ -71,10 +71,10 @@ Menu RootMenu_1.1
 Menu ApplicationsMenu
 {
 	"Applications" 		f.title
-	"Terminal" 		f.exec "urxvt -sb &"
+	"Terminal" 		f.exec "xterm -sb &"
 	"Firefox" 		f.exec "firefox &"
 	"File Manager" 		f.exec "gentoo &"
-	"Editor" 		f.exec "nedit &"
+	"Editor" 		f.exec "gvim &"
 	"AutoStart.sh"		f.exec "autostart.sh &"
 	"Root Menu" 		f.exec "TkRootMenu.sh &"
 }
