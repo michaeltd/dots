@@ -3,14 +3,14 @@
 #
 
 # Set environment variables
-export VISUAL=`which vim`
-export EDITOR=`which vim`
+#export VISUAL=`which vim`
+#export EDITOR=`which vim`
 #export PAGER=/usr/bin/most
 
 if [ -n "$DISPLAY" ]; then
     export BROWSER=`which firefox`
 else
-    export BROWSER=`which w3m`
+    export BROWSER=`which w3m||which links`
 fi
 
 # Don't put duplicate lines or lines starting with space in the history.

@@ -1,4 +1,14 @@
 #!/bin/bash
+
+#### Parse parameters (getopt?)
+# getopt or ?
+#
+
+#### Utilities to check out
+# useradd userdel usermod users
+# groupadd groupdel groupmod groups
+# gpasswd passwd
+
 #groupadd $1
 useradd \
   --user-group \
