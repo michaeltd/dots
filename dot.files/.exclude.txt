@@ -7,4 +7,5 @@
 */Trash/*
 */Downloads/*
 */.npm/*
+*/_libBash/*
 */hollywood/*
