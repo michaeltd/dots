@@ -1968,3 +1968,13 @@ cat .bashrc
 su -l
 fg
 su -l
+cd git/lib-bash/
+git add .
+git commit -m .bashrc
+git push
+git add .
+git commit -m excludes
+git push
+git config remote.origin.url https://MichaelTd:0911fuckingpig@github.com/MichaelTd/lib-bash
+git push
+su -l paperjam
