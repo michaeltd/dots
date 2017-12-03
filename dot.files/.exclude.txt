@@ -1,0 +1,10 @@
+*/.cache/*
+*/Videos/*
+*/opt/*
+*/emsdk/*
+*/node_modules/*
+*/ImapMail/*
+*/Trash/*
+*/Downloads/*
+*/.npm/*
+*/hollywood/*
