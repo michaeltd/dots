@@ -18,7 +18,12 @@ _PROMPT() {
           _time="${_br1}${_time24h}${_br2}"
 
     # Exit status string
-    [ $EXIT_STATUS != 0 ] && local _errmsg="${_br1}\[${bold}${red}\]${EXIT_STATUS}${_br2}"
+    if [ $EXIT_STATUS != 0 ]
+    then 
+        local _errmsg="${_br1}\[${bold}${red}\]${EXIT_STATUS}${_br2}"
+    else
+        local _errmsg="${_br1}${EXIT_STATUS}${_br2}"
+    fi
 
     # User
     if (( UID == 0 )); then
