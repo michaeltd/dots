@@ -14,3 +14,11 @@ Playground
 
 ###### Reference
 [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/html/abs-guide.html) ([PDF](http://www.tldp.org/LDP/abs/abs-guide.pdf))
+
+[EbookFoundation free-programming-books - bash](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash)
+
+[bash-oo-framework](https://github.com/niieani/bash-oo-framework) https://github.com/niieani/bash-oo-framework
+
+[bash-hackers](http://wiki.bash-hackers.org/) http://wiki.bash-hackers.org/
+
+[dotshare.it](http://dotshare.it/) http://dotshare.it/
