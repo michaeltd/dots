@@ -1,0 +1,48 @@
+# ~/.bashrc.d/variables
+#
+
+# Set environment variables
+if [[ -n "${DISPLAY}" ]]; then
+    export VISUAL="$(which emacs)" EDITOR="$(which emacs)"
+else
+    export VISUAL="$(which kak)" EDITOR="$(which kak)"
+fi
+
+export PAGER=$(which less)
+
+# export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
+
+if [[ -n "${DISPLAY}" ]]; then
+    export BROWSER=$(which firefox||which seamonkey)
+else
+    export BROWSER=$(which w3m||which lynx)
+fi
+
+export LANG="en_US.utf8"
+export LC_COLLATE="C"
+
+export HISTCONTROL=ignoreboth
+export HISTSIZE=99999
+export HISTFILESIZE=99999
+
+export GIT_PS1_SHOWDIRTYSTATE=yes
+export GIT_PS1_SHOWSTASHSTATE=yes
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWUPSTREAM=yes
+
+export JAVA="/opt/java"
+export JAVA_HOME="${JAVA}"
+export GOPATH="${HOME}/go"
+export NODE="/opt/nodejs"
+export MONGODB="/opt/mongodb"
+export SCALA_HOME="/opt/scala"
+export ANACONDA3="/opt/anaconda3"
+
+export PATH+=":${HOME}/bin"
+export PATH+=":${JAVA_HOME}/bin"
+export PATH+=":${GOPATH}/bin"
+[[ -d "${HOME}/.cargo" ]] && export PATH+=":${HOME}/.cargo/bin"
+export PATH+=":${NODE}/bin"
+export PATH+=":${MONGODB}/bin"
+export PATH+=":${SCALA_HOME}/bin"
+export PATH+=":${ANACONDA3}/bin"

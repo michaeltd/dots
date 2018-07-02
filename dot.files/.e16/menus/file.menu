@@ -1,0 +1,6 @@
+"User Menus"
+"User Application List" NULL menu "user_apps.menu"
+"Applications" NULL menu "menus_apps/index.menu"
+"Epplets" NULL menu "epplets.menu"
+"Restart" NULL "exit restart"
+"Log Out" NULL "exit logout"

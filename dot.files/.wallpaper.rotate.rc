@@ -1,0 +1,3 @@
+# ~/.wallpaper.rotate.rc
+DEFAULT_WPDIR="${HOME}/.wallpapers" # Assign a default wp dir
+DEFAULT_WAIT="120s" # and a default wait interval # See man sleep for details

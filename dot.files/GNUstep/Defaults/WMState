@@ -1,0 +1,363 @@
+{
+  Dock = {
+    AutoRaiseLower = Yes;
+    Applications = (
+      {
+        Forced = No;
+        Name = Logo.WMDock;
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,0";
+        Lock = Yes;
+        Command = "/usr/bin/WPrefs";
+      },
+      {
+        Forced = No;
+        Name = wmfire.wmfire;
+        DropCommand = "wmfire %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,8";
+        Lock = No;
+        PasteCommand = "wmfire %s";
+        Command = wmfire;
+      },
+      {
+        Forced = No;
+        Name = wmclockmon.DockApp;
+        DropCommand = "wmclockmon %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,6";
+        Lock = No;
+        PasteCommand = "wmclockmon %s";
+        Command = wmclockmon;
+      },
+      {
+        Forced = No;
+        Name = wmsystemtray0.wmsystemtray;
+        DropCommand = "wmsystemtray %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,5";
+        Lock = No;
+        PasteCommand = "wmsystemtray %s";
+        Command = wmsystemtray;
+      },
+      {
+        Forced = No;
+        Name = wmMatrix.wmMatrix;
+        DropCommand = "wmMatrix %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,7";
+        Lock = No;
+        PasteCommand = "wmMatrix %s";
+        Command = wmMatrix;
+      }
+    );
+    Lowered = Yes;
+    Position = "0,64";
+    Applications900 = (
+      {
+        Forced = No;
+        Name = Logo.WMDock;
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,0";
+        Lock = Yes;
+        Command = "/usr/bin/WPrefs";
+      },
+      {
+        Forced = No;
+        Name = wmfire.wmfire;
+        DropCommand = "wmfire %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,8";
+        Lock = No;
+        PasteCommand = "wmfire %s";
+        Command = wmfire;
+      },
+      {
+        Forced = No;
+        Name = wmclockmon.DockApp;
+        DropCommand = "wmclockmon %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,6";
+        Lock = No;
+        PasteCommand = "wmclockmon %s";
+        Command = wmclockmon;
+      },
+      {
+        Forced = No;
+        Name = wmsystemtray0.wmsystemtray;
+        DropCommand = "wmsystemtray %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,5";
+        Lock = No;
+        PasteCommand = "wmsystemtray %s";
+        Command = wmsystemtray;
+      },
+      {
+        Forced = No;
+        Name = wmMatrix.wmMatrix;
+        DropCommand = "wmMatrix %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,7";
+        Lock = No;
+        PasteCommand = "wmMatrix %s";
+        Command = wmMatrix;
+      }
+    );
+  };
+  Clip = {
+    Forced = No;
+    Name = Logo.WMClip;
+    DropCommand = "wmsetbg -u -t %d";
+    BuggyApplication = No;
+    AutoLaunch = No;
+    Position = "0,0";
+    Lock = No;
+    Command = "-";
+  };
+  Drawers = (
+    {
+      Dock = {
+        AutoCollapse = Yes;
+        Applications = (
+          {
+            Forced = No;
+            Name = firefox.Firefox;
+            DropCommand = "firefox %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "3,0";
+            Lock = No;
+            PasteCommand = "firefox %s";
+            Command = firefox;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = hexchat.Hexchat;
+            DropCommand = "hexchat %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "1,0";
+            Lock = No;
+            PasteCommand = "hexchat %s";
+            Command = hexchat;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = seamonkey.Seamonkey;
+            DropCommand = "seamonkey %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "2,0";
+            Lock = No;
+            PasteCommand = "seamonkey %s";
+            Command = seamonkey;
+            Omnipresent = No;
+          }
+        );
+        Collapsed = Yes;
+        AutoAttractIcons = No;
+      };
+      Name = Drawer0;
+      Position = "0,128";
+    },
+    {
+      Dock = {
+        AutoCollapse = Yes;
+        Applications = (
+          {
+            Forced = No;
+            Name = gimp.Gimp;
+            DropCommand = "gimp %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "3,0";
+            Lock = No;
+            PasteCommand = "gimp %s";
+            Command = gimp;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = audacious.Audacious;
+            DropCommand = "audacious %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "2,0";
+            Lock = No;
+            PasteCommand = "audacious %s";
+            Command = audacious;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = vlc.Vlc;
+            DropCommand = "vlc %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "1,0";
+            Lock = No;
+            PasteCommand = "vlc %s";
+            Command = vlc;
+            Omnipresent = No;
+          }
+        );
+        Collapsed = Yes;
+        AutoAttractIcons = No;
+      };
+      Name = Drawer1;
+      Position = "0,192";
+    },
+    {
+      Dock = {
+        AutoCollapse = Yes;
+        Applications = (
+          {
+            Forced = No;
+            Name = xfe.Xfe;
+            DropCommand = "xfe %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "2,0";
+            Lock = No;
+            PasteCommand = "xfe %s";
+            Command = xfe;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = "xfce4-terminal.Xfce4-terminal";
+            DropCommand = "xfce4-terminal %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "3,0";
+            Lock = No;
+            PasteCommand = "xfce4-terminal %s";
+            Command = "xfce4-terminal --disable-server";
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = gentoo.Gentoo;
+            DropCommand = "gentoo %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "1,0";
+            Lock = No;
+            PasteCommand = "gentoo %s";
+            Command = gentoo;
+            Omnipresent = No;
+          }
+        );
+        Collapsed = Yes;
+        AutoAttractIcons = No;
+      };
+      Name = Drawer2;
+      Position = "0,256";
+    },
+    {
+      Dock = {
+        AutoCollapse = Yes;
+        Applications = (
+          {
+            Forced = No;
+            Name = emacs.Emacs;
+            DropCommand = "emacs %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "3,0";
+            Lock = No;
+            PasteCommand = "emacs %s";
+            Command = emacs;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = gvim.Gvim;
+            DropCommand = "gvim %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "2,0";
+            Lock = No;
+            PasteCommand = "gvim %s";
+            Command = gvim;
+            Omnipresent = No;
+          },
+          {
+            Forced = Yes;
+            Name = atom.Atom;
+            DropCommand = "atom %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "1,0";
+            Lock = No;
+            PasteCommand = "atom %s";
+            Command = atom;
+            Omnipresent = No;
+          }
+        );
+        Collapsed = Yes;
+        AutoAttractIcons = No;
+      };
+      Name = Drawer3;
+      Position = "0,320";
+    }
+  );
+  Workspaces = (
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = Main;
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = "Workspace 2";
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = "Workspace 3";
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = "Workspace 4";
+    }
+  );
+}

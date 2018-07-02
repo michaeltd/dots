@@ -1,0 +1,78 @@
+{
+  firefox.Firefox = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/firefox.Firefox.xpm";
+  };
+  hexchat.Hexchat = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/hexchat.Hexchat.xpm";
+  };
+  xarchiver.Xarchiver = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/xarchiver.Xarchiver.xpm";
+  };
+  tk.Tk = {
+    AlwaysUserIcon = No;
+    Omnipresent = Yes;
+  };
+  "wicd-client.py.Wicd-client.py" = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/wicd-client.py.Wicd-client.py.xpm";
+  };
+  gimp.Gimp = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/gimp.Gimp.xpm";
+  };
+  Drawer0.WMDrawer = {
+    Icon = firefox.Firefox.xpm;
+  };
+  xterm.XTerm = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/xterm.XTerm.xpm";
+  };
+  audacious.Audacious = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/audacious.Audacious.xpm";
+  };
+  evince.Evince = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/evince.Evince.xpm";
+  };
+  "xfce4-terminal.Xfce4-terminal" = {
+    Icon = "xfce4-terminal.Xfce4-terminal.xpm";
+  };
+  seamonkey.Seamonkey = {
+    Icon = seamonkey.Seamonkey.xpm;
+  };
+  Drawer2.WMDrawer = {
+    Icon = gentoo.Gentoo.xpm;
+  };
+  gentoo.Gentoo = {
+    Icon = gentoo.Gentoo.xpm;
+  };
+  groupLeader.WPrefs = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/groupLeader.WPrefs.xpm";
+  };
+  porthole.Porthole = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/porthole.Porthole.xpm";
+  };
+  Drawer1.WMDrawer = {
+    Icon = gimp.Gimp.xpm;
+  };
+  emacs.Emacs = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/emacs.Emacs.xpm";
+  };
+  main.terminology = {
+    Icon = terminology.png;
+  };
+  vlc.Vlc = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/vlc.Vlc.xpm";
+  };
+  Drawer3.WMDrawer = {
+    Icon = gvim.Gvim.xpm;
+  };
+  gvim.Gvim = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/gvim.Gvim.xpm";
+  };
+  xfe.Xfe = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/xfe.Xfe.xpm";
+  };
+  atom.Atom = {
+    Icon = Atom.atom.png;
+  };
+  nedit.NEdit = {
+    Icon = nedit.NEdit.xpm;
+  };
+}

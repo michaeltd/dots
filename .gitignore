@@ -1,0 +1,21 @@
+# for f in $(git status --porcelain | grep '^??' | sed 's/^?? //'); do
+#     test -L "$f" && echo $f >> .gitignore; # add symlinks
+#     #test -d "$f" && echo $f\* >> .gitignore; # add new directories as well
+# done
+# find . -type l | sed -e s'/^\.\///g' >> .gitignore
+
+*/*~
+*~
+*jcalc
+*jCalc.jar
+*TkRootMenu
+private/*
+*/.hiden/*
+*/.other/*
+*/.e16/cached/*
+*/.emacs.d/elpa/*
+*/.gnupg
+*/GNUstep/.AppInfo/WindowMaker/History
+*/GNUstep/Library/WindowMaker/CachedPixmaps/*
+_config.yml
+!*.tmux.conf.local

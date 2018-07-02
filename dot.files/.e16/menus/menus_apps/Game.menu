@@ -1,0 +1,5 @@
+"Game"
+"ChessX" "/usr/share/pixmaps/chessx.png" exec "chessx"
+"GNU Backgammon" "/usr/share/icons/hicolor/48x48/apps/gnubg.png" exec "gnubg -w"
+"Xboard" "/usr/share/icons/hicolor/48x48/apps/xboard.png" exec "xboard"
+"Xmahjongg" "/usr/share/pixmaps/xmahjongg.gif" exec "xmahjongg"

@@ -1,0 +1,15 @@
+# * linguist-vendored
+# *.js linguist-vendored=false
+# *.rb linguist-language=Java
+# And whether to exclude files that should be considered documentation:
+# documented_code.rb linguist-documentation=true
+# special-vendored-path/* linguist-vendored
+# jquery.js linguist-vendored=false
+
+# special-vendored-path/* linguist-vendored
+# */rc.lua linguist-vendored=false
+# *.lua linguist-language=Shell
+*.lua linguist-documentation=true
+wallpaper-rotate linguist-language=Shell
+lib-bash linguist-language=Shell
+dot.files/.bashrc.d/* linguist-language=Shell
