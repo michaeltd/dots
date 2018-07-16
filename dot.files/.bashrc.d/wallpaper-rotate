@@ -1,9 +1,10 @@
 # wallpaper-rorate
+#!/usr/bin/env bash
 # tsouchlarakis@gmail.com 2016.10.05
 # Simple script to go through a directory of
 # background images as wallpapers in a timely fashion
 
-declare DEFAULT_WPDIR DEFAULT_WAIT BGSETTER WR_USAGE="\nQuick and dirty script to rotate backgrounds\nin wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source wallpaper-rotate && rbgHelperAddDir /home/user/pictures && rotateBg &\n(rbgHelperAddDir /home/user/pictures needs to be executed only once per pictures directory.)\nAlternatively you can source this file in your startup scripts and start it from there.\n"
+declare DEFAULT_WPDIR="${HOME}/.wallpapers" DEFAULT_WAIT="60s" BGSETTER WR_USAGE="\nQuick and dirty script to rotate backgrounds\nin wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source wallpaper-rotate && rbgHelperAddDir /home/user/pictures && rotateBg &\n(rbgHelperAddDir /home/user/pictures needs to be executed only once per pictures directory.)\nAlternatively you can source this file in your startup scripts and start it from there.\n"
 
 function rbgHelperAssignDefaults() {
 
@@ -27,9 +28,6 @@ function rbgHelperAssignDefaults() {
     echo -e "${WR_USAGE}"
     return 1
   fi
-
-  DEFAULT_WPDIR="${HOME}/.wallpapers" # Assign a default wp dir
-  DEFAULT_WAIT="60s" # and a default wait interval
 
   if [[ -r "${HOME}"/.wallpaper.rotate.rc ]]; then # If there is a readable settings file, read it
     source "${HOME}"/.wallpaper.rotate.rc

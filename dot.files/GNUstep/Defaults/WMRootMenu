@@ -60,6 +60,7 @@
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
     (
       Utilities,
+      (XSnap, EXEC, xsnap),
       (Conky, EXEC, conky),
       ("GNU Privacy Assistant", EXEC, gpa),
       (NMap, EXEC, nmapfe),

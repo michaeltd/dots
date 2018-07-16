@@ -1,5 +1,5 @@
 # ~/.bashrc.d/aliases
-#
+#!/usr/bin/env bash
 
 if [ -x /usr/bin/dircolors ]; then
     # Color support

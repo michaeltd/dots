@@ -1,4 +1,5 @@
 # lib-bash
+#!/usr/bin/env bash
 
 function pp() {
   for i in {1..9}; do

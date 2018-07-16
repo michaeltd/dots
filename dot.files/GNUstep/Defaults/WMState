@@ -241,7 +241,7 @@
             DropCommand = "xfce4-terminal %d";
             BuggyApplication = No;
             AutoLaunch = No;
-            Position = "3,0";
+            Position = "4,0";
             Lock = No;
             PasteCommand = "xfce4-terminal %s";
             Command = "xfce4-terminal --disable-server";
@@ -257,6 +257,18 @@
             Lock = No;
             PasteCommand = "gentoo %s";
             Command = gentoo;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = main.terminology;
+            DropCommand = "terminology %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "3,0";
+            Lock = No;
+            PasteCommand = "terminology %s";
+            Command = terminology;
             Omnipresent = No;
           }
         );

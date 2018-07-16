@@ -1,5 +1,5 @@
 # ~/.bashrc.d/variables
-#
+#!/usr/bin/env bash
 
 # Set environment variables
 if [[ -n "${DISPLAY}" ]]; then
@@ -30,6 +30,7 @@ export GIT_PS1_SHOWSTASHSTATE=yes
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=yes
 
+export OPT="${HOME}/opt"
 export JAVA="/opt/java"
 export JAVA_HOME="${JAVA}"
 export GOPATH="${HOME}/go"
@@ -38,6 +39,7 @@ export MONGODB="/opt/mongodb"
 export SCALA_HOME="/opt/scala"
 export ANACONDA3="/opt/anaconda3"
 
+export PATH+=":${OPT}/bin"
 export PATH+=":${HOME}/bin"
 export PATH+=":${JAVA_HOME}/bin"
 export PATH+=":${GOPATH}/bin"
