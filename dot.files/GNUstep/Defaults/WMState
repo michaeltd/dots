@@ -135,7 +135,7 @@
             DropCommand = "firefox %d";
             BuggyApplication = No;
             AutoLaunch = No;
-            Position = "3,0";
+            Position = "4,0";
             Lock = No;
             PasteCommand = "firefox %s";
             Command = firefox;
@@ -159,10 +159,20 @@
             DropCommand = "seamonkey %d";
             BuggyApplication = No;
             AutoLaunch = No;
-            Position = "2,0";
+            Position = "3,0";
             Lock = No;
             PasteCommand = "seamonkey %s";
             Command = seamonkey;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = zoom.zoom;
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "2,0";
+            Lock = No;
+            Command = "/home/paperjam/opt/zoom/zoomlinux";
             Omnipresent = No;
           }
         );
@@ -217,7 +227,7 @@
         AutoAttractIcons = No;
       };
       Name = Drawer1;
-      Position = "0,192";
+      Position = "0,256";
     },
     {
       Dock = {
@@ -276,7 +286,7 @@
         AutoAttractIcons = No;
       };
       Name = Drawer2;
-      Position = "0,256";
+      Position = "0,320";
     },
     {
       Dock = {
@@ -323,7 +333,7 @@
         AutoAttractIcons = No;
       };
       Name = Drawer3;
-      Position = "0,320";
+      Position = "0,192";
     }
   );
   Workspaces = (

@@ -27,6 +27,9 @@
   audacious.Audacious = {
     Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/audacious.Audacious.xpm";
   };
+  zoom.zoom = {
+    Icon = zoom.zoom.xpm;
+  };
   evince.Evince = {
     Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/evince.Evince.xpm";
   };
