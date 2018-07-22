@@ -1,6 +1,16 @@
 # lib-bash
 #!/usr/bin/env bash
 
+function gpush() {
+  git add .
+  if [[ -n "${1}" ]]; then
+    git commit -m "${1}"
+  else
+    git commit
+  fi
+  git push
+}
+
 function pp() {
   for i in {1..9}; do
     for j in $(seq 1 $i); do
