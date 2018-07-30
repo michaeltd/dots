@@ -3,20 +3,14 @@
 
 # Set environment variables
 if [[ -n "${DISPLAY}" ]]; then
-    export VISUAL="$(which emacs)" EDITOR="$(which emacs)"
+    export VISUAL="$(which emacs)" EDITOR="$(which emacs)" BROWSER=$(which firefox||which seamonkey)
 else
-    export VISUAL="$(which kak)" EDITOR="$(which kak)"
+    export VISUAL="$(which emacs) -nw" EDITOR="$(which emacs) -nw" BROWSER=$(which w3m||which lynx)
 fi
 
 export PAGER=$(which less)
 
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
-
-if [[ -n "${DISPLAY}" ]]; then
-    export BROWSER=$(which firefox||which seamonkey)
-else
-    export BROWSER=$(which w3m||which lynx)
-fi
 
 export LANG="en_US.utf8"
 export LC_COLLATE="C"
@@ -44,15 +38,18 @@ export ANACONDA3="/opt/anaconda3"
 export PATH+=":${OPT}/bin"
 export PATH+=":${HOME}/bin"
 export PATH+=":${JAVA_HOME}/bin"
-export PATH+=":${MAVEN}/bin"
 export PATH+=":${ANT}/bin"
+export PATH+=":${MAVEN}/bin"
 export PATH+=":${GOPATH}/bin"
-[[ -d "${HOME}/.cargo" ]] && export PATH+=":${HOME}/.cargo/bin"
+if [[ -d "${HOME}/.cargo" ]]; then
+  export PATH+=":${HOME}/.cargo/bin"
+fi
 export PATH+=":${NODE}/bin"
 export PATH+=":${MONGODB}/bin"
 export PATH+=":${SCALA_HOME}/bin"
 export PATH+=":${ANACONDA3}/bin"
 
 export CLASSPATH+=":./"
-export CLASSPATH+=":${MAVEN}/lib"
+export CLASSPATH+=":${JAVA}/lib"
 export CLASSPATH+=":${ANT}/lib"
+export CLASSPATH+=":${MAVEN}/lib"
