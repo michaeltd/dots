@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# ~/bin/csslcert.sh
+# secure socket layer cert for your localhost sites
 
 openssl req -x509 \
   -out localhost.crt \
