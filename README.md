@@ -2,18 +2,16 @@
 
 #### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
+  * [plug-dots.sh](dot.files/bin/plug-dots.sh)
+    The means to migrate my .dots in new systems.
 * Some WM's
 * Backup includes - excludes
 * Editors - Utilities
-
   If emacs is "your thing", check one of ...
     * https://github.com/technomancy/emacs-starter-kit
     * https://github.com/bbatsov/prelude
     * https://github.com/purcell/emacs.d
     * https://github.com/notarock/.emacs.d
-
-* [plug-dots.sh](dot.files/bin/plug-dots.sh)
-The means to migrate my .dots in new systems.
 
 #### [upgrade-distro](dot.files/sbin/upgrade-distro.sh)
 Distro neutral upgrade script and bash arrays mini crash course.
