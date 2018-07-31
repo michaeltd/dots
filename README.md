@@ -12,6 +12,9 @@
     * https://github.com/purcell/emacs.d
     * https://github.com/notarock/.emacs.d
 
+* [plug-dots.sh](dot.files/bin/plug-dots.sh)
+The means to migrate my .dots in new systems.
+
 #### [upgrade-distro](dot.files/sbin/upgrade-distro.sh)
 Distro neutral upgrade script and bash arrays mini crash course.
 
