@@ -2,7 +2,7 @@
 
 #### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
-  * [dot.files](dot.files) is customizations of  [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/)
+  * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/)
   * [plug-dots.sh](dot.files/bin/plug-dots.sh)
     The means to migrate my .dots in new systems.
 * Some WM's
