@@ -9,16 +9,28 @@ _PROMPT() {
           _cwd_full="\w" _new_line="\n" _jobcount="\j"
 
     # Set variables for PS1 string
-    #_line1="\[${red}\]┌─╼\[${reset}\]" _line2="\[${red}\]└────╼\[${reset}\]" \
-    # local _br1="\[${bold}${black}\][\[${reset}\]" _br2="\[${bold}${black}\]]\[${reset}\]" \
+
+    local _br1="\[${bold}${black}\][\[${reset}\]" _br2="\[${bold}${black}\]]\[${reset}\]" \
+           _div1="\[${bold}${black}\] » \[${reset}\]" _div2="\[${bold}${black}\]╺─╸\[${reset}\]" \
+           _line1="\[${red}\]┌─╼\[${reset}\]" _line2="\[${red}\]└────╼\[${reset}\]" \
+           _sep="\[${reset}\]@" _title_sep="@"
+
+    #local _br1="\[${bold}${black}\][\[${reset}\]" _br2="\[${bold}${black}\]]\[${reset}\]" \
     #       _div1="\[${bold}${black}\] » \[${reset}\]" _div2="\[${bold}${black}\]╺─╸\[${reset}\]" \
     #       _line1="\[${red}\] » \[${reset}\]" _line2="\[${red}\] » \[${reset}\]" \
     #       _sep="\[${reset}\]@" _title_sep="@"
-    local _br1="\[${bold}${black}\][\[${reset}\]" _br2="\[${bold}${black}\]]\[${reset}\]" \
-          _div1="\[${bold}${black}\] [ \[${reset}\]" _div2="\[${bold}${black}]\[${reset}\]" \
-          _line1="\[${red}\]»\[${reset}\]" _line2="\[${red}\]»\[${reset}\]" \
-          _sep="\[${reset}\]@" _title_sep="@"
-    local _cwd="${_br1}${_cwd_short}${_br2}" _title_cwd="[${_cwd_short}]" \
+
+    #local _br1="\[${bold}${black}\][\[${reset}\]" _br2="\[${bold}${black}\]]\[${reset}\]" \
+    #      _div1="\[${bold}${black}\] [ \[${reset}\]" _div2="\[${bold}${black}]\[${reset}\]" \
+    #      _line1="\[${red}\]»\[${reset}\]" _line2="\[${red}\]»\[${reset}\]" \
+    #      _sep="\[${reset}\]@" _title_sep="@"
+
+    #local _br1="\[${bold}${black}\]\[${reset}\]" _br2="\[${bold}${black}\] \[${reset}\]"\
+    #      _div1="\[${bold}${black}\]\[${reset}\]" _div2="\[${bold}${black}\] \[${reset}\]"\
+    #      _line1="\[${red}\]\[${reset}\]" _line2="\[${red}\] \[${reset}\]"\
+    #      _sep="\[${reset}\]@" _title_sep="@"
+
+    local _cwd="${_br1}${_cwd_short}${_br2}" _title_cwd="[${_cwd_short}]"\
           _time="${_br1}${_time24h}${_br2}"
 
     # Exit status string
@@ -27,14 +39,13 @@ _PROMPT() {
       local _errmsg="${_br1}\[${bold}${red}\]${EXIT_STATUS}${_br2}"
     else
       local _errmsg=""
-      #local _errmsg="${_br1}\[${bold}${red}\]${EXIT_STATUS}${_br2}"
     fi
 
     # User
     if (( UID == 0 )); then
-        local _user="\[${red}\]\u\[${reset}\]" _title_user="\u"
+      local _user="\[${red}\]\u\[${reset}\]" _title_user="\u"
     else
-        local _user="\[${green}\]\u\[${reset}\]" _title_user="\u"
+      local _user="\[${green}\]\u\[${reset}\]" _title_user="\u"
     fi
 
     # Hostname
@@ -49,7 +60,6 @@ _PROMPT() {
         local _jobs="${_br1}\[${bold}${green}\]${_jobcount}${_br2}"
     else
         local _jobs=""
-        #local _jobs="${_br1}\[${bold}${green}\]${_jobcount}${_br2}"
     fi
 
     # Get the Git shell
@@ -78,7 +88,7 @@ _PROMPT() {
     # Set title in xterm/rxvt
     case $TERM in
         xterm*|rxvt*)
-            local _title="\[\e]2;${_title_ssh}${_title_user}${_title_sep}${_title_host} ${_title_cwd} ${_title_git}\007\]" ;;
+            local _title="\[\e]2;${_title_ssh}${_title_user}${_title_sep}${_title_host}${_title_cwd} ${_title_git}\007\]" ;;
         *)
             local _title="" ;;
     esac

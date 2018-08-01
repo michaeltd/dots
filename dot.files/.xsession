@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# .xsession to loads ~/.profile and ~/.xinit to sessions initiated my xdm's
+#
+# .xsession to sorce ~/.profile and execute ~/.xinitrc to sessions initiated by xdm
 
 pf="${HOME}/.profile"
 if [[ -r "${pf}" ]]; then # User Profile

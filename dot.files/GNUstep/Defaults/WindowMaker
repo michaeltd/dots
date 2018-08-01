@@ -1,13 +1,11 @@
 {
+  DontLinkWorkspaces = NO;
   FrameBorderColor = "#000000";
   FTitleColor = "#ffffff";
-  DontLinkWorkspaces = NO;
   LTCMaximizeKey = None;
   CycleIgnoreMinimized = NO;
   MenuDisabledColor = "#bbbbbb";
   LastWorkspaceKey = None;
-  IconTitleBack = "#000000";
-  MoveToWorkspace9Key = None;
   PixmapPath = (
     "/home/paperjam/GNUstep/Library/WindowMaker/Pixmaps",
     "/home/paperjam/GNUstep/Library/WindowMaker/Backgrounds",
@@ -18,6 +16,8 @@
     "/usr/local/share/pixmaps",
     "/usr/share/pixmaps"
   );
+  IconTitleBack = "#000000";
+  MoveToWorkspace9Key = None;
   Shadow = yes;
   FTitleBack = (mdgradient, "#020202", "#6e6e72", "#3e3e3e", "#020202");
   MoveToPrevWorkspaceLayerKey = None;
@@ -38,25 +38,25 @@
   WindowShortcut10Key = None;
   IconTitleColor = "#ffffff";
   MoveToWorkspace2Key = None;
-  MenuTitleColor = "#d3d3d3";
   MouseWheelTiltAction = None;
+  MenuTitleColor = "#d3d3d3";
   WindowShortcut3Key = None;
   MenuTitleFont = "helvetica:bold:pixelsize=12";
+  EnableWorkspacePager = YES;
   SmoothWorkspaceBack = YES;
   WindowRelaunchKey = None;
-  EnableWorkspacePager = YES;
   IconPosition = brh;
   WindowShortcut4Key = None;
   NoWindowOverDock = YES;
-  OmnipresentKey = None;
   WorkspaceBack = (
     tpixmap,
     "~/git/lib-bash/dot.files/GNUstep/Library/WindowMaker/Themes/Badtz Dark.themed/b_bg.gif",
     "#020202"
   );
-  HighlightTextColor = "#020202";
+  OmnipresentKey = None;
   SnapEdgeDetect = 1;
   LBCMaximizeKey = None;
+  HighlightTextColor = "#020202";
   WindowShortcut9Key = None;
   HelpBalloons = YES;
   WindowSnapping = YES;
@@ -65,8 +65,8 @@
   KeepOnTopKey = None;
   PrevWorkspaceKey = "Mod4+Left";
   MoveResizeKey = None;
-  ClipTitleColor = "#ffffff";
   AppIconBalloons = YES;
+  ClipTitleColor = "#ffffff";
   MoveHalfMaximizedWindowsBetweenScreens = NO;
   WaitCursor = (
     bitmap,
@@ -91,9 +91,9 @@
   BHMaximizeKey = None;
   MouseBackwardButtonAction = None;
   Workspace6Key = None;
-  Workspace7Key = None;
-  CycleActiveHeadOnly = NO;
   OpenTransientOnOwnerWorkspace = YES;
+  CycleActiveHeadOnly = NO;
+  Workspace7Key = None;
   Workspace1Key = None;
   Workspace2Key = None;
   MenuTitleExtendSpace = "-1";
@@ -130,35 +130,35 @@
   MoveToLastWorkspaceKey = None;
   TitleJustify = left;
   GroupNextKey = None;
-  SingleClickLaunch = YES;
-  MenuTextColor = "#e2e2e2";
+  SingleClickLaunch = NO;
   Attraction = NO;
+  MenuTextColor = "#e2e2e2";
   IconBack = (mdgradient, "#ffffff", "#6c6c6c", "#020202");
   AntialiasedText = YES;
   DisableBlinking = NO;
-  LowerKey = "Mod4+Down";
   MoveToWorkspace5Key = None;
+  LowerKey = "Mod4+Down";
   WindowTitleExtendSpace = "-1";
-  NormalCursor = (builtin, left_ptr);
   FocusPrevKey = None;
-  WindowListKey = "Mod4+ISO_Left_Tab";
+  NormalCursor = (builtin, left_ptr);
   WorkspaceNameDisplayPosition = none;
+  WindowListKey = "Mod4+ISO_Left_Tab";
   FShadowColor = black;
   MenuTextFont = "helvetica:pixelsize=12";
-  ScreenSwitchKey = None;
   MShadowColor = black;
+  ScreenSwitchKey = None;
   SnapCornerDetect = 10;
   MenuTitleBack = (mhgradient, "#000002", "#616161", "#020202");
   MoveToNextWorkspaceKey = None;
   HMaximizeKey = None;
   SnapToTopMaximizesFullscreen = YES;
   HighlightColor = "#a6a6a6";
-  NextWorkspaceKey = "Mod4+Right";
   GroupPrevKey = None;
+  NextWorkspaceKey = "Mod4+Right";
   PointerWithHalfMaxWindows = NO;
-  Workspace10Key = None;
-  MoveToWorkspace3Key = None;
   MinimizeAllKey = "Mod4+D";
+  MoveToWorkspace3Key = None;
+  Workspace10Key = None;
   CClipTitleColor = "#5b5b5b";
   MoveCursor = (
     bitmap,
@@ -166,8 +166,8 @@
     "/usr/share/WindowMaker/Themes/Where.themed/dot_move_mask.xbm"
   );
   WindowShortcut5Key = None;
-  MenuStyle = flat;
   HideOthersKey = None;
+  MenuStyle = flat;
   IconPath = (
     "/home/paperjam/GNUstep/Library/Icons",
     "/usr/share/WindowMaker/Icons",
@@ -180,15 +180,15 @@
     "/usr/share/pixmaps"
   );
   RaiseKey = "Mod4+Up";
-  PTitleBack = (mhgradient, "#000002", "#635c5c", "#020202");
-  WindowShortcut6Key = None;
   MenuTextExtendSpace = "-1";
-  ViKeyMenus = YES;
+  WindowShortcut6Key = None;
+  PTitleBack = (mhgradient, "#000002", "#635c5c", "#020202");
   BounceAppIconsWhenUrgent = YES;
   UTitleColor = "#5b5b5b";
+  ViKeyMenus = YES;
   HighlightActiveApp = YES;
-  UTitleBack = (mdgradient, "#000002", "#020202", "#767676", "#020202");
   CirculateRaise = NO;
+  UTitleBack = (mdgradient, "#000002", "#020202", "#767676", "#020202");
   PTitleColor = "#b2b2b2";
   MoveToWorkspace4Key = None;
   RTCMaximizeKey = None;

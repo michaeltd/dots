@@ -3,8 +3,8 @@
 
 /etc/
 
-/home/paperjam/.config/gentoo/
-/home/paperjam/.config/hexchat/
+/home/paperjam/.config/gentoo
+/home/paperjam/.config/hexchat
 /home/paperjam/.config/mc
 /home/paperjam/.config/xfe
 
