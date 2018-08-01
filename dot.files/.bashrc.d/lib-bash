@@ -1,7 +1,7 @@
 # lib-bash
 #!/usr/bin/env bash
 
-function gpush() {
+function gpush {
   git add .
   if [[ -n "${1}" ]]; then
     git commit -m "${1}"
@@ -11,7 +11,7 @@ function gpush() {
   git push
 }
 
-function pp() {
+function pp {
   for i in {1..9}; do
     for j in $(seq 1 $i); do
       printf "%d×%d=%d\t" $j $i $((j*i))
@@ -20,11 +20,11 @@ function pp() {
   done
 }
 
-alphanumeric_only() {
+function alphanumeric_only {
   printf "%s\n" "${@//[![:alnum:]]}"
 }
 
-function remove_spaces() {
+function remove_spaces {
   # https://stackoverflow.com/questions/13659318/how-to-remove-space-from-string
   echo "${@}"|sed 's/ //g'
   #shopt -s extglob # Allow extended globbing
@@ -33,7 +33,7 @@ function remove_spaces() {
   #shopt -u extglob
 }
 
-function trim() {
+function trim {
   # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
     local var="$*"
     # remove leading whitespace characters
@@ -44,39 +44,39 @@ function trim() {
 }
 
 # Chubin works
-function cheat_sh() {
+function cheat_sh {
   # https://github.com/chubin/cheat.sh
   curl cheat.sh/${1}
 }
 
-function rate_sx() {
+function rate_sx {
   # https://twitter.com/igor_chubin
   curl ${1-"usd"}.rate.sx
 }
 
-function wttr_in() {
+function wttr_in {
   # https://twitter.com/igor_chubin # Try wttr moon
   curl wttr.in/${1-"Athens"}
 }
 
-function accuWeather() {
+function accuWeather {
   # http://www.accuweather.com/
   URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536'
   wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", "$12"°" }'| head -1
 }
 
-function up() {
+function up {
   DEEP=$1
   for i in $(seq 1 ${DEEP:-"1"}); do
     cd ../
   done
 }
 
-function rmDeadLinks() {
+function rmDeadLinks {
   find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +
 }
 
-function listenOnPort() {
+function listenOnPort {
   # Returns service listening on given port
   if [[ -z "${1}" ]]; then
     printf "port number expected\n"
@@ -86,7 +86,7 @@ function listenOnPort() {
   fi
 }
 
-function checkDirSizes() {
+function checkDirSizes {
   # Report first params directory sizes in human readable format
   ls=$(which ls) # Workaround alias
   du=$(which du)
@@ -99,7 +99,7 @@ function checkDirSizes() {
   fi
 }
 
-function printMemUsage() {
+function printMemUsage {
   #Report Total Used and Available mem in human readable format
   total=$(cat /proc/meminfo |head -1 |awk '{print $2}')
   avail=$(cat /proc/meminfo |head -2 |tail -1 |awk '{print $2}')
@@ -112,7 +112,7 @@ function printMemUsage() {
 
 }
 
-function rps() {
+function rps {
   # Rock Paper Scissors mt 20170525
 
   declare -a op=("Rock" "Paper" "Scissors") oc=("WIN" "Defeat" "Draw")
@@ -165,7 +165,7 @@ function rps() {
   done
 }
 
-function russianRulette() {
+function russianRulette {
   # https://www.facebook.com/freecodecamp/photos/a.1535523900014339.1073741828.1378350049065059/2006986062868118/?type=3&theater
   # [ $[ $RANDOM % 6 ] == 0 ] && echo "BOOM!!!" || echo "LUCKY GUY!!!"
 
@@ -178,7 +178,7 @@ function russianRulette() {
   fi
 }
 
-function servStuff() {
+function servStuff {
   if [[ -z "${1}" || "${EUID}" -ne "0" ]]; then
     printf "servStuff requires root privilages.\nUsage: sudo servStuff start||stop\n"
     return 1
@@ -190,7 +190,7 @@ function servStuff() {
   fi
 }
 
-function runCmd() {
+function runCmd {
   DIALOG=${1-"Xdialog"}
   #TMPFILE="/tmp/input.box.txt"
   TMPFILE=/tmp/"${RANDOM}".input.box.txt
@@ -208,7 +208,7 @@ function runCmd() {
   return $?
 }
 
-function keepParamAlive() {
+function keepParamAlive {
   #!/usr/bin/env /bin/bash
   # Take an application (first parameter) and respawn it periodicaly (second parameter) if it crashes
   # EG: "keepParamAlive conky 15" Will check every 15sec if conky is running and launch it if it's not
@@ -229,7 +229,7 @@ function keepParamAlive() {
 
 # Pipe fortune or second param through cowsay and lolcat for some color magic
 # requires fortune cowsay lolcat
-function lol() {
+function lol {
   file=${1-"tux"}
   if [[ -z "${2}" ]]; then
     cmmnd="fortune"
@@ -261,7 +261,7 @@ function lol() {
 #}
 
 # Functions to unify archive management in linux CLI environments
-function packArchive() {
+function packArchive {
   case "${1,,}" in
     *.tar.bz2) tar cjf $@ ;;
     *.tar.gz | *.tgz) tar czf $@ ;;
@@ -271,7 +271,7 @@ function packArchive() {
   esac
 }
 
-function unpackArchive() {
+function unpackArchive {
   case "${1,,}" in # Compare lowercased filename for known extensions.
     *.7z | *.7za) 7z x "${1}" ;;
     *.tar) tar -xf "${1}" ;;
@@ -287,7 +287,7 @@ function unpackArchive() {
   esac
 }
 
-function updateDate() {
+function updateDate {
   if [ "${EUID}" -ne "0" ]; then
     printf "Need root privilages\n"
     #sudo -l updateDate
@@ -297,11 +297,11 @@ function updateDate() {
   fi
 }
 
-function showUptime() {
+function showUptime {
   echo -ne "${green}$HOSTNAME ${green}uptime is ${green} \t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
-function logMeOut() {
+function logMeOut {
   # Call that to logout
   # Can't log out root like that
   if [ "${EUID}" -eq "0" ]; then
@@ -312,7 +312,7 @@ function logMeOut() {
   fi
 }
 
-function screenShot() {
+function screenShot {
   # Take a screenshot imagemagic
   # Requires Imagemagic or scrot, ristretto or viewnior
   FN="${HOME}/ss-`date +%y%m%d%H%M%S`.png"
@@ -320,7 +320,7 @@ function screenShot() {
   ristretto $FN||viewnior $FN
 }
 
-function pingSubnet() {
+function pingSubnet {
   #for x in {1..254}; do
     for y in {1..254}; do
       (ping -c 1 -w 2 192.168.1.${y} > /dev/null && echo "UP 192.168.1.${y}" &);
@@ -328,6 +328,6 @@ function pingSubnet() {
   #done
 }
 
-function swapWM() {
+function swapWM {
   sed -i 's/WM=$(which *)/WM=$(which ${1})/g' ${HOME}/.xinitrc
 }

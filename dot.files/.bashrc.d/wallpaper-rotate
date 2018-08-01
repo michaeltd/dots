@@ -6,7 +6,7 @@
 
 declare DEFAULT_WPDIR="${HOME}/.wallpapers" DEFAULT_WAIT="60s" BGSETTER WR_USAGE="\nQuick and dirty script to rotate backgrounds\nin wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source wallpaper-rotate && rbgHelperAddDir /home/user/pictures && rotateBg &\n(rbgHelperAddDir /home/user/pictures needs to be executed only once per pictures directory.)\nAlternatively you can source this file in your startup scripts and start it from there.\n"
 
-function rbgHelperAssignDefaults() {
+function rbgHelperAssignDefaults {
 
   if [[ -x $(which feh) ]]; then # Find a setter or die trying
     BGSETTER="feh --bg-scale"
@@ -46,7 +46,7 @@ function rbgHelperAssignDefaults() {
 #
 # Call this function with the dir you'd like to add its images as links in "~/.wallpapers"
 # for use with "rotateBg" function. eg: "rbgHelperAddDir /home/user/pictures"
-function rbgHelperAddDir() {
+function rbgHelperAddDir {
   rbgHelperAssignDefaults # Check between defaults and settings file
   for i in $(ls "${1}"); do
     FE="${i:(-4)}" # Get file extention ${str:(-4)}
@@ -64,7 +64,7 @@ function rbgHelperAddDir() {
 # Use this function with the unwanted dir as its sole parameter
 # eg: "rbgHelperRemoveDir /home/user/pictures"
 # It is meant to be called interactively and not from within scripts
-function rbgHelperRemoveDir() {
+function rbgHelperRemoveDir {
   rbgHelperAssignDefaults # Check between defaults and settings file
   for i in $(ls "${1}"); do
     FE="${i:(-4)}" # Get file extention ${str:(-4)}
@@ -74,7 +74,7 @@ function rbgHelperRemoveDir() {
   done
 }
 
-function rotateBg() {
+function rotateBg {
   rbgHelperAssignDefaults || return 1 # Assign a WP setter, WP symlink dir and a swap delay
   WPD=${DEFAULT_WPDIR} # WallPaperDirecroty
   WPL=( $(ls ${WPD}) ) # fill array with values for WallPaperList

@@ -1,7 +1,7 @@
 # ~/.bashrc.d/prompt
 #!/usr/bin/env bash
 
-_PROMPT() {
+function _PROMPT {
     local EXIT_STATUS="$?"
 
     # Other variables

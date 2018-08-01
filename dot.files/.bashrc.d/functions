@@ -2,18 +2,18 @@
 #!/usr/bin/env bash
 
 # Create a new alias
-mkalias() {
+function mkalias {
     echo "alias $@" >> ${HOME}/.bashrc.d/aliases
     alias $@
 }
 
 # Remove an alias
-rmalias() {
+function rmalias {
     unalias $1 && sed -i "/alias $1\=/d" ~/.bashrc.d/aliases
 }
 
 # Color man pages
-man() {
+function man {
     env \
     LESS_TERMCAP_mb=$(printf "${bold}${red}") \
     LESS_TERMCAP_md=$(printf "${bold}${red}") \
@@ -26,7 +26,7 @@ man() {
 }
 
 ## COMPRESSION FUNCTION ##
-__compress__() {
+function compress__ {
     FILE=$1
     shift
     case $FILE in
@@ -40,7 +40,7 @@ __compress__() {
 }
 
 ## EXTRACT FUNCTION ##
-__extract__ () {
+function extract__ {
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2)   tar xjf $1     ;;
@@ -62,12 +62,12 @@ __extract__ () {
 }
 
 ## DICTIONARY FUNCTIONS ##
-dwordnet () { curl dict://dict.org/d:${1}:wn; }
-dacron () { curl dict://dict.org/d:${1}:vera; }
-djargon () { curl dict://dict.org/d:${1}:jargon; }
-dfoldoc () { curl dict://dict.org/d:${1}:foldoc; }
-dthesaurus () { curl dict://dict.org/d:${1}:moby-thes; }
-dtranslate () {
+function dwordnet { curl dict://dict.org/d:${1}:wn; }
+function dacron { curl dict://dict.org/d:${1}:vera; }
+function djargon { curl dict://dict.org/d:${1}:jargon; }
+function dfoldoc { curl dict://dict.org/d:${1}:foldoc; }
+function dthesaurus { curl dict://dict.org/d:${1}:moby-thes; }
+function dtranslate {
     PS3="${blue}Select the dictionary: ${reset}"
     local _options="deu-eng eng-deu deu-fra fra-deu deu-ita ita-deu deu-nld nld-deu deu-por por-deu tur-deu lat-deu jpn-deu afr-deu gla-deu exit"
 
