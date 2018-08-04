@@ -141,3 +141,13 @@ fi
 
 # added by Anaconda3 installer
 # export PATH="/home/paperjam/anaconda3/bin:$PATH"
+
+# omb="${HOME}/.bashrc.oh-my-bash"
+# if [[ -f "${omb}" ]]; then # Load file omb
+#   source "${file}"
+# fi
+
+# bi="${HOME}/.bashrc.bash-it"
+# if [[ -f "${bi}" ]]; then # Load file omb
+#   "${file}"
+# fi
