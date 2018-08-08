@@ -22,5 +22,6 @@ fi
 
 # exec /etc/alternatives/x-window-manager # Start the systems window manager. See WindowManagers for other choices.
 # exec gnome-session # To run Gnome instead of system default, place a '#' before the previous line and uncomment the next line.
-# exec /etc/X11/Sessions/awesome -c ~/.awesome/rc.lua # If awesome
-exec dbus-launch --exit-with-session "${WM}"
+exec /etc/X11/Sessions/awesome -c ~/.awesome/rc.lua # If awesome
+
+# exec dbus-launch --exit-with-session "${WM}"
