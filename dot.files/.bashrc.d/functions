@@ -13,17 +13,17 @@ function rmalias {
 }
 
 # Color man pages
-function man {
-    env \
-    LESS_TERMCAP_mb=$(printf "${bold}${red}") \
-    LESS_TERMCAP_md=$(printf "${bold}${red}") \
-    LESS_TERMCAP_me=$(printf "${reset}") \
-    LESS_TERMCAP_se=$(printf "${reset}") \
-    LESS_TERMCAP_so=$(printf "${bold}${bg_blue}${yellow}") \
-    LESS_TERMCAP_ue=$(printf "${reset}") \
-    LESS_TERMCAP_us=$(printf "${bold}${green}") \
-    man "$@"
-}
+# function man {
+#     env \
+#     LESS_TERMCAP_mb=$(printf "${bold}${red}") \
+#     LESS_TERMCAP_md=$(printf "${bold}${red}") \
+#     LESS_TERMCAP_me=$(printf "${reset}") \
+#     LESS_TERMCAP_se=$(printf "${reset}") \
+#     LESS_TERMCAP_so=$(printf "${bold}${bg_blue}${yellow}") \
+#     LESS_TERMCAP_ue=$(printf "${reset}") \
+#     LESS_TERMCAP_us=$(printf "${bold}${green}") \
+#     man "$@"
+# }
 
 ## COMPRESSION FUNCTION ##
 function compress__ {

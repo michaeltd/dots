@@ -8,7 +8,8 @@ else
     export VISUAL="$(which emacs) -nw" EDITOR="$(which emacs) -nw" BROWSER=$(which w3m||which lynx)
 fi
 
-export PAGER=$(which less)
+# export PAGER=$(which less)
+export PAGER=$(which most) # install most
 
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
 
