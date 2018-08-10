@@ -25,13 +25,13 @@ alias df='df -h'
 if [[ -n $(which emerge 2> /dev/null) ]]; then
     alias search='emerge -s' install='sudo emerge -av' remove='sudo emerge -avC' update='sudo emerge --sync' upgrade='sudo emerge -avuND --with-bdeps=y @world' cleanup='sudo emerge --ask --depclean'
 elif [[ -n $(which pacman 2> /dev/null) ]]; then
-    alias search='pacman -Ss' install='sudo pacman -S' remove='sudo pacman -R' update='sudo pacman -Sy' upgrade='sudo pacman -Syu'
+    alias search='pacman -Ss' install='sudo pacman -S' remove='sudo pacman -R' update='sudo pacman -Sy' upgrade='sudo pacman -Syu' cleanup='sudo pacman -Rsn'
 elif [[ -n $(which apt-get 2> /dev/null) ]]; then
     alias search='apt search' install='sudo apt-get install --install-suggests' remove='sudo apt-get remove --purge' update='sudo apt-get update' upgrade='sudo apt-get dist-upgrade' cleanup='sudo apt-get autoremove'
 elif [[ -n $(which zypper 2> /dev/null) ]]; then
-    alias search='zypper search' install='sudo zypper install' remove='sudo zypper remove --clean-deps' update='sudo zypper refresh' upgrade='sudo zypper update'
+    alias search='zypper search' install='sudo zypper install' remove='sudo zypper remove --clean-deps' update='sudo zypper refresh' upgrade='sudo zypper update' cleanup='sudo zypper rm -u'
 elif [[ -n $(which yum 2> /dev/null) ]]; then
-    alias search='yum search' install='sudo yum install' remove='sudo yum remove' update='sudo yum check-update' upgrade='sudo yum update'
+    alias search='yum search' install='sudo yum install' remove='sudo yum remove' update='sudo yum check-update' upgrade='sudo yum update' cleanup='sudo yum autoremove'
 fi
 
 # Mount
@@ -41,12 +41,12 @@ alias mnte='sudo mount -t auto /dev/sde1 /mnt/thumb'
 alias mntf='sudo mount -t auto /dev/sdf1 /mnt/thumb'
 
 # PC
-alias halt='sudo shutdown -h'
-alias reboot='sudo shutdown -r'
+alias halt='sudo shutdown -h' # Use with "now", "HH:MM" or any other valid (by shutdown) TIME construct.
+alias reboot='sudo shutdown -r' # Use with "now", "HH:MM" or any other valid (by shutdown) TIME construct.
 
 # alias mc='mc -a' # In case of malconfigured terminals
 alias emacs-nox='emacs -nw'
-alias fixnet='nping www.microsoft.com||sudo rc-service dhcpcd restart'
+alias fixnet='ping -c 1 www.microsoft.com||sudo rc-service dhcpcd restart'
 alias cal='cal -m' # First Day Monday Calendars
 
 # Perfect alias candidates are one liners or functions that take no arguments.
