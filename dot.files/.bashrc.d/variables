@@ -59,3 +59,4 @@ export CLASSPATH+=":./"
 export CLASSPATH+=":${JAVA}/lib"
 export CLASSPATH+=":${ANT}/lib"
 export CLASSPATH+=":${MAVEN}/lib"
+
