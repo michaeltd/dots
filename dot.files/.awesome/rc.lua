@@ -41,7 +41,13 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
+
+beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+
+--beautiful.init("/home/paperjam/git/awesome-themes/blackburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "terminology"
@@ -382,8 +388,9 @@ clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
+
 -- for i = 1, 9 do
-for i = 1, 4 do    
+for i = 1, 4 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         -- awful.key({ modkey }, "#" .. i + 9,
@@ -565,4 +572,4 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.spawn.with_shell("~/.awesome/autorun.sh")
+-- awful.spawn.with_shell("~/.awesome/autorun.sh")

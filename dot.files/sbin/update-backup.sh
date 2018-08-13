@@ -10,7 +10,7 @@ eldir="/mnt/el/Documents/bkps/linux" # Dirs
 incfl="/home/paperjam/.bkp.includes.txt" # Backup/Exclude
 excfl="/home/paperjam/.bkp.excludes.txt"
 
-archv="${eldir}/$(date +%s).dell.${ID}.${HOSTNAME}.tar.gz" # Archive path/name
+archv="${eldir}/$(date +%s).dell.${ID}.${HOSTNAME}.tar.gz" # Archive path/name/ext
 
 if [[ -d "${eldir}" && -r "${incfl}" && -r "${excfl}" && -x "${tarcm}" ]]; then
   printf "# BACKUP # ---------------------------------------------------------------------\n"

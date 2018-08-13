@@ -9,7 +9,7 @@ else
 fi
 
 # export PAGER=$(which less)
-export PAGER=$(which most) # install most
+export PAGER=$(which most||which less||which more) # install most
 
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
 
