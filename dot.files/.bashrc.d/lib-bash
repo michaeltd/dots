@@ -1,7 +1,7 @@
 # lib-bash
 #!/usr/bin/env bash
 
-function gacp {
+function gacp { # git add; commit; push
   git add .
   if [[ -n "${1}" ]]; then
     git commit -m "${1}"

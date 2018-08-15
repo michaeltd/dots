@@ -8,6 +8,7 @@ set number
 " Highly recommended to set tab keys to 4 spaces
 set tabstop=2
 set shiftwidth=2
+set nohlsearch
 
 " set columns=100
 " set lines=30 columns=95

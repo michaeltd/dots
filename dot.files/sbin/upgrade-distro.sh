@@ -7,7 +7,7 @@
 declare -a zypper=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) pacman=( "pacman" "-Sy" "-Syu" ) apt_get=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrade" ) yum=( "yum" "check-update" "update" ) emerge=( "emerge" "--sync" "--nospinner" "--pretend" "--update" "--deep" "--newuse" "--with-bdeps=y" "@world" ) pms=( zypper[@] pacman[@] apt_get[@] yum[@] emerge[@] )
 # PS: By ignoring dpkg and rpm we are avoiding issues with systems where alien has been installed.
 
-function get_pm_ { # Which is the first available pm in this system?
+function get_pm { # Which is the first available pm in this system?
   for x in "${!pms[@]}"; do
     if [[ -n $(which "${!pms[$x]:0:1}" 2> /dev/null) ]]; then
       printf "%d\n" "${x}" # return pm index
@@ -17,7 +17,7 @@ function get_pm_ { # Which is the first available pm in this system?
   printf "%d\n" "254" # No known pm found. quit
 }
 
-function upgrade_distro_ {
+function upgrade_distro {
   if [[ "${1}" -eq "254" ]]; then
     printf " Nothing to be done for \"unknown\" package manager.\n For this to work you need a zypper, pacman, apt, yum or portage based distro.\n Quithing.\n"
   else
@@ -26,4 +26,4 @@ function upgrade_distro_ {
   fi
 }
 
-upgrade_distro_ "$( get_pm_ )" # Make things happen.
+upgrade_distro "$(get_pm)" # Make things happen.

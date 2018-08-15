@@ -4,14 +4,14 @@
 
 ! Emacs
 
-Emacs.geometry: 120x40
+!Emacs.geometry: 120x40
 ! UI elements
-Emacs.menuBar: 0
-Emacs.toolBar: 0
-Emacs.verticalScrollBars: off
+!Emacs.menuBar: 0
+!Emacs.toolBar: 0
+!Emacs.verticalScrollBars: off
 ! Font settings
-Emacs.FontBackend: xft,x
-Emacs.font: SourceCodePro:size=12
+!Emacs.FontBackend: xft,x
+!Emacs.font: SourceCodePro:size=10
 
 ! ===========================================================================
 ! XTerm resources
