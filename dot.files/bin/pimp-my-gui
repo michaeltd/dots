@@ -31,5 +31,5 @@ nice -n 9 terminology & # Start a terminal
 
 nice -n 9 ${HOME}/bin/TkRootMenu & # Start a Menu # Python based gui
 
-source "${HOME}/.bashrc.d/wallpaper-rotate" # Add some wallpaper variety for your desktop
+source "${HOME}/.bashrc.d/functions" # Add some wallpaper variety for your desktop
 rotateBg &
