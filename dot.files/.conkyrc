@@ -68,5 +68,7 @@ conky.config = {
 conky.text = [[
 # TIME
 ${color FFA300}${font SourceCodePro:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color EAEAEA}${font Ubuntu Mono:pixelsize=42}${time %d} ${voffset -15}${color FFA300}${font pixelsize=22}${time  %B} ${time %Y}${font}${voffset 24}${color EAEAEA}${font GE Inspira:pixelsize=58}${offset -200}${time %A}${font}
-${voffset 1}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}HD ${offset 9}$color${fs_free /} / ${fs_size /}${offset 30}${color FFA300}RAM ${offset 9}$color$mem / $memmax${offset 30}${color FFA300}CPU ${offset 9}$color${cpu cpu0}% ${color FFA300}${alignr}Uptime:$color ${uptime} ${font}
+${voffset 1}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}HD ${offset 9}${color}${fs_free /} / ${fs_size /}${offset 30}${color FFA300}RAM ${offset 9}${color}${mem} / ${memmax}${offset 30}${color FFA300}CPU ${offset 9}${color}${cpu cpu0}% ${color FFA300}${alignr}Uptime:${color} ${uptime} ${font}
+${font Ubuntu:pixelsize=10}${color FFA300}BT ${color}${battery} ${battery_bar 6,20} ${alignr}${color FFA300}REM ${color}${battery_time}${font}
 ]];
+

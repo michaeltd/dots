@@ -13,3 +13,5 @@ set nohlsearch
 " set columns=100
 " set lines=30 columns=95
 "
+
+" hi Normal guibg=NONE ctermbg=NONE

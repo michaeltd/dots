@@ -16,17 +16,18 @@
 
 /home/paperjam/.wallpapers/
 
-/home/paperjam/Documents/
-
 /home/paperjam/git/git.txt
 /home/paperjam/git/CodeSites
 /home/paperjam/git/freeCodeCamp
 /home/paperjam/git/lib-bash
 /home/paperjam/git/playground
 /home/paperjam/git/pythonRootMenu
+/home/paperjam/git/tdm-portfolio
 /home/paperjam/git/tdmichael-bio
 /home/paperjam/git/tutorials
 /home/paperjam/git/utils
+
+/home/paperjam/Documents/
 
 /home/paperjam/Pictures/
 
