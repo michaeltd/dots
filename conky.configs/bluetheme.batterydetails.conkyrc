@@ -1,0 +1,118 @@
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+if_up_strictness link
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+background yes
+
+format_human_readable
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont Liberation Sans:size=9
+override_utf8_locale yes
+text_buffer_size 4096
+#text_buffer_size 2048
+
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 200
+#own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+alignment top_right
+gap_x 12
+#gap_x 25
+gap_y 40
+minimum_size 182 750
+#maximum_width 182
+
+default_bar_size 60 8
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades yes
+stippled_borders 1
+
+default_color 1793d0
+color0 white
+color1 1793d0
+color2 white
+color3 1793d0
+
+TEXT
+${font Liberation Sans:style=Bold:size=14}SYSTEM $hr${font}
+##############
+# - SYSTEM - #
+##############
+${color0}${voffset 10}${offset 2}${font ConkyColorsLogos:size=14}a${font}${color}${voffset -16}
+${goto 32}${voffset -10}${font Liberation Sans:style=Bold:size=8}Kernel: ${font}${alignr}${color2}${kernel}${color}
+${goto 32}${voffset 2}${font Liberation Sans:style=Bold:size=8}Uptime: ${font}${alignr}${color2}${uptime}${color}
+# |--CPU
+${voffset 10}${color0}${font ConkyColors:size=16}e${font}${offset -20}${voffset 6}${cpubar cpu0 4,17}${color}${voffset -16}${goto 32}${font Liberation Sans:style=Bold:size=8}CPU1:  ${font}${color2}${cpu cpu1}% ${alignr}${voffset -2}${cpugraph cpu1 8,60 1793d0 ffffff}${color}
+${goto 32}${font Liberation Sans:style=Bold:size=8}CPU2:  ${font}${color2}${cpu cpu2}% ${alignr}${voffset -2}${cpugraph cpu2 8,60 1793d0 ffffff}${color}
+# |--MEM
+${voffset 6}${color0}${font ConkyColors:size=15}g${font}${color}${goto 32}${voffset -5}${font Liberation Sans:style=Bold:size=8}RAM:  ${font}${color2}$memperc%${alignr}${memgraph 8,60 1793d0 ffffff}${color}
+${voffset 10}${color2}${font ConkyColorsLogos:size=15}l${font}${color}${voffset -14}${font Liberation Sans:style=Bold:size=8}${goto 32}Buffers:  ${font}${color2}${font Liberation Sans:size=8}$buffers${font}${color}
+${font Liberation Sans:style=Bold:size=8}${goto 32}Cached:  ${font}${color2}${font Liberation Sans:size=8}${cached}${font}${color}
+${voffset 10}${color2}${font ConkyColors:size=15}h${font}${color}${voffset -14}${font Liberation Sans:style=Bold:size=8}${goto 32}Swap:  ${font}${color2}${font Liberation Sans:size=8}$swap used $alignr${swapbar 4,50}
+${goto 70}$swapfree free ${alignr}of $swapmax${font}${color}
+###############
+# - NETWORK - #
+###############
+${font Liberation Sans:bold:size=14}${voffset 10}NETWORK $hr${font}
+${voffset 6}${font Liberation Sans:bold:size=8}Signal:  ${font}${color2}${font Liberation Sans:size=8}${wireless_link_qual_perc wls1}%${color}$font$alignr${font Liberation Sans:bold:size=8}Speed:  ${font}${color2}${font Liberation Sans:size=8}${wireless_bitrate wls1}${color}$font
+${color0}${downspeedgraph wls1 1793d0 ffffff}${color}
+${font Liberation Sans:style=Bold:size=8}Download: ${font}${font Liberation Sansd:size=8}${color2}${downspeed wls1}${font}${color} ${font Liberation Sans:style=Bold:size=8}$alignr Total: ${font}${color2}${font Liberation Sans:size=8}${totaldown wls1}${font}${color}
+${color0}${upspeedgraph wls1 1793d0 ffffff}
+${color1}${font Liberation Sans:style=Bold:size=8}Upload: ${color}${font}${font Liberation Sans:size=8}${color2}${upspeed wls1}${color} $alignr ${font Liberation Sans:style=Bold:size=8}Total: ${font}${color2}${font Liberation Sans:size=8}${totalup wls1}${color}
+#############
+# - CLOCK - #
+#############
+${voffset 10}${font Liberation Sans:style=Bold:size=14}DATE $hr${font}
+${voffset 10}${alignc}${color2}${font Liberation Sans:style=Bold:size=30}${time %I:%M}${font} ${time %p}${color}
+${alignc 12}${time %d %B %Y}
+#################
+# - PROCESSES - #
+#################
+#${font Liberation Sans:bold:size=14}${voffset 10}PROCESSES $hr${font}
+#${voffset 5}${font Liberation Sans:bold:size=8}Process Name${alignr}PID  CPU  MEM${font}
+#${color2}${font Liberation Sans:size=8}${voffset -2} ${top name 1}${alignr}${top pid 1} ${top cpu 1} ${top mem 1}
+# ${top name 2}${alignr}${top pid 2} ${top cpu 2} ${top mem 2}
+# ${top name 3}${alignr}${top pid 3} ${top cpu 3} ${top mem 3}
+# ${top name 4}${alignr}${top pid 4} ${top cpu 4} ${top mem 4}
+# ${top name 5}${alignr}${top pid 5} ${top cpu 5} ${top mem 5}
+# ${top name 6}${alignr}${top pid 6} ${top cpu 6} ${top mem 6}${font}${color}
+#${voffset 0}${font Liberation Sans:Bold:size=9}Total: ${font}${color2}$processes${color}${alignr}${voffset 2}${font Liberation Sans:Bold:size=9}Running: ${font}${color2}$running_processes$color
+#############
+# - POWER - #
+#############
+${font Liberation Sans:bold:size=14}${voffset 10}POWER $hr${font}
+${voffset 6}${font Liberation Sans:style=Bold:size=8}Battery:  ${font}${font Liberation Sans:size=8}${color2}${alignr}${battery}  ${battery_bar 6,20}${font}${color}
+${font Liberation Sans:style=Bold:size=8}Remaining:  ${font}${color2}${font Liberation Sans:size=8}${alignr 28}$battery_time$font$color
+################
+# - DISK I/O - #
+################
+${font Liberation Sans:bold:size=14}${voffset 10}DISK I/O $hr${font}
+${voffset 6}${font Liberation Sans:style=Bold:size=8}Root Disk:$alignr${font}${font Liberation Sans:size=8}${color2}/dev/sda2 (${fs_size /})${font}${color}${font Liberation Sans:style=Bold:size=8}${alignr}
+Usage: $font${color2}${font Liberation Sans:size=8}$alignr${fs_used /}, ${fs_free /} free$font$color
+${voffset 2}${font Liberation Sans:style=Bold:size=8}Total I/O:  ${font}${font Liberation Sans:size=8}${color2}${alignr}${diskio sda}${font}${color}
+${voffset 2}${font Liberation Sans:style=Bold:size=8}Read I/O:  ${font}${font Liberation Sans:size=8}${color2}$alignr${diskio_read sda}
+${diskiograph_read sda 8,180 1793d0 ffffff}${font}${color}
+${voffset 0}${font Liberation Sans:style=Bold:size=8}Write I/O:  ${font}${font Liberation Sans:size=8}${color2}$alignr${diskio_write sda}
+${diskiograph_write sda 8,180 1793d0 ffffff}${font}${color}

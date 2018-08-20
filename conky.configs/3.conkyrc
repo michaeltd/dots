@@ -1,0 +1,95 @@
+background no
+use_xft yes
+xftalpha 0.6
+own_window yes
+own_window_type desktop
+own_window_class Conky
+#own_window_argb_visual yes
+own_window_transparent yes
+# 0 = transparent, 255 = solid
+#own_window_argb_value 0
+double_buffer yes
+update_interval 1
+
+
+# Minimum size of text area
+#minimum_size 550
+# Maximum width
+#maximum_width 550
+#maximum_width 200
+alignment top_right
+gap_x 64
+gap_y 64
+
+no_buffers yes
+uppercase no
+cpu_avg_samples 5
+net_avg_samples 5
+diskio_avg_samples 5
+if_up_strictness address
+
+draw_shades no
+draw_outline no
+draw_borders yes
+draw_graph_borders yes
+default_color white
+default_shade_color green
+default_outline_color black
+short_units true
+use_spacer none
+xftfont DejaVu Sans Mono:size=12
+
+template0 ${font Open Sans:Bold:size=10}${color dodgerblue3}\1 ${hr 2}$color${font}${voffset 1}
+template1 \1 ${alignr\ 80}${fs_bar\ \1}
+template2 ${\1 name \2}${alignr}${\1 \3 \2} %
+template3 ${if_up \1}${template0 \2}\ndown $alignr ${downspeed \1}/s\nup $alignr ${upspeed \1}/s\ntotal down$alignr${totaldown \1}\ntotal up $alignr${totalup \1}$endif
+
+#${execi 30 sudo hddtemp /dev/sda | grep '/dev/sda:' | cut -c28-29}°C
+
+TEXT
+$color${font}${font Open Sans:size=44}$alignr${time %H:%M}$font$color${font Open Sans:size=15}
+$alignr${time %a}, ${time %d %b %Y}$font$color
+
+# SYS
+${template0 SYSTEM}
+Kernel $alignr $kernel
+Uptime $alignr $uptime
+Temprature $alignr ${acpitemp}°C
+
+# CPU
+${template0 CPU}
+$color${font}Intel i5 2500k $alignr $cpu %
+${cpugraph}
+# RAM
+${template0 RAM}
+In use $alignr $mem
+Used$alignr$memeasyfree
+Buffers $alignr $buffers
+Cache $alignr $cached
+
+# NETWORK
+${template3 enp2s0 ENP2S0}${template3 wlp5s0 WLP5S0}
+
+# TOP
+${template0 TOP}
+$color${font Open Sans:bold:size=8}CPU$font
+${template2 top 1 cpu}
+${template2 top 2 cpu}
+${template2 top 3 cpu}${voffset 5}
+$color${font Open Sans:bold:size=8}RAM$font
+${template2 top_mem 1 mem}
+${template2 top_mem 2 mem}
+${template2 top_mem 3 mem}
+
+# HDD
+${template0 HDD}
+${template1 /}
+${template1 /mnt/ACER}
+${template1 /mnt/DATA}
+${template1 /mnt/ELEMENTS}
+
+#$color${font Open Sans:bold:size=8}/dev/sdb $font$alignr ${hddtemp /dev/sdb}°C
+${diskiograph sda}
+${diskiograph sdb}
+${diskiograph sdc}
+

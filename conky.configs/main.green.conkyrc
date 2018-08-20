@@ -1,0 +1,210 @@
+# check http://conky.sourceforge.net/config_settings.html for the list of settings
+# Check http://conky.sourceforge.net/variables.html for the list of variables
+
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+stippled_borders 5
+border_inner_margin 0
+border_outer_margin 0
+border_width 1
+
+
+alignment top_right
+gap_x 64
+gap_y 64
+
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+use_spacer none
+
+top_name_width 18
+top_cpu_separate false
+
+lua_load /etc/conky/conky.lua
+lua_startup_hook init
+
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+if_up_strictness link
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+background yes
+
+format_human_readable
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont Liberation Sans:size=10
+xftalpha 0.8
+override_utf8_locale no
+text_buffer_size 4096
+#text_buffer_size 2048
+short_units
+
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_colour 082103
+own_window_argb_value 200
+#own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+alignment middle_right
+gap_x 64
+gap_y 0
+minimum_size 400 750
+maximum_width 400
+max_text_width 0
+
+#own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_hints sticky,skip_taskbar,skip_pager
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+#stippled_borders 1
+
+default_color white
+default_shade_color black
+default_outline_color black
+color0 PaleGreen
+color1 DarkSeaGreen
+color2 SeaGreen
+color3 GreenYellow
+color4 red
+color5 white
+color6 DarkOliveGreen3
+color7 DarkOliveGreen2
+color8 white
+color9 ForestGreen
+#default_bar_size 115 10
+
+TEXT
+#${if_running plasma-desktop}${voffset 35}${endif}${color}${time %a, %d %b %Y, %H:%M:%S} ${goto 190}${color0}Uptime:${color DarkOrange1} ${uptime}
+# TIME
+${color}${font Bitstream Vera Sans Mono:size=24}${time %a, %d %b %Y}${font}
+${color}${font Bitstream Vera Sans Mono:size=24}${alignr}${time %H:%M:%S}${font}
+${color0}${alignr}Uptime:${color DarkOrange1} ${uptime}
+# SYSTEM
+${color2}${stippled_hr}
+${color0}Linux Kernel: ${color8}${kernel} on ${machine}
+${color0}CPU Details:  ${color8}${machine}, $freq(MHz)
+# CPU
+${color0}CPU0:${offset +4}${cpubar cpu0 8 ffa500 ffffff}
+${color0}CPU1:${offset +4}${cpubar cpu1 8 ffa500 ffffff}
+${color0}CPU2:${offset +4}${cpubar cpu2 8 ffa500 ffffff}
+# MEM
+${voffset 3}${color0}RAM used:${color8}${alignr 160} ${mem} ($memperc%)${goto 165}${lua_parse temperature CPU}
+${color0}Available RAM:${color8}${goto 100}${memmax}${goto 165}${lua_parse temperature MB}
+${color9}${cpugraph 3dba19 aecf4c -t -l}
+${if_running apcupsd}${apcupsd localhost 3551}${if_match "${apcupsd_model}" != "N/A"}${voffset 3}${color1}APC: ${color6}${apcupsd_model}${color2}${hr}
+${color6}status${goto 60}load${goto 190}charge${goto 250}time left
+${lua_parse apcbar 7cdd17 white}${endif}${endif}
+##############
+# - SYSTEM - #
+##############
+${color0}${voffset 10}${offset 2}${font ConkyColorsLogos:size=14}${font}${color}${voffset -16}
+${goto 32}${voffset -10}${font Liberation Sans:style=Bold:size=8}Kernel: ${font}${alignr}${color2}${kernel}${color}
+${goto 32}${voffset 2}${font Liberation Sans:style=Bold:size=8}Uptime: ${font}${alignr}${color2}${uptime}${color}
+# |--CPU
+${voffset 10}${color0}${font ConkyColors:size=16}${font}${offset -20}${voffset 6}${cpubar cpu0 4,17}${color}${voffset -16}${goto 32}${font Liberation Sans:style=Bold:size=8}CPU1:  ${font}${color2}${cpu cpu1}% ${alignr}${voffset -2}${cpugraph cpu1 8,60 1793d0 ffffff}${color}
+${goto 32}${font Liberation Sans:style=Bold:size=8}CPU2:  ${font}${color2}${cpu cpu2}% ${alignr}${voffset -2}${cpugraph cpu2 8,60 1793d0 ffffff}${color}
+# |--MEM
+${voffset 6}${color0}${font ConkyColors:size=15}${font}${color}${goto 32}${voffset -5}${font Liberation Sans:style=Bold:size=8}RAM:  ${font}${color2}$memperc%${alignr}${memgraph 8,60 1793d0 ffffff}${color}
+${voffset 10}${color2}${font ConkyColorsLogos:size=15}${font}${color}${voffset -14}${font Liberation Sans:style=Bold:size=8}${goto 32}Buffers:  ${font}${color2}${font Liberation Sans:size=8}$buffers${font}${color}
+${font Liberation Sans:style=Bold:size=8}${goto 32}Cached:  ${font}${color2}${font Liberation Sans:size=8}${cached}${font}${color}
+${voffset 10}${color2}${font ConkyColors:size=15}${font}${color}${voffset -14}${font Liberation Sans:style=Bold:size=8}${goto 32}Swap:  ${font}${color2}${font Liberation Sans:size=8}$swap used $alignr${swapbar 4,50}
+${goto 70}$swapfree free ${alignr}of $swapmax${font}${color}
+## GRAPHICS
+#${voffset 3}${color1}Nvidia Gfx card ${color2}${hr}
+#${color0}GPU Frequency:${color8}${goto 110}${nvidia gpufreq} Mhz ${lua_parse gputemp temp}
+#${color0}Mem Frequency:${color8}${goto 110}${nvidia memfreq} Mhz${goto 165}${color0}Image quality:${color8}${alignr}${nvidia imagequality}
+# NET
+# WIRED
+${if_up enp2s0}${voffset 3}${color1}Network ${color}($nodename) ${color2}${hr}
+ ${color}enp2s0: ${color0}Down:${color yellow1} ${downspeed enp2s0}/s${color0}${goto 190}Up:${color OrangeRed1} ${upspeed enp2s0}/s
+ ${color9}${downspeedgraph enp2s0 24,150 000000 91ec31} ${color9}${upspeedgraph enp2s0 24,150 000000 ec3131}
+ ${color0}Address: ${color}${addr enp2s0}${alignr}${color0}TCP Connections: ${color}${tcp_portmon 1 65535 count}
+ ${if_gw}${color0}gateway: ${color}${gw_ip}$endif${alignr}${color0}dns: ${color}${nameserver}${endif}
+################
+# - WIRELESS - #
+################
+${if_up wlp5s0}${voffset 3}${color1}Network ${color}($nodename) ${color2}${hr}
+ ${color}wlp5s0: ${color0}Down:${color yellow1} ${downspeed wlp5s0}/s${color0}${goto 190}Up:${color OrangeRed1} ${upspeed wlp5s0}/s
+ ${color9}${downspeedgraph wlp5s0 24,150 000000 91ec31} ${color9}${upspeedgraph wlp5s0 24,150 000000 ec3131}
+ ${color0}Address: ${color}${addr wlp5s0}${alignr}${color0}TCP Connections: ${color}${tcp_portmon 1 65535 count}
+ ${if_gw}${color0}gateway: ${color}${gw_ip}$endif${alignr}${color0}dns: ${color}${nameserver}${endif}
+###################
+# - File system - #
+###################
+${voffset 3}${color1}File Systems ${color2}${hr}
+${if_mounted /}${color3}/${goto 80}${alignr}${color4}${fs_used /}${color}/${alignr 10}${color5}${fs_size /}${goto 200}${alignr}${fsbar /}${endif}
+${if_mounted /dev/sda3}${color3}/dev/sda3${goto 80}${alignr}${color4}${fs_used /dev/sda3}${color}DATA${alignr 10}${color5}${fs_size /dev/sda3}${goto 200}${alignr}${lua_parse fsbar /dev/sda3 7fff00 white}${endif}
+${if_mounted /dev/sdc1}${color3}/dev/sdc1${goto 80}${alignr}${color4}${fs_used /dev/sdc1}${color}ELEM${alignr 10}${color5}${fs_size /dev/sdc1}${goto 200}${alignr}${lua_parse fsbar /dev/sdc1 7fff00 white}${endif}
+################
+# - DISK I/O - #
+################
+${font Liberation Sans:bold:size=14}${voffset 10}DISK I/O $hr${font}
+${voffset 6}${font Liberation Sans:style=Bold:size=8}Root Disk:$alignr${font}${font Liberation Sans:size=8}${color2}/dev/sda2 (${fs_size /})${font}${color}${font Liberation Sans:style=Bold:size=8}${alignr}
+Usage: $font${color2}${font Liberation Sans:size=8}$alignr${fs_used /}, ${fs_free /} free$font$color
+${voffset 2}${font Liberation Sans:style=Bold:size=8}Total I/O:  ${font}${font Liberation Sans:size=8}${color2}${alignr}${diskio sda}${font}${color}
+${voffset 2}${font Liberation Sans:style=Bold:size=8}Read I/O:  ${font}${font Liberation Sans:size=8}${color2}$alignr${diskio_read sda}
+${diskiograph_read sda 8,180 1793d0 ffffff}${font}${color}
+${voffset 0}${font Liberation Sans:style=Bold:size=8}Write I/O:  ${font}${font Liberation Sans:size=8}${color2}$alignr${diskio_write sda}
+${diskiograph_write sda 8,180 1793d0 ffffff}${font}${color}
+################
+# -   DISK   - #
+################
+${voffset 3}${color1}Disk IO ${color2}${hr}
+${color0}dev${alignr 165}write${alignr 122}read${alignr 90}temp
+${color3}sda${alignr 110}${color white}${diskio_write sda}${alignr 50}${color8}${diskio_read sda}${alignr 20}${color white}${hddtemp /dev/sda}${lua_parse deg}${alignr 5}${color9}${diskiograph sda 12,70 3dba19 aecf4c 0 -t -l}
+${color3}sdb${alignr 110}${color white}${diskio_write sdb}${alignr 50}${color8}${diskio_read sdb}${alignr 20}${color white}${hddtemp /dev/sdb}${lua_parse deg}${alignr 5}${color9}${diskiograph sdb 12,70 3dba19 aecf4c 0 -t -l}
+${color3}sdc${alignr 110}${color white}${diskio_write sdc}${alignr 50}${color8}${diskio_read sdc}${alignr 20}${color white}${hddtemp /dev/sdc}${lua_parse deg}${alignr 5}${color9}${diskiograph sdc 12,70 3dba19 aecf4c 0 -t -l}
+#############
+# - POWER - #
+#############
+${font Liberation Sans:bold:size=14}${voffset 10}POWER $hr${font}
+${voffset 6}${font Liberation Sans:style=Bold:size=8}Battery:  ${font}${font Liberation Sans:size=8}${color2}${alignr}${battery}  ${battery_bar 6,20}${font}${color}
+${font Liberation Sans:style=Bold:size=8}Remaining:  ${font}${color2}${font Liberation Sans:size=8}${alignr 28}$battery_time$font$color
+# Process
+${voffset 3}${color1}Processes:${color} ${processes}  ${color1}Running:${color red1} ${running_processes} ${color2}${hr 1}
+#${alignc}${color0}(top 3 sorted by CPU usage)
+#${color0}NAME${alignr 110}PID${alignr 60}CPU%${alignr 20}MEM%
+#${lua_parse top cpu 1}${top name 1}${alignr 80}${top pid 1}${alignr 45}${top cpu 1}${alignr 20}${top mem 1}
+#${lua_parse top cpu 2}${top name 2}${alignr 80}${top pid 2}${alignr 45}${top cpu 2}${alignr 20}${top mem 2}
+#${lua_parse top cpu 3}${top name 3}${alignr 80}${top pid 3}${alignr 45}${top cpu 3}${alignr 20}${top mem 3}
+#${alignc}${color0}(top 3 sorted by MEM usage)
+#${color0}NAME${alignr 110}PID${alignr 60}CPU%${alignr 20}MEM%
+#${lua_parse top mem 1}${top_mem name 1}${alignr 80}${top_mem pid 1}${alignr 45}${top_mem cpu 1}${alignr 20}${top_mem mem 1}
+#${lua_parse top mem 2}${top_mem name 2}${alignr 80}${top_mem pid 2}${alignr 45}${top_mem cpu 2}${alignr 20}${top_mem mem 2}
+#${lua_parse top mem 3}${top_mem name 3}${alignr 80}${top_mem pid 3}${alignr 45}${top_mem cpu 3}${alignr 20}${top_mem mem 3}
+#${voffset 3}${color1}Weather ${color6} (Victoria,BC)${color2}${hr 1}
+#${font weather:size=45}${alignr 30} ${lua_parse weather_icon /usr/bin/conkyweather "Victoria,BC"}${font}${voffset -50}
+#${color6}Temperature:${goto 100}${color7}${execi 1800 /usr/bin/conkyweather "Victoria,BC" ct}
+#${color6}Conditions:${goto 100}${color7}${execi 1800 /usr/bin/conkyweather "Victoria,BC" cc}
+#${color6}Humidity:${goto 100}${color7}${execi 1800 /usr/bin/conkyweather "Victoria,BC" ch}
+#${color6}Wind:${goto 100}${color7}${execi 1800 /usr/bin/conkyweather "Victoria,BC" cw}
+#${voffset 3}${offset 12}${color aaaaaa}${execi 3600 /usr/bin/conkyweather "Victoria,BC" dl}
+#${offset 12}${color aaaaaa}${font weather:size=36}${execi 3600 /usr/bin/conkyweather "Victoria,BC" fcp}${font}
+#${offset 12}${color aaaaaa}${execi 3600 /usr/bin/conkyweather "Victoria,BC" fct}
+#${voffset -3}${color2}${hr}
+#${offset 10}${scroll 44 ${color yellow}${rss http://www.planetsuse.org/global/rss20.xml 1 item_titles 10 1}}
+#${voffset -3}${color2}${hr 1}

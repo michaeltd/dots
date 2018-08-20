@@ -14,7 +14,7 @@ export E_COMP_ENGINE=sw # e17 svg support
 
 source /etc/os-release # Pick a wm for your distro # enlightenment_start starte16 startxfce4 kodi-standalone compiz.sh mwm jwm wmaker
 if [[ "${ID}" == "gentoo" ]]; then
-  WM=$(which awesome)
+  WM=$(which wmaker)
 elif [[ "${ID}" == "devuan" ]]; then
   WM=$(which compiz.sh)
 else
@@ -24,6 +24,6 @@ fi
 # exec /etc/alternatives/x-window-manager # Start the systems window manager. See WindowManagers for other choices.
 # exec gnome-session # To run Gnome instead of system default, place a '#' before the previous line and uncomment the next line.
 
-exec /etc/X11/Sessions/awesome -c ~/.awesome/rc.lua # If awesome
+# exec /etc/X11/Sessions/awesome -c ~/.awesome/rc.lua # If awesome
 
-# exec dbus-launch --exit-with-session "${WM}"
+exec dbus-launch --exit-with-session "${WM}"

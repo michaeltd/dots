@@ -6,10 +6,11 @@
 
 */*~
 *~
-*/.gitconfig
-*jcalc
-*jCalc.jar
-*TkRootMenu
+admin/*
+conkyconfigs/*
+help/*
+old/*
+other/*
 private/*
 scrappad/*
 */.ngrok2/*
@@ -22,3 +23,7 @@ scrappad/*
 */GNUstep/Library/WindowMaker/CachedPixmaps/*
 _config.yml
 !*.tmux.conf.local
+*/.gitconfig
+*jcalc
+*jCalc.jar
+*TkRootMenu

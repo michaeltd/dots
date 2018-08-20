@@ -1,0 +1,108 @@
+# Check http://conky.sourceforge.net/config_settings.html for the list of settings
+# Check http://conky.sourceforge.net/variables.html for the list of variables
+
+# - Conky settings - #
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+if_up_strictness link
+
+imlib_cache_size 0
+double_buffer yes
+background yes
+format_human_readable
+
+# - Text settings - #
+use_xft yes
+xftfont terminus:size=10
+xftalpha 0.8
+override_utf8_locale no
+text_buffer_size 4096
+short_units
+
+# - Window specifications - #
+own_window yes
+own_window_type conky
+own_window_class override
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 200
+#own_window_colour 082103
+own_window_colour 151515
+#own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_hints sticky,skip_taskbar,skip_pager
+
+alignment mr
+gap_x 64
+gap_y 0
+minimum_size 510 650
+maximum_width 510
+max_text_width 0
+
+# - Graphics settings - #
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+use_spacer none
+top_name_width 18
+top_cpu_separate false
+
+draw_shades no
+draw_borders no
+stippled_borders 1
+draw_graph_borders yes
+stippled_borders 5
+#border_inner_margin 0
+#border_outer_margin 0
+border_width 1
+default_color white
+default_shade_color black
+draw_outline no
+default_outline_color black
+
+TEXT
+# TIME
+${color FFA300}${font GE Inspira:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color EAEAEA}${font GE Inspira:pixelsize=42}${time %d} ${voffset -15}${color FFA300}${font GE Inspira:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 24}${color EAEAEA}${font GE Inspira:pixelsize=58}${offset -200}${time %A}${font}
+${voffset 1}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}HD ${offset 9}$color${fs_free /} / ${fs_size /}${offset 30}${color FFA300}RAM ${offset 9}$color$mem / $memmax${offset 30}${color FFA300}CPU ${offset 9}$color${cpu cpu0}% ${color FFA300}${alignr}Uptime:$color ${uptime} ${font}
+${voffset 3}${color1}User ${color}($nodename) ${color2}${hr}
+${font terminus:size=24}${color FFA300}${alignc}${execi 600 echo $USER}${color4}@${color white}${nodename}${color}${font}
+# SYSTEM
+${voffset 3}${color1}System ${color}($nodename) ${color2}${hr}
+${color0}Linux: ${color8}${kernel} on ${machine}${color0}${alignr}CPU Details: ${color8}${machine}, ${freq}(MHz)
+# CPU
+CPU0: ${cpu cpu0}% ${color0}${offset +4}${cpubar cpu0 10,425 3dba19 aecf4c}
+${cpugraph cpu0 10,500 3dba19 aecf4c}
+#CPU1: ${cpu cpu1}% ${color0}${goto 90}${cpubar cpu1 10,415 3dba19 aecf4c}
+#${cpugraph cpu1 10,500 3dba19 aecf4c}
+#CPU2: ${cpu cpu2}% ${color0}${goto 90}${cpubar cpu2 10,415 3dba19 aecf4c}
+#${cpugraph cpu2 10,500 3dba19 aecf4c}
+#CPU3: ${cpu cpu3}% ${color0}${goto 90}${cpubar cpu3 10,415 3dba19 aecf4c}
+#${cpugraph cpu3 10,500 3dba19 aecf4c}
+#CPU4: ${cpu cpu4}% ${color0}${goto 90}${cpubar cpu4 10,415 3dba19 aecf4c}
+#${cpugraph cpu4 10,500 3dba19 aecf4c}
+# MEM
+${voffset 3}${color0}RAM used:${color8} ${mem} ($memperc%) ${lua_parse temperature CPU} ${color0}${alignr}Available RAM:${color8}${memmax}${lua_parse temperature MB}
+${color9}${memgraph 10,500 3dba19 aecf4c -t -l}
+# NET # WIRED
+${voffset 3}${color1}Wired ${color}($nodename) ${color2}${hr}
+${color}enp11s0: ${color0}Down:${color yellow1} ${downspeed enp11s0}/s${color0}${goto 190}${alignr}Up:${color OrangeRed1} ${upspeed enp11s0}/s
+${color9}${downspeedgraph enp11s0 24,150 000000 91ec31} ${alignr}${color9}${upspeedgraph enp11s0 24,150 000000 ec3131}
+${color0}Address: ${color}${addr enp11s0}${alignr}${color0}TCP Connections: ${color}${tcp_portmon 1 65535 count}
+${if_gw}${color0}gateway: ${color}${gw_ip}$endif${alignr}${color0}dns: ${color}${nameserver}
+${voffset 3}${color1}Wirless ${color}($nodename) ${color2}${hr}
+${color}wlp2s0b1: ${color0}Down:${color yellow1} ${downspeed wlp2s0b1}/s${color0}${goto 190}${alignr}Up:${color OrangeRed1} ${upspeed wlp2s0b1}/s
+${color9}${downspeedgraph wlp2s0b1 24,150 000000 91ec31} ${alignr}${color9}${upspeedgraph wlp2s0b1 24,150 000000 ec3131}
+${color0}Address: ${color}${addr wlp2s0b1}${alignr}${color0}TCP Connections: ${color}${tcp_portmon 1 65535 count}
+${if_gw}${color0}gateway: ${color}${gw_ip}$endif${alignr}${color0}dns: ${color}${nameserver}
+# - POWER - #
+${voffset 3}${color1}Power ${color2}${hr}${color}
+${voffset 6}${font Liberation Sans:style=Bold:size=8}Battery:  ${font}${font Liberation Sans:size=8}${color2}${alignr}${battery}  ${battery_bar 6,20}${font}${color}
+${font Liberation Sans:style=Bold:size=8}Remaining:  ${font}${color2}${font Liberation Sans:size=8}${alignr 28}$battery_time$font$color
+# - File system - #
+${voffset 3}${color1}File Systems ${color2}${hr}
+#/ ${diskiograph sdb3}
+${color3}sda${alignr 110}${color white}${diskio_write sda}${alignr 50}${color8}${diskio_read sda}${alignr 20}${color white}${alignr 5}${color9}${diskiograph sda 12,70 3dba19 aecf4c 0 -t -l}
+${color3}sdb${alignr 110}${color white}${diskio_write sdb}${alignr 50}${color8}${diskio_read sdb}${alignr 20}${color white}${alignr 5}${color9}${diskiograph sdb 12,70 3dba19 aecf4c 0 -t -l}
+#${color3}sdc${alignr 110}${color white}${diskio_write sdc}${alignr 50}${color8}${diskio_read sdc}${alignr 20}${color white}${alignr 5}${color9}${diskiograph sdc 12,70 3dba19 aecf4c 0 -t -l}
