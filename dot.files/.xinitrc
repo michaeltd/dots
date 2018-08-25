@@ -12,9 +12,9 @@ xset m 20/10 4 # Mouse acceleration
 
 export E_COMP_ENGINE=sw # e17 svg support
 
-source /etc/os-release # Pick a wm for your distro # enlightenment_start starte16 startxfce4 kodi-standalone compiz.sh mwm jwm wmaker
+source /etc/os-release # Pick a wm for your distro # enlightenment_start starte16 startxfce4 kodi-standalone compiz.sh mwm jwm wmaker openbox-session
 if [[ "${ID}" == "gentoo" ]]; then
-  WM=$(which wmaker)
+  WM=$(which openbox-session)
 elif [[ "${ID}" == "devuan" ]]; then
   WM=$(which compiz.sh)
 else
