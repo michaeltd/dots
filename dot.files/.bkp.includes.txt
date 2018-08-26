@@ -24,6 +24,7 @@
 /home/paperjam/git/pythonRootMenu
 /home/paperjam/git/tdm-portfolio
 /home/paperjam/git/tdmichael-bio
+/home/paperjam/git/template
 /home/paperjam/git/tutorials
 /home/paperjam/git/utils
 
