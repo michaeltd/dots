@@ -41,18 +41,18 @@ function compress {
 }
 
 ## COMPRESSION FUNCTION ##
-function compress__ {
-    FILE=$1
-    shift
-    case $FILE in
-        *.tar.bz2) tar cjf $FILE $*  ;;
-        *.tar.gz)  tar czf $FILE $*  ;;
-        *.tgz)     tar czf $FILE $*  ;;
-        *.zip)     zip $FILE $*      ;;
-        *.rar)     rar $FILE $*      ;;
-        *)         echo "Filetype not recognized" ;;
-   esac
-}
+#function compress__ {
+#    FILE=$1
+#    shift
+#    case $FILE in
+#        *.tar.bz2) tar cjf $FILE $*  ;;
+#        *.tar.gz)  tar czf $FILE $*  ;;
+#        *.tgz)     tar czf $FILE $*  ;;
+#        *.zip)     zip $FILE $*      ;;
+#        *.rar)     rar $FILE $*      ;;
+#        *)         echo "Filetype not recognized" ;;
+#   esac
+#}
 
 function extract {
   case "${1,,}" in # Compare lowercased filename for known extensions.
@@ -71,26 +71,26 @@ function extract {
 }
 
 ## EXTRACT FUNCTION ##
-function extract__ {
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)   tar xjf $1     ;;
-            *.tar.gz)    tar xzf $1     ;;
-            *.bz2)       bunzip2 $1     ;;
-            *.rar)       unrar e $1     ;;
-            *.gz)        gunzip $1      ;;
-            *.tar)       tar xf $1      ;;
-            *.tbz2)      tar xjf $1     ;;
-            *.tgz)       tar xzf $1     ;;
-            *.zip)       unzip $1       ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1        ;;
-            *)     echo "'$1' cannot be extracted via extract()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
+#function extract__ {
+#    if [ -f $1 ] ; then
+#        case $1 in
+#            *.tar.bz2)   tar xjf $1     ;;
+#            *.tar.gz)    tar xzf $1     ;;
+#            *.bz2)       bunzip2 $1     ;;
+#            *.rar)       unrar e $1     ;;
+#            *.gz)        gunzip $1      ;;
+#            *.tar)       tar xf $1      ;;
+#            *.tbz2)      tar xjf $1     ;;
+#            *.tgz)       tar xzf $1     ;;
+#            *.zip)       unzip $1       ;;
+#            *.Z)         uncompress $1  ;;
+#            *.7z)        7z x $1        ;;
+#            *)     echo "'$1' cannot be extracted via extract()" ;;
+#        esac
+#    else
+#        echo "'$1' is not a valid file"
+#    fi
+#}
 
 ## DICTIONARY FUNCTIONS ##
 function dwordnet { curl dict://dict.org/d:${1}:wn; }
