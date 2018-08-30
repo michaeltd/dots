@@ -34,6 +34,8 @@ export GRADLE="${HOME}/opt/gradle"
 export GOPATH="${HOME}/go"
 export NODE="/opt/nodejs"
 export MONGODB="/opt/mongodb"
+export MARIADB="${HOME}/opt/mysql"
+export MYSQL="${MARIADB}"
 export SCALA_HOME="/opt/scala"
 export ANACONDA3="/opt/anaconda3"
 
@@ -51,6 +53,7 @@ fi
 
 export PATH+=":${NODE}/bin"
 export PATH+=":${MONGODB}/bin"
+export PATH+=":${MYSQL}/bin"
 export PATH+=":${SCALA_HOME}/bin"
 export PATH+=":${ANACONDA3}/bin"
 # export PATH+=":${HOME}/.racket/7.0.0.9/bin"
