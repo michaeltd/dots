@@ -3,9 +3,9 @@
 
 # Set environment variables
 if [[ -n "${DISPLAY}" ]]; then
-    export VISUAL="$(which emacs)" EDITOR="$(which emacs)" BROWSER=$(which firefox||which seamonkey)
+    export VISUAL="$(which emacs)" EDITOR="$(which emacs)" BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
 else
-    export VISUAL="$(which emacs) -nw" EDITOR="$(which emacs) -nw" BROWSER=$(which w3m||which lynx)
+    export VISUAL="$(which emacs) -nw" EDITOR="$(which emacs) -nw" BROWSER=$(which w3m 2> /dev/null||which lynx 2> /dev/null)
 fi
 
 # export PAGER=$(which less)
@@ -34,8 +34,6 @@ export GRADLE="${HOME}/opt/gradle"
 export GOPATH="${HOME}/go"
 export NODE="/opt/nodejs"
 export MONGODB="/opt/mongodb"
-export MARIADB="${HOME}/opt/mysql"
-export MYSQL="${MARIADB}"
 export SCALA_HOME="/opt/scala"
 export ANACONDA3="/opt/anaconda3"
 
@@ -53,7 +51,6 @@ fi
 
 export PATH+=":${NODE}/bin"
 export PATH+=":${MONGODB}/bin"
-export PATH+=":${MYSQL}/bin"
 export PATH+=":${SCALA_HOME}/bin"
 export PATH+=":${ANACONDA3}/bin"
 # export PATH+=":${HOME}/.racket/7.0.0.9/bin"
