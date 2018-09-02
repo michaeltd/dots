@@ -234,11 +234,11 @@ function trim {
 # Simple script to go through a directory of
 # background images as wallpapers in a timely fashion
 
-declare DEFAULT_WPDIR="${HOME}/.wallpapers" DEFAULT_WAIT="60s" BGSETTER USAGE="\nQuick and dirty script to rotate backgrounds\nin wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source wallpaper-rotate && rbgHelperAddDir /home/user/pictures && rotateBg &\n(rbgHelperAddDir /home/user/pictures needs to be executed only once per pictures directory.)\nAlternatively you can source this file in your startup scripts and start it from there.\n"
+declare DEFAULT_WPDIR="${HOME}/.wallpapers" DEFAULT_WAIT="60s" BGSETTER USAGE="\nQuick and dirty script to rotate backgrounds\nin wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source wallpaper-rotate && rbgHelperAddDir /home/user/pictures && rotateBg &\n(rbgHelperAddDir /home/user/pictures needs to be executed only once per pictures directory.)\nAlternatively you can source this file in your startup scripts and start it from there.\n" LS=$(which ls 2> /dev/null)
 
 function rbgHelperAssignDefaults {
-
-  if [[ -x $(which feh) ]]; then # Find a setter or die trying
+  # Find a setter or die trying
+  if [[ -x $(which feh) ]]; then 
     BGSETTER="feh --bg-scale"
   elif [[ -x $(which wmsetbg) ]]; then
     BGSETTER="wmsetbg"
@@ -258,12 +258,12 @@ function rbgHelperAssignDefaults {
     echo -e "${USAGE}"
     return 1
   fi
-
-  if [[ -r "${HOME}"/.wallpaper.rotate.rc ]]; then # If there is a readable settings file, read it
+  # If there is a readable settings file, read it
+  if [[ -r "${HOME}"/.wallpaper.rotate.rc ]]; then 
     source "${HOME}"/.wallpaper.rotate.rc
   fi
-
-  if [[ ! -d "${DEFAULT_WPDIR}" ]]; then # Just for the first time
+  # Just for the first time
+  if [[ ! -d "${DEFAULT_WPDIR}" ]]; then 
     mkdir "${DEFAULT_WPDIR}" 2> /dev/null
   fi
 }
@@ -277,10 +277,13 @@ function rbgHelperAssignDefaults {
 # Call this function with the dir you'd like to add its images as links in "~/.wallpapers"
 # for use with "rotateBg" function. eg: "rbgHelperAddDir /home/user/pictures"
 function rbgHelperAddDir {
-  rbgHelperAssignDefaults # Check between defaults and settings file
-  for i in $(ls "${1}"); do
-    FE="${i:(-4)}" # Get file extention ${str:(-4)}
-    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then # and lowercase it ${str,,}
+  # Check between defaults and settings file
+  rbgHelperAssignDefaults 
+  for i in $("${LS}" "${1}"); do
+    # Get file extention ${str:(-4)}
+    FE="${i:(-4)}" 
+    # and lowercase it ${str,,}
+    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then 
       ln -sf "${1}"/"${i}" "${DEFAULT_WPDIR}"/"${i}"
     fi
   done
@@ -295,26 +298,39 @@ function rbgHelperAddDir {
 # eg: "rbgHelperRemoveDir /home/user/pictures"
 # It is meant to be called interactively and not from within scripts
 function rbgHelperRemoveDir {
-  rbgHelperAssignDefaults # Check between defaults and settings file
-  for i in $(ls "${1}"); do
-    FE="${i:(-4)}" # Get file extention ${str:(-4)}
-    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then # and lowercase it ${str,,}
-      rm -i "${DEFAULT_WPDIR}"/"${i}" # rm --interactive just to play it safe.
+  # Check between defaults and settings file
+  rbgHelperAssignDefaults
+  for i in $("${LS}" "${1}"); do
+    # Get file extention ${str:(-4)}
+    FE="${i:(-4)}" 
+    # and lowercase it ${str,,}
+    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then 
+      # rm --interactive just to play it safe.
+      rm -i "${DEFAULT_WPDIR}"/"${i}" 
     fi
   done
 }
 
 function rotateBg {
-  rbgHelperAssignDefaults || return 1 # Assign a WP setter, WP symlink dir and a swap delay
-  WPD=${DEFAULT_WPDIR} # WallPaperDirecroty
-  WPL=( $(ls ${WPD}) ) # fill array with values for WallPaperList
-  WPN=${#WPL[*]} # get array upper bound as WallPapersNumber
+  # Assign a WP setter, WP symlink dir and a swap delay
+  rbgHelperAssignDefaults || return 1 
+  # WallPaperDirecroty
+  WPD=${DEFAULT_WPDIR} 
+  # fill array with values for WallPaperList
+  WPL=( $(ls ${WPD}) ) 
+  # get array upper bound as WallPapersNumber
+  WPN=${#WPL[*]} 
   while [[ true ]]; do
-    #let "RN = $RANDOM % $WPN" # limit a random num to upper array bounds
-    RN=$(shuf -n 1 -i 0-"${WPN}") # by using shuf instead of $RANDOM as a RundomNumber
-    WP="${WPD}/${WPL[$RN]}" # Get path and name of image as a selected WallPaper
-    if [[ -L "${WP}" ]]; then # Check if item is a symlink (accidents do happen)
-      ${BGSETTER} "${WP}" # set wallpaper, wait
+    # let "RN = $RANDOM % $WPN" 
+    # limit a random num to upper array bounds 
+    # by using shuf instead of $RANDOM as a RundomNumber
+    RN=$(shuf -n 1 -i 0-"${WPN}") 
+    # Get path and name of image as a selected WallPaper
+    WP="${WPD}/${WPL[$RN]}" 
+    # Check if item is a symlink (accidents do happen)
+    if [[ -L "${WP}" ]]; then 
+      # set wallpaper, wait
+      ${BGSETTER} "${WP}" 
       sleep ${DEFAULT_WAIT}
     fi
   done

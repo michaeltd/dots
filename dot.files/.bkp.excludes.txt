@@ -1,3 +1,5 @@
+*/Pictures/wallpapers/*
+
 */.emacs.d/*.elc
 */.emacs.d/elpa*
 
