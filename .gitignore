@@ -29,7 +29,7 @@ scrappad/*
 */.hiden/*
 */.other/*
 */.e16/cached/*
-*/.emacs.d/elpa/*
+*/.emacs.d/*
 */.gnupg
 */GNUstep/.AppInfo/WindowMaker/History
 */GNUstep/Library/WindowMaker/CachedPixmaps/*
