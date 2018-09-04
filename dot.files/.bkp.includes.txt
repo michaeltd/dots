@@ -3,11 +3,6 @@
 
 /etc/
 
-/home/paperjam/.config/gentoo
-/home/paperjam/.config/hexchat
-/home/paperjam/.config/mc
-/home/paperjam/.config/xfe
-
 /home/paperjam/.emacs.d/
 
 /home/paperjam/.local/

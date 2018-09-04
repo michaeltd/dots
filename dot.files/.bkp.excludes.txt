@@ -5,6 +5,7 @@
 
 */storage/default/*
 
+*/git/lib-bash/dot.files/.config/*
 */git/lib-bash/dot.files/.e16/cached/*
 
 */git/playground/e16/themes/*
