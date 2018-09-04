@@ -226,7 +226,7 @@ function trim {
     echo -n "$var"
 }
 
-# OLD WALLPAPER-ROTATE ========================================================
+### <a name="WALLPAPER-ROTATE"></a>
 
 #!/usr/bin/env bash
 # wallpaper-rorate
