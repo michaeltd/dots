@@ -8,6 +8,17 @@
 *~
 admin/*
 conky.configs/*
+dot.files/.config/*
+!dot.files/.config/autostart
+!dot.files/.config/awesome
+!dot.files/.config/compiz
+!dot.files/.config/gentoo
+!dot.files/.config/mc
+!dot.files/.config/openbox
+!dot.files/.config/polybar
+!dot.files/.config/ranger
+!dot.files/.config/tint2
+!dot.files/.config/compton.conf
 help/*
 old/*
 openbox/*
