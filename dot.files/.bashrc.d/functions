@@ -93,25 +93,25 @@ function extract {
 #}
 
 ## DICTIONARY FUNCTIONS ##
-function dwordnet { curl dict://dict.org/d:${1}:wn; }
-function dacron { curl dict://dict.org/d:${1}:vera; }
-function djargon { curl dict://dict.org/d:${1}:jargon; }
-function dfoldoc { curl dict://dict.org/d:${1}:foldoc; }
-function dthesaurus { curl dict://dict.org/d:${1}:moby-thes; }
-function dtranslate {
-    PS3="${blue}Select the dictionary: ${reset}"
-    local _options="deu-eng eng-deu deu-fra fra-deu deu-ita ita-deu deu-nld nld-deu deu-por por-deu tur-deu lat-deu jpn-deu afr-deu gla-deu exit"
-
-    select i in $_options; do
-        if [ $i == "exit" ]; then
-            return
-        else
-            printf "${blue}Enter the word to translate: ${reset}"
-            read w
-            curl dict://dict.org/d:${w}:fd-${i}
-        fi
-    done
-}
+#function dwordnet { curl dict://dict.org/d:${1}:wn; }
+#function dacron { curl dict://dict.org/d:${1}:vera; }
+#function djargon { curl dict://dict.org/d:${1}:jargon; }
+#function dfoldoc { curl dict://dict.org/d:${1}:foldoc; }
+#function dthesaurus { curl dict://dict.org/d:${1}:moby-thes; }
+#function dtranslate {
+#    PS3="${blue}Select the dictionary: ${reset}"
+#    local _options="deu-eng eng-deu deu-fra fra-deu deu-ita ita-deu deu-nld nld-deu deu-por por-deu tur-deu lat-deu jpn-deu afr-deu gla-deu exit"
+#
+#    select i in $_options; do
+#        if [ $i == "exit" ]; then
+#            return
+#        else
+#            printf "${blue}Enter the word to translate: ${reset}"
+#            read w
+#            curl dict://dict.org/d:${w}:fd-${i}
+#        fi
+#    done
+#}
 
 # git add; commit; push
 function gacp {
@@ -168,14 +168,22 @@ function printMemUsage {
 
 }
 
-function updateDate {
-  if [ "${EUID}" -ne "0" ]; then
-    printf "Need root privilages\n"
-    #sudo -l updateDate
+function serveThings {
+  #!/usr/bin/env bash
+  # ~/sbin/serve-things.sh start|stop
+  if [[ -z "${1}" ]]; then
+    printf "%s requires a parameter.\nUsage: %s start|stop\n" ${FUNCNAME[0]} ${FUNCNAME[0]}
     return 1
   else
-    ntpdate 0.gentoo.pool.ntp.org
+    declare -a srvcs=( "postgresql-10" "mysql" "apache2" "vsftpd" "sshd" "rsyncd" "dictd" )
+    for srvc in "${srvcs[@]}"; do
+      sudo rc-service "${srvc}" "${1}"
+    done
   fi
+}
+
+function updateDate {
+  sudo ntpdate 0.gentoo.pool.ntp.org
 }
 
 function showUptime {

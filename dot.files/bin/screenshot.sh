@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-#
-# ~/bin/screenshot
-# Take a screenshot.
-# Requires Imagemagic or scrot, ristretto or viewnior
+# ~/bin/screenshot.sh
+# Take a screenshot. Requires Imagemagic or scrot, ristretto or viewnior
 
 FN="${HOME}/ss-$(date +%s).png"
 

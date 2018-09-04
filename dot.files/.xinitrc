@@ -1,18 +1,22 @@
-#
+# ~/.xinitrc
 #!/usr/bin/env bash
 #
-# ~/.xinitrc
 # This file is sourced when running startx and other programs which call xinit. As in all Bash/sh scripts lines starting with '#' are comments
 
 # xsetbg -fullscreen ~/.wallpapers/emacs-cheat-sheet.png & # Set background to your favorite pic
 # terminology & # Start a XTerm
-xrdb -merge ~/.Xresources # >> /dev/null 2>&1 # X things
-xset b off # Silence terminal bell
-xset m 20/10 4 # Mouse acceleration
+# X things
+xrdb -merge ~/.Xresources # >> /dev/null 2>&1 
+# Silence terminal bell
+xset b off 
+# Mouse acceleration
+xset m 20/10 4 
 
-export E_COMP_ENGINE=sw # e17 svg support
+# e17 svg support
+export E_COMP_ENGINE=sw 
 
-source /etc/os-release # Pick a wm for your distro # enlightenment_start starte16 startxfce4 kodi-standalone compiz.sh mwm jwm wmaker openbox-session
+# Pick a wm for your distro # enlightenment_start starte16 startxfce4 kodi-standalone compiz.sh mwm jwm wmaker openbox-session
+source /etc/os-release 
 if [[ "${ID}" == "gentoo" ]]; then
   WM=$(which openbox-session)
 elif [[ "${ID}" == "devuan" ]]; then
@@ -21,9 +25,12 @@ else
   WM=$(which wmaker)
 fi
 
-# exec /etc/alternatives/x-window-manager # Start the systems window manager. See WindowManagers for other choices.
-# exec gnome-session # To run Gnome instead of system default, place a '#' before the previous line and uncomment the next line.
+# Start the systems window manager. See WindowManagers for other choices.
+# exec /etc/alternatives/x-window-manager 
+# To run Gnome instead of system default, place a '#' before the previous line and uncomment the next line.
+# exec gnome-session 
 
-# exec /etc/X11/Sessions/awesome -c ~/.awesome/rc.lua # If awesome
+# Awesome
+# exec /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua 
 
 exec dbus-launch --exit-with-session "${WM}"

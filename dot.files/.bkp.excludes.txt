@@ -23,8 +23,6 @@
 */git/utils/fonts/*
 */git/utils/powerline/*
 
-*/git/zcash/*
-
 */node_modules/*
 
 */ImapMail/*

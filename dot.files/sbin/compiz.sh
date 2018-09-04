@@ -16,7 +16,7 @@ case "${ID}" in # Start Compiz
     fusion-icon & ;;
 esac
 
-tint2 -c ~/.tint2rc & # A nice status bar (before gui as we'll need that tray)
+tint2 & # A nice status bar (before gui as we'll need that tray)
 
 pmg="${HOME}/bin/pimp-my-gui"
 if [[ -x "${pmg}" ]]; then # If spice ...

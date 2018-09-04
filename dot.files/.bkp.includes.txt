@@ -3,15 +3,12 @@
 
 /etc/
 
-/home/paperjam/.emacs.d/
-
 /home/paperjam/.local/
 
 /home/paperjam/.mozilla/
 
 /home/paperjam/.wallpapers/
 
-/home/paperjam/git/git.txt
 /home/paperjam/git/CodeSites
 /home/paperjam/git/freeCodeCamp
 /home/paperjam/git/lib-bash

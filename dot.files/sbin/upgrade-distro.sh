@@ -7,14 +7,18 @@
 declare -a zypper=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) pacman=( "pacman" "-Sy" "-Syu" ) apt_get=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrade" ) yum=( "yum" "check-update" "update" ) emerge=( "emerge" "--sync" "--nospinner" "--pretend" "--update" "--deep" "--newuse" "--with-bdeps=y" "@world" ) pms=( zypper[@] pacman[@] apt_get[@] yum[@] emerge[@] )
 # PS: By ignoring dpkg and rpm we are avoiding issues with systems where alien has been installed.
 
-function get_pm { # Which is the first available pm in this system?
+function get_pm { 
+  # Which is the first available pm in this system?
   for x in "${!pms[@]}"; do
     if [[ -n $(which "${!pms[$x]:0:1}" 2> /dev/null) ]]; then
-      printf "%d\n" "${x}" # return pm index
-      return # quit on match.
+      # return pm index
+      printf "%d\n" "${x}"
+      # quit on match.
+      return
     fi
   done
-  printf "%d\n" "254" # No known pm found. quit
+  # No known pm found. quit
+  printf "%d\n" "254"
 }
 
 function upgrade_distro {
@@ -25,5 +29,5 @@ function upgrade_distro {
     "${!pms[$1]:0:1}" "${!pms[$1]:1:1}" && "${!pms[$1]:0:1}" "${!pms[$1]:2}"
   fi
 }
-
-upgrade_distro "$(get_pm)" # Make things happen.
+# Make things happen.
+upgrade_distro "$(get_pm)"
