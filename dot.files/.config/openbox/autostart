@@ -19,7 +19,7 @@
 compton &
 
 # A nice status bar (before gui as we'll need that tray)
-tint2 -c ~/.tint2rc &
+tint2 &
 
 # ~/.config/polybar/launch.sh
 # polybar example 2> /dev/null &
