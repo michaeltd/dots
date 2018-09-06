@@ -240,7 +240,7 @@ function trim {
 
 function wpRotate {
 
-  declare BGSETTER WPRC="${HOME}/.wallpaper.rotate.rc" DEFAULT_DIRS=( "${HOME}/Pictures" ) DEFAULT_WAIT="60s" USAGE="\nScript to rotate backgrounds in wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source ${BASH_SOURCE[0]} && wpRotate &\nAlternatively you can source this file in your startup scripts and start it from there.\n" LS=$(which ls 2> /dev/null) PICS_ARR=()
+  declare BGSETTER USAGE="\nScript to rotate backgrounds in wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source ${BASH_SOURCE[0]} && wpRotate &\nAlternatively you can source this file in your startup scripts and start it from there.\n" WPRC="${HOME}/.wallpaper.rotate.rc" DEFAULT_DIRS=( "${HOME}/Pictures" ) LS=$(which ls 2> /dev/null) DEFAULT_WAIT="60s" PICS_ARR=()
 
   # Assign a WP setter, WP list and a swap delay
   # Find a setter or die trying
