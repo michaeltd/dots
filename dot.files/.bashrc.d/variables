@@ -3,14 +3,15 @@
 
 # Set environment variables
 if [[ -n "${DISPLAY}" ]]; then
-    export VISUAL="$(which gvim 2> /dev/null)" EDITOR="$(which gvim 2> /dev/null)" BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
+    export VISUAL="$(which emacs 2> /dev/null ||which gvim 2> /dev/null )" EDITOR="$(which gvim 2> /dev/null ||which gvim 2> /dev/null)" BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
 else
     export VISUAL="$(which vim 2> /dev/null)" EDITOR="$(which vim 2> /dev/null)" BROWSER=$(which w3m 2> /dev/null||which lynx 2> /dev/null)
 fi
 
-# export PAGER=$(which less)
-export PAGER=$(which most 2> /dev/null||which less 2> /dev/null||which more 2> /dev/null) # install most
+# most > less > more in order of preference
+export PAGER=$(which most 2> /dev/null||which less 2> /dev/null||which more 2> /dev/null) 
 
+# manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
 
 export LANG="en_US.utf8"
@@ -37,6 +38,7 @@ export MONGODB="/opt/mongodb"
 export SCALA_HOME="/opt/scala"
 export ANACONDA3="/opt/anaconda3"
 
+# Path with += op and each tool in it's own line for practical reasons
 export PATH+=":${OPT}/bin"
 export PATH+=":${HOME}/bin"
 export PATH+=":${JAVA_HOME}/bin"
@@ -55,8 +57,8 @@ export PATH+=":${SCALA_HOME}/bin"
 export PATH+=":${ANACONDA3}/bin"
 # export PATH+=":${HOME}/.racket/7.0.0.9/bin"
 
+# JAVA classpath
 export CLASSPATH+=":./"
 export CLASSPATH+=":${JAVA}/lib"
 export CLASSPATH+=":${ANT}/lib"
 export CLASSPATH+=":${MAVEN}/lib"
-
