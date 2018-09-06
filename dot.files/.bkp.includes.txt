@@ -7,8 +7,6 @@
 
 /home/paperjam/.mozilla/
 
-/home/paperjam/.wallpapers/
-
 /home/paperjam/git/CodeSites
 /home/paperjam/git/freeCodeCamp
 /home/paperjam/git/lib-bash
