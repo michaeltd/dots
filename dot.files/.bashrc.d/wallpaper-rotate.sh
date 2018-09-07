@@ -2,7 +2,16 @@
 # Simple script to go through a directory of background images as wallpapers in a timely fashion
 
 declare \
-  USAGE="\nScript to rotate backgrounds in wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source $(basename ${BASH_SOURCE[0]}) && wallpaper_rotate &\nAlternatively you can source this file in your startup scripts and start it from there.\nOther options include : \nwallpaper_rotate help - this message, \nwallpaper_rotate add 'adir' - add given directory to your list of directories with images, \nwallpaper_rotate remove 'adir' remove given directory off your list of directories with images,\nwallpaper_rotate without options will just start rotating images. \n" \
+  USAGE="\n  Script to rotate backgrounds in wm's with out such options, \
+  \n  ie NOT kde, gnome or xfce4.\
+  \n\n  Usage: source $(basename ${BASH_SOURCE[0]}) && wallpaper_rotate &\
+  \n\n  Alternatively you can source this file in your startup scripts \
+  \n  and start it from there.\
+  \n\n  Other options include : \
+  \n\n  wallpaper_rotate help - this message, \
+  \n  wallpaper_rotate add 'adir' - add a directory to your image list, \
+  \n  wallpaper_rotate remove 'adir' remove a directory from your image list,\
+  \n  wallpaper_rotate without options will just start rotating images. \n" \
   BGSETTER="" \
   WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" \
   DEFAULT_WAIT="60s" \
@@ -81,21 +90,18 @@ function wpRemDir {
 
 function wallpaper_rotate {
 
-  wpDefaults || return 1
+  wpDefaults || return "${?}"
 
-  if [[ -n "$1" ]]; then 
-    case "$1" in
-      help*|halp*|?)
-        printf "${USAGE}" 
-        return 0 ;;
+  if [[ -n "${1}" ]]; then 
+    case "${1}" in
       add*)
         shift 
         wpAddDir "${1}"
-        return 0 ;;
+        return "${?}" ;;
       rem*)
         shift 
         wpRemDir "${1}"
-        return 0 ;;
+        return "${?}" ;;
       *)
         printf "${USAGE}" 
         return 0 ;;
