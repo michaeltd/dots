@@ -19,7 +19,13 @@ Distro neutral upgrade script and bash arrays mini crash course.
 
 #### [wallpaper-rotate.sh](dot.files/.bashrc.d/wallpaper-rotate.sh)
 Function for rolling background images as wallpapers.
+
 ![wallpaper-rotate](assets/snap0003.png "Help screen")
+
+Other shells? Try ...
+``` shell
+bash -c "source wallpaper-rotate.sh && wallpaper_rotate &"
+```
 
 #### everything-else(.sh)
 Playground
