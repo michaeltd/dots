@@ -2,7 +2,7 @@
 # WALLPAPER-ROTATE ============================================================
 # Simple script to go through a directory of background images as wallpapers in a timely fashion
 
-declare -a USAGE="\n  Script to rotate backgrounds in wm's with out such options,\n  ie NOT kde, gnome or xfce4.\n\n  Usage: source $(basename ${BASH_SOURCE[0]}) && wallpaper_rotate &\n\n  Alternatively you can source this file in your startup scripts \n  and start it from there.\n\n  Other options include : \n\n  wallpaper_rotate help - this message, \n  wallpaper_rotate add 'dir-path' - add a directory to your image list, \n  wallpaper_rotate del 'dir-path' - remove a directory from your image list,\n  wallpaper_rotate without options will start rotating images. \n" FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" ) XSETROOT=( "xsetroot" "-bitmap" ) BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] XSETROOT[@] ) BGSR="" WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" DEFAULT_WAIT="60s" DEFAULT_DIRS=( "${HOME}/Pictures" ) LS=$(which ls 2> /dev/null) WPS=()
+declare -a USAGE="\n  Script to rotate backgrounds in wm's with out such options,\n  ie NOT kde, gnome or xfce4.\n\n  Usage: source $(basename ${BASH_SOURCE[0]}) && wallpaper_rotate &\n\n  Alternatively you can source this file in your startup scripts \n  and start it from there.\n\n  Other options include : \n\n  wallpaper_rotate help - this message, \n  wallpaper_rotate add 'dir-path' - add a directory to your image list, \n  wallpaper_rotate del 'dir-path' - remove a directory from your image list,\n  wallpaper_rotate without options will start rotating images. \n" FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" ) XSETROOT=( "xsetroot" "-bitmap" ) BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] XSETROOT[@] ) BGSR WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" DEFAULT_WAIT="60s" DEFAULT_DIRS=( "${HOME}/Pictures" ) LS=$(which ls 2> /dev/null) WPS=()
 
 function wpDefaults {
 
@@ -14,7 +14,7 @@ function wpDefaults {
   # Find a setter or die trying
   for (( x=0; x<="${#BGSRS[@]}"; x++ )); do 
     if [[ -n $(which "${!BGSRS[$x]:0:1}" 2> /dev/null) ]]; then
-      declare -g BGSR="${x}"
+      BGSR="${x}"
       break
     fi
     # We'll never reach this far as xsetroot is part of any typical X11 istallation but it only works with bitmap files (-.-), so just to be on the safe side if(/when?) "What could possibly go wrong TM" or "Wayland TM" happens ...
@@ -35,9 +35,9 @@ function wpDefaults {
 
   # Fill up a WallPaperS list
   for D in "${DEFAULT_DIRS[@]}"; do 
-    declare -a PICS=( $("${LS}" -A "${D}") )
+    PICS=( $("${LS}" -A "${D}") )
     for P in "${PICS[@]}"; do
-      declare FN="${D}/${P}" FE="${P:(-4)}"
+      local FN="${D}/${P}" FE="${P:(-4)}"
       if [[ -f "${FN}" && "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then
         WPS+=( "${FN}" )
       fi
