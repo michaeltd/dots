@@ -8,4 +8,3 @@ fi
 
 clear
 
-#~/bin/lol.sh

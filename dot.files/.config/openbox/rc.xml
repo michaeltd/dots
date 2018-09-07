@@ -50,7 +50,7 @@
 
 <theme>
   <name>Onyx</name>
-  <titleLayout>NLIMC</titleLayout>
+  <titleLayout>NLDSIMC</titleLayout>
   <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -306,6 +306,15 @@
         <name>Run Dialog</name>
       </startupnotify>
       <command>~/bin/runcmd.sh</command>
+    </action>
+  </keybind>
+  <keybind key="Print">
+    <action name="Execute">
+      <startupnotify>
+        <enabled>true</enabled>
+        <name>Screenshot</name>
+      </startupnotify>
+      <command>~/bin/screenshot.sh</command>
     </action>
   </keybind>
 </keyboard>
