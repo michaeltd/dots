@@ -1,3 +1,4 @@
+# 
 # WALLPAPER-ROTATE ============================================================
 # Simple script to go through a directory of background images as wallpapers in a timely fashion
 
@@ -20,6 +21,11 @@ declare \
   WPS=()
 
 function wpDefaults {
+
+  if [[ "${BASH_VERSINFO[0]}" -lt "4" ]]; then 
+    printf "For this to work properly you'll need bash major version greater than 4!"
+    return 1
+  fi
 
   # Assign a WP setter, WP list and a swap delay
   # Find a setter or die trying
@@ -64,7 +70,7 @@ function wpDefaults {
 }
 
 function wpAddDir {
-  wpDefaults || return 1
+  wpDefaults || return "${?}"
   if [[ -d "${1}" ]]; then 
     DEFAULT_DIRS+=( "${1}" )
   else
@@ -77,7 +83,7 @@ function wpAddDir {
 }
 
 function wpRemDir {
-  wpDefaults || return 1
+  wpDefaults || return "${?}"
   for (( i=0; i<=${#DEFAULT_DIRS[@]}; i++ )); do  
     if [[ "${DEFAULT_DIRS[${i}]}" == "${1}" ]]; then
       unset 'DEFAULT_DIRS[i]'
