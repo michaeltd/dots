@@ -25,7 +25,7 @@ tint2 &
 # polybar example 2> /dev/null &
 
 
-pmg="${HOME}/bin/pimp-my-gui"
+pmg="${HOME}/bin/pimp-my-gui.sh"
 # if spice spice things up
 if [[ -x "${pmg}" ]]; then #
   "${pmg}" &

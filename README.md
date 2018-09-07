@@ -17,7 +17,7 @@
 #### [upgrade-distro](dot.files/sbin/upgrade-distro.sh)
 Distro neutral upgrade script and bash arrays mini crash course.
 
-#### [functions:wallpaper-rotate](dot.files/.bashrc.d/functions#WALLPAPER-ROTATE)
+#### [functions:wallpaper_rotate](dot.files/.bashrc.d/functions#WALLPAPER-ROTATE)
 Function for rolling background images as wallpapers.
 
 #### everything-else(.sh)

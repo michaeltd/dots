@@ -18,7 +18,7 @@ esac
 
 tint2 & # A nice status bar (before gui as we'll need that tray)
 
-pmg="${HOME}/bin/pimp-my-gui"
+pmg="${HOME}/bin/pimp-my-gui.sh"
 if [[ -x "${pmg}" ]]; then # If spice ...
   "${pmg}" & # ... spice things up
 fi

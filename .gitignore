@@ -8,6 +8,8 @@
 *~
 admin/*
 conky.configs/*
+dot.files/*.bak
+dot.files/*.sh.rc
 dot.files/.config/*
 !dot.files/.config/autostart
 !dot.files/.config/awesome

@@ -75,7 +75,7 @@ Menu ApplicationsMenu
 	"Firefox" 		f.exec "firefox &"
 	"File Manager" 		f.exec "gentoo &"
 	"Editor" 		f.exec "gvim &"
-	"Gui Pimp"		f.exec "~/bin/pimp-my-gui &"
+	"Gui Pimp"		f.exec "~/bin/pimp-my-gui.sh &"
 	"Root Menu" 		f.exec "~/bin/TkRootMenu &"
 }
 

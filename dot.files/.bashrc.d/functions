@@ -30,6 +30,7 @@ function rmalias {
 # }
 
 # Functions to unify archive management in linux CLI environments
+## COMPRESSION FUNCTION ##
 function compress {
   case "${1,,}" in
     *.tar.bz2) tar cjf $@;;
@@ -40,20 +41,7 @@ function compress {
   esac
 }
 
-## COMPRESSION FUNCTION ##
-#function compress__ {
-#    FILE=$1
-#    shift
-#    case $FILE in
-#        *.tar.bz2) tar cjf $FILE $*  ;;
-#        *.tar.gz)  tar czf $FILE $*  ;;
-#        *.tgz)     tar czf $FILE $*  ;;
-#        *.zip)     zip $FILE $*      ;;
-#        *.rar)     rar $FILE $*      ;;
-#        *)         echo "Filetype not recognized" ;;
-#   esac
-#}
-
+## EXTRACT FUNCTION ##
 function extract {
   case "${1,,}" in # Compare lowercased filename for known extensions.
     *.7z| *.7za) 7z x "${1}";;
@@ -69,28 +57,6 @@ function extract {
     * ) printf "Cannot operate on unknown file extention \"%s\"\n" "${1}" ;;
   esac
 }
-
-## EXTRACT FUNCTION ##
-#function extract__ {
-#    if [ -f $1 ] ; then
-#        case $1 in
-#            *.tar.bz2)   tar xjf $1     ;;
-#            *.tar.gz)    tar xzf $1     ;;
-#            *.bz2)       bunzip2 $1     ;;
-#            *.rar)       unrar e $1     ;;
-#            *.gz)        gunzip $1      ;;
-#            *.tar)       tar xf $1      ;;
-#            *.tbz2)      tar xjf $1     ;;
-#            *.tgz)       tar xzf $1     ;;
-#            *.zip)       unzip $1       ;;
-#            *.Z)         uncompress $1  ;;
-#            *.7z)        7z x $1        ;;
-#            *)     echo "'$1' cannot be extracted via extract()" ;;
-#        esac
-#    else
-#        echo "'$1' is not a valid file"
-#    fi
-#}
 
 ## DICTIONARY FUNCTIONS ##
 #function dwordnet { curl dict://dict.org/d:${1}:wn; }
@@ -234,73 +200,6 @@ function trim {
     echo -n "$var"
 }
 
-# <a name="WALLPAPER-ROTATE">OLD WALLPAPER-ROTATE</a> =========================
-# Simple script to go through a directory of
-# background images as wallpapers in a timely fashion
-
-function wpRotate {
-
-  declare BGSETTER USAGE="\nScript to rotate backgrounds in wm's with out such options (ie NOT kde, gnome or xfce4)\nUsage: source ${BASH_SOURCE[0]} && wpRotate &\nAlternatively you can source this file in your startup scripts and start it from there.\n" WPRC="${HOME}/.wallpaper.rotate.rc" DEFAULT_DIRS=( "${HOME}/Pictures" ) LS=$(which ls 2> /dev/null) DEFAULT_WAIT="60s" PICS_ARR=()
-
-  # Assign a WP setter, WP list and a swap delay
-  # Find a setter or die trying
-  if [[ -x $(which feh) ]]; then
-    BGSETTER="feh --bg-scale"
-  elif [[ -x $(which wmsetbg) ]]; then
-    BGSETTER="wmsetbg"
-  elif [[ -x $(which fvwm-root) ]]; then
-    BGSETTER="fvwm-root"
-  elif [[ -x $(which fbsetbg) ]]; then
-    BGSETTER="fbsetbg"
-  elif [[ -x $(which bsetbg) ]]; then
-    BGSETTER="bsetbg"
-  elif [[ -x $(which hsetroot) ]]; then
-    BGSETTER="hsetroot -fill"
-  elif [[ -x $(which xsetbg) ]]; then
-    BGSETTER="xsetbg"
-  elif [[ -x $(which xsetroot) ]]; then
-    BGSETTER="xsetroot -bitmap"
-  else
-    printf "${USAGE}"
-    return 1
-  fi
-
-  # If there is a readable settings file, read it
-  if [[ -r ${WPRC} ]]; then
-    source ${WPRC}
-  else
-    # or write it
-    printf "DEFAULT_WAIT=\"60s\"\n\rDEFAULT_DIRS=( \"${HOME}/Pictures\" )\n\r" > ${WPRC}
-  fi
-
-  for D in ${DEFAULT_DIRS[@]}; do 
-    declare -a PICS=( $(${LS} -A ${D}) )
-    for P in ${PICS[@]}; do
-      declare FN="${D}/${P}" FE="${P:(-4)}"
-      if [[ -f "${FN}" && "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then
-        PICS_ARR+=( "${D}/${P}" )
-      fi
-    done
-  done
-
-  # get array upper bound as WallPapersCount
-  WPC=${#PICS_ARR[@]}
-  while [[ true ]]; do
-    # limit a random num to upper array bounds
-    # by using shuf instead of $RANDOM as a RundomNumber
-    # let "RN = $RANDOM % $WPN"
-    RN=$(shuf -n 1 -i 0-"${WPC}")
-    # Get path and name of image as a selected WallPaper
-    WP="${PICS_ARR[${RN}]}"
-    # Check if item is a file (accidents do happen)
-    if [[ -f "${WP}" ]]; then
-      # set wallpaper, wait
-      ${BGSETTER} "${WP}"
-      sleep ${DEFAULT_WAIT}
-    fi
-  done
-}
-
 # CHUBIN WORKS ================================================================
 
 function cheat_sh {
@@ -317,14 +216,6 @@ function wttr_in {
   # https://twitter.com/igor_chubin # Try wttr moon
   curl wttr.in/${1-"Athens"}
 }
-
-#
-# function accuWeather {
-#   # http://www.accuweather.com/
-#   URL='http://www.accuweather.com/en/gr/athens/182536/weather-forecast/182536'
-#   wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", "$12"°" }'| head -1
-# }
-#
 
 # GAMES =======================================================================
 
