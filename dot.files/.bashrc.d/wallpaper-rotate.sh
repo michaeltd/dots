@@ -37,7 +37,7 @@ function wpDefaults {
   for D in "${DEFAULT_DIRS[@]}"; do 
     PICS=( $("${LS}" -A "${D}") )
     for P in "${PICS[@]}"; do
-      local FN="${D}/${P}" FE="${P:(-4)}"
+      FN="${D}/${P}" FE="${P:(-4)}"
       if [[ -f "${FN}" && "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]]; then
         WPS+=( "${FN}" )
       fi
@@ -50,21 +50,19 @@ function wpDirManager {
   case "${1}" in
     del*|rem*) 
       for (( i=0; i<="${#DEFAULT_DIRS[@]}"; i++ )); do 
-        if [[ "${DEFAULT_DIRS[${i}]}" == "${2}" ]]; then 
-          unset 'DEFAULT_DIRS[i]'
-        fi 
+        [[ "${DEFAULT_DIRS[${i}]}" == "${2}" ]] && unset 'DEFAULT_DIRS[i]'
       done
     ;;
     add*) 
       if [[ -d "${2}" ]]; then 
         DEFAULT_DIRS+=( "${2}" )
       else 
-        printf "Not a directory\n"; 
+        printf "%s Is not a directory\n" "${2}"
         return "1"
       fi
     ;;
   esac
-  local sv="DEFAULT_DIRS=(" rv="DEFAULT_DIRS=( ${DEFAULT_DIRS[@]} )"
+  sv="DEFAULT_DIRS=(" rv="DEFAULT_DIRS=( ${DEFAULT_DIRS[@]} )"
   sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
 }
 
