@@ -13,23 +13,32 @@ function custom_run {
   fi
 }
 
-# custom_run 19 compton # Start an X11 compositor
+# Start an X11 compositor
+# custom_run 19 compton
 
-#source /etc/os-release # Work around conky versions (pre/post 1.9)
+# Work around conky versions (pre/post 1.9)
+#source /etc/os-release
 
-custom_run 19 conky >> /dev/null 2>&1 # Monitor your box
+# Monitor your box
+custom_run 19 conky -c /home/paperjam/git/lib-bash/conky.configs/conky_configs/min_clock/conkyrc >> /dev/null 2>&1
 
-custom_run 19 xscreensaver -no-splash # XScreenSaver
+# XScreenSaver
+custom_run 19 xscreensaver -no-splash
 
-custom_run 19 orage # A calendar app # pgrep will produce erratic results, so no custom_run here # pidof fixed that
+# A calendar app
+custom_run 19 orage
 
-nice -n 19 wicd-gtk -t & # Networking # Python gui
+# Networking # Python gui
+nice -n 19 wicd-gtk -t &
 
-nice -n 9 terminology & # Start a terminal
+# Start a terminal
+nice -n 9 terminology &
 
-# nice -n 9 xfce4-terminal --disable-server & # Start a terminal
+# Start a terminal
+# nice -n 9 xfce4-terminal --disable-server &
 
-nice -n 9 ${HOME}/bin/TkRootMenu & # Start a Menu # Python based gui
+# Start a Menu # Python based gui
+nice -n 9 ${HOME}/bin/TkRootMenu &
 
-source "${HOME}/.bashrc.d/wallpaper-rotate.sh" # Add some wallpaper variety for your desktop
-wallpaper_rotate &
+# Add some wallpaper variety for your desktop
+"${HOME}/bin/wallpaper-rotate.sh" &

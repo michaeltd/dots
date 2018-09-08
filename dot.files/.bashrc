@@ -40,3 +40,5 @@ fi
 # if [[ -f "${bi}" ]]; then # Load file omb
 #   "${file}"
 # fi
+
+# eval $(thefuck --alias)

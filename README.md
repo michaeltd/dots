@@ -17,15 +17,10 @@
 #### [upgrade-distro](dot.files/sbin/upgrade-distro.sh)
 Distro neutral upgrade script and bash arrays mini crash course.
 
-#### [wallpaper-rotate.sh](dot.files/.bashrc.d/wallpaper-rotate.sh)
-Function for rolling background images as wallpapers.
+#### [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
+Script for rolling random images as wallpapers.
 
-![wallpaper-rotate](wpr-help.png "Help screen")
-
-Other shells? Try ...
-``` shell
-bash -c "source wallpaper-rotate.sh && wallpaper_rotate &"
-```
+![wallpaper-rotate.sh](wpr-help.png "Help screen")
 
 #### everything-else(.sh)
 Playground

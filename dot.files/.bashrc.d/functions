@@ -3,6 +3,9 @@
 
 # SCRAPPAD ====================================================================
 
+# while read a ; do echo ${a//abc/XYZ} ; done < /tmp/file.txt > /tmp/file.txt.t ; mv /tmp/file.txt{.t,}
+# echo "abcdef" |replace "abc" "XYZ" # mysqld
+
 # UTILS =======================================================================
 
 # Create a new alias
@@ -13,7 +16,7 @@ function mkalias {
 
 # Remove an alias
 function rmalias {
-    unalias $1 && sed -i "/alias $1\=/d" ~/.bashrc.d/aliases
+    unalias $1 # && sed -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases
 }
 
 # Color man pages
@@ -135,8 +138,6 @@ function printMemUsage {
 }
 
 function serveThings {
-  #!/usr/bin/env bash
-  # ~/sbin/serve-things.sh start|stop
   if [[ -z "${1}" ]]; then
     printf "%s requires a parameter.\nUsage: %s start|stop\n" ${FUNCNAME[0]} ${FUNCNAME[0]}
     return 1
