@@ -1,0 +1,27 @@
+#Panel
+panel_position = left center vertical
+panel_size = 75% 46
+panel_items = L
+
+#Launchers
+launcher_item_app = /usr/share/applications/terminology.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/Firefox.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/hexchat.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/atom.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/code.desktop
+launcher_item_app = /usr/share/applications/emacs.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/gvim.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/Eclipse.desktop
+launcher_item_app = /usr/share/applications/openoffice-startcenter.desktop
+launcher_item_app = /usr/share/applications/xfe.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/audacious.desktop
+launcher_item_app = /usr/share/applications/vlc.desktop
+launcher_item_app = /usr/share/applications/kodi.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/pavucontrol.desktop
+
+#Panel Autohide
+autohide = 0
+autohide_show_timeout = 0
+autohide_hide_timeout = 2
+autohide_height = 1
+strut_policy = minimum

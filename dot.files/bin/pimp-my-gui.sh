@@ -13,14 +13,13 @@ function custom_run {
   fi
 }
 
+source /etc/os-release
+
 # Start an X11 compositor
 # custom_run 19 compton
 
 # Work around conky versions (pre/post 1.9)
 #source /etc/os-release
-
-# Monitor your box
-custom_run 19 conky -c /home/paperjam/git/lib-bash/conky.configs/conky_configs/min_clock/conkyrc >> /dev/null 2>&1
 
 # XScreenSaver
 custom_run 19 xscreensaver -no-splash
@@ -32,12 +31,18 @@ custom_run 19 orage
 nice -n 19 wicd-gtk -t &
 
 # Start a terminal
+# nice -n 9 xfce4-terminal --disable-server &
 nice -n 9 terminology &
 
-# Start a terminal
-# nice -n 9 xfce4-terminal --disable-server &
+# Monitor your box
+if [[ "${ID}" == "devuan" ]]; then
+  custom_run 19 conky >> /dev/null 2>&1
+else
+  conky -c "${HOME}/git/lib-bash/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
+  conky -c "${HOME}/git/lib-bash/conky.configs/conky-horizontal-minimalist/conkyrc" >> /dev/null 2>&1 &
+fi
 
-# Start a Menu # Python based gui
+# Start a Menu
 nice -n 9 ${HOME}/bin/TkRootMenu &
 
 # Add some wallpaper variety for your desktop

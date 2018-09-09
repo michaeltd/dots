@@ -39,21 +39,26 @@ for D in "${DEFAULT_DIRS[@]}"; do # Fill up a WallPaperS list
   done
 done
 
-if [[ -n "${1}" ]];then
+if [[ -n "${1}" ]]; then
   case "${1}" in
     del*|rem*|add*)
-      if [[ "${1}" =~ "add" ]];then
-        if [[ -d "${2}" ]];then
-          DEFAULT_DIRS+=( "${2}" )
-        else
-          printf "%s Is not a directory\n" "${2}"
-          exit "1"
-        fi
-      else
-        for (( i=0; i<="${#DEFAULT_DIRS[@]}"; i++ ));do
-          if [[ "${DEFAULT_DIRS[${i}]}" == "${2}" ]]; then
-            unset 'DEFAULT_DIRS[i]'
+      if [[ "${1}" =~ "add" ]]; then
+        shift
+        while [[ -n "${1}" ]]; do
+          if [[ -d "${1}" ]]; then
+            DEFAULT_DIRS+=( "${1}" )
           fi
+          shift
+        done
+      else
+        shift
+        while [[ -n "${1}" ]]; do
+          for (( i=0; i<="${#DEFAULT_DIRS[@]}"; i++ )); do
+            if [[ "${DEFAULT_DIRS[${i}]}" == "${1}" ]]; then
+              unset 'DEFAULT_DIRS[i]'
+            fi
+          done
+          shift
         done
       fi
       # https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command

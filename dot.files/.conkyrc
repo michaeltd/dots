@@ -3,7 +3,7 @@ conky.config = {
 -- Check http://conky.sourceforge.net/variables.html for the list of variables
 
 -- - Conky settings - #
-	update_interval = 20,
+	update_interval = 1,
 	total_run_times = 0,
 	net_avg_samples = 1,
 	cpu_avg_samples = 1,

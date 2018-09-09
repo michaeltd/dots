@@ -10,13 +10,12 @@
 
 # Create a new alias
 function mkalias {
-    echo "alias $@" >> ${HOME}/.bashrc.d/aliases
-    alias $@
+  alias "${@}" && echo "alias ${@}" >> ${HOME}/.bashrc.d/aliases
 }
 
 # Remove an alias
 function rmalias {
-    unalias $1 # && sed -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases
+  unalias $1 # && sed -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases
 }
 
 # Color man pages

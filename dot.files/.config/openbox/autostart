@@ -20,10 +20,11 @@ compton &
 
 # A nice status bar (before gui as we'll need that tray)
 tint2 &
-
+tint2 -c ~/.config/tint2/panel &
 # ~/.config/polybar/launch.sh
 # polybar example 2> /dev/null &
-
+# polybar topbar 2> /dev/null &
+# ~/.config/polybar/launch.sh
 
 pmg="${HOME}/bin/pimp-my-gui.sh"
 # if spice spice things up
