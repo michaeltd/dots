@@ -10,7 +10,8 @@
 
 # Create a new alias
 function mkalias {
-  alias "${@}" && echo "alias ${@}" >> ${HOME}/.bashrc.d/aliases
+  echo "alias ${@}" >> ${HOME}/.bashrc.d/aliases
+  alias "${@}"
 }
 
 # Remove an alias

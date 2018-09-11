@@ -9,7 +9,7 @@ else
 fi
 
 # most > less > more in order of preference
-export PAGER=$(which most 2> /dev/null||which less 2> /dev/null||which more 2> /dev/null) 
+export PAGER=$(which most 2> /dev/null||which less 2> /dev/null||which more 2> /dev/null)
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
@@ -36,7 +36,6 @@ export GOPATH="${HOME}/go"
 export NODE="/opt/nodejs"
 export MONGODB="/opt/mongodb"
 export SCALA_HOME="/opt/scala"
-export ANACONDA3="/opt/anaconda3"
 
 # Path with += op and each tool in it's own line for practical reasons
 export PATH+=":${OPT}/bin"
@@ -54,7 +53,6 @@ fi
 export PATH+=":${NODE}/bin"
 export PATH+=":${MONGODB}/bin"
 export PATH+=":${SCALA_HOME}/bin"
-export PATH+=":${ANACONDA3}/bin"
 # export PATH+=":${HOME}/.racket/7.0.0.9/bin"
 
 # JAVA classpath

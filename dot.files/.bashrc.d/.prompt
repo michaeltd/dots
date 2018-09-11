@@ -10,10 +10,14 @@ function _PROMPT {
 
     # Set variables for PS1 string
 
-    local _br1="\[${bold}${black}\][\[${reset}\]" _br2="\[${bold}${black}\]]\[${reset}\]" \
-           _div1="\[${bold}${black}\] » \[${reset}\]" _div2="\[${bold}${black}\]╺─╸\[${reset}\]" \
-           _line1="\[${red}\]┌─╼\[${reset}\]" _line2="\[${red}\]└────╼\[${reset}\]" \
-           _sep="\[${reset}\]@" _title_sep="@"
+    local _br1="\[${bold}${black}\][\[${reset}\]" \
+          _br2="\[${bold}${black}\]]\[${reset}\]" \
+          _div1="\[${bold}${black}\] » \[${reset}\]" \
+          _div2="\[${bold}${black}\]╺─╸\[${reset}\]" \
+          _line1="\[${red}\]┌─╼\[${reset}\]" \
+          _line2="\[${red}\]└────╼\[${reset}\]" \
+          _sep="\[${reset}\]@" \
+          _title_sep="@"
 
     #local _br1="\[${bold}${black}\][\[${reset}\]" _br2="\[${bold}${black}\]]\[${reset}\]" \
     #       _div1="\[${bold}${black}\] » \[${reset}\]" _div2="\[${bold}${black}\]╺─╸\[${reset}\]" \
@@ -30,12 +34,12 @@ function _PROMPT {
     #      _line1="\[${red}\]\[${reset}\]" _line2="\[${red}\] \[${reset}\]"\
     #      _sep="\[${reset}\]@" _title_sep="@"
 
-    local _cwd="${_br1}${_cwd_short}${_br2}" _title_cwd="[${_cwd_short}]"\
+    local _cwd="${_br1}${_cwd_short}${_br2}"\
+          _title_cwd="[${_cwd_short}]"\
           _time="${_br1}${_time24h}${_br2}"
 
     # Exit status string
-    if [ $EXIT_STATUS != 0 ]
-    then
+    if [ $EXIT_STATUS != 0 ]; then
       local _errmsg="${_br1}\[${bold}${red}\]${EXIT_STATUS}${_br2}"
     else
       local _errmsg=""
@@ -43,16 +47,22 @@ function _PROMPT {
 
     # User
     if (( UID == 0 )); then
-      local _user="\[${red}\]\u\[${reset}\]" _title_user="\u"
+      local _user="\[${red}\]\u\[${reset}\]" \
+            _title_user="\u"
     else
-      local _user="\[${green}\]\u\[${reset}\]" _title_user="\u"
+      local _user="\[${green}\]\u\[${reset}\]" \
+            _title_user="\u"
     fi
 
     # Hostname
     if [[ $SSH_TTY ]]; then
-        local _host="\[${blue}\]\h" _title_ssh="ssh://" _title_host="\h"
+        local _host="\[${blue}\]\h" \
+              _title_ssh="ssh://" \
+              _title_host="\h"
     else
-        local _host="\[${yellow}\]\h" _title_ssh="" _title_host="\h"
+        local _host="\[${yellow}\]\h" \
+              _title_ssh="" \
+              _title_host="\h"
     fi
 
     # Jobs
@@ -95,8 +105,10 @@ function _PROMPT {
 
     # Set PS1
     PS1="${_title}${_new_line}${_line1} ${_time}${_div1}${_user}${_sep}${_host} ${_div2} ${_errmsg}${_jobs}${_cwd}${_git}${_new_line}${_line2} "
-    export PS2='continue >'
-    export PS4='+$BASH_SOURCE[$LINENO]: '
+    #export
+    PS2='continue >'
+    #export
+    PS4='+$BASH_SOURCE[$LINENO]: '
 }
 
 # Prompt
