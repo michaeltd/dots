@@ -82,17 +82,6 @@ function extract {
 #    done
 #}
 
-# git add; commit; push
-function gacp {
-  git add .
-  if [[ -n "${1}" ]]; then
-    git commit -m "${1}"
-  else
-    git commit
-  fi
-  git push
-}
-
 # Traverse directory structure given # of steps
 function up {
   DEEP=$1

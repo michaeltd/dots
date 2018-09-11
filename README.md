@@ -1,4 +1,4 @@
-## dot.files tdm 2016
+## dots tdm 2016
 
 #### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
