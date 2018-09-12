@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 
+#
 # ~/bin/pimp-my-gui
 # Spice for my desktop
 
@@ -40,12 +40,12 @@ if [[ "${ID}" == "devuan" ]]; then
   custom_run 19 conky >> /dev/null 2>&1
 
 else
-  # conky -c "${HOME}/git/lib-bash/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
-  # conky -c "${HOME}/git/lib-bash/conky.configs/conky-horizontal-minimalist/conkyrc" >> /dev/null 2>&1 &
+  # conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
+  # conky -c "${HOME}/git/dots/conky.configs/conky-horizontal-minimalist/conkyrc" >> /dev/null 2>&1 &
 
-  # custom_run 19 conky -c "${HOME}/git/lib-bash/conky.configs/old/qlock"
+  # custom_run 19 conky -c "${HOME}/git/dots/conky.configs/old/qlock"
 
-  conky -c "${HOME}/git/lib-bash/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
+  custom_run 19 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
 
 fi
 

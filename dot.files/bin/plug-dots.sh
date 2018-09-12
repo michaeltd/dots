@@ -3,11 +3,10 @@
 # ~/bin/plug-dots.sh
 # The means to migrate my .dots in new systems.
 
-# dtfls="${HOME}/git/lib-bash/dot.files"
 dtfls="$(cd ../$(dirname ${BASH_SOURCE[0]}) && pwd)" # One down from this one (bin/plug-dots.sh)
 
 tofldr="${HOME}"
-fx=".${RANDOM}"
+fx=".$(date +%s)"
 ls=$(which ls) # alias workaround
 
 declare -a fls=( $(${ls} -A ${dtfls}) )
