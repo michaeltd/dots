@@ -5,13 +5,16 @@
 declare -a WPUSAGE="\
 \n  Script to rotate backgrounds in wm's with out such options, \
 \n  ie NOT kde, gnome or xfce4. \
-\n\n  Usage: $(basename ${BASH_SOURCE[0]}) & \
-\n\n  Alternatively you can execute this file from your startup scripts \
-\n\n  Other options include : \
-\n  \'$(basename ${BASH_SOURCE[0]}) help\' - this message\
-\n  \'$(basename ${BASH_SOURCE[0]}) add path1 [path2 ...]\' -add director(y/ies)\
-\n  \'$(basename ${BASH_SOURCE[0]}) del path1 [path2 ...]\' -del director(y/ies)\
-\n  \'$(basename ${BASH_SOURCE[0]})\' without options will start rotating images.\n" FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" ) XSETROOT=( "xsetroot" "-bitmap" ) BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] XSETROOT[@] ) BGSR WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" DEFAULT_WAIT="60s" DEFAULT_DIRS=( "${HOME}/Pictures" ) LS=$(which ls 2> /dev/null) WPS=()
+\n \
+\n  Usage: $(basename ${BASH_SOURCE[0]}) & \
+\n \
+\n  Alternatively you can execute this file from your startup scripts \
+\n \
+\n  Other options include : \
+\n  $(basename ${BASH_SOURCE[0]}) help - this message\
+\n  $(basename ${BASH_SOURCE[0]}) add path1 [path2 ...] -add director(y/ies)\
+\n  $(basename ${BASH_SOURCE[0]}) rem path1 [path2 ...] -remove director(y/ies)\
+\n  $(basename ${BASH_SOURCE[0]}) without options will start rotating images.\n" FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" ) XSETROOT=( "xsetroot" "-bitmap" ) BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] XSETROOT[@] ) BGSR WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" DEFAULT_WAIT="60s" DEFAULT_DIRS=( "${HOME}/Pictures" ) LS=$(which ls 2> /dev/null) WPS=()
 
 if [[ "${BASH_VERSINFO[0]}" -lt "4" ]];then # bash version info check
   printf "For this to work properly you'll need bash major version greater than 4!"
