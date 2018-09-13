@@ -22,6 +22,7 @@ background_color = #FFFFFF 16
 border_color = #FFFFFF 68
 
 # Panel
+panel_items = LTSCB
 panel_monitor = all
 #panel_position = bottom center horizontal
 panel_position = top center horizontal

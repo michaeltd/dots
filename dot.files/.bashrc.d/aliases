@@ -22,6 +22,15 @@ fi
 alias du='du -h'
 alias df='df -h'
 
+# pms=( emerge pacman "apt-get" zypper yum )
+#
+# for (( pmi=0 ; pmi<="${#pms[@]}" ; pmi++ )); do
+#   if [[ -x $(which "${pms[pmi]}" 2> /dev/null) ]]; then
+#     export pmi
+#     break
+#   fi
+# done
+
 if [[ -n $(which emerge 2> /dev/null) ]]; then
     alias search='emerge -s' install='sudo emerge -av' remove='sudo emerge -avC' update='sudo emerge --sync' upgrade='sudo emerge -avuND --with-bdeps=y @world' cleanup='sudo emerge --ask --depclean'
 elif [[ -n $(which pacman 2> /dev/null) ]]; then
