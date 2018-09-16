@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-
-nicec=$(which nice) # 1. Loose aliases, 2. Check availability
+# 1. Loose aliases, 2. Check availability
+nicec=$(which nice)
 tarcm=$(which tar)
-
-source /etc/os-release # Distro details.
-
-eldir="/mnt/el/Documents/bkps/linux" # Dirs
-
-incfl="/home/paperjam/.bkp.includes.txt" # Backup/Exclude
+# Distro details.
+source /etc/os-release
+# Dirs
+eldir="/mnt/el/Documents/bkps/linux"
+# Backup/Exclude
+incfl="/home/paperjam/.bkp.includes.txt"
 excfl="/home/paperjam/.bkp.excludes.txt"
-
-archv="${eldir}/$(date +%s).dell.${ID}.${HOSTNAME}.tar.gz" # Archive path/name/ext
+# Archive path/name/ext
+archv="${eldir}/$(date +%s).dell.${ID}.${HOSTNAME}.tar.gz"
 
 if [[ -d "${eldir}" && -r "${incfl}" && -r "${excfl}" && -x "${tarcm}" ]]; then
   printf "# BACKUP # ---------------------------------------------------------------------\n"

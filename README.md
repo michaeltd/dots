@@ -1,6 +1,6 @@
-## dots tdm 2016
+### dots tdm 2016
 
-#### [dot.files](dot.files)
+###### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
   * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/)
   * [plug-dots.sh](dot.files/bin/plug-dots.sh)
@@ -8,7 +8,7 @@
     The means to migrate my .dots in new systems.
 
     Why would anyone (other than me) even consider running something like this, is well beyond me.
-    <p style="color: red;">Never -EVER- attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.<br />RUN THIS AT YOUR OWN RISK!</p>
+    <p style="color:red;">Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.<br />Run it at your own risk!</p>
 
 * Some WM's
 * Backup includes - excludes
@@ -27,12 +27,12 @@ Script for rolling random images as wallpapers.
 
 ![wallpaper-rotate.sh](wpr.png "Help screen")
 
-#### everything-else(.sh)
+###### everything-else(.sh)
 Playground
 
-#### Reference
-###### [.dotfiles github guide](https://dotfiles.github.io/)
-.dotfiles github guide and a collection with repositories of interest.
+### Reference
+###### [GitHub ❤ ~/](https://dotfiles.github.io/)
+Your unofficial guide to dotfiles on GitHub.
 
 ###### [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/html/abs-guide.html) ([PDF](http://www.tldp.org/LDP/abs/abs-guide.pdf))
 The Bash all in one goto place.
