@@ -14,8 +14,9 @@
     <p style="color:red;">Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.<br />Run it at your own risk!</p>
 
 * Some WM's
-* Backup includes - excludes
-* Editors - Utilities
+* Backup includes, excludes.
+* Editors, Utilities.
+
   If emacs is "your thing", check one of ...
     * https://github.com/technomancy/emacs-starter-kit
     * https://github.com/bbatsov/prelude
