@@ -1,7 +1,7 @@
 ### dots tdm 2016
 
-  Possible usage: "git clone https://github.com/MichaelTd/dots"
-  Go through the contents of this repo and select what suits your own
+  Possible usage: "git clone https://github.com/MichaelTd/dots" <br />
+  Go through the contents of this repo and select what suits your own <br />
   needs so you can incorporate exactly that in your working environment.
 
 ###### [dot.files](dot.files)
