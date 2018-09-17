@@ -5,7 +5,6 @@
 
 if [[ "${1}" != "abracadabra" ]]; then
   printf "Read this first: https://github.com/MichaelTd/dots/\n"
-  read -p "ok? "
   exit 1
 fi
 
