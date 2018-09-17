@@ -3,6 +3,12 @@
 # ~/bin/plug-dots.sh
 # The means to migrate my .dots in new systems.
 
+if [[ "${1}" != "abracadabra" ]]; then
+  printf "Read this first: https://github.com/MichaelTd/dots/\n"
+  read -p "ok? "
+  exit 1
+fi
+
 dtfls="$(cd ../$(dirname ${BASH_SOURCE[0]}) && pwd)" # One down from this one (bin/plug-dots.sh)
 
 tofldr="${HOME}"

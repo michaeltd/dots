@@ -1,5 +1,9 @@
 ### dots tdm 2016
 
+  Possible usage: "git clone https://github.com/MichaelTd/dots"
+  Go through the contents of this repo and select what suits your own
+  needs so you can incorporate exactly that in your working environment.
+
 ###### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
   * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/)
@@ -7,7 +11,6 @@
 
     The means to migrate my .dots in new systems.
 
-    Why would anyone (other than me) even consider running something like this, is well beyond me.
     <p style="color:red;">Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.<br />Run it at your own risk!</p>
 
 * Some WM's
@@ -27,7 +30,7 @@ Script for rolling random images as wallpapers.
 
 ![wallpaper-rotate.sh](wpr.png "Help screen")
 
-###### everything-else(.sh)
+###### [everything-else(.sh)]()
 Playground
 
 ### Reference

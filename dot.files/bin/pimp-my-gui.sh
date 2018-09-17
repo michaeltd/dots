@@ -28,23 +28,23 @@ custom_run 19 orage
 # Networking # Python gui
 nice -n 19 wicd-gtk -t &
 
-source /etc/os-release
-
 # Start a terminal
 # Monitor your box
+source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
-  custom_run 19 xfce4-terminal --disable-server &
+  custom_run 19 xfce4-terminal --disable-server
   custom_run 19 conky >> /dev/null 2>&1
 else
   # conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
   # conky -c "${HOME}/git/dots/conky.configs/conky-horizontal-minimalist/conkyrc" >> /dev/null 2>&1 &
   # custom_run 19 conky -c "${HOME}/git/dots/conky.configs/old/qlock"
   custom_run 19 terminology &
-  custom_run 19 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
+  #custom_run 19 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1
+  custom_run 19 conky >> /dev/null 2>&1
 fi
 
 # Start a Menu
 nice -n 9 ${HOME}/bin/TkRootMenu &
 
 # Add some wallpaper variety for your desktop
-"${HOME}/bin/wallpaper-rotate.sh" &
+${HOME}/bin/wallpaper-rotate.sh &
