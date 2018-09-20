@@ -47,7 +47,7 @@ function compress {
 ## EXTRACT FUNCTION ##
 function extract {
   case "${1,,}" in # Compare lowercased filename for known extensions.
-    *.7z| *.7za) 7z x "${1}";;
+    *.7z| *.7za| *.exe| *.cab) 7z x "${1}";;
     *.tar) tar -xf "${1}";;
     *.tar.gz| *.tar.z| *.tgz) tar -xzf "${1}";;
     *.tar.bz2| *.tbz2) tar -xjf "${1}";;

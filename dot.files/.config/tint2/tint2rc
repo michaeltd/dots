@@ -30,7 +30,7 @@ panel_size = 100% 30
 panel_margin = 0 0
 panel_padding = 7 0 7
 panel_dock = 0
-wm_menu = 0
+wm_menu = 1
 panel_layer = top
 panel_background_id = 1
 
@@ -40,6 +40,23 @@ autohide_show_timeout = 0.3
 autohide_hide_timeout = 2
 autohide_height = 2
 strut_policy = follow_size
+
+# Launcher
+# launcher_padding = 8 4 4
+# launcher_background_id = 1
+# launcher_icon_size = 24
+# Specify icon theme names with launcher_icon_theme.
+# if you have an XSETTINGS manager running (like xfsettingsd), tint2 will follow your current theme.
+# launcher_icon_theme = Faenza-CrunchBang
+# Each launcher_item_app must be a full path to a .desktop file
+launcher_item_app = /usr/share/applications/xfce4-run.desktop
+launcher_item_app = /usr/share/applications/xfce4-screenshooter.desktop
+#launcher_item_app = /usr/share/applications/menu.desktop
+#launcher_item_app = /usr/share/applications/showdesktop.desktop
+#launcher_item_app = /usr/share/applications/terminator.desktop
+#launcher_item_app = /usr/share/applications/xfce4-file-manager.desktop
+#launcher_item_app = /usr/share/applications/gedit.desktop
+#launcher_item_app = /usr/share/applications/iceweasel.desktop
 
 # Taskbar
 taskbar_mode = single_desktop
