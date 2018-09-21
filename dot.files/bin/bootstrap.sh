@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ~/bin/plug-dots.sh
+# ~/bin/bootstrap.sh
 # The means to migrate my .dots in new systems.
 
 if [[ "${1}" != "abracadabra" ]]; then
