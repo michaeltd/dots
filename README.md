@@ -7,11 +7,11 @@
 ###### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
   * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
-  * [plug-dots.sh](dot.files/bin/plug-dots.sh)
+  * [bootstrap.sh](dot.files/bin/bootstrap.sh)
 
     The means to migrate my .dots in new systems.
 
-    <p style="color:red;">Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.<br />Run it at your own risk!</p>
+    <p style="color:red;">Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.<br />Use at your own risk!</p>
 
 * Some WM's
 * Backup includes, excludes.
