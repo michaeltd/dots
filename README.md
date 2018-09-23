@@ -1,15 +1,13 @@
 ### dots tdm 2016
 
-  Possible usage: "git clone https://github.com/MichaelTd/dots" <br />
-  Go through the contents of this repo and select what suits your own <br />
-  needs so you can incorporate exactly that in your working environment.
+  Possible usage: "git clone https://github.com/MichaelTd/dots" <br />Go through the contents of this repo and select what suits your own <br />needs so you can incorporate exactly that in your working environment.
 
 ###### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
   * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
   * [bootstrap.sh](dot.files/bin/bootstrap.sh)
 
-    The means to migrate my .dots in new systems.
+    How to migrate my .dots in new systems.
 
     <p style="color:red;">Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.<br />Use at your own risk!</p>
 
@@ -48,7 +46,4 @@ Free books relevant to bash (and much more).
 OO bash framework.
 
 ###### [bash-hackers](http://wiki.bash-hackers.org/) http://wiki.bash-hackers.org/
-Everything bash.
-
-###### [dotshare.it](http://dotshare.it/) http://dotshare.it/
 See what other fellow bash'ers are up to.
