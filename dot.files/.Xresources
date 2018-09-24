@@ -2,6 +2,11 @@
 ! Written by: Maciej Delmanowski <harnir@post.pl>
 ! Put this file as ~/.Xresources in your home directory
 
+
+RootMenu*renderFont: true
+RootMenu*faceName: UbuntuMono
+RootMenu*faceSize: 10
+
 ! Emacs
 
 !Emacs.geometry: 120x40
