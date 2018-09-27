@@ -12,10 +12,16 @@ xset b off
 xset m 20/10 4
 # e17 svg support
 export E_COMP_ENGINE=sw
-# Pick a wm: enlightenment_start starte16 startxfce4 kodi-standalone compiz.sh mwm jwm wmaker openbox-session
-
-WM=$(which wmaker||which openbox-session||which xfce4-session)
-
+# Pick a wm:
+WM=$(which wmaker|| \
+    which openbox-session|| \
+    which compiz.sh|| \
+    which jwm|| \
+    which mwm|| \
+    which enlightenment_start|| \
+    which starte16|| \
+    which startxfce4|| \
+    which kodi-standalone)
 # Start the systems window manager. See WindowManagers for other choices.
 # exec /etc/alternatives/x-window-manager
 # To run Gnome instead of system default, place a '#' before the previous line and uncomment the next line.
@@ -23,5 +29,4 @@ WM=$(which wmaker||which openbox-session||which xfce4-session)
 # Awesome
 # exec /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
 # exec dbus-launch --exit-with-session "${WM}"
-
 "${WM}"
