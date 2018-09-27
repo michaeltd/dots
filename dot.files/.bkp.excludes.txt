@@ -10,6 +10,8 @@
 
 */git/playground/e16/themes/*
 
+*/git/playground/gatsby*
+
 */git/playground/wasm/*
 
 */git/tutorials/fcc/guides/*

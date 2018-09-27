@@ -239,7 +239,7 @@
             DropCommand = "xfe %d";
             BuggyApplication = No;
             AutoLaunch = No;
-            Position = "1,0";
+            Position = "2,0";
             Lock = No;
             PasteCommand = "xfe %s";
             Command = xfe;
@@ -251,10 +251,22 @@
             DropCommand = "xfce4-terminal %d";
             BuggyApplication = No;
             AutoLaunch = No;
-            Position = "3,0";
+            Position = "4,0";
             Lock = No;
             PasteCommand = "xfce4-terminal %s";
             Command = "xfce4-terminal --disable-server";
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = gentoo.Gentoo;
+            DropCommand = "gentoo %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "1,0";
+            Lock = No;
+            PasteCommand = "gentoo %s";
+            Command = gentoo;
             Omnipresent = No;
           },
           {
@@ -263,7 +275,7 @@
             DropCommand = "terminology %d";
             BuggyApplication = No;
             AutoLaunch = No;
-            Position = "2,0";
+            Position = "3,0";
             Lock = No;
             PasteCommand = "terminology %s";
             Command = terminology;

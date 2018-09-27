@@ -40,7 +40,7 @@
     Icon = seamonkey.Seamonkey.xpm;
   };
   Drawer2.WMDrawer = {
-    Icon = gentoo.Gentoo.xpm;
+    Icon = terminology.png;
   };
   gentoo.Gentoo = {
     Icon = gentoo.Gentoo.xpm;
@@ -54,11 +54,11 @@
   Drawer1.WMDrawer = {
     Icon = gimp.Gimp.xpm;
   };
-  emacs.Emacs = {
-    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/emacs.Emacs.xpm";
-  };
   main.terminology = {
     Icon = terminology.png;
+  };
+  emacs.Emacs = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/emacs.Emacs.xpm";
   };
   vlc.Vlc = {
     Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/vlc.Vlc.xpm";
@@ -69,11 +69,11 @@
   gvim.Gvim = {
     Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/gvim.Gvim.xpm";
   };
-  xfe.Xfe = {
-    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/xfe.Xfe.xpm";
-  };
   atom.Atom = {
     Icon = Atom.atom.png;
+  };
+  xfe.Xfe = {
+    Icon = "/home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/xfe.Xfe.xpm";
   };
   nedit.NEdit = {
     Icon = nedit.NEdit.xpm;

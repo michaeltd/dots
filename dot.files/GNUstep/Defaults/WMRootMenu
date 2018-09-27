@@ -60,10 +60,10 @@
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
     (
       Utilities,
-      (XSnap, EXEC, xsnap),
       (Conky, EXEC, conky),
       ("GNU Privacy Assistant", EXEC, gpa),
       (NMap, EXEC, nmapfe),
+      ("Java Control Panel", EXEC, ControlPanel),
       (Xarchiver, EXEC, xarchiver)
     ),
     (System, (top, EXEC, "xterm -e top")),
@@ -71,8 +71,7 @@
       "P2P Network",
       (ftp, EXEC, "xterm -e ftp"),
       (sftp, EXEC, "xterm -e sftp")
-    ),
-    (Games, (XBoard, EXEC, xboard))
+    )
   ),
   (Run..., SHEXEC, "%A(Run, Type command:)"),
   (

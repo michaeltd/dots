@@ -56,7 +56,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
-modules-center = 
+modules-center =
 modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = right
@@ -107,7 +107,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
-modules-center = 
+modules-center = xwindow
 modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = right
@@ -131,7 +131,23 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+; label = %title:0:30:...%
+; Available tags:
+;   <label> (default)
+format = <label>
+format-background = #f00
+format-foreground = #000
+format-padding = 4
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 50
+; Used instead of label when there is no window title
+; Available tokens:
+;   None
+label-empty = Empty
+label-empty-foreground = #707880
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -274,7 +290,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = 
+interface =
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -296,7 +312,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = 
+interface =
 interval = 3.0
 
 format-connected-underline = #55aa55
