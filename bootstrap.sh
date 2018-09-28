@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ~/bin/bootstrap.sh
+# bootstrap.sh
 # The means to migrate my .dots in new systems.
 
 if [[ "${1}" != "abracadabra" ]]; then
@@ -8,7 +8,7 @@ if [[ "${1}" != "abracadabra" ]]; then
   exit 1
 fi
 
-dtfls="$(cd ../$(dirname ${BASH_SOURCE[0]}) && pwd)" # One down from this one (bin/plug-dots.sh)
+dtfls="$(cd $(dirname ${BASH_SOURCE[0]})/dot.files && pwd)"
 
 tofldr="${HOME}"
 fx=".$(date +%s)"

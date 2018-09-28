@@ -15,12 +15,12 @@ export E_COMP_ENGINE=sw
 # Pick a wm:
 WM=$(which wmaker|| \
     which openbox-session|| \
-    which compiz.sh|| \
     which jwm|| \
     which mwm|| \
-    which enlightenment_start|| \
+    which compiz.sh|| \
     which starte16|| \
-    which startxfce4|| \
+    which enlightenment_start|| \
+    which xfce4-session|| \
     which kodi-standalone)
 # Start the systems window manager. See WindowManagers for other choices.
 # exec /etc/alternatives/x-window-manager

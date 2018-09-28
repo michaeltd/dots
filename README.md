@@ -1,11 +1,11 @@
-### dots tdm 2016
+#### dots tdm 2016
 
   Possible usage: "git clone https://github.com/MichaelTd/dots" <br />Go through the contents of this repo and select what suits your own <br />needs so you can incorporate exactly that in your working environment.
 
 ###### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
   * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
-  * [bootstrap.sh](dot.files/bin/bootstrap.sh)
+  * [bootstrap.sh](bootstrap.sh)
 
     How to migrate my .dots in new systems.
 
@@ -29,7 +29,7 @@ Script for rolling random images as wallpapers.
 
 ![wallpaper-rotate.sh](wpr.png "Help screen")
 
-###### [everything-else(.sh)]()
+###### [everything-else(.sh)](#)
 Playground
 
 ### Reference
