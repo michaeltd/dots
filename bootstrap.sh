@@ -3,7 +3,7 @@
 # bootstrap.sh
 # The means to migrate my .dots in new systems.
 
-if [[ "${1}" != "abracadabra" ]]; then
+if [[ "${1}" != "thoushallnotpass" ]]; then
   printf "Read this first: https://github.com/MichaelTd/dots/\n"
   exit 1
 fi

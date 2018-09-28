@@ -1,6 +1,6 @@
 #### dots tdm 2016
 
-  Possible usage: "git clone https://github.com/MichaelTd/dots" <br />Go through the contents of this repo and select what suits your own <br />needs so you can incorporate exactly that in your working environment.
+  Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is highly discouraged.
 
 ###### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
@@ -9,7 +9,7 @@
 
     How to migrate my .dots in new systems.
 
-    <p style="color:red;">Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.<br />Use at your own risk!</p>
+    Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.
 
 * Some WM's
 * Backup includes, excludes.
