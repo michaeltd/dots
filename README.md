@@ -1,15 +1,15 @@
 #### dots tdm 2016
 
-  Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is highly discouraged.
+  Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
 
 ###### [dot.files](dot.files)
 * Shell, X setup, bin, sbin (maintenance scripts)
+
   * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
+
   * [bootstrap.sh](bootstrap.sh)
 
-    How to migrate my .dots in new systems.
-
-    Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.
+    How to migrate my .dots in new systems. Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.
 
 * Some WM's
 * Backup includes, excludes.
