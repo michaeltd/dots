@@ -18,8 +18,8 @@
   If emacs is "your thing", check one of ...
     * https://github.com/technomancy/emacs-starter-kit
     * https://github.com/bbatsov/prelude
-    * https://github.com/purcell/emacs.d
-    * https://github.com/notarock/.emacs.d
+    * https://github.com/purcell/emacs.d emacs config from here
+    * https://github.com/notarock/.emacs.d dashboard from here
 
 ###### [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
 Distro neutral upgrade script and bash arrays mini crash course.

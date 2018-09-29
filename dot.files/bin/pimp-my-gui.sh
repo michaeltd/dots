@@ -39,8 +39,8 @@ else
   # conky -c "${HOME}/git/dots/conky.configs/conky-horizontal-minimalist/conkyrc" >> /dev/null 2>&1 &
   # custom_run 19 conky -c "${HOME}/git/dots/conky.configs/old/qlock"
   custom_run 0 terminology &
-  #custom_run 19 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1
-  custom_run 0 conky >> /dev/null 2>&1
+  custom_run 19 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1
+  #custom_run 0 conky >> /dev/null 2>&1
 fi
 
 # Start a Menu
