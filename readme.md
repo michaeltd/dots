@@ -2,7 +2,7 @@
 <p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="assets/BASH_logo-transparent-bg-color.svg"></a></p>
 <p align="center"><a href="http://unmaintained.tech/"><img alt="No Maintenance Intended" src="http://unmaintained.tech/badge.svg"></a> <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a></p>
 
-  Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
+  Possible use: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
 
 ## [dot.files](dot.files)
 
@@ -27,13 +27,13 @@
 
 * Editors, [Utilities](dot.files/.tmux.conf).
 
-   - If emacs is "your thing", check one of ...
+   * If emacs is your "thing", check one of ...
 
-     - https://github.com/technomancy/emacs-starter-kit
-     - https://github.com/bbatsov/prelude
-     - My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d) and a special dashboard [splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png)
+     * https://github.com/technomancy/emacs-starter-kit
+     * https://github.com/bbatsov/prelude
+     * My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d) and a special dashboard [splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png)
 
-  - If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a well maintained vim distribution.
+  * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
 #### [bootstrap.sh](bootstrap.sh)
 How I migrate my .dots in new systems. Don's use this unless you are fully aware of the ramifications of the situation you put your self into.
