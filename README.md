@@ -1,5 +1,5 @@
-# <p align="center">tdm dots 2016</p>
-<p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="img/bash-logo.png"></a></p>
+# <p align="center">tdm dots</p>
+<p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="assets/bash-logo.png"></a></p>
 <p align="center"><a href="http://unmaintained.tech/"><img alt="No Maintenance Intended" src="http://unmaintained.tech/badge.svg"></a></p>
 
   Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
@@ -29,7 +29,7 @@ Distro neutral upgrade script and bash arrays mini crash course.
 ###### [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
 Script for rolling random images as wallpapers.
 
-![wallpaper-rotate.sh](img/wpr.png "Help screen")
+<p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
 ###### [everything-else(.sh)](#)
 Playground
