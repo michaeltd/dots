@@ -21,7 +21,6 @@
    * [Compiz](dot.files/.config/compiz/)
    * [Motif WM](dot.files/.mwmrc)
 
-* [Backup](dot.files/sbin/update-backup.sh) [includes](dot.files/.bkp.includes.txt), [excludes](dot.files/.bkp.excludes.txt).
 * Editors, [Utilities](dot.files/.tmux.conf).
 
   If emacs is "your thing", check one of ...

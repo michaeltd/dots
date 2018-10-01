@@ -11,6 +11,7 @@
 *.sh.rc
 admin/*
 conky.configs/*
+dot.files/.bkp.*.txt
 dot.files/.config/*
 !dot.files/.config/autostart
 !dot.files/.config/awesome
