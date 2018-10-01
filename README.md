@@ -4,8 +4,17 @@
 
   Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
 
-#### [dot.files](dot.files)
+## [dot.files](dot.files)
+
 * [Shell](dot.files/.bash_profile), [X setup](dot.files/.xinitrc), [bin](dot.files/bin/), [sbin (maintenance scripts)](dot.files/sbin/)
+
+  * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
+  Distro neutral upgrade script and bash arrays mini crash course.
+
+  * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
+  Script for rolling random images as wallpapers.
+
+  <p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
   * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
@@ -21,6 +30,7 @@
    * [Compiz](dot.files/.config/compiz/)
    * [Motif WM](dot.files/.mwmrc)
 
+
 * Editors, [Utilities](dot.files/.tmux.conf).
 
   If emacs is "your thing", check one of ...
@@ -28,17 +38,6 @@
     * https://github.com/bbatsov/prelude
 
   My setup consists of [A reasonable Emacs config](https://github.com/purcell/emacs.d) and a [special dashboard splashscreen](https://github.com/notarock/.emacs.d)
-
-#### [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
-Distro neutral upgrade script and bash arrays mini crash course.
-
-#### [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
-Script for rolling random images as wallpapers.
-
-<p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
-
-#### [everything-else(.sh)](#)
-Playground
 
 ## Reference
 #### [GitHub ❤ ~/](https://dotfiles.github.io/)
