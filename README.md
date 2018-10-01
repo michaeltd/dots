@@ -1,5 +1,5 @@
-# <center>tdm dots 2016</center>
-<center><img alt="bash-logo" src="img/bash-logo.png"/></center>
+# <p align="center">tdm dots 2016</p>
+<p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="img/bash-logo.png"></a></p>
 
   Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
 
