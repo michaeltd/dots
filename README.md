@@ -5,7 +5,7 @@
   Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
 
 ###### [dot.files](dot.files)
-* Shell, X setup, bin, sbin (maintenance scripts)
+* [Shell](dot.files/.bash_profile), [X setup](dot.files/.xinitrc), [bin](dot.files/bin/), [sbin (maintenance scripts)](dot.files/sbin/)
 
   * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
@@ -13,15 +13,22 @@
 
     How to migrate my .dots in new systems. Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.
 
-* Some WM's
-* Backup includes, excludes.
-* Editors, Utilities.
+* Some WM's (in no particular order)
+   * [Window Maker](dot.files/GNUstep/)
+   * [e16](dot.files/.e16/)
+   * [openbox](dot.files/.config/openbox/)
+   * [awesome](dot.files/.config/awesome/)
+   * [Compiz](dot.files/.config/compiz/)
+   * [Motif WM](dot.files/.mwmrc)
+
+* [Backup](dot.files/sbin/update-backup.sh) [includes](dot.files/bkp.includes.txt), [excludes](dot.files/bkp.excludes.txt).
+* Editors, [Utilities](dot.files/.tmux.conf).
 
   If emacs is "your thing", check one of ...
     * https://github.com/technomancy/emacs-starter-kit
     * https://github.com/bbatsov/prelude
 
-  This particular setup consists of [A reasonable Emacs config](https://github.com/purcell/emacs.d) and a [special dashboard splashscreen](https://github.com/notarock/.emacs.d)
+  My setup consists of [A reasonable Emacs config](https://github.com/purcell/emacs.d) and a [special dashboard splashscreen](https://github.com/notarock/.emacs.d)
 
 ###### [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
 Distro neutral upgrade script and bash arrays mini crash course.
