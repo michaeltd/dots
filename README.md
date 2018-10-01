@@ -1,4 +1,4 @@
-# <p align="center">tdm dots</p>
+# <p align="center">mick's dots</p>
 <p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="assets/bash-logo.png"></a></p>
 <p align="center"><a href="http://unmaintained.tech/"><img alt="No Maintenance Intended" src="http://unmaintained.tech/badge.svg"></a> <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a></p>
 
@@ -26,7 +26,7 @@
   <a href="dot.files/.config/openbox/"><img width="100px" alt="openbox" src="assets/openbox.png"></a>
   <a href="dot.files/.config/awesome/"><img width="100px" alt="awesome" src="assets/awesome.png"></a>
   <a href="dot.files/.config/compiz/"><img width="100px" alt="Compiz" src="assets/compiz.png"></a>
-  <a href="dot.files/.mwmrc"><img width="100px" alt="Motif WM" src="assets/mwm.png"></a> 
+  <a href="dot.files/.mwmrc"><img width="100px" alt="Motif WM" src="assets/mwm.png"></a>
   </p>
 
 * Editors, [Utilities](dot.files/.tmux.conf).
@@ -51,9 +51,6 @@ The Bash all in one goto place.
 
 #### [EbookFoundation free-programming-books - bash](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash)
 Free books relevant to bash (and much more).
-
-#### [bash-oo-framework](https://github.com/niieani/bash-oo-framework) https://github.com/niieani/bash-oo-framework
-OO bash framework.
 
 #### [bash-hackers](http://wiki.bash-hackers.org/) http://wiki.bash-hackers.org/
 See what other fellow bash'ers are up to.
