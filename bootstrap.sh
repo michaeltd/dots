@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#
 # bootstrap.sh
 # The means to migrate my .dots in new systems.
 
@@ -9,7 +8,6 @@ if [[ "${1}" != "thoushallnotpass" ]]; then
 fi
 
 dtfls="$(cd $(dirname ${BASH_SOURCE[0]})/dot.files && pwd)"
-
 tofldr="${HOME}"
 fx=".$(date +%s)"
 ls=$(which ls) # alias workaround

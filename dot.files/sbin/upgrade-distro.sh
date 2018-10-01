@@ -5,7 +5,14 @@
 # For this to work package manager arrays must be in following format...
 # | #1 package manager executable | #2 repo update switch | #3 distro upgrade switch(es)| #4 ...
 # PS: By ignoring dpkg and rpm we are avoiding issues with systems where alien has been installed.
-declare -a zypper=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) pacman=( "pacman" "-Sy" "-Syu" ) apt_get=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrade" ) yum=( "yum" "check-update" "update" ) emerge=( "emerge" "--sync" "--nospinner" "--pretend" "--update" "--deep" "--newuse" "--with-bdeps=y" "@world" ) pms=( zypper[@] pacman[@] apt_get[@] yum[@] emerge[@] ) notfound="254" pmidx="${notfound}"
+declare -a zypper=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) \
+  pacman=( "pacman" "-Sy" "-Syu" ) \
+  apt_get=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrade" ) \
+  yum=( "yum" "check-update" "update" ) \
+  emerge=( "emerge" "--sync" "--nospinner" "--pretend" "--update" "--deep" "--newuse" "--with-bdeps=y" "@world" ) \
+  pms=( zypper[@] pacman[@] apt_get[@] yum[@] emerge[@] ) \
+  notfound="254" \
+  pmidx="${notfound}"
 
 # Which is the first available pm in this system?
 for x in "${!pms[@]}"; do
