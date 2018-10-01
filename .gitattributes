@@ -11,5 +11,5 @@
 # *.lua linguist-language=Shell
 *.lua linguist-documentation=true
 wallpaper-rotate linguist-language=Shell
-lib-bash linguist-language=Shell
+.xinitrc linguist-language=Shell
 dot.files/.bashrc.d/* linguist-language=Shell
