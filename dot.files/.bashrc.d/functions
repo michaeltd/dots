@@ -8,6 +8,15 @@
 
 # UTILS =======================================================================
 
+# End stuff
+function termapp {
+  kill -s 15 $(pgrep ${1})
+}
+
+function killapp {
+  kill -s 9 $(pgrep ${1})
+}
+
 # Create a new alias
 function mkalias {
   echo "alias ${@}" >> ${HOME}/.bashrc.d/aliases
@@ -18,19 +27,6 @@ function mkalias {
 function rmalias {
   unalias $1 # && sed -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases
 }
-
-# Color man pages
-# function man {
-#     env \
-#     LESS_TERMCAP_mb=$(printf "${bold}${red}") \
-#     LESS_TERMCAP_md=$(printf "${bold}${red}") \
-#     LESS_TERMCAP_me=$(printf "${reset}") \
-#     LESS_TERMCAP_se=$(printf "${reset}") \
-#     LESS_TERMCAP_so=$(printf "${bold}${bg_blue}${yellow}") \
-#     LESS_TERMCAP_ue=$(printf "${reset}") \
-#     LESS_TERMCAP_us=$(printf "${bold}${green}") \
-#     man "$@"
-# }
 
 # Functions to unify archive management in linux CLI environments
 ## COMPRESSION FUNCTION ##
@@ -60,27 +56,6 @@ function extract {
     * ) printf "Cannot operate on unknown file extention \"%s\"\n" "${1}" ;;
   esac
 }
-
-## DICTIONARY FUNCTIONS ##
-#function dwordnet { curl dict://dict.org/d:${1}:wn; }
-#function dacron { curl dict://dict.org/d:${1}:vera; }
-#function djargon { curl dict://dict.org/d:${1}:jargon; }
-#function dfoldoc { curl dict://dict.org/d:${1}:foldoc; }
-#function dthesaurus { curl dict://dict.org/d:${1}:moby-thes; }
-#function dtranslate {
-#    PS3="${blue}Select the dictionary: ${reset}"
-#    local _options="deu-eng eng-deu deu-fra fra-deu deu-ita ita-deu deu-nld nld-deu deu-por por-deu tur-deu lat-deu jpn-deu afr-deu gla-deu exit"
-#
-#    select i in $_options; do
-#        if [ $i == "exit" ]; then
-#            return
-#        else
-#            printf "${blue}Enter the word to translate: ${reset}"
-#            read w
-#            curl dict://dict.org/d:${w}:fd-${i}
-#        fi
-#    done
-#}
 
 # Traverse directory structure given # of steps
 function up {
@@ -147,7 +122,6 @@ function showUptime {
 }
 
 function logMeOut {
-  # Call that to logout
   # Can't log out root like that
   if [ "${EUID}" -eq "0" ]; then
     printf "Can't log out root this way\n"
@@ -158,11 +132,11 @@ function logMeOut {
 }
 
 function pingSubnet {
-  #for x in {1..254}; do
+  for x in {1..254}; do
     for y in {1..254}; do
-      (ping -c 1 -w 2 192.168.1.${y} > /dev/null && echo "UP 192.168.1.${y}" &);
+      (ping -c 1 -w 2 192.168.${x}.${y} > /dev/null && echo "UP 192.168.1.${y}" &);
     done
-  #done
+  done
 }
 
 # STRINGS =====================================================================
@@ -214,7 +188,9 @@ function rps {
 
   declare -a op=("Rock" "Paper" "Scissors") oc=("WIN" "Defeat" "Draw")
 
-  declare -A rs[0,0]=${oc[2]} rs[0,1]=${oc[1]} rs[0,2]=${oc[0]} rs[1,0]=${oc[0]} rs[1,1]=${oc[2]} rs[1,2]=${oc[1]} rs[2,0]=${oc[1]} rs[2,1]=${oc[0]} rs[2,2]=${oc[2]}
+  declare -A rs[0,0]=${oc[2]} rs[0,1]=${oc[1]} rs[0,2]=${oc[0]} \
+             rs[1,0]=${oc[0]} rs[1,1]=${oc[2]} rs[1,2]=${oc[1]} \
+             rs[2,0]=${oc[1]} rs[2,1]=${oc[0]} rs[2,2]=${oc[2]}
 
   declare cs=0 us=0 ns=0 rd=0
 
@@ -320,7 +296,6 @@ function fancy_pacman {
 	rst=$'\e[0m'
 	inv=$'\e[7m'
 
-
   cat << EOF
 
 $rst
@@ -338,7 +313,5 @@ $bld
  $f3▀█████████▄▄               $f1██▀██▀▀██▀██  $f2██▀██▀▀██▀██  $f4██▀██▀▀██▀██  $f5██▀██▀▀██▀██  $f6██▀██▀▀██▀██
  $f3  ▀███████▀                $f1▀   ▀  ▀   ▀  $f2▀   ▀  ▀   ▀  $f4▀   ▀  ▀   ▀  $f5▀   ▀  ▀   ▀  $f6▀   ▀  ▀   ▀
 $rst
-
 EOF
-
 }

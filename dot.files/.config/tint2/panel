@@ -5,16 +5,15 @@ panel_items = L
 
 #Launchers
 #launcher_apps_dir = /usr/share/applications/
-#launcher_apps_dir = ~/.local/share/applications/
 launcher_item_app = /usr/share/applications/terminology.desktop
 launcher_item_app = /usr/share/applications/xfe.desktop
-launcher_item_app = ~/.local/share/applications/Firefox.desktop
+launcher_item_app = /usr/share/applications/Firefox.desktop
 launcher_item_app = /usr/share/applications/hexchat.desktop
-launcher_item_app = ~/.local/share/applications/atom.desktop
-launcher_item_app = ~/.local/share/applications/code.desktop
+launcher_item_app = /usr/share/applications/atom.desktop
+launcher_item_app = /usr/share/applications/code.desktop
 launcher_item_app = /usr/share/applications/emacs.desktop
 launcher_item_app = /usr/share/applications/gvim.desktop
-launcher_item_app = ~/.local/share/applications/Eclipse.desktop
+launcher_item_app = /usr/share/applications/Eclipse.desktop
 launcher_item_app = /usr/share/applications/openoffice-startcenter.desktop
 launcher_item_app = /usr/share/applications/audacious.desktop
 launcher_item_app = /usr/share/applications/vlc.desktop

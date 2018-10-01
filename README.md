@@ -1,4 +1,5 @@
-#### dots tdm 2016
+# <center>tdm dots 2016</center>
+<center><img alt="bash-logo" src="img/bash-logo.png"/></center>
 
   Possible usage: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
 
@@ -18,8 +19,8 @@
   If emacs is "your thing", check one of ...
     * https://github.com/technomancy/emacs-starter-kit
     * https://github.com/bbatsov/prelude
-    * https://github.com/purcell/emacs.d emacs config from here
-    * https://github.com/notarock/.emacs.d dashboard from here
+
+  This particular setup consists of [A reasonable Emacs config](https://github.com/purcell/emacs.d) and a [special dashboard splashscreen](https://github.com/notarock/.emacs.d)
 
 ###### [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
 Distro neutral upgrade script and bash arrays mini crash course.
@@ -27,7 +28,7 @@ Distro neutral upgrade script and bash arrays mini crash course.
 ###### [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
 Script for rolling random images as wallpapers.
 
-![wallpaper-rotate.sh](wpr.png "Help screen")
+![wallpaper-rotate.sh](img/wpr.png "Help screen")
 
 ###### [everything-else(.sh)](#)
 Playground
