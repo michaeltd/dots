@@ -20,13 +20,14 @@
 
 
 * Some WM's (in no particular order)
-   * [Window Maker](dot.files/GNUstep/)
-   * [e16](dot.files/.e16/)
-   * [openbox](dot.files/.config/openbox/)
-   * [awesome](dot.files/.config/awesome/)
-   * [Compiz](dot.files/.config/compiz/)
-   * [Motif WM](dot.files/.mwmrc)
-
+  <p align="center">
+  <a href="dot.files/GNUstep/"><img width="100px" alt="Window Maker" src="assets/wmaker.png"></a>
+  <a href="dot.files/.e16/"><img width="100px" alt="e16" src="assets/e16.png"></a>
+  <a href="dot.files/.config/openbox/"><img width="100px" alt="openbox" src="assets/openbox.png"></a>
+  <a href="dot.files/.config/awesome/"><img width="100px" alt="awesome" src="assets/awesome.png"></a>
+  <a href="dot.files/.config/compiz/"><img width="100px" alt="Compiz" src="assets/compiz.png"></a>
+  <a href="dot.files/.mwmrc"><img width="100px" alt="Motif WM" src="assets/mwm.png"></a> 
+  </p>
 
 * Editors, [Utilities](dot.files/.tmux.conf).
 
