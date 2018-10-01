@@ -8,19 +8,16 @@
 
 * [Shell](dot.files/.bash_profile), [X setup](dot.files/.xinitrc), [bin](dot.files/bin/), [sbin (maintenance scripts)](dot.files/sbin/)
 
-  * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
-  Distro neutral upgrade script and bash arrays mini crash course.
+  * [.bashrc.d](dot.files/.bashrc.d) functions as a interactive shell initialization routine and it's customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
   * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
   Script for rolling random images as wallpapers.
 
   <p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
-  * [.bashrc.d](dot.files/.bashrc.d) is customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
+  * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
+  Distro neutral upgrade script (and bash arrays mini crash course).
 
-  * [bootstrap.sh](bootstrap.sh)
-
-    How to migrate my .dots in new systems. Do not attempt to run this script unless you are fully aware of the ramifications of the situation you put your self into.
 
 * Some WM's (in no particular order)
    * [Window Maker](dot.files/GNUstep/)
@@ -33,11 +30,16 @@
 
 * Editors, [Utilities](dot.files/.tmux.conf).
 
-  If emacs is "your thing", check one of ...
-    * https://github.com/technomancy/emacs-starter-kit
-    * https://github.com/bbatsov/prelude
+   - If emacs is "your thing", check one of ...
 
-  My setup consists of [A reasonable Emacs config](https://github.com/purcell/emacs.d) and a [special dashboard splashscreen](https://github.com/notarock/.emacs.d)
+     - https://github.com/technomancy/emacs-starter-kit
+     - https://github.com/bbatsov/prelude
+     - My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d) and a special dashboard [splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png)
+
+  - If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a well maintained vim distribution.
+
+#### [bootstrap.sh](bootstrap.sh)
+How I migrate my .dots in new systems. Don's use this unless you are fully aware of the ramifications of the situation you put your self into.
 
 ## Reference
 #### [GitHub ❤ ~/](https://dotfiles.github.io/)

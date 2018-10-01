@@ -19,7 +19,8 @@ declare -a WPUSAGE="\n\
   BGSR \
   WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" \
   DEFAULT_WAIT="60s" \
-  DEFAULT_DIRS=( "${HOME}/Pictures" ) LS=$(which ls 2> /dev/null) \
+  DEFAULT_DIRS=( "${HOME}/Pictures" ) \
+  LS=$(which ls 2> /dev/null) \
   WPS=()
 
 # bash version info check
@@ -95,7 +96,7 @@ if [[ -n "${1}" ]]; then
 else
   while [[ true ]];do
 
-    # limit a random num to upper array bounds as a RundomNumber
+    # limit a random number to upper array bounds as a RundomNumber
     let "RN = ${RANDOM} % ${#WPS[@]}"
     # RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
 
