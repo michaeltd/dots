@@ -2,7 +2,7 @@
 <p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="assets/BASH_logo-transparent-bg-color.svg"></a></p>
 <p align="center"><a href="http://unmaintained.tech/"><img alt="No Maintenance Intended" src="http://unmaintained.tech/badge.svg"></a> <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a></p>
 
-  Possible use: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. Verbatim use of this repo is discouraged.
+  Possible use: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. My dots tend to be highly opinionated so verbatim use of this repo is discouraged.
 
 ## [dot.files](dot.files)
 
@@ -23,7 +23,7 @@
 
 |wmaker|e16|openbox|awesome|compiz|mwm|
 | ---- | ---- | ---- | ---- | ---- | ---- |
-|<a href="dot.files/GNUstep/"><img alt="Window Maker" src="assets/wmaker.png"></a>|<a href="dot.files/.e16/"><img alt="e16" src="assets/e16.png"></a>|<a href="dot.files/.config/openbox/"><img alt="openbox" src="assets/openbox.png"></a>|<a href="dot.files/.config/awesome/"><img alt="awesome" src="assets/awesome.png"></a>|<a href="dot.files/.config/compiz/"><img alt="Compiz" src="assets/compiz.png"></a>|<a href="dot.files/.mwmrc"><img alt="Motif WM" src="assets/mwm.png"></a>|
+|<a href="dot.files/GNUstep/"><img width="50" alt="Window Maker" src="assets/wmaker.png"></a>|<a href="dot.files/.e16/"><img width="50" alt="e16" src="assets/e16.png"></a>|<a href="dot.files/.config/openbox/"><img width="50" alt="openbox" src="assets/openbox.png"></a>|<a href="dot.files/.config/awesome/"><img width="50" alt="awesome" src="assets/awesome.png"></a>|<a href="dot.files/.config/compiz/"><img width="50" alt="Compiz" src="assets/compiz.png"></a>|<a href="dot.files/.mwmrc"><img width="50" alt="Motif WM" src="assets/mwm.png"></a>|
 
 * Editors, [Utilities](dot.files/.tmux.conf).
 
@@ -48,5 +48,5 @@ The Bash all in one goto place.
 #### [EbookFoundation free-programming-books - bash](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash)
 Free books relevant to bash (and much more).
 
-#### [bash-hackers](http://wiki.bash-hackers.org/) http://wiki.bash-hackers.org/
+#### [bash-hackers wiki](http://wiki.bash-hackers.org/)
 See what other fellow bash'ers are up to.
