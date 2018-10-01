@@ -8,7 +8,7 @@
 
 * [Shell](dot.files/.bash_profile), [X setup](dot.files/.xinitrc), [bin](dot.files/bin/), [sbin (maintenance scripts)](dot.files/sbin/)
 
-  * [.bashrc.d](dot.files/.bashrc.d) functions as a interactive shell initialization routine and it's customizations of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) and a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
+  * [.bashrc.d](dot.files/.bashrc.d) functions as a interactive shell initialization routine and it is customization of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) with a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
   * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
   Script for rolling random images as wallpapers.
