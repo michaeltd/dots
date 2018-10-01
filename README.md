@@ -20,14 +20,10 @@
 
 
 * Some WM's (in no particular order)
-  <p align="center">
-  <a href="dot.files/GNUstep/"><img width="100px" alt="Window Maker" src="assets/wmaker.png"></a>
-  <a href="dot.files/.e16/"><img width="100px" alt="e16" src="assets/e16.png"></a>
-  <a href="dot.files/.config/openbox/"><img width="100px" alt="openbox" src="assets/openbox.png"></a>
-  <a href="dot.files/.config/awesome/"><img width="100px" alt="awesome" src="assets/awesome.png"></a>
-  <a href="dot.files/.config/compiz/"><img width="100px" alt="Compiz" src="assets/compiz.png"></a>
-  <a href="dot.files/.mwmrc"><img width="100px" alt="Motif WM" src="assets/mwm.png"></a>
-  </p>
+
+|wmaker|e16|openbox|awesome|compiz|mwm|
+| ---- | ---- | ---- | ---- | ---- | ---- |
+|<a href="dot.files/GNUstep/"><img alt="Window Maker" src="assets/wmaker.png"></a>|<a href="dot.files/.e16/"><img alt="e16" src="assets/e16.png"></a>|<a href="dot.files/.config/openbox/"><img alt="openbox" src="assets/openbox.png"></a>|<a href="dot.files/.config/awesome/"><img alt="awesome" src="assets/awesome.png"></a>|<a href="dot.files/.config/compiz/"><img alt="Compiz" src="assets/compiz.png"></a>|<a href="dot.files/.mwmrc"><img alt="Motif WM" src="assets/mwm.png"></a>|
 
 * Editors, [Utilities](dot.files/.tmux.conf).
 
