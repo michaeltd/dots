@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# Place applications to be executed when WindowMaker is started here.
+# This should only be used for non-X applications or applications that
+# do not support session management. Other applications should be restarted
+# by the WindowMaker session restoring mechanism. For that, you should
+# either set SaveSessionOnExit=YES or select "Save Session" in the Workspace
+# submenu of the root menu when all applications you want started are
+# running.
+#
+# WindowMaker will wait until this script finishes, so if you run any
+# commands that take long to execute (like a xterm), put a ``&'' in the
+# end of the command line.
+#
+# This file must be executable.
+#
+# xset m 20/10 4 # Mouse acceleration
+
+# For use with WindowMaker
+# Replace "${APPS}" list with your desired applets.
+#function startApps {
+# Fill a list with the applets you need
+#APPS="wmfire wmclockmon wmsystray wmMatrix wmbinclock wmbutton wmifinfo wmnd wmmon wmcpuload wmsysmon wmmemload wmacpi wmtime wmcalc wmSpaceWeather wmudmount wmmp3"
+APPS="wmfire wmMatrix wmclockmon wmsystemtray"
+for APP in $APPS ; do
+  killall $APP # Just for good mesure.
+  $APP &
+done
+#}
+
+# For use with WindowMaker
+# Run this to update your Root menu to reflect themes or apps changes
+#function regenMenu {
+# cp ~/GNUstep/Defaults/WMRootMenu ~/GNUstep/Defaults/`date +%s`WMRootMenu # Backup Root menu
+wmgenmenu > ~/GNUstep/Defaults/WMRootMenu # Write new menu
+#}
+
+compton &
+pmg="${HOME}/bin/pimp-my-gui.sh"
+if [[ -x "${pmg}" ]]; then # If spice ...
+  "${pmg}" & # Spice things up
+fi
+
+xset m 20/10 4

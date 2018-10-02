@@ -1,0 +1,6 @@
+"Settings"
+"Connman Settings" "preferences-system-network" exec "connman-gtk"
+"Elementary Configuration" "/usr/share/icons/elementary.png" exec "elementary_config"
+"Orage preferences" "/usr/share/icons/hicolor/48x48/apps/xfcalendar.png" exec "orage -p"
+"Screensaver" "xscreensaver" exec "xscreensaver-demo"
+"Settings Manager" "preferences-desktop" exec "xfce4-settings-manager"
