@@ -1,6 +1,0 @@
-Theme Name  : WO (windowmaker.org)
-Author      : Largo (largo@current.nu)
-Description : I made this up while thinking of
-              new ideas for a windowmaker.org logo. ;P
-Copyright   : hehe! all original by me.
-Web Site    : http://wm.current.nu/

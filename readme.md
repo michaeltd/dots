@@ -2,7 +2,7 @@
 <p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="assets/BASH_logo-transparent-bg-color.svg"></a></p>
 <p align="center"><a href="http://unmaintained.tech/"><img alt="No Maintenance Intended" src="http://unmaintained.tech/badge.svg"></a> <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a></p>
 
-  Possible use: "git clone https://github.com/MichaelTd/dots" then go through the contents of this repo and select what suits your own needs so you can incorporate exactly that in your working environment. My dots tend to be highly opinionated so verbatim use of this repo is discouraged.
+  Possible use: "git clone https://github.com/MichaelTd/dots", go through the this repository and select what fits your needs so you can incorporate it in your working environment. My dots tend to be opinionated, so verbatim use of them is discouraged.
 
 ## [dot.files](dot.files)
 
@@ -16,14 +16,14 @@
   <p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
   * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
-  Distro neutral upgrade script (and bash arrays mini crash course).
+  Distro neutral upgrade script.
 
 
 * Some WM's (in no particular order)
 
 |wmaker|e16|openbox|awesome|compiz|mwm|
 | ---- | ---- | ---- | ---- | ---- | ---- |
-|<a href="dot.files/GNUstep/"><img width="50" alt="Window Maker" src="assets/wmaker.png"></a>|<a href="dot.files/.e16/"><img width="50" alt="e16" src="assets/e16.png"></a>|<a href="dot.files/.config/openbox/"><img width="50" alt="openbox" src="assets/openbox.png"></a>|<a href="dot.files/.config/awesome/"><img width="50" alt="awesome" src="assets/awesome.png"></a>|<a href="dot.files/.config/compiz/"><img width="50" alt="Compiz" src="assets/compiz.png"></a>|<a href="dot.files/.mwmrc"><img width="50" alt="Motif WM" src="assets/mwm.png"></a>|
+|<a href="dot.files/GNUstep/"><img width="50" alt="Window Maker" src="assets/wmaker.png"></a>|<a href="dot.files/.e16/"><img width="50" alt="e16" src="assets/e16.png"></a>|<a href="dot.files/.config/openbox/"><img width="50" alt="openbox" src="assets/openbox.png"></a>|<a href="dot.files/.config/awesome/"><img width="50" alt="awesome" src="assets/awesome.png"></a>|<a href="dot.files/.config/compiz/"><img width="50" alt="compiz" src="assets/compiz.png"></a>|<a href="dot.files/.mwmrc"><img width="50" alt="Motif WM" src="assets/mwm.png"></a>|
 
 * Editors, [Utilities](dot.files/.tmux.conf).
 
