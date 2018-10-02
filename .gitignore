@@ -40,7 +40,7 @@ dot.files/bin/TkRootMenu
 dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker
 !dot.files/GNUstep/Defaults/WMRootMenu
-!dot.files/GNUstep/Library/WindowMaker/Themes
+!dot.files/GNUstep/Library/WindowMaker/Themes/*
 !dot.files/GNUstep/Library/WindowMaker/autostart
 !dot.files/GNUstep/Library/WindowMaker/exitscript
 !dot.files/GNUstep/Library/WindowMaker/README
