@@ -9,7 +9,7 @@
 
 conky.configs/*
 
-dot.files/.config
+dot.files/.config/*
 !dot.files/.config/autostart
 !dot.files/.config/awesome
 !dot.files/.config/compiz
@@ -21,13 +21,13 @@ dot.files/.config
 !dot.files/.config/tint2
 !dot.files/.config/compton.conf
 
-dot.files/.e16
+dot.files/.e16/*
 !dot.files/.e16/Init/e16.sh
 !dot.files/.e16/menus
 !dot.files/.e16/themes
 !dot.files/.e16/bindings.cfg
 
-dot.files/.emacs.d
+dot.files/.emacs.d/*
 
 dot.files/.gnupg/*
 
@@ -37,7 +37,7 @@ dot.files/bin/jcalc
 dot.files/bin/jCalc.jar
 dot.files/bin/TkRootMenu
 
-dot.files/GNUstep
+dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker
 !dot.files/GNUstep/Defaults/WMRootMenu
 !dot.files/GNUstep/Library/WindowMaker/Themes

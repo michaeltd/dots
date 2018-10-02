@@ -1,0 +1,3 @@
+"Viewer"
+"MuPDF" "mupdf" exec "mupdf"
+"qpdfview" "qpdfview" exec "qpdfview --unique"
