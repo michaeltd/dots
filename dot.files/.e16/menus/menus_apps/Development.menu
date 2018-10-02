@@ -1,5 +1,0 @@
-"Development"
-"Elementary Test" "/usr/share/icons/elementary.png" exec "elementary_test"
-"GNU Emacs" "/usr/share/pixmaps/emacs.png" exec "/usr/bin/emacs"
-"NetBeans IDE 8.2" "/opt/netbeans-8.2/nb/netbeans.png" exec "/bin/sh "/opt/netbeans-8.2/bin/netbeans""
-"sandbox" "sandbox" exec "sandbox"

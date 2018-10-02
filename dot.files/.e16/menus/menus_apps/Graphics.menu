@@ -1,5 +1,0 @@
-"Graphics"
-"Dia Diagram Editor (integrated mode)" "/usr/share/icons/hicolor/48x48/apps/dia.png" exec "dia --integrated"
-"Dia Diagram Editor" "/usr/share/icons/hicolor/48x48/apps/dia.png" exec "dia"
-"GNU Image Manipulation Program" "/usr/share/icons/hicolor/48x48/apps/gimp.png" exec "gimp-2.8"
-"Ristretto Image Viewer" "/usr/share/icons/hicolor/48x48/apps/ristretto.png" exec "ristretto"
