@@ -49,4 +49,4 @@ nice -n 9 ${HOME}/bin/TkRootMenu &
 ${HOME}/bin/wallpaper-rotate.sh &
 
 # Run emacs
-custom_run 9 emacs --daemon
+# custom_run 9 emacs --daemon

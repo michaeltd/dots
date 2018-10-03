@@ -183,8 +183,8 @@ ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=177
-lastdir=/home/paperjam
-hiddenfiles=0
+lastdir=/home/paperjam/bin
+hiddenfiles=1
 
 [SETTINGS]
 listforecolor=Gray100

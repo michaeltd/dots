@@ -29,6 +29,7 @@ else
       which jwm|| \
       which mwm|| \
       which compiz.sh|| \
+      which emacs|| \
       which starte16|| \
       which enlightenment_start|| \
       which xfce4-session|| \

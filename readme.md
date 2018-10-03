@@ -8,34 +8,59 @@
 
 ## [dot.files](dot.files)
 
-- [Shell](dot.files/.bash_profile), [X setup](dot.files/.xinitrc), [bin](dot.files/bin/), [sbin (maintenance scripts)](dot.files/sbin/)
+ - [Shell](dot.files/.bash_profile), [X setup](dot.files/.xinitrc), [bin](dot.files/bin/), [sbin (maintenance scripts)](dot.files/sbin/)
 
-  * [.bashrc.d](dot.files/.bashrc.d) functions as a interactive shell initialization routine and it is customization of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) with a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
+   * [.bashrc.d](dot.files/.bashrc.d) functions as a interactive shell initialization routine and it is customization of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) with a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
-  * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
+   * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
   Script for rolling random images as wallpapers.
 
   <p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
-  * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
+   * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
   Distro neutral upgrade script.
 
 
-- Some WM's (in no particular order)
+ - Some WM's (in no particular order)
 
-|wmaker|e16|openbox|awesome|compiz|mwm|
-| ---- | ---- | ---- | ---- | ---- | ---- |
-|<a href="dot.files/GNUstep/"><img width="50" alt="Window Maker" src="assets/wmaker.png"></a>|<a href="dot.files/.e16/"><img width="50" alt="e16" src="assets/e16.png"></a>|<a href="dot.files/.config/openbox/"><img width="50" alt="openbox" src="assets/openbox.png"></a>|<a href="dot.files/.config/awesome/"><img width="50" alt="awesome" src="assets/awesome.png"></a>|<a href="dot.files/.config/compiz/"><img width="50" alt="compiz" src="assets/compiz.png"></a>|<a href="dot.files/.mwmrc"><img width="50" alt="Motif WM" src="assets/mwm.png"></a>|
+   * [wmaker](dot.files/GNUstep/)
 
-- Editors, [Utilities](dot.files/.tmux.conf).
+    <p align="center"><a href="dot.files/GNUstep/"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
+
+   * [e16](dot.files/.e16/)
+
+    <p align="center"><a href="dot.files/.e16/"><img width="200" alt="e16" src="assets/e16.png"></a></p>
+
+   * [openbox](dot.files/.config/openbox/)
+
+    <p align="center"><a href="dot.files/.config/openbox/"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
+
+   * [awesome](dot.files/.config/awesome/)
+
+    <p align="center"><a href="dot.files/.config/awesome/"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
+
+   * [compiz](dot.files/.config/compiz/)
+
+    <p align="center"><a href="dot.files/.config/compiz/"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
+
+   * [mwm](dot.files/.mwmrc)
+
+    <p align="center"><a href="dot.files/.mwmrc"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
+
+   * [exwm](https://github.com/ch11ng/exwm/wiki)
+
+    <p align="center"><a href="https://github.com/ch11ng/exwm/wiki"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
+
+
+ - Editors, [Utilities](dot.files/.tmux.conf).
 
    * If emacs is your "thing", check one of ...
 
      - https://github.com/technomancy/emacs-starter-kit
      - https://github.com/bbatsov/prelude
-     - My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d) and a special dashboard [splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png)
+     - My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d), [a splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png) and [exwm](https://github.com/ch11ng/exwm/wiki) because why the hell not?
 
-  * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
+   * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
 #### [bootstrap.sh](bootstrap.sh)
 How I migrate my .dots in new systems. Don's use this unless you are fully aware of the situation you put your self into.
