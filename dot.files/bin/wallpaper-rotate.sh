@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-#~/bin/wallpaper-rotate.sh
+#
+# ~/bin/wallpaper-rotate.sh
 # Simple script to go through a directory of background images as wallpapers in a timely fashion
 
 declare -a WPUSAGE="\n\

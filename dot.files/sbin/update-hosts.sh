@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# update-hosts.sh
+#
+# ~/sbin/update-hosts.sh
+# Set a strict /etc/hosts file
+
 url="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 hf="/etc/hosts"
 

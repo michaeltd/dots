@@ -3,7 +3,7 @@
 
 # Set environment variables
 if [[ -n "${DISPLAY}" ]]; then
-    export VISUAL="$(which emacs 2> /dev/null ||which gvim 2> /dev/null )" EDITOR="$(which gvim 2> /dev/null ||which gvim 2> /dev/null)" BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
+    export VISUAL="$(which emacs 2> /dev/null ||which gvim 2> /dev/null )" EDITOR="$(which emacs 2> /dev/null ||which gvim 2> /dev/null)" BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
 else
     export VISUAL="$(which vim 2> /dev/null)" EDITOR="$(which vim 2> /dev/null)" BROWSER=$(which w3m 2> /dev/null||which lynx 2> /dev/null)
 fi

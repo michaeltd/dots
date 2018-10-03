@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#
 # ~/bin/screenshot.sh
 # Take a screenshot. Requires Imagemagic or scrot, ristretto or viewnior
 

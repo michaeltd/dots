@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# upgrade-distro.sh: Distro neutral upgrade script tdm 171124
+#
+# ~/sbin/upgrade-distro.sh
+# Distro neutral upgrade script tdm 171124
 # From https://en.wikipedia.org/wiki/Package_manager
 
 # For this to work package manager arrays must be in following format...

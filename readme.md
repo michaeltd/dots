@@ -12,8 +12,7 @@
 
   * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
   Script for rolling random images as wallpapers.
-
-  <p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
+  <center><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></center>
 
   * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
   Distro neutral upgrade script.
@@ -21,10 +20,12 @@
 
 * Some WM's (in no particular order)
 
+<center>
+
 |wmaker|e16|openbox|awesome|compiz|mwm|
 | ---- | ---- | ---- | ---- | ---- | ---- |
 |<a href="dot.files/GNUstep/"><img width="50" alt="Window Maker" src="assets/wmaker.png"></a>|<a href="dot.files/.e16/"><img width="50" alt="e16" src="assets/e16.png"></a>|<a href="dot.files/.config/openbox/"><img width="50" alt="openbox" src="assets/openbox.png"></a>|<a href="dot.files/.config/awesome/"><img width="50" alt="awesome" src="assets/awesome.png"></a>|<a href="dot.files/.config/compiz/"><img width="50" alt="compiz" src="assets/compiz.png"></a>|<a href="dot.files/.mwmrc"><img width="50" alt="Motif WM" src="assets/mwm.png"></a>|
-
+</center>
 * Editors, [Utilities](dot.files/.tmux.conf).
 
    * If emacs is your "thing", check one of ...

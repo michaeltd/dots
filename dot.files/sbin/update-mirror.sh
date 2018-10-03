@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# ~/sbin/update-mirror.sh
+# Update my data
 
 nicec=$(which nice) # 1. Loose aliases, 2. Check availability
 rsncm=$(which rsync)

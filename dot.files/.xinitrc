@@ -4,14 +4,19 @@
 # This file is sourced when running startx and other programs which call xinit. As in all Bash/sh scripts lines starting with '#' are comments
 # xsetbg -fullscreen ~/.wallpapers/emacs-cheat-sheet.png & # Set background to your favorite pic
 # terminology & # Start a XTerm
+
 # X things
 xrdb -merge ~/.Xresources # >> /dev/null 2>&1
+
 # Silence terminal bell
 xset b off
+
 # Mouse acceleration
 xset m 20/10 4
+
 # e17 svg support
 export E_COMP_ENGINE=sw
+
 # Pick a wm:
 source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then

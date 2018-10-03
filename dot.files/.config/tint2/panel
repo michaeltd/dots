@@ -1,6 +1,6 @@
 #Panel
 panel_position = bottom center horizontal
-panel_size = 42% 46
+panel_size = 46% 46
 panel_items = L
 
 #Launchers
@@ -15,6 +15,7 @@ launcher_item_app = /usr/share/applications/emacs.desktop
 launcher_item_app = /usr/share/applications/gvim.desktop
 launcher_item_app = /usr/share/applications/Eclipse.desktop
 launcher_item_app = /usr/share/applications/openoffice-startcenter.desktop
+launcher_item_app = /usr/share/applications/gimp.desktop
 launcher_item_app = /usr/share/applications/audacious.desktop
 launcher_item_app = /usr/share/applications/vlc.desktop
 launcher_item_app = /usr/share/applications/pavucontrol.desktop

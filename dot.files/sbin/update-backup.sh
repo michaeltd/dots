@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#
+# ~/sbin/update-backup.sh
+# Backup all the things
+
 # 1. Loose aliases, 2. Check availability
 nicec=$(which nice)
 tarcm=$(which tar)

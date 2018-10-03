@@ -16,9 +16,6 @@ function custom_run {
 # Start an X11 compositor
 # custom_run 19 compton
 
-# Work around conky versions (pre/post 1.9)
-#source /etc/os-release
-
 # XScreenSaver
 custom_run 9 xscreensaver -no-splash
 
@@ -39,7 +36,9 @@ else
   # conky -c "${HOME}/git/dots/conky.configs/conky-horizontal-minimalist/conkyrc" >> /dev/null 2>&1 &
   # custom_run 19 conky -c "${HOME}/git/dots/conky.configs/old/qlock"
   custom_run 9 terminology &
-  custom_run 9 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1
+  # custom_run 9 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1
+  # custom_run 9 conky -c "${HOME}/.conky/cronograph/conkyrc"
+  nice -n 9 ~/.conky/cronoconky/cronograph_blk/start_crono.sh &
   #custom_run 0 conky >> /dev/null 2>&1
 fi
 

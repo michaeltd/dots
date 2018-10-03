@@ -54,7 +54,7 @@ alias halt='sudo shutdown -h' # Use with "now", "HH:MM" or any other valid (by s
 alias reboot='sudo shutdown -r' # Use with "now", "HH:MM" or any other valid (by shutdown) TIME construct.
 
 # alias mc='mc -a' # In case of malconfigured terminals
-alias emacs-nox='emacs -nw'
+alias enx='emacsclient -nw'
 alias fixnet='ping -c 1 www.microsoft.com||sudo rc-service dhcpcd restart'
 alias cal='cal -m' # First Day Monday Calendars
 
@@ -64,15 +64,15 @@ alias rmdl='find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +'
 alias propaideia='for a in {1..9}; do for b in $(seq 1 $a); do printf "%dx%d=%2d\t" $b $a $((b*a));done;printf "\n";done'
 alias ttt='for a in {1..10}; do let tt="${a} * 10";for b in $(seq $a $a $tt);do printf "%4d" $b;done; printf "\n";done'
 # https://twitter.com/liamosaur/status/506975850596536320
-alias fuck='sudo $(history -p \!\!)'
-alias gcl='git clone'
-alias gfc='git fetch'
-alias gst='git status'
+#alias fuck='sudo $(history -p \!\!)'
+#alias gcl='git clone'
+#alias gfc='git fetch'
+#alias gst='git status'
 alias gdf='git diff'
-alias gaa='git add --all'
-alias gcm='git commit -m'
-alias gps='git push'
+#alias gaa='git add --all'
+#alias gcm='git commit -m'
+#alias gps='git push'
 alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-alias gco='git checkout'
-alias gpl='git pull --rebase'
-alias grb='git rebase'
+#alias gco='git checkout'
+#alias gpl='git pull --rebase'
+#alias grb='git rebase'

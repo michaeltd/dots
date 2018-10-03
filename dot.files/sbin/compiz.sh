@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# compiz.sh: Compiz startup script
+#
+# ~/sbin/compiz.sh
+# Compiz startup script
 
 source /etc/os-release # Distro details.
 
