@@ -35,7 +35,7 @@ else
   # conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
   # conky -c "${HOME}/git/dots/conky.configs/conky-horizontal-minimalist/conkyrc" >> /dev/null 2>&1 &
   # custom_run 19 conky -c "${HOME}/git/dots/conky.configs/old/qlock"
-  custom_run 9 terminology &
+  custom_run 9 terminology
   # custom_run 9 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1
   # custom_run 9 conky -c "${HOME}/.conky/cronograph/conkyrc"
   nice -n 9 ~/.conky/cronoconky/cronograph_blk/start_crono.sh &
@@ -47,3 +47,6 @@ nice -n 9 ${HOME}/bin/TkRootMenu &
 
 # Add some wallpaper variety for your desktop
 ${HOME}/bin/wallpaper-rotate.sh &
+
+# Run emacs
+custom_run 9 emacs --daemon

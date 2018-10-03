@@ -19,6 +19,7 @@ dot.files/.config/*
 !dot.files/.config/polybar
 !dot.files/.config/ranger
 !dot.files/.config/tint2
+!dot.files/.config/xfe
 !dot.files/.config/compton.conf
 
 dot.files/.e16/*
