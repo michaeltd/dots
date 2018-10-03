@@ -36,7 +36,7 @@
   * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
 #### [bootstrap.sh](bootstrap.sh)
-How I migrate my .dots in new systems. Don's use this unless you are fully aware of the ramifications of the situation you put your self into.
+How I migrate my .dots in new systems. Don's use this unless you are fully aware of the situation you put your self into.
 
 ## Reference
 #### [GitHub ❤ ~/](https://dotfiles.github.io/)
