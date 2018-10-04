@@ -4,6 +4,7 @@ toolstoolbar=1
 folder_warn=1
 panel_view=1
 width=574
+confirm_drag_and_drop=1
 preserve_date_warn=1
 confirm_delete=1
 use_sudo=0
@@ -12,39 +13,38 @@ auto_save_layout=1
 use_trash_bypass=1
 mount_warn=1
 treepanel_tree_pct=0.282
-treetwopanels_lpanel_pct=0.442
-xfv_replaced=1
 confirm_overwrite=1
 paneltoolbar=1
 confirm_delete_emptydir=1
 startdir_mode=2
 ask_before_copy=1
 mount_messages=1
+confirm_execute=1
 confirm_properties=1
 twopanels_lpanel_pct=0.486
 vert_panels=1
 root_warn=0
 confirm_trash=1
-confirm_execute=1
+treetwopanels_lpanel_pct=0.442
 status=1
 root_mode=1
 treetwopanels_tree_pct=0.212
 generaltoolbar=1
 locationbar=1
-confirm_drag_and_drop=1
+xfv_replaced=1
 
 [HISTORY]
 open=conky -c:atom:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
 filter=*:*single*:*asp.net*:*.net*:*microsoft*:*office*:*ios*:*apple*:*adobe*:*slack*:*slak*:*slackware*:*Slackware*:*redhat*:*RedHat*:*Redhat*:
 run=bin/screenshot.sh:fire:screenshot.sh:
 
-[PROGS]
-pdfviewer=firefox
-txteditor=emacs
-txtviewer=gvim
-imgviewer=ristretto
-xterm=terminology
-videoplayer=vlc
+[bookmarks]
+BOOKMARK4=/mnt/el/Documents
+BOOKMARK5=/home/paperjam/.wallpapers
+BOOKMARK6=/home/paperjam/git
+BOOKMARK1=/mnt/data/Documents/bkps/linux
+BOOKMARK2=/mnt/el/Documents/bkps/linux
+BOOKMARK3=/mnt/data/Documents
 
 [KEYBINDINGS]
 search_prev=Shift-Ctrl-G
@@ -126,8 +126,8 @@ deldate_size=448
 origpath_size=448
 liststyle=0
 attr_size=34
-size_size=39
 user_size=22
+hiddenfiles=1
 dirs_first=1
 ext_size=22
 grou_size=22
@@ -137,35 +137,39 @@ sort_func=ascendingCase
 showthumbnails=0
 name_size=260
 lastdir=/home/paperjam/.config
-hiddenfiles=1
+size_size=39
 
 [SEARCH PANEL]
-grou_size=23
 type_size=23
 search_ypos=212
 search_xpos=0
-dir_size=322
+liststyle=0
 attr_size=100
 user_size=23
 search_height=607
 find_hidden=0
-moreoptions=1
+dir_size=322
 ext_size=29
-liststyle=0
+sort_func=ascendingCase
+grou_size=23
 find_ignorecase=1
 search_width=1063
 modd_size=29
 grep_ignorecase=0
 ignore_case=1
-sort_func=ascendingCase
+moreoptions=1
 showthumbnails=0
 name_size=583
 dirs_first=1
 size_size=50
 
-[DIR PANEL]
-hidden_dir=1
-sort_func=ascendingCase
+[PROGS]
+pdfviewer=firefox
+txteditor=emacs
+txtviewer=gvim
+imgviewer=ristretto
+xterm=terminology
+videoplayer=vlc
 
 [LEFT PANEL]
 type_size=28
@@ -173,8 +177,8 @@ deldate_size=203
 origpath_size=203
 liststyle=0
 attr_size=39
-size_size=33
 user_size=24
+hiddenfiles=0
 dirs_first=1
 ext_size=26
 grou_size=27
@@ -183,8 +187,8 @@ ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=177
-lastdir=/home/paperjam/bin
-hiddenfiles=1
+lastdir=/home/paperjam
+size_size=33
 
 [SETTINGS]
 listforecolor=Gray100
@@ -198,12 +202,12 @@ relative_resize=1
 font=Exo 2 [UKWN],100,normal,regular
 listbackcolor=#838183
 shadowcolor=#666466
-file_tooltips=0
 tippause=500
 scrollbarcolor=#9c999c
 forecolor=Gray100
 basecolor=#9c999c
 time_format=%x %X
+show_pathlinker=1
 selbackcolor=#316183
 wheellines=5
 smooth_scroll=1
@@ -214,7 +218,7 @@ tiptime=10000
 selforecolor=Gray100
 pbarcolor=#316183
 save_win_pos=0
-show_pathlinker=1
+file_tooltips=0
 
 [FILETYPES]
 sdw=lowriter,lowriter,lowriter;Starwriter 5.0 Document;sxw_32x32.png;sxw_16x16.png;;
@@ -440,11 +444,7 @@ showthumbnails=0
 name_size=200
 size_size=60
 
-[bookmarks]
-BOOKMARK4=/mnt/el/Documents
-BOOKMARK5=/home/paperjam/.wallpapers
-BOOKMARK6=/home/paperjam/git
-BOOKMARK1=/mnt/data/Documents/bkps/linux
-BOOKMARK2=/mnt/el/Documents/bkps/linux
-BOOKMARK3=/mnt/data/Documents
+[DIR PANEL]
+hidden_dir=1
+sort_func=ascendingCase
 

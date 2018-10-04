@@ -28,18 +28,15 @@ nice -n 9 wicd-gtk -t &
 # Start a terminal
 # Monitor your box
 source /etc/os-release
-if [[ "${ID}" == "devuan" ]]; then
+if [[ "${ID}" == "gentoo" ]]; then
+  custom_run 9 terminology
+  nice -n 9 ~/.conky/cronoconky/cronograph_blk/start_crono.sh &
+elif [[ "${ID}" == "devuan" ]]; then
   custom_run 9 xfce4-terminal --disable-server
   custom_run 9 conky >> /dev/null 2>&1
 else
-  # conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1 &
-  # conky -c "${HOME}/git/dots/conky.configs/conky-horizontal-minimalist/conkyrc" >> /dev/null 2>&1 &
-  # custom_run 19 conky -c "${HOME}/git/dots/conky.configs/old/qlock"
-  custom_run 9 terminology
-  # custom_run 9 conky -c "${HOME}/git/dots/conky.configs/conky_configs/min_clock/conkyrc" >> /dev/null 2>&1
-  # custom_run 9 conky -c "${HOME}/.conky/cronograph/conkyrc"
-  nice -n 9 ~/.conky/cronoconky/cronograph_blk/start_crono.sh &
-  #custom_run 0 conky >> /dev/null 2>&1
+  custom_run 9 xterm
+  custom_run 9 conky >> /dev/null 2>&1
 fi
 
 # Start a Menu
@@ -49,4 +46,4 @@ nice -n 9 ${HOME}/bin/TkRootMenu &
 ${HOME}/bin/wallpaper-rotate.sh &
 
 # Run emacs
-# custom_run 9 emacs --daemon
+custom_run 9 emacs --daemon

@@ -1,6 +1,6 @@
 # ~/.bashrc.d/colors
 #!/usr/bin/env bash
-
+#
 # Font attributes
 export reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)"
 
