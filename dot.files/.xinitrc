@@ -6,7 +6,8 @@
 # terminology & # Start a XTerm
 
 # X things
-xrdb -merge ~/.Xresources # >> /dev/null 2>&1
+
+xrdb -I${HOME} -merge ~/.Xresources
 
 # Silence terminal bell
 xset b off

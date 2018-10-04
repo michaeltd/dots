@@ -1,0 +1,45 @@
+! MWM Resources  --  These are only run if you are using the mwm window
+!                    manager.  Run "man mwm" for details.
+
+! Causes icon box to scroll horizontally only
+!Mwm*iconBoxSBDisplayPolicy:     vertical
+! Creates a box to place your icons
+!Mwm*useIconBox:			False
+! Sets the icon box's size and location
+!Mwm*iconBoxGeometry:		10x1+160-0
+! Sets the icon box's title
+!Mwm*iconBoxTitle:		MWM Icon Manager
+! Sets where the icons will appear (on the screen, or in an icon box if it
+! exists)
+!Mwm*iconPlacement:		left top
+! "fades" icon of applications that are active
+!Mwm*fadeNormalIcon:		True
+! Causes whatever your pointer is over to become the active application
+!Mwm*keyboardFocusPolicy:	click
+! Causes all border and title decoration to appear on xclock applications
+!Mwm*XClock.clientDecoration:	+all
+! Causes all border and title decoration to appear on xbiff applications
+!Mwm*xbiff.clientDecoration:	+all
+! Lets you select by hand the location of a new application (unless a specific
+! location is indicated when you run it)
+!Mwm*interactivePlacement:	False
+! Sets a foreground color for every application
+Mwm*foreground:			black
+! Sets a background color for every application
+Mwm*background:			DarkGrey
+! Sets a foreground color for the active application
+Mwm*activeForeground:		white
+! Sets a background color for the active application
+Mwm*activeBackground:		black
+! Sets a foreground color for your menu
+Mwm*menu*foreground:		white
+! Sets a background color for your menu
+Mwm*menu*background:		DarkGrey
+! Default font for your application titles
+!Mwm*fontList:         -adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*
+! Default font for your menus
+!Mwm*menu*fontList:    -adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*
+! Cause the xclock icon not to show up in the icon box
+!Mwm*XClock*clientFunctions:     -minimize
+! Cause the xbiff icon not to show up in the icon box
+!Mwm*xbiff*clientFunctions:    -minimize

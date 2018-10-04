@@ -2,9 +2,8 @@
 height=497
 toolstoolbar=1
 folder_warn=1
-panel_view=1
-width=574
-confirm_drag_and_drop=1
+panel_view=2
+width=593
 preserve_date_warn=1
 confirm_delete=1
 use_sudo=0
@@ -13,38 +12,35 @@ auto_save_layout=1
 use_trash_bypass=1
 mount_warn=1
 treepanel_tree_pct=0.282
+treetwopanels_lpanel_pct=0.442
+xfv_replaced=1
 confirm_overwrite=1
 paneltoolbar=1
 confirm_delete_emptydir=1
 startdir_mode=2
 ask_before_copy=1
 mount_messages=1
-confirm_execute=1
 confirm_properties=1
-twopanels_lpanel_pct=0.486
+twopanels_lpanel_pct=0.485
 vert_panels=1
 root_warn=0
 confirm_trash=1
-treetwopanels_lpanel_pct=0.442
+confirm_execute=1
 status=1
 root_mode=1
 treetwopanels_tree_pct=0.212
 generaltoolbar=1
 locationbar=1
-xfv_replaced=1
+confirm_drag_and_drop=1
+
+[DIR PANEL]
+hidden_dir=1
+sort_func=ascendingCase
 
 [HISTORY]
 open=conky -c:atom:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
 filter=*:*single*:*asp.net*:*.net*:*microsoft*:*office*:*ios*:*apple*:*adobe*:*slack*:*slak*:*slackware*:*Slackware*:*redhat*:*RedHat*:*Redhat*:
 run=bin/screenshot.sh:fire:screenshot.sh:
-
-[bookmarks]
-BOOKMARK4=/mnt/el/Documents
-BOOKMARK5=/home/paperjam/.wallpapers
-BOOKMARK6=/home/paperjam/git
-BOOKMARK1=/mnt/data/Documents/bkps/linux
-BOOKMARK2=/mnt/el/Documents/bkps/linux
-BOOKMARK3=/mnt/data/Documents
 
 [KEYBINDINGS]
 search_prev=Shift-Ctrl-G
@@ -126,8 +122,8 @@ deldate_size=448
 origpath_size=448
 liststyle=0
 attr_size=34
+size_size=39
 user_size=22
-hiddenfiles=1
 dirs_first=1
 ext_size=22
 grou_size=22
@@ -136,28 +132,28 @@ ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=260
-lastdir=/home/paperjam/.config
-size_size=39
+lastdir=/home/paperjam
+hiddenfiles=1
 
 [SEARCH PANEL]
+grou_size=23
 type_size=23
 search_ypos=212
 search_xpos=0
-liststyle=0
+dir_size=322
 attr_size=100
 user_size=23
 search_height=607
 find_hidden=0
-dir_size=322
+moreoptions=1
 ext_size=29
-sort_func=ascendingCase
-grou_size=23
+liststyle=0
 find_ignorecase=1
 search_width=1063
 modd_size=29
 grep_ignorecase=0
 ignore_case=1
-moreoptions=1
+sort_func=ascendingCase
 showthumbnails=0
 name_size=583
 dirs_first=1
@@ -172,23 +168,23 @@ xterm=terminology
 videoplayer=vlc
 
 [LEFT PANEL]
-type_size=28
+type_size=49
 deldate_size=203
 origpath_size=203
 liststyle=0
-attr_size=39
-user_size=24
-hiddenfiles=0
+attr_size=75
+size_size=84
+user_size=64
 dirs_first=1
-ext_size=26
-grou_size=27
-modd_size=35
+ext_size=27
+grou_size=65
+modd_size=97
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=177
-lastdir=/home/paperjam
-size_size=33
+name_size=141
+lastdir=/home
+hiddenfiles=0
 
 [SETTINGS]
 listforecolor=Gray100
@@ -196,18 +192,18 @@ iconpath=/usr/share/xfe/icons/gnomeblue-theme
 hilitecolor=#cfcbcf
 single_click=0
 highlightcolor=#a5a2a5
-textfont=Exo 2 [UKWN],100,normal,regular
+textfont=IBM 3270 [PfEd],100,medium,regular
 bordercolor=Black
 relative_resize=1
-font=Exo 2 [UKWN],100,normal,regular
+font=IBM 3270 [PfEd],100,medium,regular
 listbackcolor=#838183
 shadowcolor=#666466
+file_tooltips=0
 tippause=500
 scrollbarcolor=#9c999c
 forecolor=Gray100
 basecolor=#9c999c
 time_format=%x %X
-show_pathlinker=1
 selbackcolor=#316183
 wheellines=5
 smooth_scroll=1
@@ -218,7 +214,7 @@ tiptime=10000
 selforecolor=Gray100
 pbarcolor=#316183
 save_win_pos=0
-file_tooltips=0
+show_pathlinker=1
 
 [FILETYPES]
 sdw=lowriter,lowriter,lowriter;Starwriter 5.0 Document;sxw_32x32.png;sxw_16x16.png;;
@@ -444,7 +440,11 @@ showthumbnails=0
 name_size=200
 size_size=60
 
-[DIR PANEL]
-hidden_dir=1
-sort_func=ascendingCase
+[bookmarks]
+BOOKMARK4=/mnt/el/Documents
+BOOKMARK5=/home/paperjam/.wallpapers
+BOOKMARK6=/home/paperjam/git
+BOOKMARK1=/mnt/data/Documents/bkps/linux
+BOOKMARK2=/mnt/el/Documents/bkps/linux
+BOOKMARK3=/mnt/data/Documents
 

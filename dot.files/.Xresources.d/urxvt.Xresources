@@ -1,0 +1,107 @@
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+URxvt*depth:                   32
+URxvt*background:              rgba:0200/0200/0200/c800
+URxvt*background:              S_base03
+URxvt*foreground:              S_base0
+URxvt*fading:                  40
+URxvt*fadeColor:               S_base03
+URxvt*cursorColor:             S_base1
+URxvt*pointerColorBackground:  S_base01
+URxvt*pointerColorForeground:  S_base1
+
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
+
+! ===========================================================================
+! URxvt resources
+
+! Look similar to the Linux Console, with transparency
+! ---------------------------------------------------------------------------
+URxvt.background: black
+URxvt.foreground: white
+URxvt.shading: 30
+URxvt.tintColor: white
+URxvt.inheritPixmap: true
+URxvt.scrollBar: false
+URxvt.scrollBar_right:true
+!URxvt.geometry: 120x40
+URxvt.saveLines: 99999
+
+URxvt.perl-ext: tabbed
+URxvt.tabbed.tabbar-fg: <colour-index, default 3>
+URxvt.tabbed.tabbar-bg: <colour-index, default 0>
+URxvt.tabbed.tab-fg:    <colour-index, default 0>
+URxvt.tabbed.tab-bg:    <colour-index, default 1>
+
+
+! Font settings
+! URxvt uses UTF-8, so we don't need encoding-specific settings
+! ---------------------------------------------------------------------------
+! 640x480
+!URxvt.font: xft:Monospace:pixelsize=10
+! 800x600
+!URxvt.font: xft:Monospace:pixelsize=10
+! 1024x768
+!URxvt.font: xft:Monospace:pixelsize=11
+! 1152x864
+!URxvt.font: xft:Monospace:pixelsize=12
+! 1280x1024
+!URxvt.font: xft:Monospace:pixelsize=14
+!URxvt.font: pixelsize=14
+URxvt.font: -misc-fixed-medium-r-normal-*-14-*
+
+! Colors similar to Linux console
+! ---------------------------------------------------------------------------
+!URxvt.color0: rgb:0/0/0
+!URxvt.color1: rgb:cc/00/00
+!URxvt.color2: rgb:00/cc/00
+!URxvt.color3: #bd5e01
+!URxvt.color4: rgb:00/00/cc
+!URxvt.color5: rgb:cc/00/cc
+!URxvt.color6: rgb:00/cc/cc
+!URxvt.color7: rgb:aa/aa/aa
+!URxvt.color8: rgb:33/33/33
+!URxvt.color9: rgb:ff/00/00
+!URxvt.color10: rgb:00/ff/00
+!URxvt.color11: rgb:ff/ff/00
+!URxvt.color12: rgb:00/00/ff
+!URxvt.color13: rgb:ff/00/ff
+!URxvt.color14: rgb:00/ff/ff
+!URxvt.color15: rgb:ff/ff/ff
+
+! Default URxvt colors
+! ---------------------------------------------------------------------------
+!URxvt.color0: black
+!URxvt.color1: red3
+!URxvt.color2: green3
+!URxvt.color3: brown
+!URxvt.color4: blue3
+!URxvt.color5: magenta3
+!URxvt.color6: cyan3
+!URxvt.color7: gray90
+!URxvt.color8: gray30
+!URxvt.color9: red
+!URxvt.color10: green
+!URxvt.color11: yellow
+!URxvt.color12: blue
+!URxvt.color13: magenta
+!URxvt.color14: cyan
+!URxvt.color15: gray60
