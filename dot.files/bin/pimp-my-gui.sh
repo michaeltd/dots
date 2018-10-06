@@ -31,6 +31,7 @@ source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
   custom_run 9 terminology
   nice -n 9 ~/.conky/cronoconky/cronograph_blk/start_crono.sh &
+  # custom_run 9 conky -c ~/git/dots/conky.configs/alltimeclassics/cronoconky/cronograph_blk/cronorc
 elif [[ "${ID}" == "devuan" ]]; then
   custom_run 9 xfce4-terminal --disable-server
   custom_run 9 conky >> /dev/null 2>&1

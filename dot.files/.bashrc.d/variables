@@ -3,6 +3,7 @@
 #
 # Set environment variables
 
+# Used by emacsclient in case of no daemon found.
 export ALTERNATE_EDITOR=$(which micro 2> /dev/null||which vi 2> /dev/null||which nano 2> /dev/null)
 
 if [[ -n "${DISPLAY}" ]]; then

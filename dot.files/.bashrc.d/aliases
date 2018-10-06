@@ -24,16 +24,23 @@ fi
 alias du='du -h'
 alias df='df -h'
 
+# Package Search, Install, Remove
+# Distro Update, Upgrade, Cleanup
 if [[ -n $(which emerge 2> /dev/null) ]]; then
-    alias searchpacks='emerge -s' installpacks='sudo emerge -av' removepacks='sudo emerge -avC' updatedist='sudo emerge --sync' upgradedist='sudo emerge -avuND --with-bdeps=y @world' cleanupdist='sudo emerge --ask --depclean'
+    alias psearch='emerge -s' pinstall='sudo emerge -av' premove='sudo emerge -avC'
+    alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND --with-bdeps=y @world' dcleanup='sudo emerge --ask --depclean'
 elif [[ -n $(which pacman 2> /dev/null) ]]; then
-    alias searchpacks='pacman -Ss' installpacks='sudo pacman -S' removepacks='sudo pacman -R' updatedist='sudo pacman -Sy' upgradedist='sudo pacman -Syu' cleanupdist='sudo pacman -Rsn'
+    alias psearch='pacman -Ss' pinstall='sudo pacman -S' premove='sudo pacman -R'
+    alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' dcleanup='sudo pacman -Rsn'
 elif [[ -n $(which apt-get 2> /dev/null) ]]; then
-    alias searchpacks='apt search' installpacks='sudo apt-get install --install-suggests' removepacks='sudo apt-get remove --purge' updatedist='sudo apt-get update' upgradedist='sudo apt-get dist-upgrade' cleanupdist='sudo apt-get autoremove'
+    alias psearch='apt search' pinstall='sudo apt-get install --install-suggests' premove='sudo apt-get premove --purge'
+    alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' dcleanup='sudo apt-get autoremove'
 elif [[ -n $(which zypper 2> /dev/null) ]]; then
-    alias searchpacks='zypper search' installpacks='sudo zypper install' removepacks='sudo zypper remove --clean-deps' updatedist='sudo zypper refresh' upgradedist='sudo zypper update' cleanupdist='sudo zypper rm -u'
+    alias psearch='zypper search' pinstall='sudo zypper install' premove='sudo zypper remove --clean-deps'
+    alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' dcleanup='sudo zypper rm -u'
 elif [[ -n $(which yum 2> /dev/null) ]]; then
-    alias searchpacks='yum search' installpacks='sudo yum install' removepacks='sudo yum remove' updatedist='sudo yum check-update' upgradedist='sudo yum update' cleanupdist='sudo yum autoremove'
+    alias psearch='yum search' pinstall='sudo yum install' premove='sudo yum remove'
+    alias dupdate='sudo yum check-update' dupgrade='sudo yum update' dcleanup='sudo yum autoremove'
 fi
 
 # Mount
@@ -44,7 +51,7 @@ alias mntf='sudo mount -t auto /dev/sdf1 /mnt/thumb'
 
 # PC
 alias halt='sudo shutdown -h' # Use with "now", "HH:MM" or any other valid (by shutdown) TIME construct.
-alias reboot='sudo shutdown -r' # Use with "now", "HH:MM" or any other valid (by shutdown) TIME construct.
+alias reboot='sudo shutdown -r' # as above
 
 # Midnight Commander Safe Terminal
 alias mcst='mc -a' # In case of malconfigured terminals
