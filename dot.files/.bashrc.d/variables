@@ -3,25 +3,26 @@
 #
 # Set environment variables
 
-# Used by emacs, by exporting this we avoid the need of a "-a nano, --alternate-editor=nano" switch.
 export ALTERNATE_EDITOR=$(which micro 2> /dev/null||which vi 2> /dev/null||which nano 2> /dev/null)
 
 if [[ -n "${DISPLAY}" ]]; then
   unset 'EDITOR'
   if [[ -x $(which emacs 2> /dev/null) ]]; then
-    export VISUAL="emacsclient -c --alternate-editor=emacs"
+    export VISUAL="emacsclient --alternate-editor=emacs -c"
   elif [[ -x $(which gvim 2> /dev/null) ]]; then
     export VISUAL="gvim"
+  else
+    export VISUAL="xterm -e ${ALTERNATE_EDITOR}"
   fi
   export BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
-elif [[ -z "${DISPLAY}" ]]; then
+else
   unset 'VISUAL'
   if [[ -x $(which emacs 2> /dev/null) ]]; then
-    # Define emacs as alternate editor as we know it's there
-    # In case of unset $DISPLAY emacs will use -nw switch by its self.
-    export EDITOR="emacsclient -t --alternate-editor=emacs"
+    export EDITOR="emacsclient --alternate-editor=emacs -t"
   elif [[ -x $(which vim 2> /dev/null) ]]; then
     export EDITOR="vim"
+  else
+    export EDITOR="${ALTERNATE_EDITOR}"
   fi
   export BROWSER=$(which w3m 2> /dev/null||which links 2> /dev/null||which lynx 2> /dev/null)
 fi

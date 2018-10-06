@@ -15,33 +15,45 @@ xset b off
 # Mouse acceleration
 xset m 20/10 4
 
-# e17 svg support
-export E_COMP_ENGINE=sw
-
 # Pick a wm:
+wms=( openbox-session wmaker awesome mwm jwm starte16 enlightenment_start xfce4-session compiz kodi-standalone emacs )
 source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
-  WM=$(which xfce4-session)
+  WM="xfce4-session"
 elif [[ "${ID}" == "gentoo" ]]; then
-  WM=$(which openbox-session)
+  # WM=openbox-session
+  WM="emacs"
+  # WM="awesome"
 else
-  WM=$(which wmaker|| \
-      which openbox-session|| \
-      which jwm|| \
-      which mwm|| \
-      which compiz.sh|| \
-      which emacs|| \
-      which starte16|| \
-      which enlightenment_start|| \
-      which xfce4-session|| \
-      which kodi-standalone)
+  # there is a oneliner for this but i like the verbosity of a 'for' statement.
+  # WM=$(which wmaker||which openbox-session||which jwm||which mwm||which compiz.sh||which starte16||which enlightenment_start||which xfce4-session||which kodi-standalone)
+  for wm in "${wms[@]}"; do
+    if [[ -x "$(which ${wm} 2> /dev/null)" ]]; then
+      WM="${wm}"
+      break
+    fi
+  done
 fi
 
 # Start the systems window manager. See WindowManagers for other choices.
 # exec /etc/alternatives/x-window-manager
 # To run Gnome instead of system default, place a '#' before the previous line and uncomment the next line.
 # exec gnome-session
-# Awesome
-# exec /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
 # exec dbus-launch --exit-with-session "${WM}"
-"${WM}"
+
+# Customizations per wm. If there is a wm specific permutation to be done, set it up here.
+if [[ "${WM}" =~ "awesome" ]];then
+  # Awesome: /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
+  WM=( /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua )
+elif [[ "${WM}" =~ "emacs" ]];then
+  # Emacs as found in exwm manual:
+  # emacs --daemon -f exwm-enable
+  # emacsclient -c
+  emacs --daemon -f exwm-enable
+  WM=( emacsclient -c )
+elif [[ "${WM}" =~ "e16" || "${WM}" =~ "enlightenment" ]];then
+  # e17 svg support
+  export E_COMP_ENGINE=sw
+fi
+
+exec "${WM[@]}"
