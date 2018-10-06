@@ -58,7 +58,7 @@
 
      - https://github.com/technomancy/emacs-starter-kit
      - https://github.com/bbatsov/prelude
-     - My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d), [a splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png) and [exwm](https://github.com/ch11ng/exwm/wiki) ;..; <(")
+     - My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d), [a splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png) and [exwm](https://github.com/ch11ng/exwm/wiki).
 
    * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
