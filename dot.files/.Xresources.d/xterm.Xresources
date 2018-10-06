@@ -31,25 +31,24 @@ XTerm*font: -misc-Sourcecodepro-normal-r-normal-*-14-*-*-*-*-*-*-*
 ! 1280x1024
 !XTerm*font: -misc-fixed-medium-r-normal-*-18-*
 
-
 ! Colors similar to those used in Linux Console (ttyX)
 ! ---------------------------------------------------------------------------
-XTerm*color0: rgb:0/0/0
-XTerm*color1: rgb:cc/00/00
-XTerm*color2: rgb:00/cc/00
-XTerm*color3: #bd5e01
-XTerm*color4: rgb:00/00/cc
-XTerm*color5: rgb:cc/00/cc
-XTerm*color6: rgb:00/cc/cc
-XTerm*color7: rgb:aa/aa/aa
-XTerm*color8: rgb:33/33/33
-XTerm*color9: rgb:ff/00/00
-XTerm*color10: rgb:00/ff/00
-XTerm*color11: rgb:ff/ff/00
-XTerm*color12: rgb:00/00/ff
-XTerm*color13: rgb:ff/00/ff
-XTerm*color14: rgb:00/ff/ff
-XTerm*color15: rgb:ff/ff/ff
+!XTerm*color0: rgb:0/0/0
+!XTerm*color1: rgb:cc/00/00
+!XTerm*color2: rgb:00/cc/00
+!XTerm*color3: #bd5e01
+!XTerm*color4: rgb:00/00/cc
+!XTerm*color5: rgb:cc/00/cc
+!XTerm*color6: rgb:00/cc/cc
+!XTerm*color7: rgb:aa/aa/aa
+!XTerm*color8: rgb:33/33/33
+!XTerm*color9: rgb:ff/00/00
+!XTerm*color10: rgb:00/ff/00
+!XTerm*color11: rgb:ff/ff/00
+!XTerm*color12: rgb:00/00/ff
+!XTerm*color13: rgb:ff/00/ff
+!XTerm*color14: rgb:00/ff/ff
+!XTerm*color15: rgb:ff/ff/ff
 
 ! Default XTerm colors
 ! ---------------------------------------------------------------------------

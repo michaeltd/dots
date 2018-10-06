@@ -43,7 +43,7 @@ URxvt.inheritPixmap: true
 URxvt.scrollBar: false
 URxvt.scrollBar_right:true
 !URxvt.geometry: 120x40
-URxvt.saveLines: 99999
+URxvt.saveLines: 9999
 
 URxvt.perl-ext: tabbed
 URxvt.tabbed.tabbar-fg: <colour-index, default 3>

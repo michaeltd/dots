@@ -7,6 +7,10 @@
 */*~
 *~
 
+*.bak
+*.bkp
+*.sh.rc
+
 conky.configs/*
 
 dot.files/.config/*
@@ -53,10 +57,5 @@ dot.files/.bkp.excludes.txt
 dot.files/.gitconfig
 
 dot.files/.my.cnf.*
-
-dot.files/.*.sh.rc
-
-dot.files/.*.bak
-dot.files/.*.bkp
 
 private/*
