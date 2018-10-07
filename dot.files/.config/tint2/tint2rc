@@ -59,6 +59,10 @@ launcher_item_app = /usr/share/applications/xfce4-screenshooter.desktop
 #launcher_item_app = /usr/share/applications/iceweasel.desktop
 
 # Taskbar
+# enable a text label widget that displays in the tint2 taskbar
+taskbar_name = 1
+# choose a color for the font that differs from the background
+taskbar_name_font_color = #F0F0F0 100
 taskbar_mode = single_desktop
 taskbar_padding = 2 3 2
 taskbar_background_id = 0
@@ -124,10 +128,10 @@ mouse_scroll_up = toggle
 mouse_scroll_down = iconify
 
 # Battery
-battery = 1
+battery = 0
 battery_low_status = 10
 battery_low_cmd = notify-send "battery low"
-battery_hide = 98
+battery_hide = 0
 bat1_font = sans 8
 bat2_font = sans 6
 battery_font_color = #FFFFFF 74

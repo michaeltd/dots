@@ -5,9 +5,9 @@
 !Mwm*iconBoxSBDisplayPolicy:     vertical
 ! Creates a box to place your icons
 !Mwm*useIconBox:			False
-! Sets the icon box's size and location
+! Sets the icon boxs size and location
 !Mwm*iconBoxGeometry:		10x1+160-0
-! Sets the icon box's title
+! Sets the icon boxs title
 !Mwm*iconBoxTitle:		MWM Icon Manager
 ! Sets where the icons will appear (on the screen, or in an icon box if it
 ! exists)

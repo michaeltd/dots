@@ -1,107 +1,111 @@
-! To only apply colors to your terminal, for example, prefix
-! the color assignment statement with its name. Example:
-!
-! URxvt*background:            S_base03
+! https://gist.github.com/liangzan/1643690
+! urxvt
+URxvt*buffered: true
+URxvt*cursorBlink: true
+URxvt*underlineColor: yellow
+URxvt*font: xft:inconsolata:size=10:antialias=true
+URxvt*depth: 32
 
-URxvt*depth:                   32
-URxvt*background:              rgba:0200/0200/0200/c800
-URxvt*background:              S_base03
-URxvt*foreground:              S_base0
-URxvt*fading:                  40
-URxvt*fadeColor:               S_base03
-URxvt*cursorColor:             S_base1
-URxvt*pointerColorBackground:  S_base01
-URxvt*pointerColorForeground:  S_base1
+!https://gist.github.com/whit/1307597
+!# transparency - true or false (default)
+!URxvt*transparent: true
 
-*color0:                  S_base02
-*color1:                  S_red
-*color2:                  S_green
-*color3:                  S_yellow
-*color4:                  S_blue
-*color5:                  S_magenta
-*color6:                  S_cyan
-*color7:                  S_base2
-*color9:                  S_orange
-*color8:                  S_base03
-*color10:                 S_base01
-*color11:                 S_base00
-*color12:                 S_base0
-*color13:                 S_violet
-*color14:                 S_base1
-*color15:                 S_base3
+!# tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+!#   some nice listings are at:
+!#     http://www.nisrv.com/drupal/?q=node/11
+!#     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+!URxvt*tintColor: black
 
-! ===========================================================================
-! URxvt resources
+!URxvt*background: rgba:1111/1111/1111/dddd
+!URxvt*background: [50]#000000
+!URxvt*backgroud: rgba:3f00/3f00/3f00/dddd
+!urxvt*background:       rgba:0000/0000/0000/cccc
+!URxvt.transparent:   true
+!URxvt.tintColor:     white
+!URxvt.shading:       20
 
-! Look similar to the Linux Console, with transparency
-! ---------------------------------------------------------------------------
-URxvt.background: black
-URxvt.foreground: white
-URxvt.shading: 30
-URxvt.tintColor: white
-URxvt.inheritPixmap: true
-URxvt.scrollBar: false
-URxvt.scrollBar_right:true
-!URxvt.geometry: 120x40
-URxvt.saveLines: 9999
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*loginShell: true
+Urxvt*secondaryScroll: true ! Enable Shift-PageUp/Down in screen
+URxvt*saveLines: 9999
+URxvt*termName: rxvt-unicode
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
 
-URxvt.perl-ext: tabbed
-URxvt.tabbed.tabbar-fg: <colour-index, default 3>
-URxvt.tabbed.tabbar-bg: <colour-index, default 0>
-URxvt.tabbed.tab-fg:    <colour-index, default 0>
-URxvt.tabbed.tab-bg:    <colour-index, default 1>
+!! drop in Solarized colorscheme for Xresources/Xdefaults
 
+!!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
+!!--------- ------- ---- -------  ----------- ---------- ----------- -----------
+!!base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
+!!base02    #073642  0/4 black    235 #262626 20 -12 -12   7  54  66 192  90  26
+!!base01    #586e75 10/7 brgreen  240 #585858 45 -07 -07  88 110 117 194  25  46
+!!base00    #657b83 11/7 bryellow 241 #626262 50 -07 -07 101 123 131 195  23  51
+!!base0     #839496 12/6 brblue   244 #808080 60 -06 -03 131 148 150 186  13  59
+!!base1     #93a1a1 14/4 brcyan   245 #8a8a8a 65 -05 -02 147 161 161 180   9  63
+!!base2     #eee8d5  7/7 white    254 #e4e4e4 92 -00  10 238 232 213  44  11  93
+!!base3     #fdf6e3 15/7 brwhite  230 #ffffd7 97  00  10 253 246 227  44  10  99
+!!yellow    #b58900  3/3 yellow   136 #af8700 60  10  65 181 137   0  45 100  71
+!!orange    #cb4b16  9/3 brred    166 #d75f00 50  50  55 203  75  22  18  89  80
+!!red       #dc322f  1/1 red      160 #d70000 50  65  45 220  50  47   1  79  86
+!!magenta   #d33682  5/5 magenta  125 #af005f 50  65 -05 211  54 130 331  74  83
+!!violet    #6c71c4 13/5 brmagenta 61 #5f5faf 50  15 -45 108 113 196 237  45  77
+!!blue      #268bd2  4/4 blue      33 #0087ff 55 -10 -45  38 139 210 205  82  82
+!!cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
+!!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
-! Font settings
-! URxvt uses UTF-8, so we don't need encoding-specific settings
-! ---------------------------------------------------------------------------
-! 640x480
-!URxvt.font: xft:Monospace:pixelsize=10
-! 800x600
-!URxvt.font: xft:Monospace:pixelsize=10
-! 1024x768
-!URxvt.font: xft:Monospace:pixelsize=11
-! 1152x864
-!URxvt.font: xft:Monospace:pixelsize=12
-! 1280x1024
-!URxvt.font: xft:Monospace:pixelsize=14
-!URxvt.font: pixelsize=14
-URxvt.font: -misc-fixed-medium-r-normal-*-14-*
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
 
-! Colors similar to Linux console
-! ---------------------------------------------------------------------------
-!URxvt.color0: rgb:0/0/0
-!URxvt.color1: rgb:cc/00/00
-!URxvt.color2: rgb:00/cc/00
-!URxvt.color3: #bd5e01
-!URxvt.color4: rgb:00/00/cc
-!URxvt.color5: rgb:cc/00/cc
-!URxvt.color6: rgb:00/cc/cc
-!URxvt.color7: rgb:aa/aa/aa
-!URxvt.color8: rgb:33/33/33
-!URxvt.color9: rgb:ff/00/00
-!URxvt.color10: rgb:00/ff/00
-!URxvt.color11: rgb:ff/ff/00
-!URxvt.color12: rgb:00/00/ff
-!URxvt.color13: rgb:ff/00/ff
-!URxvt.color14: rgb:00/ff/ff
-!URxvt.color15: rgb:ff/ff/ff
+*background:            S_base03
+*foreground:            S_base00
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
 
-! Default URxvt colors
-! ---------------------------------------------------------------------------
-!URxvt.color0: black
-!URxvt.color1: red3
-!URxvt.color2: green3
-!URxvt.color3: brown
-!URxvt.color4: blue3
-!URxvt.color5: magenta3
-!URxvt.color6: cyan3
-!URxvt.color7: gray90
-!URxvt.color8: gray30
-!URxvt.color9: red
-!URxvt.color10: green
-!URxvt.color11: yellow
-!URxvt.color12: blue
-!URxvt.color13: magenta
-!URxvt.color14: cyan
-!URxvt.color15: gray60
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3

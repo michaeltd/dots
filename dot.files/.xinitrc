@@ -46,11 +46,12 @@ if [[ "${WM}" =~ "awesome" ]];then
   # Awesome: /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
   WM=( /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua )
 elif [[ "${WM}" =~ "emacs" ]];then
-  # Emacs as found in exwm manual:
+  # Emacs (with (exwm-enable) commented out in "exwm-config.el") as found in exwm manual:
   # emacs --daemon -f exwm-enable
   # emacsclient -c
   emacs --daemon -f exwm-enable
   WM=( emacsclient -c )
+  # Just "emacs" would be sufficient if you dont mind X clients M-x:exwm-init on X boot.
 elif [[ "${WM}" =~ "e16" || "${WM}" =~ "enlightenment" ]];then
   # e17 svg support
   export E_COMP_ENGINE=sw
