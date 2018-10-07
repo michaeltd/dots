@@ -8,6 +8,12 @@
 
 # UTILS =======================================================================
 
+# Line Count Directory ($1), for File Expression ($2).
+# eg: lcdfe /my/awesome/project/ *\.html, lcdfe . *\.cpp, lcdfe ${HOME} *\.rc
+function lcdfe {
+  find "${1}" -iname "${2}" | xargs wc -l
+}
+
 # End stuff
 function termapp {
   # kill -s 15 $(pgrep "${1}")
@@ -27,7 +33,7 @@ function mkalias {
 
 # Remove an alias
 function rmalias {
-  unalias "${1}" # && sed --follow-symlinks -i "/alias $1\=/d" ${HOME}/.bashrc.d/20_aliases
+  unalias "${1}" # && sed --follow-symlinks -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases
 }
 
 # Functions to unify archive management in linux CLI environments
