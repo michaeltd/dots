@@ -5,8 +5,7 @@
 # xsetbg -fullscreen ~/.wallpapers/emacs-cheat-sheet.png & # Set background to your favorite pic
 # terminology & # Start a XTerm
 
-# X things
-
+# ~/.Xresources
 xrdb -I${HOME} -merge ~/.Xresources
 
 # Silence terminal bell
@@ -21,11 +20,9 @@ source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
   WM="xfce4-session"
 elif [[ "${ID}" == "gentoo" ]]; then
-  # WM=openbox-session
-  WM="emacs"
-  # WM="awesome"
+  WM="openbox-session"
 else
-  # there is a oneliner for this but i like the verbosity of a 'for' statement.
+  # there is a one-liner for this but i like the verbosity of a 'for' statement.
   # WM=$(which wmaker||which openbox-session||which jwm||which mwm||which compiz.sh||which starte16||which enlightenment_start||which xfce4-session||which kodi-standalone)
   for wm in "${wms[@]}"; do
     if [[ -x "$(which ${wm} 2> /dev/null)" ]]; then
@@ -46,12 +43,12 @@ if [[ "${WM}" =~ "awesome" ]];then
   # Awesome: /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
   WM=( /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua )
 elif [[ "${WM}" =~ "emacs" ]];then
-  # Emacs (with (exwm-enable) commented out in "exwm-config.el") as found in exwm manual:
+  # Emacs (with (exwm-enable) commented out in "exwm-config") as found in exwm manual:
   # emacs --daemon -f exwm-enable
   # emacsclient -c
+  # Just "emacs" would be sufficient if you dont mind X clients M-x:exwm-init on X boot.
   emacs --daemon -f exwm-enable
   WM=( emacsclient -c )
-  # Just "emacs" would be sufficient if you dont mind X clients M-x:exwm-init on X boot.
 elif [[ "${WM}" =~ "e16" || "${WM}" =~ "enlightenment" ]];then
   # e17 svg support
   export E_COMP_ENGINE=sw

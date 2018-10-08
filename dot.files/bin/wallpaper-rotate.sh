@@ -64,6 +64,8 @@ for D in "${DEFAULT_DIRS[@]}"; do
   done
 done
 
+printf "${#WPS[@]}"
+
 # If options, proccess. Else rotate things
 if [[ -n "${1}" ]]; then
   case "${1}" in

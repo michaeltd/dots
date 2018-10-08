@@ -59,8 +59,8 @@ alias mcst='mc -a' # In case of malconfigured terminals
 # URxvt transparency
 alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'
 
-# emacs
-alias ec='emacsclient -c' # Emacs Client
+# Emacs
+alias Ec='emacsclient -c' # Emacs Client
 alias ecnx='emacsclient -t' # Emacs Client No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
 alias exnx='emacs -nw' # EmaX No X11
 alias kexd='emacsclient -e "(kill-emacs)"' # Kill EmaX Daemon # Kill an emacs --daemon gracefully
@@ -91,6 +91,7 @@ alias gst='git status'
 alias gad='git add .'
 alias gcm='git commit -m'
 alias gps='git push'
+alias glp='git log -p'
 alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 # alias gco='git checkout'
 # alias gpl='git pull --rebase'
