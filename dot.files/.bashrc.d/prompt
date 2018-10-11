@@ -118,6 +118,7 @@ PS1+="\n"
 # `$` (and reset color)
 PS1+="\[${white}\]\$ \[${reset}\]"
 # export PS1
-PS2="\[${yellow}\]→ \[${reset}\]"
+PS2="\[${yellow}\] → \[${reset}\]"
 # export PS2
 PS4='+$BASH_SOURCE[$LINENO]: '
+# export PS4

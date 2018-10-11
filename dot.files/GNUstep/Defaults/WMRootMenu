@@ -2,7 +2,7 @@
   "Window Maker",
   (
     Applications,
-    (Terminals, (xterm, EXEC, xterm)),
+    (Terminals, (xterm, EXEC, xterm), (Urxvt, EXEC, urxvt)),
     (
       Internet,
       ("Mozilla Firefox", EXEC, firefox),

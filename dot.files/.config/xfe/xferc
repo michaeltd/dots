@@ -33,18 +33,14 @@ generaltoolbar=1
 locationbar=1
 confirm_drag_and_drop=1
 
+[DIR PANEL]
+hidden_dir=1
+sort_func=ascendingCase
+
 [HISTORY]
 open=conky -c:atom:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
 filter=*:*single*:*asp.net*:*.net*:*microsoft*:*office*:*ios*:*apple*:*adobe*:*slack*:*slak*:*slackware*:*Slackware*:*redhat*:*RedHat*:*Redhat*:
 run=bin/screenshot.sh:fire:screenshot.sh:
-
-[PROGS]
-pdfviewer=firefox
-txteditor=emacs
-txtviewer=gvim
-imgviewer=ristretto
-xterm=terminology
-videoplayer=vlc
 
 [KEYBINDINGS]
 search_prev=Shift-Ctrl-G
@@ -121,23 +117,23 @@ empty_trash_can=Ctrl-Del
 rotate_left=Ctrl-L
 
 [RIGHT PANEL]
-type_size=23
+type_size=54
 deldate_size=448
 origpath_size=448
 liststyle=0
-attr_size=2
-size_size=26
-user_size=2
+attr_size=73
+size_size=87
+user_size=32
 dirs_first=1
-ext_size=11
-grou_size=2
-modd_size=3
+ext_size=33
+grou_size=29
+modd_size=112
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=336
-lastdir=/home/paperjam/git/dots/assets
-hiddenfiles=0
+name_size=555
+lastdir=/mnt/el/Documents/DEV/EDITORS/VSCode
+hiddenfiles=1
 
 [SEARCH PANEL]
 grou_size=23
@@ -163,9 +159,13 @@ name_size=583
 dirs_first=1
 size_size=50
 
-[DIR PANEL]
-hidden_dir=1
-sort_func=ascendingCase
+[PROGS]
+pdfviewer=firefox
+txteditor=emacs
+txtviewer=gvim
+imgviewer=ristretto
+xterm=terminology
+videoplayer=vlc
 
 [LEFT PANEL]
 type_size=55
@@ -183,7 +183,7 @@ ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=225
-lastdir=/home/paperjam
+lastdir=/mnt/el/Documents/bkps/linux
 hiddenfiles=0
 
 [SETTINGS]

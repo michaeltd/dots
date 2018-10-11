@@ -1,8 +1,10 @@
 ! Put this file as ~/.Xresources in your home directory
 
+*faceName: IBM3270
+*font: IBM3270
 !Theme One
-*background: rgb:00/00/00
-*foreground: rgb:a8/a8/a8
+!*background: rgb:00/00/00
+!*foreground: rgb:a8/a8/a8
 *color0:     rgb:00/00/00
 *color1:     rgb:a8/00/00
 *color2:     rgb:00/a8/00
@@ -61,7 +63,7 @@
 !*color13:    rgb:e6/28/ba
 !*color14:    rgb:1c/f5/f5
 !*color15:    rgb:ff/ff/ff
-2007-02-26T22:18:49-08:00
+!2007-02-26T22:18:49-08:00
 
 !Theme Four
 !*background: rgb:00/00/00

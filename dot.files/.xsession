@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# .xsession to sorce ~/.profile and execute ~/.xinitrc to sessions initiated by xdm
+# .xsession to source ~/.profile and execute ~/.xinitrc to sessions initiated by xdm
 
 pf="${HOME}/.profile"
 if [[ -r "${pf}" ]]; then # User Profile

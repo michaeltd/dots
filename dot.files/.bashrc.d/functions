@@ -8,6 +8,15 @@
 
 # UTILS =======================================================================
 
+function checkApp {
+  if command -v $1 &> /dev/null; then
+    return 0
+  else
+    echo "Error: $1 is not installed" >&2
+    return 1
+  fi
+}
+
 # Line Count Directory ($1), for File Expression ($2).
 # eg: lcdfe /my/awesome/project/ *\.html, lcdfe . *\.cpp, lcdfe ${HOME} *\.rc
 function lcdfe {
@@ -84,7 +93,7 @@ function listenOnPort {
 function checkDirSizes {
   # Report first params directory sizes in human readable format
   ls=$(which ls) # Workaround alias
-  du=$(which du)
+  du=$(which du) #      >>
   if [[ -x "${ls}" && -x "${du}" ]]; then
     for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
       if [[ -d "${d}" ]]; then
@@ -145,6 +154,20 @@ function pingSubnet {
   done
 }
 
+# DATES =====================================================================
+
+function unixepoch {
+  if [[ -n "${1}" ]];then
+    date +%s --date="${1}"
+  else
+    date +%s
+  fi
+}
+
+function epochtodate {
+  date +%Y/%m/%d --date="@${1-$(unixepoch)}"
+}
+
 # STRINGS =====================================================================
 
 function alphanumeric_only {
@@ -154,10 +177,10 @@ function alphanumeric_only {
 function remove_spaces {
   # https://stackoverflow.com/questions/13659318/how-to-remove-space-from-string
   echo "${@}"|sed 's/ //g'
-  #shopt -s extglob # Allow extended globbing
-  #var=" lakdjsf   lkadsjf "
-  #echo "${var//+([[:space:]])/}"
-  #shopt -u extglob
+  # shopt -s extglob # Allow extended globbing
+  # var=" lakdjsf   lkadsjf "
+  # echo "${var//+([[:space:]])/}"
+  # shopt -u extglob
 }
 
 function trim {

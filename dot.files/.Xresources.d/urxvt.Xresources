@@ -4,26 +4,40 @@ URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: yellow
 URxvt*font: xft:IBM3270:size=12:antialias=true
-URxvt*depth: 32
+!URxvt*depth: 32
 
 !https://gist.github.com/whit/1307597
 !# transparency - true or false (default)
 !URxvt*transparent: true
-
 !# tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
 !#   some nice listings are at:
 !#     http://www.nisrv.com/drupal/?q=node/11
 !#     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
 !URxvt*tintColor: black
 
+! https://ctkarch.org/documentation/tutorials/tuto.php?page=urxvt-transpa.xml
+! - For real transparency (composite):
+!urxvt*depth: 32
+!urxvt*background: rgba:0000/0000/0200/c800
+!URxvt*depth: 32
+!URxvt*background: rgba:0000/0000/0000/cccc
+! - For fake transparency:
+!urxvt*transparent: true
+!urxvt*shading: 30
+!URxvt*transparent: true
+!URxvt*shading: 30
+
 !URxvt*background: rgba:1111/1111/1111/dddd
 !URxvt*background: [50]#000000
 !URxvt*backgroud: rgba:3f00/3f00/3f00/dddd
-!urxvt*background:       rgba:0000/0000/0000/cccc
-!URxvt.transparent:   true
-!URxvt.tintColor:     white
-!URxvt.shading:       20
+!urxvt*background: rgba:0000/0000/0000/cccc
+!URxvt.transparent: true
+!URxvt.tintColor: white
+!URxvt*shading: 20
 
+!Theme One
+URxvt*background: rgb:00/00/00
+URxvt*foreground: rgb:a8/a8/a8
 URxvt*borderless: 1
 URxvt*scrollBar: false
 URxvt*loginShell: true

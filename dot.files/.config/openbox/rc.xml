@@ -57,7 +57,7 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>sans</name>
+      <name>IBM 3270</name>
       <size>8</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -66,7 +66,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>sans</name>
+      <name>IBM 3270</name>
       <size>8</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -75,7 +75,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>sans</name>
+      <name>IBM 3270</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>normal</weight>
@@ -84,7 +84,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>sans</name>
+      <name>IBM 3270</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>normal</weight>
@@ -93,7 +93,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>sans</name>
+      <name>IBM 3270</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -102,7 +102,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>sans</name>
+      <name>IBM 3270</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -114,21 +114,19 @@
   <desktops>
     <!-- this stuff is only used at startup, pagers allow you to change them
        during a session
-
        these are default values to use when other ones are not already set
        by other applications, or saved in your session
-
        use obconf if you want to change these without having to log out
        and back in -->
     <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>term</name>
-      <name>browse</name>
-      <name>edit</name>
-      <name>fm</name>
+      <name>■ □ □ □  |</name>
+      <name>□ ■ □ □  |</name>
+      <name>□ □ ■ □  |</name>
+      <name>□ □ □ ■  |</name>
     </names>
-    <popupTime>875</popupTime>
+    <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
