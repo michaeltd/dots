@@ -121,12 +121,12 @@
     <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>■ □ □ □  |</name>
-      <name>□ ■ □ □  |</name>
-      <name>□ □ ■ □  |</name>
-      <name>□ □ □ ■  |</name>
+      <name>■ □ □ □</name>
+      <name>□ ■ □ □</name>
+      <name>□ □ ■ □</name>
+      <name>□ □ □ ■</name>
     </names>
-    <popupTime>0</popupTime>
+    <popupTime>500</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>

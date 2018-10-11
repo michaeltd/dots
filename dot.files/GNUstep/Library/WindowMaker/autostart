@@ -41,4 +41,3 @@ if [[ -x "${pmg}" ]]; then # If spice ...
   "${pmg}" & # Spice things up
 fi
 
-xset m 20/10 4
