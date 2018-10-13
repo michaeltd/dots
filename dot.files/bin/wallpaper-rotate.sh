@@ -4,15 +4,15 @@
 # Simple script to go through a directory of background images as wallpapers in a timely fashion
 
 declare -a WPUSAGE="\n\
-  Script to rotate backgrounds in wm's with out such options, \n\
-  ie NOT kde, gnome or xfce4.\n\n\
-  Usage: $(basename ${BASH_SOURCE[0]}) & \n\n\
+  ${bold}Script to rotate backgrounds in wm's with out such options, \n\
+  ie NOT kde, gnome or xfce4.${reset}\n\n\
+  ${underline}Usage${end_underline}: ${blue}$(basename ${BASH_SOURCE[0]})${reset} & \n\n\
   Alternatively you can execute this file from your startup scripts.\n\n\
   Other options include : \n\
-  $(basename ${BASH_SOURCE[0]}) help - this message \n\
-  $(basename ${BASH_SOURCE[0]}) add path1 [path2 ...] - add director(y/ies) \n\
-  $(basename ${BASH_SOURCE[0]}) rem path1 [path2 ...] - remove director(y/ies) \n\
-  $(basename ${BASH_SOURCE[0]}) without options will start rotating images.\n" \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}help${reset} - this message \n\
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n\
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n\
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} without options will start rotating images.\n" \
   FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
   FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) \
   XSETBG=( "xsetbg" ) XSETROOT=( "xsetroot" "-bitmap" ) \
@@ -26,7 +26,7 @@ declare -a WPUSAGE="\n\
 
 # bash version info check
 if [[ "${BASH_VERSINFO[0]}" -lt "4" ]];then
-  printf "For this to work properly you'll need bash major version greater than 4!"
+  printf "${red}Error:${reset} For this to work properly you'll need bash major version greater than 4.\n"
   exit "1"
 fi
 
@@ -41,7 +41,7 @@ done
 # Quit on no setter
 if [[ -z "${BGSR}" ]]; then
   printf "${WPUSAGE}"
-  printf "\n\n  No valid wallpaper setter found. Install \"feh\" and try again.\n"
+  printf "\n\n  ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n"
   exit "1"
 fi
 
@@ -63,8 +63,6 @@ for D in "${DEFAULT_DIRS[@]}"; do
     fi
   done
 done
-
-printf "${#WPS[@]}"
 
 # If options, proccess. Else rotate things
 if [[ -n "${1}" ]]; then
@@ -94,11 +92,10 @@ if [[ -n "${1}" ]]; then
       sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
     *)
       printf "${WPUSAGE}"
-      exit "0" ;;
+      exit "0";;
   esac
 else
   while [[ true ]];do
-
     # limit a random number to upper array bounds as a RundomNumber
     let "RN = ${RANDOM} % ${#WPS[@]}"
     # RN=$(shuf -n 1 -i 0-"${#WPS[@]}")

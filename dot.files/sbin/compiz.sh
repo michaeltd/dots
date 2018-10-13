@@ -4,11 +4,10 @@
 # Compiz startup script
 
 source /etc/os-release # Distro details.
-
 case "${ID}" in # Start Compiz
-  gentoo) # Gentoo Solution
+  "gentoo") # Gentoo Solution
     /usr/bin/compiz-manager & ;;
-  devuan) # Devuan solution
+  "devuan") # Devuan solution
     compiz &
     fusion-icon & ;;
   *) # Others

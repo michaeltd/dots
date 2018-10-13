@@ -12,7 +12,7 @@ function checkApp {
   if command -v $1 &> /dev/null; then
     return 0
   else
-    echo "Error: $1 is not installed" >&2
+    printf "${red}Error:${reset} \"${bold}%s${reset}\" is not installed.\n" "${1}"
     return 1
   fi
 }
@@ -52,7 +52,7 @@ function compress {
     *.tar.gz| *.tgz) tar czf $@;;
     *.zip) zip $@;;
     *.rar) rar a $@;;
-    *) printf "Cannot operate on unknown file extention \"%s\"\n" "${1}";;
+    *) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}";;
   esac
 }
 
@@ -68,7 +68,7 @@ function extract {
     *.gz) gunzip "${1}";;
     *.zip| *.jar) unzip "${1}";;
     *.z ) uncompress "${1}";;
-    * ) printf "Cannot operate on unknown file extention \"%s\"\n" "${1}";;
+    * ) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}";;
   esac
 }
 
@@ -133,7 +133,7 @@ function updateDate {
 }
 
 function showUptime {
-  echo -ne "${green}$HOSTNAME ${green}uptime is ${green} \t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
+  echo -ne "${blue}${HOSTNAME}${reset} uptime is: ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
 function logMeOut {
@@ -154,7 +154,7 @@ function pingSubnet {
   done
 }
 
-# DATES =====================================================================
+# DATE-TIME ===================================================================
 
 function unixepoch {
   if [[ -n "${1}" ]];then
@@ -166,6 +166,14 @@ function unixepoch {
 
 function epochtodate {
   date +%Y/%m/%d --date="@${1-$(unixepoch)}"
+}
+
+function epochtotime {
+  date +%H:%M:%S --date="@${1-$(unixepoch)}"
+}
+
+function epochtodatetime {
+  date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unixepoch)}"
 }
 
 # STRINGS =====================================================================

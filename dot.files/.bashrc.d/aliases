@@ -60,7 +60,7 @@ alias mcst='mc -a' # In case of malconfigured terminals
 alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'
 
 # Emacs
-alias Ec='emacsclient -c' # Emacs Client
+alias ec='emacsclient -c' # Emacs Client
 alias ecnx='emacsclient -t' # Emacs Client No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
 alias exnx='emacs -nw' # EmaX No X11
 alias kexd='emacsclient -e "(kill-emacs)"' # Kill EmaX Daemon # Kill an emacs --daemon gracefully

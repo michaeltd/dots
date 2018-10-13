@@ -126,6 +126,8 @@ screen-256color=
 
 eterm-color=
 
+xterm-color=
+
 [Panels]
 show_mini_info=true
 kilobyte_si=false

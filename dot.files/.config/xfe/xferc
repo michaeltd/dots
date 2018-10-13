@@ -38,7 +38,7 @@ hidden_dir=1
 sort_func=ascendingCase
 
 [HISTORY]
-open=conky -c:atom:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
+open=mxcl:atom:conky -c:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
 filter=*:*single*:*asp.net*:*.net*:*microsoft*:*office*:*ios*:*apple*:*adobe*:*slack*:*slak*:*slackware*:*Slackware*:*redhat*:*RedHat*:*Redhat*:
 run=bin/screenshot.sh:fire:screenshot.sh:
 
@@ -174,7 +174,7 @@ origpath_size=203
 liststyle=0
 attr_size=89
 size_size=64
-user_size=34
+user_size=23
 dirs_first=1
 ext_size=43
 grou_size=24
@@ -183,7 +183,7 @@ ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=225
-lastdir=/home/paperjam/Music/eMus
+lastdir=/home/paperjam/test
 hiddenfiles=0
 
 [SETTINGS]

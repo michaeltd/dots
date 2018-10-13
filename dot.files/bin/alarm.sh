@@ -24,6 +24,4 @@ mpg123 -Z /mnt/data/Documents/Music/Stanley-Clarke/* /mnt/data/Documents/Music/M
 
 # mpd
 
-# ncmpc
-
 # ncmpcpp

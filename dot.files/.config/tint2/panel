@@ -1,6 +1,10 @@
 #Panel
-panel_position = bottom center horizontal
-panel_size = 46% 46
+# Horizontal
+#panel_position = bottom center horizontal
+#panel_size = 46% 46
+# Vertical
+panel_position = left center vertical
+panel_size = 75% 46
 panel_items = L
 
 #Launchers

@@ -335,7 +335,7 @@ progressbar_look = ->
 #
 ## Available values: classic, alternative.
 ##
-#user_interface = classic
+user_interface = alternative
 #
 #data_fetching_delay = yes
 #
@@ -427,7 +427,7 @@ startup_screen = media_library
 #
 #clock_display_seconds = no
 #
-display_volume_level = no
+display_volume_level = yes
 #
 #display_bitrate = no
 #
