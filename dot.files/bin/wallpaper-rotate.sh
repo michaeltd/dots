@@ -10,7 +10,7 @@ declare -a WPUSAGE="\n\
   Options may be: \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
-  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}delay${reset} ${yellow}3600${reset} - set interval (in seconds) \n \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}delay${reset} ${yellow}86400${reset} - set interval (in seconds) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}help${reset} - this message \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} without options will start rotating images.\n" \
   FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
@@ -71,6 +71,8 @@ if [[ -n "${1}" ]]; then
       while [[ -n "${1}" ]]; do
         if [[ -d "${1}" ]]; then
           DIRS+=( "${1}" )
+        else
+          printf "${yellow}Warning:${reset} %s is not a directory.\n" "${1}"
         fi
         shift
       done
@@ -89,7 +91,7 @@ if [[ -n "${1}" ]]; then
       sv="DIRS" rv="DIRS=( ${DIRS[@]} )"
       sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}";;
     "delay") shift
-      # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash      
+      # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
       if [[ "${1}" =~ "^[0-9]+$" ]]; then
         sv="WAIT" rv="WAIT=${1}"
         sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
