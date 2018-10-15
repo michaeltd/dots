@@ -38,7 +38,7 @@ hidden_dir=1
 sort_func=ascendingCase
 
 [HISTORY]
-open=mxcl:atom:conky -c:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
+open=conky -c:atom:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
 filter=*:*single*:*asp.net*:*.net*:*microsoft*:*office*:*ios*:*apple*:*adobe*:*slack*:*slak*:*slackware*:*Slackware*:*redhat*:*RedHat*:*Redhat*:
 run=bin/screenshot.sh:fire:screenshot.sh:
 
@@ -117,23 +117,23 @@ empty_trash_can=Ctrl-Del
 rotate_left=Ctrl-L
 
 [RIGHT PANEL]
-type_size=54
+type_size=300
 deldate_size=448
 origpath_size=448
 liststyle=0
-attr_size=73
-size_size=87
-user_size=32
+attr_size=406
+size_size=484
+user_size=179
 dirs_first=1
-ext_size=33
-grou_size=29
-modd_size=112
+ext_size=184
+grou_size=161
+modd_size=623
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=555
-lastdir=/mnt/el/Documents/DEV/EDITORS/VSCode
-hiddenfiles=1
+name_size=3092
+lastdir=/home/paperjam/Downloads
+hiddenfiles=0
 
 [SEARCH PANEL]
 grou_size=23
@@ -161,7 +161,7 @@ size_size=50
 
 [PROGS]
 pdfviewer=firefox
-txteditor=emacs
+txteditor=mxcl
 txtviewer=gvim
 imgviewer=ristretto
 xterm=terminology
@@ -174,16 +174,16 @@ origpath_size=203
 liststyle=0
 attr_size=89
 size_size=64
-user_size=23
+user_size=43
 dirs_first=1
 ext_size=43
-grou_size=24
+grou_size=41
 modd_size=23
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=225
-lastdir=/home/paperjam/test
+lastdir=/home/paperjam/Downloads
 hiddenfiles=0
 
 [SETTINGS]

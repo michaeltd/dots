@@ -8,57 +8,65 @@
 
 ## [dot.files](dot.files)
 
- - [Shell](dot.files/.bash_profile), [X setup](dot.files/.xinitrc), [bin](dot.files/bin/), [sbin (maintenance scripts)](dot.files/sbin/)
+* [Shell](dot.files/.bash_profile), [X setup](dot.files/.xinitrc), [bin](dot.files/bin/), [sbin (maintenance scripts)](dot.files/sbin/)
 
-   * [.bashrc.d](dot.files/.bashrc.d) functions as a interactive shell initialization routine and it is customization of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) with a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
+  * [.bashrc.d](dot.files/.bashrc.d)
+  <br/>Is a interactive shell initialization routine and it is customization of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) with a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
-   * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
-  Script for rolling random images as wallpapers.
+  * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
+  <br/>Script for rolling random images as wallpapers.
+  <br/>I get my wallpapers from ...
+    * [LukeSmithxyz](https://github.com/LukeSmithxyz/wallpapers)
+    * [r/EarthPorn](https://www.reddit.com/r/EarthPorn/)
+    * [unsplash.com](https://unsplash.com/)
+    * [space.com](https://www.space.com/wallpapers)
+    * [wallup.net](https://wallup.net/)
+    * [wallpaperscraft.com](https://wallpaperscraft.com/)
 
   <p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
-   * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
-  Distro neutral upgrade script.
+  * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
+  <br/>Distro neutral upgrade script.
 
 
- - Some WM's (in no particular order)
+* Some WM's (in no particular order)
 
-   * [wmaker](dot.files/GNUstep/)
+  * [wmaker](dot.files/GNUstep/)
 
-    <p align="center"><a href="dot.files/GNUstep/"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
+  <p align="center"><a href="dot.files/GNUstep/"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
 
-   * [e16](dot.files/.e16/)
+  * [e16](dot.files/.e16/)
 
-    <p align="center"><a href="dot.files/.e16/"><img width="200" alt="e16" src="assets/e16.png"></a></p>
+  <p align="center"><a href="dot.files/.e16/"><img width="200" alt="e16" src="assets/e16.png"></a></p>
 
-   * [openbox](dot.files/.config/openbox/)
+  * [openbox](dot.files/.config/openbox/)
 
-    <p align="center"><a href="dot.files/.config/openbox/"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
+  <p align="center"><a href="dot.files/.config/openbox/"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
 
-   * [awesome](dot.files/.config/awesome/)
+  * [awesome](dot.files/.config/awesome/)
 
-    <p align="center"><a href="dot.files/.config/awesome/"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
+  <p align="center"><a href="dot.files/.config/awesome/"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
 
-   * [compiz](dot.files/.config/compiz/)
+  * [compiz](dot.files/.config/compiz/)
 
-    <p align="center"><a href="dot.files/.config/compiz/"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
+  <p align="center"><a href="dot.files/.config/compiz/"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
 
-   * [mwm](dot.files/.mwmrc)
+  * [mwm](dot.files/.mwmrc)
 
-    <p align="center"><a href="dot.files/.mwmrc"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
+  <p align="center"><a href="dot.files/.mwmrc"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
 
-   * [exwm](https://github.com/ch11ng/exwm/wiki)
+  * [exwm](https://github.com/ch11ng/exwm/wiki)
 
-    <p align="center"><a href="https://github.com/ch11ng/exwm/wiki"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
+  <p align="center"><a href="https://github.com/ch11ng/exwm/wiki"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
 
 
- - Editors, [Utilities](dot.files/.tmux.conf).
+ * Editors, [Utilities](dot.files/.tmux.conf).
 
    * If emacs is your "thing", check one of ...
 
-     - https://github.com/technomancy/emacs-starter-kit
-     - https://github.com/bbatsov/prelude
-     - My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d), [a splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png) and [exwm](https://github.com/ch11ng/exwm/wiki).
+     * https://github.com/technomancy/emacs-starter-kit
+     * https://github.com/bbatsov/prelude
+     * My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d), [a splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png) and [exwm](https://github.com/ch11ng/exwm/wiki).
 
    * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 

@@ -64,7 +64,7 @@ for D in "${DEFAULT_DIRS[@]}"; do
   done
 done
 
-# If options, proccess. Else rotate things
+# If options, proccess, else rotate things
 if [[ -n "${1}" ]]; then
   case "${1}" in
     del*|rem*|add*)
