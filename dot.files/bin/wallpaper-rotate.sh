@@ -6,9 +6,8 @@
 declare -a WPUSAGE="\n\
   ${bold}Script to rotate backgrounds in wm's with out such options \n \
   like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
-  ${underline}Usage${end_underline}: ${blue}$(basename ${BASH_SOURCE[0]})${reset} & \n\n \
-  Alternatively you can execute this file from your startup scripts.\n\n \
-  Other options include : \n \
+  ${underline}Usage${end_underline}: ${blue}$(basename ${BASH_SOURCE[0]})${reset} & from a terminal or your startup scripts.\n\n \
+  Options may be: \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}delay${reset} ${yellow}3600${reset} - set interval (in seconds) \n \
