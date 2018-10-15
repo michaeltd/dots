@@ -4,14 +4,15 @@
 # Simple script to go through a directory of background images as wallpapers in a timely fashion
 
 declare -a WPUSAGE="\n\
-  ${bold}Script to rotate backgrounds in wm's with out such options, \n\
-  ie NOT kde, gnome or xfce4.${reset}\n\n\
-  ${underline}Usage${end_underline}: ${blue}$(basename ${BASH_SOURCE[0]})${reset} & \n\n\
-  Alternatively you can execute this file from your startup scripts.\n\n\
-  Other options include : \n\
-  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}help${reset} - this message \n\
-  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n\
-  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n\
+  ${bold}Script to rotate backgrounds in wm's with out such options \n \
+  like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
+  ${underline}Usage${end_underline}: ${blue}$(basename ${BASH_SOURCE[0]})${reset} & \n\n \
+  Alternatively you can execute this file from your startup scripts.\n\n \
+  Other options include : \n \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}delay${reset} ${yellow}3600${reset} - set interval (in seconds) \n \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}help${reset} - this message \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} without options will start rotating images.\n" \
   FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
   FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) \
@@ -19,8 +20,8 @@ declare -a WPUSAGE="\n\
   BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] XSETROOT[@] ) \
   BGSR \
   WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" \
-  DEFAULT_WAIT="60s" \
-  DEFAULT_DIRS=( "${HOME}/Pictures" ) \
+  WAIT="60s" \
+  DIRS=( "${HOME}/Pictures" ) \
   LS=$(which ls 2> /dev/null) \
   WPS=()
 
@@ -47,14 +48,14 @@ fi
 
 # If there's no readable settings file, write it
 if [[ ! -r "${WPRC}" ]]; then
-  printf "DEFAULT_WAIT=\"60s\"\nDEFAULT_DIRS=( \"${HOME}/Pictures\" )\n" > "${WPRC}"
+  printf "WAIT=\"60s\"\nDIRS=( \"${HOME}/Pictures\" )\n" > "${WPRC}"
 fi
 
 # and read it
 source "${WPRC}"
 
 # Fill up a WallPaperS list
-for D in "${DEFAULT_DIRS[@]}"; do
+for D in "${DIRS[@]}"; do
   PICS=( $("${LS}" -A "${D}") )
   for P in "${PICS[@]}"; do
     FN="${D}/${P}" FE="${P:(-4)}"
@@ -67,35 +68,37 @@ done
 # If options, proccess, else rotate things
 if [[ -n "${1}" ]]; then
   case "${1}" in
-    del*|rem*|add*)
-      if [[ "${1}" =~ "add" ]]; then
+    "add") shift
+      while [[ -n "${1}" ]]; do
+        if [[ -d "${1}" ]]; then
+          DIRS+=( "${1}" )
+        fi
         shift
-        while [[ -n "${1}" ]]; do
-          if [[ -d "${1}" ]]; then
-            DEFAULT_DIRS+=( "${1}" )
-          fi
-          shift
-        done
-      else
-        shift
-        while [[ -n "${1}" ]]; do
-          for (( i=0; i<="${#DEFAULT_DIRS[@]}"; i++ )); do
-            if [[ "${DEFAULT_DIRS[${i}]}" == "${1}" ]]; then
-              unset 'DEFAULT_DIRS[i]'
-            fi
-          done
-          shift
-        done
-      fi
+      done
       # https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
-      sv="DEFAULT_DIRS" rv="DEFAULT_DIRS=( ${DEFAULT_DIRS[@]} )"
-      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
-    *)
-      printf "${WPUSAGE}"
-      exit "0";;
+      sv="DIRS" rv="DIRS=( ${DIRS[@]} )"
+      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}";;
+    "rem") shift
+      while [[ -n "${1}" ]]; do
+        for (( i=0; i<="${#DIRS[@]}"; i++ )); do
+          if [[ "${DIRS[${i}]}" == "${1}" ]]; then
+            unset 'DIRS[i]'
+          fi
+        done
+        shift
+      done
+      sv="DIRS" rv="DIRS=( ${DIRS[@]} )"
+      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}";;
+    "delay") shift
+      # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash      
+      if [[ "${1}" =~ "^[0-9]+$" ]]; then
+        sv="WAIT" rv="WAIT=${1}"
+        sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
+      fi;;
+    *) printf "${WPUSAGE}";;
   esac
 else
-  while [[ true ]];do
+  while [[ true ]]; do
     # limit a random number to upper array bounds as a RundomNumber
     let "RN = ${RANDOM} % ${#WPS[@]}"
     # RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
@@ -105,6 +108,6 @@ else
 
     # set wallpaper, wait
     "${!BGSRS[$BGSR]}" "${WP}"
-    sleep "${DEFAULT_WAIT}"
+    sleep "${WAIT}"
   done
 fi
