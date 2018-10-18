@@ -1,5 +1,4 @@
 # ~/.bashrc.d/aliases
-#!/usr/bin/env bash
 #
 # Shell prompt based on the Solarized Dark theme.
 # Screenshot: http://i.imgur.com/EkEtphC.png

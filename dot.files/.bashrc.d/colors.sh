@@ -1,5 +1,4 @@
 # ~/.bashrc.d/colors
-#!/usr/bin/env bash
 #
 
 # Font attributes

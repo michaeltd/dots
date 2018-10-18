@@ -3,7 +3,7 @@
 # ~/bin/wallpaper-rotate.sh
 # Simple script to go through a directory of background images as wallpapers in a timely fashion
 
-declare -a WPUSAGE="\n\
+declare -a WPUSAGE="\n \
   ${bold}Script to rotate backgrounds in wm's with out such options \n \
   like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
   ${underline}Usage${end_underline}: ${blue}$(basename ${BASH_SOURCE[0]})${reset} & from a terminal or your startup scripts.\n\n \
@@ -12,10 +12,9 @@ declare -a WPUSAGE="\n\
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}delay${reset} ${yellow}86400${reset} - set interval (in seconds) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}help${reset} - this message \n \
-  ${blue}$(basename ${BASH_SOURCE[0]})${reset} without options will start rotating images.\n" \
-  FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
-  FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) \
-  XSETBG=( "xsetbg" ) XSETROOT=( "xsetroot" "-bitmap" ) \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} without options will start rotating images.\n\n" \
+  FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) FBSETBG=( "fbsetbg" ) \
+  BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" ) XSETROOT=( "xsetroot" "-bitmap" ) \
   BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] XSETROOT[@] ) \
   BGSR \
   WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" \

@@ -1,5 +1,4 @@
 # ~/.bashrc.d/variables
-#!/usr/bin/env bash
 #
 # Set environment variables
 

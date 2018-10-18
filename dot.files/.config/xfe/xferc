@@ -1,9 +1,10 @@
 [OPTIONS]
-height=535
+height=452
 toolstoolbar=1
 folder_warn=1
 panel_view=1
-width=610
+width=582
+confirm_drag_and_drop=1
 preserve_date_warn=1
 confirm_delete=1
 use_sudo=0
@@ -12,33 +13,28 @@ auto_save_layout=1
 use_trash_bypass=1
 mount_warn=1
 treepanel_tree_pct=0.282
-treetwopanels_lpanel_pct=0.442
-xfv_replaced=1
 confirm_overwrite=1
 paneltoolbar=1
 confirm_delete_emptydir=0
 startdir_mode=2
 ask_before_copy=0
 mount_messages=1
+confirm_execute=1
 confirm_properties=1
-twopanels_lpanel_pct=0.483
+twopanels_lpanel_pct=0.488
 vert_panels=1
 root_warn=0
 confirm_trash=0
-confirm_execute=1
+treetwopanels_lpanel_pct=0.442
 status=1
 root_mode=1
 treetwopanels_tree_pct=0.212
 generaltoolbar=1
 locationbar=1
-confirm_drag_and_drop=1
-
-[DIR PANEL]
-hidden_dir=1
-sort_func=ascendingCase
+xfv_replaced=1
 
 [HISTORY]
-open=conky -c:atom:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
+open=mxcl:atom:conky -c:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
 filter=*:*single*:*asp.net*:*.net*:*microsoft*:*office*:*ios*:*apple*:*adobe*:*slack*:*slak*:*slackware*:*Slackware*:*redhat*:*RedHat*:*Redhat*:
 run=bin/screenshot.sh:fire:screenshot.sh:
 
@@ -117,47 +113,70 @@ empty_trash_can=Ctrl-Del
 rotate_left=Ctrl-L
 
 [RIGHT PANEL]
-type_size=300
+type_size=93
 deldate_size=448
 origpath_size=448
 liststyle=0
-attr_size=406
-size_size=484
-user_size=179
+attr_size=79
+user_size=36
+hiddenfiles=0
 dirs_first=1
-ext_size=184
-grou_size=161
-modd_size=623
+ext_size=26
+grou_size=32
+modd_size=163
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=3092
-lastdir=/home/paperjam/Downloads
-hiddenfiles=0
+name_size=217
+lastdir=/home/paperjam
+size_size=82
 
 [SEARCH PANEL]
-grou_size=23
 type_size=23
 search_ypos=212
 search_xpos=0
-dir_size=322
+liststyle=0
 attr_size=100
 user_size=23
 search_height=607
 find_hidden=0
-moreoptions=1
+dir_size=322
 ext_size=29
-liststyle=0
+sort_func=ascendingCase
+grou_size=23
 find_ignorecase=1
 search_width=1063
 modd_size=29
 grep_ignorecase=0
 ignore_case=1
-sort_func=ascendingCase
+moreoptions=1
 showthumbnails=0
 name_size=583
 dirs_first=1
 size_size=50
+
+[DIR PANEL]
+hidden_dir=1
+sort_func=ascendingCase
+
+[LEFT PANEL]
+type_size=68
+deldate_size=203
+origpath_size=203
+liststyle=0
+attr_size=80
+user_size=11
+hiddenfiles=0
+dirs_first=1
+ext_size=52
+grou_size=11
+modd_size=96
+ignore_case=1
+sort_func=ascendingCase
+showthumbnails=0
+name_size=162
+lastdir=/home/paperjam
+size_size=62
 
 [PROGS]
 pdfviewer=firefox
@@ -166,25 +185,6 @@ txtviewer=gvim
 imgviewer=ristretto
 xterm=terminology
 videoplayer=vlc
-
-[LEFT PANEL]
-type_size=55
-deldate_size=203
-origpath_size=203
-liststyle=0
-attr_size=89
-size_size=64
-user_size=43
-dirs_first=1
-ext_size=43
-grou_size=41
-modd_size=23
-ignore_case=1
-sort_func=ascendingCase
-showthumbnails=0
-name_size=225
-lastdir=/home/paperjam/Downloads
-hiddenfiles=0
 
 [SETTINGS]
 listforecolor=Gray100
@@ -198,12 +198,12 @@ relative_resize=1
 font=IBM 3270 [PfEd],100,medium,regular
 listbackcolor=#838183
 shadowcolor=#666466
-file_tooltips=0
 tippause=500
 scrollbarcolor=#9c999c
 forecolor=Gray100
 basecolor=#9c999c
 time_format=%x %X
+show_pathlinker=1
 selbackcolor=#316183
 wheellines=5
 smooth_scroll=1
@@ -214,7 +214,7 @@ tiptime=10000
 selforecolor=Gray100
 pbarcolor=#316183
 save_win_pos=0
-show_pathlinker=1
+file_tooltips=0
 
 [FILETYPES]
 sdw=lowriter,lowriter,lowriter;Starwriter 5.0 Document;sxw_32x32.png;sxw_16x16.png;;

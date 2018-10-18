@@ -1,5 +1,4 @@
 # ~/.bashrc.d/aliases
-#!/usr/bin/env bash
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
 

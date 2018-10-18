@@ -1,5 +1,4 @@
 # ~/.bashrc.d/misc
-#!/usr/bin/env bash
 #
 # Add to history instead of overriding it
 shopt -s histappend
