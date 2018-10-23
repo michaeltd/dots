@@ -1,9 +1,9 @@
 [OPTIONS]
-height=452
+height=492
 toolstoolbar=1
 folder_warn=1
 panel_view=1
-width=582
+width=634
 confirm_drag_and_drop=1
 preserve_date_warn=1
 confirm_delete=1
@@ -34,7 +34,7 @@ locationbar=1
 xfv_replaced=1
 
 [HISTORY]
-open=mxcl:atom:conky -c:emacs:gimp:gvim:mousepad:mupdf:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
+open=audacious:atom:conky -c:emacs:gimp:gvim:mousepad:mupdf:mxcl:ooffice:qpdfview:ristretto:ristretto:vlc:xarchiver:xfi:
 filter=*:*single*:*asp.net*:*.net*:*microsoft*:*office*:*ios*:*apple*:*adobe*:*slack*:*slak*:*slackware*:*Slackware*:*redhat*:*RedHat*:*Redhat*:
 run=bin/screenshot.sh:fire:screenshot.sh:
 
@@ -160,23 +160,23 @@ hidden_dir=1
 sort_func=ascendingCase
 
 [LEFT PANEL]
-type_size=68
+type_size=58
 deldate_size=203
 origpath_size=203
 liststyle=0
-attr_size=80
-user_size=11
+attr_size=82
+user_size=46
 hiddenfiles=0
 dirs_first=1
-ext_size=52
-grou_size=11
-modd_size=96
+ext_size=20
+grou_size=50
+modd_size=101
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=162
+name_size=167
 lastdir=/home/paperjam
-size_size=62
+size_size=57
 
 [PROGS]
 pdfviewer=firefox
