@@ -4,7 +4,7 @@
 
   Possible use: "git clone https://github.com/MichaelTd/dots", go through the this repository and select what fits your needs so you can incorporate it in your working environment.
 
-  My dots tend to be opinionated so take them with a grain of salt.
+  My dots tend to be opinionated so take them with a grain of rice ...err SALT, I meant salt. Take them with a grain of salt.
 
 ## [dot.files](dot.files)
 
@@ -60,12 +60,12 @@
 
      * https://github.com/technomancy/emacs-starter-kit
      * https://github.com/bbatsov/prelude
-     * My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d), [a splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png) and [exwm](https://github.com/ch11ng/exwm/wiki).
+     * My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d) and a [splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png).
 
    * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
 #### [bootstrap.sh](bootstrap.sh)
-How I migrate my .dots in new systems. Don's use this unless you are fully aware of the situation you put your self into.
+How I migrate my .dots in new systems. Don't use this unless you are fully aware of the situation you put your self into.
 
 ## Reference
 #### [GitHub ❤ ~/](https://dotfiles.github.io/)
