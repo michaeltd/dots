@@ -38,6 +38,14 @@ open=audacious:atom:conky -c:emacs:gimp:gvim:mousepad:mupdf:mxcl:ooffice:qpdfvie
 filter=*:*single*:*asp.net*:*.net*:*microsoft*:*office*:*ios*:*apple*:*adobe*:*slack*:*slak*:*slackware*:*Slackware*:*redhat*:*RedHat*:*Redhat*:
 run=bin/screenshot.sh:fire:screenshot.sh:
 
+[bookmarks]
+BOOKMARK4=/mnt/el/Documents
+BOOKMARK5=/home/paperjam/.wallpapers
+BOOKMARK6=/home/paperjam/git
+BOOKMARK1=/mnt/data/Documents/bkps/linux
+BOOKMARK2=/mnt/el/Documents/bkps/linux
+BOOKMARK3=/mnt/data/Documents
+
 [KEYBINDINGS]
 search_prev=Shift-Ctrl-G
 copy_to=F5
@@ -128,7 +136,7 @@ ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=217
-lastdir=/home/paperjam
+lastdir=/mnt/el/Documents/Videos/MSOFT/young
 size_size=82
 
 [SEARCH PANEL]
@@ -155,29 +163,6 @@ name_size=583
 dirs_first=1
 size_size=50
 
-[DIR PANEL]
-hidden_dir=1
-sort_func=ascendingCase
-
-[LEFT PANEL]
-type_size=58
-deldate_size=203
-origpath_size=203
-liststyle=0
-attr_size=82
-user_size=46
-hiddenfiles=0
-dirs_first=1
-ext_size=20
-grou_size=50
-modd_size=101
-ignore_case=1
-sort_func=ascendingCase
-showthumbnails=0
-name_size=167
-lastdir=/home/paperjam
-size_size=57
-
 [PROGS]
 pdfviewer=firefox
 txteditor=mxcl
@@ -185,6 +170,25 @@ txtviewer=gvim
 imgviewer=ristretto
 xterm=terminology
 videoplayer=vlc
+
+[LEFT PANEL]
+type_size=75
+deldate_size=203
+origpath_size=203
+liststyle=0
+attr_size=81
+user_size=60
+hiddenfiles=0
+dirs_first=1
+ext_size=47
+grou_size=55
+modd_size=100
+ignore_case=1
+sort_func=ascendingCase
+showthumbnails=0
+name_size=213
+lastdir=/home/paperjam
+size_size=79
 
 [SETTINGS]
 listforecolor=Gray100
@@ -440,11 +444,7 @@ showthumbnails=0
 name_size=200
 size_size=60
 
-[bookmarks]
-BOOKMARK4=/mnt/el/Documents
-BOOKMARK5=/home/paperjam/.wallpapers
-BOOKMARK6=/home/paperjam/git
-BOOKMARK1=/mnt/data/Documents/bkps/linux
-BOOKMARK2=/mnt/el/Documents/bkps/linux
-BOOKMARK3=/mnt/data/Documents
+[DIR PANEL]
+hidden_dir=1
+sort_func=ascendingCase
 

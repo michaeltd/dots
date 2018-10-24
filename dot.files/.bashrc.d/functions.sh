@@ -201,6 +201,13 @@ function trim {
     echo -n "$var"
 }
 
+# CRYPTO ======================================================================
+
+function genpass {
+  tr -dc [:punct:][:alnum:] < /dev/urandom |head -c ${1:-16}
+  printf "\n"
+}
+
 # CHUBIN WORKS ================================================================
 
 function cheat_sh {
