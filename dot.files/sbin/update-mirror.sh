@@ -3,13 +3,15 @@
 # ~/sbin/update-mirror.sh
 # Update my data
 
-nicec=$(which nice) # 1. Loose aliases, 2. Check availability
+# Full path executables
+nicec=$(which nice)
 rsncm=$(which rsync)
 
-elmnt="/mnt/el/PStart.xml" # Do we have mount points?
+# Mount points.
+elmnt="/mnt/el/PStart.xml"
 dtmnt="/mnt/data/PStart.xml"
 
-if [[ -f "${elmnt}" && -f "${dtmnt}" && -x "${rsncm}" ]]; then
+if [[ -f "${elmnt}" && -f "${dtmnt}" ]]; then
   printf "# MIRROR # ---------------------------------------------------------------------\n"
   "${nicec}" -n 19 "${rsncm}" --verbose --recursive --times --delete --exclude="*/MSOFT/*" /mnt/el/* /mnt/data/
 fi

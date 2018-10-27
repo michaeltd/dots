@@ -15,15 +15,15 @@ xset b off
 xset m 20/10 4
 
 # Pick a wm:
-wms=( openbox-session wmaker awesome mwm jwm starte16 enlightenment_start xfce4-session compiz kodi-standalone emacs )
+wms=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
 source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
   WM="xfce4-session"
-elif [[ "${ID}" == "gentoo" ]]; then
-  WM="openbox-session"
+#elif [[ "${ID}" == "gentoo" ]]; then
+#  WM="openbox-session"
 else
-  # there is a one-liner for this but i like the verbosity of a 'for' statement.
-  # WM=$(which wmaker||which openbox-session||which jwm||which mwm||which compiz.sh||which starte16||which enlightenment_start||which xfce4-session||which kodi-standalone)
+  # One line version.
+  # WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
   for wm in "${wms[@]}"; do
     if [[ -x "$(which ${wm} 2> /dev/null)" ]]; then
       WM="${wm}"
@@ -42,6 +42,8 @@ fi
 if [[ "${WM}" =~ "awesome" ]];then
   # Awesome: /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
   WM=( /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua )
+elif [[ "${WM}" =~ "compiz" ]];then
+  WM=( "compiz.sh" )
 elif [[ "${WM}" =~ "emacs" ]];then
   # Emacs (with (exwm-enable) commented out in "exwm-config") as found in exwm manual:
   # emacs --daemon -f exwm-enable

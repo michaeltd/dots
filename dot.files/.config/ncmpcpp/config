@@ -403,7 +403,7 @@ media_library_primary_tag = album_artist
 ##
 ## Note: You can define startup screen by choosing screen from the list above.
 ##
-startup_screen = media_library
+startup_screen = browser
 #
 ##
 ## Note: You can define startup slave screen by choosing screen from the list

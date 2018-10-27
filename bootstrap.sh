@@ -3,14 +3,14 @@
 # The means to migrate my .dots in new systems.
 
 if [[ "${1}" != "thoushallnotpass" ]]; then
-  printf "Read this first: https://github.com/MichaelTd/dots/\n"
+  printf "${red}Read this first:${reset} ${bold}https://github.com/michaeltd/dots/${reset}\n"
   exit 1
 fi
 
 dtfls="$(cd $(dirname ${BASH_SOURCE[0]})/dot.files && pwd)"
 tofldr="${HOME}"
 fx=".$(date +%s)"
-ls=$(which ls) # alias workaround
+ls=$(which ls) # Full path
 
 declare -a fls=( $(${ls} -A ${dtfls}) )
 
