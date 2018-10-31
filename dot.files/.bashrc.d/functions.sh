@@ -7,6 +7,10 @@
 
 # UTILS =======================================================================
 
+function listCat {
+    $(which ls) --color -al /usr/portage/${1}
+}
+
 function checkApp {
   if command -v $1 &> /dev/null; then
     return 0
