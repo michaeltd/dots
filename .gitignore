@@ -60,3 +60,4 @@ dot.files/.gitconfig
 dot.files/.my.cnf.*
 
 private/*
+test.sh

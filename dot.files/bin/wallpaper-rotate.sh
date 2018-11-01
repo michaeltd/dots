@@ -30,7 +30,7 @@ if [[ "${BASH_VERSINFO[0]}" -lt "4" ]];then
 fi
 
 # Find a setter
-for (( x=0; x<="${#BGSRS[@]}"; x++ )); do
+for (( x=0; x<"${#BGSRS[@]}"; x++ )); do
   if [[ -n $(which "${!BGSRS[$x]:0:1}" 2> /dev/null) ]]; then
     BGSR="${x}"
     break # Break on first match.
@@ -80,7 +80,7 @@ if [[ -n "${1}" ]]; then
       sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}";;
     "rem") shift
       while [[ -n "${1}" ]]; do
-        for (( i=0; i<="${#DIRS[@]}"; i++ )); do
+        for (( i=0; i<"${#DIRS[@]}"; i++ )); do
           if [[ "${DIRS[${i}]}" == "${1}" ]]; then
             unset 'DIRS[i]'
           fi

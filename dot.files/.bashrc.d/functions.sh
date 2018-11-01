@@ -182,8 +182,16 @@ function epochtodatetime {
 
 # STRINGS =====================================================================
 
+function alphabetic_only {
+  printf "%s\n" "${@//[![:alpha:]]}"
+}
+
 function alphanumeric_only {
   printf "%s\n" "${@//[![:alnum:]]}"
+}
+
+function digits_only {
+  printf "%s\n" "${@//[![:digit:]]}"
 }
 
 function remove_spaces {
