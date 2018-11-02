@@ -30,6 +30,15 @@ else
       break
     fi
   done
+
+  # Check for arguments
+  for a in "${@}"; do
+    for (( x=0;x<"${#wms[@]}";x++ )); do
+      if [[ "${a}" =~ "${wms[${x}]}" ]]; then
+        WM="${wms[${x}]}"
+      fi
+    done
+  done
 fi
 
 # Start the systems window manager. See WindowManagers for other choices.

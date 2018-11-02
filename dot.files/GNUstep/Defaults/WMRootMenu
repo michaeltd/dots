@@ -2,14 +2,14 @@
   "Window Maker",
   (
     Applications,
-    (Terminals, (xterm, EXEC, xterm), (Urxvt, EXEC, urxvt)),
+    (Terminals, (xterm, EXEC, xterm)),
     (
       Internet,
       ("Mozilla Firefox", EXEC, firefox),
       ("Mozilla SeaMonkey", EXEC, seamonkey),
       (W3M, EXEC, "xterm -e w3m")
     ),
-    (Mathematics, (bc, EXEC, "xterm -e bc"), (XCalc, EXEC, xcalc)),
+    (Mathematics, (bc, EXEC, "xterm -e bc")),
     (
       "File Managers",
       (Thunar, EXEC, thunar),
@@ -42,8 +42,6 @@
     ),
     (
       "Window Maker",
-      (Matrix, EXEC, wmMatrix),
-      (Fire, EXEC, wmfire),
       ("Clock Mon", EXEC, wmclockmon),
       ("System Tray", EXEC, wmsystemtray),
       (Magnify, EXEC, wmagnify)
