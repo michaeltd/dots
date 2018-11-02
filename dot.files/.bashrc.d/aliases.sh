@@ -58,14 +58,19 @@ alias mcst='mc -a' # In case of malconfigured terminals
 # URxvt transparency
 alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'
 
-# Emacs
+# Emacs in terminal
+alias exnx='emacs -nw' # EmaX No X11
+# emacsclient
 alias ec='emacsclient -c' # Emacs Client
 alias ecnx='emacsclient -t' # Emacs Client No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
-alias exnx='emacs -nw' # EmaX No X11
 alias kexd='emacsclient -e "(kill-emacs)"' # Kill EmaX Daemon # Kill an emacs --daemon gracefully
+
 
 # calendar
 alias cal='cal -m' # First Day Monday Calendars
+
+# cloc
+alias cloc='cloc --by-file-by-lang'
 
 # NET
 alias fixnet='ping -c 1 www.microsoft.com||sudo rc-service dhcpcd restart'

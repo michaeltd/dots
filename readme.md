@@ -49,7 +49,7 @@
 
   <p align="center"><a href="dot.files/.mwmrc"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
 
-  * [exwm](https://github.com/ch11ng/exwm/wiki)
+  * [exwm](https://github.com/ch11ng/exwm/wiki) (cause reasons...)
 
   <p align="center"><a href="https://github.com/ch11ng/exwm/wiki"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
 
