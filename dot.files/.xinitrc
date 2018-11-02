@@ -14,7 +14,7 @@ xset m 20/10 4
 # -   -0--------------- -1------ -2--- -3------- -4--- -5-------- -6------------------- -7------------- -8------ -9----- -10--------------
 wms=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
 
-# Per distro selection. If you've got preferences for specific distros set them up here.
+# Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
   WM="${wms[7]}"
@@ -22,6 +22,7 @@ if [[ "${ID}" == "devuan" ]]; then
 #  WM="${wms[0]}"
 else
   # Availability check
+  #
   # One line version.
   # WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
   for wm in "${wms[@]}"; do
