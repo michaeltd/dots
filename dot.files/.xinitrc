@@ -1,9 +1,5 @@
 # ~/.xinitrc
-#!/usr/bin/env bash
 #
-# This file is sourced when running startx and other programs which call xinit. As in all Bash/sh scripts lines starting with '#' are comments
-# xsetbg -fullscreen ~/.wallpapers/emacs-cheat-sheet.png & # Set background to your favorite pic
-# terminology & # Start a XTerm
 
 # ~/.Xresources
 xrdb -I"${HOME}" -merge ~/.Xresources
@@ -15,13 +11,15 @@ xset b off
 xset m 20/10 4
 
 # Pick a wm:
+# -   -0--------------- -1------ -2--- -3------- -4--- -5-------- -6------------------- -7------------- -8------ -9----- -10--------------
 wms=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
 source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
-  WM="xfce4-session"
+  WM="${wms[7]}"
 #elif [[ "${ID}" == "gentoo" ]]; then
-#  WM="openbox-session"
+#  WM="${wms[0]}"
 else
+  # Availability check
   # One line version.
   # WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
   for wm in "${wms[@]}"; do
@@ -31,9 +29,9 @@ else
     fi
   done
 
-  # Check for arguments
+  # Arguments check
   for a in "${@}"; do
-    for (( x=0;x<"${#wms[@]}";x++ )); do
+    for (( x=0; x<"${#wms[@]}"; x++ )); do
       if [[ "${a}" =~ "${wms[${x}]}" ]]; then
         WM="${wms[${x}]}"
       fi
@@ -41,26 +39,17 @@ else
   done
 fi
 
-# Start the systems window manager. See WindowManagers for other choices.
-# exec /etc/alternatives/x-window-manager
-# To run Gnome instead of system default, place a '#' before the previous line and uncomment the next line.
-# exec gnome-session
-# exec dbus-launch --exit-with-session "${WM}"
-
-# Customizations per wm. If there is a wm specific permutation to be done, set it up here.
-if [[ "${WM}" =~ "awesome" ]];then
+# Per wm customizations. If there is a wm specific permutation to be done, set it up here.
+if [[ "${WM}" =~ "${wms[3]}" ]]; then
   # Awesome: /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
   WM=( /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua )
-elif [[ "${WM}" =~ "compiz" ]];then
+elif [[ "${WM}" =~ "${wms[8]}" ]];then
   WM=( "compiz.sh" )
-elif [[ "${WM}" =~ "emacs" ]];then
-  # Emacs (with (exwm-enable) commented out in "exwm-config") as found in exwm manual:
-  # emacs --daemon -f exwm-enable
-  # emacsclient -c
-  # Just "emacs" would be sufficient if you dont mind X clients M-x:exwm-init on X boot.
+elif [[ "${WM}" =~ "${wms[9]}" ]];then
+  # Just "emacs" would be sufficient if you dont mind doing a M-x:exwm-init on X boot.
   emacs --daemon -f exwm-enable
   WM=( emacsclient -c )
-elif [[ "${WM}" =~ "e16" || "${WM}" =~ "enlightenment" ]];then
+elif [[ "${WM}" =~ "${wms[5]}" || "${WM}" =~ "${wms[6]}" ]];then
   # e17 svg support
   export E_COMP_ENGINE=sw
 fi
