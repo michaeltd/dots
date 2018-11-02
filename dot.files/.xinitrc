@@ -1,5 +1,5 @@
 # ~/.xinitrc
-#
+# Or: "The dedicated WM hoppers .xinitrc"
 
 # ~/.Xresources
 xrdb -I"${HOME}" -merge ~/.Xresources
