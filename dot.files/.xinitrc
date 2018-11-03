@@ -35,8 +35,8 @@ else
   # Arguments check
   for a in "${@}"; do
     for (( x=0; x<"${#wms[@]}"; x++ )); do
-      if [[ "${a}" =~ "${wms[${x}]}" ]]; then
-        WM="${wms[${x}]}"
+      if [[ "${a}" =~ "${wms[$x]}" ]]; then
+        WM="${wms[$x]}"
       fi
     done
   done
@@ -49,7 +49,7 @@ if [[ "${WM}" =~ "${wms[3]}" ]]; then
 elif [[ "${WM}" =~ "${wms[8]}" ]];then
   WM=( "compiz.sh" )
 elif [[ "${WM}" =~ "${wms[9]}" ]];then
-  # Just "emacs" would be sufficient if you dont mind doing a M-x:exwm-init on X boot.
+  # Just "emacs" could suffice if you don't mind a M-x:exwm-init on X boot.
   emacs --daemon -f exwm-enable
   WM=( emacsclient -c )
 elif [[ "${WM}" =~ "${wms[5]}" || "${WM}" =~ "${wms[6]}" ]];then
