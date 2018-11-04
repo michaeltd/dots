@@ -153,7 +153,7 @@ function logMeOut {
 function pingSubnet {
   for x in {1..254}; do
     for y in {1..254}; do
-      (ping -c 1 -w 2 192.168.${x}.${y} > /dev/null && echo "UP 192.168.1.${y}" &);
+      (ping -c 1 -w 2 192.168.${x}.${y} > /dev/null && echo "UP 192.168.${x}.${y}" &);
     done
   done
 }
@@ -301,9 +301,9 @@ function russianRulette {
   let "RV = $RANDOM % 6";
 
   if [[ $RV == 0 ]]; then
-    echo "BOOM!!! You've rolled a ${RV}"
+    printf "${red}BOOM!!!${reset} ${bold}You've rolled a %s${reset}\n" "${RV}"
   else
-    echo "LUCKY GUY!!! You've rolled a ${RV}"
+    printf "${blue}LUCKY GUY!!!${reset} ${bold}You've rolled a %s${reset}\n" "${RV}"
   fi
 }
 
