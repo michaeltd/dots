@@ -76,9 +76,8 @@ alias fixnet='ping -c 1 www.microsoft.com||sudo rc-service dhcpcd restart'
 #https://www.linuxquestions.org/questions/linux-networking-3/how-can-i-determine-my-wan-ip-via-command-line-478445/
 #https://www.cyberciti.biz/faq/how-to-find-my-public-ip-address-from-command-line-on-a-linux/
 #'dig +short myip.opendns.com @resolver1.opendns.com'
-#dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}'
-alias wanipv4='curl ifconfig.me'
-alias wanipv6='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
+alias wanip='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
+#alias wanip='curl ifconfig.me'
 
 # ReMove Dead Links from current directory
 alias rmdl='find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +'
