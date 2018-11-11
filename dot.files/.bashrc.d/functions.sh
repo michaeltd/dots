@@ -125,7 +125,7 @@ function serveThings {
     printf "%s requires a parameter.\nUsage: %s start|stop\n" ${FUNCNAME[0]} ${FUNCNAME[0]}
     return 1
   else
-    declare -a srvcs=( "postgresql-10" "mysql" "apache2" "vsftpd" "sshd" "rsyncd" "dictd" )
+    declare -a srvcs=( "postgresql-10" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" "dictd" )
     for srvc in "${srvcs[@]}"; do
       sudo rc-service "${srvc}" "${1}"
     done

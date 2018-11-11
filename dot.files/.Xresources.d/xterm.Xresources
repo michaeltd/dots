@@ -70,7 +70,7 @@ XTerm*saveLines: 99999
 !XTerm*color15: white
 
 ! https://unix4lyfe.org/xterm/
-xterm*faceName: IBM 3270
+xterm*faceName: Ubuntu Mono
 xterm*faceSize: 12
 xterm*renderFont: true
 xterm*font: fixed

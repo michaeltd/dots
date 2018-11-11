@@ -57,7 +57,7 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>IBM 3270</name>
+      <name>Ubuntu Mono</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -66,7 +66,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>IBM 3270</name>
+      <name>Ubuntu Mono</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -75,7 +75,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>IBM 3270</name>
+      <name>Ubuntu Mono</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>normal</weight>
@@ -84,7 +84,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>IBM 3270</name>
+      <name>Ubuntu Mono</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>normal</weight>
@@ -93,7 +93,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>IBM 3270</name>
+      <name>Ubuntu Mono</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>bold</weight>
@@ -102,7 +102,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>IBM 3270</name>
+      <name>Ubuntu Mono</name>
       <size>9</size>
       <!-- font size in points -->
       <weight>bold</weight>

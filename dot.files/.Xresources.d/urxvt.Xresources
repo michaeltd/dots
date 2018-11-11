@@ -3,7 +3,7 @@
 URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: yellow
-URxvt*font: xft:IBM3270:size=12:antialias=true
+URxvt*font: xft:UbuntuMono:size=12:antialias=true
 !URxvt*depth: 32
 
 !https://gist.github.com/whit/1307597

@@ -19,7 +19,7 @@ for (( x=0; x<"${#files[@]}"; x++ )); do
     etdt="$(epochtodatetime ${do})"
     printf "${bold}${blue}marked for removal${reset} -> %s\n" "${pfn}"
     printf "%s was created at %s\n" "${pfn}" "${underline}${green}${etdt}${reset}${end_underline}"
-    # printf "\${#files[@]} is %s, \$x is : %s and \${files[\$x]} is \'%s\'\n" "${#files[@]}" "${x}" "${files[$x]}"
     printf "${bold}rm -v %s${reset}\n" "${pfn}"
+    rm -v "${fn}"
   fi
 done

@@ -1,7 +1,7 @@
 ! Put this file as ~/.Xresources in your home directory
 
-*faceName: IBM3270
-*font: IBM3270
+*faceName: UbuntuMono
+*font: UbuntuMono
 !Theme One
 !*background: rgb:00/00/00
 !*foreground: rgb:a8/a8/a8
