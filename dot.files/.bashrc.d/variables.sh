@@ -87,6 +87,9 @@ export PATH+=":${MONGODB}/bin"
 export PATH+=":${SCALA_HOME}/bin"
 # export PATH+=":${HOME}/.racket/7.0.0.9/bin"
 
+#MANPATH
+export MANPATH+=":${HOME}/.local/share/man"
+
 # JAVA classpath
 export CLASSPATH+=":./"
 export CLASSPATH+=":${JAVA}/lib"
