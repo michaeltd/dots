@@ -67,7 +67,9 @@ export MONGODB="/opt/mongodb"
 export SCALA_HOME="/opt/scala"
 
 # Path with += op and each tool in it's own line for practical reasons
-export PATH+=":./" 
+export PATH+=":./"
+export PATH+=":${HOME}/.local/bin"
+export PATH+=":node_modules/.bin"
 export PATH+=":${OPT}/bin"
 export PATH+=":${HOME}/bin"
 export PATH+=":${JAVA_HOME}/bin"

@@ -18,6 +18,7 @@ declare -a WPUSAGE="\n \
   BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] XSETROOT[@] ) \
   BGSR \
   WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" \
+  WPLG="${HOME}/.$(basename ${BASH_SOURCE[0]}).log" \
   WAIT="60s" \
   DIRS=( "${HOME}/Pictures" ) \
   LS=$(which ls 2> /dev/null) \
@@ -108,6 +109,7 @@ else
 
     # set wallpaper, wait
     "${!BGSRS[$BGSR]}" "${WP}"
+    printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${BGSRS[$BGSR]}" "${WP}" >> "${WPLG}"
     sleep "${WAIT}"
   done
 fi
