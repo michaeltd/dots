@@ -7,6 +7,16 @@
 
 # UTILS =======================================================================
 
+function printappsinpath {
+  #!/bin/bash
+  # The directories in $PATH are separated by ":", so we split by it to get individual directories
+  for pdir in $(echo "$PATH" | tr ":" "\n"); do
+    # We `find` all files in the directory which are executable and print the filename
+    find "$pdir" -maxdepth 1 -executable -type f -printf "%f "
+  done
+  printf "\n"
+}
+
 function listCat {
     $(which ls) --color -al /usr/portage/${1}
 }
@@ -120,16 +130,19 @@ function printMemUsage {
 
 }
 
-function serveThings {
+function services {
   if [[ -z "${1}" ]]; then
-    printf "%s requires a parameter.\nUsage: %s start|stop\n" ${FUNCNAME[0]} ${FUNCNAME[0]}
+    printf "%s requires some parameters.\nUsage: %s start|stop all|service/es...\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}"
     return 1
+  elif [[ ("${1}" == "start" || "${1}" == "stop") && ("${2}" == "all") ]]; then
+    declare -a srvcs=( "postgresql-10" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" "dictd" "netdata" "webmin" )
   else
-    declare -a srvcs=( "postgresql-10" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" "dictd" )
-    for srvc in "${srvcs[@]}"; do
-      sudo rc-service "${srvc}" "${1}"
-    done
+    declare -a srvcs=( "${@}" )
+    unset srvcs[0]
   fi
+  for srvc in "${srvcs[@]}"; do
+    sudo rc-service "${srvc}" "${1}"
+  done
 }
 
 function updateDate {
