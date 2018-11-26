@@ -36,6 +36,8 @@ dot.files/.gnupg/*
 
 dot.files/.ngrok2/*
 
+dot.files/.ssh/*
+
 dot.files/bin/jcalc
 dot.files/bin/jCalc.jar
 dot.files/bin/TkRootMenu
@@ -53,6 +55,8 @@ dot.files/.bkp.includes.txt
 dot.files/.bkp.excludes.txt
 
 dot.files/.gitconfig
+
+dot.files/.ssh/*
 
 dot.files/.my.cnf.*
 
