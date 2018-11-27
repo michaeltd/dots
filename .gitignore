@@ -43,6 +43,7 @@ dot.files/bin/jcalc
 dot.files/bin/jCalc.jar
 dot.files/bin/TkRootMenu
 dot.files/bin/shell/*
+dot.files/bin/dirtycow/*
 
 dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker
