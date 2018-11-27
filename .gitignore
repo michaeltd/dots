@@ -38,9 +38,11 @@ dot.files/.ngrok2/*
 
 dot.files/.ssh/*
 
+dot.files/bin/exercism
 dot.files/bin/jcalc
 dot.files/bin/jCalc.jar
 dot.files/bin/TkRootMenu
+dot.files/bin/shell/*
 
 dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker
