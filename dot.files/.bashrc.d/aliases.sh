@@ -80,8 +80,12 @@ alias fixnet='ping -c 1 www.microsoft.com||sudo rc-service dhcpcd restart'
 #alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 #dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}'
 #alias wanipv4='curl ifconfig.me'
-alias wanipv4='dig +short whoami.akamai.net. @ns1-1.akamaitech.net.'
-alias wanipv6='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
+#alias wanipv4='dig +short whoami.akamai.net. @ns1-1.akamaitech.net.'
+#alias wanipv4='curl -s http://whatismyip.akamai.com/;echo'
+#alias wanipv6='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
+#https://wiert.me/2016/01/13/getting-your-public-ip-address-from-the-command-line/
+alias wip4='curl ipv4.whatismyip.akamai.com;echo'
+alias wip6='curl ipv6.whatismyip.akamai.com;echo'
 
 # ReMove Dead Links from current directory
 alias rmdl='find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +'
