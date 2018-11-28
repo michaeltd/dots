@@ -229,8 +229,7 @@ function trim {
 # CRYPTO ======================================================================
 
 function genpass {
-  tr -dc [:punct:][:alnum:] < /dev/urandom |head -c ${1:-16}
-  printf "\n"
+  echo $(tr -dc '[:alnum:]~!@#$%^&*()_=+,<.>/?;:[{]}\|-' < /dev/urandom|head -c "${1:-64}")
 }
 
 # CHUBIN WORKS ================================================================

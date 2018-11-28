@@ -99,7 +99,7 @@ if [[ -n "${1}" ]]; then
     *) printf "${WPUSAGE}";;
   esac
 else
-  while [[ true ]]; do
+  for((;;)) {
     # limit a random number to upper array bounds as a RundomNumber
     let "RN = ${RANDOM} % ${#WPS[@]}"
     # RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
@@ -111,5 +111,5 @@ else
     "${!BGSRS[$BGSR]}" "${WP}"
     printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${BGSRS[$BGSR]}" "${WP}" >> "${WPLG}"
     sleep "${WAIT}"
-  done
+  }
 fi

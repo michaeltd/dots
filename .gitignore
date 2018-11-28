@@ -16,6 +16,7 @@ conky.configs/*
 dot.files/.config/*
 !dot.files/.config/awesome
 !dot.files/.config/compiz
+!dot.files/.config/gentoo
 !dot.files/.config/mpd/mpd.conf
 !dot.files/.config/ncmpcpp/config
 !dot.files/.config/openbox
