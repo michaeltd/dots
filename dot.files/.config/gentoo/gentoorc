@@ -101,16 +101,16 @@
     <content>"name"</content>
     <mode>"dirs_first"</mode>
     <invert>FALSE</invert>
-    <nocase>FALSE</nocase>
+    <nocase>TRUE</nocase>
    </DPSort>
    <defpath>"@history[0]"</defpath>
    <path_above>FALSE</path_above>
-   <hide_allowed>TRUE</hide_allowed>
+   <hide_allowed>FALSE</hide_allowed>
    <scrollbar_always>TRUE</scrollbar_always>
    <huge_parent>FALSE</huge_parent>
    <set_font>TRUE</set_font>
-   <font_name>"Monospace 8"</font_name>
-   <rubber_banding>TRUE</rubber_banding>
+   <font_name>"Ubuntu Mono 10"</font_name>
+   <rubber_banding>FALSE</rubber_banding>
    <sbar_pos>"right"</sbar_pos>
   </DirPaneLeft>
   <DirPaneRight>
@@ -157,7 +157,7 @@
      <numformat>"%o"</numformat>
     </DPExtra>
     <justification>1</justification>
-    <width>57</width>
+    <width>50</width>
    </DPColumn>
    <DPColumn>
     <index>4</index>
@@ -166,7 +166,7 @@
     <DPExtra>
     </DPExtra>
     <justification>2</justification>
-    <width>64</width>
+    <width>1</width>
    </DPColumn>
    <DPColumn>
     <index>5</index>
@@ -210,22 +210,22 @@
     <content>"name"</content>
     <mode>"dirs_first"</mode>
     <invert>FALSE</invert>
-    <nocase>FALSE</nocase>
+    <nocase>TRUE</nocase>
    </DPSort>
    <defpath>"@history[0]"</defpath>
    <path_above>FALSE</path_above>
-   <hide_allowed>TRUE</hide_allowed>
+   <hide_allowed>FALSE</hide_allowed>
    <scrollbar_always>TRUE</scrollbar_always>
    <huge_parent>FALSE</huge_parent>
    <set_font>TRUE</set_font>
-   <font_name>"Monospace 8"</font_name>
-   <rubber_banding>TRUE</rubber_banding>
-   <sbar_pos>"left"</sbar_pos>
+   <font_name>"Ubuntu Mono 10"</font_name>
+   <rubber_banding>FALSE</rubber_banding>
+   <sbar_pos>"right"</sbar_pos>
   </DirPaneRight>
   <DirPanePaning>
    <orientation>"horizontal"</orientation>
    <mode>"ratio"</mode>
-   <value>0.5</value>
+   <value>0.47248181700706482</value>
   </DirPanePaning>
   <DirPaneHistory>
    <select>TRUE</select>
@@ -233,6 +233,22 @@
   </DirPaneHistory>
  </DirPanes>
  <CmdSeqs>
+  <CmdSeq>
+   <name>"view_image"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"eog {Fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>4</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
   <CmdSeq>
    <name>"run_script"</name>
    <flags>0</flags>
@@ -250,12 +266,12 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"test_checkbox"</name>
-   <flags>0</flags>
+   <name>"echo_selection_first"</name>
+   <flags>1</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"echo {It:&quot;Testing checkboxes&quot;} {Ix:&quot;One&quot;} {Ix:&quot;Two&quot;} {Ix:&quot;Three&quot;}"</def>
+     <def>"echo {fu}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>0</gflags>
@@ -266,87 +282,28 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"wrap_about"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"Built-In"</type>
-     <def>"About"</def>
-     <flags>0</flags>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"view_rar"</name>
+   <name>"new_shell"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"unrar lt {fup}"</def>
+     <def>"xterm"</def>
      <flags>0</flags>
      <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
+      <gflags>1</gflags>
+      <bflags>4</bflags>
       <aflags>0</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"test_pipe"</name>
+   <name>"Unnamed_1"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"bash -c &apos;echo {Fup} | wc&apos;"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"run_file"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"/usr/bin/env bash -c {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"uncompress_tar_bzip2"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"tar --use-compress-program=bzip2 -xf {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>8</bflags>
-      <aflags>2</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"test_uri"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"echo {uq}"</def>
+     <def>"firefox {Fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>0</gflags>
@@ -357,12 +314,16 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_zip"</name>
+   <name>"Unnamed_2"</name>
+   <flags>0</flags>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_howto"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"unzip -v {fup}"</def>
+     <def>"less {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>4</gflags>
@@ -373,12 +334,12 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"unmount"</name>
+   <name>"Unnamed_3"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"umount  {fpu}"</def>
+     <def>"ristretto {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>0</gflags>
@@ -389,12 +350,12 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"compress_gzip"</name>
+   <name>"uncompress_gzip"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"gzip -9 {Fup}"</def>
+     <def>"gunzip {Fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>0</gflags>
@@ -405,15 +366,47 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_video"</name>
+   <name>"view_archive"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"mplayer -quiet -vo x11 {fup}"</def>
+     <def>"xarchiver {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_pdf"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>" evince {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"urxvt"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa -cd {P}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>8</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
      </CX_External>
@@ -452,49 +445,33 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_rfc"</name>
+   <name>"test_dirparent"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
-     <type>"External"</type>
-     <def>"less {fup}"</def>
+     <type>"Built-In"</type>
+     <def>"DirParent"</def>
      <flags>0</flags>
-     <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
+    </CmdRow>
+    <CmdRow>
+     <type>"Built-In"</type>
+     <def>"About"</def>
+     <flags>0</flags>
     </CmdRow>
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_tar_bzip2"</name>
+   <name>"play_mod"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"tar -tvf {fpu} --use-compress-prog=bunzip2"</def>
+     <def>"xmp {fup}"</def>
      <flags>0</flags>
      <CX_External>
-      <gflags>4</gflags>
+      <gflags>3</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"uncompress_rar"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"unrar x -inul {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>8</bflags>
-      <aflags>2</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -506,155 +483,6 @@
     <CmdRow>
      <type>"External"</type>
      <def>"tar -tvzf {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"test_grab"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"{$HOME}/data/src/C/spew --delay=5000000"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"echo_selection"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"echo  {FEu}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"test_exec"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"nonexistant {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"tar_extract"</name>
-   <flags>1</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"echo Extracting {fp} to {Pd}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"tar xzf {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>16</gflags>
-      <bflags>8</bflags>
-      <aflags>2</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"view_gzip"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"zcat {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"view_howto"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"less {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"test_call"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"Built-In"</type>
-     <def>"wrap_about"</def>
-     <flags>0</flags>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"compress_tar"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"tar {It:&quot;Create tar archive&quot;}{Ic:&quot;Mode&quot;=&quot;-cf&quot;,&quot;-czf&quot;,&quot;-cyf&quot;} {Pd}/{Is:&quot;Archive Name&quot;} {Ix:&quot;Dereference links?&quot;=&quot;-h&quot;,&quot;&quot;}{Ix:&quot;Compress?&quot;=&quot;-z&quot;,&quot;&quot;} {Fu}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>16</gflags>
-      <bflags>4</bflags>
-      <aflags>2</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"Unnamed"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"bzcat {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>4</gflags>
@@ -681,12 +509,12 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_tar"</name>
+   <name>"view_zip"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"tar -tvf {fup}"</def>
+     <def>"unzip -v {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>4</gflags>
@@ -697,15 +525,15 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_pdf"</name>
+   <name>"view_ps"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>" evince {fup}"</def>
+     <def>"gv {fut}"</def>
      <flags>0</flags>
      <CX_External>
-      <gflags>0</gflags>
+      <gflags>1</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
      </CX_External>
@@ -713,33 +541,33 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_image"</name>
+   <name>"Unnamed"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"eog {Fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>4</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"view_html"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"lynx -dump {fup}"</def>
+     <def>"bzcat {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>4</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"compress_gzip"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"gzip -9 {Fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>1</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -761,6 +589,118 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
+   <name>"test_grab"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"{$HOME}/data/src/C/spew --delay=5000000"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_audio"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"audacious {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"test_uri"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"echo {uq}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_rpm"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"rpm -SOME_SMART_OPTION {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_deb"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"dpkg-deb -c {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"uncompress_tar_bzip2"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"tar --use-compress-program=bzip2 -xf {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>8</bflags>
+      <aflags>2</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_tar_bzip2"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"tar -tvf {fpu} --use-compress-prog=bunzip2"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
    <name>"run_missing"</name>
    <flags>0</flags>
    <CmdRows>
@@ -772,6 +712,145 @@
       <gflags>0</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_gzip"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"zcat {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"diff"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"diff -pu {fpu} {fdup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>16</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_rar"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"unrar lt {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"run_file"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"/usr/bin/env bash -c {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"print_selected"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"echo {Fpu}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"test_call"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"Built-In"</type>
+     <def>"wrap_about"</def>
+     <flags>0</flags>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"mouse_right"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"Built-In"</type>
+     <def>"SelectRow action=select"</def>
+     <flags>0</flags>
+    </CmdRow>
+    <CmdRow>
+     <type>"Built-In"</type>
+     <def>"MenuPopup"</def>
+     <flags>0</flags>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"uncompress_rar"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"unrar x -inul {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>8</bflags>
+      <aflags>2</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"convert_mp3"</name>
+   <flags>1</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"bash -c &apos;mpg123 -q -w $(basename {f} .mp3).wav {fup}&apos;"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>4</bflags>
+      <aflags>1</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -809,12 +888,23 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"echo_selection_first"</name>
-   <flags>1</flags>
+   <name>"wrap_about"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"Built-In"</type>
+     <def>"About"</def>
+     <flags>0</flags>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"unmount"</name>
+   <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"echo {fu}"</def>
+     <def>"umount  {fpu}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>0</gflags>
@@ -825,18 +915,140 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"test_dirparent"</name>
+   <name>"tar_extract"</name>
+   <flags>1</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"echo Extracting {fp} to {Pd}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"tar xzf {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>16</gflags>
+      <bflags>8</bflags>
+      <aflags>2</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_rfc"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
-     <type>"Built-In"</type>
-     <def>"DirParent"</def>
+     <type>"External"</type>
+     <def>"less {fup}"</def>
      <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
     </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_tar"</name>
+   <flags>0</flags>
+   <CmdRows>
     <CmdRow>
-     <type>"Built-In"</type>
-     <def>"About"</def>
+     <type>"External"</type>
+     <def>"tar -tvf {fup}"</def>
      <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"run_calculator"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"gnome-calculator"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>3</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"play_sample"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"aplay {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"test_pipe"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"bash -c &apos;echo {Fup} | wc&apos;"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"test_input"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"echo {It:&quot;String input defaults to first selected filename:&quot;} {It:&quot;-&quot;} {Is:&quot;Name:&quot;=&quot;prefix-{fQ}-postfix&quot;}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"test_checkbox"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"echo {It:&quot;Testing checkboxes&quot;} {Ix:&quot;One&quot;} {Ix:&quot;Two&quot;} {Ix:&quot;Three&quot;}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
     </CmdRow>
    </CmdRows>
   </CmdSeq>
@@ -847,6 +1059,102 @@
     <CmdRow>
      <type>"External"</type>
      <def>"gimp {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"mkdir_and_enter_selected"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"Built-In"</type>
+     <def>"MkDir 1"</def>
+     <flags>0</flags>
+    </CmdRow>
+    <CmdRow>
+     <type>"Built-In"</type>
+     <def>"DirEnter dir={fpu}"</def>
+     <flags>0</flags>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_text"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"emacsclient -c {Fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>9</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"uncompress_tar_gzip"</name>
+   <flags>1</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"tar xzf {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>8</bflags>
+      <aflags>2</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"test_exec"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"nonexistant {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_video"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"vlc {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>9</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"echo_selection"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"echo  {FEu}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>0</gflags>
@@ -873,114 +1181,18 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"mkdir_and_enter_selected"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"Built-In"</type>
-     <def>"MkDir 1"</def>
-     <flags>0</flags>
-    </CmdRow>
-    <CmdRow>
-     <type>"Built-In"</type>
-     <def>"DirEnter dir={fpu}"</def>
-     <flags>0</flags>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"diff"</name>
+   <name>"view_html"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"diff -pu {fpu} {fdup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>4</gflags>
-      <bflags>16</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"view_ps"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"gv {fut}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>1</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"view_deb"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"dpkg-deb -c {fup}"</def>
+     <def>"lynx -dump {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>4</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
      </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"convert_mp3"</name>
-   <flags>1</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"bash -c &apos;mpg123 -q -w $(basename {f} .mp3).wav {fup}&apos;"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>4</bflags>
-      <aflags>1</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"test_input"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"echo {It:&quot;String input defaults to first selected filename:&quot;} {It:&quot;-&quot;} {Is:&quot;Name:&quot;=&quot;prefix-{fQ}-postfix&quot;}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"mouse_right"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"Built-In"</type>
-     <def>"SelectRow action=select"</def>
-     <flags>0</flags>
-    </CmdRow>
-    <CmdRow>
-     <type>"Built-In"</type>
-     <def>"MenuPopup"</def>
-     <flags>0</flags>
     </CmdRow>
    </CmdRows>
   </CmdSeq>
@@ -1001,129 +1213,17 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_rpm"</name>
+   <name>"compress_tar"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"rpm -SOME_SMART_OPTION {fup}"</def>
+     <def>"tar {It:&quot;Create tar archive&quot;}{Ic:&quot;Mode&quot;=&quot;-cf&quot;,&quot;-czf&quot;,&quot;-cyf&quot;} {Pd}/{Is:&quot;Archive Name&quot;} {Ix:&quot;Dereference links?&quot;=&quot;-h&quot;,&quot;&quot;}{Ix:&quot;Compress?&quot;=&quot;-z&quot;,&quot;&quot;} {Fu}"</def>
      <flags>0</flags>
      <CX_External>
-      <gflags>4</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"uncompress_gzip"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"gunzip {Fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>1</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"uncompress_tar_gzip"</name>
-   <flags>1</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"tar xzf {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>8</bflags>
-      <aflags>2</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"run_calculator"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"gnome-calculator"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>3</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"new_shell"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"xterm"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>1</gflags>
+      <gflags>16</gflags>
       <bflags>4</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"print_selected"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"echo {Fpu}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"play_sample"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"aplay {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"play_mod"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"xmp {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>3</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
+      <aflags>2</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -1131,7 +1231,7 @@
  </CmdSeqs>
  <CommandConfig>
   <Configure>
-   <auto_save>FALSE</auto_save>
+   <auto_save>TRUE</auto_save>
   </Configure>
   <Copy>
    <copy_dates>TRUE</copy_dates>
@@ -1158,7 +1258,7 @@
    <focus_new>FALSE</focus_new>
   </MkDir>
   <Rename>
-   <inplace>TRUE</inplace>
+   <inplace>FALSE</inplace>
    <preselect>u2</preselect>
   </Rename>
   <ViewText>
@@ -1197,7 +1297,7 @@
   <Style>
    <name>"Data"</name>
    <parent>"Root"</parent>
-   <expand>FALSE</expand>
+   <expand>TRUE</expand>
   </Style>
   <Style>
    <name>"Archive"</name>
@@ -1221,7 +1321,7 @@
   <Style>
    <name>"Package"</name>
    <parent>"Archive"</parent>
-   <expand>FALSE</expand>
+   <expand>TRUE</expand>
   </Style>
   <Style>
    <name>"DEB"</name>
@@ -1371,16 +1471,16 @@
      <color>C8080,0000,3333</color>
     </Property>
     <Property>
-     <name>"View"</name>
-     <action>"view_image"</action>
-    </Property>
-    <Property>
      <name>"uIcon"</name>
      <icon>"Image.xpm"</icon>
     </Property>
     <Property>
      <name>"Edit"</name>
      <action>"edit_image"</action>
+    </Property>
+    <Property>
+     <name>"View"</name>
+     <action>"view_image"</action>
     </Property>
    </Properties>
   </Style>
@@ -1576,20 +1676,20 @@
    <expand>TRUE</expand>
    <Properties>
     <Property>
-     <name>"View"</name>
-     <action>"ViewText encoding=ISO-8859-1"</action>
+     <name>"uIcon"</name>
+     <icon>"txt.xpm"</icon>
     </Property>
     <Property>
      <name>"uFG"</name>
      <color>C0000,6666,3333</color>
     </Property>
     <Property>
-     <name>"uIcon"</name>
-     <icon>"txt.xpm"</icon>
-    </Property>
-    <Property>
      <name>"Edit"</name>
      <action>"edit_text"</action>
+    </Property>
+    <Property>
+     <name>"View"</name>
+     <action>"ViewText encoding=ISO-8859-1"</action>
     </Property>
    </Properties>
   </Style>
@@ -2708,6 +2808,11 @@
 	 <label>"XTerm"</label>
 	 <cmdseq>"new_shell"</cmdseq>
 	</BFace>
+	<BFace>
+	 <face>u1</face>
+	 <label>"URXvt"</label>
+	 <cmdseq>"urxvt"</cmdseq>
+	</BFace>
        </BFaces>
        <flags>u0</flags>
       </Button>
@@ -2860,7 +2965,7 @@
    </Path>
   </PathList>
   <HideInfo>
-   <mode>1</mode>
+   <mode>0</mode>
    <re>"^\\."</re>
    <re_nocase>FALSE</re_nocase>
   </HideInfo>
@@ -2871,18 +2976,18 @@
    <x>619</x>
    <y>123</y>
    <w>800</w>
-   <h>1050</h>
-   <pos_use>FALSE</pos_use>
-   <pos_update>FALSE</pos_update>
+   <h>849</h>
+   <pos_use>TRUE</pos_use>
+   <pos_update>TRUE</pos_update>
    <size_use>TRUE</size_use>
    <size_update>TRUE</size_update>
   </Window>
   <Window>
    <id>u1</id>
-   <x>186</x>
-   <y>143</y>
-   <w>800</w>
-   <h>600</h>
+   <x>0</x>
+   <y>30</y>
+   <w>1049</w>
+   <h>684</h>
    <pos_use>TRUE</pos_use>
    <pos_update>TRUE</pos_update>
    <size_use>TRUE</size_use>
@@ -2916,7 +3021,7 @@
   </Borders>
  </Windows>
  <Dialogs>
-  <pos>"mouse"</pos>
+  <pos>"center"</pos>
  </Dialogs>
  <Controls>
   <Keys>
@@ -3063,7 +3168,7 @@
   <ignore_numlock>TRUE</ignore_numlock>
  </Controls>
  <Errors>
-  <display>0</display>
+  <display>2</display>
   <beep>FALSE</beep>
  </Errors>
  <Nagging>

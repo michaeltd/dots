@@ -6,12 +6,19 @@
    <index>u0</index>
    <History>
     <root>"/home/paperjam"</root>
+    <root>"/home"</root>
+    <root>"/home/paperjam/git"</root>
+    <root>"/home/paperjam/git/public_html"</root>
+    <root>"/home/paperjam"</root>
    </History>
   </Pane>
   <Pane>
    <index>u1</index>
    <History>
+    <root>"/home/paperjam/.calcurse"</root>
     <root>"/home/paperjam"</root>
+    <root>"/home/paperjam/git"</root>
+    <root>"/home/paperjam/git/tdm-bio"</root>
    </History>
   </Pane>
  </Panes>
