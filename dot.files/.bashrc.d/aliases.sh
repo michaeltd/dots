@@ -58,12 +58,13 @@ alias mcst='mc -a' # In case of malconfigured terminals
 # URxvt transparency
 alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'
 
-# Emacs in terminal
+# Emacs alias
+alias ex='emacs' # EmaX
 alias exnx='emacs -nw' # EmaX No X11
 # emacsclient
-alias ec='emacsclient -c' # Emacs Client
-alias ecnx='emacsclient -t' # Emacs Client No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
-alias eckd='emacsclient -e "(kill-emacs)"' # Kill EmaX Daemon # Kill an emacs --daemon gracefully
+alias ec='emacsclient -c' # EmacsClient
+alias ecnx='emacsclient -t' # EmacsClient No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
+alias eckd='emacsclient -e "(kill-emacs)"' # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
 
 # calendar
 alias cal='cal -m' # First Day Monday Calendars
@@ -72,18 +73,9 @@ alias cal='cal -m' # First Day Monday Calendars
 alias cloc='cloc --by-file-by-lang'
 
 # NET
-alias fixnet='ping -c 1 www.microsoft.com||sudo rc-service dhcpcd restart'
-#https://www.linuxquestions.org/questions/linux-networking-3/how-can-i-determine-my-wan-ip-via-command-line-478445/
-#https://www.cyberciti.biz/faq/how-to-find-my-public-ip-address-from-command-line-on-a-linux/
-#https://coderwall.com/p/lyrjsq/extract-your-external-ip-using-command-line-tools
-#https://code.blogs.iiidefix.net/posts/get-public-ip-using-dns/
-#alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
-#dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}'
-#alias wanipv4='curl ifconfig.me'
-#alias wanipv4='dig +short whoami.akamai.net. @ns1-1.akamaitech.net.'
-#alias wanipv4='curl -s http://whatismyip.akamai.com/;echo'
-#alias wanipv6='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
-#https://wiert.me/2016/01/13/getting-your-public-ip-address-from-the-command-line/
+alias fixnet='ping -c 1 www.gentoo.org||sudo rc-service dhcpcd restart'
+
+# Help wan-ip-howto
 alias wip4='curl ipv4.whatismyip.akamai.com;echo'
 alias wip6='curl ipv6.whatismyip.akamai.com;echo'
 

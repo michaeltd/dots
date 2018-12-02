@@ -105,7 +105,7 @@
    </DPSort>
    <defpath>"@history[0]"</defpath>
    <path_above>FALSE</path_above>
-   <hide_allowed>FALSE</hide_allowed>
+   <hide_allowed>TRUE</hide_allowed>
    <scrollbar_always>TRUE</scrollbar_always>
    <huge_parent>FALSE</huge_parent>
    <set_font>TRUE</set_font>
@@ -214,7 +214,7 @@
    </DPSort>
    <defpath>"@history[0]"</defpath>
    <path_above>FALSE</path_above>
-   <hide_allowed>FALSE</hide_allowed>
+   <hide_allowed>TRUE</hide_allowed>
    <scrollbar_always>TRUE</scrollbar_always>
    <huge_parent>FALSE</huge_parent>
    <set_font>TRUE</set_font>
@@ -2965,7 +2965,7 @@
    </Path>
   </PathList>
   <HideInfo>
-   <mode>0</mode>
+   <mode>1</mode>
    <re>"^\\."</re>
    <re_nocase>FALSE</re_nocase>
   </HideInfo>
@@ -2973,10 +2973,10 @@
  <Windows>
   <Window>
    <id>u0</id>
-   <x>619</x>
-   <y>123</y>
-   <w>800</w>
-   <h>849</h>
+   <x>279</x>
+   <y>162</y>
+   <w>813</w>
+   <h>530</h>
    <pos_use>TRUE</pos_use>
    <pos_update>TRUE</pos_update>
    <size_use>TRUE</size_use>
@@ -2984,8 +2984,8 @@
   </Window>
   <Window>
    <id>u1</id>
-   <x>0</x>
-   <y>30</y>
+   <x>171</x>
+   <y>137</y>
    <w>1049</w>
    <h>684</h>
    <pos_use>TRUE</pos_use>
@@ -3010,8 +3010,8 @@
    <y>32</y>
    <w>320</w>
    <h>480</h>
-   <pos_use>FALSE</pos_use>
-   <pos_update>FALSE</pos_update>
+   <pos_use>TRUE</pos_use>
+   <pos_update>TRUE</pos_update>
    <size_use>TRUE</size_use>
    <size_update>TRUE</size_update>
   </Window>
