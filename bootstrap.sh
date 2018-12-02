@@ -3,7 +3,7 @@
 # The means to migrate my .dots in new systems.
 
 if [[ "${1}" != "thoushallnotpass" ]]; then
-  printf "${red}Read this first:${reset} ${bold}https://github.com/michaeltd/dots/${reset}\n"
+  printf "${red}Read this first:${reset} ${bold}https://github.com/MichaelTd/dots/blob/master/readme.md#bootstrap.sh${reset}\n"
   exit 1
 fi
 
