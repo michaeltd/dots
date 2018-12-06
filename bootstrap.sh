@@ -12,7 +12,7 @@ tofldr="${HOME}"
 fx=".$(date +%s)"
 ls=$(which ls) # Full path
 
-declare -a fls=( $(${ls} -A ${dtfls}) )
+declare -a fls=( $(${ls} -A ${dtfls}) ) # No dot listings
 
 for file in ${fls[@]}; do
   if [[ -L "${tofldr}/${file}" || -d "${tofldr}/${file}" || -f "${tofldr}/${file}" ]]; then

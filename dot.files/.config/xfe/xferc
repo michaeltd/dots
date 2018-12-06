@@ -2,12 +2,12 @@
 height=467
 toolstoolbar=1
 folder_warn=1
-panel_view=1
+panel_view=2
 width=589
 preserve_date_warn=0
 confirm_delete=1
 use_sudo=0
-ypos=256
+ypos=243
 use_trash_can=1
 auto_save_layout=1
 use_trash_bypass=1
@@ -31,12 +31,12 @@ status=1
 root_mode=1
 treetwopanels_tree_pct=0.2
 generaltoolbar=1
-xpos=395
+xpos=403
 locationbar=1
 confirm_drag_and_drop=1
 
 [HISTORY]
-open=vlc:emacsclient -c:gvim:mxcl:ooffice:vim:xarchiver:
+open=evince:emacsclient -c:gvim:mxcl:ooffice:vim:vlc:xarchiver:
 
 [PROGS]
 pdfviewer=firefox
@@ -121,23 +121,23 @@ empty_trash_can=Ctrl-Del
 rotate_left=Ctrl-L
 
 [RIGHT PANEL]
-type_size=26
+type_size=4
 deldate_size=200
 origpath_size=200
 liststyle=0
-attr_size=22
-user_size=14
-hiddenfiles=1
+attr_size=4
+user_size=2
+hiddenfiles=0
 dirs_first=1
-ext_size=23
-grou_size=18
-modd_size=43
+ext_size=4
+grou_size=3
+modd_size=7
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=127
-lastdir=/mnt/el/Documents/DEV/DB
-size_size=21
+name_size=172
+lastdir=/mnt/el/Documents/DOCS/PERL
+size_size=4
 
 [DIR PANEL]
 hidden_dir=0
@@ -158,9 +158,9 @@ modd_size=93
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=162
-lastdir=/home/paperjam
-size_size=59
+name_size=153
+lastdir=/home/paperjam/Downloads
+size_size=38
 
 [SETTINGS]
 listforecolor=Gray100

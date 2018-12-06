@@ -5,6 +5,17 @@
 # while read a ; do echo ${a//abc/XYZ} ; done < /tmp/file.txt > /tmp/file.txt.t ; mv /tmp/file.txt{.t,}
 # echo "abcdef" |replace "abc" "XYZ" # mysqld
 
+function countd {
+  clear
+  for i in `seq ${1-10} -1 0`
+  do
+    printf "%04d\n" "${i}"| figlet
+    sleep 1
+    clear
+  done
+  play -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
+}
+
 # UTILS =======================================================================
 
 function printappsinpath {
@@ -218,12 +229,34 @@ function remove_spaces {
 
 function trim {
   # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
-    local var="$*"
-    # remove leading whitespace characters
-    var="${var#"${var%%[![:space:]]*}"}"
-    # remove trailing whitespace characters
-    var="${var%"${var##*[![:space:]]}"}"
-    echo -n "$var"
+  local var="$*"
+  # remove leading whitespace characters
+  var="${var#"${var%%[![:space:]]*}"}"
+  # remove trailing whitespace characters
+  var="${var%"${var##*[![:space:]]}"}"
+  echo -n "$var"
+}
+
+function left_pad {
+  # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
+  # local var="$*"
+  # remove leading whitespace characters
+  # var="${@#"${@%%[![:space:]]*}"}"
+  # remove trailing whitespace characters
+  # var="${var%"${var##*[![:space:]]}"}"
+  # echo -n "$var"
+  echo -n "${@#"${@%%[![:space:]]*}"}"
+}
+
+function right_pad {
+  # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
+  # local var="$*"
+  # remove leading whitespace characters
+  # var="${var#"${var%%[![:space:]]*}"}"
+  # remove trailing whitespace characters
+  # var="${var%"${var##*[![:space:]]}"}"
+  # echo -n "$var"
+  echo -n "${@%"${@##*[![:space:]]}"}"
 }
 
 # CRYPTO ======================================================================

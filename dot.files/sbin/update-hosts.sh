@@ -24,3 +24,6 @@ else
   printf "cat ${RANDOM_TEMP_FILE} > ${HOSTS_FILE}\n"
   cat "${RANDOM_TEMP_FILE}" > "${HOSTS_FILE}"
 fi
+
+printf "rm ${RANDOM_TEMP_FILE}\n"
+rm ${RANDOM_TEMP_FILE}
