@@ -2,11 +2,12 @@
   "Window Maker",
   (
     Applications,
-    (Terminals, (xterm, EXEC, xterm)),
+    (Terminals, (xterm, EXEC, xterm), (Urxvt, EXEC, urxvt)),
     (
       Internet,
       ("Mozilla Firefox", EXEC, firefox),
       ("Mozilla SeaMonkey", EXEC, seamonkey),
+      (Lynx, EXEC, "xterm -e lynx"),
       (W3M, EXEC, "xterm -e w3m")
     ),
     (Mathematics, (bc, EXEC, "xterm -e bc")),
@@ -56,10 +57,12 @@
       (OpenOffice.org, EXEC, ooffice)
     ),
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
+    (Viewers, (Evince, EXEC, evince)),
     (
       Utilities,
       (Conky, EXEC, conky),
       ("GNU Privacy Assistant", EXEC, gpa),
+      (Filezilla, EXEC, filezilla),
       (NMap, EXEC, nmapfe),
       ("Java Control Panel", EXEC, ControlPanel),
       (Xarchiver, EXEC, xarchiver)
@@ -69,7 +72,8 @@
       "P2P Network",
       (ftp, EXEC, "xterm -e ftp"),
       (sftp, EXEC, "xterm -e sftp")
-    )
+    ),
+    (Games, (XBoard, EXEC, xboard))
   ),
   (Run..., SHEXEC, "%A(Run, Type command:)"),
   (

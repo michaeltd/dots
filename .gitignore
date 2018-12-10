@@ -22,8 +22,6 @@ dot.files/.config/*
 !dot.files/.config/openbox
 !dot.files/.config/polybar
 !dot.files/.config/tint2
-!dot.files/.config/xfe/scripts
-!dot.files/.config/xfe/xferc
 !dot.files/.config/compton.conf
 
 dot.files/.e16/*

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+#
 # Pipe fortune or second param through cowsay and lolcat for some color magic
-# requires fortune cowsay lolcat
+# requires fortune, cowsay, lolcat.
 
 file=${1-"eyes"}
 
