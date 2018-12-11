@@ -55,8 +55,7 @@ source "${WPRC}"
 
 # Fill up a WallPaperS list
 for D in "${DIRS[@]}"; do
-  PICS=( $("${LS}" -A "${D}") )
-  for P in "${PICS[@]}"; do
+  for P in $("${LS}" -A "${D}"); do
     FN="${D}/${P}" FE="${P:(-4)}"
     if [[ -f "${FN}" && "${FE,,}" == ".jpg" || "${FE,,}" == ".jpe" || "${FE,,}" == ".png" || "${FE,,}" == ".gif" || "${FE,,}" == ".bmp" ]];then
       WPS+=( "${FN}" )
