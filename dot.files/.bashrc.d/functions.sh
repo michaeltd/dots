@@ -204,6 +204,41 @@ function epochtodatetime {
   date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unixepoch)}"
 }
 
+function lastdateofmonth {
+# https://en.wikipedia.org/wiki/Leap_year
+# https://www.timeanddate.com/date/leapyear.html
+# https://medium.freecodecamp.org/test-driven-development-what-it-is-and-what-it-is-not-41fa6bca02a2
+# Feature: Every year that is exactly divisible by four is a leap year, except for years that are exactly divisible by 100, but these centurial years are leap years if they are exactly divisible by 400.
+#
+# - divisible by 4
+# - but not by 100
+# - years divisible by 400 are leap anyway
+#
+# What about leap years in Julian calendar? And years before Julian calendar?
+
+  if [[ -n "${1}" ]]; then
+    [[ ! $(date --date="${1}") ]] && return
+    local y=$(date +%Y --date="${1}") m=$(date +%m --date="${1}")
+  else
+    local y=$(date +%Y) m=$(date +%m)
+  fi
+
+  case "${m}" in
+    "01"|"03"|"05"|"07"|"08"|"10"|"12") echo 31 ;;
+    "02")
+      if (( y % 4 != 0 )); then # year is not divisible by 4 (it is a common year)
+        echo 28
+      elif (( y % 100 != 0 )); then # year is not divisible by 100 (it is a leap year)
+        echo 29
+      elif (( y % 400 != 0 )); then # year is not divisible by 400 (it is a common year)
+        echo 28
+      else # (it is a leap year)
+        echo 29
+      fi ;;
+    "04"|"06"|"09"|"11") echo 30 ;;
+  esac
+}
+
 # STRINGS =====================================================================
 
 function alphabetic_only {

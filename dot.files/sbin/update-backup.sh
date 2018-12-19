@@ -4,24 +4,24 @@
 # Backup all the things
 
 # Full path executables
-nicec=$(which nice)
-tarcm=$(which tar)
+NICEC=$(which nice)
+TARCM=$(which tar)
 
 # Distro - hardware details.
 source /etc/os-release
-mid=$(cat "/etc/machine-id")
+MID=$(cat "/etc/machine-id")
 
 # Dirs
-eldir="/mnt/el/Documents/bkps/linux"
+ELDIR="/mnt/el/Documents/bkps/linux"
 
 # Backup/Exclude
-incfl="/home/paperjam/.bkp.includes.txt"
-excfl="/home/paperjam/.bkp.excludes.txt"
+INCFL="/home/paperjam/.bkp.includes.txt"
+EXCFL="/home/paperjam/.bkp.excludes.txt"
 
 # Archive path/name/ext
-archv="${eldir}/$(date +%s).${mid}.${ID}.${HOSTNAME}.tar.gz"
+ARCHV="${ELDIR}/$(date +%s).$(date +%y%m%d).${MID}.${ID}.${HOSTNAME}.tar.gz"
 
-if [[ -d "${eldir}" && -r "${incfl}" && -r "${excfl}" ]]; then
+if [[ -d "${ELDIR}" && -r "${INCFL}" && -r "${EXCFL}" ]]; then
   printf "# BACKUP # ---------------------------------------------------------------------\n"
-  "${nicec}" -n 19 "${tarcm}" --exclude-from="${excfl}" -cvzf "${archv}" $(cat ${incfl})
+  "${NICEC}" -n 19 "${TARCM}" --exclude-from="${EXCFL}" -cvzf "${ARCHV}" $(cat ${INCFL})
 fi

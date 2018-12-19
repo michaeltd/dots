@@ -55,7 +55,8 @@ export GIT_PS1_SHOWSTASHSTATE=yes
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=yes
 
-export OPT="${HOME}/opt"
+export OPT="/opt"
+export HOPT="${HOME}/opt"
 export JAVA="/opt/java"
 export JAVA_HOME="${JAVA}"
 export ANT="${HOME}/opt/ant"
@@ -71,6 +72,7 @@ export PATH+=":./"
 export PATH+=":${HOME}/.local/bin"
 export PATH+=":node_modules/.bin"
 export PATH+=":${OPT}/bin"
+export PATH+=":${HOPT}/bin"
 export PATH+=":${HOME}/bin"
 export PATH+=":${JAVA_HOME}/bin"
 export PATH+=":${ANT}/bin"
