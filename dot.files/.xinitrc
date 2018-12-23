@@ -18,8 +18,8 @@ wms=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "starte16" "enlightenment
 source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
   WM="${wms[7]}"
-#elif [[ "${ID}" == "gentoo" ]]; then
-#  WM="${wms[0]}"
+elif [[ "${ID}" == "gentoo" ]]; then
+  WM="${wms[0]}"
 else
   # Availability check
   #
@@ -50,8 +50,9 @@ elif [[ "${WM}" =~ "${wms[8]}" ]];then
   WM=( "compiz.sh" )
 elif [[ "${WM}" =~ "${wms[9]}" ]];then
   # Just "emacs" could suffice if you don't mind a M-x:exwm-init on X boot.
-  emacs --daemon -f exwm-enable
-  WM=( emacsclient -c )
+  # emacs --daemon -f exwm-enable
+  emacs --daemon
+  WM=( "emacsclient" "-c" )
 elif [[ "${WM}" =~ "${wms[5]}" || "${WM}" =~ "${wms[6]}" ]];then
   # e17 svg support
   export E_COMP_ENGINE=sw

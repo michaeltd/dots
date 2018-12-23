@@ -38,12 +38,15 @@ dot.files/.ngrok2/*
 
 dot.files/.ssh/*
 
-dot.files/bin/exercism
-dot.files/bin/jcalc
-dot.files/bin/jCalc.jar
-dot.files/bin/TkRootMenu
-dot.files/bin/shell/*
-dot.files/bin/dirtycow/*
+dot.files/bin/*
+!dots/dot.files/bin/wallpaper-rotate.sh
+!dots/dot.files/bin/keepParamAlive.sh
+!dots/dot.files/bin/lol.sh
+!dots/dot.files/bin/pimp-my-gui.sh
+!dots/dot.files/bin/runcmd.sh
+!dots/dot.files/bin/screenshot.sh
+!dots/dot.files/bin/unix.sh
+!dots/dot.files/bin/wallpaper-rotate.sh
 
 dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker

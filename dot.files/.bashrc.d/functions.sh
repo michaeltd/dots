@@ -231,7 +231,7 @@ function lastdateofmonth {
   case "${m}" in
     "01"|"03"|"05"|"07"|"08"|"10"|"12") echo 31 ;;
     "02")
-      if   (( y % 4   != 0 )); then echo 28
+      if (( y % 4 != 0 )); then echo 28
       elif (( y % 100 != 0 )); then echo 29
       elif (( y % 400 != 0 )); then echo 28
       else echo 29
