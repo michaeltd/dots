@@ -39,7 +39,6 @@ dot.files/.ngrok2/*
 dot.files/.ssh/*
 
 dot.files/bin/*
-!dots/dot.files/bin/wallpaper-rotate.sh
 !dots/dot.files/bin/keepParamAlive.sh
 !dots/dot.files/bin/lol.sh
 !dots/dot.files/bin/pimp-my-gui.sh
