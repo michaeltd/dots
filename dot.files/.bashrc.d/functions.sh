@@ -128,6 +128,10 @@ function checkDirSizes {
   fi
 }
 
+function memsumapp {
+  ps -eo size,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' |cut -d "" -f2 | cut -d "-" -f1|grep ${1}
+}
+
 function printMemUsage {
   #Report Total Used and Available mem in human readable format
   total=$(cat /proc/meminfo |head -1 |awk '{print $2}')
