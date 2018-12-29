@@ -109,7 +109,7 @@ while read line; do
     #we print all processes if Ram used if not 0
     if [ $e != "0" ]; then
       #here we use function that make conversion
-      echo -en "`convert $a` \t $b \t `convert $c` \t $d \t `convert $e` \t $f"
+      echo -en "`convert $a`\t $b\t `convert $c`\t $d\t `convert $e`\t $f"
       echo ""
     fi
   done
