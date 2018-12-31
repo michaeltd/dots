@@ -87,7 +87,7 @@ alias propaideia='for a in {1..9}; do for b in $(seq 1 $a); do printf "%dx%d=%2d
 alias ttt='for a in {1..10}; do let tt="${a} * 10";for b in $(seq $a $a $tt);do printf "%4d" $b;done; printf "\n";done'
 
 # https://twitter.com/liamosaur/status/506975850596536320
-#alias fuck='sudo $(history -p \!\!)'
+# alias fuck='sudo $(history -p \!\!)'
 
 # GIT
 # alias gcl='git clone'
