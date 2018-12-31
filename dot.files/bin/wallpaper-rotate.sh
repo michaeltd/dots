@@ -108,7 +108,7 @@ else
 
     # set wallpaper, wait
     "${!BGSRS[$BGSR]}" "${WP}"
-    printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${BGSRS[$BGSR]}" "${WP}" >> "${WPLG}"
+    # printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${BGSRS[$BGSR]}" "${WP}" >> "${WPLG}"
     sleep "${WAIT}"
   }
 fi
