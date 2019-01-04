@@ -91,6 +91,7 @@ export PATH+=":${SCALA_HOME}/bin"
 
 #MANPATH
 export MANPATH+=":${HOME}/.local/share/man"
+export MANPATH+=":${HOME}/opt/share/man"
 
 # JAVA classpath
 export CLASSPATH+=":./"

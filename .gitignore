@@ -39,7 +39,6 @@ dot.files/.ngrok2/*
 dot.files/.ssh/*
 
 dot.files/bin/*
-!dots/dot.files/bin/hny.sh
 !dots/dot.files/bin/keepParamAlive.sh
 !dots/dot.files/bin/lol.sh
 !dots/dot.files/bin/memstat.sh

@@ -30,29 +30,30 @@ nice -n 9 wicd-gtk -t &
 # xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t
 # ps -A | egrep -i "gnome|kde|mate|cinnamon|lx|xfce|jwm"
 
-id="$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)"
-id="${id##* }"
-wm="$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t)"
-wm="${wm/*WM_NAME = }"
-wm="${wm/\"}"
-wm="${wm/\"*}"
+# id="$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)"
+# id="${id##* }"
+# wm="$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t)"
+# wm="${wm/*WM_NAME = }"
+# wm="${wm/\"}"
+# wm="${wm/\"*}"
 
-if [[ "${wm}" =~ "wmaker" || "${wm}" =~ "awesome" || "${wm}" =~ "Openbox" || "${wm}" =~ "jwm" || "${wm}" =~ "mwm" ]]; then
-  # echo "compton for transparency" >> ~/"${wm}".txt &
-  printf "\n"
-elif [[ "${wm}" =~ "compiz" || "${wm}" =~ "e16" || "${wm}" =~ "enlightenment" || "${wm}" =~ "xfce4" ]]; then
-  # echo "no need for compton here" >> ~/"${wm}".txt &
-  printf "\n"
-else
-  # echo dunnowhatyouwantfromme >> ~/"${wm}".txt &
-  printf "\n"
-fi
+# if [[ "${wm}" =~ "wmaker" || "${wm}" =~ "awesome" || "${wm}" =~ "Openbox" || "${wm}" =~ "jwm" || "${wm}" =~ "mwm" ]]; then
+#   # echo "compton for transparency" >> ~/"${wm}".txt &
+#   printf "\n"
+# elif [[ "${wm}" =~ "compiz" || "${wm}" =~ "e16" || "${wm}" =~ "enlightenment" || "${wm}" =~ "xfce4" ]]; then
+#   # echo "no need for compton here" >> ~/"${wm}".txt &
+#   printf "\n"
+# else
+#   # echo dunnowhatyouwantfromme >> ~/"${wm}".txt &
+#   printf "\n"
+# fi
 
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
   custom_run 9 terminology
-  custom_run 9 conky -qdc ~/.conky/cronoconky/cronograph_blk/cronorc
+  # nice -n 9 conky -c ~/.conky/cronoconky/cronograph_blk/cronorc &> ~/conky.log
+  ${HOME}/.conky/cronoconky/cronograph_blk/crono.sh start &
 elif [[ "${ID}" == "devuan" ]]; then
   custom_run 9 xfce4-terminal --disable-server
   custom_run 9 conky -qd

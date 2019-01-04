@@ -21,6 +21,7 @@ else
 fi
 
 alias du='du -h'
+alias duthis='du -h --max-depth=1 | sort -hr|head'
 alias df='df -h'
 
 # Package Search, Install, Remove

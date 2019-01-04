@@ -19,7 +19,8 @@ source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
   WM="${wms[7]}"
 elif [[ "${ID}" == "gentoo" ]]; then
-  WM="${wms[0]}"
+  # WM="${wms[0]}"
+  WM="${wms[8]}"
 else
   # Availability check
   #
