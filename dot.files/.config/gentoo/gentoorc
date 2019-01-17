@@ -334,22 +334,6 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"Unnamed_3"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"ristretto {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
    <name>"uncompress_gzip"</name>
    <flags>0</flags>
    <CmdRows>
@@ -361,6 +345,22 @@
       <gflags>0</gflags>
       <bflags>0</bflags>
       <aflags>1</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"play_mod"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"xmp {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>3</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -457,22 +457,6 @@
      <type>"Built-In"</type>
      <def>"About"</def>
      <flags>0</flags>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"play_mod"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"xmp {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>3</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
     </CmdRow>
    </CmdRows>
   </CmdSeq>
@@ -637,15 +621,15 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_rpm"</name>
+   <name>"view_img"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"rpm -SOME_SMART_OPTION {fup}"</def>
+     <def>"ristretto {fup}"</def>
      <flags>0</flags>
      <CX_External>
-      <gflags>4</gflags>
+      <gflags>0</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
      </CX_External>
@@ -723,6 +707,22 @@
     <CmdRow>
      <type>"External"</type>
      <def>"zcat {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>4</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"view_rpm"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"rpm -SOME_SMART_OPTION {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>4</gflags>
@@ -872,17 +872,27 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_man"</name>
-   <flags>0</flags>
+   <name>"tar_extract"</name>
+   <flags>1</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"groff -man -Tascii -P-b -P-u {fup}"</def>
+     <def>"echo Extracting {fp} to {Pd}"</def>
      <flags>0</flags>
      <CX_External>
-      <gflags>4</gflags>
+      <gflags>0</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"tar xzf {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>16</gflags>
+      <bflags>8</bflags>
+      <aflags>2</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -915,27 +925,17 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"tar_extract"</name>
-   <flags>1</flags>
+   <name>"view_man"</name>
+   <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"echo Extracting {fp} to {Pd}"</def>
+     <def>"groff -man -Tascii -P-b -P-u {fup}"</def>
      <flags>0</flags>
      <CX_External>
-      <gflags>0</gflags>
+      <gflags>4</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"tar xzf {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>16</gflags>
-      <bflags>8</bflags>
-      <aflags>2</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -2973,10 +2973,10 @@
  <Windows>
   <Window>
    <id>u0</id>
-   <x>256</x>
-   <y>241</y>
-   <w>803</w>
-   <h>511</h>
+   <x>0</x>
+   <y>30</y>
+   <w>1429</w>
+   <h>838</h>
    <pos_use>TRUE</pos_use>
    <pos_update>TRUE</pos_update>
    <size_use>TRUE</size_use>

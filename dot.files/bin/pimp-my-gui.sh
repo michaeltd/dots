@@ -53,7 +53,26 @@ source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
   custom_run 9 terminology
   # nice -n 9 conky -c ~/.conky/cronoconky/cronograph_blk/cronorc &> ~/conky.log
-  ${HOME}/.conky/cronoconky/cronograph_blk/crono.sh start &
+  # ${HOME}/.conky/cronoconky/cronograph_blk/crono.sh start &
+  custom_run 9 conky -qdc ~/.conky/minimalism/conkyrc &> /dev/null
+
+  #!/bin/bash
+  # resizes the window to full height and 50% width and moves into upper right corner
+  #define the height in px of the top system-bar:
+  #TOPMARGIN=128
+  #sum in px of all horizontal borders:
+  #RIGHTMARGIN=128
+  # get width of screen and height of screen
+  #SCREEN_WIDTH=$(xwininfo -root | awk '$1=="Width:" {print $2}')
+  #SCREEN_HEIGHT=$(xwininfo -root | awk '$1=="Height:" {print $2}')
+  # new width and height
+  # W=$(( $SCREEN_WIDTH / 2 - $RIGHTMARGIN ))
+  # H=$(( $SCREEN_HEIGHT - 2 * $TOPMARGIN ))
+  #zenity --entry --ok-label=sure --width=$W --height=$H
+  # new width and height
+  #W=$(( $SCREEN_WIDTH - $RIGHTMARGIN * 2 ))
+  #H=$TOPMARGIN # $(( $SCREEN_HEIGHT - 2 * $TOPMARGIN ))
+  # terminology -g 10x7+${W}+${H} -e peaclock &
 elif [[ "${ID}" == "devuan" ]]; then
   custom_run 9 xfce4-terminal --disable-server
   custom_run 9 conky -qd

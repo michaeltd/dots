@@ -10,7 +10,7 @@ declare -a WPUSAGE="\n \
   Options may be: \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
-  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}delay${reset} ${yellow}86400${reset} - set interval (in seconds) \n \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}delay${reset} ${yellow}1440${reset} - set interval (in minutes) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}help${reset} - this message \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} without options will start rotating images.\n\n" \
   FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) FBSETBG=( "fbsetbg" ) \
@@ -91,13 +91,17 @@ if [[ -n "${1}" ]]; then
       sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}";;
     "delay") shift
       # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
-      if [[ "${1}" =~ "^[0-9]+$" ]]; then
-        sv="WAIT" rv="WAIT=${1}"
+      if [[ "${1}" =~ ^[0-9]+$ ]]; then
+        sv="WAIT" rv="WAIT=${1}m"
         sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
+      else
+        printf "${yellow}Warning:${reset} %s is not a valid time construct.\nProvide an integer as interval in minutes\n" "${1}"
       fi;;
     *) printf "${WPUSAGE}";;
   esac
 else
+  # Reset log
+  printf "" > "${WPLG}"
   for((;;)) {
     # limit a random number to upper array bounds as a RundomNumber
     let "RN = ${RANDOM} % ${#WPS[@]}"
@@ -108,7 +112,7 @@ else
 
     # set wallpaper, wait
     "${!BGSRS[$BGSR]}" "${WP}"
-    # printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${BGSRS[$BGSR]}" "${WP}" >> "${WPLG}"
+    printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${BGSRS[$BGSR]}" "${WP}" >> "${WPLG}"
     sleep "${WAIT}"
   }
 fi

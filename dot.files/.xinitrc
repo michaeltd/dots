@@ -52,7 +52,7 @@ elif [[ "${WM}" =~ "${wms[8]}" ]];then
 elif [[ "${WM}" =~ "${wms[9]}" ]];then
   # Just "emacs" could suffice if you don't mind a M-x:exwm-init on X boot.
   # emacs --daemon -f exwm-enable
-  emacs --daemon
+  emacs --daemon # -f exwm-enable
   WM=( "emacsclient" "-c" )
 elif [[ "${WM}" =~ "${wms[5]}" || "${WM}" =~ "${wms[6]}" ]];then
   # e17 svg support
