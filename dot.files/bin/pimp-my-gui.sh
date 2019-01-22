@@ -54,7 +54,8 @@ if [[ "${ID}" == "gentoo" ]]; then
   custom_run 9 terminology
   # nice -n 9 conky -c ~/.conky/cronoconky/cronograph_blk/cronorc &> ~/conky.log
   # ${HOME}/.conky/cronoconky/cronograph_blk/crono.sh start &
-  custom_run 9 conky -qdc ~/.conky/minimalism/conkyrc &> /dev/null
+  # custom_run 9 conky -qdc ~/.conky/minimalism/conkyrc &> /dev/null
+  custom_run 9 conky -qdc ~/.conky/LSD_4/.conkyrc
 
   #!/bin/bash
   # resizes the window to full height and 50% width and moves into upper right corner

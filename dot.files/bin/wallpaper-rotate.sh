@@ -47,7 +47,7 @@ fi
 
 # If there's no readable settings file, write it
 if [[ ! -r "${WPRC}" ]]; then
-  printf "WAIT=\"60s\"\nDIRS=( \"${HOME}/Pictures\" )\n" > "${WPRC}"
+  printf "WAIT=\"3m\"\nDIRS=( \"${HOME}/Pictures\" )\n" > "${WPRC}"
 fi
 
 # and read it
