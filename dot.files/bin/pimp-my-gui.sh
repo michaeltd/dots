@@ -83,7 +83,7 @@ else
 fi
 
 # Start a Menu
-nice -n 9 ${HOME}/bin/TkRootMenu &
+nice -n 9 ${HOME}/bin/tkrm.sh &
 
 # Add some wallpaper variety for your desktop
 ${HOME}/bin/wallpaper-rotate.sh &

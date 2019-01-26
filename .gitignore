@@ -17,6 +17,7 @@ dot.files/.config/*
 !dot.files/.config/awesome
 !dot.files/.config/compiz
 !dot.files/.config/gentoo/gentoorc
+!dot.files/.config/i3/config
 !dot.files/.config/mpd/mpd.conf
 !dot.files/.config/ncmpcpp/config
 !dot.files/.config/openbox
