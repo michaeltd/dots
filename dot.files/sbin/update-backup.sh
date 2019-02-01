@@ -23,5 +23,5 @@ ARCHV="${ELDIR}/$(date +%s).$(date +%y%m%d).${MID}.${ID}.${HOSTNAME}.tar.gz"
 
 if [[ -d "${ELDIR}" && -r "${INCFL}" && -r "${EXCFL}" ]]; then
   printf "# BACKUP # ---------------------------------------------------------------------\n"
-  "${NICEC}" -n 19 "${TARCM}" --exclude-from="${EXCFL}" -cvzf "${ARCHV}" $(cat ${INCFL})
+  "${NICEC}" -n 19 "${TARCM}" --exclude-from="${EXCFL}" -czf "${ARCHV}" $(cat ${INCFL})
 fi

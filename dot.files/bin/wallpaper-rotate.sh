@@ -19,7 +19,7 @@ declare -a WPUSAGE="\n \
   BGSR \
   WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" \
   WPLG="${HOME}/.$(basename ${BASH_SOURCE[0]}).log" \
-  WAIT="60s" \
+  WAIT="2m" \
   DIRS=( "${HOME}/Pictures" ) \
   LS=$(which ls 2> /dev/null) \
   WPS=()
@@ -47,7 +47,7 @@ fi
 
 # If there's no readable settings file, write it
 if [[ ! -r "${WPRC}" ]]; then
-  printf "WAIT=\"3m\"\nDIRS=( \"${HOME}/Pictures\" )\n" > "${WPRC}"
+  printf "WAIT=${WAIT}\nDIRS=( ${DIRS[@]} )\n" > "${WPRC}"
 fi
 
 # and read it

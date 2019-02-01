@@ -55,7 +55,10 @@ if [[ "${ID}" == "gentoo" ]]; then
   # nice -n 9 conky -c ~/.conky/cronoconky/cronograph_blk/cronorc &> ~/conky.log
   # ${HOME}/.conky/cronoconky/cronograph_blk/crono.sh start &
   # custom_run 9 conky -qdc ~/.conky/minimalism/conkyrc &> /dev/null
-  custom_run 9 conky -qdc ~/.conky/LSD_4/.conkyrc
+  # custom_run 9 conky -qdc ~/.conky/LSD_4/.conkyrc
+  # custom_run 9 conky -qdc ~/.conky/min_clock/conkyrc &> /dev/null
+  # custom_run 9 conky -qdc ~/.conky/qlocktwo/qlocktwo &> /dev/null
+  sleep 1m && custom_run 9 conky -qdc ~/.conky/FreeClox/config/.conkyrc &> /dev/null &
 
   #!/bin/bash
   # resizes the window to full height and 50% width and moves into upper right corner
