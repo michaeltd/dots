@@ -24,8 +24,8 @@ for x in "${!pms[@]}"; do
   fi
 done
 
-if (( "${pmidx}" == "${notfound}", "${EUID}" != 0 )); then
-  printf "${red}Error:${reset} ${bold}Package manager not found, or non root privilages.${reset}\n For this to work you need ${bold}root${reset} account privilages and a \n ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline} or ${underline}${green}%s${reset}${end_underline} based distro.\n Quithing.\n" "${!pms[0]:0:1}" "${!pms[1]:0:1}" "${!pms[2]:0:1}" "${!pms[3]:0:1}" "${!pms[4]:0:1}"
+if (( pmidx == notfound || EUID != 0 )); then
+  printf "${red}Error:${reset} ${bold}Package manager not found, or non root privilages.${reset}\n For this to work you need ${underline}${green}root${reset}${end_underline} account privilages and a \n ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline} or ${underline}${green}%s${reset}${end_underline} based distro.\n Quithing.\n" "${!pms[0]:0:1}" "${!pms[1]:0:1}" "${!pms[2]:0:1}" "${!pms[3]:0:1}" "${!pms[4]:0:1}"
   exit 1
 else
   printf "# UPDATE-UPGRADE # -------------------------------------------------------------\n"
