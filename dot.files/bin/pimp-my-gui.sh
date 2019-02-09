@@ -52,7 +52,7 @@ nice -n 9 wicd-gtk -t &
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
   custom_run 9 terminology
-  custom_run 9 gkrellm
+  # custom_run 9 gkrellm
   # nice -n 9 conky -c ~/.conky/cronoconky/cronograph_blk/cronorc &> ~/conky.log
   # ${HOME}/.conky/cronoconky/cronograph_blk/crono.sh start &
   # custom_run 9 conky -qdc ~/.conky/minimalism/conkyrc &> /dev/null
