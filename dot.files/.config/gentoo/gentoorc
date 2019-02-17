@@ -1471,16 +1471,16 @@
      <color>C8080,0000,3333</color>
     </Property>
     <Property>
+     <name>"View"</name>
+     <action>"view_image"</action>
+    </Property>
+    <Property>
      <name>"uIcon"</name>
      <icon>"Image.xpm"</icon>
     </Property>
     <Property>
      <name>"Edit"</name>
      <action>"edit_image"</action>
-    </Property>
-    <Property>
-     <name>"View"</name>
-     <action>"view_image"</action>
     </Property>
    </Properties>
   </Style>
@@ -1676,20 +1676,20 @@
    <expand>TRUE</expand>
    <Properties>
     <Property>
-     <name>"uIcon"</name>
-     <icon>"txt.xpm"</icon>
+     <name>"View"</name>
+     <action>"ViewText encoding=ISO-8859-1"</action>
     </Property>
     <Property>
      <name>"uFG"</name>
      <color>C0000,6666,3333</color>
     </Property>
     <Property>
-     <name>"Edit"</name>
-     <action>"edit_text"</action>
+     <name>"uIcon"</name>
+     <icon>"txt.xpm"</icon>
     </Property>
     <Property>
-     <name>"View"</name>
-     <action>"ViewText encoding=ISO-8859-1"</action>
+     <name>"Edit"</name>
+     <action>"edit_text"</action>
     </Property>
    </Properties>
   </Style>
@@ -2973,8 +2973,8 @@
  <Windows>
   <Window>
    <id>u0</id>
-   <x>34</x>
-   <y>355</y>
+   <x>517</x>
+   <y>312</y>
    <w>859</w>
    <h>516</h>
    <pos_use>TRUE</pos_use>
