@@ -11,6 +11,7 @@ declare -a WPUSAGE="\n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}delay${reset} ${yellow}1440${reset} - set interval (in minutes) \n \
+  ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}replay${reset} [${yellow}3${reset}] - display previous image # \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}help${reset} - this message \n \
   ${blue}$(basename ${BASH_SOURCE[0]})${reset} without options will start rotating images.\n\n" \
   FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) FBSETBG=( "fbsetbg" ) \
@@ -97,6 +98,8 @@ if [[ -n "${1}" ]]; then
       else
         printf "${yellow}Warning:${reset} %s is not a valid time construct.\nProvide an integer as interval in minutes\n" "${1}"
       fi;;
+    "replay") shift
+      tail -n ${1:-1} "${WPLG}" |head -n 1|awk '{print $3}';;
     *) printf "${WPUSAGE}";;
   esac
 else
