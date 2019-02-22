@@ -13,10 +13,6 @@
   * [.bashrc.d](dot.files/.bashrc.d)
   <br/>Is a interactive shell initialization routine and it is customization of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) with a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
-  * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
-  <br/>Distro neutral upgrade script.
-
-
 * Some WM's (in no particular order)
 
   * [wmaker](dot.files/GNUstep/)
