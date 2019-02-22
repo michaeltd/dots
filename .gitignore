@@ -47,7 +47,6 @@ dot.files/bin/*
 !dots/dot.files/bin/runcmd.sh
 !dots/dot.files/bin/screenshot.sh
 !dots/dot.files/bin/unix.sh
-!dots/dot.files/bin/wallpaper-rotate.sh
 
 dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker

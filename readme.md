@@ -13,13 +13,6 @@
   * [.bashrc.d](dot.files/.bashrc.d)
   <br/>Is a interactive shell initialization routine and it is customization of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) with a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
-  * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
-  <br/>Script for rolling random images as wallpapers.
-  <br/>I get my wallpapers from: [r/EarthPorn](https://www.reddit.com/r/EarthPorn/), [r/MinimalWallpaper](https://www.reddit.com/r/MinimalWallpaper), [r/SpacePorn](https://www.reddit.com/r/SpacePorn), [r/unixporn](https://www.reddit.com/r/unixporn), [r/wallpapers](https://www.reddit.com/r/wallpapers)
-
-
-  <p align="center"><a href="dot.files/bin/wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
-
   * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
   <br/>Distro neutral upgrade script.
 
