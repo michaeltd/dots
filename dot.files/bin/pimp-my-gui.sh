@@ -20,10 +20,10 @@ function custom_run {
 custom_run 9 xscreensaver -no-splash
 
 # A calendar app
-custom_run 9 orage
+# custom_run 9 orage
 
 # Networking Python gui
-nice -n 9 wicd-gtk -t &
+# nice -n 9 wicd-gtk -t &
 
 # Per WM customizations
 # WM=$(which wmaker||which openbox-session||which jwm||which mwm||which compiz.sh||which starte16||which enlightenment_start||which xfce4-session||which kodi-standalone)
@@ -51,13 +51,15 @@ nice -n 9 wicd-gtk -t &
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-  custom_run 9 terminology
+  # custom_run 9 terminology
   # custom_run 9 gkrellm
   # nice -n 9 conky -c ~/.conky/cronoconky/cronograph_blk/cronorc &> ~/conky.log
   # ${HOME}/.conky/cronoconky/cronograph_blk/crono.sh start &
   # custom_run 9 conky -qdc ~/.conky/minimalism/conkyrc &> /dev/null
-  # custom_run 9 conky -qdc ~/.conky/LSD_4/.conkyrc
-  sleep 1m && custom_run 9 conky -qdc ~/.conky/min_clock/conkyrc &> /dev/null &
+  custom_run 9 conky -qdc ~/.conky/LSD_4/.conkyrc
+
+  # sleep 1m && custom_run 9 conky -qdc ~/.conky/min_clock/conkyrc &> /dev/null &
+
   # custom_run 9 conky -qdc ~/.conky/qlocktwo/qlocktwo &> /dev/null
   # sleep 1m && custom_run 9 conky -qdc ~/.conky/FreeClox/config/.conkyrc &> /dev/null &
 
@@ -78,6 +80,7 @@ if [[ "${ID}" == "gentoo" ]]; then
   #W=$(( $SCREEN_WIDTH - $RIGHTMARGIN * 2 ))
   #H=$TOPMARGIN # $(( $SCREEN_HEIGHT - 2 * $TOPMARGIN ))
   # terminology -g 10x7+${W}+${H} -e peaclock &
+  echo ""
 elif [[ "${ID}" == "devuan" ]]; then
   custom_run 9 xfce4-terminal --disable-server
   custom_run 9 conky -qd
@@ -87,7 +90,7 @@ else
 fi
 
 # Start a Menu
-nice -n 9 ${HOME}/bin/tkrm.sh &
+# nice -n 9 ${HOME}/bin/tkrm.sh &
 
 # Add some wallpaper variety for your desktop
 ${HOME}/bin/wallpaper-rotate.sh &
