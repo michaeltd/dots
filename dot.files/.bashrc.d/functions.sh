@@ -149,8 +149,8 @@ function services {
   if [[ -z "${1}" ]]; then
     printf "%s requires some parameters.\nUsage: %s start|stop|restart all|service/es...\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}"
     return 1
-  elif [[ ("${1}" == "start" || "${1}" == "stop" || "${1}" == "restart") && ("${2}" == "all") ]]; then
-    declare -a srvcs=( "postgresql-11" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" "dictd" "netdata" "webmin" "docker" )
+  elif [[ ("${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status") && ("${2}" == "all") ]]; then
+    declare -a srvcs=( "postgresql-11" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" "dictd" "netdata" "webmin" )
   else
     declare -a srvcs=( "${@}" )
     unset srvcs[0]
