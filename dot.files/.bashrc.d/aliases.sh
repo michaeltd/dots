@@ -1,4 +1,4 @@
-# ~/.bashrc.d/aliases
+# ~/.bashrc.d/aliases.sh
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
 

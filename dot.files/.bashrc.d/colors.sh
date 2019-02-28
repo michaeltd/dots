@@ -1,4 +1,5 @@
-# ~/.bashrc.d/colors
+# ~/.bashrc.d/colors.sh
+#
 #
 
 # Font attributes

@@ -1,5 +1,7 @@
 # ~/.bashrc.d/misc
 #
+#
+
 # Add to history instead of overriding it
 shopt -s histappend
 
