@@ -1,6 +1,6 @@
 # ~/.bashrc.d/functions.sh
 #
-#
+# various functions
 
 # SCRAPPAD ====================================================================
 
@@ -21,10 +21,11 @@ function countdown {
 # UTILS =======================================================================
 
 function printappsinpath {
-  #!/bin/bash
-  # The directories in $PATH are separated by ":", so we split by it to get individual directories
+  # The directories in $PATH are separated by ":",
+  # so we split by it to get individual directories
   for pdir in $(echo "$PATH" | tr ":" "\n"); do
-    # We `find` all files in the directory which are executable and print the filename
+    # We `find` all files in the directory
+    # which are executable and print the filename
     find "$pdir" -maxdepth 1 -executable -type f -printf "%f "
   done
   printf "\n"
