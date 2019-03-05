@@ -21,6 +21,7 @@ function countdown {
 # UTILS =======================================================================
 
 function printappsinpath {
+  # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
   # The directories in $PATH are separated by ":",
   # so we split by it to get individual directories
   for pdir in $(echo "$PATH" | tr ":" "\n"); do

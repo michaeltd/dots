@@ -3,7 +3,7 @@
 set -e
 
 # Load explicitly for non interactive shells
-source /home/paperjam/.bashrc.d/functions.sh
+source /home/paperjam/.bashrc.d/time.sh
 
 cd "/mnt/el/Documents/bkps/linux"
 
