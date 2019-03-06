@@ -33,7 +33,7 @@ else
     fi
   done
 
-  # Arguments check
+  # Arguments check. If startx has an argument (eg: xfce4), set it up here
   for a in "${@}"; do
     for (( x=0; x<"${#wms[@]}"; x++ )); do
       if [[ "${a}" =~ "${wms[$x]}" ]]; then

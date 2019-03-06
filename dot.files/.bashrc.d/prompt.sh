@@ -1,156 +1,18 @@
 # ~/.bashrc.d/prompt.sh
 #
-# shellcheck shell=bash
+# https://gitlab.com/jallbrit/dotfiles/
+# depending on privileges and terminal, use a colored prompt
 
-# Customize bash prompt
-# lolcat reference: http://apple.stackexchange.com/a/266112/216733
-# If dynamic can use literal control characters. Otherwise,
-# must use PS1 escapes or else line wrap issue.
+if (( EUID != 0 )); then
+    case "$TERM" in
+        xterm-color|*-256color|rxvt-unicode)
 
-[[ "${EUID}" == "0" ]] && break
+	          # fancy, two-liner with bars
+	          #PS1='\e[0;35m┌────[\[\033[1;32m\]\u@\h\e[0;35m]──────────────────────────[\t\e[0;35m]────┐ \n└───>[\w\e[0;36m] \$ \[\033[00m\]'
 
-PROMPT_COMMAND="__prompt_command${PROMPT_COMMAND:+"; $PROMPT_COMMAND"}"
-PS1_COLORIZE_COMMAND='__ps1_lolcat'
-# shellcheck disable=SC2034
-PS1_DEBUG_COMMAND='__ps1_debug'
-
-PS1_DEBUG='false'
-
-__prompt_command() {
-  # Save last exit code
-  PS1_exit=$?
-
-  if [[ "$PS1_DEBUG" = 'true' ]]; then
-    if [[ "$PS1" = "$PS1_DEBUG_DISABLED" ]]; then
-      PS1=$PS1_DEBUG_ENABLED
-    fi
-  else
-    if [[ "$PS1" = "$PS1_DEBUG_ENABLED" ]]; then
-      PS1=$PS1_DEBUG_DISABLED
-    fi
-  fi
-}
-
-ps1_set_debug_mode() {
-  if [[ "$PS1_DEBUG" = 'true' ]]; then
-    PS1=$PS1_DEBUG_ENABLED
-  else
-    PS1=$PS1_DEBUG_DISABLED
-  fi
-}
-
-TERM_DEFAULT=$(tput sgr0)
-TERM_RED=$(tput setaf 1)
-TERM_GREEN=$(tput setaf 2)
-TERM_BLUE=$(tput setaf 4)
-
-ESC=$'\033'
-SOH=$'\001'
-STX=$'\002'
-
-PS1_DEFAULT_LITERAL=$SOH$TERM_DEFAULT$STX
-PS1_RED_LITERAL=$SOH$TERM_RED$STX
-PS1_GREEN_LITERAL=$SOH$TERM_GREEN$STX
-PS1_BLUE_LITERAL=$SOH$TERM_BLUE$STX
-
-PS1_DEFAULT_ESCAPED='\['$TERM_DEFAULT'\]'
-PS1_RED_ESCAPED='\['$TERM_RED'\]'
-PS1_GREEN_ESCAPED='\['$TERM_GREEN'\]'
-
-# Caveat:
-# to have a literal '\' or '"' work in both $PS1_DEBUG_DISABLED and
-# $PS1_DEBUG_ENABLED, '\' must be represented with '\\\\' and
-# '"' must be represented with '\\"' or '\"' to have the proper amount of
-# escaping in both modes. PS1 seems to have an initial interpret phase where
-# it strips off one level of backslashes, then an echo phase where it strips
-# off the second level so '\\\\' =interpret> '\\' =echo> '\'
-# '\\"' =interpret> '\"' =echo> '"'
-# The following is a bit trickier. Normally, echo would treat the double quote
-# as starting a string. PS1 seems to treat it as a literal when echoing. As
-# a result, '\\"' is preferred over '\"' as it is easier to understand what is
-# happening.
-# '\"' =interpret> 'literal(")' =echo> '"'
-# In $PS1_DEBUG_ENABLED, the interpret phase is still run by PS1. The echo
-# phase is emulated by wrapping $PS1 in double quotes: ...<<<"'PS1'"...
-unset PS1
-PS1_COLORLESS=$(sed 's/[[:space:]]*$//' <<<"${PS1:-\h:\W \u\\$}")
-PS1_SPACING=' '
-PS1=''
-
-PS1_HISTORY_NUMBER='\!)'
-PS1+='$(eval "$PS1_COLORIZE_COMMAND" <<<"'$PS1_HISTORY_NUMBER'")'
-PS1+=$PS1_SPACING
-
-# Rule is to use PS1_{COLOR}_ESCAPED if the escape sequence appears in PS1, but
-# use PS1_{COLOR}_LITERAL if it doesn't e.g. it's inside a function.
-PS1+='['
-PS1+='$('
-PS1+='if ((PS1_exit == 0)); then '
-PS1+="echo '$PS1_GREEN_ESCAPED'; "
-PS1+='else '
-PS1+="echo '$PS1_RED_ESCAPED'; fi"
-PS1+=')'
-PS1+='$PS1_exit'
-PS1+=$PS1_DEFAULT_ESCAPED
-PS1+=']'
-PS1+=$PS1_SPACING
-
-PS1+='$(eval "$PS1_COLORIZE_COMMAND" <<<"'$PS1_COLORLESS'")'
-PS1+=$PS1_SPACING
-
-PS1_DEBUG_DISABLED=$PS1
-# wrap PS1 for debugging
-# shellcheck disable=SC2016
-PS1_DEBUG_ENABLED='$(eval "$PS1_DEBUG_COMMAND" <<<"'$PS1'")'
-
-__ps1_remove_newline() {
-  tr -d '\n'
-}
-__ps1_color_wrap_non_printing() {
-  local REGEX=$ESC'\[[[:digit:];]*m'
-  local REPLACE=$SOH'&'$STX
-  sed "s/$REGEX/$REPLACE/g"
-}
-__ps1_lolcat_ruby() {
-  #rbenv exec lolcat -f -F 6 -p 25 | __ps1_color_wrap_non_printing
-  lolcat -f -F 6 -p 25 | __ps1_color_wrap_non_printing
-}
-__ps1_lolcat_python() {
-  pyenv exec lolcat -f -F 6 -p 25 | __ps1_remove_newline \
-    | __ps1_color_wrap_non_printing
-}
-__ps1_lolcat() {
-  lolcat-c -f -h 0.8 | __ps1_remove_newline | __ps1_color_wrap_non_printing
-}
-
-# long colored prompt text that go over a line have a line wrap issue.
-# Problem occurs with literal and PS1 escaped control characters. Tried
-# escaping each individual character with perl at
-# "$SCRIPTS_DIR"'/ps1_colorize_debug.pl' but still doesn't work.
-# can't colorize debug literal text with sed because it does not have the
-# following:
-#   non-greedy quantifiers to do \^B\(.*?\)\^A if running a second sed to
-#   consume \^B and \^A again.
-#   lookahead to do \(.*?)\(?=\^A) which wouldn't require a second sed because
-#   \^A is is looked for but not consumed.
-# can use perl regex if want to colorize debug literal text.
-# sed also doesn't have non capturing groups so groups are offset.
-__ps1_colorize_debug() {
-  local SOH_REGEX='(\^A)'
-  local COLOR_CODE_REGEX='((\^\[\(B)?\^\[\[[[:digit:];]*m)'
-  local STX_REGEX='(\^B)'
-  local REGEX=$SOH_REGEX$COLOR_CODE_REGEX$STX_REGEX
-
-  local SOH_REPLACE=$PS1_RED_LITERAL'\1'$PS1_DEFAULT_LITERAL
-  local COLOR_CODE_REPLACE=$PS1_BLUE_LITERAL'\2'$PS1_DEFAULT_LITERAL
-  local STX_REPLACE=$PS1_GREEN_LITERAL'\4'$PS1_DEFAULT_LITERAL
-  local REPLACE=$SOH_REPLACE$COLOR_CODE_REPLACE$STX_REPLACE
-
-  sed -E "s/$REGEX/$REPLACE/g"
-}
-__ps1_debug() {
-  cat -v | __ps1_colorize_debug
-}
-__ps1_debug_sed() {
-  sed -e 's/'$ESC'/[ESC]/g' -e 's/'$SOH'/[SOH]/g' -e 's/'$STX'/[STX]/g'
-}
+            # simple  PS1 using tput
+	          PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]";;
+        *)
+            PS1='[\u@\h:\w]\$ ';;
+    esac
+fi
