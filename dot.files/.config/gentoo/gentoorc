@@ -105,7 +105,7 @@
    </DPSort>
    <defpath>"@history[0]"</defpath>
    <path_above>FALSE</path_above>
-   <hide_allowed>TRUE</hide_allowed>
+   <hide_allowed>FALSE</hide_allowed>
    <scrollbar_always>TRUE</scrollbar_always>
    <huge_parent>FALSE</huge_parent>
    <set_font>TRUE</set_font>
@@ -225,7 +225,7 @@
   <DirPanePaning>
    <orientation>"horizontal"</orientation>
    <mode>"ratio"</mode>
-   <value>0.47248181700706482</value>
+   <value>0.49526813626289368</value>
   </DirPanePaning>
   <DirPaneHistory>
    <select>TRUE</select>
@@ -2973,10 +2973,10 @@
  <Windows>
   <Window>
    <id>u0</id>
-   <x>0</x>
-   <y>0</y>
-   <w>859</w>
-   <h>516</h>
+   <x>557</x>
+   <y>173</y>
+   <w>634</w>
+   <h>555</h>
    <pos_use>TRUE</pos_use>
    <pos_update>TRUE</pos_update>
    <size_use>TRUE</size_use>
@@ -2984,8 +2984,8 @@
   </Window>
   <Window>
    <id>u1</id>
-   <x>171</x>
-   <y>137</y>
+   <x>-28</x>
+   <y>45</y>
    <w>1049</w>
    <h>684</h>
    <pos_use>TRUE</pos_use>

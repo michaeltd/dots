@@ -9,7 +9,6 @@ PAGE="StevenBlack/hosts/master/hosts"
 URL="${PROTOCOL}${DOMAIN}/${PAGE}"
 HOSTS_FILE="/etc/hosts"
 RANDOM_TEMP_FILE="/tmp/${RANDOM}.$$"
-printf "# HOSTS # ----------------------------------------------------------------------\n"
 
 printf "curl ${URL} > ${RANDOM_TEMP_FILE}\n"
 curl "${URL}" > "${RANDOM_TEMP_FILE}"

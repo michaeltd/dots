@@ -14,10 +14,10 @@
 conky.configs/*
 
 dot.files/.config/*
+!dot.files/.config/autostart
 !dot.files/.config/awesome
 !dot.files/.config/compiz
 !dot.files/.config/gentoo/gentoorc
-!dot.files/.config/i3/config
 !dot.files/.config/mpd/mpd.conf
 !dot.files/.config/ncmpcpp/config
 !dot.files/.config/openbox
@@ -57,14 +57,14 @@ dot.files/GNUstep/*
 !dot.files/GNUstep/Library/WindowMaker/README
 !dot.files/GNUstep/Library/WindowMaker/README.themes
 
-dot.files/.bkp.includes.txt
-dot.files/.bkp.excludes.txt
+dot.files/.bkp.usr.inc.txt
+dot.files/.bkp.usr.exc.txt
+dot.files/.bkp.sys.inc.txt
+dot.files/.bkp.sys.exc.txt
 
 dot.files/.gitconfig
-
-dot.files/.ssh/*
 
 dot.files/.my.cnf.*
 
 private/*
-test.sh
+
