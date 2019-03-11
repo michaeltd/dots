@@ -55,6 +55,7 @@ alias reboot='sudo shutdown -r' # as above
 
 # Midnight Commander Safe Terminal
 alias mcst='mc -a' # In case of malconfigured terminals
+# alias mc='. /usr/share/mc/mc-wrapper.sh'
 
 # URxvt transparency
 alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'

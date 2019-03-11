@@ -15,8 +15,8 @@ ARCHV="${ELDIR}/$(date +%s).$(date +%y%m%d).usr.tar.gz"
 if [[ -d "${ELDIR}" ]]; then
     "${NICEC}" -n 19 \
     "${TARCM}" \
-    --exclude="*.git/*" \
-    --exclude="*.github/*" \
+    --exclude="*/.git/*" \
+    --exclude="*/.github/*" \
     --exclude="*/node_modules/*" \
     --exclude="*/Code/*" \
     --exclude="*/Atom/*" \
