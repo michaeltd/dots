@@ -17,11 +17,12 @@ printf "BYTES=(\$(wc -c ${RANDOM_TEMP_FILE}))\n"
 BYTES=($(wc -c "${RANDOM_TEMP_FILE}"))
 
 if (( ${BYTES[0]} == 0 )); then
-  printf "${RANDOM_TEMP_FILE} is empty (zero bytes in size).\nCheck your network status or/and status of this page:\n${URL}\n"
-  exit
+    printf "${RANDOM_TEMP_FILE} is empty (zero bytes in size).\nCheck your network status or/and status of this page:\n${URL}\n"
+    exit
 else
-  printf "cat ${RANDOM_TEMP_FILE} > ${HOSTS_FILE}\n"
-  cat "${RANDOM_TEMP_FILE}" > "${HOSTS_FILE}"
+    printf "${BASH_SOURCE[0]}\n"
+    printf "cat ${RANDOM_TEMP_FILE} > ${HOSTS_FILE}\n"
+    cat "${RANDOM_TEMP_FILE}" > "${HOSTS_FILE}"
 fi
 
 printf "rm ${RANDOM_TEMP_FILE}\n"

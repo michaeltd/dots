@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ~/bin/pimp-my-gui
+# ~/bin/pimp-my-gui.sh
 # Spice for my desktop
 
 # Run things in the background with custom niceness and cli switches in a mutex kind of way

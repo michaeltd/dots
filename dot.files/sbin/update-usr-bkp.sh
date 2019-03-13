@@ -13,6 +13,7 @@ ELDIR="/mnt/el/Documents/BKP/LINUX"
 ARCHV="${ELDIR}/$(date +%s).$(date +%y%m%d).usr.tar.gz"
 
 if [[ -d "${ELDIR}" ]]; then
+    printf "${BASH_SOURCE[0]}\n"
     "${NICEC}" -n 19 \
     "${TARCM}" \
     --exclude="*/.git/*" \

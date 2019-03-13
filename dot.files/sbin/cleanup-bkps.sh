@@ -7,6 +7,8 @@ source /home/paperjam/.bashrc.d/time.sh
 
 cd "/mnt/el/Documents/BKP/LINUX"
 
+printf "${BASH_SOURCE[0]}\n"
+
 # old system archives
 declare -a files=( $(ls -t *.sys.tar.gz.asc) ) # Sorting by mod time "-t", so no LC_LOCALE change required
 

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#
+# ~/bin/keepParamAlive.sh
 # Take an application (first parameter) and respawn it periodicaly (second parameter) if it crashes
 # EG: "keepParamAlive conky 15" Will check every 15sec if conky is running and launch it if not
 
