@@ -2,9 +2,9 @@
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
 
-if [ -x /usr/bin/dircolors ]; then
+if [ -x "$(which dircolors 2> /dev/null)" ]; then
     # Color support
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r ~/.bashrc.d/colors.sh && eval "$(dircolors -b ~/.bashrc.d/colors.sh)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto --group-directories-first'
     alias la='ls --all --human-readable --color=auto --group-directories-first'
     alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
@@ -54,8 +54,8 @@ alias halt='sudo shutdown -h' # Use with "now", "HH:MM" or any other valid (by s
 alias reboot='sudo shutdown -r' # as above
 
 # Midnight Commander Safe Terminal
-alias mcst='mc -a' # In case of malconfigured terminals
-# alias mc='. /usr/share/mc/mc-wrapper.sh'
+# alias mcst='mc -a' # In case of malconfigured terminals
+alias mc='. /usr/share/mc/mc-wrapper.sh'
 
 # URxvt transparency
 alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'

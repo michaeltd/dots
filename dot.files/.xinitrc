@@ -1,4 +1,5 @@
 # ~/.xinitrc
+#
 # Or: "The dedicated WM hoppers .xinitrc"
 
 # ~/.Xresources
@@ -10,7 +11,7 @@ xset b off
 # Mouse acceleration
 xset m 20/10 4
 
-# Pick a wm:
+# wms: WindowManagerS
 # -   -0--------------- -1------ -2--- -3------- -4--- -5-------- -6------------------- -7------------- -8------ -9----- -10--------------
 wms=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
 
@@ -19,7 +20,6 @@ source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
   WM="${wms[7]}"
 elif [[ "${ID}" == "gentoo" ]]; then
-  # WM="${wms[0]}"
   WM="${wms[8]}"
 else
   # Availability check
@@ -33,17 +33,17 @@ else
     fi
   done
 
-  # Arguments check. If startx has an argument (eg: xfce4), set it up here
-  for a in "${@}"; do
-    for (( x=0; x<"${#wms[@]}"; x++ )); do
-      if [[ "${a}" =~ "${wms[$x]}" ]]; then
+  # Arguments check. If startx has an argument (eg: xfce4), set it up.
+  for i in ${@}; do
+    for x in ${wms[@]}; do
+      if [[ "${i}" =~ "${wms[$x]}" ]]; then
         WM="${wms[$x]}"
       fi
     done
   done
 fi
 
-# Per wm customizations. If there is a wm specific permutation to be done, set it up here.
+# Per wm customizations. If there is a wm specific permutation to be done, here is the place.
 if [[ "${WM}" =~ "${wms[3]}" ]]; then
   # Awesome: /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
   WM=( /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua )
@@ -52,7 +52,7 @@ elif [[ "${WM}" =~ "${wms[8]}" ]];then
 elif [[ "${WM}" =~ "${wms[9]}" ]];then
   # Just "emacs" could suffice if you don't mind a M-x:exwm-init on X boot.
   # emacs --daemon -f exwm-enable
-  emacs --daemon # -f exwm-enable
+  emacs --daemon
   WM=( "emacsclient" "-c" )
 elif [[ "${WM}" =~ "${wms[5]}" || "${WM}" =~ "${wms[6]}" ]];then
   # e17 svg support

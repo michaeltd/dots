@@ -10,7 +10,13 @@
       (Lynx, EXEC, "xterm -e lynx"),
       (W3M, EXEC, "xterm -e w3m")
     ),
-    (Mathematics, (bc, EXEC, "xterm -e bc")),
+    (Email, (Mutt, EXEC, "xterm -e mutt")),
+    (
+      Mathematics,
+      (Xmaxima, EXEC, xmaxima),
+      (Maxima, EXEC, "xterm -e maxima"),
+      (bc, EXEC, "xterm -e bc")
+    ),
     (
       "File Managers",
       (Thunar, EXEC, thunar),
@@ -22,7 +28,8 @@
       (GIMP, EXEC, gimp),
       (XBitmap, EXEC, bitmap),
       (Dia, EXEC, dia),
-      ("ImageMagick Display", EXEC, display)
+      ("ImageMagick Display", EXEC, display),
+      ("Eye of GNOME", EXEC, eog)
     ),
     (Multimedia, (Audacious, EXEC, audacious), (VLC, EXEC, vlc)),
     (
@@ -36,6 +43,8 @@
     (
       Development,
       (gitk, EXEC, gitk),
+      (glade, EXEC, glade),
+      (kdevelop, EXEC, kdevelop),
       (designer, EXEC, designer),
       (idle, EXEC, idle),
       (tclsh, EXEC, "xterm -e tclsh"),
@@ -54,12 +63,22 @@
       ("OpenOffice.org Draw", EXEC, oodraw),
       ("OpenOffice.org Impress", EXEC, ooimpress),
       ("OpenOffice.org Math", EXEC, oomath),
-      (OpenOffice.org, EXEC, ooffice)
+      (OpenOffice.org, EXEC, ooffice),
+      (StarOffice, EXEC, soffice),
+      ("LibreOffice Writer", EXEC, lowriter),
+      ("LibreOffice Calc", EXEC, localc),
+      ("LibreOffice Draw", EXEC, lodraw),
+      ("LibreOffice Impress", EXEC, loimpress),
+      ("LibreOffice Math", EXEC, lomath),
+      ("LibreOffice Base", EXEC, lobase),
+      ("LibreOffice Web", EXEC, loweb),
+      (LibreOffice, EXEC, libreoffice)
     ),
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
-    (Viewers, (Evince, EXEC, evince)),
+    (Viewers, (Evince, EXEC, evince), (Xdvi, EXEC, xdvi)),
     (
       Utilities,
+      (XSnap, EXEC, xsnap),
       (Conky, EXEC, conky),
       ("GNU Privacy Assistant", EXEC, gpa),
       (Filezilla, EXEC, filezilla),

@@ -65,7 +65,8 @@ export GRADLE="${HOME}/opt/gradle"
 export GOPATH="${HOME}/go"
 export NODE="/opt/nodejs"
 export MONGODB="/opt/mongodb"
-export SCALA_HOME="/opt/scala"
+export SBT_HOME="${HOME}/opt/sbt"
+export SCALA_HOME="${HOME}/opt/scala"
 
 # Path with += op and each tool in it's own line for practical reasons
 export PATH+=":./"
@@ -86,6 +87,7 @@ fi
 
 export PATH+=":${NODE}/bin"
 export PATH+=":${MONGODB}/bin"
+export PATH+=":${SBT_HOME}/bin"
 export PATH+=":${SCALA_HOME}/bin"
 # export PATH+=":${HOME}/.racket/7.0.0.9/bin"
 

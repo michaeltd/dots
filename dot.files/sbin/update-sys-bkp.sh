@@ -15,12 +15,6 @@ ARCHV="${ELDIR}/$(date +%s).$(date +%y%m%d).sys.tar.gz"
 if [[ -d "${ELDIR}" ]]; then
     printf "${BASH_SOURCE[0]}\n"
     "${NICEC}" -n 19 \
-    "${TARCM}" -cz \
-        /boot/grub/themes/ \
-        /boot/grub/grub.cfg \
-        /etc/ \
-        /usr/share/xsessions/ \
-        /usr/share/WindowMaker/ \
-        /var/www/ | \
+    "${TARCM}" -cz /boot/grub/themes/ /boot/grub/grub.cfg /etc/ /usr/share/xsessions/ /usr/share/WindowMaker/ /var/www/ | \
     "${GPG2C}" --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output "${ARCHV}.asc" --encrypt
 fi

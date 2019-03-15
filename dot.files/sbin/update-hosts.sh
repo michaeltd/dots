@@ -10,6 +10,8 @@ URL="${PROTOCOL}${DOMAIN}/${PAGE}"
 HOSTS_FILE="/etc/hosts"
 RANDOM_TEMP_FILE="/tmp/${RANDOM}.$$"
 
+printf "${BASH_SOURCE[0]}\n"
+
 printf "curl ${URL} > ${RANDOM_TEMP_FILE}\n"
 curl "${URL}" > "${RANDOM_TEMP_FILE}"
 
@@ -24,6 +26,3 @@ else
     printf "cat ${RANDOM_TEMP_FILE} > ${HOSTS_FILE}\n"
     cat "${RANDOM_TEMP_FILE}" > "${HOSTS_FILE}"
 fi
-
-printf "rm ${RANDOM_TEMP_FILE}\n"
-rm ${RANDOM_TEMP_FILE}
