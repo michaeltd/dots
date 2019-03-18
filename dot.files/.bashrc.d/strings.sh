@@ -2,8 +2,6 @@
 #
 # string related functions
 
-# STRINGS =====================================================================
-
 function alphabetic_only {
   printf "%s\n" "${@//[![:alpha:]]}"
 }

@@ -10,7 +10,7 @@ URL="${PROTOCOL}${DOMAIN}/${PAGE}"
 HOSTS_FILE="/etc/hosts"
 RANDOM_TEMP_FILE="/tmp/${RANDOM}.$$"
 
-printf "${BASH_SOURCE[0]}\n"
+printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
 printf "curl ${URL} > ${RANDOM_TEMP_FILE}\n"
 curl "${URL}" > "${RANDOM_TEMP_FILE}"
@@ -19,10 +19,9 @@ printf "BYTES=(\$(wc -c ${RANDOM_TEMP_FILE}))\n"
 BYTES=($(wc -c "${RANDOM_TEMP_FILE}"))
 
 if (( ${BYTES[0]} == 0 )); then
-    printf "${RANDOM_TEMP_FILE} is empty (zero bytes in size).\nCheck your network status or/and status of this page:\n${URL}\n"
-    exit
+    printf "${RANDOM_TEMP_FILE} is empty (zero bytes in size).\nCheck your network status or/and status of this page:\n${URL}\n" >&2
+    exit 1
 else
-    printf "${BASH_SOURCE[0]}\n"
     printf "cat ${RANDOM_TEMP_FILE} > ${HOSTS_FILE}\n"
     cat "${RANDOM_TEMP_FILE}" > "${HOSTS_FILE}"
 fi

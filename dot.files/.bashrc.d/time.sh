@@ -2,8 +2,6 @@
 #
 # date, time related functions
 
-# DATE-TIME ===================================================================
-
 function unixepoch {
   if [[ -n "${1}" ]];then
     date +%s --date="${1}"

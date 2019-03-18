@@ -10,8 +10,9 @@ panel_items = L
 #Launchers
 #launcher_apps_dir = /usr/share/applications/
 launcher_item_app = /usr/share/applications/terminology.desktop
-launcher_item_app = /usr/share/applications/doublecmd.desktop
+#launcher_item_app = /usr/share/applications/doublecmd.desktop
 #launcher_item_app = /usr/share/applications/xfe.desktop
+launcher_item_app = /usr/share/applications/gentoo-gentoo.desktop
 launcher_item_app = ~/.local/share/applications/Firefox.desktop
 launcher_item_app = /usr/share/applications/hexchat.desktop
 launcher_item_app = /usr/share/applications/atom.desktop

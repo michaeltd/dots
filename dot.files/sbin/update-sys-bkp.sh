@@ -12,9 +12,12 @@ ELDIR="/mnt/el/Documents/BKP/LINUX"
 
 ARCHV="${ELDIR}/$(date +%s).$(date +%y%m%d).sys.tar.gz"
 
+printf "= $(basename ${BASH_SOURCE[0]}) =\n"
+
 if [[ -d "${ELDIR}" ]]; then
-    printf "${BASH_SOURCE[0]}\n"
     "${NICEC}" -n 19 \
     "${TARCM}" -cz /boot/grub/themes/ /boot/grub/grub.cfg /etc/ /usr/share/xsessions/ /usr/share/WindowMaker/ /var/www/ | \
     "${GPG2C}" --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output "${ARCHV}.asc" --encrypt
+else
+    printf "${ELDIR} not found" >&2
 fi

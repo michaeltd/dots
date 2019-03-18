@@ -225,7 +225,7 @@
   <DirPanePaning>
    <orientation>"horizontal"</orientation>
    <mode>"ratio"</mode>
-   <value>0.49526813626289368</value>
+   <value>0.49526798725128174</value>
   </DirPanePaning>
   <DirPaneHistory>
    <select>TRUE</select>
@@ -1471,16 +1471,16 @@
      <color>C8080,0000,3333</color>
     </Property>
     <Property>
-     <name>"View"</name>
-     <action>"view_image"</action>
-    </Property>
-    <Property>
      <name>"uIcon"</name>
      <icon>"Image.xpm"</icon>
     </Property>
     <Property>
      <name>"Edit"</name>
      <action>"edit_image"</action>
+    </Property>
+    <Property>
+     <name>"View"</name>
+     <action>"view_image"</action>
     </Property>
    </Properties>
   </Style>
@@ -1676,20 +1676,20 @@
    <expand>TRUE</expand>
    <Properties>
     <Property>
-     <name>"View"</name>
-     <action>"ViewText encoding=ISO-8859-1"</action>
+     <name>"uIcon"</name>
+     <icon>"txt.xpm"</icon>
     </Property>
     <Property>
      <name>"uFG"</name>
      <color>C0000,6666,3333</color>
     </Property>
     <Property>
-     <name>"uIcon"</name>
-     <icon>"txt.xpm"</icon>
-    </Property>
-    <Property>
      <name>"Edit"</name>
      <action>"edit_text"</action>
+    </Property>
+    <Property>
+     <name>"View"</name>
+     <action>"ViewText encoding=ISO-8859-1"</action>
     </Property>
    </Properties>
   </Style>
@@ -2805,13 +2805,13 @@
        <BFaces>
 	<BFace>
 	 <face>u0</face>
-	 <label>"XTerm"</label>
-	 <cmdseq>"new_shell"</cmdseq>
+	 <label>"URXvt"</label>
+	 <cmdseq>"urxvt"</cmdseq>
 	</BFace>
 	<BFace>
 	 <face>u1</face>
-	 <label>"URXvt"</label>
-	 <cmdseq>"urxvt"</cmdseq>
+	 <label>"XTerm"</label>
+	 <cmdseq>"new_shell"</cmdseq>
 	</BFace>
        </BFaces>
        <flags>u0</flags>
@@ -2973,10 +2973,10 @@
  <Windows>
   <Window>
    <id>u0</id>
-   <x>557</x>
-   <y>173</y>
-   <w>634</w>
-   <h>555</h>
+   <x>714</x>
+   <y>377</y>
+   <w>606</w>
+   <h>417</h>
    <pos_use>TRUE</pos_use>
    <pos_update>TRUE</pos_update>
    <size_use>TRUE</size_use>
@@ -2984,8 +2984,8 @@
   </Window>
   <Window>
    <id>u1</id>
-   <x>-28</x>
-   <y>45</y>
+   <x>195</x>
+   <y>116</y>
    <w>1049</w>
    <h>684</h>
    <pos_use>TRUE</pos_use>
