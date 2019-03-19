@@ -4,4 +4,4 @@
 */Code/*
 */Atom/*
 */libreoffice/*
-*/donotbackup/*
+*/scrap/*
