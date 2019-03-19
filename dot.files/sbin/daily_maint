@@ -1,0 +1,8 @@
+#!/bin/sh
+
+SBD="/home/paperjam/sbin/daily"
+if [ -d "${SBD}" ]; then
+  for SCPT in ${SBD}/*; do
+    "${SCPT}"
+  done
+fi

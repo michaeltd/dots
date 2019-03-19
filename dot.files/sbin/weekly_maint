@@ -1,0 +1,8 @@
+#!/bin/sh
+
+SBW="/home/paperjam/sbin/weekly"
+if [ -d "${SBW}" ]; then
+  for SCPT in ${SBW}/*; do
+    "${SCPT}"
+  done
+fi

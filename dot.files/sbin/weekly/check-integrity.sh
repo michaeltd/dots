@@ -5,8 +5,6 @@
 
 # qclog="/var/log/qcheck.${HOSTNAME}.${USER}.$(date +%y%m%d.%H%M%S).log"
 
-
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
-
 
 nice -n 15 qcheck # >> "${qclog}" 2>&1

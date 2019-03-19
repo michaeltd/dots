@@ -1,0 +1,8 @@
+#!/bin/sh
+
+SBM="/home/paperjam/sbin/monthly"
+if [ -d "${SBM}" ]; then
+  for SCPT in ${SBM}/*; do
+    "${SCPT}"
+  done
+fi
