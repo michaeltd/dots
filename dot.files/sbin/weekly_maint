@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# /etc/cron.weekly/weekly_maint
+# script to run weekly maintenance tasks
 
 SBW="/home/paperjam/sbin/weekly"
 if [ -d "${SBW}" ]; then

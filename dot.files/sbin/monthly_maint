@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# /etc/cron.monthly/monthly_maint
+# script to run monthly maintenance tasks
 
 SBM="/home/paperjam/sbin/monthly"
 if [ -d "${SBM}" ]; then
