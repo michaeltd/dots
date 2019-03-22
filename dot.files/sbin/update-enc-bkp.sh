@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ~/sbin/update-usr-bkp.sh
+# ~/sbin/update-enc-bkp.sh
 # Backup users
 
 # Full path executables

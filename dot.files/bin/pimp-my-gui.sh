@@ -56,9 +56,7 @@ fi
 # Networking Python gui
 # nice -n 9 wicd-gtk -t &
 
-# nice -n 9 tint2 & # A nice status bar (before gui as we'll need that tray)
-# nice -n 9 tint2 -c ~/.config/tint2/taskbar &
-nice -n 9 tint2 -c ~/.config/tint2/bottom.panel
+nice -n 9 tint2
 
 # Start a Menu
 # nice -n 9 ${HOME}/bin/tkrm.sh &

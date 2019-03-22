@@ -1,0 +1,1 @@
+/home/paperjam/sbin/check-integrity.sh

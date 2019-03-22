@@ -54,3 +54,6 @@ fi
 # if [[ -f "${bi}" ]]; then # Load file omb
 #   "${bi}"
 # fi
+export PATH+=":/home/paperjam/bin"
+export PATH+=":/home/paperjam/bin"
+export PATH+=":/home/paperjam/bin"

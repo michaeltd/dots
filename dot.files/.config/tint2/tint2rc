@@ -1,18 +1,17 @@
 #Panel
-# Horizontal
 panel_position = bottom center horizontal
-panel_size = 46% 46
-# Vertical
-#panel_position = left center vertical
-#panel_size = 75% 46
+panel_size = 45% 46
 panel_items = L
 
 #Launchers
 #launcher_apps_dir = /usr/share/applications/
 launcher_item_app = /usr/share/applications/terminology.desktop
-#launcher_item_app = ~/.local/share/applications/doublecmd.desktop
-launcher_item_app = /usr/share/applications/xfe.desktop
+#launcher_item_app = /usr/share/applications/doublecmd.desktop
+#launcher_item_app = /usr/share/applications/xfe.desktop
+#launcher_item_app = /usr/share/applications/gentoo-gentoo.desktop
+launcher_item_app = ~/.local/share/applications/mc.desktop
 launcher_item_app = ~/.local/share/applications/Firefox.desktop
+#launcher_item_app = ~/.local/share/applications/brave.desktop
 launcher_item_app = /usr/share/applications/hexchat.desktop
 launcher_item_app = /usr/share/applications/atom.desktop
 launcher_item_app = /usr/share/applications/code.desktop

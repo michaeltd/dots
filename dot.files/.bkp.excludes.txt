@@ -1,7 +1,9 @@
 */.git/*
 */.github/*
 */node_modules/*
-*/Code/*
 */Atom/*
+*/Code/*
+*/VSCodium/*
+*/sublime-text-3/*
 */libreoffice/*
 */scrap/*
