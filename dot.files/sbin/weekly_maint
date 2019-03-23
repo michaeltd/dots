@@ -3,9 +3,9 @@
 # /etc/cron.weekly/weekly_maint
 # script to run weekly maintenance tasks
 
-SBW="/home/paperjam/sbin/weekly"
-if [ -d "${SBW}" ]; then
-  for SCPT in ${SBW}/*; do
+WS="/home/paperjam/sbin/weekly"
+if [ -d "${WS}" ]; then
+  for SCPT in ${WS}/*; do
     "${SCPT}"
   done
 fi

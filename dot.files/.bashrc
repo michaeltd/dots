@@ -57,3 +57,5 @@ fi
 export PATH+=":/home/paperjam/bin"
 export PATH+=":/home/paperjam/bin"
 export PATH+=":/home/paperjam/bin"
+export PATH+=":/home/paperjam/bin"
+export PATH+=":/home/paperjam/bin"

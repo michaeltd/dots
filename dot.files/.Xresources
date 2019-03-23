@@ -3,8 +3,9 @@
 !*faceName: UbuntuMono
 !*font: UbuntuMono
 !Theme One
-!*background: rgb:00/00/00
-!*foreground: rgb:a8/a8/a8
+*background: rgb:00/00/00
+*foreground: rgb:a8/a8/a8
+
 *color0:     rgb:00/00/00
 *color1:     rgb:a8/00/00
 *color2:     rgb:00/a8/00

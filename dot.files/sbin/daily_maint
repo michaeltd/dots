@@ -3,9 +3,9 @@
 # /etc/cron.daily/daily_maint
 # script to run daily maintenance tasks
 
-SBD="/home/paperjam/sbin/daily"
-if [ -d "${SBD}" ]; then
-  for SCPT in ${SBD}/*; do
+DS="/home/paperjam/sbin/daily"
+if [ -d "${DS}" ]; then
+  for SCPT in ${DS}/*; do
     "${SCPT}"
   done
 fi

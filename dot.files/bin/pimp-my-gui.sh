@@ -56,7 +56,7 @@ fi
 # Networking Python gui
 # nice -n 9 wicd-gtk -t &
 
-nice -n 9 tint2
+nice -n 9 tint2 -c .config/tint2/panel
 
 # Start a Menu
 # nice -n 9 ${HOME}/bin/tkrm.sh &

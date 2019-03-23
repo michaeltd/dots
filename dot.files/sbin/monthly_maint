@@ -3,9 +3,9 @@
 # /etc/cron.monthly/monthly_maint
 # script to run monthly maintenance tasks
 
-SBM="/home/paperjam/sbin/monthly"
-if [ -d "${SBM}" ]; then
-  for SCPT in ${SBM}/*; do
+MS="/home/paperjam/sbin/monthly"
+if [ -d "${MS}" ]; then
+  for SCPT in ${MS}/*; do
     "${SCPT}"
   done
 fi
