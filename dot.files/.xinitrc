@@ -11,6 +11,9 @@ xset b off
 # Mouse acceleration
 xset m 20/10 4
 
+# Qt5
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 # wms: WindowManagerS
 # -   -0--------------- -1------ -2--- -3------- -4--- -5-------- -6------------------- -7------------- -8------ -9----- -10--------------
 wms=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )

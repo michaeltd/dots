@@ -35,7 +35,7 @@ custom_run 9 xfsettingsd --replace --no-daemon
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-  custom_run 9 conky -qd
+  custom_run 9 conky -qdc ~/.conky/shailen.conf
 elif [[ "${ID}" == "devuan" ]]; then
   custom_run 9 xfce4-terminal --disable-server
   custom_run 9 conky -qd
