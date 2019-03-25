@@ -1,6 +1,13 @@
-# ~/.bashrc.d/strings.sh
+# ~/.bashrc.d/string.sh
 #
 # string related functions
+
+split() {
+  # from pure-bash-bible
+  # Usage: split "string" "delimiter"
+  IFS=$'\n' read -d "" -ra arr <<< "${1//$2/$'\n'}"
+  printf '%s\n' "${arr[@]}"
+}
 
 function alphabetic_only {
   printf "%s\n" "${@//[![:alpha:]]}"

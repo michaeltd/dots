@@ -2,6 +2,11 @@
 #
 # date, time related functions
 
+function daydiff {
+  source /home/paperjam/.bashrc.d/math.sh
+  echo $(( ($(date +%s --date="${1}") - $(date +%s --date="${2}")) / (60 * 60 * 24) ))
+}
+
 function unixepoch {
   if [[ -n "${1}" ]];then
     date +%s --date="${1}"
