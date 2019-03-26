@@ -7,4 +7,4 @@
 
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
-(( EUID == 0 )) && nice -n 15 qcheck # >> "${qclog}" 2>&1
+(( EUID == 0 )) && qcheck --quiet --badonly| xargs qcheck

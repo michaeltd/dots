@@ -3,8 +3,8 @@
 # de-clutter backups
 
 # Load explicitly for non interactive shells
-source /home/paperjam/.bashrc.d/time.sh
-source /home/paperjam/.bashrc.d/string.sh
+source /home/paperjam/.bashrc.d/.stdl/time.sh
+source /home/paperjam/.bashrc.d/.stdl/string.sh
 
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
@@ -15,21 +15,20 @@ FLISTS=( "sys.tar.gz.asc" "usr.tar.gz.asc" "enc.tar.gz.asc" )
 if [[ -d "${BKPD}" ]]; then
   cd "${BKPD}"
   for (( x = 0; x < ${#FLISTS[@]}; x++ )); do
-    declare -a files=( $(ls -t *.${FLISTS[$x]}) ) # Sorting by mod time "-t", so no LC_LOCALE change required
-    for (( y = 0; y < ${#files[@]}; y++ )); do
+    declare -a FILES=( $(ls -t *.${FLISTS[$x]} 2> /dev/null) )
+    for (( y = 0; y < ${#FILES[@]}; y++ )); do
       if (( y > 6 )); then
-        fn="${files[$y]}"
-        for part in $(split $fn .);do
-          if epochtodatetime ${part}; then
-            dp="${part}"
+        FN="${FILES[$y]}"
+        for PART in $(split "${FN}" .);do
+          if epochtodatetime ${PART} &> /dev/null; then
+            DP="${PART}"
             break
           fi
         done
-        # dp="${fn:7:10}"
-        etdt="$(epochtodatetime ${dp})"
-        printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" "${red}${fn}${reset}" "${underline}${green}${etdt}${reset}${end_underline}"
-        printf "${bold}rm -v %s${reset}: " "${red}${fn}${reset}"
-        rm -v "${fn}"
+        ETDT="$(epochtodatetime ${DP})"
+        printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" "${red}${FN}${reset}" "${underline}${green}${ETDT}${reset}${end_underline}"
+        printf "${bold}rm -v %s${reset}: " "${red}${FN}${reset}"
+        rm -v "${FN}"
       fi
     done
   done

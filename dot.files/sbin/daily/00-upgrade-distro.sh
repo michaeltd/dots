@@ -1,1 +1,0 @@
-/home/paperjam/git/upgrade-distro/upgrade-distro.sh
