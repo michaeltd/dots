@@ -34,23 +34,3 @@ if [[ -d "${brcd}" ]]; then # Load files from ~/.bashrc.d
     source "${file}"
   done
 fi
-
-#omb="${HOME}/.bashrc.osh-template"
-#if [[ -f "${omb}" ]]; then # Load file omb
-#  source "${omb}"
-#fi
-
-#bi="${HOME}/.bash_profile.template.bash"
-#if [[ -f "${bi}" ]]; then # Load file omb
-#  source "${bi}"
-#fi
-
-# omb="${HOME}/.bashrc.oh-my-bash"
-# if [[ -f "${omb}" ]]; then # Load file omb
-#   source "${omb}"
-# fi
-
-# bi="${HOME}/.bashrc.bash-it"
-# if [[ -f "${bi}" ]]; then # Load file omb
-#   "${bi}"
-# fi

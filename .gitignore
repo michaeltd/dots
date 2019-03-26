@@ -39,6 +39,8 @@ dot.files/.ngrok2/*
 
 dot.files/.ssh/*
 
+dot.files/.putty/*
+
 dot.files/bin/*
 !dots/dot.files/bin/keepParamAlive.sh
 !dots/dot.files/bin/lol.sh
@@ -47,6 +49,15 @@ dot.files/bin/*
 !dots/dot.files/bin/runcmd.sh
 !dots/dot.files/bin/screenshot.sh
 !dots/dot.files/bin/unix.sh
+
+dot.files/sbin/*
+!dot.files/sbin/check-integrity.sh
+!dot.files/sbin/cleanup-bkps.sh
+!dot.files/sbin/compiz.sh
+!dot.files/sbin/sys-info.sh
+!dot.files/sbin/update-bkp.sh
+!dot.files/sbin/update-hosts.sh
+!dot.files/sbin/update-mirror.sh
 
 dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker
@@ -67,4 +78,3 @@ dot.files/.gitconfig
 dot.files/.my.cnf.*
 
 private/*
-
