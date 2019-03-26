@@ -14,9 +14,8 @@ BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="-1"
 if [[ -d "${BKPD}" ]]; then # Mount point check
     FILES=( $(ls -t ${BKPD}/*tar.gz* 2> /dev/null) )
     if [[ -n ${FILES[0]} ]]; then # Check empty list
-        for (( x = 0; x < ${#FILES[@]}; x++ )); do # File loop
-            FN=$(basename "${FILES[$x]}")
-            FNS+=( "${FN}" )
+        for (( x = 0; x < ${#FILES[@]}; x++ )); do # File loop to gather stats
+            FN=$(basename "${FILES[$x]}"); FNS+=( "${FN}" )
             for PART in $(split "${FN}" .); do # Name loop
                 if [[ "${PART}" =~ ^[0-9]+$ ]]; then # Numeric part check
                     if [[ "${PART}" =~ ^[0-9]{10}$ ]]; then # epoch check (10d)
@@ -30,13 +29,11 @@ if [[ -d "${BKPD}" ]]; then # Mount point check
             done
         done
 
-        MAXDT=$(max ${DPS[@]}) MINDT=$(min ${DPS[@]})
-        MAXDD=$(daydiff ${MAXDT} ${MINDT})
+        MAXDT=$(max ${DPS[@]}) MINDT=$(min ${DPS[@]}); MAXDD=$(daydiff ${MAXDT} ${MINDT})
 
         if (( MAXDD > BKPK )); then # BacK uP Keep threshold check
-            for (( y = 0; y < ${#FNS[@]}; y++ )); do # File NameS loop
-                FN=${FNS[$y]} DP=${DPS[$y]} EP=${EPS[$y]}
-                DD=$(daydiff ${MAXDT} ${DP})
+            for (( y = 0; y < ${#FNS[@]}; y++ )); do # File NameS loop to execute on stats
+                FN=${FNS[$y]} DP=${DPS[$y]} EP=${EPS[$y]}; DD=$(daydiff ${MAXDT} ${DP})
 
                 if (( DD > BKPK )); then
                     DT="$(date --date=${DP} +%Y/%m/%d)"
