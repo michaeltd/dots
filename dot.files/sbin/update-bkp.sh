@@ -24,11 +24,11 @@ ARCHV=("enc.tar.gz" "usr.tar.gz" "sys.tar.gz")
 printf "${SSIG}\n"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
-  for ((i = 0; i < ${#ARCHV[@]}; i++ )); do
-    EP="$(date +%s)" DT="$(date +%y%m%d)"; ENCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}.asc"
-    "${NICEC}" -n 19 "${TARCM}" -cz ${EXL[@]} ${!BKP[$i]} | \
-    "${GPG2C}" --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output "${ENCFL}" --encrypt
-  done
+    for ((i = 0; i < ${#ARCHV[@]}; i++ )); do
+        EP="$(date +%s)" DT="$(date +%y%m%d)"; ENCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}.asc"
+        "${NICEC}" -n 19 "${TARCM}" -cz ${EXL[@]} ${!BKP[$i]} | \
+        "${GPG2C}" --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output "${ENCFL}" --encrypt
+    done
 else
-  printf "${ELDIR} not found or root access requirements not met\n" >&2
+    printf "${ELDIR} not found or root access requirements not met\n" >&2
 fi
