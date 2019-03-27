@@ -11,21 +11,31 @@ printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
 BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="-1"
 
+# No root access
 # (( EUID != 0 )) && printf "privileged access requirements not met.\n" >&2 && exit 1
+# No backups directory
 [[ ! -d "${BKPD}" ]] && printf "${BKPD} is not a directory.\n" >&2 && exit 1
 
 FILES=( $(ls -t ${BKPD}/*tar.gz* 2> /dev/null) )
-for (( x = 0; x < ${#FILES[@]}; x++ )); do # File loop to gather stats
+
+# File loop to gather stats
+for (( x = 0; x < ${#FILES[@]}; x++ )); do
     FN=$(basename "${FILES[$x]}")
     FNS+=( "${FN}" )
-    for PART in $(split "${FN}" .); do # Name loop
-        if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then # 2 digits year date check
+    # Name loop to extract dates
+    for PART in $(split "${FN}" .); do
+        # 2 digits year date check
+        if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then
             DPS+=( "${PART}" )
         fi
     done
 done
+
+# MAX DaTe of backups found
 MAXDT=$(max ${DPS[@]})
-for (( y = 0; y < ${#FNS[@]}; y++ )); do # File NameS loop to execute on stats
+
+# File NameS loop to execute on stats
+for (( y = 0; y < ${#FNS[@]}; y++ )); do
     FN=${FNS[$y]} DP=${DPS[$y]}
     DD=$(daydiff ${MAXDT} ${DP})
     if (( DD > BKPK )); then
