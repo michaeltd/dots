@@ -14,36 +14,28 @@ BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="-1"
 if (( EUID == 0 )); then # check privileges
     if [[ -d "${BKPD}" ]]; then # Mount point check
         FILES=( $(ls -t ${BKPD}/*tar.gz* 2> /dev/null) )
-        if [[ -n ${FILES[0]} ]]; then # Check empty list
-            for (( x = 0; x < ${#FILES[@]}; x++ )); do # File loop to gather stats
-                FN=$(basename "${FILES[$x]}"); FNS+=( "${FN}" )
-                for PART in $(split "${FN}" .); do # Name loop
-                    if [[ "${PART}" =~ ^[0-9]+$ ]]; then # Numeric part check
-                        if [[ "${PART}" =~ ^[0-9]{10}$ ]]; then # epoch check (10d)
-                            EPS+=( "${PART}" )
-                        elif [[ "${PART}" =~ ^[0-9]{8}$ ]]; then # 4 digits year date check
-                            DPS+=( "${PART}" )
-                        elif [[ "${PART}" =~ ^[0-9]{6}$ ]]; then # 2 digits year date check
-                            DPS+=( "${PART}" )
-                        fi
-                    fi
-                done
+        for (( x = 0; x < ${#FILES[@]}; x++ )); do # File loop to gather stats
+            FN=$(basename "${FILES[$x]}")
+            FNS+=( "${FN}" )
+            for PART in $(split "${FN}" .); do # Name loop
+                if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then # 2 digits year date check
+                    DPS+=( "${PART}" )
+                fi
             done
-            MAXDT=$(max ${DPS[@]}) MINDT=$(min ${DPS[@]}); MAXDD=$(daydiff ${MAXDT} ${MINDT})
-            if (( MAXDD > BKPK )); then # BacK uP Keep threshold check
-                for (( y = 0; y < ${#FNS[@]}; y++ )); do # File NameS loop to execute on stats
-                    FN=${FNS[$y]} DP=${DPS[$y]} EP=${EPS[$y]}; DD=$(daydiff ${MAXDT} ${DP})
-                    if (( DD > BKPK )); then
-                        DT="$(date --date=${DP} +%Y/%m/%d)"
-                        printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" "${red}${FN}${reset}" "${underline}${green}${DT}${reset}${end_underline}"
-                        printf "${bold}rm -v %s${reset}: \n" "${red}${FN}${reset}"
-                        #rm -v "${BKPD}/${FN}"
-                    fi
-                done
+        done
+        MAXDT=$(max ${DPS[@]})
+        for (( y = 0; y < ${#FNS[@]}; y++ )); do # File NameS loop to execute on stats
+            FN=${FNS[$y]} DP=${DPS[$y]}
+            DD=$(daydiff ${MAXDT} ${DP})
+            if (( DD > BKPK )); then
+                DT="$(date --date=${DP} +%Y/%m/%d)"
+                printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" "${red}${FN}${reset}" "${underline}${green}${DT}${reset}${end_underline}"
+                printf "${bold}rm -v %s${reset}: \n" "${red}${FN}${reset}"
+                #rm -v "${BKPD}/${FN}"
             fi
-        fi
+        done
     else
-        printf "${BKPD} not found.\n" >&2
+        printf "${BKPD} is not a directory.\n" >&2
     fi
 else
     printf "privileged access requirements not met.\n" >&2
