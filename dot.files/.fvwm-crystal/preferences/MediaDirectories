@@ -1,0 +1,4 @@
+audio /home/name/Musique
+video /home/name/Movies
+cdrom /dev/cdrom0
+dvd /dev/cdrom1
