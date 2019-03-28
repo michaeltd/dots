@@ -41,6 +41,11 @@ dot.files/.ssh/*
 
 dot.files/.putty/*
 
+dot.files/.fvwm/.FvwmConsole-History
+
+dot.files/.fvwm-crystal/*
+!dot.files/.fvwm-crystal/preferences/*
+
 dot.files/bin/*
 !dots/dot.files/bin/keepParamAlive.sh
 !dots/dot.files/bin/lol.sh
