@@ -60,7 +60,7 @@ dot.files/sbin/*
 !dot.files/sbin/cleanup-bkps.sh
 !dot.files/sbin/compiz.sh
 !dot.files/sbin/sys-info.sh
-!dot.files/sbin/update-bkp.sh
+!dot.files/sbin/update-bkps.sh
 !dot.files/sbin/update-hosts.sh
 !dot.files/sbin/update-mirror.sh
 
