@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # ~/bin/mxcl
-# eMaX CLient
+# e[M]a[X] [C][L]ient
 
 if [[ -n "${DISPLAY}" ]]; then
     emacsclient -c "${@}" &
