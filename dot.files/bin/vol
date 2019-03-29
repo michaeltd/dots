@@ -5,14 +5,11 @@ export  XDIALOG_NO_GMSGS=1
 RF="/tmp/.$(basename $0).${USER}.${RANDOM}"
 
 case ${1} in
-    +) amixer set Master 10dB+ &> ${RF}
-        VOL=( $(tail -1 ${RF}) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
+    +) VOL=( $(amixer set Master 10dB+ |tail -1) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
         Xdialog --no-buttons --title "Vol" --infobox "$VOL" 50x30+32+32 ;;
-    -) amixer set Master 10dB- &> ${RF}
-        VOL=( $(tail -1 ${RF}) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
+    -) VOL=( $(amixer set Master 10dB- |tail -1) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
         Xdialog --no-buttons --title "Vol" --infobox "$VOL" 50x30+32+32 ;;
-    *[0-9]) amixer set Master "${1}%" &> ${RF}
-        VOL=( $(tail -1 ${RF}) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
+    *[0-9]) VOL=( $(amixer set Master "${1}%" |tail -1) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
         Xdialog --no-buttons --title "Vol" --infobox "$VOL" 50x30+32+32 ;;
     *) shift;;
 esac

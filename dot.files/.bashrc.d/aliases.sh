@@ -27,20 +27,20 @@ alias df='df -h'
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
 if [[ -n $(which emerge 2> /dev/null) ]]; then
-    alias psearch='emerge -s' pinstall='sudo emerge -av' premove='sudo emerge -avC'
-    alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND --with-bdeps=y @world' dcleanup='sudo emerge --ask --depclean'
+    alias ossearch='emerge -s' osinstall='sudo emerge -av' osremove='sudo emerge -avC'
+    alias osupdate='sudo emerge --sync' osupgrade='sudo emerge -avuND --with-bdeps=y @world' oscleanup='sudo emerge --ask --depclean'
 elif [[ -n $(which pacman 2> /dev/null) ]]; then
-    alias psearch='pacman -Ss' pinstall='sudo pacman -S' premove='sudo pacman -R'
-    alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' dcleanup='sudo pacman -Rsn'
+    alias ossearch='pacman -Ss' osinstall='sudo pacman -S' osremove='sudo pacman -R'
+    alias osupdate='sudo pacman -Sy' osupgrade='sudo pacman -Syu' oscleanup='sudo pacman -Rsn'
 elif [[ -n $(which apt-get 2> /dev/null) ]]; then
-    alias psearch='apt search' pinstall='sudo apt-get install --install-suggests' premove='sudo apt-get premove --purge'
-    alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' dcleanup='sudo apt-get autoremove'
+    alias ossearch='apt search' osinstall='sudo apt-get install --install-suggests' osremove='sudo apt-get premove --purge'
+    alias osupdate='sudo apt-get update' osupgrade='sudo apt-get dist-upgrade' oscleanup='sudo apt-get autoremove'
 elif [[ -n $(which zypper 2> /dev/null) ]]; then
-    alias psearch='zypper search' pinstall='sudo zypper install' premove='sudo zypper remove --clean-deps'
-    alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' dcleanup='sudo zypper rm -u'
+    alias ossearch='zypper search' osinstall='sudo zypper install' osremove='sudo zypper remove --clean-deps'
+    alias osupdate='sudo zypper refresh' osupgrade='sudo zypper update' oscleanup='sudo zypper rm -u'
 elif [[ -n $(which yum 2> /dev/null) ]]; then
-    alias psearch='yum search' pinstall='sudo yum install' premove='sudo yum remove'
-    alias dupdate='sudo yum check-update' dupgrade='sudo yum update' dcleanup='sudo yum autoremove'
+    alias ossearch='yum search' osinstall='sudo yum install' osremove='sudo yum remove'
+    alias osupdate='sudo yum check-update' osupgrade='sudo yum update' oscleanup='sudo yum autoremove'
 fi
 
 # Mount
@@ -91,6 +91,11 @@ alias ttt='for a in {1..10}; do let tt="${a} * 10";for b in $(seq $a $a $tt);do 
 # https://twitter.com/liamosaur/status/506975850596536320
 # alias fuck='sudo $(history -p \!\!)'
 
+# https://gist.github.com/seungwon0/802470
+# curl -s http://whatthecommit.com | perl -p0e '($_)=m{<p>(.+?)</p>}s'
+# curl -L -s http://whatthecommit.com/ | grep -A 1 "\"c" | tail -1 | sed 's/<p>//'
+# curl -s http://whatthecommit.com/index.txt
+
 # GIT
 # alias gcl='git clone'
 # alias gfc='git fetch'
@@ -98,7 +103,7 @@ alias gst='git status'
 # alias gdf='git diff'
 # alias gaa='git add --all'
 alias gad='git add .'
-alias gcm='git commit -m'
+alias gcm='git commit -m "$(curl -s http://whatthecommit.com/index.txt)"'
 alias gps='git push'
 alias glp='git log -p'
 alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
