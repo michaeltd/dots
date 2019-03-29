@@ -5,7 +5,7 @@
 # Make sure only root can run our script
 if [ "$(id -u)" != "0" ]; then
   echo "This script must be run as root" 1>&2
-  sudo "$(cd $(dirname ${BASH_SOURCE[0]})&& pwd)/$(basename ${BASH_SOURCE[0]})" 
+  sudo "$(cd $(dirname ${BASH_SOURCE[0]})&& pwd)/$(basename ${BASH_SOURCE[0]})"
   exit $?
 fi
 
@@ -113,10 +113,10 @@ while read line; do
       echo ""
     fi
   done
-done < /tmp/res #this part print footer, with counted Ram usage 
-echo "--------------------------------------------------------" 
-echo -e "\t\t\t\t\t\t `convert $total`" 
-echo "========================================================" # we clean temporary file 
-[[ -f /tmp/res ]] && rm -f /tmp/res 
-[[ -f /tmp/res2 ]] && rm -f /tmp/res2 
-[[ -f /tmp/res3 ]] && rm -f /tmp/res3 
+done < /tmp/res #this part print footer, with counted Ram usage
+echo "--------------------------------------------------------"
+echo -e "\t\t\t\t\t\t `convert $total`"
+echo "========================================================" # we clean temporary file
+[[ -f /tmp/res ]] && rm -f /tmp/res
+[[ -f /tmp/res2 ]] && rm -f /tmp/res2
+[[ -f /tmp/res3 ]] && rm -f /tmp/res3
