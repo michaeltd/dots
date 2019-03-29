@@ -43,11 +43,8 @@ else
     custom_run 9 conky -qd
 fi
 
-# A calendar app
+# A systray vol
 # custom_run 9 retrovol -hide
-
-# A calendar app
-# custom_run 9 volumeicon
 
 # A calendar app
 # custom_run 9 orage
