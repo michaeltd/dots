@@ -15,7 +15,7 @@ TMPFILE="/tmp/${RANDOM}.input.box.txt"
     10 40 \
     command 2> "${TMPFILE}"
 
-RETVAL="${?}" #Exit code
+RETVAL="${?}"
 
 USRINPUT=$(cat "${TMPFILE}")
 
