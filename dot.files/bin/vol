@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-export  XDIALOG_NO_GMSGS=1
-
-RF="/tmp/.$(basename $0).${USER}.${RANDOM}"
+export XDIALOG_NO_GMSGS=1
 
 case ${1} in
     +) VOL=( $(amixer set Master 10dB+ |tail -1) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
@@ -11,5 +9,5 @@ case ${1} in
         Xdialog --no-buttons --title "Vol" --infobox "$VOL" 50x30+32+32 ;;
     *[0-9]) VOL=( $(amixer set Master "${1}%" |tail -1) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
         Xdialog --no-buttons --title "Vol" --infobox "$VOL" 50x30+32+32 ;;
-    *) shift;;
+    *) printf "Usage: vol [+] | [-] | [0-100]\n";;
 esac
