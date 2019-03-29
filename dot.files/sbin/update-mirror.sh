@@ -4,12 +4,12 @@
 # Update my data
 
 # Full path executables
-nicec=$(which nice) rsncm=$(which rsync) elmnt="/mnt/el/PStart.xml" dtmnt="/mnt/data/PStart.xml"
+NICEC=$(which nice) RSNCM=$(which rsync) ELMNT="/mnt/el/PStart.xml" DTMNT="/mnt/data/PStart.xml"
 
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
-if [[ -f "${elmnt}" && -f "${dtmnt}" ]]; then
-    "${nicec}" -n 19 "${rsncm}" --verbose --recursive --times --delete --exclude="*/MSOFT/*" /mnt/el/* /mnt/data/
+if [[ -f "${ELMNT}" && -f "${DTMNT}" ]]; then
+    "${NICEC}" -n 19 "${RSNCM}" --verbose --recursive --times --delete --exclude="*/MSOFT/*" /mnt/el/* /mnt/data/
 else
-    printf "${elmnt} or ${dtmnt} not found\n" >&2
+    printf "${ELMNT} or ${DTMNT} not found\n" >&2
 fi

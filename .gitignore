@@ -54,6 +54,7 @@ dot.files/bin/*
 !dots/dot.files/bin/runcmd.sh
 !dots/dot.files/bin/screenshot.sh
 !dots/dot.files/bin/unix.sh
+!dots/dot.files/bin/vol
 
 dot.files/sbin/*
 !dot.files/sbin/check-integrity.sh

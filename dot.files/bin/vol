@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+export XDIALOG_HIGH_DIALOG_COMPAT=1 XDIALOG_FORCE_AUTOSIZE=1 XDIALOG_INFOBOX_TIMEOUT=1000 XDIALOG_NO_GMSGS=1
+
+RF="/tmp/.$(basename $0).${USER}.${RANDOM}"
+
+case ${1} in
+    +) amixer set Master 10dB+ &> ${RF}
+        VOL=( $(tail -1 ${RF}) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
+        Xdialog --title "Vol" --infobox "$VOL" 10 32 0 ;;
+    -) amixer set Master 10dB- &> ${RF}
+        VOL=( $(tail -1 ${RF}) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
+        Xdialog --title "Vol" --infobox "$VOL" 10 32 0 ;;
+    *[0-9]) amixer set Master "${1}%" &> ${RF}
+        VOL=( $(tail -1 ${RF}) ); VOL="${VOL[3]}"; VOL=${VOL//\]/}; VOL=${VOL//\[/}
+        Xdialog --title "Vol" --infobox "$VOL" 10 32 0 ;;
+    *) shift;;
+esac

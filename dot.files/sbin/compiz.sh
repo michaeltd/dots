@@ -22,9 +22,9 @@ esac
 # polybar -qr topbar 2> /dev/null &
 # ~/.config/polybar/launch.sh
 
-pmg="${HOME}/bin/pimp-my-gui.sh"
-if [[ -x "${pmg}" ]]; then # If spice ...
-    "${pmg}" & # ... spice things up
+PMG="${HOME}/bin/pimp-my-gui.sh"
+if [[ -x "${PMG}" ]]; then # If spice ...
+    "${PMG}" & # ... spice things up
 fi
 
 sleep 999d # Wait
