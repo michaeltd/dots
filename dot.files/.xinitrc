@@ -31,7 +31,7 @@ else
     # WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which fvwm-crystal||which fvwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
     for WM in "${WMS[@]}"; do
         if [[ -x "$(which ${WM} 2> /dev/null)" ]]; then
-            WM="${WMR}"
+            WM="${WM}"
             break
         fi
     done

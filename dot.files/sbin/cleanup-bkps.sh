@@ -16,7 +16,7 @@ BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="-1"
 # No backups directory
 [[ ! -d "${BKPD}" ]] && printf "${BKPD} is not a directory.\n" >&2 && exit 1
 
-FILES=( $(ls -t ${BKPD}/*tar.gz* 2> /dev/null) )
+FILES=( $($(which ls) -t1 ${BKPD}/*tar.gz* 2> /dev/null) )
 
 # File loop to gather stats
 for (( x = 0; x < ${#FILES[@]}; x++ )); do
