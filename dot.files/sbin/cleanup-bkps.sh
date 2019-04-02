@@ -9,7 +9,7 @@ source /home/paperjam/.bashrc.d/.stdl/math.sh
 
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
-BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="-1" BKPR="0"
+BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="0" BKPR="0"
 
 # No root access
 # (( EUID != 0 )) && printf "privileged access requirements not met.\n" >&2 && exit 1
@@ -23,16 +23,16 @@ for (( x = 0; x < ${#FILES[@]}; x++ )); do
     # Name loop to extract dates
     for PART in $(split "${FNS[$x]}" .); do
         # 2 digits year date check
-        if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then
-            DPS+=( "${PART}" )
+        if [[ "${PART}" =~ ^[0-9]{10}$ ]]; then
+            EDS+=( "${PART}" )
         fi
     done
 done
 
 # File NameS loop to execute on stats
 for (( y = 0; y < ${#FNS[@]}; y++ )); do
-    if (( $(daydiff $(max ${DPS[@]}) ${DPS[$y]}) > BKPK )); then
-        printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" "${red}${FNS[$y]}${reset}" "${underline}${green}$(date --date=${DPS[$y]} +%Y/%m/%d)${reset}${end_underline}"
+    if (( $(epochdd $(max ${EDS[@]}) ${EDS[$y]}) >= BKPK )); then
+        printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" "${red}${FNS[$y]}${reset}" "${underline}${green}$(date -d @${EDS[$y]} +%Y/%m/%d\ %H:%M:%S)${reset}${end_underline}"
         printf "${bold}rm -v %s${reset}: " "${red}${FNS[$y]}${reset}"
         (( BKPR == 0 )) && printf "\n" || rm -v "${BKPD}/${FNS[$y]}"
     fi

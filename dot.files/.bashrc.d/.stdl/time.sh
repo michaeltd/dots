@@ -6,6 +6,10 @@ function daydiff {
   echo $(( ($(date +%s --date="${1}") - $(date +%s --date="${2}")) / (60 * 60 * 24) ))
 }
 
+function epochdd {
+  echo $(( (${1} - ${2}) / (60 * 60 * 24) ))
+}
+
 function unixepoch {
   if [[ -n "${1}" ]];then
     date +%s --date="${1}"
