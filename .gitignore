@@ -55,6 +55,7 @@ dot.files/bin/*
 !dots/dot.files/bin/screenshot.sh
 !dots/dot.files/bin/unix.sh
 !dots/dot.files/bin/vol
+!dots/dot.files/bin/wallpaper-rotate.sh
 
 dot.files/sbin/*
 !dot.files/sbin/check-integrity.sh
@@ -64,6 +65,7 @@ dot.files/sbin/*
 !dot.files/sbin/update-bkps.sh
 !dot.files/sbin/update-hosts.sh
 !dot.files/sbin/update-mirror.sh
+!dot.files/sbin/upgrade-distro.sh
 
 dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker
