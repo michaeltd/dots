@@ -3,20 +3,24 @@
 # The means to migrate my .dots in new systems.
 
 if [[ "${1}" != "thoushallnotpass" ]]; then
-  printf "${red}Read this first:${reset} ${bold}https://github.com/michaeltd/dots/blob/master/readme.md#bootstrap.sh${reset}\n" >&2
-  exit 1
+    printf "${red}Read this first:${reset} ${bold}https://github.com/michaeltd/dots/blob/master/readme.md#bootstrap.sh${reset}\n" >&2
+    exit 1
 fi
 
-dtfls="$(cd $(dirname ${BASH_SOURCE[0]})/dot.files && pwd)"
-tofldr="${HOME}"
-fx=".$(date +%s)"
-ls=$(which ls) # Full path
+DTFLS="$(cd $(dirname ${BASH_SOURCE[0]})/dot.files && pwd)"
+TOFLD="${HOME}"
+FX="$(date +%s)"
+LS=$(which ls)
 
-declare -a fls=( $(${ls} -A ${dtfls}) ) # No dot listings
+printf "\$DTFLS is %s, \$TOFLD is %s, \$FX is %s, \$LS is %s.\n" $DTFLS $TOFLD $FX $LS >&2
 
-for file in ${fls[@]}; do
-  if [[ -L "${tofldr}/${file}" || -d "${tofldr}/${file}" || -f "${tofldr}/${file}" ]]; then
-    mv -f "${tofldr}/${file}" "${tofldr}/${file}${fx}"
-  fi
-  ln -sf "${dtfls}/${file}" "${tofldr}/${file}"
+FLS=( $(${LS} -A ${DTFLS}) ) # No dot listings
+
+printf "%s\n" "${FLS[@]}" >&2
+
+for FL in ${FLS[@]}; do
+    if [[ -L "${TOFLD}/${FL}" || -d "${TOFLD}/${FL}" || -f "${TOFLD}/${FL}" ]]; then
+        mv -f "${TOFLD}/${FL}" "${TOFLD}/${FL}.${FX}"
+    fi
+    ln -sf "${DTFLS}/${FL}" "${TOFLD}/${FL}"
 done

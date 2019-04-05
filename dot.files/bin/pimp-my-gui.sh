@@ -17,30 +17,31 @@ function custom_run {
 # custom_run 19 compton
 
 # XScreenSaver
-custom_run 9 xscreensaver -no-splash
+custom_run 9 xscreensaver -no-splash &
 
 # Add some wallpaper variety for your desktop
 ${HOME}/bin/wallpaper-rotate.sh &
 
 # Run emacs
-custom_run 0 emacs --daemon
+custom_run 0 emacs --daemon &
 
 # Run mpd
-custom_run 0 mpd
+custom_run 0 mpd &
 
 # Xfce4 themes
-custom_run 9 xfsettingsd --replace --no-daemon
+custom_run 9 xfsettingsd --replace --no-daemon &
 
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-    sleep 1m && custom_run 9 conky -qdc ~/.conky/shailen.conf &
+    # sleep 1m && custom_run 9 conky -qdc ~/.conky/shailen.conf &
+    sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
 elif [[ "${ID}" == "devuan" ]]; then
-    custom_run 9 xfce4-terminal --disable-server
-    custom_run 9 conky -qd
+    custom_run 9 xfce4-terminal --disable-server &
+    custom_run 9 conky -qd &
 else
-    custom_run 9 xterm
-    custom_run 9 conky -qd
+    custom_run 9 xterm &
+    custom_run 9 conky -qd &
 fi
 
 # A systray vol
@@ -52,7 +53,7 @@ fi
 # Networking Python gui
 # nice -n 9 wicd-gtk -t &
 
-nice -n 9 tint2 -c .config/tint2/panel
+custom_run 9 tint2 -c ~/.config/tint2/panel &
 
 # Start a Menu
 # nice -n 9 ${HOME}/bin/tkrm.sh &
