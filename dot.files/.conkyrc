@@ -78,3 +78,4 @@ conky.text = [[
 ${color FFA300}${font SourceCodePro:style=medium:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color EAEAEA}${font SourceCodePro:pixelsize=42}${time %d} ${voffset -15}${color FFA300}${font SourceCodePro:pixelsize=22}${time %B} ${time %Y}${font}${voffset 24}${color EAEAEA}${font SourceCodePro:pixelsize=58}${offset -200}${time %A}${font}
 ${font SourceCodePro:style=bold:pixelsize=10}${color FFA300} HD:${color}${fs_free /}/${fs_size /}${color FFA300} RAM:${color}${mem}/${memmax}${color FFA300} CPU:${color}${cpu cpu0}%${color FFA300} UT:${color}${uptime_short}${font}${font SourceCodePro:style=bold:pixelsize=10}${color FFA300}${voffset -4} BT:${color}${battery}${battery_bar 6,20}${color FFA300} REM:${color}${battery_time}${font}
 ]];
+

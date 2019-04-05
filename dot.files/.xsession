@@ -11,3 +11,4 @@ xirc="${HOME}/.xinitrc"
 if [[ -x "${xirc}" ]]; then # X init rc
   "${xirc}"
 fi
+

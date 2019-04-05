@@ -63,3 +63,4 @@ elif [[ "${WM}" =~ "starte16" || "${WM}" =~ "enlightenment_start" ]];then
 fi
 
 exec "${WM[@]}"
+
