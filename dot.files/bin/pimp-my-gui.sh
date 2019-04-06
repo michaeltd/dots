@@ -9,7 +9,7 @@ function custom_run {
     bin=$(which "${2}")
     pid=$(pidof "${2}")
     if [[ -z "${pid}" && -x "${bin}" ]]; then
-        nice -n "${@}" &
+        exec nice -n "${@}"
     fi
 }
 
@@ -35,7 +35,7 @@ custom_run 9 xfsettingsd --replace --no-daemon &
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
     # sleep 1m && custom_run 9 conky -qdc ~/.conky/shailen.conf &
-    sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
+    exec sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
 elif [[ "${ID}" == "devuan" ]]; then
     custom_run 9 xfce4-terminal --disable-server &
     custom_run 9 conky -qd &
@@ -44,16 +44,11 @@ else
     custom_run 9 conky -qd &
 fi
 
-# A systray vol
-# custom_run 9 retrovol -hide
-
 # A calendar app
 # custom_run 9 orage
 
 # Networking Python gui
 # nice -n 9 wicd-gtk -t &
-
-custom_run 9 tint2 -c ~/.config/tint2/panel &
 
 # Start a Menu
 # nice -n 9 ${HOME}/bin/tkrm.sh &

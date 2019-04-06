@@ -22,6 +22,8 @@ esac
 # polybar -qr topbar 2> /dev/null &
 # ~/.config/polybar/launch.sh
 
+nice -n 9 tint2 -c ~/.config/tint2/panel &> /dev/null &
+
 PMG="${HOME}/bin/pimp-my-gui.sh"
 if [[ -x "${PMG}" ]]; then # If spice ...
     "${PMG}" & # ... spice things up

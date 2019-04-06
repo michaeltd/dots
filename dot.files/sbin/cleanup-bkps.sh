@@ -9,7 +9,7 @@ source /home/paperjam/.bashrc.d/.stdl/time.sh
 source /home/paperjam/.bashrc.d/.stdl/string.sh
 source /home/paperjam/.bashrc.d/.stdl/math.sh
 
-BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="0" BKPR="0"
+BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="1" BKPR="1"
 
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
