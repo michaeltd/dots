@@ -35,7 +35,7 @@ custom_run 9 xfsettingsd --replace --no-daemon &
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
     # sleep 1m && custom_run 9 conky -qdc ~/.conky/shailen.conf &
-    exec sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
+    sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
 elif [[ "${ID}" == "devuan" ]]; then
     custom_run 9 xfce4-terminal --disable-server &
     custom_run 9 conky -qd &
