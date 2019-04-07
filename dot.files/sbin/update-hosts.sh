@@ -10,7 +10,9 @@ HOSTS_FILE="/etc/hosts" RANDOM_TEMP_FILE="/tmp/${RANDOM}.$$"
 
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
-curl "${URL}" > "${RANDOM_TEMP_FILE}"
+#curl "${URL}" > "${RANDOM_TEMP_FILE}"
+
+wget -q -O - "${URL}" > "${RANDOM_TEMP_FILE}"
 
 BYTES=($(wc -c "${RANDOM_TEMP_FILE}"))
 
