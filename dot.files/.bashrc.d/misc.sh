@@ -9,4 +9,4 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # pandoc bash completion
-eval "$(pandoc --bash-completion)"
+# eval "$(pandoc --bash-completion)"

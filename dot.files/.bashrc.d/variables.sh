@@ -6,25 +6,25 @@
 export ALTERNATE_EDITOR=$(which micro 2> /dev/null||which vi 2> /dev/null||which nano 2> /dev/null)
 
 if [[ -n "${DISPLAY}" ]]; then
-  unset 'EDITOR'
-  if [[ -x $(which emacs 2> /dev/null) ]]; then
-    export VISUAL="emacsclient --alternate-editor=emacs -c"
-  elif [[ -x $(which gvim 2> /dev/null) ]]; then
-    export VISUAL="gvim"
-  else
-    export VISUAL="xterm -e ${ALTERNATE_EDITOR}"
-  fi
-  export BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
+    unset 'EDITOR'
+    if [[ -x $(which emacs 2> /dev/null) ]]; then
+        export VISUAL="emacsclient --alternate-editor=emacs -c"
+    elif [[ -x $(which gvim 2> /dev/null) ]]; then
+        export VISUAL="gvim"
+    else
+        export VISUAL="xterm -e ${ALTERNATE_EDITOR}"
+    fi
+    export BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
 else
-  unset 'VISUAL'
-  if [[ -x $(which emacs 2> /dev/null) ]]; then
-    export EDITOR="emacsclient --alternate-editor=emacs -t"
-  elif [[ -x $(which vim 2> /dev/null) ]]; then
-    export EDITOR="vim"
-  else
-    export EDITOR="${ALTERNATE_EDITOR}"
-  fi
-  export BROWSER=$(which w3m 2> /dev/null||which links 2> /dev/null||which lynx 2> /dev/null)
+    unset 'VISUAL'
+    if [[ -x $(which emacs 2> /dev/null) ]]; then
+        export EDITOR="emacsclient --alternate-editor=emacs -t"
+    elif [[ -x $(which vim 2> /dev/null) ]]; then
+        export EDITOR="vim"
+    else
+        export EDITOR="${ALTERNATE_EDITOR}"
+    fi
+    export BROWSER=$(which w3m 2> /dev/null||which links 2> /dev/null||which lynx 2> /dev/null)
 fi
 
 # Colorfull manpages (works with less as a pager)
@@ -82,7 +82,7 @@ export PATH+=":${GRADLE}/bin"
 export PATH+=":${GOPATH}/bin"
 
 if [[ -d "${HOME}/.cargo" ]]; then
-  export PATH+=":${HOME}/.cargo/bin"
+    export PATH+=":${HOME}/.cargo/bin"
 fi
 
 export PATH+=":${NODE}/bin"
