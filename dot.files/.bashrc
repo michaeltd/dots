@@ -34,4 +34,3 @@ if [[ -d "${brcd}" ]]; then # Load files from ~/.bashrc.d
     source "${file}"
   done
 fi
-

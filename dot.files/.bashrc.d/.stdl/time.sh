@@ -2,32 +2,51 @@
 #
 # date, time related functions
 
-function daydiff {
-  echo $(( ($(date +%s --date="${1}") - $(date +%s --date="${2}")) / (60 * 60 * 24) ))
+isdate() {
+    date -d ${1} &>/dev/null
+    return $?
 }
 
-function epochdd {
-  echo $(( (${1} - ${2}) / (60 * 60 * 24) ))
+isepoch() {
+    date -d @${1} &>/dev/null
+    return $?
+}
+
+daydiff () {
+    if (( $# == 2 )); then
+        printf "%d\n" $(( (${1} - ${2}) / (60 * 60 * 24) ))
+    else
+        printf "Usage: daydiff epoch1 epoch2.\n" >&2
+        return 1
+    fi
+}
+
+epochdd () {
+    daydiff ${1} ${2}
+}
+
+datedd () {
+    daydiff $(date +%s --date="${1}") $(date +%s --date="${2}")
 }
 
 function unixepoch {
-  if [[ -n "${1}" ]];then
-    date +%s --date="${1}"
-  else
-    date +%s
-  fi
+    if [[ -n "${1}" ]];then
+        date +%s --date="${1}"
+    else
+        date +%s
+    fi
 }
 
 function epochtodate {
-  date +%Y/%m/%d --date="@${1-$(unixepoch)}"
+    date +%Y/%m/%d --date="@${1-$(unixepoch)}"
 }
 
 function epochtotime {
-  date +%H:%M:%S --date="@${1-$(unixepoch)}"
+    date +%H:%M:%S --date="@${1-$(unixepoch)}"
 }
 
 function epochtodatetime {
-  date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unixepoch)}"
+    date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unixepoch)}"
 }
 
 function lastdateofmonth {
@@ -47,21 +66,23 @@ function lastdateofmonth {
 #
 # What about leap years in Julian calendar? And years before Julian calendar?
 
-  if [[ -n "${1}" ]]; then
-    [[ ! $(date --date="${1}") ]] && return
-    local y=$(date +%Y --date="${1}") m=$(date +%m --date="${1}")
-  else
-    local y=$(date +%Y) m=$(date +%m)
-  fi
+    if [[ -n "${1}" ]]; then
+        [[ ! $(date --date="${1}") ]] && return 1
+        local y=$(date +%Y --date="${1}") m=$(date +%m --date="${1}")
+    else
+        local y=$(date +%Y) m=$(date +%m)
+    fi
 
-  case "${m}" in
-    "01"|"03"|"05"|"07"|"08"|"10"|"12") echo 31 ;;
-    "02")
-      if (( y % 4 != 0 )); then echo 28
-      elif (( y % 100 != 0 )); then echo 29
-      elif (( y % 400 != 0 )); then echo 28
-      else echo 29
-      fi ;;
-    "04"|"06"|"09"|"11") echo 30 ;;
-  esac
+    case "${m}" in
+        "01"|"03"|"05"|"07"|"08"|"10"|"12")
+            echo 31 ;;
+        "02")
+            if (( y % 4 != 0 )); then echo 28
+            elif (( y % 100 != 0 )); then echo 29
+            elif (( y % 400 != 0 )); then echo 28
+            else echo 29
+            fi ;;
+        "04"|"06"|"09"|"11")
+            echo 30 ;;
+    esac
 }
