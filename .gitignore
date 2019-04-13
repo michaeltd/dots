@@ -31,7 +31,7 @@ dot.files/.e16/*
 !dot.files/.e16/themes
 !dot.files/.e16/bindings.cfg
 
-dot.files/.emacs.d/*
+dot.files/.emacs*
 
 dot.files/.gnupg/*
 
