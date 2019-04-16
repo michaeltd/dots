@@ -3,7 +3,7 @@
 export XDIALOG_NO_GMSGS=1
 
 case ${1} in
-    +|-) VOL=$(amixer sset Master "10dB${1}"); VOL=${VOL/\]*}; VOL=${VOL/*\[}
+    +|-) VOL=$(amixer sset Master "5dB${1}"); VOL=${VOL/\]*}; VOL=${VOL/*\[}
          Xdialog --no-buttons --title "Vol" --infobox ${VOL} 50x30+32+32 ;;
     *[0-9]) VOL=$(amixer sset Master "${1}%"); VOL=${VOL/\]*}; VOL=${VOL/*\[}
          Xdialog --no-buttons --title "Vol" --infobox ${VOL} 50x30+32+32 ;;
