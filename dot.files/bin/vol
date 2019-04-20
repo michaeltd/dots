@@ -4,15 +4,21 @@ export XDIALOG_NO_GMSGS=1
 
 # Pick a default available UI ...
 if [[ -x "$(which Xdialog 2> /dev/null)" && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
-    declare DIALOG=$(which Xdialog)
+    declare DIALOG=$(which Xdialog) G=("100x75")
 elif [[ -x "$(which dialog 2> /dev/null)" ]]; then # Check for dialog
-    declare DIALOG=$(which dialog)
+    declare DIALOG=$(which dialog) G=( 0 0 )
 fi
 
 case ${1} in
-    +|-) VOL=$(amixer sset Master "5dB${1}"); VOL=${VOL/\]*}; VOL=${VOL/*\[}
-         $DIALOG --title "Vol" --infobox ${VOL} 5 15 ;;
-    *[0-9]) VOL=$(amixer sset Master "${1}%"); VOL=${VOL/\]*}; VOL=${VOL/*\[}
-         $DIALOG --title "Vol" --infobox ${VOL} 5 15 ;;
-    *) printf "Usage: vol [+]|[-]|[0-100]\n" >&2 ;;
+    +|-) VOL=$(amixer sset Master "5dB${1}") ;;
+    *[0-9]) VOL=$(amixer sset Master "${1}%") ;;
+    *) printf "Usage: vol [+]|[-]|[0-100]\n" >&2 ; exit 1 ;;
 esac
+
+VOL=${VOL/\]*}; VOL=${VOL/*\[}
+
+if [[ -n $DIALOG ]]; then
+    $DIALOG --title "Vol" --infobox "Master: ${VOL}" "${G[@]}"
+else
+    echo "Master: ${VOL}"
+fi
