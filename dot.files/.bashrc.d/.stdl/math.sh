@@ -11,10 +11,10 @@ min() {
   printf "%s\n" "${@}" | sort -n | head -1
 }
 
-altmin(){
-    local n=${1} # Avoid n initialization issues
+altmin() {
+    n=${1} # Avoid n initialization issues
     while [[ -n ${1} ]]; do
-        local n=$(( n < $1 ? n : $1 ))
+        (( $1 < $n )) && n=${1}
         shift
     done
     echo ${n}
@@ -25,24 +25,24 @@ max() {
 }
 
 
-altmax(){
-    local x=${1} # Avoid x initialization issues
+altmax() {
+    x=${1} # Avoid x initialization issues
     while [[ -n ${1} ]]; do
-        local x=$(( x > $1 ? x : $1 ))
+        (( $1 > $x )) && x=${1}
         shift
     done
     echo ${x}
 }
 
-function sqrt {
+sqrt() {
   echo "scale=6;sqrt(${1})"| bc -l
 }
 
-function sqr {
+sqr() {
   echo "scale=6;${1}^2"| bc -l
 }
 
-function powr {
+powr() {
   echo "scale=6;${1}^${2}"| bc -l
 }
 
@@ -52,31 +52,31 @@ function powr {
 
 # Trigonometric functions
 # https://advantage-bash.blogspot.com/2012/12/trignometry-calculator.html
-function sin {
+sin() {
   echo "scale=6;s($1)" | bc -l
 }
 
-function cos {
+cos() {
   echo "scale=6;c($1)" | bc -l
 }
 
-function tan {
+tan() {
   echo "scale=6;s($1)/c($1)" | bc -l
 }
 
-function csc {
+csc() {
   echo "scale=6;1/s($1)" | bc -l
 }
 
-function sec {
+sec() {
   echo "scale=6;1/c($1)" | bc -l
 }
 
-function ctn {
+ctn() {
   echo "scale=6;c($1)/s($1)" | bc -l
 }
 
-function asin {
+asin() {
   if (( $(echo "$1 == 1" | bc -l) ));then
     echo "90"
   elif (( $(echo "$1 < 1" | bc -l) ));then
@@ -86,7 +86,7 @@ function asin {
   fi
 }
 
-function acos {
+acos() {
   if (( $(echo "$1 == 0" | bc -l) ));then
     echo "90"
   elif (( $(echo "$1 <= 1" | bc -l) ));then
@@ -96,18 +96,18 @@ function acos {
   fi
 }
 
-function atan {
+atan() {
   echo "scale=6;a($1)" | bc -l
 }
 
-function acot {
+acot() {
   echo "scale=6;a(1/$1)" | bc -l
 }
 
-function asec {
+asec() {
   echo "scale=6;a(sqrt(($1^2)-1))" | bc -l
 }
 
-function acsc {
+acsc() {
   echo "scale=6;a(1/(sqrt($1^2)-1))" | bc -l
 }
