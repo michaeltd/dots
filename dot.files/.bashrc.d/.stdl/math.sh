@@ -2,17 +2,36 @@
 #
 # math related functions
 
-function calc {
+calc() {
   # echo -e "Usage: calc \"1+2-3%2/1*10+(4*5)-(8*8)\"\n"
   echo "scale=6;${@}"| bc -l
 }
 
-function min {
+min() {
   printf "%s\n" "${@}" | sort -n | head -1
 }
 
-function max {
+altmin(){
+    local n=${1} # Avoid n initialization issues
+    while [[ -n ${1} ]]; do
+        local n=$(( n < $1 ? n : $1 ))
+        shift
+    done
+    echo ${n}
+}
+
+max() {
   printf "%s\n" "${@}" | sort -rn | head -1
+}
+
+
+altmax(){
+    local x=${1} # Avoid x initialization issues
+    while [[ -n ${1} ]]; do
+        local x=$(( x > $1 ? x : $1 ))
+        shift
+    done
+    echo ${x}
 }
 
 function sqrt {
