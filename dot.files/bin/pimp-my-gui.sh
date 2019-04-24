@@ -9,7 +9,7 @@ function custom_run {
     bin=$(which "${2}")
     pid=$(pidof "${2}")
     if [[ -z "${pid}" && -x "${bin}" ]]; then
-        exec nice -n "${@}"
+      exec nice -n "${@}"
     fi
 }
 
@@ -20,7 +20,7 @@ function custom_run {
 custom_run 9 xscreensaver -no-splash &
 
 # Add some wallpaper variety for your desktop
-${HOME}/bin/wallpaper-rotate.sh &
+custom_run 9 ${HOME}/bin/wallpaper-rotate.sh &
 
 # Run emacs
 custom_run 0 emacs --daemon &
@@ -34,21 +34,23 @@ custom_run 9 xfsettingsd --replace --no-daemon &
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-    # sleep 1m && custom_run 9 conky -qdc ~/.conky/shailen.conf &
-    sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
+  # sleep 1m && custom_run -9 conky -qdc ~/.conky/shailen.conf &
+  sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
 elif [[ "${ID}" == "devuan" ]]; then
-    custom_run 9 xfce4-terminal --disable-server &
-    custom_run 9 conky -qd &
+  custom_run 9 xfce4-terminal --disable-server &
+  custom_run 9 conky -qd &
 else
-    custom_run 9 xterm &
-    custom_run 9 conky -qd &
+  custom_run 9 xterm &
+  custom_run 9 conky -qd &
 fi
 
+custom_run 9 bashrun --restart &
+
 # A calendar app
-# custom_run 9 orage
+# custom_run -9 orage
 
 # Networking Python gui
-# nice -n 9 wicd-gtk -t &
+# nice -n -9 wicd-gtk -t &
 
 # Start a Menu
-# nice -n 9 ${HOME}/bin/tkrm.sh &
+# nice -n -9 ${HOME}/bin/tkrm.sh &

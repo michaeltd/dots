@@ -14,9 +14,34 @@ xset m 20/10 4
 # Qt5
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# wms: WindowManagerS
-# -   -0--------------- -1------ -2--- -3------- -4--- -5------------ -6---- -7-------- -8------------------- -9------------- -10----- -11---- -12--------------
-WMS=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "fvwm-crystal" "fvwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
+# WMSN: WindowManagerS Names
+#                 -0------- -1----------- -2--- -3------- -4--- -5------------ -6---- -7--- -8------------- -9----- -10----- -11---- -12---
+declare -a WMSN=( "openbox" "windowmaker" "jwm" "awesome" "mwm" "fvwm-crystal" "fvwm" "e16" "enlightenment" "xfce4" "compiz" "emacs" "kodi" )
+
+# WMSX: WindowManagerS Xecutables
+#                 -0--------------- -1------ -2--- -3------- -4--- -5------------ -6---- -7-------- -8------------------- -9------------- -10----- -11---- -12--------------
+declare -a WMSX=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "fvwm-crystal" "fvwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
+
+# WMA: WindowManagerS Array
+#
+declare -A WMA=( \
+    ["${WMSN[0]}"]="${WMSX[0]}" \
+    ["${WMSN[1]}"]="${WMSX[1]}" \
+    ["${WMSN[2]}"]="${WMSX[2]}" \
+    ["${WMSN[3]}"]="${WMSX[3]}" \
+    ["${WMSN[4]}"]="${WMSX[4]}" \
+    ["${WMSN[5]}"]="${WMSX[5]}" \
+    ["${WMSN[6]}"]="${WMSX[6]}" \
+    ["${WMSN[7]}"]="${WMSX[7]}" \
+    ["${WMSN[8]}"]="${WMSX[8]}" \
+    ["${WMSN[9]}"]="${WMSX[9]}" \
+    ["${WMSN[10]}"]="${WMSX[10]}" \
+    ["${WMSN[11]}"]="${WMSX[11]}" \
+    ["${WMSN[12]}"]="${WMSX[12]}" )
+
+# WMS: WindowManagerS
+#                -0--------------- -1------ -2--- -3------- -4--- -5------------ -6---- -7-------- -8------------------- -9------------- -10----- -11---- -12--------------
+declare -a WMS=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "fvwm-crystal" "fvwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
@@ -52,6 +77,8 @@ if [[ "${WM}" =~ "awesome" ]]; then
     WM=( /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua )
 elif [[ "${WM}" =~ "compiz" ]];then
     WM=( "compiz.sh" )
+elif [[ "${WM}" =~ "openbox" ]];then
+    WM=( "openbox-session" )
 elif [[ "${WM}" =~ "emacs" ]];then
     # Just "emacs" could suffice if you don't mind a M-x:exwm-init on X boot.
     # emacs --daemon -f exwm-enable

@@ -46,10 +46,6 @@ powr() {
   echo "scale=6;${1}^${2}"| bc -l
 }
 
-#• clamp()
-#• atan2()
-#• hypot()
-
 # Trigonometric functions
 # https://advantage-bash.blogspot.com/2012/12/trignometry-calculator.html
 sin() {

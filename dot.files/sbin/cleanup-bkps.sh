@@ -4,7 +4,7 @@
 # This will work for any directory containing *tar.gz* backups (eg: name.tar.gz, name.tar.gz.asc)
 # that have an epoch field in their filename seperated by periods(.) (eg: 190326.1553569476.enc.tar.gz.asc)
 
-BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="0"
+BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 
 # No root access
 # (( EUID != 0 )) && printf "privileged access requirements not met.\n" >&2 && exit 1

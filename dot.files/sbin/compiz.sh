@@ -23,6 +23,7 @@ esac
 # ~/.config/polybar/launch.sh
 
 nice -n 9 tint2 -c ~/.config/tint2/panel &> /dev/null &
+# nice -n 9 tint2 -c ~/.config/tint2/taskbar &> /dev/null &
 
 PMG="${HOME}/bin/pimp-my-gui.sh"
 if [[ -x "${PMG}" ]]; then # If spice ...
