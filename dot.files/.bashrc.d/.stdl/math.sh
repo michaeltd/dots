@@ -24,7 +24,6 @@ max() {
   printf "%s\n" "${@}" | sort -rn | head -1
 }
 
-
 altmax() {
     x=${1} # Avoid x initialization issues
     while [[ -n ${1} ]]; do

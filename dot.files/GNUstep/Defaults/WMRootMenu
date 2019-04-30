@@ -26,12 +26,18 @@
     (
       Graphics,
       (GIMP, EXEC, gimp),
+      (Inkscape, EXEC, inkscape),
       (XBitmap, EXEC, bitmap),
       (Dia, EXEC, dia),
       ("ImageMagick Display", EXEC, display),
       ("Eye of GNOME", EXEC, eog)
     ),
-    (Multimedia, (Audacious, EXEC, audacious), (VLC, EXEC, vlc)),
+    (
+      Multimedia,
+      (Audacious, EXEC, audacious),
+      (Audacity, EXEC, audacity),
+      (VLC, EXEC, vlc)
+    ),
     (
       Editors,
       (Emacs, EXEC, emacs),
@@ -230,6 +236,11 @@
   ("Configure Window Maker", EXEC, WPrefs),
   ("Info Panel", INFO_PANEL),
   ("Restart Window Maker", RESTART),
-  ("Other Window Managers", ("Start Motif Window Manager", RESTART, mwm)),
+  (
+    "Other Window Managers",
+    ("Start Motif Window Manager", RESTART, mwm),
+    ("Start FVWM", RESTART, fvwm),
+    ("Start FVWM-Crystal", RESTART, "fvwm-crystal")
+  ),
   ("Exit Window Maker", EXIT)
 )

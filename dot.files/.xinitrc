@@ -14,58 +14,33 @@ xset m 20/10 4
 # Qt5
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# WMSN: WindowManagerS Names
-#                 -0------- -1----------- -2--- -3------- -4--- -5------------ -6---- -7--- -8------------- -9----- -10----- -11---- -12---
-declare -a WMSN=( "openbox" "windowmaker" "jwm" "awesome" "mwm" "fvwm-crystal" "fvwm" "e16" "enlightenment" "xfce4" "compiz" "emacs" "kodi" )
+declare openbox="openbox-session" windowmaker="wmaker" jwm="jwm" awesome="awesome" mwm="mwm" crystal="fvwm-crystal" fvwm="fvwm" e16="starte16" enlightenment="enlightenment_start" xfce4="xfce4-session" compiz="compize" emacs="emacs" kodi="kodi-standalone"
 
-# WMSX: WindowManagerS Xecutables
-#                 -0--------------- -1------ -2--- -3------- -4--- -5------------ -6---- -7-------- -8------------------- -9------------- -10----- -11---- -12--------------
-declare -a WMSX=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "fvwm-crystal" "fvwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
-
-# WMA: WindowManagerS Array
-#
-declare -A WMA=( \
-    ["${WMSN[0]}"]="${WMSX[0]}" \
-    ["${WMSN[1]}"]="${WMSX[1]}" \
-    ["${WMSN[2]}"]="${WMSX[2]}" \
-    ["${WMSN[3]}"]="${WMSX[3]}" \
-    ["${WMSN[4]}"]="${WMSX[4]}" \
-    ["${WMSN[5]}"]="${WMSX[5]}" \
-    ["${WMSN[6]}"]="${WMSX[6]}" \
-    ["${WMSN[7]}"]="${WMSX[7]}" \
-    ["${WMSN[8]}"]="${WMSX[8]}" \
-    ["${WMSN[9]}"]="${WMSX[9]}" \
-    ["${WMSN[10]}"]="${WMSX[10]}" \
-    ["${WMSN[11]}"]="${WMSX[11]}" \
-    ["${WMSN[12]}"]="${WMSX[12]}" )
-
-# WMS: WindowManagerS
-#                -0--------------- -1------ -2--- -3------- -4--- -5------------ -6---- -7-------- -8------------------- -9------------- -10----- -11---- -12--------------
-declare -a WMS=( "openbox-session" "wmaker" "jwm" "awesome" "mwm" "fvwm-crystal" "fvwm" "starte16" "enlightenment_start" "xfce4-session" "compiz" "emacs" "kodi-standalone" )
+declare -a WMA=( openbox windowmaker jwm awesome mwm crystal fvwm e16 enlightenment xfce4 compiz emacs kodi )
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
 if [[ "${ID}" == "devuan" ]]; then
     WM="xfce4-session"
 elif [[ "${ID}" == "gentoo" ]]; then
-    WM="compiz"
+    WM="awesome"
 else
     # Availability check
     #
     # One line version.
     # WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which fvwm-crystal||which fvwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
-    for WM in "${WMS[@]}"; do
-        if [[ -x "$(which ${WM} 2> /dev/null)" ]]; then
-            WM="${WM}"
+    for x in "${WMA[@]}"; do
+        if [[ -x "$(which ${!x} 2> /dev/null)" ]]; then
+            WM="${!x}"
             break
         fi
     done
 
     # Arguments check. If startx has an argument (eg: xfce4), set it up.
     for x in ${@}; do
-        for y in ${WMS[@]}; do
-            if [[ "${x}" =~ "${WMS[$y]}" ]]; then
-                WM="${WMS[$y]}"
+        for y in ${WMA[@]}; do
+            if [[ "${x}" =~ "${y}" ]]; then
+                WM="${!y}"
             fi
         done
     done
@@ -77,8 +52,6 @@ if [[ "${WM}" =~ "awesome" ]]; then
     WM=( /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua )
 elif [[ "${WM}" =~ "compiz" ]];then
     WM=( "compiz.sh" )
-elif [[ "${WM}" =~ "openbox" ]];then
-    WM=( "openbox-session" )
 elif [[ "${WM}" =~ "emacs" ]];then
     # Just "emacs" could suffice if you don't mind a M-x:exwm-init on X boot.
     # emacs --daemon -f exwm-enable
