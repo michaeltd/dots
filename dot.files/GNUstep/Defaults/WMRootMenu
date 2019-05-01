@@ -98,7 +98,7 @@
       (ftp, EXEC, "xterm -e ftp"),
       (sftp, EXEC, "xterm -e sftp")
     ),
-    (Games, (XBoard, EXEC, xboard))
+    (Games, (XBoard, EXEC, xboard), (Torcs, EXEC, torcs))
   ),
   (Run..., SHEXEC, "%A(Run, Type command:)"),
   (

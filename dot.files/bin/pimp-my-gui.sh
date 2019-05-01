@@ -35,7 +35,8 @@ custom_run 9 xfsettingsd --replace --no-daemon &
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
   # sleep 1m && custom_run -9 conky -qdc ~/.conky/shailen.conf &
-  sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
+  # sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
+  sleep 1
 elif [[ "${ID}" == "devuan" ]]; then
   custom_run 9 xfce4-terminal --disable-server &
   custom_run 9 conky -qd &
@@ -44,7 +45,8 @@ else
   custom_run 9 conky -qd &
 fi
 
-custom_run 9 bashrun --restart &
+# bashrun
+# custom_run 9 bashrun --restart &
 
 # A calendar app
 # custom_run -9 orage
