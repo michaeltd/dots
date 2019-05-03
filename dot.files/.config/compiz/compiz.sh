@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # ~/sbin/compiz.sh Compiz startup script.
 
@@ -12,8 +12,8 @@ case "${ID}" in # Start Compiz
     fusion-icon & ;;
   *) # Others
     # emerald --replace &
-    # compiz --replace "$@" &
-    compiz --replace &
+    # compiz-manager --replace &
+    compiz --replace "$@" &
     fusion-icon & ;;
 esac
 
@@ -26,7 +26,7 @@ nice -n 9 tint2 -c ~/.config/tint2/panel &> /dev/null &
 # nice -n 9 tint2 -c ~/.config/tint2/taskbar &> /dev/null &
 
 PMG="${HOME}/bin/pimp-my-gui.sh"
-if [[ -x "${PMG}" ]]; then # If spice ...
+if [ -x "${PMG}" ]; then # If spice ...
     "${PMG}" & # ... spice things up
 fi
 

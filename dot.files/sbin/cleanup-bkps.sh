@@ -4,6 +4,7 @@
 # This will work for any directory containing *tar.gz* backups (eg: name.tar.gz, name.tar.gz.asc)
 # that have an epoch field in their filename seperated by periods(.) (eg: 190326.1553569476.enc.tar.gz.asc)
 
+# BacKuPs Directory => BKPD, BacKuPs to Keep => BKPK (in days), BacKuPs Remove => BKPR (1 remove, 0 don't)
 BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 
 # No root access
@@ -11,7 +12,7 @@ BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 # No backups directory
 [[ ! -d "${BKPD}" ]] && printf "${BKPD} is not a directory.\n" >&2 && exit 1
 
-# Load explicitly for non interactive shells
+# Load explicitly for non interactive shells (time.sh for epochdd(), string.sh for split(), math.sh for max().)
 source /home/paperjam/.bashrc.d/.stdl/time.sh
 source /home/paperjam/.bashrc.d/.stdl/string.sh
 source /home/paperjam/.bashrc.d/.stdl/math.sh
