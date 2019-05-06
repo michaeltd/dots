@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # ~/bin/pimp-my-gui.sh
 # Spice for the desktop
@@ -37,7 +37,7 @@ if [[ "${ID}" == "gentoo" ]]; then
   # sleep 1m && custom_run -9 conky -qdc ~/.conky/shailen.conf &
   # sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
   sleep 1
-elif [[ "${ID}" == "devuan" ]]; then
+elif [ "${ID}" == "devuan" ]; then
   custom_run 9 xfce4-terminal --disable-server &
   custom_run 9 conky -qd &
 else
