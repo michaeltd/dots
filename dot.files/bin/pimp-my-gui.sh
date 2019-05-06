@@ -20,7 +20,7 @@ function custom_run {
 custom_run 9 xscreensaver -no-splash &
 
 # Add some wallpaper variety for your desktop
-custom_run 9 ${HOME}/bin/wallpaper-rotate.sh &
+custom_run 9 bash ${HOME}/bin/wallpaper-rotate.sh &
 
 # Run emacs
 custom_run 0 emacs --daemon &
