@@ -48,8 +48,8 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-editor = os.getenv("EDITOR") or "emacsclient -nw -t"
+terminal = "urxvt"
+editor = os.getenv("EDITOR") or "emacsclient -nw -a micro -t"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.

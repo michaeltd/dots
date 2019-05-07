@@ -6,12 +6,26 @@
 # Run things in the background with custom niceness and cli switches in a mutex kind of way
 # Usage : custom_run niceness executable command line arguments
 function custom_run {
-    bin=$(which "${2}")
-    pid=$(pidof "${2}")
-    if [[ -z "${pid}" && -x "${bin}" ]]; then
-      exec nice -n "${@}"
-    fi
+  bin=$(which "${2}")
+  pid=$(pgrep -f "${2}")
+  if [ -z "${pid}" ] && [ -x "${bin}" ]; then
+    exec nice -n "${@}"
+  fi
 }
+
+# Per distro setup.
+source /etc/os-release
+if [ "${ID}" == "devuan" ]; then
+  custom_run 9 xfce4-terminal --disable-server &
+  custom_run 9 conky -qd &
+elif [ "${ID}" == "gentoo" ]; then
+  # sleep 1m && custom_run -9 conky -qdc ~/.conky/shailen.conf &
+  # sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
+  continue
+else
+  custom_run 9 xterm &
+  custom_run 9 conky -qd &
+fi
 
 # Start an X11 compositor
 # custom_run 19 compton
@@ -20,7 +34,7 @@ function custom_run {
 custom_run 9 xscreensaver -no-splash &
 
 # Add some wallpaper variety for your desktop
-custom_run 9 bash ${HOME}/bin/wallpaper-rotate.sh &
+custom_run 9 ~/bin/wallpaper-rotate.sh &
 
 # Run emacs
 custom_run 0 emacs --daemon &
@@ -31,28 +45,14 @@ custom_run 0 mpd &
 # Xfce4 themes
 custom_run 9 xfsettingsd --replace --no-daemon &
 
-# Per distro setup.
-source /etc/os-release
-if [[ "${ID}" == "gentoo" ]]; then
-  # sleep 1m && custom_run -9 conky -qdc ~/.conky/shailen.conf &
-  # sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
-  sleep 1
-elif [ "${ID}" == "devuan" ]; then
-  custom_run 9 xfce4-terminal --disable-server &
-  custom_run 9 conky -qd &
-else
-  custom_run 9 xterm &
-  custom_run 9 conky -qd &
-fi
-
 # bashrun
 # custom_run 9 bashrun --restart &
 
 # A calendar app
-# custom_run -9 orage
+#custom_run -9 orage &
 
 # Networking Python gui
-# nice -n -9 wicd-gtk -t &
+#custom_run 9 wicd-gtk -t &
 
 # Start a Menu
-# nice -n -9 ${HOME}/bin/tkrm.sh &
+#custom_run 9 ~/git/pythonRootMenu/TkRootMenu.py &

@@ -3,103 +3,23 @@
 
 ! Look similar to the Linux Console
 ! ---------------------------------------------------------------------------
-!XTerm*background: black
-!XTerm*foreground: white
-XTerm*cursorColor: yellow
-XTerm*Title: XTerm
-XTerm*transparent: true
-!XTerm*HiForeColor: white
-!XTerm*HiBackColor: #c06077
-XTerm*scrollBar: false
-XTerm*saveLines: 99999
-!XTerm*geometry: 80x25
-
-! Fonts for different resolutions and character encodings
-! By default English encoding is set. How to set different encodings:
-! - Polish encoding: apply "-iso8859-2" at the end of the font string
-! ---------------------------------------------------------------------------
-! Englsh encoding
-! 640x480
-!XTerm*font: -misc-fixed-medium-r-normal-*-12-*
-! 800x600
-!XTerm*font: -misc-fixed-medium-r-normal-*-13-*
-! 1024x768
-!XTerm*font: -misc-fixed-medium-r-normal-*-14-*
-! 1152x864
-!XTerm*font: -misc-fixed-medium-r-normal-*-14-*
-!XTerm*font: -misc-Sourcecodepro-normal-r-normal-*-14-*-*-*-*-*-*-*
-! 1280x1024
-!XTerm*font: -misc-fixed-medium-r-normal-*-18-*
-
-! Colors similar to those used in Linux Console (ttyX)
-! ---------------------------------------------------------------------------
-!XTerm*color0: rgb:0/0/0
-!XTerm*color1: rgb:cc/00/00
-!XTerm*color2: rgb:00/cc/00
-!XTerm*color3: #bd5e01
-!XTerm*color4: rgb:00/00/cc
-!XTerm*color5: rgb:cc/00/cc
-!XTerm*color6: rgb:00/cc/cc
-!XTerm*color7: rgb:aa/aa/aa
-!XTerm*color8: rgb:33/33/33
-!XTerm*color9: rgb:ff/00/00
-!XTerm*color10: rgb:00/ff/00
-!XTerm*color11: rgb:ff/ff/00
-!XTerm*color12: rgb:00/00/ff
-!XTerm*color13: rgb:ff/00/ff
-!XTerm*color14: rgb:00/ff/ff
-!XTerm*color15: rgb:ff/ff/ff
-
-! Default XTerm colors
-! ---------------------------------------------------------------------------
-!XTerm*color0: black
-!XTerm*color1: red3
-!XTerm*color2: green3
-!XTerm*color3: brown
-!XTerm*color4: blue3
-!XTerm*color5: magenta3
-!XTerm*color6: cyan3
-!XTerm*color7: gray90
-!XTerm*color8: gray30
-!XTerm*color9: red
-!XTerm*color10: green
-!XTerm*color11: yellow
-!XTerm*color12: blue
-!XTerm*color13: magenta
-!XTerm*color14: cyan
-!XTerm*color15: white
 
 ! https://unix4lyfe.org/xterm/
-xterm*faceName: Ubuntu Mono
-xterm*faceSize: 12
+xterm*faceName: SourceCodePro
+xterm*faceSize: 10
 xterm*renderFont: true
 xterm*font: fixed
 xterm*boldFont: fixed
 xterm*cursorBlink: true
 xterm*loginShell: true
 xterm*vt100*geometry: 80x26
-xterm*saveLines: 9999
+xterm*saveLines: 99999
 xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 xterm*termName: xterm-color
 xterm*eightBitInput: false
-xterm*foreground: rgb:a8/a8/a8
-xterm*background: rgb:00/00/00
-!xterm*color0: rgb:00/00/00
-!xterm*color1: rgb:a8/00/00
-!xterm*color2: rgb:00/a8/00
-!xterm*color3: rgb:a8/54/00
-!xterm*color4: rgb:00/00/a8
-!xterm*color5: rgb:a8/00/a8
-!xterm*color6: rgb:00/a8/a8
-!xterm*color7: rgb:a8/a8/a8
-!xterm*color8: rgb:54/54/54
-!xterm*color9: rgb:fc/54/54
-!xterm*color10: rgb:54/fc/54
-!xterm*color11: rgb:fc/fc/54
-!xterm*color12: rgb:54/54/fc
-!xterm*color13: rgb:fc/54/fc
-!xterm*color14: rgb:54/fc/fc
-!xterm*color15: rgb:fc/fc/fc
+! xterm*foreground: rgb:a8/a8/a8
+! xterm*background: rgb:00/00/00
+
 xterm*boldMode: false
 xterm*colorBDMode: true
 xterm*colorBD: rgb:fc/fc/fc

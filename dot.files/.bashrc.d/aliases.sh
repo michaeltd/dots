@@ -58,7 +58,7 @@ alias reboot='sudo shutdown -r' # as above
 alias mc='source /usr/share/mc/mc-wrapper.sh'
 
 # URxvt transparency
-alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'
+# Moved to .Xresouces alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'
 
 # Emacs alias
 alias ex='emacs' # EmaX

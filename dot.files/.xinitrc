@@ -3,7 +3,7 @@
 # Or: "The dedicated WM hoppers ~/.xinitrc"
 
 # ~/.Xresources
-xrdb -I"${HOME}" -merge ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -I"${HOME}" -merge ~/.Xresources
 
 # Silence terminal bell
 xset b off
