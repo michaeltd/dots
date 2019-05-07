@@ -4,8 +4,6 @@ URxvt*cursorBlink: true
 !URxvt*underlineColor: yellow
 URxvt*font: xft:SourceCodePro:size=10:antialias=true
 URxvt*depth: 32
-
-!Theme One
 URxvt*background: rgba:0000/0000/0000/aaaa
 ! URxvt*foreground: rgb:a8/a8/a8
 ! URxvt*borderless: 1
@@ -14,6 +12,25 @@ URxvt*loginShell: true
 Urxvt*secondaryScroll: true ! Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 99999
 URxvt*termName: rxvt-unicode
-URxvt.perl-ext-common: default,matcher
+!URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1
+
+! https://gist.github.com/rawsh/9ae04a2bdbfce513ad0851d9277515d2
+! === URxvt ===
+! Extensions
+URxvt*perl-ext-common:          default,matcher,vtwheel,clipboard
+! Looks
+!URxvt*font:                     xft:inconsolatazi4:size=18
+!URxvt*scrollBar:                false
+URxvt.internalBorder:           10
+! Clickable urls
+URxvt.url-select.underline:     true
+!URxvt.url-launcher:             /usr/bin/firefox
+!URxvt.matcher.button:           1
+! Change keybinding for copy/paste
+URxvt*iso14755:                 false
+URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
+URxvt.letterSpace:              -1
+URxvt.lineSpace:                2

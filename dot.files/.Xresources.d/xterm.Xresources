@@ -5,7 +5,7 @@
 ! ---------------------------------------------------------------------------
 
 ! https://unix4lyfe.org/xterm/
-xterm*faceName: SourceCodePro
+!xterm*faceName: SourceCodePro
 xterm*faceSize: 10
 xterm*renderFont: true
 xterm*font: fixed

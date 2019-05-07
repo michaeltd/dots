@@ -18,15 +18,12 @@ declare -A WMA=( [openbox]="openbox-session" [windowmaker]="wmaker" [jwm]="jwm" 
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
-if [[ "${ID}" == "devuan" ]]; then
-    WM="${WMA[xfce4]}"
-elif [[ "${ID}" == "gentoo" ]]; then
+if [[ "${ID}" == "gentoo" ]]; then
     WM="${WMA[awesome]}"
+elif [[ "${ID}" == "devuan" ]]; then
+    WM="${WMA[xfce4]}"
 else
-    # Availability check
-    #
-    # One line version.
-    # WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which fvwm-crystal||which fvwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
+    # Availability check, One line version: WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which fvwm-crystal||which fvwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
     for x in "${!WMA[@]}"; do
         if [[ -x "$(which ${WMA[$x]} 2> /dev/null)" ]]; then
             WM="${WMA[$x]}"

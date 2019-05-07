@@ -15,13 +15,13 @@ function custom_run {
 
 # Per distro setup.
 source /etc/os-release
-if [ "${ID}" == "devuan" ]; then
-  custom_run 9 xfce4-terminal --disable-server &
-  custom_run 9 conky -qd &
-elif [ "${ID}" == "gentoo" ]; then
+if [ "${ID}" == "gentoo" ]; then
   # sleep 1m && custom_run -9 conky -qdc ~/.conky/shailen.conf &
   # sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
   continue
+elif [ "${ID}" == "devuan" ]; then
+  custom_run 9 xfce4-terminal --disable-server &
+  custom_run 9 conky -qd &
 else
   custom_run 9 xterm &
   custom_run 9 conky -qd &

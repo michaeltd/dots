@@ -3,9 +3,10 @@
 #include ".Xresources.d/xterm.Xresources"
 #include ".Xresources.d/urxvt.Xresources"
 #include ".Xresources.d/mwm.Xresources"
+#include ".Xresources.d/rofi.Xresources"
 
-!*faceName: SourceCodePro
-!*font: SourceCodePro
+*.faceName: SourceCodePro
+!*.font: SourceCodePro
 
 ! https://draculatheme.com/xresources/
 ! Dracula Xresources palette
@@ -20,7 +21,8 @@
 *.color3:     #F1FA8C
 *.color11:    #F4F99D
 *.color4:     #BD93F9
-*.color12:    #CAA9FA
+!*.color12:    #CAA9FA
+*.color12:    #7114f9
 *.color5:     #FF79C6
 *.color13:    #FF92D0
 *.color6:     #8BE9FD

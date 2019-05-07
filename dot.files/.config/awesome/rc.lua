@@ -41,9 +41,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
---beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
---beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
---beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 
@@ -266,13 +266,15 @@ globalkeys = gears.table.join(
 
     -- Sound Shortcuts
     awful.key({ modkey,           }, "=", function () awful.spawn.with_shell("~/bin/vol +")    end,
-              {description = "Increase Volume by 5%", group = "sound"}),
+              {description = "Increase Volume by 5%", group = "utility"}),
     awful.key({ modkey,           }, "-", function () awful.spawn.with_shell("~/bin/vol -")    end,
-              {description = "Decrease Volume by 5%", group = "sound"}),
+              {description = "Decrease Volume by 5%", group = "utility"}),
     awful.key({ modkey,           }, "0", function () awful.spawn.with_shell("~/bin/vol 100")    end,
-              {description = "Max Volume", group = "sound"}),
+              {description = "Max Volume", group = "utility"}),
     awful.key({ modkey,           }, "m", function () awful.spawn.with_shell("~/bin/vol 0")    end,
-              {description = "Mute Sound", group = "sound"}),
+              {description = "Mute Sound", group = "utility"}),
+    awful.key({                   }, "Print", function () awful.spawn.with_shell("~/bin/screenshot.sh")    end,
+              {description = "Take a screenshot", group = "utility"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,

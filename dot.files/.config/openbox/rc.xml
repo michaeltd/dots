@@ -320,7 +320,25 @@
           <enabled>true</enabled>
           <name>Run Dialog</name>
         </startupnotify>
-        <command>xfce4-appfinder --collapsed</command>
+        <command>bashrun</command>
+      </action>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Volume Up</name>
+        </startupnotify>
+        <command>~/bin/vol +</command>
+      </action>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Volume Down</name>
+        </startupnotify>
+        <command>~/bin/vol -</command>
       </action>
     </keybind>
     <keybind key="Print">
@@ -330,6 +348,15 @@
           <name>Screenshot</name>
         </startupnotify>
         <command>~/bin/screenshot.sh</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-l">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Quit</name>
+        </startupnotify>
+        <command>kill -15 -1</command>
       </action>
     </keybind>
   </keyboard>
