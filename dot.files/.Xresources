@@ -5,7 +5,7 @@
 #include ".Xresources.d/mwm.Xresources"
 #include ".Xresources.d/rofi.Xresources"
 
-*.faceName: SourceCodePro
+*.faceName: SourceCodeProforPowerline
 !*.font: SourceCodePro
 
 ! https://draculatheme.com/xresources/

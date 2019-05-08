@@ -10,7 +10,7 @@ rofi.opacity:                        75
 rofi.width:                          25
 rofi.lines:                          10
 rofi.columns:                        1
-rofi.font:                           SourceCodePro 10
+rofi.font:                           SourceCodeProforPowerline 10
 rofi.fg:                             #5294E2
 rofi.bg:                             #5d729f
 rofi.fg-active:                      #34405a

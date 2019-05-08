@@ -2,9 +2,9 @@
 URxvt*buffered: true
 URxvt*cursorBlink: true
 !URxvt*underlineColor: yellow
-URxvt*font: xft:SourceCodePro:size=10:antialias=true
+URxvt*font: xft:SourceCodeProforPowerline:size=10:antialias=true
 URxvt*depth: 32
-URxvt*background: rgba:0000/0000/0000/aaaa
+URxvt*background: rgba:0000/0000/0000/dddd
 ! URxvt*foreground: rgb:a8/a8/a8
 ! URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -19,7 +19,8 @@ URxvt.matcher.button: 1
 ! https://gist.github.com/rawsh/9ae04a2bdbfce513ad0851d9277515d2
 ! === URxvt ===
 ! Extensions
-URxvt*perl-ext-common:          default,matcher,vtwheel,clipboard
+!,clipboard,vtwheel: urxvt: perl extension 'clipboard, vtwheel' not found in perl library search path
+URxvt*perl-ext-common:          default,matcher
 ! Looks
 !URxvt*font:                     xft:inconsolatazi4:size=18
 !URxvt*scrollBar:                false

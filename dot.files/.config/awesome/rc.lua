@@ -232,9 +232,10 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
+    --,
+    -- awful.button({ }, 4, awful.tag.viewnext),
+    -- awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
@@ -249,7 +250,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "j",
+    awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.byidx( 1)
         end,
@@ -265,9 +266,9 @@ globalkeys = gears.table.join(
     --          {description = "show main menu", group = "awesome"}),
 
     -- Sound Shortcuts
-    awful.key({ modkey,           }, "=", function () awful.spawn.with_shell("~/bin/vol +")    end,
+    awful.key({ modkey,           }, "Up", function () awful.spawn.with_shell("~/bin/vol +")    end,
               {description = "Increase Volume by 5%", group = "utility"}),
-    awful.key({ modkey,           }, "-", function () awful.spawn.with_shell("~/bin/vol -")    end,
+    awful.key({ modkey,           }, "Down", function () awful.spawn.with_shell("~/bin/vol -")    end,
               {description = "Decrease Volume by 5%", group = "utility"}),
     awful.key({ modkey,           }, "0", function () awful.spawn.with_shell("~/bin/vol 100")    end,
               {description = "Max Volume", group = "utility"}),
@@ -287,7 +288,7 @@ globalkeys = gears.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
+    awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.history.previous()
             if client.focus then
