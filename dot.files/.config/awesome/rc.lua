@@ -75,13 +75,17 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
---beautiful.init(awful.util.get_themes_dir("config") .. "themes/custom/theme.lua")
-beautiful.init("~/.config/awesome/themes/custom/theme.lua")
+-- beautiful.init(awful.util.get_themes_dir("config") .. "themes/custom/theme.lua")
+-- beautiful.init("~/.config/awesome/themes/custom/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
+-- terminal = "urxvt"
+terminal = "xterm"
+-- editor = os.getenv("EDITOR") or "vim"
+-- editor_cmd = terminal .. " -e " .. editor
+editor = os.getenv("EDITOR") or "mxcl"
+editor_cmd = editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -94,14 +98,14 @@ modkey = "Mod4"
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+--    awful.layout.suit.tile.left,
+--    awful.layout.suit.tile.bottom,
+--    awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
+--    awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
---    awful.layout.suit.max,
+--    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max,
 --    awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
 --    awful.layout.suit.corner.nw,
@@ -137,15 +141,11 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "URxvt", terminal },
+                                    { "URxvt", "urxvt" },
                                     { "XTerm", "xterm" },
                                     { "FireFox", "firefox" },
-                                    { "Chrome" , "google-chrome-stable" },
-                                    { "Word", "wps" },
-                                    { "PPT", "wpp" },
-                                    { "Execl", "et" },
-                                    { "VNC", "vncviewer" },
-                                    { "MUSIC", "netease-cloud-music" },
+                                    { "Editor", "mxcl" },
+                                    { "FM", terminal .. " -e " .. "mc" },
                                     { "VLC", "vlc" }
                                   }
                         })
@@ -874,5 +874,7 @@ run_once("xcompmgr -c -t-5 -l-5 -r4.2 -o.55 &")
 run_once("conky -bd")
 --]]
 
-awful.util.spawn_with_shell("sleep 1 && transset-df .6 -n conky")
-awful.util.spawn_with_shell("transset-df .8 -n urxvt")
+-- awful.util.spawn_with_shell("sleep 1 && transset-df .6 -n conky")
+-- awful.util.spawn_with_shell("transset-df .8 -n urxvt")
+
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
