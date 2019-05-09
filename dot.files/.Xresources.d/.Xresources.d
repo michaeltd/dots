@@ -1,1 +1,0 @@
-/home/paperjam/git/dots/dot.files/.Xresources.d
