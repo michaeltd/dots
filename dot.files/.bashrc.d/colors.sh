@@ -2,6 +2,10 @@
 #
 # colors for general/ls use
 
+# https://robotmoon.com/256-colors/
+
+# https://github.com/philosophos/Xresources
+
 # Font attributes
 export reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)"
 

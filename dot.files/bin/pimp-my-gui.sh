@@ -28,7 +28,7 @@ else
 fi
 
 # Start an X11 compositor
-# custom_run 19 compton
+# custom_run 19 compton -b &
 
 # XScreenSaver
 custom_run 9 xscreensaver -no-splash &
