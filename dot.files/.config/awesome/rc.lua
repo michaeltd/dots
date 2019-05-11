@@ -49,8 +49,11 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
-editor = os.getenv("EDITOR") or "emacsclient -nw -a micro -t"
-editor_cmd = terminal .. " -e " .. editor
+-- editor = os.getenv("EDITOR") or "vim"
+-- editor_cmd = terminal .. " -e " .. editor
+
+editor = os.getenv("VISUAL") or "mxcl"
+editor_cmd = editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -106,7 +109,10 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
+                                    { "terminal", terminal },
+                                    { "browser", "firefox" },
+                                    { "editor", editor },
+                                    { "file manager", terminal .. " -e mc" }
                                   }
                         })
 

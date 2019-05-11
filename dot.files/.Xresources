@@ -11,7 +11,10 @@
 ! https://draculatheme.com/xresources/
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
-*.background: #282A36
+
+!*.background: #282A36
+*.background: #000000
+
 *.color0:     #000000
 *.color8:     #4D4D4D
 *.color1:     #FF5555

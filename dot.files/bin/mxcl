@@ -4,7 +4,7 @@
 # e[M]a[X] [C][L]ient
 
 if [[ -n "${DISPLAY}" ]]; then
-    emacsclient -c "${@}" &
+    emacsclient -a emacs -c "${@}" &
 else
-    emacsclient -t "${@}" &
+    emacsclient -a emacs -t "${@}" &
 fi

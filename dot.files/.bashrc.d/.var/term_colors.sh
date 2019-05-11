@@ -1,6 +1,7 @@
 # ~/.bashrc.d/term_colors.sh
 #
 # color gym for the terminal
+# https://jonasjacek.github.io/colors/
 
 function color_test {
   #   Daniel Crisman's ANSI color chart script from
