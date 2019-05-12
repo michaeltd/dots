@@ -10,7 +10,11 @@
       (Lynx, EXEC, "xterm -e lynx"),
       (W3M, EXEC, "xterm -e w3m")
     ),
-    (Email, (Mutt, EXEC, "xterm -e mutt")),
+    (
+      Email,
+      (Mutt, EXEC, "xterm -e mutt"),
+      (Alpine, EXEC, "xterm -e alpine")
+    ),
     (
       Mathematics,
       (Xmaxima, EXEC, xmaxima),
@@ -44,6 +48,7 @@
       (gVIM, EXEC, gvim),
       (vi, EXEC, "xterm -e vi"),
       (VIM, EXEC, "xterm -e vim"),
+      (Pico, EXEC, "xterm -e pico"),
       (Nano, EXEC, "xterm -e nano")
     ),
     (
@@ -58,8 +63,19 @@
     ),
     (
       "Window Maker",
+      (Matrix, EXEC, wmMatrix),
+      (Fire, EXEC, wmfire),
+      ("Interface Info", EXEC, wmifinfo),
+      ("CPU Load", EXEC, wmcpuload),
+      ("Memory Load", EXEC, wmmemload),
       ("Clock Mon", EXEC, wmclockmon),
+      ("Network Devices", EXEC, wmnd),
+      (Time, EXEC, wmtime),
+      ("System Monitor", EXEC, wmmon),
+      ("System Monitor", EXEC, wmsysmon),
       ("System Tray", EXEC, wmsystemtray),
+      ("System Tray", EXEC, wmsystray),
+      (Button, EXEC, wmbutton),
       (Magnify, EXEC, wmagnify)
     ),
     (

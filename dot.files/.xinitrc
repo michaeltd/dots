@@ -14,12 +14,12 @@ xset m 20/10 4
 # Qt5 theme engine
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-declare -A WMA=( [openbox]="openbox-session" [windowmaker]="wmaker" [jwm]="jwm" [awesome]="awesome" [mwm]="mwm" [fvwm-crystal]="fvwm-crystal" [fvwm]="fvwm" [e16]="starte16" [enlightenment]="enlightenment_start" [xfce4]="xfce4-session" [compiz]="compiz.sh" [emacs]="emacs" [kodi]="kodi-standalone" )
+declare -A WMA=( [openbox]="openbox-session" [wmaker]="wmaker" [jwm]="jwm" [awesome]="awesome" [mwm]="mwm" [fvwm-crystal]="fvwm-crystal" [fvwm]="fvwm" [e16]="starte16" [enlightenment]="enlightenment_start" [xfce4]="xfce4-session" [compiz]="compiz.sh" [emacs]="emacs" [kodi]="kodi-standalone" )
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-    WM="${WMA[awesome]}"
+    WM="${WMA[wmaker]}"
 elif [[ "${ID}" == "devuan" ]]; then
     WM="${WMA[xfce4]}"
 else

@@ -16,28 +16,21 @@
 #
 # xset m 20/10 4 # Mouse acceleration
 
-# For use with WindowMaker
 # Replace "${APPS}" list with your desired applets.
-#function startApps {
-# Fill a list with the applets you need
-#APPS="wmfire wmclockmon wmsystray wmMatrix wmbinclock wmbutton wmifinfo wmnd wmmon wmcpuload wmsysmon wmmemload wmacpi wmtime wmcalc wmSpaceWeather wmudmount wmmp3"
-APPS="wmfire wmMatrix wmclockmon wmsystemtray"
-for APP in $APPS ; do
-  killall $APP # Just for good mesure.
-  $APP &
+# APPS=(wmfire wmclockmon wmsystemtray wmMatrix wmbinclock wmbutton wmifinfo wmnd wmmon wmcpuload wmsysmon wmmemload wmacpi wmtime wmcalc wmSpaceWeather wmudmount wmmp3)
+APPS=(wmclockmon wmsystemtray wmifinfo wmacpi wmsysmon)
+for APP in "${APPS[@]}"; do
+    killall $APP # Just for good mesure.
+    $APP &
 done
-#}
 
-# For use with WindowMaker
 # Run this to update your Root menu to reflect themes or apps changes
-#function regenMenu {
 # cp ~/GNUstep/Defaults/WMRootMenu ~/GNUstep/Defaults/`date +%s`WMRootMenu # Backup Root menu
 wmgenmenu > ~/GNUstep/Defaults/WMRootMenu # Write new menu
-#}
 
-compton &
+compton -b
+
 pmg="${HOME}/bin/pimp-my-gui.sh"
 if [[ -x "${pmg}" ]]; then # If spice ...
-  "${pmg}" & # Spice things up
+    "${pmg}" & # Spice things up
 fi
-

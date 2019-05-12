@@ -56,3 +56,6 @@ custom_run 9 xfsettingsd --replace --no-daemon &
 
 # Start a Menu
 #custom_run 9 ~/git/pythonRootMenu/TkRootMenu.py &
+
+# Systray volumeicon
+custom_run 9 vulumeicon &

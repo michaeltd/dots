@@ -13,6 +13,7 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+local vicious = require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -128,7 +129,158 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+-- mytextclock = wibox.widget.textclock()
+
+-- {{{_Wibar
+--_Create_a_textclock_widget
+-- mytextclock = wibox.widget.textclock(
+--             '<span font="SourceCodePro 10" color="#ffffff" background="#444444"> %b-%d %a '..
+--             '<span font="SourceCodePro 10" color="#ffffff" background="#222222"> %T '..
+--             '</span></span>',1)
+
+mytextclock = wibox.widget.textclock('<span color="#7114f9"> %b %d %a' .. '<span color="#7114f9"> %H:%M' .. '</span></span>',1)
+
+--_Date&Time
+datewidget = wibox.widget.textbox()
+datewidget : set_font("SourceCodePro 10")
+vicious.register(datewidget, vicious.widgets.date,
+                             '<span color="#ffffff" background="#444444">|%b-%d %a '..
+                             '<span color="#ffffff" background="#222222">%T '..
+                             '</span></span>',1)
+
+--_Battery_widget
+batwidget = wibox.widget.textbox()
+batwidget : set_font("SourceCodePro 10")
+vicious.register(batwidget,vicious.widgets.bat, '<span color="#44cc00">$1$2% $3 </span>',60,"BAT0")
+
+--_Volume
+volume = wibox.widget.textbox()
+volume : set_font("SourceCodePro 10")
+vicious.register(volume,vicious.widgets.volume, '<span color="#cc88cc">$2$1% </span>',nil,"Master")
+
+--_Temperature
+temp = wibox.widget.textbox()
+temp : set_font("SourceCodePro 10")
+temp : set_forced_width(70)
+vicious.register(temp,vicious.widgets.thermal, '<span color="#cc8800"> ${1}<sup>C</sup> </span>',60,"thermal_zone0")
+
+--_CPU_Frequency
+cpuinf = wibox.widget.textbox()
+cpuinf : set_font("SourceCodePro 10")
+cpuinf : set_forced_width(75)
+vicious.register(cpuinf,vicious.widgets.cpuinf, '<span color="#ccff00" >${cpu0 mhz}Mhz </span>')
+
+--_CPU_Utilization
+cpurate = wibox.widget.textbox()
+cpurate : set_font("SourceCodePro 10")
+cpurate : set_forced_width(520)
+vicious.register(cpurate,vicious.widgets.cpu,
+        '<span background="#000000" color="#ffff00">ALL: $1% '..
+        '<span background="#222222" color="#ffcc00">'..
+        '1:$2%  2:$3%  3:$4%  4:$5%'..
+        '</span></span>',1)
+
+--_Memory
+memwidget = wibox.widget.textbox()
+memwidget : set_font("SourceCodePro 10")
+memwidget : set_forced_width(280)
+vicious.register(memwidget,vicious.widgets.mem,
+    '<span background="#000000" color="#00ff00">MEM:$1% '..
+    '<span background="#222222" color="#44ff00">Used:$2MB Free:$4MB '..
+    '</span></span> ',1)
+
+--_Disk_IO
+diskio = wibox.widget.textbox()
+diskio : set_font("SourceCodePro 10")
+diskio : set_forced_width(240)
+vicious.register(diskio,vicious.widgets.dio,
+    '<span background="#666666" color="#661111">IO:'..
+    '<span background="#000000" color="#44ff00"> R:${sda read_kb}kb|'..
+    '<span background="#000000" color="#ff4400">|W:${sda write_kb}kb '..
+    '</span></span></span> ')
+
+--_Free_Storage
+fswidget = wibox.widget.textbox()
+fswidget : set_font("SourceCodePro 10")
+fswidget : set_forced_width(400)
+vicious.register(fswidget,vicious.widgets.fs,
+    '<span color="#8888ff">root:${/ used_gb}/${/ avail_gb}GB '..
+    '<span color="#8888ff">data:${/mnt/data used_gb}/${/mnt/data avail_gb}GB '..
+    '<span color="#8888ff">el:${/mnt/el used_gb}/${/mnt/el avail_gb}GB '..
+    '</span></span></span>',60)
+
+--_Netspeed_widget
+netspeed = wibox.widget.textbox()
+netspeed : set_font("SourceCodePro 10")
+vicious.register(netspeed,vicious.widgets.net,
+function(widget,args)
+    local interface = ""
+    if args["{ carrier}"] == 1 then
+        interface = "wlan0"
+    elseif args["{wlp2s0b1 carrier}"] == 1 then
+        interface = "wlan2s0b1"
+    elseif args["{enp11s0 carrier}"] == 1 then
+        interface = "enp11s0"
+    elseif args["{ethusb0 carrier}"] == 1 then
+        interface = "ethusb0"
+    elseif args["{usb0 carrier}"] == 1 then
+        interface = "usb0"
+    else
+        return ""
+    end
+    return 
+    ' <span color="#cc8800" background="#333333"> '..
+    interface..
+    ' <span color="#44ff00" background="#000000"> '..
+    args["{"..interface.." down_kb}"]..'kb↓'..
+    '<span color="#ff4400" background="#000000">'..'↑'..
+    args["{"..interface.." up_kb}"]..'kb </span></span></span> '
+end,10)
+
+function wifi(widget,args)
+    local file0 = io.open("/sys/class/net/wlan0/operstate","r")
+    if file0 then carrier0 = file0:read() file0:close() end
+    local file1 = io.open("/sys/class/net/wlan1/operstate","r")
+    if file1 then carrier1 = file1:read() file1:close() end
+    local file2 = io.open("/sys/class/net/wlan2/operstate","r")
+    if file2 then carrier2 = file2:read() file2:close() end
+    if carrier0 == 'up' then
+        return "wlan0"
+    elseif carrier1 == 'up' then
+        return "wlan1"
+    elseif carrier2 == 'up' then
+        return "wlan2"
+    else
+        return ""
+    end
+end
+--_WiFi_Info
+wifiinfo = wibox.widget.textbox()
+wifiinfo : set_font("SourceCodePro 10")
+wifiinfo : set_forced_width(320)
+vicious.register(wifiinfo,vicious.widgets.wifi,
+function(widget,args)
+    local file0 = io.open("/sys/class/net/wlan0/operstate","r")
+    if file0 then carrier0 = file0:read() file0:close() end
+    local file1 = io.open("/sys/class/net/wlan1/operstate","r")
+    if file1 then carrier1 = file1:read() file1:close() end
+    local file2 = io.open("/sys/class/net/wlan2/operstate","r")
+    if file2 then carrier2 = file2:read() file2:close() end
+    if carrier0 == 'up' or carrier1 == 'up' or carrier2 == 'up' then
+        return 
+        '<span color="#00cc66"> SSID:'..args['{ssid}']..
+        '<span color="#aaaa00"> Mode:'..args['{mode}']..
+        '<span color="#aaaa00"> Chan:'..args['{chan}']..
+        --'<span color="#aaaa00"> Rate:'..args['{rate}']..
+        --'<span color="#aaaa00"> LinP:'..args['{linp}']..
+        '<span color="#aaaa00"> Sign:'..args['{sign}']..
+        '</span></span></span></span>'
+    else
+        return ""
+    end
+end
+,1,wifi(widget,args))
+--,1,"wlan0")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
