@@ -2,7 +2,7 @@
 URxvt*buffered: true
 URxvt*cursorBlink: true
 !URxvt*underlineColor: yellow
-URxvt*font: xft:SourceCodeProforPowerline:size=10:antialias=true
+URxvt*font: xft:SourceCodePro:size=10:antialias=true
 URxvt*depth: 32
 ! URxvt*background: rgba:0000/0000/0000/dddd
 ! URxvt*foreground: rgb:a8/a8/a8
