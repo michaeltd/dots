@@ -10,25 +10,46 @@
 
 ! https://draculatheme.com/xresources/
 ! Dracula Xresources palette
-*.foreground: #F8F8F2
+! *.foreground: #F8F8F2
 
-!*.background: #282A36
-*.background: #000000
+! !*.background: #282A36
+! *.background: #000000
 
-*.color0:     #000000
-*.color8:     #4D4D4D
-*.color1:     #FF5555
-*.color9:     #FF6E67
-*.color2:     #50FA7B
-*.color10:    #5AF78E
-*.color3:     #F1FA8C
-*.color11:    #F4F99D
-*.color4:     #BD93F9
-!*.color12:    #CAA9FA
-*.color12:    #7114f9
-*.color5:     #FF79C6
-*.color13:    #FF92D0
-*.color6:     #8BE9FD
-*.color14:    #9AEDFE
-*.color7:     #BFBFBF
-*.color15:    #E6E6E6
+!*.color0:     #000000
+!*.color8:     #4D4D4D
+!*.color1:     #FF5555
+!*.color9:     #FF6E67
+!*.color2:     #50FA7B
+!*.color10:    #5AF78E
+!*.color3:     #F1FA8C
+! *.color11:    #F4F99D
+! *.color4:     #BD93F9
+! !*.color12:    #CAA9FA
+! *.color12:    #7114f9
+! *.color5:     #FF79C6
+! *.color13:    #FF92D0
+! *.color6:     #8BE9FD
+! *.color14:    #9AEDFE
+! *.color7:     #BFBFBF
+! *.color15:    #E6E6E6
+
+!Theme One
+*background: rgb:00/00/00
+*foreground: rgb:a8/a8/a8
+*color0:     rgb:00/00/00
+*color1:     rgb:a8/00/00
+*color2:     rgb:00/a8/00
+*color3:     rgb:a8/54/00
+*color4:     rgb:00/00/a8
+*color5:     rgb:a8/00/a8
+*color6:     rgb:00/a8/a8
+*color7:     rgb:a8/a8/a8
+*color8:     rgb:54/50/54
+*color9:     rgb:f8/54/50
+*color10:    rgb:50/fc/50
+*color11:    rgb:f8/fc/50
+*color12:    rgb:50/54/f8
+*color13:    rgb:f8/54/f8
+*color14:    rgb:50/fc/f8
+*color15:    rgb:f8/fc/f8
+!2007-02-26T22:18:49-08:00

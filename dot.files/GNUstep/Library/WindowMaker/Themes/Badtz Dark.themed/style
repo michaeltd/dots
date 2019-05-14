@@ -1,8 +1,8 @@
 {
   TitleJustify = left;
-  ClipTitleFont = "-adobe-helvetica-bold-r-normal-*-10-*-*-*-p-*-iso8859-2";
-  WindowTitleFont = "-adobe-helvetica-bold-r-normal-*-12-*-*-*-p-*-iso8859-2";
-  MenuTitleFont = "-*-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*";
+    ClipTitleFont = "-adobe-helvetica-bold-r-normal-*-10-*-*-*-p-*-iso8859-*";
+    WindowTitleFont = "-adobe-helvetica-bold-r-normal-*-12-*-*-*-p-*-iso8859-*";
+    MenuTitleFont = "-*-helvetica-bold-r-normal-*-12-*-*-*-*-*-*-*";
   MenuTextFont = "-*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*";
   IconTitleFont = "-*-helvetica-medium-r-normal-*-8-*-*-*-*-*-*-*";
   LargeDisplayFont = "-macromedia-electroharmonix-medium-r-normal-*-*-720-*-*-p-*-ascii-0";

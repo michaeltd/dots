@@ -41,17 +41,17 @@
 
 Menu DefaultRootMenu
 {
-	"Root Menu"		f.title
+	"Root Menu"         f.title
 	"New Window"		f.exec "xterm &"
 	"Applications" 		f.menu "ApplicationsMenu"
 	"Shuffle Up"		f.circle_up
 	"Shuffle Down"		f.circle_down
-	"Refresh"		f.refresh
+	"Refresh"		    f.refresh
 	"Pack Icons"		f.pack_icons
 !	"Toggle Behavior..."	f.set_behavior
-	 no-label		f.separator
+	 no-label		        f.separator
 	"Restart..."		f.restart
-	"Quit..."		f.quit_mwm
+	"Quit..."		    f.quit_mwm
 
 }
 

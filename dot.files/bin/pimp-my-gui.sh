@@ -3,59 +3,48 @@
 # ~/bin/pimp-my-gui.sh
 # Spice for the desktop
 
-# Run things in the background with custom niceness and cli switches in a mutex kind of way
-# Usage : custom_run niceness executable command line arguments
-function custom_run {
-  bin=$(which "${2}")
-  pid=$(pgrep -f "${2}")
-  if [ -z "${pid}" ] && [ -x "${bin}" ]; then
-    exec nice -n "${@}"
-  fi
-}
+# No double sourcing
+[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
 
 # Per distro setup.
 source /etc/os-release
 if [ "${ID}" == "gentoo" ]; then
-  # sleep 1m && custom_run -9 conky -qdc ~/.conky/shailen.conf &
-  # sleep 60 && custom_run 9 conky -qdc ~/.conky/seamod/.conkyrc &
-  continue
+  # rcm 9 conky -qdc ~/.conky/shailen.conf
+  sleep 2 && rcm 9 conky -qdc ~/.conky/seamod/.conkyrc
 elif [ "${ID}" == "devuan" ]; then
-  custom_run 9 xfce4-terminal --disable-server &
-  custom_run 9 conky -qd &
+  rcm 9 xfce4-terminal --disable-server
+  rcm 9 conky -qd
 else
-  custom_run 9 xterm &
-  custom_run 9 conky -qd &
+  rcm 9 xterm
+  rcm 9 conky -qd
 fi
 
-# Start an X11 compositor
-# custom_run 19 compton -b &
-
 # XScreenSaver
-custom_run 9 xscreensaver -no-splash &
+rcm 9 xscreensaver -no-splash
 
 # Add some wallpaper variety for your desktop
-custom_run 9 ~/bin/wallpaper-rotate.sh &
+rcm 9 ~/bin/wallpaper-rotate.sh
 
 # Run emacs
-custom_run 0 emacs --daemon &
+rcm 0 emacs --daemon
 
 # Run mpd
-custom_run 0 mpd &
+rcm 0 mpd
 
 # Xfce4 themes
-custom_run 9 xfsettingsd --replace --no-daemon &
-
-# bashrun
-# custom_run 9 bashrun --restart &
-
-# A calendar app
-#custom_run -9 orage &
-
-# Networking Python gui
-#custom_run 9 wicd-gtk -t &
-
-# Start a Menu
-#custom_run 9 ~/git/pythonRootMenu/TkRootMenu.py &
+rcm 9 xfsettingsd --replace --no-daemon
 
 # Systray volumeicon
-custom_run 9 vulumeicon &
+rcm 9 volumeicon
+
+# A calendar app
+rcm -9 orage
+
+# Networking Python gui
+rcm 9 wicd-gtk -t
+
+# bashrun
+# rcm 9 bashrun --restart
+
+# Start a Menu
+#rcm 9 ~/git/pythonRootMenu/TkRootMenu.py

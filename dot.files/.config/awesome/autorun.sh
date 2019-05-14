@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ~/.bashrc.d/functions.sh
+
 function run {
   if ! pgrep $1
   then
@@ -7,7 +9,7 @@ function run {
   fi
 }
 
-run compton -b
+rcm 9 compton -b
 
 PMG="${HOME}/bin/pimp-my-gui.sh"
 if [ -x "${PMG}" ]; then # If spice ...

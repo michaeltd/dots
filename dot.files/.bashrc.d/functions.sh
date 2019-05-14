@@ -9,8 +9,8 @@
 
 function allemojis () {
     for (( x = 2600; x <= 2700; x++ )); do
-	      echo -n -e '   \u'$x
-	      sleep .1
+      echo -n -e '   \u'$x
+      sleep .1
     done
     echo
 }
@@ -28,6 +28,16 @@ function countdown {
 
 # UTILS =======================================================================
 
+# Run things in the background with Custom niceness and cli switches in a Mutex kind of way
+# Usage : custom_run niceness executable command line arguments
+function rcm {
+  bin=$(which "${2}")
+  pid=$(pgrep -f "${2}")
+  if [ -z "${pid}" ] && [ -x "${bin}" ]; then
+    exec nice -n "${@}" &
+  fi
+}
+
 function printappsinpath {
   # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
   # The directories in $PATH are separated by ":",
@@ -40,11 +50,11 @@ function printappsinpath {
   printf "\n"
 }
 
-function listCat {
-    $(which ls) --color -al /usr/portage/${1}
+function listcat {
+  $(which ls) --color -al /usr/portage/${1}
 }
 
-function checkApp {
+function checkapp {
   if command -v $1 &> /dev/null; then
     return 0
   else
@@ -117,7 +127,7 @@ function up {
   done
 }
 
-function listenOnPort {
+function listenonport {
   # Returns service listening on given port
   if [[ -z "${1}" ]]; then
     printf "port number expected\n"
@@ -127,7 +137,7 @@ function listenOnPort {
   fi
 }
 
-function checkDirSizes {
+function checkdirsizes {
   # Report first params directory sizes in human readable format
   ls=$(which ls) # Workaround alias
   du=$(which du) #      >>
@@ -144,7 +154,7 @@ function memsumapp {
   ps -eo size,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' |cut -d "" -f2 | cut -d "-" -f1|grep ${1}
 }
 
-function printMemUsage {
+function printmemusage {
   #Report Total Used and Available mem in human readable format
   total=$(cat /proc/meminfo |head -1 |awk '{print $2}')
   avail=$(cat /proc/meminfo |head -2 |tail -1 |awk '{print $2}')
@@ -176,11 +186,11 @@ function updateDate {
   sudo ntpdate 0.gentoo.pool.ntp.org
 }
 
-function showUptime {
+function showuptime {
   echo -ne "${blue}${HOSTNAME}${reset} uptime is: ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
-function logMeOut {
+function logmeout {
   # Can't log out root like that
   if [ "${EUID}" -eq "0" ]; then
     printf "Can't log out root this way\n"
@@ -190,7 +200,7 @@ function logMeOut {
   fi
 }
 
-function pingSubnet {
+function pingsubnet {
   for x in {1..254}; do
     for y in {1..254}; do
       (ping -c 1 -w 2 192.168.${x}.${y} > /dev/null && echo "UP 192.168.${x}.${y}" &);
