@@ -3,7 +3,7 @@
 # environment variables
 
 # Used by emacsclient in case of no daemon found.
-export ALTERNATE_EDITOR=$(which micro 2> /dev/null||which vi 2> /dev/null||which nano 2> /dev/null)
+export ALTERNATE_EDITOR=$(which emacs 2> /dev/null || which micro 2> /dev/null || which vim 2> /dev/null || which vi 2> /dev/null || which nano 2> /dev/null)
 
 if [[ -n "${DISPLAY}" ]]; then
     unset 'EDITOR'
@@ -14,7 +14,7 @@ if [[ -n "${DISPLAY}" ]]; then
     else
         export VISUAL="xterm -e ${ALTERNATE_EDITOR}"
     fi
-    export BROWSER=$(which firefox 2> /dev/null||which seamonkey 2> /dev/null)
+    export BROWSER=$(which firefox 2> /dev/null || which seamonkey 2> /dev/null)
 else
     unset 'VISUAL'
     if [[ -x $(which emacs 2> /dev/null) ]]; then
@@ -24,7 +24,7 @@ else
     else
         export EDITOR="${ALTERNATE_EDITOR}"
     fi
-    export BROWSER=$(which w3m 2> /dev/null||which links 2> /dev/null||which lynx 2> /dev/null)
+    export BROWSER=$(which w3m 2> /dev/null || which links 2> /dev/null || which lynx 2> /dev/null)
 fi
 
 # Colorfull manpages (works with less as a pager)
@@ -38,7 +38,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # most > less > more in order of preference
-export PAGER=$(which most 2> /dev/null||which less 2> /dev/null||which more 2> /dev/null)
+export PAGER=$(which most 2> /dev/null || which less 2> /dev/null || which more 2> /dev/null)
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
