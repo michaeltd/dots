@@ -12,6 +12,8 @@
 # BacKuPs Remove => BKPR (1 remove, 0 don't)
 BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 
+printf "= $(basename ${BASH_SOURCE[0]}) =\n"
+
 # No root access
 # (( EUID != 0 )) && printf "privileged access requirements not met.\n" >&2 && exit 1
 # No backups directory
@@ -21,8 +23,6 @@ BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 source /home/paperjam/.bashrc.d/.stdl/time.sh # for datedd()
 source /home/paperjam/.bashrc.d/.stdl/string.sh # for split()
 source /home/paperjam/.bashrc.d/.stdl/math.sh # for max()
-
-printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
 FILES=( $($(which ls) -t1 ${BKPD}/*tar.gz* 2> /dev/null) )
 # File loop to gather stats

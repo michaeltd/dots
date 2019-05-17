@@ -35,13 +35,13 @@ rcm 0 mpd
 rcm 9 xfsettingsd --replace --no-daemon
 
 # Systray volumeicon
-rcm 9 volumeicon
+#rcm 9 volumeicon
 
 # A calendar app
-rcm -9 orage
+rcm 9 orage
 
 # Networking Python gui
-rcm 9 wicd-gtk -t
+#rcm 9 wicd-gtk -t
 
 # bashrun
 # rcm 9 bashrun --restart

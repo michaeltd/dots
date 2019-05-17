@@ -9,7 +9,7 @@ if [ "${1}" != "thoushallnotpass" ]; then
 fi
 
 DTFLS="$(cd $(dirname ${BASH_SOURCE[0]})/dot.files && pwd)"
-TOFLD="${HOME}/test"
+TOFLD="${HOME}"
 FX="$(date +%s)"
 LS=$(which ls)
 FLS=( $(${LS} -A ${DTFLS}) ) # No dot listings
