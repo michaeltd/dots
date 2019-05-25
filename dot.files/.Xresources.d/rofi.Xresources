@@ -8,9 +8,9 @@ rofi.ssh-client:                     ssh
 rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
 rofi.opacity:                        75
 rofi.width:                          25
-rofi.lines:                          10
+rofi.lines:                          5
 rofi.columns:                        1
-rofi.font:                           SourceCodeProforPowerline 10
+rofi.font:                           SourceCodePro 10
 rofi.fg:                             #5294E2
 rofi.bg:                             #5d729f
 rofi.fg-active:                      #34405a
@@ -30,7 +30,12 @@ rofi.color-normal: #353944,  #FFFFFF,  #353944,  #5294E2,  #FFFFFF
 !                  'background', 'border'
 rofi.color-window: #353944,      #404552
 rofi.bw:                             10
-rofi.location:                       0
+! https://blog.wizardsoftheweb.pro/rofi-change-window-location/
+! Theres a config option, location, that allows us to change that position. We can instead place the launcher on any of the cardinals, any of the ordinals, or dead center. The locations follow a pattern like this:
+! 1 2 3
+! 8 0 4
+! 7 6 5
+rofi.location:                       7
 rofi.padding:                        20
 rofi.levenshtein-sort:               true
 rofi.case-sensitive:                 false
