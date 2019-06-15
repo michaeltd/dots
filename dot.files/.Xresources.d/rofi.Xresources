@@ -3,7 +3,7 @@
 
 rofi.modi:                           ssh,window,drun,run
 rofi.sidebar-mode:                   true
-rofi.terminal:                       urxvt
+rofi.terminal:                       st
 rofi.ssh-client:                     ssh
 rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
 rofi.opacity:                        75
@@ -25,9 +25,9 @@ rofi.bgalt:                          #5671a0
 rofi.hlfg:                           #34405a
 rofi.hlbg:                           #34405a
 rofi.bc:                             #789ee1
-! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+!State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
 rofi.color-normal: #353944,  #FFFFFF,  #353944,  #5294E2,  #FFFFFF
-!                  'background', 'border'
+!                 'background', 'border'
 rofi.color-window: #353944,      #404552
 rofi.bw:                             10
 ! https://blog.wizardsoftheweb.pro/rofi-change-window-location/

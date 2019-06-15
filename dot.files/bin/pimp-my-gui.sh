@@ -9,8 +9,8 @@
 # Per distro setup.
 source /etc/os-release
 if [ "${ID}" == "gentoo" ]; then
-  # rcm 9 conky -qdc ~/.conky/shailen.conf
-  sleep 2 && rcm 9 conky -qdc ~/.conky/seamod/.conkyrc
+  rcm 9 xfce4-terminal --disable-server
+  # sleep 2 && rcm 9 conky -qdc ~/.conky/seamod/.conkyrc
 elif [ "${ID}" == "devuan" ]; then
   rcm 9 xfce4-terminal --disable-server
   rcm 9 conky -qd
@@ -33,18 +33,3 @@ rcm 0 mpd
 
 # Xfce4 themes
 rcm 9 xfsettingsd --replace --no-daemon
-
-# Systray volumeicon
-#rcm 9 volumeicon
-
-# A calendar app
-rcm 9 orage
-
-# Networking Python gui
-#rcm 9 wicd-gtk -t
-
-# bashrun
-# rcm 9 bashrun --restart
-
-# Start a Menu
-#rcm 9 ~/git/pythonRootMenu/TkRootMenu.py

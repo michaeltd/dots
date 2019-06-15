@@ -26,21 +26,21 @@ alias df='df -h'
 
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
-if [[ -n $(which emerge 2> /dev/null) ]]; then
-    alias ossearch='emerge -s' osinstall='sudo emerge -av' osremove='sudo emerge -avC'
-    alias osupdate='sudo emerge --sync' osupgrade='sudo emerge -avuND --with-bdeps=y @world' oscleanup='sudo emerge --ask --depclean'
-elif [[ -n $(which pacman 2> /dev/null) ]]; then
-    alias ossearch='pacman -Ss' osinstall='sudo pacman -S' osremove='sudo pacman -R'
-    alias osupdate='sudo pacman -Sy' osupgrade='sudo pacman -Syu' oscleanup='sudo pacman -Rsn'
-elif [[ -n $(which apt-get 2> /dev/null) ]]; then
-    alias ossearch='apt search' osinstall='sudo apt-get install --install-suggests' osremove='sudo apt-get premove --purge'
-    alias osupdate='sudo apt-get update' osupgrade='sudo apt-get dist-upgrade' oscleanup='sudo apt-get autoremove'
-elif [[ -n $(which zypper 2> /dev/null) ]]; then
-    alias ossearch='zypper search' osinstall='sudo zypper install' osremove='sudo zypper remove --clean-deps'
-    alias osupdate='sudo zypper refresh' osupgrade='sudo zypper update' oscleanup='sudo zypper rm -u'
-elif [[ -n $(which yum 2> /dev/null) ]]; then
-    alias ossearch='yum search' osinstall='sudo yum install' osremove='sudo yum remove'
-    alias osupdate='sudo yum check-update' osupgrade='sudo yum update' oscleanup='sudo yum autoremove'
+if command -v emerge &> /dev/null; then
+  alias ossearch='emerge -s' osinstall='sudo emerge -av' osremove='sudo emerge -avC'
+  alias osupdate='sudo emerge --sync' osupgrade='sudo emerge -avuND --with-bdeps=y @world' oscleanup='sudo emerge --ask --depclean'
+elif command -v pacman &> /dev/null; then
+  alias ossearch='pacman -Ss' osinstall='sudo pacman -S' osremove='sudo pacman -R'
+  alias osupdate='sudo pacman -Sy' osupgrade='sudo pacman -Syu' oscleanup='sudo pacman -Rsn'
+elif command -v apt-get &> /dev/null; then
+  alias ossearch='apt search' osinstall='sudo apt-get install --install-suggests' osremove='sudo apt-get premove --purge'
+  alias osupdate='sudo apt-get update' osupgrade='sudo apt-get dist-upgrade' oscleanup='sudo apt-get autoremove'
+elif command -v zypper &> /dev/null; then
+  alias ossearch='zypper search' osinstall='sudo zypper install' osremove='sudo zypper remove --clean-deps'
+  alias osupdate='sudo zypper refresh' osupgrade='sudo zypper update' oscleanup='sudo zypper rm -u'
+elif command -v yum &> /dev/null; then
+  alias ossearch='yum search' osinstall='sudo yum install' osremove='sudo yum remove'
+  alias osupdate='sudo yum check-update' osupgrade='sudo yum update' oscleanup='sudo yum autoremove'
 fi
 
 # Mount
@@ -73,6 +73,9 @@ alias cal='cal -m' # First Day Monday Calendars
 
 # cloc
 alias cloc='cloc --by-file-by-lang'
+
+# fonts for st
+alias st='st -g 80x25 -f SourceCodePro-Regular'
 
 # NET
 alias fixnet='ping -c 1 www.gentoo.org||sudo rc-service dhcpcd restart'
