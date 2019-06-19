@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # ~/sbin/update-bkp.sh
-# Backup users
+# Backup sensitive files, user files, system
 
 # Full path executables, no aliases
 NICEC=$(which nice) TARCM=$(which tar) GPG2C=$(which gpg2)
