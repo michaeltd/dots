@@ -7,4 +7,5 @@
 
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
 
-(( EUID == 0 )) && time qcheck --quiet --badonly| xargs qcheck
+#(( EUID == 0 )) && time qcheck --quiet --badonly| xargs qcheck
+(( EUID == 0 )) && time qcheck

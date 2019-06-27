@@ -2,7 +2,7 @@
 <p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="assets/bash_logo_transparent.svg"></a></p>
 <p align="center"><a href="http://unmaintained.tech/"><img alt="No Maintenance Intended" src="http://unmaintained.tech/badge.svg"></a> <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a></p>
 
-  Possible use: "git clone https://github.com/michaeltd/dots", go through the this repository and select what fits your needs so you can incorporate it in your working environment.
+  Possible use: "git clone https://github.com/michaeltd/dots", go through this repository and select what fits your needs so you can incorporate it in your working environment.
 
   My dots tend to be opinionated so take them with a grain of rice ...err SALT, I meant salt. Take them with a grain of salt.
 
