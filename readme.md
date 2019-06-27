@@ -59,7 +59,9 @@
 
      * [emacs-starter-kit](https://github.com/technomancy/emacs-starter-kit)
      * [prelude](https://github.com/bbatsov/prelude)
-     * My setup consists of [a reasonable emacs config](https://github.com/purcell/emacs.d) and a [splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png).
+     * [a reasonable emacs config](https://github.com/purcell/emacs.d)
+     
+   My setup consists of [cetaur emacs](https://github.com/seagle0128/.emacs.d) and a [splashscreen](https://github.com/notarock/.emacs.d/blob/master/splash.png).
 
    * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
