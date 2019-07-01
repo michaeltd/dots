@@ -9,8 +9,8 @@
 # Per distro setup.
 source /etc/os-release
 if [ "${ID}" == "gentoo" ]; then
-  rcm 9 xfce4-terminal --disable-server
-  # sleep 2 && rcm 9 conky -qdc ~/.conky/seamod/.conkyrc
+  rcm 9 terminology
+  sleep 2 && rcm 9 conky -qdc ~/.conky/seamod/.conkyrc
 elif [ "${ID}" == "devuan" ]; then
   rcm 9 xfce4-terminal --disable-server
   rcm 9 conky -qd
