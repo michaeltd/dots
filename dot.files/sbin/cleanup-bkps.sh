@@ -4,7 +4,7 @@
 #
 # This will work for any directory containing *tar.gz* backups
 # (eg: name.tar.gz, name.tar.gz.asc)
-# that have an epoch field in their filename seperated by periods(.)
+# that have a YYMMDD formated date field in their filename seperated by periods(.)
 # (eg: 190326.1553569476.enc.tar.gz.asc)
 
 # BacKuPs Directory => BKPD,
