@@ -17,10 +17,12 @@ esac
 
 VOL=${VOL/\]*}; VOL=${VOL/*\[}
 
-if [[ -n $noDIALOG ]]; then
-    $DIALOG --title "Vol" --infobox "Master: ${VOL}" "${G[@]}"
-elif [[ $(command -v notify-send) ]] ; then
-    notify-send "Master: ${VOL}"
-else
-    echo "Master: ${VOL}"
-fi
+notify-send "Master: ${VOL}" || ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}" || echo "Master: ${VOL}"
+
+# if [[ -n $DIALOG ]]; then
+#     $DIALOG --title "Vol" --infobox "Master: ${VOL}" "${G[@]}"
+# elif [[ $(command -v notify-send) ]] ; then
+#     notify-send "Master: ${VOL}"
+# else
+#     echo "Master: ${VOL}"
+# fi
