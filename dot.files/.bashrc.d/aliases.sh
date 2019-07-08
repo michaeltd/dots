@@ -27,20 +27,20 @@ alias df='df -h'
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
 if command -v emerge &> /dev/null; then
-  alias ossearch='emerge -s' osinstall='sudo emerge -av' osremove='sudo emerge -avC'
-  alias osupdate='sudo emerge --sync' osupgrade='sudo emerge -avuND --with-bdeps=y @world' oscleanup='sudo emerge --ask --depclean'
+  alias psearch='emerge -s' pinstall='sudo emerge -av' premove='sudo emerge -avC'
+  alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND --with-bdeps=y @world' dcleanup='sudo emerge --ask --depclean'
 elif command -v pacman &> /dev/null; then
-  alias ossearch='pacman -Ss' osinstall='sudo pacman -S' osremove='sudo pacman -R'
-  alias osupdate='sudo pacman -Sy' osupgrade='sudo pacman -Syu' oscleanup='sudo pacman -Rsn'
+  alias psearch='pacman -Ss' pinstall='sudo pacman -S' premove='sudo pacman -R'
+  alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' dcleanup='sudo pacman -Rsn'
 elif command -v apt-get &> /dev/null; then
-  alias ossearch='apt search' osinstall='sudo apt-get install --install-suggests' osremove='sudo apt-get premove --purge'
-  alias osupdate='sudo apt-get update' osupgrade='sudo apt-get dist-upgrade' oscleanup='sudo apt-get autoremove'
+  alias psearch='apt search' pinstall='sudo apt-get install --install-suggests' premove='sudo apt-get remove --purge'
+  alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' dcleanup='sudo apt-get autoremove'
 elif command -v zypper &> /dev/null; then
-  alias ossearch='zypper search' osinstall='sudo zypper install' osremove='sudo zypper remove --clean-deps'
-  alias osupdate='sudo zypper refresh' osupgrade='sudo zypper update' oscleanup='sudo zypper rm -u'
+  alias psearch='zypper search' pinstall='sudo zypper install' premove='sudo zypper remove --clean-deps'
+  alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' dcleanup='sudo zypper rm -u'
 elif command -v yum &> /dev/null; then
-  alias ossearch='yum search' osinstall='sudo yum install' osremove='sudo yum remove'
-  alias osupdate='sudo yum check-update' osupgrade='sudo yum update' oscleanup='sudo yum autoremove'
+  alias psearch='yum search' pinstall='sudo yum install' premove='sudo yum remove'
+  alias dupdate='sudo yum check-update' dupgrade='sudo yum update' dcleanup='sudo yum autoremove'
 fi
 
 # Mount

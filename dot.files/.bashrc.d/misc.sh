@@ -6,7 +6,7 @@
 shopt -s checkwinsize
 
 # pandoc bash completion
-eval "$(pandoc --bash-completion)"
+# eval "$(pandoc --bash-completion)"
 
 # https://twitter.com/gumnos/status/1117146713289121797
 # And a couple bash options to control how history is stored:
