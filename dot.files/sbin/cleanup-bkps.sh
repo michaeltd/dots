@@ -56,7 +56,7 @@ done
       if (( $(datedd $(max ${DTS[@]}) ${DTS[$y]}) >= BKPK )); then
         printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" \
                "${red}${FNS[$y]}${reset}" \
-               "${underline}${green}$(date -d @${DTS[$y]} +%Y/%m/%d_%H:%M:%S)${reset}${end_underline}"
+               "${underline}${green}$(date -d ${DTS[$y]} +%Y/%m/%d_%H:%M:%S)${reset}${end_underline}"
         printf "${bold}rm -v %s${reset}: " "${red}${FNS[$y]}${reset}"
         (( BKPR == 0 )) && printf "\n" || rm -v "${BKPD}/${FNS[$y]}"
       fi
