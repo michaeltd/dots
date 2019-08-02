@@ -113,7 +113,7 @@ function extract {
     *.bz2) bunzip2 "${1}";;
     *.rar) rar x "${1}";;
     *.gz) gunzip "${1}";;
-    *.zip| *.jar) unzip "${1}";;
+    *.zip| *.jar| *.war) unzip "${1}";;
     *.z ) uncompress "${1}";;
     * ) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}";;
   esac
