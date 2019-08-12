@@ -7,20 +7,9 @@
       Internet,
       ("Mozilla Firefox", EXEC, firefox),
       ("Mozilla SeaMonkey", EXEC, seamonkey),
-      (Lynx, EXEC, "xterm -e lynx"),
       (W3M, EXEC, "xterm -e w3m")
     ),
-    (
-      Email,
-      (Mutt, EXEC, "xterm -e mutt"),
-      (Alpine, EXEC, "xterm -e alpine")
-    ),
-    (
-      Mathematics,
-      (Xmaxima, EXEC, xmaxima),
-      (Maxima, EXEC, "xterm -e maxima"),
-      (bc, EXEC, "xterm -e bc")
-    ),
+    (Mathematics, (bc, EXEC, "xterm -e bc")),
     (
       "File Managers",
       (Thunar, EXEC, thunar),
@@ -30,7 +19,6 @@
     (
       Graphics,
       (GIMP, EXEC, gimp),
-      (Inkscape, EXEC, inkscape),
       (XBitmap, EXEC, bitmap),
       (Dia, EXEC, dia),
       ("ImageMagick Display", EXEC, display),
@@ -47,9 +35,7 @@
       (Emacs, EXEC, emacs),
       (gVIM, EXEC, gvim),
       (vi, EXEC, "xterm -e vi"),
-      (VIM, EXEC, "xterm -e vim"),
-      (Pico, EXEC, "xterm -e pico"),
-      (Nano, EXEC, "xterm -e nano")
+      (VIM, EXEC, "xterm -e vim")
     ),
     (
       Development,
@@ -75,7 +61,6 @@
       ("System Monitor", EXEC, wmsysmon),
       ("System Tray", EXEC, wmsystemtray),
       ("System Tray", EXEC, wmsystray),
-      (Button, EXEC, wmbutton),
       (Magnify, EXEC, wmagnify)
     ),
     (
@@ -85,22 +70,12 @@
       ("OpenOffice.org Draw", EXEC, oodraw),
       ("OpenOffice.org Impress", EXEC, ooimpress),
       ("OpenOffice.org Math", EXEC, oomath),
-      (OpenOffice.org, EXEC, ooffice),
-      (StarOffice, EXEC, soffice),
-      ("LibreOffice Writer", EXEC, lowriter),
-      ("LibreOffice Calc", EXEC, localc),
-      ("LibreOffice Draw", EXEC, lodraw),
-      ("LibreOffice Impress", EXEC, loimpress),
-      ("LibreOffice Math", EXEC, lomath),
-      ("LibreOffice Base", EXEC, lobase),
-      ("LibreOffice Web", EXEC, loweb),
-      (LibreOffice, EXEC, libreoffice)
+      (OpenOffice.org, EXEC, ooffice)
     ),
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
     (Viewers, (Evince, EXEC, evince), (Xdvi, EXEC, xdvi)),
     (
       Utilities,
-      (XSnap, EXEC, xsnap),
       (Conky, EXEC, conky),
       ("GNU Privacy Assistant", EXEC, gpa),
       (Filezilla, EXEC, filezilla),
@@ -117,9 +92,12 @@
     (
       Games,
       (XBoard, EXEC, xboard),
+      (Alienarena, EXEC, alienarena),
       (Nexuiz, EXEC, nexuiz),
+      (Dosbox, EXEC, dosbox),
       (Torcs, EXEC, torcs),
       (Warsow, EXEC, warsow),
+      (Xonotic, EXEC, xonotic),
       (Sauerbraten, EXEC, sauerbraten)
     )
   ),
