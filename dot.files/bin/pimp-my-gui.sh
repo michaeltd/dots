@@ -10,7 +10,7 @@
 rcm 0 emacs --daemon
 
 # Run mpd
-rcm 0 mpd
+# rcm 0 mpd
 
 # Xfce4 themes
 rcm 9 xfsettingsd --no-daemon --replace

@@ -5,6 +5,8 @@
 #include ".Xresources.d/mwm.Xresources"
 #include ".Xresources.d/rofi.Xresources"
 
+*firstDay: 1
+
 *.faceName: SourceCodePro
 !*.font: SourceCodePro
 
