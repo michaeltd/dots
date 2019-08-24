@@ -4,6 +4,7 @@
 #include ".Xresources.d/urxvt.Xresources"
 #include ".Xresources.d/mwm.Xresources"
 #include ".Xresources.d/rofi.Xresources"
+#include ".Xresources.d/xcal.Xresources"
 
 *.faceName: SourceCodePro
 !*.font: SourceCodePro
