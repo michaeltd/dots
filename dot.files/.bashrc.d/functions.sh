@@ -32,7 +32,7 @@ function countdown {
 # Usage : custom_run niceness executable command line arguments
 function rcm {
   bin=$(which "${2}")
-  pid=$(pgrep -f "${2}")
+  pid=$(pgrep -U "${USER}" -f "${2}")
   if [ -z "${pid}" ] && [ -x "${bin}" ]; then
     exec nice -n "${@}" &
   fi
@@ -201,6 +201,8 @@ function logmeout {
 }
 
 function pingsubnet {
+  # One liner:
+  # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
   for x in {1..254}; do
     for y in {1..254}; do
       (ping -c 1 -w 2 192.168.${x}.${y} > /dev/null && echo "UP 192.168.${x}.${y}" &);

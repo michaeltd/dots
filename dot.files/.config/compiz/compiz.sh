@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# ~/sbin/compiz.sh Compiz startup script.
+# /usr/local/bin/compiz.sh Compiz startup script.
 
 # No double sourcing
 [[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
@@ -9,10 +9,10 @@ source /etc/os-release # Distro details.
 case "${ID}" in # Start Compiz
   "gentoo") # Gentoo Solution
     # /usr/bin/compiz-manager &
-    fusion-icon & ;;
+    fusion-icon -f & ;;
   "devuan") # Devuan solution
-    compiz &
-    fusion-icon & ;;
+    # compiz &
+    fusion-icon -f & ;;
   *) # Others
     # emerald --replace &
     # compiz-manager --replace &

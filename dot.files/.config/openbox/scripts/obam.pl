@@ -21,13 +21,11 @@
 
 my $APPSDIR = "/usr/share/applications/ ~/.local/share/applications/";
 
-my %CFG =
-    (
-     "Application" => "collapse",
-     "GTK"         => "collapse",
-     "KDE"         => "collapse",
-     "Qt"          => "collapse",
-    );
+my %CFG = (
+    "Application" => "collapse",
+    "GTK"         => "collapse",
+    "KDE"         => "collapse",
+    "Qt"          => "collapse" );
 
 ###############################################################################
 
@@ -45,46 +43,48 @@ my %cat;  # apps in each category (hashed lists)
 
 ################################################### Search for Applications ###
 
-if ($#ARGV != -1) { $APPSDIR = join(" ", @ARGV); }
+if ($#ARGV != -1) {
+    $APPSDIR = join(" ", @ARGV);
+}
 
 print STDERR "Searching $APPSDIR\n";
 
-open (APPS, "find ".$APPSDIR." -name '*.desktop' |") || do
-{
+open (APPS, "find ".$APPSDIR." -name '*.desktop' |") || do {
     print qq|<openbox_pipe_menu><item label="Error!" /></openbox_pipe_menu>\n|;
     die "could not open $APPSDIR";
 };
+
 @FILES = <APPS>;
+
 close APPS;
 
 ######################################################## Parse Applications ###
 
 print STDERR "\n### Scanning applications ###\n";
 
-foreach $entry (@FILES)
-{
-    if (open(DE,$entry) && $entry =~ s|^.*/(.*?)\.desktop|$1|)
-    {
-        while (<DE>)
-        {
+foreach $entry (@FILES) {
+    if (open(DE,$entry) && $entry =~ s|^.*/(.*?)\.desktop|$1|) {
+        while (<DE>) {
             chomp;
-            if (/^(\w+)=([^%]+)/)
-            {
+
+            if (/^(\w+)=([^%]+)/) {
+
                 # populate application details
                 $menu{$entry}->{$1} = $2;
 
                 # determine category
-                if ($1 eq "Categories")
-                {
+                if ($1 eq "Categories") {
+
                     print STDERR $2 . $entry;
+
                     my @tmp = split(/;/,$2);
 
-                    while ($CFG{$tmp[0]} eq "collapse")
-                    {
+
+                    while ($CFG{$tmp[0]} eq "collapse") {
                         shift @tmp;
                     }
-                    if ($CFG{$tmp[0]} ne "hide" && $tmp[0] !~ /^X-/)
-                    {
+
+                    if ($CFG{$tmp[0]} ne "hide" && $tmp[0] !~ /^X-/) {
                         push @{$cat{$tmp[0]}},$entry;
                     }
                 }
@@ -99,14 +99,11 @@ print STDERR "\n### Generating menu ###\n";
 
 print "<openbox_pipe_menu>\n";
 
-foreach $key (sort keys %cat)
-{
+foreach $key (sort keys %cat) {
     print qq| <menu id="obam-$key" label="$key">\n|;
 
-    foreach $app (sort @{$cat{$key}})
-    {
-        if ($menu{$app}{Type} eq "Application")
-        {
+    foreach $app (sort @{$cat{$key}}) {
+        if ($menu{$app}{Type} eq "Application") {
             my $Name = $menu{$app}{Name};
             my $Exec = $menu{$app}{Exec};
             print qq|  <item label="$Name"><action name="Execute"><execute>$Exec</execute></action></item>\n|;
@@ -114,6 +111,7 @@ foreach $key (sort keys %cat)
     }
     print " </menu>";
 }
+
 print "</openbox_pipe_menu>\n";
 
 print STDERR "Done\n";
