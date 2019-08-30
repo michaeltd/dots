@@ -76,11 +76,6 @@ dot.files/GNUstep/*
 !dot.files/GNUstep/Library/WindowMaker/README
 !dot.files/GNUstep/Library/WindowMaker/README.themes
 
-dot.files/.bkp.usr.inc.txt
-dot.files/.bkp.usr.exc.txt
-dot.files/.bkp.sys.inc.txt
-dot.files/.bkp.sys.exc.txt
-
 dot.files/.gitconfig
 
 dot.files/.my.cnf.*
