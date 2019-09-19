@@ -7,9 +7,7 @@
 # that have a YYMMDD formated date field in their filename seperated by periods(.)
 # (eg: 190326.1553569476.enc.tar.gz.asc)
 
-# BacKuPs Directory => BKPD,
-# BacKuPs to Keep => BKPK (in days),
-# BacKuPs Remove => BKPR (1 remove, 0 don't)
+# BacKuPs Directory => BKPD, BacKuPs to Keep => BKPK (in days), BacKuPs Remove => BKPR (1 remove, 0 don't)
 BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 
 printf "= $(basename ${BASH_SOURCE[0]}) =\n"
@@ -20,12 +18,11 @@ if [[ -n "${1}" ]]; then
       "--directory") shift; BKPD="${1}";;
       "--simulate") BKPR="0";;
       "--remove") BKPR="1";;
-      *) printf "Usage: $(basename ${BASH_SOURCE[0]}) [--directory /backups/directory/] ([--simulate]|[--remove (default)])\n" >&2;;
+      *) printf "Usage: $(basename ${BASH_SOURCE[0]}) [--directory /backups/directory/] ([--simulate]|[--remove (default)])\n" >&2 && exit 1;;
     esac
     shift
   done
 fi
-
 
 # No root access
 # (( EUID != 0 )) && printf "privileged access requirements not met.\n" >&2 && exit 1
@@ -52,12 +49,12 @@ for (( x = 0; x < ${#FILES[@]}; x++ )); do
 done
 
 # File NameS loop to execute on stats
-    for (( y = 0; y < ${#FNS[@]}; y++ )); do
-      if (( $(datedd $(max ${DTS[@]}) ${DTS[$y]}) >= BKPK )); then
-        printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" \
-               "${red}${FNS[$y]}${reset}" \
-               "${underline}${green}$(date -d ${DTS[$y]} +%Y/%m/%d_%H:%M:%S)${reset}${end_underline}"
-        printf "${bold}rm -v %s${reset}: " "${red}${FNS[$y]}${reset}"
-        (( BKPR == 0 )) && printf "\n" || rm -v "${BKPD}/${FNS[$y]}"
-      fi
-    done
+for (( y = 0; y < ${#FNS[@]}; y++ )); do
+  if (( $(datedd $(max ${DTS[@]}) ${DTS[$y]}) >= BKPK )); then
+    printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" \
+           "${red}${FNS[$y]}${reset}" \
+           "${underline}${green}$(date -d ${DTS[$y]} +%Y/%m/%d_%H:%M:%S)${reset}${end_underline}"
+    printf "${bold}rm -v %s${reset}: " "${red}${FNS[$y]}${reset}"
+    (( BKPR == 0 )) && printf "\n" || rm -v "${BKPD}/${FNS[$y]}"
+  fi
+done
