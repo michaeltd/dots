@@ -58,6 +58,7 @@ dot.files/bin/*
 !dots/dot.files/bin/wallpaper-rotate.sh
 
 dot.files/sbin/*
+!dot.files/sbin/adduser.sh
 !dot.files/sbin/check-integrity.sh
 !dot.files/sbin/cleanup-bkps.sh
 !dot.files/sbin/compiz.sh
