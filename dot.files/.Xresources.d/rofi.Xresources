@@ -45,4 +45,4 @@ rofi.separator-style:                solid
 rofi.hide-scrollbar:                 true
 rofi.markup-rows:                    false
 rofi.scrollbar-width:                8
-!rofi.theme:                          sidebar.rasi
+rofi.theme:                          android_notification.rasi
