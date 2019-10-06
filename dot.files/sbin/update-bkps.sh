@@ -14,14 +14,14 @@ SYS=( "/boot/grub/themes/" "/boot/grub/grub.cfg" "/etc/" "/usr/share/xsessions/"
 
 BKP=( ENC[@] USR[@] SYS[@] )
 
-EXC=( "*/.git/*" "*/.github/*" "*/node_modules/*" "*/atom/*" "*/code/*" "*/vscodium/*" "*/sublime-text-3/*" "*/libreoffice/*" "*/scrap/*" )
+EXC=( "*/.idea/*" "*/.git/*" "*/.github/*" "*/node_modules/*" "*/atom/*" "*/code/*" "*/vscodium/*" "*/sublime-text-3/*" "*/libreoffice/*" "*/scrap/*" )
 for x in "${EXC[@]}"; do
   EXL+=("--exclude=${x}")
 done
 
 ARCHV=("enc.tar.gz" "usr.tar.gz" "sys.tar.gz")
 
-printf "${SSIG}\n"
+printf "%s\n" "${SSIG}"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
   for ((i = 0; i < ${#ARCHV[@]}; i++ )); do
@@ -36,6 +36,6 @@ if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
     fi
   done
 else
-  printf "${ELDIR} not found or root access requirements not met\n" >&2
+  printf "%s not found or root access requirements not met\n" "${ELDIR}" >&2
   exit 1
 fi

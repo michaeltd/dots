@@ -46,4 +46,5 @@ rofi.hide-scrollbar:                 true
 rofi.markup-rows:                    false
 rofi.scrollbar-width:                8
 !#rofi.theme:                          android_notification.rasi
-rofi.theme:                          blue.rasi
+!rofi.theme:                          blue.rasi
+!rofi.theme:                           gruve_box_dark.rasi

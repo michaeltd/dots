@@ -13,7 +13,7 @@ declare -a APT_GET=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrad
 declare -a YUM=( "yum" "check-update" "update" )
 declare -a EMERGE=( "emerge" "--sync" "--nospinner" "--update" "--deep" "--newuse" "@world" )
 declare -a PMS=( ZYPPER[@] PACMAN[@] APT_GET[@] YUM[@] EMERGE[@] )
-declare NOTFOUND="254"
+declare NOTFOUND="404"
 declare PMIDX="${NOTFOUND}"
 
 # Which is the first available pm in this system?
