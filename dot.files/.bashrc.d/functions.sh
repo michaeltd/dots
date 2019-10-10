@@ -29,7 +29,8 @@ function countdown {
 # UTILS =======================================================================
 
 # Run things in the background with Custom niceness and cli switches in a Mutex kind of way
-# Usage : custom_run niceness executable command line arguments
+# Usage : rcm niceness executable command line arguments
+# Example: rcm 9 conky -qdc ~/.conkyrc
 function rcm {
   bin=$(which "${2}")
   pid=$(pgrep -U "${USER}" -f "${2}")
