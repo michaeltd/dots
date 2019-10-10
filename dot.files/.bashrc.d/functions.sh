@@ -1,7 +1,6 @@
 # ~/.bashrc.d/functions.sh
 #
 # various functions
-
 # SCRAPPAD ====================================================================
 
 # while read a ; do echo ${a//abc/XYZ} ; done < /tmp/file.txt > /tmp/file.txt.t ; mv /tmp/file.txt{.t,}
