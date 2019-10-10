@@ -98,7 +98,7 @@ function compress {
     *.tar.gz| *.tgz) tar czf $@;;
     *.zip) zip $@;;
     *.rar) rar a $@;;
-    *) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}";;
+    *) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}" >&2; return 1;;
   esac
 }
 
@@ -115,7 +115,7 @@ function extract {
     *.gz) gunzip "${1}";;
     *.zip| *.jar| *.war) unzip "${1}";;
     *.z ) uncompress "${1}";;
-    * ) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}";;
+    * ) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}" >&2; return 1;;
   esac
 }
 
