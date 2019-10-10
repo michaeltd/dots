@@ -130,7 +130,7 @@ function up {
 function listenonport {
   # Returns service listening on given port
   if [[ -z "${1}" ]]; then
-    printf "port number expected\n"
+    printf "port number expected\n" >&2
     return 1
   else
     lsof -n -iTCP:"${1}" |grep LISTEN
@@ -150,7 +150,7 @@ function checkdirsizes {
   fi
 }
 
-function memsumapp {
+memsumapp() {
   ps -eo size,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' |cut -d "" -f2 | cut -d "-" -f1|grep ${1}
 }
 
@@ -169,7 +169,7 @@ function printmemusage {
 
 function services {
   if [[ -z "${1}" ]]; then
-    printf "%s requires some parameters.\nUsage: %s start|stop|restart all|service/es...\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}"
+    printf "%s requires some parameters.\nUsage: %s start|stop|restart all|service/es...\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}" >&2
     return 1
   elif [[ ("${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status") && ("${2}" == "all") ]]; then
     declare -a srvcs=( "postgresql-11" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" "dictd" )
@@ -193,7 +193,7 @@ function showuptime {
 function logmeout {
   # Can't log out root like that
   if [ "${EUID}" -eq "0" ]; then
-    printf "Can't log out root this way\n"
+    printf "Can't log out root this way\n" >&2
     return 1
   else
     kill -15 -1
