@@ -2,13 +2,16 @@
 #
 # environment variables
 
+# SUDO_ASKPASS
+export SUDO_ASKPASS=$(which x11_ssh_askpass 2> /dev/null || which ssh_askpass_fullscreen 2> /dev/null)
+
 # Used by emacsclient in case of no daemon found.
 export ALTERNATE_EDITOR=$(which emacs 2> /dev/null || which micro 2> /dev/null || which vim 2> /dev/null || which vi 2> /dev/null || which nano 2> /dev/null)
 
 if [[ -n "${DISPLAY}" ]]; then
-    unset 'EDITOR'
+    unset EDITOR
     if [[ -x $(which emacs 2> /dev/null) ]]; then
-        export VISUAL="emacsclient --alternate-editor=emacs -c"
+      export VISUAL="emacsclient --alternate-editor=emacs -c"
     elif [[ -x $(which gvim 2> /dev/null) ]]; then
         export VISUAL="gvim"
     else
@@ -16,7 +19,7 @@ if [[ -n "${DISPLAY}" ]]; then
     fi
     export BROWSER=$(which firefox 2> /dev/null || which seamonkey 2> /dev/null)
 else
-    unset 'VISUAL'
+    unset VISUAL
     if [[ -x $(which emacs 2> /dev/null) ]]; then
         export EDITOR="emacsclient --alternate-editor=emacs -t"
     elif [[ -x $(which vim 2> /dev/null) ]]; then
