@@ -3,7 +3,7 @@
 # environment variables
 
 # SUDO_ASKPASS
-export SUDO_ASKPASS=$(which x11_ssh_askpass 2> /dev/null || which ssh_askpass_fullscreen 2> /dev/null)
+export SUDO_ASKPASS=$(which x11-ssh-askpass 2> /dev/null || which ssh-askpass-fullscreen 2> /dev/null)
 
 # Used by emacsclient in case of no daemon found.
 export ALTERNATE_EDITOR=$(which emacs 2> /dev/null || which micro 2> /dev/null || which vim 2> /dev/null || which vi 2> /dev/null || which nano 2> /dev/null)
