@@ -16,7 +16,7 @@ rcm 0 emacs --daemon
 rcm 9 xfsettingsd --no-daemon --replace
 
 # XScreenSaver
-rcm 9 xscreensaver -no-splash
+rcm 9 xscreensaver # -no-splash
 
 # Add some wallpaper variety for your desktop
 rcm 9 ~/bin/wallpaper-rotate.sh
