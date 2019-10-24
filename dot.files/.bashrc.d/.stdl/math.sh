@@ -2,6 +2,16 @@
 #
 # math related functions
 
+function between(){
+  # echo "Usage: between low# high# check#"
+  local l=$1 h=$2 n=$3
+  if (( n >= l && n <= h )); then
+    return 0
+  else
+    return 1
+  fi
+}
+
 calc() {
   # echo -e "Usage: calc \"1+2-3%2/1*10+(4*5)-(8*8)\"\n"
   echo "scale=6;${@}"| bc -l
