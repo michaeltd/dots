@@ -3,7 +3,7 @@
 # No double sourcing
 [[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
 
-# rcm 9 wicd-gtk -t
+rcm 9 wicd-gtk -t
 
 # rcm 9 pasystray -a -m 100
 

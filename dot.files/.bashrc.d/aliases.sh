@@ -90,10 +90,10 @@ alias rmdl='find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +'
 # Times table
 # https://twitter.com/climagic/status/1187089764496891904
 # Print a multiplication table. Great for those 3rd grader CLI users but also a great demo. :)
-# alias multab='printf "%3d %3d %3d %3d %3d %3d %3d %3d %3d %3d\n" $( echo {1..10}*{1..10}\; | bc )'
-# alias multab='printf "$(echo %3d$_{1..10})\n" $(echo {1..10}*{1..10}\;|bc)'
-alias propaideia='for a in {1..9}; do for b in $(seq 1 $a); do printf "%dx%d=%2d\t" $b $a $((b*a));done;printf "\n";done'
-alias ttt='for a in {1..10}; do let tt="${a} * 10";for b in $(seq $a $a $tt);do printf "%4d" $b;done; printf "\n";done'
+# alias multab='printf "%3d %3d %3d %3d %3d %3d %3d %3d %3d %3d\n" $( echo {1..10}\*{1..10}\; | bc )'
+# alias multab='printf "$(echo %3d$_{1..10})\n" $(echo {1..10}\*{1..10}\;|bc)'
+alias propaideia='for x in {1..9}; do for y in $(seq 1 $x); do printf "%dx%d=%2d\t" $y $x $((y*x));done;printf "\n";done'
+alias ttt='for x in {1..10}; do let tt="${x} * 10";for y in $(seq $x $x $tt);do printf "%4d" $y;done; printf "\n";done'
 
 
 # https://twitter.com/liamosaur/status/506975850596536320

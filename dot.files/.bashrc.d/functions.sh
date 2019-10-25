@@ -31,6 +31,12 @@ function countdown {
 # Usage : rcm niceness executable command line arguments
 # Example: rcm 9 conky -qdc ~/.conkyrc
 function rcm {
+
+  if (( ${#} < 2 )); then
+    echo -e "Usage: rcm niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t"
+    return 1
+  fi
+
   bin=$(which "${2}")
   pid=$(pgrep -U "${USER}" -f "${2}")
   if [ -z "${pid}" ] && [ -x "${bin}" ]; then

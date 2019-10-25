@@ -2,14 +2,19 @@
 #
 # math related functions
 
+# in_range <v> <a> <b> - Returns true if a <= v <= b
+in_range() {
+  if [[ $# -lt 3 ]]; then
+    echo "USAGE: ${FUNCNAME[0]} <v> <a> <b>" >&2
+    return 1
+  else
+    [[ $1 -ge "$2" && $1 -le "$3" ]]
+  fi
+}
+
 function between(){
   # echo "Usage: between low# high# check#"
-  local l=$1 h=$2 n=$3
-  if (( n >= l && n <= h )); then
-    return 0
-  else
-    return 1
-  fi
+  (( $3 >= $1 && $3 <= $2 ))
 }
 
 calc() {

@@ -8,16 +8,14 @@
 source /etc/os-release # Distro details.
 case "${ID}" in # Start Compiz
   "gentoo") # Gentoo Solution
-    # /usr/bin/compiz-manager &
+    #/usr/bin/compiz-manager & ;;
     fusion-icon -f & ;;
   "devuan") # Devuan solution
-    # compiz &
-    fusion-icon -f & ;;
+    compiz --replace "${@}" & ;;
   *) # Others
     # emerald --replace &
     # compiz-manager --replace &
-    compiz --replace "$@" &
-    fusion-icon & ;;
+    compiz --replace "${@}" & ;;
 esac
 
 # ~/.config/polybar/launch.sh
@@ -25,8 +23,15 @@ esac
 # polybar -qr topbar 2> /dev/null &
 # ~/.config/polybar/launch.sh
 
+# rcm 0 compiz-boxmenu-daemon
+
 rcm 9 tint2 -c ~/.config/tint2/panel
-# nice -n 9 tint2 -c ~/.config/tint2/taskbar
+
+#nice -n 9 tint2 -c ~/.config/tint2/taskbar &
+
+# rcm 9 wicd-gtk -t
+
+# rcm 9 pasystray -m 100
 
 PMG="${HOME}/bin/pimp-my-gui.sh"
 if [ -x "${PMG}" ]; then # If spice ...
