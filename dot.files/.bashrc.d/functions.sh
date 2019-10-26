@@ -8,7 +8,7 @@
 
 function allemojis () {
     for (( x = 2600; x <= 2700; x++ )); do
-      echo -n -e '   \u'$x
+      echo -n -e " \u${x}"
       sleep .1
     done
     echo

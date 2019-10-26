@@ -4,17 +4,52 @@
 # Backup sensitive files, user files, system
 
 # Full path executables, no aliases
-NICEC=$(which nice) TARCM=$(which tar) GPG2C=$(which gpg2)
+NICEC=$(which nice)
 
-ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam" SSIG="= $(basename ${BASH_SOURCE[0]}) ="
+TARCM=$(which tar)
 
-ENC=( "/home/${UTB}/.gnupg/*" "/home/${UTB}/.ssh/*" "/home/${UTB}/.ngrok2/*" "/home/${UTB}/.config/filezilla/*" "/home/${UTB}/.config/hexchat/*" "/home/${UTB}/.putty/*" )
-USR=( "/home/${UTB}/git/" "/home/${UTB}/Documents/" )
-SYS=( "/boot/grub/themes/" "/boot/grub/grub.cfg" "/etc/" "/usr/share/xsessions/" "/usr/share/WindowMaker/" "/var/www/" )
+GPG2C=$(which gpg2)
+
+ELDIR="/mnt/el/Documents/BKP/LINUX"
+
+UTB="paperjam"
+
+SSIG="= $(basename ${BASH_SOURCE[0]}) ="
+
+ENC=( "/home/${UTB}/.gnupg/*" \
+      "/home/${UTB}/.ssh/*" \
+      "/home/${UTB}/.ngrok2/*" \
+      "/home/${UTB}/.config/filezilla/*" \
+      "/home/${UTB}/.config/hexchat/*" \
+      "/home/${UTB}/.putty/*" \
+    )
+
+USR=( "/home/${UTB}/git/" \
+      "/home/${UTB}/Documents/" \
+    )
+
+SYS=( "/boot/grub/themes/" \
+        "/boot/grub/grub.cfg" \
+        "/etc/" "/usr/share/xsessions/" \
+        "/usr/share/WindowMaker/" \
+        "/var/www/" \
+    )
 
 BKP=( ENC[@] USR[@] SYS[@] )
 
-EXC=( "*/.idea/*" "*/.git/*" "*/.github/*" "*/node_modules/*" "*/atom/*" "*/code/*" "*/vscodium/*" "*/sublime-text-3/*" "*/libreoffice/*" "*/scrap/*" )
+EXC=( "*/.idea/*" \
+        "*/.git/*" \
+        "*/.github/*" \
+        "*/node_modules/*" \
+        "*/atom/*" \
+        "*/code/*" \
+        "*/vscodium/*" \
+        "*/sublime-text-3/*" \
+        "*/libreoffice/*" \
+        "*/scrap/*" \
+        "*/playground/e16/*" \
+    )
+
 for x in "${EXC[@]}"; do
   EXL+=("--exclude=${x}")
 done
