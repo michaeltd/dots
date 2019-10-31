@@ -12,17 +12,12 @@ fi
 case ${1} in
     +|-) VOL=$(amixer sset Master "5dB${1}") ;;
     *[0-9]) VOL=$(amixer sset Master "${1}%") ;;
-    *) printf "Usage: vol [+]|[-]|[0-100]\n" >&2 ; exit 1 ;;
+    "report") VOL=$(amixer sget Master) ;;
+    *) printf "Usage: vol [+]|[-]|[0-100]|report\n" >&2 ; exit 1 ;;
 esac
 
 VOL=${VOL/\]*}; VOL=${VOL/*\[}
 
-notify-send "Master: ${VOL}" || ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}" || echo "Master: ${VOL}"
+notify-send "Master: ${VOL}" 2> /dev/null || xmessage -nearmouse -timeout 1 "Master: ${VOL}" 2> /dev/null || ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}" 2> /dev/null
 
-# if [[ -n $DIALOG ]]; then
-#     $DIALOG --title "Vol" --infobox "Master: ${VOL}" "${G[@]}"
-# elif [[ $(command -v notify-send) ]] ; then
-#     notify-send "Master: ${VOL}"
-# else
-#     echo "Master: ${VOL}"
-# fi
+echo "Master: ${VOL}"

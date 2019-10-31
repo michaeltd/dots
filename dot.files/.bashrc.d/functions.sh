@@ -57,7 +57,7 @@ function printappsinpath {
 }
 
 function listcat {
-  $(which ls) --color -al /usr/portage/${1}
+  $(which ls) --color /usr/portage/${1}
 }
 
 function checkapp {
