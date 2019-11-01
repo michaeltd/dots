@@ -18,7 +18,7 @@
 
   * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
   <br/>Script for rolling random images as wallpapers.
-  <br/>I get my wallpapers from: [r/spaceporn](https://www.reddit.com/r/SpacePorn), [r/earthporn](https://www.reddit.com/r/EarthPorn/), [r/unixporn](https://www.reddit.com/r/unixporn), [r/wallpapers](https://www.reddit.com/r/wallpapers)
+  <br/>I get my wallpapers from: [r/spaceporn](https://www.reddit.com/r/spaceporn), [r/earthporn](https://www.reddit.com/r/earthporn/), [r/unixporn](https://www.reddit.com/r/unixporn), [r/wallpapers](https://www.reddit.com/r/wallpapers)
 
   <p align="center"><a href="wallpaper-rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
