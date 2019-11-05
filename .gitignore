@@ -47,11 +47,13 @@ dot.files/.fvwm-crystal/*
 !dot.files/.fvwm-crystal/preferences/*
 
 dot.files/bin/*
+!dots/dot.files/bin/alien.sh
 !dots/dot.files/bin/alarm.sh
 !dots/dot.files/bin/keepParamAlive.sh
 !dots/dot.files/bin/lol.sh
 !dots/dot.files/bin/memstat.sh
 !dots/dot.files/bin/pimp-my-gui.sh
+!dots/dot.files/bin/pukeskull
 !dots/dot.files/bin/runcmd.sh
 !dots/dot.files/bin/screenshot.sh
 !dots/dot.files/bin/unix.sh

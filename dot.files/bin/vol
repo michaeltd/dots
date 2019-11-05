@@ -3,9 +3,9 @@
 export XDIALOG_NO_GMSGS=1
 
 # Pick a default available UI ...
-if type -fP Xdialog > /dev/null 2>&1 && [ -n "${DISPLAY}" ]; then # Check for X, Xdialog
+if type -fP Xdialog &> /dev/null && [ -n "${DISPLAY}" ]; then # Check for X, Xdialog
     declare DIALOG="$(type -fPp Xdialog)" G=("100x75")
-elif type -fP dialog > /dev/null 2>&1; then # Check for dialog
+elif type -fP dialog &> /dev/null; then # Check for dialog
     declare DIALOG="$(type -fPp dialog)" G=( 0 0 )
 fi
 
@@ -18,11 +18,10 @@ esac
 
 VOL=${VOL/\]*}; VOL=${VOL/*\[}
 
-if type -fP notify-send > /dev/null 2>&1; then
-	notify-send "Master: ${VOL}" 2> /dev/null\
-		|| xmessage -nearmouse -timeout 1 "Master: ${VOL}" 2> /dev/null\
-		|| ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}"\
-		2> /dev/null
-fi
+#if type -fP notify-send > /dev/null 2>&1; then
+notify-send "Master: ${VOL}" 2> /dev/null || \
+    xmessage -nearmouse -timeout 1 "Master: ${VOL}" 2> /dev/null || \
+    ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}" 2> /dev/null
+#fi
 
 echo "Master: ${VOL}"
