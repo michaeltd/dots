@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # ~/sbin/update-mirror.sh
 # Update my data

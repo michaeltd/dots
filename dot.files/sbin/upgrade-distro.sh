@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # ~/sbin/upgrade-distro.sh
 # Distro neutral upgrade script michaeltd 171124

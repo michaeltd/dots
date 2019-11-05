@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # ~/sbin/update-hosts.sh
 # 1) Set a strict /etc/hosts file 2) Make sure you have one
