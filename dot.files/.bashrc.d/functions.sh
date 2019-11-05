@@ -6,12 +6,17 @@
 # while read a ; do echo ${a//abc/XYZ} ; done < /tmp/file.txt > /tmp/file.txt.t ; mv /tmp/file.txt{.t,}
 # echo "abcdef" |replace "abc" "XYZ" # mysqld
 
+findstringindir() {
+  # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
+  grep -rnw "${2}" -e "${1}"
+}
+
 function allemojis () {
-    for (( x = 2600; x <= 2700; x++ )); do
-      echo -n -e " \u${x}"
-      sleep .1
-    done
-    echo
+  for (( x = 2600; x <= 2700; x++ )); do
+    echo -n -e " \u${x}"
+    sleep .1
+  done
+  echo
 }
 
 function countdown {
