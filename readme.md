@@ -16,6 +16,12 @@
   * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
   <br/>Distro neutral upgrade script
 
+  * [upgrade-bkps.sh](dot.files/sbin/upgrade-bkps.sh)
+  <br/>Back up things ...
+
+  * [cleanup-bkps.sh](dot.files/sbin/cleanup-bkps.sh)
+  <br/> ... and clean up the mess.
+
   * [wallpaper-rotate.sh](dot.files/bin/wallpaper-rotate.sh)
   <br/>Script for rolling random images as wallpapers.
   <br/>I get my wallpapers from: [r/spaceporn](https://www.reddit.com/r/spaceporn), [r/earthporn](https://www.reddit.com/r/earthporn/), [r/unixporn](https://www.reddit.com/r/unixporn), [r/wallpapers](https://www.reddit.com/r/wallpapers)

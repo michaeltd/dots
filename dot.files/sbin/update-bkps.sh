@@ -9,7 +9,7 @@ declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam" SSIG="= $(basename ${
 declare -a NICEC=( $(which nice) -n 19 ) TARCM=( $(which tar) --create --gzip ) GPG2C=( $(which gpg2) --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output ) ENC=( "/home/${UTB}/.gnupg/*" "/home/${UTB}/.ssh/*" "/home/${UTB}/.ngrok2/*" "/home/${UTB}/.config/filezilla/*" "/home/${UTB}/.config/hexchat/*" "/home/${UTB}/.putty/*" ) USR=( "/home/${UTB}/git/" "/home/${UTB}/Documents/" ) SYS=( "/boot/grub/themes/" "/boot/grub/grub.cfg" "/etc/" "/usr/share/xsessions/" "/usr/share/WindowMaker/" "/var/www/" ) EXC=( "*/.idea/*" "*/.git/*" "*/.github/*" "*/node_modules/*" "*/atom/*" "*/code/*" "*/vscodium/*" "*/sublime-text-3/*" "*/libreoffice/*" "*/scrap/*" "*/playground/e16/*" ) ARCHV=("enc.tar.gz" "usr.tar.gz" "sys.tar.gz"); declare -a BKP=( ENC[@] USR[@] SYS[@] )
 
 for x in "${EXC[@]}"; do
-  EXL+=("--exclude=${x}")
+  EXL+=( "--exclude=${x}" )
 done
 
 printf "%s\n" "${SSIG}"
