@@ -12,6 +12,7 @@
 *.sh.rc
 
 conky.configs/*
+conky.configs
 
 dot.files/.config/*
 !dot.files/.config/autostart
