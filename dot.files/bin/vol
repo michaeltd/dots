@@ -1,15 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
 export XDIALOG_NO_GMSGS=1
 
 # Pick a default available UI ...
-if [[ -x "$(which Xdialog 2> /dev/null)" && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
-    declare DIALOG=$(which Xdialog) G=("100x75")
-elif [[ -x "$(which dialog 2> /dev/null)" ]]; then # Check for dialog
-    declare DIALOG=$(which dialog) G=( 0 0 )
+if type -fP Xdialog > /dev/null 2>&1 && [ -n "${DISPLAY}" ]; then # Check for X, Xdialog
+    declare DIALOG="$(type -fPp Xdialog)" G=("100x75")
+elif type -fP dialog > /dev/null 2>&1; then # Check for dialog
+    declare DIALOG="$(type -fPp dialog)" G=( 0 0 )
 fi
 
-case ${1} in
+case "${1}" in
     +|-) VOL=$(amixer sset Master "5dB${1}") ;;
     *[0-9]) VOL=$(amixer sset Master "${1}%") ;;
     "report") VOL=$(amixer sget Master) ;;
@@ -18,6 +18,11 @@ esac
 
 VOL=${VOL/\]*}; VOL=${VOL/*\[}
 
-notify-send "Master: ${VOL}" 2> /dev/null || xmessage -nearmouse -timeout 1 "Master: ${VOL}" 2> /dev/null || ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}" 2> /dev/null
+if type -fP notify-send > /dev/null 2>&1; then
+	notify-send "Master: ${VOL}" 2> /dev/null\
+		|| xmessage -nearmouse -timeout 1 "Master: ${VOL}" 2> /dev/null\
+		|| ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}"\
+		2> /dev/null
+fi
 
 echo "Master: ${VOL}"
