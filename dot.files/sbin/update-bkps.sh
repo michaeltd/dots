@@ -3,18 +3,14 @@
 # ~/sbin/update-bkp.sh
 # Backup sensitive files, user files, system
 
+declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam" SSIG="= $(basename ${BASH_SOURCE[0]}) ="
+
 # Full path executables, no aliases
-declare -a NICEC=( $(which nice) -n 19 ) TARCM=( $(which tar) --create --gzip ) GPG2C=( $(which gpg2) --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output )
-
-ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam" SSIG="= $(basename ${BASH_SOURCE[0]}) ="
-
-declare -a ENC=( "/home/${UTB}/.gnupg/*" "/home/${UTB}/.ssh/*" "/home/${UTB}/.ngrok2/*" "/home/${UTB}/.config/filezilla/*" "/home/${UTB}/.config/hexchat/*" "/home/${UTB}/.putty/*" ) USR=( "/home/${UTB}/git/" "/home/${UTB}/Documents/" ) SYS=( "/boot/grub/themes/" "/boot/grub/grub.cfg" "/etc/" "/usr/share/xsessions/" "/usr/share/WindowMaker/" "/var/www/" ) EXC=( "*/.idea/*" "*/.git/*" "*/.github/*" "*/node_modules/*" "*/atom/*" "*/code/*" "*/vscodium/*" "*/sublime-text-3/*" "*/libreoffice/*" "*/scrap/*" "*/playground/e16/*" ) ARCHV=("enc.tar.gz" "usr.tar.gz" "sys.tar.gz")
+declare -a NICEC=( $(which nice) -n 19 ) TARCM=( $(which tar) --create --gzip ) GPG2C=( $(which gpg2) --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output ) ENC=( "/home/${UTB}/.gnupg/*" "/home/${UTB}/.ssh/*" "/home/${UTB}/.ngrok2/*" "/home/${UTB}/.config/filezilla/*" "/home/${UTB}/.config/hexchat/*" "/home/${UTB}/.putty/*" ) USR=( "/home/${UTB}/git/" "/home/${UTB}/Documents/" ) SYS=( "/boot/grub/themes/" "/boot/grub/grub.cfg" "/etc/" "/usr/share/xsessions/" "/usr/share/WindowMaker/" "/var/www/" ) EXC=( "*/.idea/*" "*/.git/*" "*/.github/*" "*/node_modules/*" "*/atom/*" "*/code/*" "*/vscodium/*" "*/sublime-text-3/*" "*/libreoffice/*" "*/scrap/*" "*/playground/e16/*" ) ARCHV=("enc.tar.gz" "usr.tar.gz" "sys.tar.gz"); declare -a BKP=( ENC[@] USR[@] SYS[@] )
 
 for x in "${EXC[@]}"; do
   EXL+=("--exclude=${x}")
 done
-
-BKP=( ENC[@] USR[@] SYS[@] )
 
 printf "%s\n" "${SSIG}"
 
