@@ -16,7 +16,7 @@
   * [upgrade-distro.sh](dot.files/sbin/upgrade-distro.sh)
   <br/>Distro neutral upgrade script
 
-  * [upgrade-bkps.sh](dot.files/sbin/upgrade-bkps.sh)
+  * [update-bkps.sh](dot.files/sbin/update-bkps.sh)
   <br/>Back up things ...
 
   * [cleanup-bkps.sh](dot.files/sbin/cleanup-bkps.sh)
