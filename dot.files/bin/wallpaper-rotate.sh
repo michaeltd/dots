@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # ~/bin/wallpaper-rotate.sh
-# Simple script to go through a directory of background images as wallpapers in a timely fashion
+# Script to go through a directory of background images as wallpapers in a timely fashion
 
 declare -a WPUSAGE="\n \
     ${bold}Script to rotate backgrounds in wm's with out such options \n \
