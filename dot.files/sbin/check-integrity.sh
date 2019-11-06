@@ -3,6 +3,11 @@
 # ~/sbin/check-integrity.sh
 # man qcheck : qcheck - verify integrity of installed packages
 
-printf "= $(basename ${BASH_SOURCE[0]}) =\n"
+printf "-- %s --\n" "$(basename ${BASH_SOURCE[0]})"
 
-(( EUID == 0 )) && time qcheck
+if (( EUID == 0 ))
+then
+
+  time qcheck
+
+fi

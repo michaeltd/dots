@@ -3,25 +3,52 @@
 export XDIALOG_NO_GMSGS=1
 
 # Pick a default available UI ...
-if [[ -x $(command -v Xdialog 2> /dev/null) && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
+if [[ -x $(command -v Xdialog 2> /dev/null) && -n "${DISPLAY}" ]]
+then # Check for X, Xdialog
+
     declare DIALOG="$(command -v Xdialog)" G=("100x75")
-elif [[ -x $(command -v dialog 2> /dev/null) ]]; then # Check for dialog
+
+elif [[ -x $(command -v dialog 2> /dev/null) ]]
+then # Check for dialog
+
     declare DIALOG="$(command -v dialog)" G=( 0 0 )
+
 fi
 
 usage() {
+
     printf "Usage: vol [+]|[-]|[0-100]|report\n" >&2 ;
+
     exit 1
+
 }
 
 case "${1}" in
-    +|-) VOL=$(amixer sset Master "5dB${1}") ;;
-    *[0-9])[[ "${1}" =~ ^[0-9]{1,3}$ ]] && VOL=$(amixer sset Master "${1}%") || usage ;;
-    "report") VOL=$(amixer sget Master) ;;
-    *) usage ;;
+
+    +|-)
+
+        VOL=$(amixer sset Master "5dB${1}")
+        ;;
+
+    *[0-9])
+
+        [[ "${1}" =~ ^[0-9]{1,3}$ ]] && VOL=$(amixer sset Master "${1}%") || usage
+        ;;
+
+    "report")
+
+        VOL=$(amixer sget Master)
+        ;;
+
+    *)
+
+        usage
+        ;;
 esac
 
-VOL=${VOL/\]*}; VOL=${VOL/*\[}
+VOL=${VOL/\]*}
+
+VOL=${VOL/*\[}
 
 notify-send "Master: ${VOL}" 2> /dev/null || \
     ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}" 2> /dev/null || \
