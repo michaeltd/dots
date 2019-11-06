@@ -98,59 +98,87 @@ if [[ -n "${1}" ]]
 then
 
   case "${1}" in
+
     "add")
+
       shift
+
       while [[ -n "${1}" ]]
       do
+
         if [[ -d "${1}" ]]
         then
+
           DIRS+=( "${1}" )
+
         else
+
           printf "${yellow}Warning:${reset} %s is not a directory.\n" "${1}" >&2
+
         fi
+
         shift
+
       done
+
       # https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
       sv="DIRS" rv="DIRS=( ${DIRS[@]} )"
       sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
       ;;
     "rem")
+
       shift
+
       while [[ -n "${1}" ]]
       do
-        for (( i=0; i<"${#DIRS[@]}"; i++ ))
+
+        for (( i = 0; i < "${#DIRS[@]}"; i++ ))
         do
+
           if [[ "${DIRS[${i}]}" == "${1}" ]]
           then
+
             unset 'DIRS[i]'
+
           fi
+
         done
+
         shift
+
       done
+
       sv="DIRS"
       rv="DIRS=( ${DIRS[@]} )"
       sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
       ;;
     "delay")
+
       shift
+
       # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
       if [[ "${1}" =~ ^[0-9]+$ ]]
       then
+
         sv="WAIT" rv="WAIT=${1}m"
         sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
+
       else
+
         printf "${yellow}Warning:${reset} %s is not a valid time construct.\nProvide an integer as interval in minutes\n" "${1}" >&2
+
       fi
       ;;
     "replay")
+
       shift
+
       tail -n ${1:-1} "${WPLG}" |head -n 1|awk '{print $NF}'
       ;;
-
     *)
+
       printf "${WPUSAGE}"
       ;;
-
   esac
 
 else
@@ -167,14 +195,21 @@ else
     # fill a WallPaperS list
     for D in "${DIRS[@]}"
     do
+
       for P in $("${LS}" -1 "${D}")
       do
+
         FN="${D}/${P}" FE="${P:(-4)}"
+
         if [[ -f "${FN}" ]] && [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]
         then
+
           WPS+=( "${FN}" )
+
         fi
+
       done
+
     done
 
     # limit a random number to upper array bounds as a RundomNumber
@@ -191,6 +226,7 @@ else
     (( ${?} != 0 )) && continue
 
     printf "%s %s %s\n" "$(date +%y%m%d-%H%M%S)" "${!BGSRS[$BGSR]:0:1}" "${WP}" >> "${WPLG}"
+
     sleep "${WAIT}"
 
   done
