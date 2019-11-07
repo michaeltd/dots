@@ -16,7 +16,7 @@ BKPK="14"
 # BacKuPs Remove => BKPR (1 remove, 0 don't)
 BKPR="1"
 
-printf "-- %s --\n" "$(basename ${BASH_SOURCE[0]})"
+printf " -- %s --\n" "$(basename ${BASH_SOURCE[0]})"
 
 if [[ -n "${1}" ]]
 then
@@ -30,30 +30,24 @@ then
 
         shift; BKPD="${1}"
         ;;
-
       "--simulate")
 
         BKPR="0"
         ;;
-
       "--remove")
 
         BKPR="1"
         ;;
-
       *)
 
         printf "Usage: $(basename ${BASH_SOURCE[0]}) [--directory /backups/directory/] ([--simulate]|[--remove (default)])\n" >&2
 
         exit 1
         ;;
-
     esac
 
     shift
-
   done
-
 fi
 
 # No root access
@@ -84,13 +78,9 @@ do
     then
 
       FNS+=( "${BFN}" )
-
       DTS+=( "${PART}" )
-
     fi
-
   done
-
 done
 
 # File NameS loop to execute on stats
@@ -107,7 +97,5 @@ do
     printf "${bold}rm -v %s${reset}: " "${red}${FNS[$y]}${reset}"
 
     (( BKPR == 0 )) && printf "\n" || rm -v "${BKPD}/${FNS[$y]}"
-
   fi
-
 done

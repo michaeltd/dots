@@ -2,7 +2,9 @@
 
 if [[ -z "${1}" ]] || (( EUID != 0 ))
 then
+
   printf "Usage: sudo %s username\n" "$(basename ${0})"
+
   exit 1
 fi
 

@@ -30,10 +30,9 @@ for x in "${EXC[@]}"
 do
 
   EXL+=( "--exclude=${x}" )
-
 done
 
-printf "-- %s --\n" "$(basename ${BASH_SOURCE[0]})"
+printf " -- %s --\n" "$(basename ${BASH_SOURCE[0]})"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]
 then
@@ -42,7 +41,6 @@ then
   do
 
     EP="$(date +%s)"
-
     DT="$(date +%y%m%d)"
 
     if [[ ${ARCHV[$i]} =~ enc ]]
@@ -51,21 +49,16 @@ then
       ARCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}"
 
       time ${NICEC[@]} ${TARCM[@]} --file "${ARCFL}" ${EXL[@]} ${!BKP[$i]}
-
     else
 
       ENCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}.asc"
 
       time ${NICEC[@]} ${TARCM[@]} ${EXL[@]} ${!BKP[$i]} | "${GPG2C[@]}" "${ENCFL}" --encrypt
-
     fi
-
   done
-
 else
 
   printf "%s not found or root access requirements not met\n" "${ELDIR}" >&2
 
   exit 1
-
 fi

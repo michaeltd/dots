@@ -50,9 +50,7 @@ if [[ "${BASH_VERSINFO[0]}" -lt "4" ]]
 then
 
   printf "${red}Error:${reset} For this to work properly you'll need bash major version greater than 4.\n" >&2
-
-  exit "1"
-
+  exit 1
 fi
 
 # Find a setter
@@ -63,11 +61,8 @@ do
   then
 
     BGSR="${x}"
-
     break # Break on first match.
-
   fi
-
 done
 
 # Quit on no setter
@@ -77,9 +72,7 @@ then
   printf "%s\n" "${WPUSAGE}"
 
   printf "\n\n ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n" >&2
-
-  exit "1"
-
+  exit 1
 fi
 
 # If there's no readable settings file, write it...
@@ -87,7 +80,6 @@ if [[ ! -r "${WPRC}" ]]
 then
 
   printf "WAIT=${WAIT}\nDIRS=( ${DIRS[@]} )\n" > "${WPRC}"
-
 fi
 
 # and read it.
@@ -110,15 +102,12 @@ then
         then
 
           DIRS+=( "${1}" )
-
         else
 
           printf "${yellow}Warning:${reset} %s is not a directory.\n" "${1}" >&2
-
         fi
 
         shift
-
       done
 
       # https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
@@ -139,13 +128,9 @@ then
           then
 
             unset 'DIRS[i]'
-
           fi
-
         done
-
         shift
-
       done
 
       sv="DIRS"
@@ -162,7 +147,6 @@ then
 
         sv="WAIT" rv="WAIT=${1}m"
         sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
-
       else
 
         printf "${yellow}Warning:${reset} %s is not a valid time construct.\nProvide an integer as interval in minutes\n" "${1}" >&2
@@ -180,7 +164,6 @@ then
       printf "${WPUSAGE}"
       ;;
   esac
-
 else
 
   # Reset log
@@ -205,11 +188,8 @@ else
         then
 
           WPS+=( "${FN}" )
-
         fi
-
       done
-
     done
 
     # limit a random number to upper array bounds as a RundomNumber
@@ -228,7 +208,5 @@ else
     printf "%s %s %s\n" "$(date +%y%m%d-%H%M%S)" "${!BGSRS[$BGSR]:0:1}" "${WP}" >> "${WPLG}"
 
     sleep "${WAIT}"
-
   done
-
 fi
