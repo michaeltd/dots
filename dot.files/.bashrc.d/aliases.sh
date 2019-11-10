@@ -2,22 +2,27 @@
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
 
-if [ -x "$(which dircolors 2> /dev/null)" ]; then
-    # Color support
-    test -r ~/.bashrc.d/colors.sh && eval "$(dircolors -b ~/.bashrc.d/colors.sh)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto --group-directories-first'
-    alias la='ls --all --human-readable --color=auto --group-directories-first'
-    alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto -in'
-    alias egrep='egrep --color=auto'
-    alias fgrep='fgrep --color=auto'
+if [ -x "$(which dircolors 2> /dev/null)" ]
+then
+   # Color support
+  test -r ~/.bashrc.d/colors.sh && \
+    eval "$(dircolors -b ~/.bashrc.d/colors.sh)" || \
+    eval "$(dircolors -b)"
+
+  alias ls='ls --color=auto --group-directories-first'
+  alias la='ls --all --human-readable --color=auto --group-directories-first'
+  alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
+  alias grep='grep --color=auto -in'
+  alias egrep='egrep --color=auto'
+  alias fgrep='fgrep --color=auto'
 else
-    alias ls='ls --group-directories-first'
-    alias la='ls --all --human-readable --group-directories-first'
-    alias ll='ls -l --all --human-readable --group-directories-first'
-    alias grep='grep -in'
+
+  alias ls='ls --group-directories-first'
+  alias la='ls --all --human-readable --group-directories-first'
+  alias ll='ls -l --all --human-readable --group-directories-first'
+  alias grep='grep -in'
 fi
 
 alias du='du -h'
@@ -26,19 +31,24 @@ alias df='df -h'
 
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
-if command -v emerge &> /dev/null; then
+if command -v emerge &> /dev/null
+then
   alias psearch='emerge -s' pinstall='sudo emerge -av' premove='sudo emerge -avC'
   alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND world' dcleanup='sudo emerge --ask --depclean'
-elif command -v pacman &> /dev/null; then
+elif command -v pacman &> /dev/null
+then
   alias psearch='pacman -Ss' pinstall='sudo pacman -S' premove='sudo pacman -R'
   alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' dcleanup='sudo pacman -Rsn'
-elif command -v apt-get &> /dev/null; then
+elif command -v apt-get &> /dev/null
+then
   alias psearch='apt search' pinstall='sudo apt-get install --install-suggests' premove='sudo apt-get remove --purge'
   alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' dcleanup='sudo apt-get autoremove'
-elif command -v zypper &> /dev/null; then
+elif command -v zypper &> /dev/null
+then
   alias psearch='zypper search' pinstall='sudo zypper install' premove='sudo zypper remove --clean-deps'
   alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' dcleanup='sudo zypper rm -u'
-elif command -v yum &> /dev/null; then
+elif command -v yum &> /dev/null
+then
   alias psearch='yum search' pinstall='sudo yum install' premove='sudo yum remove'
   alias dupdate='sudo yum check-update' dupgrade='sudo yum update' dcleanup='sudo yum autoremove'
 fi

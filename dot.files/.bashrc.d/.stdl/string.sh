@@ -9,19 +9,19 @@ split() {
   printf '%s\n' "${arr[@]}"
 }
 
-function alphabetic_only {
+alphabetic_only() {
   printf "%s\n" "${@//[![:alpha:]]}"
 }
 
-function alphanumeric_only {
+alphanumeric_only() {
   printf "%s\n" "${@//[![:alnum:]]}"
 }
 
-function digits_only {
+digits_only() {
   printf "%s\n" "${@//[![:digit:]]}"
 }
 
-function remove_spaces {
+remove_spaces() {
   # https://stackoverflow.com/questions/13659318/how-to-remove-space-from-string
   echo "${@}"|sed 's/ //g'
   # shopt -s extglob # Allow extended globbing
@@ -30,7 +30,7 @@ function remove_spaces {
   # shopt -u extglob
 }
 
-function trim {
+trim() {
   # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
   local var="$*"
   # remove leading whitespace characters
@@ -40,7 +40,7 @@ function trim {
   echo -n "$var"
 }
 
-function left_pad {
+left_pad() {
   # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
   # local var="$*"
   # remove leading whitespace characters
@@ -51,7 +51,7 @@ function left_pad {
   echo -n "${@#"${@%%[![:space:]]*}"}"
 }
 
-function right_pad {
+right_pad() {
   # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
   # local var="$*"
   # remove leading whitespace characters

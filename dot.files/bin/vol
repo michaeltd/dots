@@ -3,12 +3,12 @@
 export XDIALOG_NO_GMSGS=1
 
 # Pick a default available UI ...
-if [[ -x $(command -v Xdialog 2> /dev/null) && -n "${DISPLAY}" ]]
-then # Check for X, Xdialog
+if [[ -x $(command -v Xdialog 2> /dev/null) && -n "${DISPLAY}" ]] # Check for X, Xdialog
+then
 
     declare DIALOG="$(command -v Xdialog)" G=("100x75")
-elif [[ -x $(command -v dialog 2> /dev/null) ]]
-then # Check for dialog
+elif [[ -x $(command -v dialog 2> /dev/null) ]] # Check for dialog
+then
 
     declare DIALOG="$(command -v dialog)" G=( 0 0 )
 fi

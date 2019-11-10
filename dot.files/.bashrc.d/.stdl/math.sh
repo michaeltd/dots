@@ -4,15 +4,16 @@
 
 # in_range <v> <a> <b> - Returns true if a <= v <= b
 in_range() {
-  if [[ $# -lt 3 ]]; then
+  if [[ "${#}" -eq "3" ]]
+  then
+    [[ "${1}" -ge "${2}" && "${1}" -le "${3}" ]]
+  else
     echo "USAGE: ${FUNCNAME[0]} <v> <a> <b>" >&2
     return 1
-  else
-    [[ $1 -ge "$2" && $1 -le "$3" ]]
   fi
 }
 
-function between(){
+between(){
   # echo "Usage: between low# high# check#"
   (( $3 >= $1 && $3 <= $2 ))
 }
@@ -27,25 +28,34 @@ min() {
 }
 
 altmin() {
-    n=${1} # Avoid n initialization issues
-    while [[ -n ${1} ]]; do
-        (( $1 < $n )) && n=${1}
-        shift
-    done
-    echo ${n}
+
+  n=${1} # Avoid n initialization issues
+
+  while [[ -n ${1} ]]
+  do
+
+    (( $1 < $n )) && n=${1}
+
+    shift
+  done
+
+  echo ${n}
 }
 
 max() {
-  printf "%s\n" "${@}" | sort -rn | head -1
+  printf "%s\n" "${@}" | \
+    sort -rn | \
+    head -1
 }
 
 altmax() {
-    x=${1} # Avoid x initialization issues
-    while [[ -n ${1} ]]; do
-        (( $1 > $x )) && x=${1}
-        shift
-    done
-    echo ${x}
+  x=${1} # Avoid x initialization issues
+  while [[ -n ${1} ]]
+  do
+    (( $1 > $x )) && x=${1}
+    shift
+  done
+  echo ${x}
 }
 
 sqrt() {
@@ -87,21 +97,27 @@ ctn() {
 }
 
 asin() {
-  if (( $(echo "$1 == 1" | bc -l) ));then
+  if (( $(echo "$1 == 1" | bc -l) ))
+  then
     echo "90"
-  elif (( $(echo "$1 < 1" | bc -l) ));then
+  elif (( $(echo "$1 < 1" | bc -l) ))
+  then
     echo "scale=6;a(sqrt((1/(1-($1^2)))-1))" | bc -l
-  elif (( $(echo "$1 > 1" | bc -l) ));then
+  elif (( $(echo "$1 > 1" | bc -l) ))
+  then
     echo "error"
   fi
 }
 
 acos() {
-  if (( $(echo "$1 == 0" | bc -l) ));then
+  if (( $(echo "$1 == 0" | bc -l) ))
+  then
     echo "90"
-  elif (( $(echo "$1 <= 1" | bc -l) ));then
+  elif (( $(echo "$1 <= 1" | bc -l) ))
+  then
     echo "scale=6;a(sqrt((1/($1^2))-1))" | bc -l
-  elif (( $(echo "$1 > 1" | bc -l) ));then
+  elif (( $(echo "$1 > 1" | bc -l) ))
+  then
     echo "error"
   fi
 }
