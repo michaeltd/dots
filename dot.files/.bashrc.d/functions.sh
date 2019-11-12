@@ -33,23 +33,16 @@ countdown() {
 
 # UTILS =======================================================================
 
-# Run things in the background with Custom niceness and cli switches in a Mutex kind of way
+# (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
 # Usage : rcm niceness executable command line arguments
 # Example: rcm 9 conky -qdc ~/.conkyrc
 rcm() {
 
-  if (( ${#} < 2 ))
-  then
-    echo -e "Usage: rcm niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t"
-    return 1
-  fi
+  (( ${#} < 2 )) && echo -e "Usage: rcm niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" && return 1
 
-  bin=$(which "${2}")
-  pid=$(pgrep -U "${USER}" -f "${2}")
-  if [ -z "${pid}" ] && [ -x "${bin}" ]
-  then
-    exec nice -n "${@}" &
-  fi
+  local bin=$(which "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
+
+  [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
 }
 
 printappsinpath() {
