@@ -23,12 +23,12 @@ export PROMPT_COMMAND='history -a'
 
 
 # Load helper functions
-stdl="${HOME}/.bashrc.d/.stdl"
+stl="${HOME}/.bashrc.d/.stl"
 
-if [[ -d "${stdl}" ]] # Load files from ~/.bashrc.d/.stdl
+if [[ -d "${stl}" ]] # Load files from ~/.bashrc.d/.stdl
 then
 
-  for file in ${stdl}/*
+  for file in ${stl}/*
   do
 
     source "${file}"
