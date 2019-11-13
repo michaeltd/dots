@@ -2,13 +2,9 @@
 #+author: michaeltd
 #+date: <2016>
 
-#+BEGIN_CENTER
 [[assets/bash_logo_transparent.svg]]
 
-[[http://unmaintained.tech/][http://unmaintained.tech/badge.svg]] [[https://opensource.org/licenses/MIT][https://img.shields.io/badge/License-MIT-yellow.svg]]
-#+END_CENTER
-
-* Usage
+* Usage [[http://unmaintained.tech/][http://unmaintained.tech/badge.svg]] [[https://opensource.org/licenses/MIT][https://img.shields.io/badge/License-MIT-yellow.svg]]
   Possible use: ~git clone https://github.com/michaeltd/dots~, go through this repository and select what fits your needs so you can incorporate it in your working environment.
 
   My dots tend to be opinionated so take them with a grain of rice ...err SALT, I meant salt. Take them with a grain of salt.
