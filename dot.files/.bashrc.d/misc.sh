@@ -21,11 +21,11 @@ shopt -s histappend
 # and keep synced:
 export PROMPT_COMMAND='history -a'
 
-
 # Load helper functions
 stl="${HOME}/.bashrc.d/.stl"
 
-if [[ -d "${stl}" ]] # Load files from ~/.bashrc.d/.stdl
+# Load files from ~/.bashrc.d/.stl
+if [[ -d "${stl}" ]]
 then
 
   for file in ${stl}/*

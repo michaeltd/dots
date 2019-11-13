@@ -16,6 +16,8 @@ BKPK="14"
 # BacKuPs Remove => BKPR (1 remove, 0 don't)
 BKPR="1"
 
+declare -a srcs=( /home/paperjam/.bashrc.d/.stl/time.sh /home/paperjam/.bashrc.d/.stl/string.sh /home/paperjam/.bashrc.d/.stl/math.sh )
+
 printf " -- %s --\n" "$(basename ${BASH_SOURCE[0]})"
 
 if [[ -n "${1}" ]]
@@ -57,9 +59,15 @@ fi
 [ ! -d "${BKPD}" ] && printf "${BKPD} is not a directory.\n" >&2 && exit 1
 
 # Load explicitly for non interactive shells.
-source /home/paperjam/.bashrc.d/.stl/time.sh # for datedd()
-source /home/paperjam/.bashrc.d/.stl/string.sh # for split()
-source /home/paperjam/.bashrc.d/.stl/math.sh # for max()
+# source /home/paperjam/.bashrc.d/.stl/time.sh # for datedd()
+# source /home/paperjam/.bashrc.d/.stl/string.sh # for split()
+# source /home/paperjam/.bashrc.d/.stl/math.sh # for max()
+
+for src in "${srcs[@]}"
+do
+  source "${src}"
+done
+
 
 FILES=( $($(which ls) -t1 ${BKPD}/*tar.gz* 2> /dev/null) )
 
