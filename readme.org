@@ -1,14 +1,11 @@
 #+title: michaeltd dots
-
-#+BEGIN_SRC html
-<p align="center"><a href="http://www.tldp.org/LDP/abs/html/abs-guide.html"><img alt="bash-logo" src="assets/bash_logo_transparent.svg"></a></p>
-<p align="center"><a href="http://unmaintained.tech/"><img alt="No Maintenance Intended" src="http://unmaintained.tech/badge.svg"></a> <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a></p>
-#+END_SRC
+#+author: michaeltd
+#+date: <2016>
 
 #+BEGIN_CENTER
 [[assets/bash_logo_transparent.svg]]
 
-[[http://unmaintained.tech/]] [[http://unmaintained.tech/badge.svg]] [[https://opensource.org/licenses/MIT]] [[https://img.shields.io/badge/License-MIT-yellow.svg]]
+[[http://unmaintained.tech/][http://unmaintained.tech/badge.svg]] [[https://opensource.org/licenses/MIT][https://img.shields.io/badge/License-MIT-yellow.svg]]
 #+END_CENTER
 
 * Usage
@@ -43,31 +40,31 @@ I get my wallpapers from: [r/spaceporn](https://www.reddit.com/r/spaceporn), [r/
 
 * Some WM's in no particular order.
 
-** [wmaker](dot.files/GNUstep/), [website](https://www.windowmaker.org/)
+** (dot.files/GNUstep/)[wmaker], (https://www.windowmaker.org/)[website]
 
   <p align="center"><a href="https://en.wikipedia.org/wiki/Window_Maker"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
 
-** [e16](dot.files/.e16/), [website](https://www.enlightenment.org/e16)
+** (dot.files/.e16/)[e16], (https://www.enlightenment.org/e16)[website]
 
   <p align="center"><a href="https://en.wikipedia.org/wiki/Enlightenment_(software)#E16"><img width="200" alt="e16" src="assets/e16.png"></a></p>
 
-** [openbox](dot.files/.config/openbox/), [website](http://openbox.org/)
+** (dot.files/.config/openbox/)[openbox], (http://openbox.org/)[website]
 
   <p align="center"><a href="https://en.wikipedia.org/wiki/Openbox"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
 
-** [awesome](dot.files/.config/awesome/), [website](https://awesomewm.org/)
+** (dot.files/.config/awesome/)[awesome], (https://awesomewm.org/)[website]
 
   <p align="center"><a href="https://en.wikipedia.org/wiki/Awesome_(window_manager)"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
 
-** [compiz](dot.files/.config/compiz/), [website](https://launchpad.net/compiz)
+** (dot.files/.config/compiz/)[compiz], (https://launchpad.net/compiz)[website]
 
   <p align="center"><a href="https://en.wikipedia.org/wiki/Compiz"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
 
-** [mwm](dot.files/.mwmrc), [website](https://motif.ics.com/)
+** (dot.files/.mwmrc)[mwm], (https://motif.ics.com/)[website]
 
   <p align="center"><a href="https://en.wikipedia.org/wiki/Motif_Window_Manager"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
 
-** [exwm](dot.files/.xinitrc#L69), [website](https://github.com/ch11ng/exwm/wiki)
+** (dot.files/.xinitrc#L69)[exwm], (https://github.com/ch11ng/exwm/wiki)[website]
 
   <p align="center"><a href="https://en.wikipedia.org/wiki/GNU_Emacs"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
 
