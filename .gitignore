@@ -59,7 +59,7 @@ dot.files/bin/*
 !dots/dot.files/bin/screenshot.sh
 !dots/dot.files/bin/unix.sh
 !dots/dot.files/bin/vol
-!dots/dot.files/bin/wallpaper-rotate.sh
+!dots/dot.files/bin/wallpaper_rotate.sh
 
 dot.files/sbin/.old/*
 
