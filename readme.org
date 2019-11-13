@@ -33,32 +33,31 @@ I get my wallpapers from: [r/spaceporn](https://www.reddit.com/r/spaceporn), [r/
 [[assets/wpr.png]]
 
 * Some WM's in no particular order.
-
-** [[dot.files/GNUstep/][wmaker]], (https://www.windowmaker.org/)[website]
+** [[dot.files/GNUstep/][wmaker]], [[https://www.windowmaker.org/][website]]
 
 [[https://en.wikipedia.org/wiki/Window_Maker][assets/wmaker.png]]
 
-** [[dot.files/.e16/][e16]], (https://www.enlightenment.org/e16)[website]
+** [[dot.files/.e16/][e16]], [[https://www.enlightenment.org/e16][website]]
 
 [[https://en.wikipedia.org/wiki/Enlightenment_(software)#E16][assets/e16.png]]
 
-** [[dot.files/.config/openbox/][openbox]], (http://openbox.org/)[website]
+** [[dot.files/.config/openbox/][openbox]], [[http://openbox.org/][website]]
 
 [[https://en.wikipedia.org/wiki/Openbox][assets/openbox.png]]
 
-** [[dot.files/.config/awesome/][awesome]], (https://awesomewm.org/)[website]
+** [[dot.files/.config/awesome/][awesome]], [[https://awesomewm.org/][website]]
 
 [[https://en.wikipedia.org/wiki/Awesome_(window_manager)][assets/awesome.png]]
 
-** [[dot.files/.config/compiz/][compiz]], (https://launchpad.net/compiz)[website]
+** [[dot.files/.config/compiz/][compiz]], [[https://launchpad.net/compiz][website]]
 
 [[https://en.wikipedia.org/wiki/Compiz][assets/compiz.png]]
 
-** [[dot.files/.mwmrc][mwm]], (https://motif.ics.com/)[website]
+** [[dot.files/.mwmrc][mwm]], [[https://motif.ics.com/][website]]
 
 [[https://en.wikipedia.org/wiki/Motif_Window_Manager][assets/mwm.png]]
 
-** [[dot.files/.xinitrc#L69][exwm]], (https://github.com/ch11ng/exwm/wiki)[website]
+** [[dot.files/.xinitrc#L69][exwm]], [[https://github.com/ch11ng/exwm/wiki][website]]
 
 [[https://en.wikipedia.org/wiki/GNU_Emacs][assets/exwm.png]]
 
@@ -77,7 +76,7 @@ My setup consists of [[https://github.com/seagle0128/.emacs.d][Centaur Emacs]] a
 ** Vim
 If vim is what makes you "tick", check out [[https://github.com/SpaceVim/SpaceVim][SpaceVim]], a community maintained vim distribution.
 
-* [[bootstrap.sh][bootstrap.sh]]) [bootstrap.sh]
+* [[bootstrap.sh][bootstrap.sh]]
 How I migrate my .dots in new systems. Don't use this unless you know exactly what you're getting into.
 
 * Reference
