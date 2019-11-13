@@ -28,35 +28,35 @@
 
   <p align="center"><a href="dot.files/bin/wallpaper_rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
-* Some WM's (in no particular order)
+* Some WM's in no particular order.
 
-  * [wmaker](dot.files/GNUstep/)
+  * [wmaker](dot.files/GNUstep/), [website](https://www.windowmaker.org/)
+    
+  <p align="center"><a href="https://en.wikipedia.org/wiki/Window_Maker"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
 
-  <p align="center"><a href="dot.files/GNUstep/"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
+  * [e16](dot.files/.e16/), [website](https://www.enlightenment.org/e16)
 
-  * [e16](dot.files/.e16/)
+  <p align="center"><a href="https://en.wikipedia.org/wiki/Enlightenment_(software)#E16"><img width="200" alt="e16" src="assets/e16.png"></a></p>
 
-  <p align="center"><a href="dot.files/.e16/"><img width="200" alt="e16" src="assets/e16.png"></a></p>
+  * [openbox](dot.files/.config/openbox/), [website](http://openbox.org/)
 
-  * [openbox](dot.files/.config/openbox/)
+  <p align="center"><a href="https://en.wikipedia.org/wiki/Openbox"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
 
-  <p align="center"><a href="dot.files/.config/openbox/"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
+  * [awesome](dot.files/.config/awesome/), [website](https://awesomewm.org/)
 
-  * [awesome](dot.files/.config/awesome/)
+  <p align="center"><a href="https://en.wikipedia.org/wiki/Awesome_(window_manager)"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
 
-  <p align="center"><a href="dot.files/.config/awesome/"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
+  * [compiz](dot.files/.config/compiz/), [website](https://launchpad.net/compiz)
 
-  * [compiz](dot.files/.config/compiz/)
+  <p align="center"><a href="https://en.wikipedia.org/wiki/Compiz"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
 
-  <p align="center"><a href="dot.files/.config/compiz/"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
+  * [mwm](dot.files/.mwmrc), [website](https://motif.ics.com/)
 
-  * [mwm](dot.files/.mwmrc)
+  <p align="center"><a href="https://en.wikipedia.org/wiki/Motif_Window_Manager"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
 
-  <p align="center"><a href="dot.files/.mwmrc"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
+  * [exwm](dot.files/.xinitrc#L69), [website](https://github.com/ch11ng/exwm/wiki)
 
-  * [exwm](https://github.com/ch11ng/exwm/wiki) (cause reasons...)
-
-  <p align="center"><a href="https://github.com/ch11ng/exwm/wiki"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
+  <p align="center"><a href="https://en.wikipedia.org/wiki/GNU_Emacs"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
 
 
  * Editors, [Utilities](dot.files/.tmux.conf).
