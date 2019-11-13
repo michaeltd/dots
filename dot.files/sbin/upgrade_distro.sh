@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# ~/sbin/upgrade-distro.sh
+# ~/sbin/upgrade_distro.sh
 # Distro neutral upgrade script michaeltd 171124
 # From https://en.wikipedia.org/wiki/Package_manager
 
@@ -15,7 +15,7 @@ declare -a APT_GET=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrad
 
 declare -a YUM=( "yum" "check-update" "update" )
 
-declare -a EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "world" )
+declare -a EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-security}" )
 
 declare -a PMS=( ZYPPER[@] PACMAN[@] APT_GET[@] YUM[@] EMERGE[@] )
 
@@ -41,15 +41,7 @@ printf " -- %s --\n" "$(basename ${BASH_SOURCE[0]})"
 if (( PMIDX == NOTFOUND || EUID != 0 ))
 then
 
-  printf "${red}Error:${reset} ${bold}Package manager not found, or non root privilages.${reset}\n \
-         For this to work you need ${underline}${green}root${reset}${end_underline} account privilages and a \n \
-         ${underline}${green}%s${reset}${end_underline}, \
-         ${underline}${green}%s${reset}${end_underline}, \
-         ${underline}${green}%s${reset}${end_underline}, \
-         ${underline}${green}%s${reset}${end_underline} or \
-         ${underline}${green}%s${reset}${end_underline} based distro.\n \
-         Quithing.\n" \
-         "${!PMS[0]:0:1}" "${!PMS[1]:0:1}" "${!PMS[2]:0:1}" "${!PMS[3]:0:1}" "${!PMS[4]:0:1}" >&2
+  printf "${red}Error:${reset} ${bold}Package manager not found, or non root privilages.${reset}\n For this to work you need ${underline}${green}root${reset}${end_underline} account privilages and a \n ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline} or ${underline}${green}%s${reset}${end_underline} based distro.\n Quithing.\n" "${!PMS[0]:0:1}" "${!PMS[1]:0:1}" "${!PMS[2]:0:1}" "${!PMS[3]:0:1}" "${!PMS[4]:0:1}" >&2
 
   exit 1
 else

@@ -1,0 +1,1 @@
+/home/paperjam/sbin/upgrade_distro.sh

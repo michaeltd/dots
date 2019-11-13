@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# ~/sbin/cleanup-bkps.sh - de-clutter backups
+# ~/sbin/cleanup_bkps.sh - de-clutter backups
 #
 # This will work for any directory containing *tar.gz* backups
 # (eg: name.tar.gz, name.tar.gz.asc)
@@ -57,9 +57,9 @@ fi
 [ ! -d "${BKPD}" ] && printf "${BKPD} is not a directory.\n" >&2 && exit 1
 
 # Load explicitly for non interactive shells.
-source /home/paperjam/.bashrc.d/.stdl/time.sh # for datedd()
-source /home/paperjam/.bashrc.d/.stdl/string.sh # for split()
-source /home/paperjam/.bashrc.d/.stdl/math.sh # for max()
+source /home/paperjam/.bashrc.d/.stl/time.sh # for datedd()
+source /home/paperjam/.bashrc.d/.stl/string.sh # for split()
+source /home/paperjam/.bashrc.d/.stl/math.sh # for max()
 
 FILES=( $($(which ls) -t1 ${BKPD}/*tar.gz* 2> /dev/null) )
 

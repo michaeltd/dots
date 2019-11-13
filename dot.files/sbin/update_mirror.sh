@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# ~/sbin/update-mirror.sh
+# ~/sbin/update_mirror.sh
 # Update my data
 
 # Full path executables
@@ -21,6 +21,5 @@ then
 else
 
   printf "${ELMNT} or ${DTMNT} not found\n" >&2
-
   exit 1
 fi

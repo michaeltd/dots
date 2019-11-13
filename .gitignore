@@ -61,16 +61,7 @@ dot.files/bin/*
 !dots/dot.files/bin/vol
 !dots/dot.files/bin/wallpaper-rotate.sh
 
-dot.files/sbin/*
-!dot.files/sbin/adduser.sh
-!dot.files/sbin/check-integrity.sh
-!dot.files/sbin/cleanup-bkps.sh
-!dot.files/sbin/compiz.sh
-!dot.files/sbin/sys-info.sh
-!dot.files/sbin/update-bkps.sh
-!dot.files/sbin/update-hosts.sh
-!dot.files/sbin/update-mirror.sh
-!dot.files/sbin/upgrade-distro.sh
+dot.files/sbin/.old/*
 
 dot.files/GNUstep/*
 !dot.files/GNUstep/Defaults/WindowMaker

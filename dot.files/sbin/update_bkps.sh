@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# ~/sbin/update-bkp.sh
+# ~/sbin/update_bkp.sh
 # Backup sensitive files, user files, system
 
 declare ELDIR="/mnt/el/Documents/BKP/LINUX"
