@@ -30,69 +30,66 @@ Back up things ...
 Script for rolling random images as wallpapers.
 I get my wallpapers from: [r/spaceporn](https://www.reddit.com/r/spaceporn), [r/earthporn](https://www.reddit.com/r/earthporn/), [r/unixporn](https://www.reddit.com/r/unixporn), [r/wallpapers](https://www.reddit.com/r/wallpapers)
 
-#+BEGIN_CENTER
 [[assets/wpr.png]]
-#+END_CENTER
 
 * Some WM's in no particular order.
 
-** (dot.files/GNUstep/)[wmaker], (https://www.windowmaker.org/)[website]
+** [[dot.files/GNUstep/][wmaker]], (https://www.windowmaker.org/)[website]
 
-  <p align="center"><a href="https://en.wikipedia.org/wiki/Window_Maker"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
+[[https://en.wikipedia.org/wiki/Window_Maker][assets/wmaker.png]]
 
-** (dot.files/.e16/)[e16], (https://www.enlightenment.org/e16)[website]
+** [[dot.files/.e16/][e16]], (https://www.enlightenment.org/e16)[website]
 
-  <p align="center"><a href="https://en.wikipedia.org/wiki/Enlightenment_(software)#E16"><img width="200" alt="e16" src="assets/e16.png"></a></p>
+[[https://en.wikipedia.org/wiki/Enlightenment_(software)#E16][assets/e16.png]]
 
-** (dot.files/.config/openbox/)[openbox], (http://openbox.org/)[website]
+** [[dot.files/.config/openbox/][openbox]], (http://openbox.org/)[website]
 
-  <p align="center"><a href="https://en.wikipedia.org/wiki/Openbox"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
+[[https://en.wikipedia.org/wiki/Openbox][assets/openbox.png]]
 
-** (dot.files/.config/awesome/)[awesome], (https://awesomewm.org/)[website]
+** [[dot.files/.config/awesome/][awesome]], (https://awesomewm.org/)[website]
 
-  <p align="center"><a href="https://en.wikipedia.org/wiki/Awesome_(window_manager)"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
+[[https://en.wikipedia.org/wiki/Awesome_(window_manager)][assets/awesome.png]]
 
-** (dot.files/.config/compiz/)[compiz], (https://launchpad.net/compiz)[website]
+** [[dot.files/.config/compiz/][compiz]], (https://launchpad.net/compiz)[website]
 
-  <p align="center"><a href="https://en.wikipedia.org/wiki/Compiz"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
+[[https://en.wikipedia.org/wiki/Compiz][assets/compiz.png]]
 
-** (dot.files/.mwmrc)[mwm], (https://motif.ics.com/)[website]
+** [[dot.files/.mwmrc][mwm]], (https://motif.ics.com/)[website]
 
-  <p align="center"><a href="https://en.wikipedia.org/wiki/Motif_Window_Manager"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
+[[https://en.wikipedia.org/wiki/Motif_Window_Manager][assets/mwm.png]]
 
-** (dot.files/.xinitrc#L69)[exwm], (https://github.com/ch11ng/exwm/wiki)[website]
+** [[dot.files/.xinitrc#L69][exwm]], (https://github.com/ch11ng/exwm/wiki)[website]
 
-  <p align="center"><a href="https://en.wikipedia.org/wiki/GNU_Emacs"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
+[[https://en.wikipedia.org/wiki/GNU_Emacs][assets/exwm.png]]
 
-* Editors, [Utilities](dot.files/.tmux.conf).
+* Editors, [[dot.files/.tmux.conf][Utilities]].
 
 ** Emacs
 If emacs is your "thing", check one of ...
 
-*** [emacs-starter-kit](https://github.com/technomancy/emacs-starter-kit)
+*** [[https://github.com/technomancy/emacs-starter-kit][emacs-starter-kit]]
 
-*** [prelude](https://github.com/bbatsov/prelude)
+*** [[https://github.com/bbatsov/prelude][prelude]]
 
-*** [a reasonable emacs config](https://github.com/purcell/emacs.d)
-My setup consists of [Centaur Emacs](https://github.com/seagle0128/.emacs.d) and a [splashscreen](assets/gnu.png).
+*** [[https://github.com/purcell/emacs.d][a reasonable emacs config]]
+My setup consists of [[https://github.com/seagle0128/.emacs.d][Centaur Emacs]] and a [[assets/gnu.png][splashscreen]].
 
 ** Vim
-If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
+If vim is what makes you "tick", check out [[https://github.com/SpaceVim/SpaceVim][SpaceVim]], a community maintained vim distribution.
 
-#+name: bootstrap.sh
-* [bootstrap.sh](bootstrap.sh)
+* [[bootstrap.sh][bootstrap.sh]]) [bootstrap.sh]
 How I migrate my .dots in new systems. Don't use this unless you know exactly what you're getting into.
 
 * Reference
 
-** #### [GitHub ❤ ~/](https://dotfiles.github.io/)
+** [[https://dotfiles.github.io/][GitHub ❤ ~/]]
 Your unofficial guide to dotfiles on GitHub.
 
-** #### [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/html/abs-guide.html) ([PDF](http://www.tldp.org/LDP/abs/abs-guide.pdf))
+** [[http://www.tldp.org/LDP/abs/html/abs-guide.html][Advanced Bash Scripting Guide]] [[http://www.tldp.org/LDP/abs/abs-guide.pdf][PDF]]
 The Bash all in one goto place.
 
-** #### [EbookFoundation free-programming-books - bash](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash)
+** [[https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash][EbookFoundation free-programming-books - bash]]
 Free books relevant to bash (and much more).
 
-** #### [bash-hackers wiki](http://wiki.bash-hackers.org/)
+** [[http://wiki.bash-hackers.org/][bash-hackers wiki]]
 See what other fellow bash'ers are up to.
