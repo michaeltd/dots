@@ -35,7 +35,7 @@ rofi.bw:                             10
 ! 1 2 3
 ! 8 0 4
 ! 7 6 5
-rofi.location:                       1
+rofi.location:                       0
 rofi.padding:                        20
 rofi.levenshtein-sort:               true
 rofi.case-sensitive:                 false

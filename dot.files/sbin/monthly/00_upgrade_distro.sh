@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/home/paperjam/sbin/upgrade_distro.sh world
+/home/paperjam/sbin/upgrade_distro.sh "@world"

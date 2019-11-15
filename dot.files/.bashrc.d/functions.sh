@@ -236,3 +236,11 @@ ping_subnet() {
     done
   done
 }
+
+getmimetype(){
+  file -b --mime-type "${1}"
+}
+
+getfiletype(){
+  file -b "${1}"|awk '{print $1}'
+}

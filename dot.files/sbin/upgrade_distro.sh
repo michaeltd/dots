@@ -15,7 +15,7 @@ declare -a APT_GET=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrad
 
 declare -a YUM=( "yum" "check-update" "update" )
 
-declare -a EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-security}" )
+declare -a EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@security}" )
 
 declare -a PMS=( ZYPPER[@] PACMAN[@] APT_GET[@] YUM[@] EMERGE[@] )
 
