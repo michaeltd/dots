@@ -60,8 +60,8 @@ alias mnte='sudo mount -t auto /dev/sde1 /mnt/thumb'
 alias mntf='sudo mount -t auto /dev/sdf1 /mnt/thumb'
 
 # PC
-alias halt='sudo shutdown -h' # Use with "now", "HH:MM" or any other valid (by shutdown) TIME construct.
-alias reboot='sudo shutdown -r' # as above
+# alias halt='sudo shutdown -h' # Use with "now", "HH:MM" or any other valid (by shutdown) TIME construct.
+# alias reboot='sudo shutdown -r' # as above
 
 # Midnight Commander Safe Terminal
 # alias mcst='mc -a' # In case of malconfigured terminals
