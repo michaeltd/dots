@@ -79,7 +79,7 @@ How I migrate my .dots in new systems. Don't use this unless you know exactly wh
 #### [GitHub ❤ ~/](https://dotfiles.github.io/)
 Your unofficial guide to dotfiles on GitHub.
 
-#### Awesome Bash [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+#### [Awesome Bash](https://github.com/awesome-lists/awesome-bash) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 A curated list of delightful Bash scripts and resources.
 
 #### [EbookFoundation free-programming-books - bash](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash)
