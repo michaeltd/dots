@@ -79,11 +79,15 @@ How I migrate my .dots in new systems. Don't use this unless you know exactly wh
 #### [GitHub ❤ ~/](https://dotfiles.github.io/)
 Your unofficial guide to dotfiles on GitHub.
 
-#### [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/html/abs-guide.html) ([PDF](http://www.tldp.org/LDP/abs/abs-guide.pdf))
-The Bash all in one goto place.
+#### Awesome Bash [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+A curated list of delightful Bash scripts and resources.
 
 #### [EbookFoundation free-programming-books - bash](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash)
 Free books relevant to bash (and much more).
 
 #### [bash-hackers wiki](http://wiki.bash-hackers.org/)
 See what other fellow bash'ers are up to.
+
+#### [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/html/abs-guide.html) ([PDF](http://www.tldp.org/LDP/abs/abs-guide.pdf))
+The Bash all in one goto place.
+
