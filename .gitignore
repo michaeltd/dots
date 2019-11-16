@@ -33,33 +33,41 @@ dot.files/.e16/*
 !dot.files/.e16/bindings.cfg
 
 dot.files/.emacs*
-
 dot.files/.gnupg/*
-
 dot.files/.ngrok2/*
-
 dot.files/.ssh/*
-
 dot.files/.putty/*
-
 dot.files/.fvwm/.FvwmConsole-History
 
 dot.files/.fvwm-crystal/*
 !dot.files/.fvwm-crystal/preferences/*
 
 dot.files/bin/*
-!dot.files/bin/alien.sh
 !dot.files/bin/alarm.sh
+!dot.files/bin/alien.sh
+!dot.files/bin/animbash.sh
+!dot.files/bin/cal.sh
+!dot.files/bin/cht.sh
+!dot.files/bin/gpw.sh
+!dot.files/bin/hello.sh
 !dot.files/bin/keepParamAlive.sh
 !dot.files/bin/lol.sh
 !dot.files/bin/memstat.sh
+!dot.files/bin/mxcl
 !dot.files/bin/pimp_my_gui.sh
 !dot.files/bin/pukeskull
+!dot.files/bin/ri.sh
 !dot.files/bin/runcmd.sh
 !dot.files/bin/screenshot.sh
+!dot.files/bin/showkb.sh
+!dot.files/bin/test_bash_load_times.sh
+!dot.files/bin/thuglife.sh
+!dot.files/bin/trapkill.sh
 !dot.files/bin/unix.sh
 !dot.files/bin/vol
 !dot.files/bin/wallpaper_rotate.sh
+!dot.files/bin/webp2jpg.sh
+!dot.files/bin/xlock_.sh
 
 dot.files/sbin/.old/*
 
