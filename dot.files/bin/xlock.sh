@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# r/unixporn
 
 IMAGE=/tmp/i3lock.png
 SCREENSHOT="scrot $IMAGE"
