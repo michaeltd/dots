@@ -34,7 +34,7 @@ alias df='df -h'
 if command -v emerge &> /dev/null
 then
   alias psearch='emerge -s' pinstall='sudo emerge -av' premove='sudo emerge -avC'
-  alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND' dcleanup='sudo emerge --ask --depclean'
+  alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @security' dcleanup='sudo emerge --ask --depclean'
 elif command -v pacman &> /dev/null
 then
   alias psearch='pacman -Ss' pinstall='sudo pacman -S' premove='sudo pacman -R'
