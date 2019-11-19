@@ -29,8 +29,7 @@ trap 'tput setaf 9; tput cvvis; clear' EXIT
 tput civis
 clear
 
-while :
-do
+while :; do
   for ((c=1; c <= 7; c++)); do
     tput setaf $c
     for ((x=0; x<${#DATA[0]}; x++)); do
@@ -39,5 +38,4 @@ do
       done
     done
   done
-
 done

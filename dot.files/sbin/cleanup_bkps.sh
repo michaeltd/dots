@@ -24,8 +24,7 @@ declare -a srcs=( /home/paperjam/.bashrc.d/.stl/time.sh \
                     /home/paperjam/.bashrc.d/.stl/string.sh \
                     /home/paperjam/.bashrc.d/.stl/math.sh )
 
-while [[ -n "${1}" ]]
-do
+while [[ -n "${1}" ]]; do
   case "${1}" in
     "--directory") shift; BKPD="${1}";;
     "--simulate") BKPR="0";;
@@ -44,37 +43,30 @@ done
 
 printf " -- %s --\n" "$(basename ${BASH_SOURCE[0]})"
 
-for src in "${srcs[@]}"
-do
+for src in "${srcs[@]}"; do
   source "${src}"
 done
 
 FILES=( $($(which ls) -t1 ${BKPD}/*tar.gz* 2> /dev/null) )
 
 # File loop to gather stats
-for (( x = 0; x < ${#FILES[@]}; x++ ))
-do
+for (( x = 0; x < ${#FILES[@]}; x++ )); do
   BFN="$(basename ${FILES[${x}]})"
   # Name loop to extract dates
-  for PART in $(split ${BFN} .)
-  do
+  for PART in $(split ${BFN} .); do
     # 6 digits field check (six digit dates eg: 190508)
-    if [[ "${PART}" =~ ^[0-9]{6}$ ]]
-    then
+    if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then
       FNS+=( "${BFN}" )
       DTS+=( "${PART}" )
-    elif [[ "${PART}" =~ ^[0-9]{10}$ ]]
-    then
+    elif [[ "${PART}" =~ ^[0-9]{10}$ ]]; then
       TSS+=( "${PART}" )
     fi
   done
 done
 
 # File NameS loop to execute on stats
-for (( y = 0; y < ${#FNS[@]}; y++ ))
-do
-  if (( $(datedd $(max ${DTS[@]}) ${DTS[${y}]}) >= BKPK ))
-  then
+for (( y = 0; y < ${#FNS[@]}; y++ )); do
+  if (( $(datedd $(max ${DTS[@]}) ${DTS[${y}]}) >= BKPK )); then
     printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" \
            "${red}${FNS[${y}]}${reset}" \
            "${underline}${green}$(date -d @${TSS[${y}]} +%Y/%m/%d_%H:%M:%S)${reset}${end_underline}"

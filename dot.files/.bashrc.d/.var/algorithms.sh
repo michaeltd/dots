@@ -4,8 +4,7 @@
 
 factorial() {
   # https://rosettacode.org/wiki/Factorial
-  if [ $1 -le 1 ]
-  then
+  if [ $1 -le 1 ]; then
     echo 1
   else
     result=$(factorial $[$1-1])
@@ -20,8 +19,7 @@ bessel() {
 
   local int=${1:-9} limit=${2:-200}
 
-  for ((i=-$limit; i <= $limit; i++))
-  do
+  for ((i=-$limit; i <= $limit; i++)); do
     pad=$(bc -l <<< "j($int,$i)*($COLUMNS/2)+($COLUMNS/2)+.5")
     printf '% *d\n' ${pad%.*} $i
     sleep .03
@@ -34,8 +32,7 @@ UUID() {
 
   local N B C='89ab'
 
-  for (( N=0; N < 16; ++N ))
-  do
+  for (( N=0; N < 16; ++N )); do
     B=$(( $RANDOM%256 ))
     case $N in
       6) printf '4%x' $(( B%16 ));;

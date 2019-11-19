@@ -25,12 +25,8 @@ export PROMPT_COMMAND='history -a'
 stl="${HOME}/.bashrc.d/.stl"
 
 # Load files from ~/.bashrc.d/.stl
-if [[ -d "${stl}" ]]
-then
-
-  for file in ${stl}/*
-  do
-
+if [[ -d "${stl}" ]]; then
+  for file in ${stl}/*; do
     source "${file}"
   done
 fi

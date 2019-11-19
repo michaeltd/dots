@@ -12,8 +12,7 @@ findstringindir() {
 }
 
 allemojis() {
-  for (( x = 2600; x <= 2700; x++ ))
-  do
+  for (( x = 2600; x <= 2700; x++ )); do
     echo -n -e " \u${x}"
     sleep .1
   done
@@ -22,8 +21,7 @@ allemojis() {
 
 countdown() {
   clear
-  for i in `seq ${1-10} -1 0`
-  do
+  for i in `seq ${1-10} -1 0`; do
     printf "%04d\n" "${i}"| figlet
     sleep 1
     clear
@@ -49,8 +47,7 @@ printappsinpath() {
   # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
   # The directories in $PATH are separated by ":",
   # so we split by it to get individual directories
-  for pdir in $(echo "$PATH" | tr ":" "\n")
-  do
+  for pdir in $(echo "$PATH" | tr ":" "\n"); do
     # We `find` all files in the directory
     # which are executable and print the filename
     find "$pdir" -maxdepth 1 -executable -type f -printf "%f "
@@ -63,8 +60,7 @@ listcat() {
 }
 
 checkapp() {
-  if command -v ${1} &> /dev/null
-  then
+  if command -v ${1} &> /dev/null; then
     return 0
   else
     printf "${red}Error:${reset} \"${bold}%s${reset}\" is not installed.\n" "${1}"
@@ -131,16 +127,14 @@ extract() {
 # Traverse directory structure given # of steps
 up() {
   DEEP=$1
-  for i in $(seq 1 ${DEEP:-"1"})
-  do
+  for i in $(seq 1 ${DEEP:-"1"}); do
     cd ../
   done
 }
 
 listen_port() {
   # Returns service listening on given port
-  if [[ -z "${1}" ]]
-  then
+  if [[ -z "${1}" ]]; then
     printf "port number expected\n" >&2
     return 1
   else
@@ -152,12 +146,9 @@ dir_sizes() {
   # Report first params directory sizes in human readable format
   ls=$(which ls) # Workaround alias
   du=$(which du) #      >>
-  if [[ -x "${ls}" && -x "${du}" ]]
-  then
-    for d in $( "${ls}" --directory "${1-${HOME}}"/* )
-    do
-      if [[ -d "${d}" ]]
-      then
+  if [[ -x "${ls}" && -x "${du}" ]]; then
+    for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
+      if [[ -d "${d}" ]]; then
         "${du}" -hs "${d}"
       fi
     done
@@ -186,19 +177,16 @@ print_mem() {
 }
 
 services() {
-  if [[ -z "${1}" ]]
-  then
+  if [[ -z "${1}" ]]; then
     printf "%s requires some parameters.\nUsage: %s start|stop|restart all|service/es...\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}" >&2
     return 1
-  elif [[ ("${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status") && ("${2}" == "all") ]]
-  then
+  elif [[ ("${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status") && ("${2}" == "all") ]]; then
     declare -a srvcs=( "postgresql-11" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" "dictd" )
   else
     declare -a srvcs=( "${@}" )
     unset srvcs[0]
   fi
-  for srvc in "${srvcs[@]}"
-  do
+  for srvc in "${srvcs[@]}"; do
     sudo rc-service "${srvc}" "${1}"
   done
 }
@@ -215,8 +203,7 @@ show_uptime() {
 
 log_out() {
   # Can't log out root like that
-  if [ "${EUID}" -eq "0" ]
-  then
+  if [ "${EUID}" -eq "0" ]; then
     printf "Can't log out root this way\n" >&2
     return 1
   else
@@ -227,10 +214,8 @@ log_out() {
 ping_subnet() {
   # One liner:
   # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
-  for x in {1..254}
-  do
-    for y in {1..254}
-    do
+  for x in {1..254}; do
+    for y in {1..254}; do
       (ping -c 1 -w 2 192.168.${x}.${y} > /dev/null && \
          echo "UP 192.168.${x}.${y}" &);
     done

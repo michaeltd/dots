@@ -1,8 +1,6 @@
 # /etc/skel/.bashrc
 esbrc="/etc/skel/.bashrc"
-if [[ -f "${esbrc}" ]]
-then
-
+if [[ -f "${esbrc}" ]]; then
     source "${esbrc}"
 fi
 
@@ -14,9 +12,7 @@ fi
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
-if [[ $- != *i* ]]
-then
-
+if [[ $- != *i* ]]; then
     # Shell is non-interactive.  Be done now!
     return
 fi
@@ -29,12 +25,8 @@ bcnf="${HOME}/git/utils/bash-insulter/src/bash.command-not-found"
 [[ -r "${bcnf}" ]] && source "${bcnf}"
 
 brcd="${HOME}/.bashrc.d"
-if [[ -d "${brcd}" ]]
-then # Load files from ~/.bashrc.d
-
-    for file in ${brcd}/*
-    do
-
+if [[ -d "${brcd}" ]]; then # Load files from ~/.bashrc.d
+    for file in ${brcd}/*; do
         source "${file}"
     done
 fi

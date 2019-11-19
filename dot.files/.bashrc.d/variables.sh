@@ -13,14 +13,11 @@ export ALTERNATE_EDITOR=$(command -v emacs 2> /dev/null || \
                             command -v vi 2> /dev/null || \
                             command -v nano 2> /dev/null)
 
-if [[ -n "${DISPLAY}" ]]
-then
+if [[ -n "${DISPLAY}" ]]; then
   unset EDITOR
-  if [[ -x $(command -v emacs 2> /dev/null) ]]
-  then
+  if [[ -x $(command -v emacs 2> /dev/null) ]]; then
     export VISUAL="emacsclient --alternate-editor=emacs -c"
-  elif [[ -x $(command -v gvim 2> /dev/null) ]]
-  then
+  elif [[ -x $(command -v gvim 2> /dev/null) ]]; then
     export VISUAL="gvim"
   else
     export VISUAL="xterm -e ${ALTERNATE_EDITOR}"
@@ -29,11 +26,9 @@ then
                      command -v seamonkey 2> /dev/null)
 else
   unset VISUAL
-  if [[ -x $(command -v emacs 2> /dev/null) ]]
-  then
+  if [[ -x $(command -v emacs 2> /dev/null) ]]; then
     export EDITOR="emacsclient --alternate-editor=emacs -t"
-  elif [[ -x $(command -v vim 2> /dev/null) ]]
-  then
+  elif [[ -x $(command -v vim 2> /dev/null) ]]; then
     export EDITOR="vim"
   else
     export EDITOR="${ALTERNATE_EDITOR}"
@@ -99,8 +94,7 @@ export PATH+=":${MAVEN}/bin"
 export PATH+=":${GRADLE}/bin"
 export PATH+=":${GOPATH}/bin"
 
-if [[ -d "${HOME}/.cargo" ]]
-then
+if [[ -d "${HOME}/.cargo" ]]; then
   export PATH+=":${HOME}/.cargo/bin"
 fi
 

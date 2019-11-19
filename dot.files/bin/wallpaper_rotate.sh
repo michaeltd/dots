@@ -15,70 +15,40 @@ declare -a WPUSAGE="\n \
     ${blue}$(basename ${BASH_SOURCE[0]})${reset} ${magenta}help${reset} - this message \n \
     ${blue}$(basename ${BASH_SOURCE[0]})${reset} without options will start rotating images.\n\n"
 
-declare -a FEH=( "feh" "--bg-scale" )
-
-declare -a WMSETBG=( "wmsetbg" )
-
-declare -a FVWM_ROOT=( "fvwm-root" )
-
-declare -a FBSETBG=( "fbsetbg" )
-
-declare -a BSETBG=( "bsetbg" )
-
-declare -a HSETROOT=( "hsetroot" "-fill" )
-
-declare -a XSETBG=( "xsetbg" )
+declare -a FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
+        FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
 
 declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] )
 
-declare BGSR=
+declare WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc" WPLG="${HOME}/.$(basename ${BASH_SOURCE[0]}).log"
 
-declare WPRC="${HOME}/.$(basename ${BASH_SOURCE[0]}).rc"
+declare BGSR="" WAIT="2m" LS=$(which ls 2> /dev/null)
 
-declare WPLG="${HOME}/.$(basename ${BASH_SOURCE[0]}).log"
-
-declare WAIT="2m"
-
-declare -a DIRS=( "${HOME}/Pictures" )
-
-declare LS=$(which ls 2> /dev/null)
-
-declare -a WPS=()
+declare -a DIRS=( "${HOME}/Pictures" ) WPS=()
 
 # bash version info check
-if [[ "${BASH_VERSINFO[0]}" -lt "4" ]]
-then
-
+if (( "${BASH_VERSINFO[0]}" < 4 )); then
   printf "${red}Error:${reset} For this to work properly you'll need bash major version greater than 4.\n" >&2
   exit 1
 fi
 
 # Find a setter
-for (( x = 0; x < "${#BGSRS[@]}"; x++ ))
-do
-
-  if [[ -n $(which "${!BGSRS[$x]:0:1}" 2> /dev/null) ]]
-  then
-
+for (( x = 0; x < "${#BGSRS[@]}"; x++ )); do
+  if [[ -n $(which "${!BGSRS[$x]:0:1}" 2> /dev/null) ]]; then
     BGSR="${x}"
     break # Break on first match.
   fi
 done
 
 # Quit on no setter
-if [[ -z "${BGSR}" ]]
-then
-
+if [[ -z "${BGSR}" ]]; then
   printf "%s\n" "${WPUSAGE}"
-
   printf "\n\n ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n" >&2
   exit 1
 fi
 
 # If there's no readable settings file, write it...
-if [[ ! -r "${WPRC}" ]]
-then
-
+if [[ ! -r "${WPRC}" ]]; then
   printf "WAIT=${WAIT}\nDIRS=( ${DIRS[@]} )\n" > "${WPRC}"
 fi
 
@@ -86,107 +56,64 @@ fi
 source "${WPRC}"
 
 # If options, proccess, else rotate things
-if [[ -n "${1}" ]]
-then
-
+if [[ -n "${1}" ]]; then
   case "${1}" in
-
     "add")
-
       shift
-
-      while [[ -n "${1}" ]]
-      do
-
-        if [[ -d "${1}" ]]
-        then
-
+      while [[ -n "${1}" ]]; do
+        if [[ -d "${1}" ]]; then
           DIRS+=( "${1}" )
         else
-
           printf "${yellow}Warning:${reset} %s is not a directory.\n" "${1}" >&2
         fi
-
         shift
       done
-
       # https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
       sv="DIRS" rv="DIRS=( ${DIRS[@]} )"
-      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
-      ;;
+      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
     "rem")
-
       shift
-
-      while [[ -n "${1}" ]]
-      do
-
-        for (( i = 0; i < "${#DIRS[@]}"; i++ ))
-        do
-
-          if [[ "${DIRS[${i}]}" == "${1}" ]]
-          then
-
+      while [[ -n "${1}" ]]; do
+        for (( i = 0; i < "${#DIRS[@]}"; i++ )); do
+          if [[ "${DIRS[${i}]}" == "${1}" ]]; then
             unset 'DIRS[i]'
           fi
         done
         shift
       done
-
       sv="DIRS"
       rv="DIRS=( ${DIRS[@]} )"
-      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
-      ;;
+      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
     "delay")
-
       shift
-
       # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
-      if [[ "${1}" =~ ^[0-9]+$ ]]
-      then
-
+      if [[ "${1}" =~ ^[0-9]+$ ]]; then
         sv="WAIT" rv="WAIT=${1}m"
         sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
       else
-
         printf "${yellow}Warning:${reset} %s is not a valid time construct.\nProvide an integer as interval in minutes\n" "${1}" >&2
-
-      fi
-      ;;
+      fi ;;
     "replay")
-
       shift
-
-      tail -n ${1:-1} "${WPLG}" |head -n 1|awk '{print $NF}'
-      ;;
+      tail -n ${1:-1} "${WPLG}" |head -n 1|awk '{print $NF}' ;;
     *)
-
-      printf "${WPUSAGE}"
-      ;;
+      printf "${WPUSAGE}" ;;
   esac
 else
 
   # Reset log
   printf '' > "${WPLG}"
 
-  while :
-  do
+  while :; do
 
     # re-read rc (to pick up config updates).
     source "${WPRC}"
 
     # fill a WallPaperS list
-    for D in "${DIRS[@]}"
-    do
-
-      for P in $("${LS}" -1 "${D}")
-      do
-
+    for D in "${DIRS[@]}"; do
+      for P in $("${LS}" -1 "${D}"); do
         FN="${D}/${P}" FE="${P:(-4)}"
-
-        if [[ -f "${FN}" ]] && [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]
-        then
-
+        if [[ -f "${FN}" ]] && [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
           WPS+=( "${FN}" )
         fi
       done
@@ -206,7 +133,6 @@ else
     (( ${?} != 0 )) && continue
 
     printf "%s %s %s\n" "$(date +%y%m%d-%H%M%S)" "${!BGSRS[$BGSR]:0:1}" "${WP}" >> "${WPLG}"
-
     sleep "${WAIT}"
   done
 fi

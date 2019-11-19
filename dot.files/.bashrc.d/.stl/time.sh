@@ -13,8 +13,7 @@ isepoch() {
 }
 
 daydiff () {
-  if (( $# == 2 ))
-  then
+  if (( $# == 2 )); then
     printf "%d\n" $(( (${1} - ${2}) / (60 * 60 * 24) ))
   else
     printf "Usage: daydiff epoch1 epoch2.\n" >&2
@@ -31,7 +30,7 @@ datedd () {
 }
 
 unixepoch() {
-  if [[ -n "${1}" ]];then
+  if [[ -n "${1}" ]]; then
     date +%s --date="${1}"
   else
     date +%s
@@ -67,8 +66,7 @@ lastdateofmonth() {
   #
   # What about leap years in Julian calendar? And years before Julian calendar?
 
-  if [[ -n "${1}" ]]
-  then
+  if [[ -n "${1}" ]]; then
     [[ ! $(date --date="${1}") ]] && return 1
     local y=$(date +%Y --date="${1}")
     m=$(date +%m --date="${1}")
@@ -77,16 +75,14 @@ lastdateofmonth() {
     m=$(date +%m)
   fi
 
-    case "${m}" in
-        "01"|"03"|"05"|"07"|"08"|"10"|"12")
-          echo 31;;
-        "02")
-          if (( y % 4 != 0 )); then echo 28
-          elif (( y % 100 != 0 )); then echo 29
-          elif (( y % 400 != 0 )); then echo 28
-          else echo 29
-          fi;;
-        "04"|"06"|"09"|"11")
-          echo 30;;
+  case "${m}" in
+    "01"|"03"|"05"|"07"|"08"|"10"|"12") echo 31;;
+    "02")
+      if (( y % 4 != 0 )); then echo 28
+      elif (( y % 100 != 0 )); then echo 29
+      elif (( y % 400 != 0 )); then echo 28
+      else echo 29
+      fi;;
+    "04"|"06"|"09"|"11") echo 30;;
     esac
 }

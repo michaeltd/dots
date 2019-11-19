@@ -3,8 +3,7 @@
 # ~/bin/mxcl
 # e[M]a[X] [C][L]ient
 
-if [ -n "${DISPLAY}" ]
-then
+if [ -n "${DISPLAY}" ]; then
     emacsclient -a emacs -c "${@}" &
 else
     emacsclient -a emacs -t "${@}" &

@@ -5,8 +5,6 @@
 
 printf " -- %s --\n" "$(basename ${BASH_SOURCE[0]})"
 
-if (( EUID == 0 ))
-then
-
+if (( EUID == 0 )); then
   time qcheck
 fi
