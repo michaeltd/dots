@@ -30,7 +30,8 @@ do
     "--directory") shift; BKPD="${1}";;
     "--simulate") BKPR="0";;
     "--keep") shift; BKPK="${1}";;
-    *) printf "Usage: $(basename ${BASH_SOURCE[0]}) [--directory /backups/directory/] [--simulate] [--keep 10 (int, days. Default: 14)]\n" >&2; exit 1;;
+    "--debug") set -x;;
+    *) printf "Usage: $(basename ${BASH_SOURCE[0]}) [--directory /backups/directory/] [--simulate] [--keep # (int, days. default: 14)] [--debug (default: off)]\n" >&2; exit 1;;
   esac
   shift
 done
