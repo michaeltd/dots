@@ -3,15 +3,10 @@
 # environment variables
 
 # SUDO_ASKPASS
-export SUDO_ASKPASS=$(command -v x11-ssh-askpass 2> /dev/null || \
-                        command -v ssh-askpass-fullscreen 2> /dev/null)
+export SUDO_ASKPASS=$(command -v x11-ssh-askpass 2> /dev/null || command -v ssh-askpass-fullscreen 2> /dev/null)
 
 # Used by emacsclient in case of no daemon found.
-export ALTERNATE_EDITOR=$(command -v emacs 2> /dev/null || \
-                            command -v micro 2> /dev/null || \
-                            command -v vim 2> /dev/null || \
-                            command -v vi 2> /dev/null || \
-                            command -v nano 2> /dev/null)
+export ALTERNATE_EDITOR=$(command -v emacs 2> /dev/null || command -v micro 2> /dev/null || command -v vim 2> /dev/null || command -v vi 2> /dev/null || command -v nano 2> /dev/null)
 
 if [[ -n "${DISPLAY}" ]]; then
   unset EDITOR
@@ -33,9 +28,7 @@ else
   else
     export EDITOR="${ALTERNATE_EDITOR}"
   fi
-  export BROWSER=$(command -v w3m 2> /dev/null || \
-                     command -v links 2> /dev/null || \
-                     command -v lynx 2> /dev/null)
+  export BROWSER=$(command -v w3m 2> /dev/null || command -v links 2> /dev/null || command -v lynx 2> /dev/null)
 fi
 
 # Colorfull manpages (works with less as a pager)
@@ -49,9 +42,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # most > less > more in order of preference
-export PAGER=$(command -v most 2> /dev/null || \
-                 command -v less 2> /dev/null || \
-                 command -v more 2> /dev/null)
+export PAGER=$(command -v most 2> /dev/null || command -v less 2> /dev/null || command -v more 2> /dev/null)
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
@@ -82,7 +73,7 @@ export SBT_HOME="/opt/sbt"
 export SCALA_HOME="/opt/scala"
 
 # Path with += op and each tool in it's own line for practical reasons
-export PATH+=":./"
+#export PATH+=":./"
 export PATH+=":${HOME}/.local/bin"
 export PATH+=":node_modules/.bin"
 export PATH+=":${OPT}/bin"
@@ -109,7 +100,7 @@ export MANPATH+=":${HOME}/.local/share/man"
 export MANPATH+=":${HOME}/opt/share/man"
 
 # JAVA classpath
-export CLASSPATH+=":./"
+#export CLASSPATH+=":./"
 export CLASSPATH+=":${JAVA}/lib"
 export CLASSPATH+=":${ANT}/lib"
 export CLASSPATH+=":${MAVEN}/lib"
