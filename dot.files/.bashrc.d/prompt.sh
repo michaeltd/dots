@@ -2,5 +2,5 @@
 #
 # prompt definition
 
-lp="${HOME}/git/liquidprompt/liquidprompt"
+lp="/home/paperjam/git/liquidprompt/liquidprompt"
 [[ -f ${lp} && -r ${lp} ]] && source ${lp}
