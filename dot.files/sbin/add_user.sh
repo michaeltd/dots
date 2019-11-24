@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ -z "${1}" ]] || (( EUID != 0 )); then
-  printf "Usage: sudo %s username\n" "$(basename ${0})"
+if [[ -z "${1}" || "${EUID}" -ne "0" ]]; then
+  echo -ne "Usage: sudo $(basename "${0}") username\n"
   exit 1
 fi
 

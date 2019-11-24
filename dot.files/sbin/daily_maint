@@ -5,7 +5,7 @@
 
 DS="/home/paperjam/sbin/daily"
 if [ -d "${DS}" ]; then
-    for SCPT in ${DS}/*; do
+    for SCPT in "${DS}"/*; do
         "${SCPT}"
     done
 fi

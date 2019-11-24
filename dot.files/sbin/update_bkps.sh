@@ -8,8 +8,10 @@ declare ELDIR="/mnt/el/Documents/BKP/LINUX"
 declare UTB="paperjam"
 
 # Full path executables, no aliases
-declare -a NICEC=( $(which nice) -n 19 ) TARCM=( $(which tar) --create --gzip ) GPG2C=( $(which gpg2) --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output )
-
+declare -a NICEC=( "$(command -v nice)" "-n" "19" ) \
+        TARCM=("$(command -v tar)" "--create" "--gzip" ) \
+        GPG2C=( "$(command -v gpg2)" "--batch" "--yes" "--quiet" "--recipient" "tsouchlarakis@gmail.com" "--trust-model" "always" "--output" )
+#shellcheck disable=SC2034
 declare -a ENC=( "/home/${UTB}/.gnupg/*" "/home/${UTB}/.ssh/*" "/home/${UTB}/.ngrok2/*" "/home/${UTB}/.config/filezilla/*" "/home/${UTB}/.config/hexchat/*" "/home/${UTB}/.putty/*" ) USR=( "/home/${UTB}/git/" "/home/${UTB}/Documents/" ) SYS=( "/boot/grub/themes/" "/boot/grub/grub.cfg" "/etc/" "/usr/share/xsessions/" "/usr/share/WindowMaker/" "/var/www/" )
 
 declare -a BKP=( ENC[@] USR[@] SYS[@] ) ARCHV=( "enc.tar.gz" "usr.tar.gz" "sys.tar.gz" )
@@ -20,7 +22,7 @@ for x in "${EXC[@]}"; do
   EXL+=( "--exclude=${x}" )
 done
 
-printf " -- %s --\n" "$(basename ${BASH_SOURCE[0]})"
+printf " -- %s --\n" "$(basename "${BASH_SOURCE[0]}")"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
   for ((i = 0; i < ${#ARCHV[@]}; i++ )); do
@@ -28,13 +30,13 @@ if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
 
     if [[ ${ARCHV[$i]} =~ enc ]]; then
       ARCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}"
-      time ${NICEC[@]} ${TARCM[@]} --file "${ARCFL}" ${EXL[@]} ${!BKP[$i]}
+      time "${NICEC[*]}" "${TARCM[*]}" --file "${ARCFL}" "${EXL[*]}" "${!BKP[$i]}"
     else
-      ENCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}.asc"
-      time ${NICEC[@]} ${TARCM[@]} ${EXL[@]} ${!BKP[$i]} | "${GPG2C[@]}" "${ENCFL}" --encrypt
+      ENCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}.pgp"
+      time "${NICEC[*]}" "${TARCM[*]}" "${EXL[*]}" "${!BKP[$i]}" | "${GPG2C[*]}" "${ENCFL}" --encrypt
     fi
   done
 else
-  printf "%s not found or root access requirements not met\n" "${ELDIR}" >&2
+  echo -ne "${ELDIR} not found or root access requirements not met\n" >&2
   exit 1
 fi

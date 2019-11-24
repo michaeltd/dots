@@ -5,7 +5,7 @@
 
 MS="/home/paperjam/sbin/monthly"
 if [ -d "${MS}" ]; then
-    for SCPT in ${MS}/*; do
+    for SCPT in "${MS}"/*; do
         "${SCPT}"
     done
 fi

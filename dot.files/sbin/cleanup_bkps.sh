@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # ~/sbin/cleanup_bkps.sh - de-clutter backups
 #
@@ -30,7 +30,7 @@ while [[ -n "${1}" ]]; do
     "--simulate") BKPR="0";;
     "--keep") shift; BKPK="${1}";;
     "--debug") set -x;;
-    *) printf "Usage: $(basename ${BASH_SOURCE[0]}) [--directory /backups/directory/] [--simulate] [--keep # (int, days. default: 14)] [--debug (default: off)]\n" >&2; exit 1;;
+    *) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [--directory /backups/directory/] [--simulate] [--keep # (int, days. default: 14)] [--debug (default: off)]\n" >&2; exit 1;;
   esac
   shift
 done
@@ -39,21 +39,23 @@ done
 # (( EUID != 0 )) && printf "privileged access requirements not met.\n" >&2 && exit 1
 
 # No backups directory
-[ ! -d "${BKPD}" ] && printf "${BKPD} is not a directory.\n" >&2 && exit 1
+[ ! -d "${BKPD}" ] && echo -ne "${BKPD} is not a directory.\n" >&2 && exit 1
 
-printf " -- %s --\n" "$(basename ${BASH_SOURCE[0]})"
+echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 for src in "${srcs[@]}"; do
+  #shellcheck disable=SC1090
   source "${src}"
 done
 
-FILES=( $($(which ls) -t1 ${BKPD}/*tar.gz* 2> /dev/null) )
+#shellcheck disable=SC2207
+FILES=( $("$(command -v ls)" "-t1" "${BKPD}"/*tar.gz* 2> /dev/null) )
 
 # File loop to gather stats
 for (( x = 0; x < ${#FILES[@]}; x++ )); do
-  BFN="$(basename ${FILES[${x}]})"
+  BFN=$(basename "${FILES[${x}]}")
   # Name loop to extract dates
-  for PART in $(split ${BFN} .); do
+  for PART in $(split "${BFN}" .); do
     # 6 digits field check (six digit dates eg: 190508)
     if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then
       FNS+=( "${BFN}" )
@@ -62,15 +64,18 @@ for (( x = 0; x < ${#FILES[@]}; x++ )); do
       TSS+=( "${PART}" )
     fi
   done
-done
+ done
 
-# File NameS loop to execute on stats
-for (( y = 0; y < ${#FNS[@]}; y++ )); do
-  if (( $(datedd $(max ${DTS[@]}) ${DTS[${y}]}) >= BKPK )); then
-    printf "${bold}${blue}will remove:${reset} %s, created: %s.\n" \
-           "${red}${FNS[${y}]}${reset}" \
-           "${underline}${green}$(date -d @${TSS[${y}]} +%Y/%m/%d_%H:%M:%S)${reset}${end_underline}"
-    printf "${bold}rm -v %s${reset}: " "${red}${FNS[${y}]}${reset}"
-    (( BKPR == 0 )) && printf "\n" || rm -v "${BKPD}/${FNS[${y}]}"
-  fi
-done
+ # File NameS loop to execute on stats
+ for (( y = 0; y < ${#FNS[@]}; y++ )); do
+   if (( $(datedd "$(max "${DTS[@]}")" "${DTS[${y}]}") >= BKPK )); then
+     #shellcheck disable=SC2154
+     echo -ne "${bold}${blue}will remove:${reset} ${red}${FNS[${y}]}${reset}, created: ${underline}${green}$(date -d @"${TSS[${y}]}" +%Y/%m/%d_%H:%M:%S)${reset}${end_underline}.\n"
+     echo -ne "${bold}rm -v ${red}${FNS[${y}]}${reset}${reset}: "
+     if (( BKPR == 0 )); then
+       echo -ne "\n"
+     else
+       rm -v "${BKPD}/${FNS[${y}]}"
+     fi
+   fi
+ done

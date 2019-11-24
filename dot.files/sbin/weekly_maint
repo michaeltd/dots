@@ -5,7 +5,7 @@
 
 WS="/home/paperjam/sbin/weekly"
 if [ -d "${WS}" ]; then
-    for SCPT in ${WS}/*; do
+    for SCPT in "${WS}"/*; do
         "${SCPT}"
     done
 fi
