@@ -1,6 +1,7 @@
 # ~/.bashrc.d/games.sh
 #
 # games
+#shellcheck shell=bash
 
 rps() {
   # Rock Paper Scissors mt 20170525
@@ -12,12 +13,13 @@ rps() {
 
   declare cs=0 us=0 ns=0 rd=0
 
+  #shellcheck disable=SC2154
   printf "${bold}Hello!${reset} Welcome to %s %s %s Game!\n" "${op[0]}" "${op[1]}" "${op[2]}"
 
   while :
   do
 
-    read -e -p "${op[0]}:1, ${op[1]}:2, ${op[2]}:3, Quit:0. What's your pick?: " ui
+    read -rep "${op[0]}:1, ${op[1]}:2, ${op[2]}:3, Quit:0. What's your pick?: " ui
 
     case "${ui}" in
       0)
@@ -34,16 +36,16 @@ rps() {
         return 0 ;;
 
       [1-3])
-        let "rd++, ui--"
+        (( rd++, ui-- ))
 
-        ci=$(shuf -i 0-2 -n 1)
+        ci="$(shuf -i 0-2 -n 1)"
 
         printf "Round : %d is a %s. You selected %s, while the CPU rolled %s\n" "${rd}" "${rs[${ui},${ci}]}"  "${op[${ui}]}" "${op[${ci}]}"
 
         case "${rs[${ui},${ci}]}" in
-          "${oc[0]}") let "us++";;
-          "${oc[1]}") let "cs++";;
-          "${oc[2]}") let "ns++";;
+          "${oc[0]}") (( us++ ));;
+          "${oc[1]}") (( cs++ ));;
+          "${oc[2]}") (( ns++ ));;
         esac
 
         printf "Player : %d, CPU : %d, Ties : %d\n" "${us}" "${cs}" "${ns}";;
@@ -58,11 +60,15 @@ russian_rulette() {
   # https://www.facebook.com/freecodecamp/photos/a.1535523900014339.1073741828.1378350049065059/2006986062868118/?type=3&theater
   # [ $[ $RANDOM % 6 ] == 0 ] && echo "BOOM!!!" || echo "LUCKY GUY!!!"
 
-  let "RV = $RANDOM % 6";
+  RV=$(( RANDOM % 6 ));
 
   if [[ $RV == 0 ]]; then
     printf "${red}BOOM!!!${reset} ${bold}You've rolled a %s${reset}\n" "${RV}"
   else
     printf "${blue}LUCKY GUY!!!${reset} ${bold}You've rolled a %s${reset}\n" "${RV}"
+  fi
+
+  if [[ "$(read -rp "Again? [Y/n]: " r;echo "${r:-y}")" == "y" ]]; then
+    russian_rulette
   fi
 }

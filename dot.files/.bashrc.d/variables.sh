@@ -2,10 +2,14 @@
 #
 # environment variables
 
+#shellcheck shell=bash
+
 # SUDO_ASKPASS
+#shellcheck disable=SC2155
 export SUDO_ASKPASS=$(command -v x11-ssh-askpass 2> /dev/null || command -v ssh-askpass-fullscreen 2> /dev/null)
 
 # Used by emacsclient in case of no daemon found.
+#shellcheck disable=SC2155
 export ALTERNATE_EDITOR=$(command -v emacs 2> /dev/null || command -v micro 2> /dev/null || command -v vim 2> /dev/null || command -v vi 2> /dev/null || command -v nano 2> /dev/null)
 
 if [[ -n "${DISPLAY}" ]]; then
@@ -17,6 +21,7 @@ if [[ -n "${DISPLAY}" ]]; then
   else
     export VISUAL="xterm -e ${ALTERNATE_EDITOR}"
   fi
+  #shellcheck disable=SC2155
   export BROWSER=$(command -v firefox 2> /dev/null || \
                      command -v seamonkey 2> /dev/null)
 else
@@ -28,6 +33,7 @@ else
   else
     export EDITOR="${ALTERNATE_EDITOR}"
   fi
+  #shellcheck disable=SC2155
   export BROWSER=$(command -v w3m 2> /dev/null || command -v links 2> /dev/null || command -v lynx 2> /dev/null)
 fi
 
@@ -42,6 +48,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # most > less > more in order of preference
+#shellcheck disable=SC2155
 export PAGER=$(command -v most 2> /dev/null || command -v less 2> /dev/null || command -v more 2> /dev/null)
 
 # manpager in case you'd like your manpages in your favorite editor

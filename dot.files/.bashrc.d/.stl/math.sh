@@ -1,6 +1,7 @@
 # ~/.bashrc.d/math.sh
 #
 # math related functions
+#shellcheck shell=bash
 
 # in_range <v> <a> <b> - Returns true if a <= v <= b
 in_range() {
@@ -19,7 +20,8 @@ between(){
 
 calc() {
   # echo -e "Usage: calc \"1+2-3%2/1*10+(4*5)-(8*8)\"\n"
-  echo "scale=6;${@}"| bc -l
+  #echo "scale=6;${@}"| bc -l
+  echo "scale=6;${*}"| bc -l
 }
 
 min() {
@@ -28,26 +30,27 @@ min() {
 
 altmin() {
   n=${1} # Avoid n initialization issues
-  while [[ -n ${1} ]]; do
-    (( $1 < $n )) && n=${1}
+  while [[ -n "${1}" ]]; do
+    (( $1 < n )) && n=${1}
     shift
   done
-  echo ${n}
+  echo "${n}"
 }
 
 max() {
-  printf "%s\n" "${@}" | \
+  printf "%d\n" "${@}" | \
     sort -rn | \
     head -1
 }
 
 altmax() {
-  x=${1} # Avoid x initialization issues
-  while [[ -n ${1} ]]; do
-    (( $1 > $x )) && x=${1}
+  local x
+  x="${1}" # Avoid x initialization issues
+  while [[ -n "${1}" ]]; do
+    (( $1 > x )) && x="${1}"
     shift
   done
-  echo ${x}
+  echo "${x}"
 }
 
 sqrt() {
@@ -65,61 +68,61 @@ powr() {
 # Trigonometric functions
 # https://advantage-bash.blogspot.com/2012/12/trignometry-calculator.html
 sin() {
-  echo "scale=6;s($1)" | bc -l
+  echo "scale=6;s(${1})" | bc -l
 }
 
 cos() {
-  echo "scale=6;c($1)" | bc -l
+  echo "scale=6;c(${1})" | bc -l
 }
 
 tan() {
-  echo "scale=6;s($1)/c($1)" | bc -l
+  echo "scale=6;s(${1})/c(${1})" | bc -l
 }
 
 csc() {
-  echo "scale=6;1/s($1)" | bc -l
+  echo "scale=6;1/s(${1})" | bc -l
 }
 
 sec() {
-  echo "scale=6;1/c($1)" | bc -l
+  echo "scale=6;1/c(${1})" | bc -l
 }
 
 ctn() {
-  echo "scale=6;c($1)/s($1)" | bc -l
+  echo "scale=6;c(${1})/s(${1})" | bc -l
 }
 
 asin() {
-  if (( $(echo "$1 == 1" | bc -l) )); then
+  if (( $(echo "${1} == 1" | bc -l) )); then
     echo "90"
-  elif (( $(echo "$1 < 1" | bc -l) )); then
-    echo "scale=6;a(sqrt((1/(1-($1^2)))-1))" | bc -l
-  elif (( $(echo "$1 > 1" | bc -l) )); then
+  elif (( $(echo "${1} < 1" | bc -l) )); then
+    echo "scale=6;a(sqrt((1/(1-(${1}^2)))-1))" | bc -l
+  elif (( $(echo "${1} > 1" | bc -l) )); then
     echo "error"
   fi
 }
 
 acos() {
-  if (( $(echo "$1 == 0" | bc -l) )); then
+  if (( $(echo "${1} == 0" | bc -l) )); then
     echo "90"
-  elif (( $(echo "$1 <= 1" | bc -l) )); then
-    echo "scale=6;a(sqrt((1/($1^2))-1))" | bc -l
-  elif (( $(echo "$1 > 1" | bc -l) )); then
+  elif (( $(echo "${1} <= 1" | bc -l) )); then
+    echo "scale=6;a(sqrt((1/(${1}^2))-1))" | bc -l
+  elif (( $(echo "${1} > 1" | bc -l) )); then
     echo "error"
   fi
 }
 
 atan() {
-  echo "scale=6;a($1)" | bc -l
+  echo "scale=6;a(${1})" | bc -l
 }
 
 acot() {
-  echo "scale=6;a(1/$1)" | bc -l
+  echo "scale=6;a(1/${1})" | bc -l
 }
 
 asec() {
-  echo "scale=6;a(sqrt(($1^2)-1))" | bc -l
+  echo "scale=6;a(sqrt((${1}^2)-1))" | bc -l
 }
 
 acsc() {
-  echo "scale=6;a(1/(sqrt($1^2)-1))" | bc -l
+  echo "scale=6;a(1/(sqrt(${1}^2)-1))" | bc -l
 }

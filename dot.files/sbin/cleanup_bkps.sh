@@ -49,7 +49,7 @@ for src in "${srcs[@]}"; do
 done
 
 #shellcheck disable=SC2207
-FILES=( $("$(command -v ls)" "-t1" "${BKPD}"/*tar.gz* 2> /dev/null) )
+FILES=( $("$(which ls)" "-t1" "${BKPD}"/*tar.gz* 2> /dev/null) )
 
 # File loop to gather stats
 for (( x = 0; x < ${#FILES[@]}; x++ )); do

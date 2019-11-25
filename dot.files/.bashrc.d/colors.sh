@@ -10,37 +10,45 @@
 #
 #curl -s 'https://jonasjacek.github.io/colors/data.json' | sed -e 's/[{}]//g' | awk -v RS=',"' -F: '/^name/ {print $2}'|sed 's/\(^"\|"$\)//g'
 
+#shellcheck shell=bash
+
 # Font attributes
-export reset="$(tput sgr0)" \
-       bold="$(tput bold)" \
-       dim="$(tput dim)" \
-       blink="$(tput blink)" \
-       underline="$(tput smul)" \
-       end_underline="$(tput rmul)" \
-       reverse="$(tput rev)" \
-       hidden="$(tput invis)"
+reset="$(tput sgr0)" \
+     bold="$(tput bold)" \
+     dim="$(tput dim)" \
+     blink="$(tput blink)" \
+     underline="$(tput smul)" \
+     end_underline="$(tput rmul)" \
+     reverse="$(tput rev)" \
+     hidden="$(tput invis)"
+
+export reset bold dim blink underline end_underline reverse hidden
 
 # Font colors
-export black="$(tput setaf 0)" \
-       red="$(tput setaf 1)" \
-       green="$(tput setaf 2)" \
-       yellow="$(tput setaf 3)" \
-       blue="$(tput setaf 4)" \
-       magenta="$(tput setaf 5)" \
-       cyan="$(tput setaf 6)" \
-       white="$(tput setaf 7)" \
-       default="$(tput setaf 9)"
+black="$(tput setaf 0)" \
+     red="$(tput setaf 1)" \
+     green="$(tput setaf 2)" \
+     yellow="$(tput setaf 3)" \
+     blue="$(tput setaf 4)" \
+     magenta="$(tput setaf 5)" \
+     cyan="$(tput setaf 6)" \
+     white="$(tput setaf 7)" \
+     default="$(tput setaf 9)"
+
+export black red green yellow blue magenta cyan white default
 
 # Font background colors
-export bg_black="$(tput setab 0)" \
-       bg_red="$(tput setab 1)" \
-       bg_green="$(tput setab 2)" \
-       bg_yellow="$(tput setab 3)" \
-       bg_blue="$(tput setab 4)" \
-       bg_magenta="$(tput setab 5)" \
-       bg_cyan="$(tput setab 6)" \
-       bg_white="$(tput setab 7)" \
-       bg_default="$(tput setab 9)"
+bg_black="$(tput setab 0)" \
+        bg_red="$(tput setab 1)" \
+        bg_green="$(tput setab 2)" \
+        bg_yellow="$(tput setab 3)" \
+        bg_blue="$(tput setab 4)" \
+        bg_magenta="$(tput setab 5)" \
+        bg_cyan="$(tput setab 6)" \
+        bg_white="$(tput setab 7)" \
+        bg_default="$(tput setab 9)"
+
+export bg_black bg_red bg_green bg_yellow bg_blue bg_magenta bg_cyan bg_white bg_default
 
 # Colors:
 export LIGHT_BLACK='\e[1;30m' LIGHT_RED='\e[1;31m' LIGHT_GREEN='\e[1;32m' LIGHT_YELLOW='\e[1;33m' LIGHT_BLUE='\e[1;34m' LIGHT_MAGENT='\e[1;35m' LIGHT_CYAN='\e[1;36m' LIGHT_WHITE='\e[1;37m'

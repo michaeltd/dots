@@ -1,6 +1,7 @@
 # ~/.bashrc.d/crypto.sh
 #
 # cryptographic functions
+#shellcheck shell=bash
 
 genpass() {
   #tr -dc [:graph:] < /dev/urandom|tr -d [=\|=][=\"=][=\'=]|head -c "${1:-64}"
@@ -9,7 +10,6 @@ genpass() {
 }
 
 rot_13(){
-
   local _func="${1}"
   shift
 
@@ -19,8 +19,6 @@ rot_13(){
   local -a _abc=( "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z" )
   local -a _NOP=( "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" )
   local -a _nop=( "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" )
-
-  #
 
   while [[ -n "${1}" ]]; do
     local _word="${1}"
@@ -66,6 +64,7 @@ rot_0_26(){
   #local -a _NOP=( "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" )
   #local -a _nop=( "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" )
 
+  # SO FAR SO GOOD   !!!
   while [[ -n "${1}" ]]; do
     local _word="${1}"
     local _out
@@ -78,7 +77,7 @@ rot_0_26(){
           "-d")
             [[ "${_word:$i:1}" == "${_NOP[$x]}" ]] && _out+="${_ABC[$x]}" && break
             [[ "${_word:$i:1}" == "${_nop[$x]}" ]] && _out+="${_abc[$x]}" && break;;
-         esac
+        esac
         (( x == ${#_abc[*]} )) && _out+="${_word:$i:1}" #If char has not been found by now lets add it as is.
       done
     done

@@ -1,34 +1,36 @@
 # ~/.bashrc.d/time.sh
 #
 # date, time related functions
+#shellcheck shell=bash
 
 isdate() {
-    date -d ${1} &>/dev/null
-    return $?
+  date -d "${1}" &>/dev/null
+  return "${?}"
 }
 
 isepoch() {
-    date -d @${1} &>/dev/null
-    return $?
+  date -d @"${1}" &>/dev/null
+  return "${?}"
 }
 
 daydiff () {
   if (( $# == 2 )); then
-    printf "%d\n" $(( (${1} - ${2}) / (60 * 60 * 24) ))
+    echo -ne "$(( (${1} - ${2}) / (60 * 60 * 24) ))\n"
   else
-    printf "Usage: daydiff epoch1 epoch2.\n" >&2
+    echo -ne "Usage: ${FUNCNAME[0]} epoch1 epoch2.\n" >&2
     return 1
   fi
 }
 
 epochdd () {
-    daydiff ${1} ${2}
+  daydiff "${1}" "${2}"
 }
 
 datedd () {
-    daydiff $(date +%s --date="${1}") $(date +%s --date="${2}")
+  daydiff "$(date +%s --date="${1}")" "$(date +%s --date="${2}")"
 }
 
+#shellcheck disable=SC2120
 unixepoch() {
   if [[ -n "${1}" ]]; then
     date +%s --date="${1}"
@@ -38,14 +40,17 @@ unixepoch() {
 }
 
 epochtodate() {
+  #shellcheck disable=SC2119
   date +%Y/%m/%d --date="@${1-$(unixepoch)}"
 }
 
 epochtotime() {
+  #shellcheck disable=SC2119
   date +%H:%M:%S --date="@${1-$(unixepoch)}"
 }
 
 epochtodatetime() {
+  #shellcheck disable=SC2119
   date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unixepoch)}"
 }
 
@@ -66,23 +71,24 @@ lastdateofmonth() {
   #
   # What about leap years in Julian calendar? And years before Julian calendar?
 
+  local y m
   if [[ -n "${1}" ]]; then
     [[ ! $(date --date="${1}") ]] && return 1
-    local y=$(date +%Y --date="${1}")
+    y=$(date +%Y --date="${1}")
     m=$(date +%m --date="${1}")
   else
-    local y=$(date +%Y)
+    y=$(date +%Y)
     m=$(date +%m)
   fi
 
   case "${m}" in
-    "01"|"03"|"05"|"07"|"08"|"10"|"12") echo 31;;
+    "01"|"03"|"05"|"07"|"08"|"10"|"12") echo "31";;
     "02")
-      if (( y % 4 != 0 )); then echo 28
-      elif (( y % 100 != 0 )); then echo 29
-      elif (( y % 400 != 0 )); then echo 28
-      else echo 29
+      if (( y % 4 != 0 )); then echo "28"
+      elif (( y % 100 != 0 )); then echo "29"
+      elif (( y % 400 != 0 )); then echo "28"
+      else echo "29"
       fi;;
-    "04"|"06"|"09"|"11") echo 30;;
-    esac
+    "04"|"06"|"09"|"11") echo "30";;
+  esac
 }

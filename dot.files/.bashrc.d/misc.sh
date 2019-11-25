@@ -2,6 +2,8 @@
 #
 # general bash options
 
+#shellcheck shell=bash
+
 # Window size sanity check
 shopt -s checkwinsize
 
@@ -26,7 +28,8 @@ stl="${HOME}/.bashrc.d/.stl"
 
 # Load files from ~/.bashrc.d/.stl
 if [[ -d "${stl}" ]]; then
-  for file in ${stl}/*; do
+  for file in "${stl}"/*; do
+    #shellcheck disable=SC1090
     source "${file}"
   done
 fi

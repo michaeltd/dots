@@ -1,6 +1,8 @@
 # ~/.bashrc.d/functions.sh
 #
 # various functions
+
+#shellcheck shell=bash
 # SCRAPPAD ====================================================================
 
 # while read a ; do echo ${a//abc/XYZ} ; done < /tmp/file.txt > /tmp/file.txt.t ; mv /tmp/file.txt{.t,}
@@ -21,8 +23,8 @@ allemojis() {
 
 countdown() {
   clear
-  for i in `seq ${1-10} -1 0`; do
-    printf "%04d\n" "${i}"| figlet
+  for i in $(seq "${1-10}" -1 0); do
+    printf "%04d\n" "${i}" |figlet |lolcat
     sleep 1
     clear
   done
@@ -37,8 +39,8 @@ countdown() {
 rcm() {
 
   (( ${#} < 2 )) && echo -e "Usage: rcm niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" && return 1
-
-  local bin=$(which "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
+  #shellcheck disable=SC2155
+  local bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
 
   [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
 }
@@ -56,22 +58,25 @@ printappsinpath() {
 }
 
 listcat() {
-  $(which ls) --color /usr/portage/${1}
+  #shellcheck disable=SC2230
+  $(which ls) --color "/usr/portage/${1}"
 }
 
 checkapp() {
-  if command -v ${1} &> /dev/null; then
+  if command -v "${1}" &> /dev/null; then
     return 0
   else
-    printf "${red}Error:${reset} \"${bold}%s${reset}\" is not installed.\n" "${1}"
+    #shellcheck disable=SC2154
+    echo -ne "${red}Error:${reset} \"${bold}${1}${reset}\" is not installed.\n" >&2
     return 1
   fi
 }
 
-# Line Count Directory ($1), for File Expression ($2).
-# eg: lcdfe /my/awesome/project/ *\.html, lcdfe . *\.cpp, lcdfe ${HOME} *\.rc
+# Line Count Directory ($1), For file Extension (${2}).
+# eg: lcdfe /my/awesome/project/ \*.html, lcdfe . \*.cpp, lcdfe ${HOME} \*.rc
 lcdfe() {
-  find "${1}" -iname "${2}" | xargs wc -l
+  #find "${1}" -iname "${2}" | xargs wc -l
+  find "${1}" -iname "${2}" -exec wc -l {} +
 }
 
 # End stuff
@@ -87,7 +92,7 @@ killapp() {
 
 # Create a new alias
 mkalias() {
-  echo "alias ${@}" >> ${HOME}/.bashrc.d/aliases
+  echo alias "${@}" >> "${HOME}/.bashrc.d/aliases.sh"
   alias "${@}"
 }
 
@@ -98,12 +103,13 @@ rmalias() {
 
 # Functions to unify archive management in linux CLI environments
 compress() {
+  #shellcheck disable=SC2154,SC2068
   case "${1,,}" in
     *.tar.bz2) tar cjf $@;;
     *.tar.gz| *.tgz) tar czf $@;;
     *.zip) zip $@;;
     *.rar) rar a $@;;
-    *) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}" >&2; return 1;;
+    *) echo -ne "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}${1}${reset}\".\n" >&2; return 1;;
   esac
 }
 
@@ -120,14 +126,14 @@ extract() {
     *.gz) gunzip "${1}";;
     *.zip| *.jar| *.war) unzip "${1}";;
     *.z ) uncompress "${1}";;
-    * ) printf "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}%s${reset}\".\n" "${1}" >&2; return 1;;
+    * ) echo -ne "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}${1}${reset}\".\n" >&2; return 1;;
   esac
 }
 
 # Traverse directory structure given # of steps
 up() {
-  DEEP=$1
-  for i in $(seq 1 ${DEEP:-"1"}); do
+  DEEP="${1}"
+  for i in $(seq 1 "${DEEP:-1}"); do
     cd ../
   done
 }
@@ -144,7 +150,9 @@ listen_port() {
 
 dir_sizes() {
   # Report first params directory sizes in human readable format
+  #shellcheck disable=SC2230
   ls=$(which ls) # Workaround alias
+  #shellcheck disable=SC2230
   du=$(which du) #      >>
   if [[ -x "${ls}" && -x "${du}" ]]; then
     for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
@@ -160,20 +168,19 @@ mem_sum() {
     awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' | \
     cut -d "" -f2 | \
     cut -d "-" -f1| \
-    grep ${1}
+    grep "${1}"
 }
 
 print_mem() {
   #Report Total Used and Available mem in human readable format
-  total=$(cat /proc/meminfo |head -1 |awk '{print $2}')
-  avail=$(cat /proc/meminfo |head -2 |tail -1 |awk '{print $2}')
-  used=$(expr ${total} - ${avail})
-  totalMB=$(expr ${total} / 1024)
-  availMB=$(expr ${avail} / 1024)
-  usedMB=$(expr ${used} / 1024)
-
-  printf "From a total of %dMB, you are using %dMB's, which leaves you with %dMB free memory.\n" ${totalMB} ${usedMB} ${availMB}
-
+  total=$(head -1 /proc/meminfo |awk '{print $2}')
+  avail=$(head -2 /proc/meminfo |tail -1 |awk '{print $2}')
+  used=$(( total - avail ))
+  totalMB=$(( total / 1024 ))
+  availMB=$(( avail / 1024 ))
+  usedMB=$(( used / 1024 ))
+  #echo -ne "From a total of ${DARK_BLUE} ${totalMB}${reset} MB, you are using ${DARK_RED}${usedMB}${reset} MB's, which leaves you with ${DARK_GREEN}${availMB}${reset} MB free memory.\n"
+  echo -ne "${LIGHT_BLUE}${totalMB}${reset} MB total, ${DARK_RED}${usedMB}${reset} MB used, ${DARK_GREEN}${availMB}${reset} MB free.\n"
 }
 
 services() {
@@ -184,7 +191,7 @@ services() {
     declare -a srvcs=( "postgresql-11" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" "dictd" )
   else
     declare -a srvcs=( "${@}" )
-    unset srvcs[0]
+    unset "srvcs[0]"
   fi
   for srvc in "${srvcs[@]}"; do
     sudo rc-service "${srvc}" "${1}"
@@ -196,6 +203,7 @@ update_date() {
 }
 
 show_uptime() {
+  #shellcheck disable=SC2154
   echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
   uptime | \
     awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'

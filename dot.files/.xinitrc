@@ -1,6 +1,7 @@
 # ~/.xinitrc
 #
 # Or: "The dedicated WM hoppers ~/.xinitrc"
+#shellcheck shell=bash
 
 # ~/.Xresources
 [[ -f ~/.Xresources ]] && xrdb -I"${HOME}" -merge ~/.Xresources
@@ -37,7 +38,7 @@ elif [[ "${ID}" == "devuan" ]];then
 else
     # Availability check, One line version: WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which fvwm-crystal||which fvwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
     for x in "${!WMA[@]}"; do
-        if [[ -x "$(which ${WMA[$x]} 2> /dev/null)" ]]; then
+        if [[ -x "$(command -v "${WMA[$x]}" 2> /dev/null)" ]]; then
             WM="${WMA[$x]}"
             break
         fi
@@ -45,9 +46,9 @@ else
 fi
 
 # Arguments check. If startx has an argument (eg: xfce4), set it up.
-for y in ${@}; do
+for y in "${@}"; do
     for z in "${!WMA[@]}"; do
-        if [[ "${y}" =~ "${z}" ]]; then
+        if [[ "${y}" =~ ${z} ]]; then
             WM="${WMA[$z]}"
             break
         fi
@@ -55,15 +56,15 @@ for y in ${@}; do
 done
 
 # Per wm customizations. If there is a wm specific permutation to be done, here is the place.
-if [[ "${WM}" =~ "awesome" ]]; then
+if [[ "${WM[0]}" =~ awesome ]]; then
     # Awesome: /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
-    WM=( /etc/X11/Sessions/awesome --replace --config ~/.config/awesome/rc.lua )
-elif [[ "${WM}" =~ "emacs" ]]; then
+    WM=( "/etc/X11/Sessions/awesome" "--replace" "--config" "${HOME}/.config/awesome/rc.lua" )
+elif [[ "${WM[0]}" =~ emacs ]]; then
     # Just "emacs" would suffice if you don't mind a M-x:exwm-init on X boot.
     # emacs --daemon -f exwm-enable
     emacs --daemon
     WM=( "emacsclient" "-c" )
-elif [[ "${WM}" =~ "starte16" || "${WM}" =~ "enlightenment_start" ]]; then
+elif [[ "${WM[0]}" =~ starte16 || "${WM[0]}" =~ enlightenment_start ]]; then
     # e17 svg support
     export E_COMP_ENGINE=sw
 fi

@@ -2,6 +2,7 @@
 #
 # color gym for the terminal
 # https://jonasjacek.github.io/colors/
+#shellcheck shell=bash
 
 color_test() {
   #   Daniel Crisman's ANSI color chart script from
@@ -39,7 +40,8 @@ color_test() {
 fancy_pacman() {
   # from: http://dotshare.it/dots/562/
 
-  f=3 b=4
+  #shellcheck disable=SC2034
+  f="3" b="4"
   for j in f b; do
     for i in {0..7}; do
       printf -v $j$i %b "\e[${!j}${i}m"
@@ -47,8 +49,9 @@ fancy_pacman() {
   done
   bld=$'\e[1m'
   rst=$'\e[0m'
-  inv=$'\e[7m'
+  #inv=$'\e[7m'
 
+  #shellcheck disable=SC2154
   cat << EOF
 
 $rst
@@ -70,44 +73,55 @@ EOF
 }
 
 # https://www.askapache.com/linux/rxvt-xresources/
-function aa_256 ()
-{
-  local o= i= x=`tput op` cols=`tput cols` y= oo= yy=;
-  y=`printf %$(($cols-6))s`;
-  yy=${y// /=};
+aa_256 () {
+
+  local o i x cols y oo yy
+  o="" i=""
+  x=$(tput op)
+  cols=$(tput cols)
+  y="" oo="" yy=""
+
+  y="$(printf %"$(( cols - 6))"s)";
+  yy="${y// /=}";
   for i in {0..256};
   do
     o=00${i};
-    oo=`echo -en "setaf ${i}\nsetab ${i}\n"|tput -S`;
+    oo=$(echo -en "setaf ${i}\nsetab ${i}\n"|tput -S);
     echo -e "${o:${#o}-3:3} ${oo}${yy}${x}";
   done
 }
 
-function aa_c666 ()
-{
-  local r= g= b= c= CR="`tput sgr0;tput init`" C="`tput op`" n="\n\n\n" t="  " s="    ";
+aa_c666 () {
+
+  #local r g b c CR C n t s
+  local r g b c CR C n s
+  r="" g="" b="" c=""
+  CR="$(tput sgr0;tput init)"
+  C="$(tput op)"
+  n="\n\n\n"
+  #t="  "
+  s="    "
+
   echo -e "${CR}${n}";
-  function c666 ()
-  {
-    local b= g=$1 r=$2;
-    for ((b=0; b<6; b++))
+  c666 () {
+    local b="" g=$1 r=$2;
+    for (( b = 0; b < 6; b++ ))
     do
-      c=$(( 16 + ($r*36) + ($g*6) + $b ));
+      c=$(( 16 + ( r * 36 ) + ( g * 6 ) + b ));
       echo -en "setaf ${c}\nsetab ${c}\n" | tput -S;
       echo -en "${s}";
     done
   };
-  function c666b ()
-  {
-    local g=$1 r=;
-    for ((r=0; r<6; r++))
+  c666b () {
+    local g="${1}" r="";
+    for ((r = 0; r < 6; r++ ))
     do
-      echo -en " `c666 $g $r`${C} ";
+      echo -en " $(c666 "${g}" "${r}")${C} ";
     done
   };
   for ((g=0; g<6; g++))
   do
-    c666b=`c666b $g`;
+    c666b=$(c666b "${g}");
     echo -e " ${c666b}";
     echo -e " ${c666b}";
     echo -e " ${c666b}";

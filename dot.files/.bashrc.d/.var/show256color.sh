@@ -8,82 +8,88 @@
 # show 256color in terminal
 ################################################################################
 
-setColor()
-{
-    #[[ $BF == "b" ]] && tput setab $i && tput setaf 0
-    #[[ $BF == "f" ]] && tput setaf $i && tput setab 0
-    if [ $BF == "b" ];then tput setab $i
-        [[ $i -eq 0 || $i -eq 16 || $i -ge 232 && $i -le 243 ]]\
-            && tput setaf 15 || tput setaf 0
-    fi
-    if [ $BF == "f" ];then tput setaf $i
-        [[ $i -eq 0 || $i -eq 16 || $i -ge 232 && $i -le 243 ]]\
-            && tput setab 15 || tput setab 0
-    fi
-}
-
-showColor()
-{
-    setColor $BF $i
-    if [ $HEX == 0 ]&&[ $RGB == 0 ];then
-        printf ' %3d ' $i
-    elif [ $HEX == 0 ]&&[ $RGB == 1 ];then
-        printf '      %3d     ' $i
-    elif [ $HEX == 1 ]&&[ $RGB == 0 ];then
-        printf ' %3d #%02x%02x%02x ' $i $R $G $B
+setColor() {
+  #[[ $BF == "b" ]] && tput setab $i && tput setaf 0
+  #[[ $BF == "f" ]] && tput setaf $i && tput setab 0
+  if [ "${BF}" == "b" ]; then
+    tput setab "${i}"
+    if [[ "${i}" -eq "0" || "${i}" -eq "16" || "${i}" -ge "232" && "${i}" -le "243" ]]; then
+      tput setaf 15
     else
-        printf '  %3d #%02x%02x%02x ' $i $R $G $B
+      tput setaf 0
     fi
-    if [ $RGB == 1 ];then
-            printf "\e[0m\v\e[14D"
-            setColor $BF $i
-            printf " R%03dG%03dB%03d \e[A" $R $G $B
+  fi
+
+  if [ "${BF}" == "f" ]; then
+    tput setaf "${i}"
+    if [[ "${i}" -eq "0" || "${i}" -eq "16" || "${i}" -ge "232" && "${i}" -le "243" ]]; then
+      tput setab 15
+    else
+      tput setab 0
     fi
-    tput sgr0
+  fi
 }
 
-256color()
-{
-    #color 0~15
-    #array_r=(00 80 00 80 00 80 00 c0 80 ff 00 ff 00 ff 00 ff)
-    #array_g=(00 00 80 80 00 00 80 c0 80 00 ff ff 00 00 ff ff)
-    #array_b=(00 00 00 00 80 80 80 c0 80 00 00 00 ff ff ff ff)
-    array_r=(000 128 000 128 000 128 000 192 128 255 000 255 000 255 000 255)
-    array_g=(000 000 128 128 000 000 128 192 128 000 255 255 000 000 255 255)
-    array_b=(000 000 000 000 128 128 128 192 128 000 000 000 255 255 255 255)
-    for i in {0..15};do
-        R=${array_r[i]}
-        G=${array_g[i]}
-        B=${array_b[i]}
-        showColor $BF $i $HEX $RGB
-        if [ $(((i+1)%8)) -eq 0 ];then
-            [[ $RGB -eq 0 ]]&& echo '' || echo -e '\n'
-        fi
+showColor() {
+  setColor "${BF}" "${i}"
+  if [ "${HEX}" == "0" ]&&[ "${RGB}" == "0" ];then
+    printf ' %3d ' "${i}"
+  elif [ "${HEX}" == "0" ]&&[ "${RGB}" == "1" ];then
+    printf '      %3d     ' "${i}"
+  elif [ "${HEX}" == "1" ] && [ "${RGB}" == "0" ];then
+    printf ' %3d #%02x%02x%02x ' "${i}" "${R}" "${G}" "${B}"
+  else
+    printf '  %3d #%02x%02x%02x ' "${i}" "${R}" "${G}" "${B}"
+  fi
+  if [ "${RGB}" == "1" ];then
+    printf "\e[0m\v\e[14D"
+    setColor "${BF}" "${i}"
+    printf " R%03dG%03dB%03d \e[A" "${R}" "${G}" "${B}"
+  fi
+  tput sgr0
+}
+
+256color() {
+  #color 0~15
+  #array_r=(00 80 00 80 00 80 00 c0 80 ff 00 ff 00 ff 00 ff)
+  #array_g=(00 00 80 80 00 00 80 c0 80 00 ff ff 00 00 ff ff)
+  #array_b=(00 00 00 00 80 80 80 c0 80 00 00 00 ff ff ff ff)
+  array_r=( 000 128 000 128 000 128 000 192 128 255 000 255 000 255 000 255 )
+  array_g=( 000 000 128 128 000 000 128 192 128 000 255 255 000 000 255 255 )
+  array_b=( 000 000 000 000 128 128 128 192 128 000 000 000 255 255 255 255 )
+  for i in {0..15};do
+    R="${array_r[i]}"
+    G="${array_g[i]}"
+    B="${array_b[i]}"
+    showColor "${BF}" "${i}" "${HEX}" "${RGB}"
+    if [ "$(( ( i + 1 ) % 8 ))" -eq "0" ];then
+      [[ "${RGB}" -eq "0" ]] && echo '' || echo -e '\n'
+    fi
+  done
+  #color 16~231
+  R="0"; G="0"; B="0"; step="51"
+  for blk in {0..2}; do
+    for (( line = blk * 12; line < blk * 12 + 6; line++ )); do
+      for (( i = line * 6 + 16; i < line * 6 + 22; i++ )); do
+        showColor "${BF}" "${i}" "${HEX}" "${RGB}"; B=$(( B + step ))
+      done
+      B=0; R=$((R+step))
+      for (( i = line * 6 + 52; i < line * 6 + 58; i++ ));do
+        showColor "${BF}" "${i}" "${HEX}" "${RGB}"; B=$(( B + step ))
+      done
+      B=0; R=$(( R - step ));G=$(( G + step ))
+      [[ "${RGB}" -eq "0" ]] && echo '' || echo -e '\n'
     done
-    #color 16~231
-    R=0;G=0;B=0;step=51
-    for blk in {0..2};do
-        for ((line=blk*12;line<blk*12+6;line++));do
-            for ((i=line*6+16;i<line*6+22;i++));do
-                showColor $BF $i $HEX $RGB;B=$((B+step))
-            done
-            B=0; R=$((R+step))
-            for ((i=line*6+52;i<line*6+58;i++));do
-                showColor $BF $i $HEX $RGB;B=$((B+step))
-            done
-            B=0; R=$((R-step));G=$((G+step))
-            [[ $RGB -eq 0 ]]&& echo '' || echo -e '\n'
-        done
-        G=0; R=$((R+step*2))
-    done
+    G="0"; R=$(( R + step * 2 ))
+  done
     #color 232~255
     R=8;G=8;B=8;step=10
     for i in {232..255};do
-        showColor $BF $i $HEX $RGB
-        if [ $(((i-15)%12)) -eq 0 ];then
-            [[ $RGB -eq 0 ]]&& echo '' || echo -e '\n'
-        fi
-        R=$((R+step));G=$((G+step));B=$((B+step))
+      showColor "${BF}" "${i}" "${HEX}" "${RGB}"
+      if [ $(( ( i - 15 ) % 12 )) -eq 0 ];then
+        [[ $RGB -eq 0 ]]&& echo '' || echo -e '\n'
+      fi
+      R=$((R+step));G=$((G+step));B=$((B+step))
     done
 }
 
@@ -105,31 +111,27 @@ options:\n
 \t[h|-h|help|--help]\t\tshow the help\n
 "
 
-[[ $(tput colors)==256 ]]||\
-    echo -e "\e[33m The terminal does NOT support 256color :("
+[[ "$(tput colors)" == "256" ]]||\
+  echo -e "\e[33m The terminal does NOT support 256color :("
 BF='b';HEX=0;RGB=0
 if [ $# -gt 0 ];then
-    ARGS=`getopt -o "bfxrh" -l "background,foreground,bg,fg,hex,rgb,help"\
-    -n "show256color.sh" -- "$@"`
-    eval set -- "${ARGS}"
-    for opt in "$@"; do
-        case $opt in
-            b|-b|bg|--bg|--background)BF='b';shift;;
-            f|-f|fg|--fg|--foreground)BF='f';shift;;
-            x|-x|hex|--hex)HEX=1;shift;;
-            r|-r|rgb|--rgb)RGB=1;shift;;
-            h|-h|help|--help)echo -e $HELP;shift;exit;;
-            --)shift;;
-            *)echo -e "\e[33m Parameter ERROR!\e[0m For more details see
-                help.";exit 1;;
-        esac
-    done
+  ARGS=$(getopt -o "bfxrh" -l "background,foreground,bg,fg,hex,rgb,help" -n "show256color.sh" -- "$@")
+  eval set -- "${ARGS}"
+  for opt in "$@"; do
+    case $opt in
+      b|-b|bg|--bg|--background) BF='b'; shift;;
+      f|-f|fg|--fg|--foreground) BF='f'; shift;;
+      x|-x|hex|--hex) HEX=1; shift;;
+      r|-r|rgb|--rgb) RGB=1; shift;;
+      h|-h|help|--help) echo -e "${HELP}"; shift; exit;;
+      --) shift;;
+      *) echo -e "\e[33m Parameter ERROR!\e[0m For more details see help."; exit 1;;
+    esac
+  done
 fi
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
-then
-
-  256color $BF $HEX $RGB
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  256color "${BF}" "${HEX}" "${RGB}"
 fi
 
 

@@ -2,9 +2,15 @@
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
 
-if [ -x "$(which dircolors 2> /dev/null)" ]; then
+#shellcheck shell=bash
+
+if [ -x "$(command -v dircolors 2> /dev/null)" ]; then
   # Color support
-  test -r ~/.bashrc.d/colors.sh && eval "$(dircolors -b ~/.bashrc.d/colors.sh)" || eval "$(dircolors -b)"
+  if [[ -r ~/.bashrc.d/colors.sh ]]; then
+    eval "$(dircolors -b ~/.bashrc.d/colors.sh)"
+  else
+    eval "$(dircolors -b)"
+  fi
 
   alias ls='ls --color=auto --group-directories-first'
   alias la='ls --all --human-readable --color=auto --group-directories-first'
