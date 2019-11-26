@@ -3,14 +3,14 @@
 export XDIALOG_NO_GMSGS=1
 
 # Pick a default available UI ...
-if [[ -x $(command -v Xdialog 2> /dev/null) && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
-    declare DIALOG="$(command -v Xdialog)" G=( 0 0 1000 )
-elif [[ -x $(command -v dialog 2> /dev/null) ]]; then # Check for dialog
-    declare DIALOG="$(command -v dialog)" G=( 0 0 )
+if [[ -x $(type -P Xdialog 2> /dev/null) && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
+    declare DIALOG="$(type -P Xdialog)" G=( 0 0 1000 )
+elif [[ -x $(type -P dialog 2> /dev/null) ]]; then # Check for dialog
+    declare DIALOG="$(type -P dialog)" G=( 0 0 )
 fi
 
 usage() {
-    printf "Usage: vol [+]|[-]|[0-100]|report\n" >&2 ;
+    echo -ne "Usage: vol [+]|[-]|[0-100]|report\n" >&2
     exit 1
 }
 

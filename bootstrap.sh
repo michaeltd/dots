@@ -3,22 +3,22 @@
 # bootstrap.sh
 # The means to migrate my .dots in new systems.
 
+set -e
+
 if [ "${1}" != "thoushallnotpass" ]; then
-  printf "${red}Read this first:${reset} ${bold}https://github.com/michaeltd/dots/blob/master/readme.md#bootstrap.sh${reset}\n" >&2
-  exit 1
+  #shellcheck disable=SC2154
+  echo "${red}Read this first:${reset} ${bold}https://github.com/michaeltd/dots/blob/master/readme.md#bootstrap.sh${reset}" >&2
+  exit "1"
 fi
 
-DTFLS="$(cd $(dirname ${BASH_SOURCE[0]})/dot.files && pwd)"
+DTFLS="$(cd "$(dirname "${0}")/dot.files" && pwd -P)"
 TOFLD="${HOME}"
 FX="$(date +%s)"
-LS=$(which ls)
-FLS=( $(${LS} -A ${DTFLS}) ) # No dot listings
+#shellcheck disable=SC2230
+LS="$(which ls)"
 
-# printf "\$DTFLS is %s, \$TOFLD is %s, \$FX is %s, \$LS is %s.\n" $DTFLS $TOFLD $FX $LS >&2
-# printf "%s\n" "${FLS[@]}" >&2
-
-for FL in ${FLS[@]}; do
-  if [[ -L "${TOFLD}/${FL}" || -d "${TOFLD}/${FL}" || -f "${TOFLD}/${FL}" ]]; then
+for FL in $("${LS}" "-A" "${DTFLS}"); do
+  if [ -e "${TOFLD}/${FL}" ]; then
     mv -f "${TOFLD}/${FL}" "${TOFLD}/${FL}.${FX}"
   fi
   ln -sf "${DTFLS}/${FL}" "${TOFLD}/${FL}"
