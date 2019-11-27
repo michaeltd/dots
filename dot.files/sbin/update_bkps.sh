@@ -14,20 +14,19 @@ declare -a NICEC=( "$(type -P nice)" "-n" "19" ) \
 
 #shellcheck disable=SC2034
 declare -a \
-        ENC=( "/home/${UTB}/.gnupg/*" \
-                "/home/${UTB}/.ssh/*" \
-                "/home/${UTB}/.ngrok2/*" \
-                "/home/${UTB}/.config/filezilla/" \
-                "/home/${UTB}/.config/hexchat/" \
-                "/home/${UTB}/.putty/*" ) \
-        USR=( "/home/${UTB}/git/" \
-                "/home/${UTB}/Documents/" ) \
-        SYS=( "/boot/grub/themes/" \
-                "/boot/grub/grub.cfg" \
-                "/etc/" \
-                "/usr/share/xsessions/" \
-                "/usr/share/WindowMaker/" \
-                "/var/www/" )
+        ENC=( "/home/${UTB}/.gnupg/." \
+                "/home/${UTB}/.ssh/." \
+                "/home/${UTB}/.ngrok2/." \
+                "/home/${UTB}/.config/filezilla/." \
+                "/home/${UTB}/.config/hexchat/." \
+                "/home/${UTB}/.putty/." ) \
+        USR=( "/home/${UTB}/git/." \
+                "/home/${UTB}/Documents/." ) \
+        SYS=( "/boot/grub/." \
+                "/etc/." \
+                "/usr/share/xsessions/." \
+                "/usr/share/WindowMaker/." \
+                "/var/www/." )
 
 declare -a BKP=( ENC[@] USR[@] SYS[@] ) ARCHV=( "enc.tar.gz" "usr.tar.gz" "sys.tar.gz" )
 
