@@ -39,8 +39,3 @@ VOL="${VOL/\]*}"
 VOL="${VOL/*\[}"
 
 display_feedback "Master: ${VOL}"
-
-# notify-send "Master: ${VOL}" 2> /dev/null || \
-#     ${DIALOG} --title "Vol" --infobox "Master: ${VOL}" "${G[@]}" 2> /dev/null || \
-#     xmessage -nearmouse -timeout 1 "Master: ${VOL}" 2> /dev/null || \
-#     echo -ne "Master: ${VOL}\n"
