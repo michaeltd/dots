@@ -1,7 +1,5 @@
 #!/bin/bash
-#
 # michaeltd	2019-11-29
-#
 # https://en.wikipedia.org/wiki/Morse_code
 # International Morse Code
 # 1. Length of dot is 1 unit
