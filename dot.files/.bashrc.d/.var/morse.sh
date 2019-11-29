@@ -24,13 +24,10 @@ alpha2morse() {
       local letter="${word:${i}:1}"
       local ml="${alpha_assoc[${letter^^}]}"
       for (( y = 0; y < ${#ml}; y++ )); do
-        if [[ "${ml:${y}:1}" == '.' ]]; then
-          echo -n "dot "
-          play -q -n synth .1 2> /dev/null || sleep .1
-        elif [[ "${ml:${y}:1}" == '-' ]]; then
-          echo -n "dash "
-          play -q -n synth .3 2> /dev/null || sleep .3
-        fi
+        case "${ml:${y}:1}" in
+          ".") echo -n "dot "; play -q -n synth .1 2> /dev/null || sleep .1 ;;
+          "-") echo -n "dash "; play -q -n synth .3 2> /dev/null || sleep .3 ;;
+        esac
         sleep .1
       done
       echo
