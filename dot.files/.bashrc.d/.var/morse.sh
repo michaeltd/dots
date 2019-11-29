@@ -19,12 +19,10 @@ alpha2morse() {
   fi
 
   while [[ -n "${1}" ]]; do
-    local word="${1}"
-    for (( i = 0; i < ${#word}; i++ )); do
-      local letter="${word:${i}:1}"
-      local ml="${alpha_assoc[${letter^^}]}"
-      for (( y = 0; y < ${#ml}; y++ )); do
-        case "${ml:${y}:1}" in
+    for (( i = 0; i < ${#1}; i++ )); do
+      local letter="${1:${i}:1}"
+      for (( y = 0; y < ${#alpha_assoc[${letter^^}]}; y++ )); do
+        case "${alpha_assoc[${letter^^}]:${y}:1}" in
           ".") echo -n "dot "; play -q -n synth .1 2> /dev/null || sleep .1 ;;
           "-") echo -n "dash "; play -q -n synth .3 2> /dev/null || sleep .3 ;;
         esac
