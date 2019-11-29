@@ -6,7 +6,8 @@
 genpass() {
   #tr -dc [:graph:] < /dev/urandom|tr -d [=\|=][=\"=][=\'=]|head -c "${1:-64}"
   #tr -dc '[:alnum:]~!@#$%^&*()_=+,<.>/?;:[{]}\|-' < /dev/urandom|head -c "${1:-64}"
-  tr -dc '[:alnum:]~!@#$%^_+:?' < /dev/urandom|head -c "${1:-64}"
+  #shellcheck disable=SC2005
+  echo "$(tr -dc '[:alnum:]~!@#$%^_+:?' < /dev/urandom|head -c "${1:-64}")"
 }
 
 rot_13(){
@@ -51,12 +52,13 @@ rot_0_26(){
   local _argn="${#}"
   local _func="${1}"
   shift
+
   local _rotval="${1}"
   shift
 
   (( _argn < 3 )) && _usage && return 1
   [[ "${_func}" != "-e" && "${_func}" != "-d" ]] && _usage && return 1
-  [[ "${_rotval}" =~ ^[0-9]+$ ]] && (( _rotval >= 0 && _rotval <= 26 )) || _usage && return 1
+  [[ "${_rotval}" =~ ^[0-9]{1,2}$ ]] && (( _rotval >= 0 && _rotval <= 26 )) || _usage && return 1
 
   #----------------1---2---3---4---5---6---7---8---9--10--11--12--13--14--15--16--17--18--19--20--21--22--23--24--25--26---
   local -a _ABC=( "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" )

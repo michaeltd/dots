@@ -1,20 +1,20 @@
-#! /usr/bin/env bash
+#!/bin/bash
 # https://gist.githubusercontent.com/brunomiguel/efa59fe50a0ad361dbe99edb33aa02f0/raw/4979855b27f12f1b1abe572f58a06aab3e6e686c/gistfile1.txt
 
-UPTIME_DAYS=$(expr `cat /proc/uptime | cut -d '.' -f1` % 31556926 / 86400)
-UPTIME_HOURS=$(expr `cat /proc/uptime | cut -d '.' -f1` % 31556926 % 86400 / 3600)
-UPTIME_MINUTES=$(expr `cat /proc/uptime | cut -d '.' -f1` % 31556926 % 86400 % 3600 / 60)
+UPTIME_DAYS=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 / 86400 ))
+UPTIME_HOURS=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 % 86400 / 3600 ))
+UPTIME_MINUTES=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 % 86400 % 3600 / 60 ))
 
 # Basic info
-HOSTNAME=`uname -n`
-ROOT=`df -Ph | grep -w nbd0p1 | awk '{print $4}' | tr -d '\n'`
+HOSTNAME=$(uname -n)
+ROOT=$(df -Ph | grep -w sda2 | awk '{print $4}' | tr -d '\n')
 
 # System load
-MEMORY1=`free -t -m | grep Total | awk '{print $3" MB";}'`
-MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
-LOAD1=`cat /proc/loadavg | awk {'print $1'}`
-LOAD5=`cat /proc/loadavg | awk {'print $2'}`
-LOAD15=`cat /proc/loadavg | awk {'print $3'}`
+MEMORY1=$(free -t -m | grep Total | awk '{print $3" MB";}')
+MEMORY2=$(free -t -m | grep "Mem" | awk '{print $2" MB";}')
+LOAD1=$(awk '{print $1}' /proc/loadavg)
+LOAD5=$(awk '{print $2}' /proc/loadavg)
+LOAD15=$(awk '{print $3}' /proc/loadavg)
 
 cat << 'EOF'
 .     .       .  .   . .   .   . .    +  .
@@ -52,6 +52,6 @@ echo -e "
 ===============================================
  - CPU usage...........: $LOAD1, $LOAD5, $LOAD15 (1, 5, 15 min)
  - Memory used.........: $MEMORY1 / $MEMORY2
- - Swap in use.........: `free -m | tail -n 1 | awk '{print $3}'` MB
+ - Swap in use.........: $(free -m | tail -n 1 | awk '{print $3}') MB
 ===============================================
 "

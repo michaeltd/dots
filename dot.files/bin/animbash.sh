@@ -19,7 +19,7 @@ draw_char() {
 
   tput cup $((REAL_OFFSET_Y + V_COORD_Y)) $((REAL_OFFSET_X + V_COORD_X))
 
-  printf %c ${DATA[V_COORD_Y]:V_COORD_X:1}
+  echo -ne "${DATA[V_COORD_Y]:V_COORD_X:1}"
 }
 
 

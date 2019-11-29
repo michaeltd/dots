@@ -20,9 +20,9 @@ BKPR="1"
 # source /home/paperjam/.bashrc.d/.stl/time.sh # for datedd()
 # source /home/paperjam/.bashrc.d/.stl/string.sh # for split()
 # source /home/paperjam/.bashrc.d/.stl/math.sh # for max()
-declare -a srcs=( /home/paperjam/.bashrc.d/.stl/time.sh \
-                    /home/paperjam/.bashrc.d/.stl/string.sh \
-                    /home/paperjam/.bashrc.d/.stl/math.sh )
+declare -a srcs=( "/home/paperjam/.bashrc.d/.stl/time.sh" \
+                    "/home/paperjam/.bashrc.d/.stl/string.sh" \
+                    "/home/paperjam/.bashrc.d/.stl/math.sh" )
 
 while [[ -n "${1}" ]]; do
   case "${1}" in
@@ -39,29 +39,29 @@ done
 # (( EUID != 0 )) && printf "privileged access requirements not met.\n" >&2 && exit 1
 
 # No backups directory
-[ ! -d "${BKPD}" ] && echo -ne "${BKPD} is not a directory.\n" >&2 && exit 1
+[[ ! -d "${BKPD}" ]] && echo -ne "${BKPD} is not a directory.\n" >&2 && exit 1
 
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 for src in "${srcs[@]}"; do
-  #shellcheck disable=SC1090
+  #shellcheck source=/dev/null
   source "${src}"
 done
 
 #shellcheck disable=SC2207
-FILES=( $("$(which ls)" "-t1" "${BKPD}"/*tar.gz* 2> /dev/null) )
+FILES=( $("$(type -P ls)" "-t1" "${BKPD}"/*tar.gz* 2> /dev/null) )
 
 # File loop to gather stats
 for (( x = 0; x < ${#FILES[@]}; x++ )); do
-  BFN=$(basename "${FILES[${x}]}")
+  BFN="$(basename "${FILES[${x}]}")"
   # Name loop to extract dates
   for PART in $(split "${BFN}" .); do
     # 6 digits field check (six digit dates eg: 190508)
     if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then
-      FNS+=( "${BFN}" )
-      DTS+=( "${PART}" )
-    elif [[ "${PART}" =~ ^[0-9]{10}$ ]]; then
-      TSS+=( "${PART}" )
+      # FNS+=( "${BFN}" )
+      # DTS+=( "${PART}" )
+      FNS[${x}]="${BFN}"
+      DTS[${x}]="${PART}"
     fi
   done
  done
@@ -70,10 +70,10 @@ for (( x = 0; x < ${#FILES[@]}; x++ )); do
  for (( y = 0; y < ${#FNS[@]}; y++ )); do
    if (( $(datedd "$(max "${DTS[@]}")" "${DTS[${y}]}") >= BKPK )); then
      #shellcheck disable=SC2154
-     echo -ne "${bold}${blue}will remove:${reset} ${red}${FNS[${y}]}${reset}, created: ${underline}${green}$(date -d @"${TSS[${y}]}" +%Y/%m/%d_%H:%M:%S)${reset}${end_underline}.\n"
+     echo -ne "${bold}${blue}will remove:${reset} ${red}${FNS[${y}]}${reset}, created: ${underline}${green}$(date -d "${DTS[${y}]}" +%Y/%m/%d)${reset}${end_underline}.\n"
      echo -ne "${bold}rm -v ${red}${FNS[${y}]}${reset}${reset}: "
      if (( BKPR == 0 )); then
-       echo -ne "\n"
+       echo
      else
        rm -v "${BKPD}/${FNS[${y}]}"
      fi

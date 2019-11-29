@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-cp /usr/src/linux/.config ~/kernel-config-`uname -r`
+cp "/usr/src/linux/.config" ~"/kernel-config-$(uname -r)"
 
 #eselect kernel list
 #eselect kernel set 2
 #mount /boot
 
-cd /usr/src/linux
+cd /usr/src/linux || exit 1
 
 zcat /proc/config.gz > /usr/src/linux/.config
 

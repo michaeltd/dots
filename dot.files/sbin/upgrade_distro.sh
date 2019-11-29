@@ -8,9 +8,13 @@
 # | #1 package manager executable | #2 repo update switch | #3 distro upgrade switch(es)| #4 ...
 # PS: By ignoring dpkg and rpm we are avoiding issues with systems where alien has been installed.
 #shellcheck disable=SC2034
-declare -a ZYPPER=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) PACMAN=( "pacman" "-Sy" "-Syu" ) APT_GET=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrade" ) YUM=( "yum" "check-update" "update" ) EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@security}" )
+declare -a APT_GET=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrade" ) \
+        YUM=( "yum" "check-update" "update" ) \
+        ZYPPER=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) \
+        PACMAN=( "pacman" "-Sy" "-Syu" ) \
+        EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@security}" )
 
-declare -a PMS=( ZYPPER[@] PACMAN[@] APT_GET[@] YUM[@] EMERGE[@] )
+declare -a PMS=( APT_GET[@] YUM[@] ZYPPER[@] PACMAN[@] EMERGE[@] )
 
 declare NOTFOUND="404"
 

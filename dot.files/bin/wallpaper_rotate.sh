@@ -2,6 +2,7 @@
 #
 # ~/bin/wallpaper-rotate.sh
 # Script to go through a directory of background images as wallpapers in a timely fashion
+#shellcheck shell=bash
 
 declare -a WPUSAGE
 WPUSAGE=("\n \
@@ -16,22 +17,19 @@ WPUSAGE=("\n \
     ${blue}$(basename "${BASH_SOURCE[0]}")${reset} ${magenta}help${reset} - this message \n \
     ${blue}$(basename "${BASH_SOURCE[0]}")${reset} without options will start rotating images.\n\n")
 
-declare -a FEH WMSETBG FVWM_ROOT FBSETBG BSETBG HSETROOT XSETBG
 #shellcheck disable=SC2034
-FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
-   FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
+declare -a FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
+        FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
 
-declare -a BGSRS
-BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] )
+declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] )
 
-declare WPRC WPLG
-WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]}").rc" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]}").log"
+#shellcheck disable=SC2155
+declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]}").rc" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]}").log"
 
-declare BGSR WAIT LS
-BGSR="" WAIT="2m" LS=$(command -v ls)
+#shellcheck disable=SC2155
+declare BGSR="" WAIT="2m" LS=$(command -v ls)
 
-declare -a DIRS WPS
-DIRS=( "${HOME}/Pictures" ) WPS=()
+declare -a DIRS=( "${HOME}/Pictures" ) WPS=()
 
 # bash version info check
 if (( "${BASH_VERSINFO[0]}" < 4 )); then
@@ -62,7 +60,7 @@ if [[ ! -r "${WPRC}" ]]; then
 fi
 
 # and read it.
-#shellcheck source=/home/paperjam/.wallpaper_rotate.sh.rc
+#shellcheck source=/dev/null
 source "${WPRC}"
 
 # If options, proccess, else rotate things
@@ -116,7 +114,7 @@ else
   while :; do
 
     # re-read rc (to pick up config updates).
-    #shellcheck source=/home/paperjam/.wallpaper_rotate.sh.rc
+    #shellcheck source=/dev/null
     source "${WPRC}"
 
     # fill a WallPaperS list

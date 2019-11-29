@@ -4,9 +4,9 @@
 # Update my data
 
 # Full path executables
-NICEC=$(command -v nice)
+NICEC="$(command -v nice)"
 
-RSNCM=$(command -v rsync)
+RSNCM="$(command -v rsync)"
 
 ELMNT="/mnt/el/Documents"
 

@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 #
 # ~/bin/pimp-my-gui.sh
 # Spice for the desktop
+#shellcheck source=/dev/null
 
 # No double sourcing
 [[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
