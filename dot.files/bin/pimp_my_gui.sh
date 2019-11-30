@@ -8,7 +8,7 @@
 [[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
 
 # Run emacs
-rcm 0 emacs --daemon
+# rcm 0 emacs --daemon
 
 # Xfce4 themes
 rcm 9 xfsettingsd --no-daemon --replace
