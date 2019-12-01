@@ -3,47 +3,29 @@
   (
     Applications,
     (Terminals, (xterm, EXEC, xterm), (Urxvt, EXEC, urxvt)),
-    (
-      Internet,
-      ("Mozilla Firefox", EXEC, firefox),
-      ("Mozilla SeaMonkey", EXEC, seamonkey),
-      (W3M, EXEC, "xterm -e w3m")
-    ),
-    (Mathematics, (bc, EXEC, "xterm -e bc")),
+    (Internet, ("Mozilla Firefox", EXEC, firefox)),
+    (Email, (Mutt, EXEC, "xterm -e mutt")),
+    (Mathematics, (XCalc, EXEC, xcalc)),
     (
       "File Managers",
       (Thunar, EXEC, thunar),
       ("Midnight Commander", EXEC, "xterm -e mc"),
       (Xfe, EXEC, xfe)
     ),
-    (
-      Graphics,
-      (GIMP, EXEC, gimp),
-      (XBitmap, EXEC, bitmap),
-      (Dia, EXEC, dia),
-      ("ImageMagick Display", EXEC, display),
-      ("Eye of GNOME", EXEC, eog)
-    ),
-    (
-      Multimedia,
-      (Audacious, EXEC, audacious),
-      (Audacity, EXEC, audacity),
-      (VLC, EXEC, vlc)
-    ),
+    (Graphics, (GIMP, EXEC, gimp), (XBitmap, EXEC, bitmap)),
+    (Multimedia, (Audacious, EXEC, audacious), (VLC, EXEC, vlc)),
     (
       Editors,
       (Emacs, EXEC, emacs),
       (gVIM, EXEC, gvim),
       (vi, EXEC, "xterm -e vi"),
-      (VIM, EXEC, "xterm -e vim")
+      (VIM, EXEC, "xterm -e vim"),
+      (XEdit, EXEC, xedit),
+      (Pico, EXEC, "xterm -e pico"),
+      (Nano, EXEC, "xterm -e nano")
     ),
     (
       Development,
-      (gitk, EXEC, gitk),
-      (glade, EXEC, glade),
-      (kdevelop, EXEC, kdevelop),
-      (designer, EXEC, designer),
-      (idle, EXEC, idle),
       (tclsh, EXEC, "xterm -e tclsh"),
       (xev, EXEC, "xterm -e xev")
     ),
@@ -52,54 +34,39 @@
       (Matrix, EXEC, wmMatrix),
       (Fire, EXEC, wmfire),
       ("Interface Info", EXEC, wmifinfo),
-      ("CPU Load", EXEC, wmcpuload),
-      ("Memory Load", EXEC, wmmemload),
       ("Clock Mon", EXEC, wmclockmon),
-      ("Network Devices", EXEC, wmnd),
-      (Time, EXEC, wmtime),
-      ("System Monitor", EXEC, wmmon),
       ("System Monitor", EXEC, wmsysmon),
       ("System Tray", EXEC, wmsystemtray),
-      ("System Tray", EXEC, wmsystray),
       (Magnify, EXEC, wmagnify)
     ),
     (
       Office,
-      ("OpenOffice.org Writer", EXEC, oowriter),
-      ("OpenOffice.org Calc", EXEC, oocalc),
-      ("OpenOffice.org Draw", EXEC, oodraw),
-      ("OpenOffice.org Impress", EXEC, ooimpress),
-      ("OpenOffice.org Math", EXEC, oomath),
-      (OpenOffice.org, EXEC, ooffice)
+      (StarOffice, EXEC, soffice),
+      ("LibreOffice Writer", EXEC, lowriter),
+      ("LibreOffice Calc", EXEC, localc),
+      ("LibreOffice Draw", EXEC, lodraw),
+      ("LibreOffice Impress", EXEC, loimpress),
+      ("LibreOffice Math", EXEC, lomath),
+      ("LibreOffice Base", EXEC, lobase),
+      ("LibreOffice Web", EXEC, loweb),
+      (LibreOffice, EXEC, libreoffice)
     ),
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
-    (Viewers, (Evince, EXEC, evince), (Xdvi, EXEC, xdvi)),
+    (Viewers, (Evince, EXEC, evince)),
     (
       Utilities,
+      (XSane, EXEC, xsane),
       (Conky, EXEC, conky),
-      ("GNU Privacy Assistant", EXEC, gpa),
-      (Filezilla, EXEC, filezilla),
-      (NMap, EXEC, nmapfe),
-      ("Java Control Panel", EXEC, ControlPanel),
+      (oclock, EXEC, oclock),
+      (xclock, EXEC, xclock),
       (Xarchiver, EXEC, xarchiver)
     ),
-    (System, (top, EXEC, "xterm -e top")),
     (
-      "P2P Network",
-      (ftp, EXEC, "xterm -e ftp"),
-      (sftp, EXEC, "xterm -e sftp")
+      System,
+      (Iostat, EXEC, "xterm -e iostat -p -k 5"),
+      (top, EXEC, "xterm -e top")
     ),
-    (
-      Games,
-      (XBoard, EXEC, xboard),
-      (Alienarena, EXEC, alienarena),
-      (Nexuiz, EXEC, nexuiz),
-      (Dosbox, EXEC, dosbox),
-      (Torcs, EXEC, torcs),
-      (Warsow, EXEC, warsow),
-      (Xonotic, EXEC, xonotic),
-      (Sauerbraten, EXEC, sauerbraten)
-    )
+    ("P2P Network", (sftp, EXEC, "xterm -e sftp"))
   ),
   (Run..., SHEXEC, "%A(Run, Type command:)"),
   (
@@ -237,11 +204,5 @@
   ("Configure Window Maker", EXEC, WPrefs),
   ("Info Panel", INFO_PANEL),
   ("Restart Window Maker", RESTART),
-  (
-    "Other Window Managers",
-    ("Start Motif Window Manager", RESTART, mwm),
-    ("Start FVWM", RESTART, fvwm),
-    ("Start FVWM-Crystal", RESTART, "fvwm-crystal")
-  ),
   ("Exit Window Maker", EXIT)
 )
