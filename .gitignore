@@ -50,6 +50,7 @@ dot.files/bin/*
 !dot.files/bin/gpw.sh
 !dot.files/bin/hello.sh
 !dot.files/bin/keepParamAlive.sh
+!dot.files/bin/keep_alive.sh
 !dot.files/bin/lol.sh
 !dot.files/bin/mxcl
 !dot.files/bin/pimp_my_gui.sh

@@ -10,12 +10,11 @@ if [[ -z "${1}" || -z "$(type -P "${1}")" ]]; then # Test param
   exit 1
 else
   while :; do # Endless loop.
-    pid="$(pgrep "${1}")" # Get a pid.
-    if [[ -z "${pid}" ]]; then # If there is none, start it in the background.
+    if [[ -z "$(pgrep "${1}")" ]]; then # If there is none, start it in the background.
       "${1}" &
-      sleep 1
+      sleep "${2:-15}"
     else # Else wait.
-      sleep "${2-30}"
+      sleep "${2:-15}"
     fi
   done
 fi

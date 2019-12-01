@@ -8,7 +8,7 @@ rofi.ssh-client:                     ssh
 rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
 rofi.opacity:                        75
 rofi.width:                          25
-rofi.lines:                          10
+rofi.lines:                          1
 rofi.columns:                        1
 rofi.font:                           SourceCodePro 10
 rofi.fg:                             #5294E2

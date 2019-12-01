@@ -3,10 +3,10 @@
 # Speed conversions
 #shellcheck shell=bash
 
-kmphtomph() {
+kphtomph() {
   printf "%.2f\n" "$(echo "scale=2;${1} * 0.6213712"|bc)"
 }
 
-mphtokmph() {
+mphtokph() {
   printf "%.2f\n" "$(echo "scale=2;${1} * 1.609344"|bc)"
 }

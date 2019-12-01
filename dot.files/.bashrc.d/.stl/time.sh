@@ -4,13 +4,13 @@
 #shellcheck shell=bash
 
 isdate() {
-  date -d "${1}" &>/dev/null
-  return "${?}"
+  # apparently `date -d ""` echoes today's day and returns 0
+  [[ -z "${1}" ]] && return 1
+  date -d "${1}" 2> /dev/null
 }
 
 isepoch() {
-  date -d @"${1}" &>/dev/null
-  return "${?}"
+  date -d @"${1}" &> /dev/null
 }
 
 daydiff () {
