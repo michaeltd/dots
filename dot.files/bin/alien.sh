@@ -7,7 +7,7 @@ UPTIME_MINUTES=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 % 86400 % 3600 / 60
 
 # Basic info
 HOSTNAME=$(uname -n)
-ROOT=$(df -Ph | grep -w sda2 | awk '{print $4}' | tr -d '\n')
+ROOT=$(df -Ph | grep -w sda1 | awk '{print $4}' | tr -d '\n')
 
 # System load
 MEMORY1=$(free -t -m | grep Total | awk '{print $3" MB";}')

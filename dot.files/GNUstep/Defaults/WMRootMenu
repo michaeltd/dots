@@ -12,7 +12,12 @@
       ("Midnight Commander", EXEC, "xterm -e mc"),
       (Xfe, EXEC, xfe)
     ),
-    (Graphics, (GIMP, EXEC, gimp), (XBitmap, EXEC, bitmap)),
+    (
+      Graphics,
+      (GIMP, EXEC, gimp),
+      (XBitmap, EXEC, bitmap),
+      (XFig, EXEC, xfig)
+    ),
     (Multimedia, (Audacious, EXEC, audacious), (VLC, EXEC, vlc)),
     (
       Editors,
@@ -26,6 +31,7 @@
     ),
     (
       Development,
+      (designer, EXEC, designer),
       (tclsh, EXEC, "xterm -e tclsh"),
       (xev, EXEC, "xterm -e xev")
     ),
@@ -52,7 +58,7 @@
       (LibreOffice, EXEC, libreoffice)
     ),
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
-    (Viewers, (Evince, EXEC, evince)),
+    (Viewers, (Evince, EXEC, evince), (Xdvi, EXEC, xdvi)),
     (
       Utilities,
       (XSane, EXEC, xsane),
