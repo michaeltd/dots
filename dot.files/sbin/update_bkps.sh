@@ -44,11 +44,11 @@ if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
     EP="$(date +%s)" DT="$(date +%y%m%d)"
 
     if [[ ${ARCHV[$i]} =~ enc ]]; then
-      ARCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}"
+      ARCFL="${ELDIR}/${DT}.${EP}.${HOSTNAME}.${ARCHV[$i]}"
       #shellcheck disable=SC2086
       time "${NICEC[@]}" "${TARCM[@]}" "--file" "${ARCFL}" "${EXL[@]}" ${!BKP[$i]}
     else
-      ENCFL="${ELDIR}/${DT}.${EP}.${ARCHV[$i]}.pgp"
+      ENCFL="${ELDIR}/${DT}.${EP}.${HOSTNAME}.${ARCHV[$i]}.pgp"
       #shellcheck disable=SC2086
       time "${NICEC[@]}" "${TARCM[@]}" "${EXL[@]}" ${!BKP[$i]} | "${GPG2C[@]}" "${ENCFL}" "--encrypt"
     fi

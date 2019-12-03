@@ -34,14 +34,8 @@ alias df='df -h'
 
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
-if command -v emerge &> /dev/null; then
-  alias psearch='emerge -s' pinstall='sudo emerge -av' premove='sudo emerge -avC'
-  alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @security' dcleanup='sudo emerge --ask --depclean'
-elif command -v pacman &> /dev/null; then
-  alias psearch='pacman -Ss' pinstall='sudo pacman -S' premove='sudo pacman -R'
-  alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' dcleanup='sudo pacman -Rsn'
-elif command -v apt-get &> /dev/null; then
-  alias psearch='apt search' pinstall='sudo apt-get install --install-suggests' premove='sudo apt-get remove --purge'
+if command -v apt-get &> /dev/null; then
+  alias psearch='apt search' pinstall='sudo apt-get install' premove='sudo apt-get remove --purge'
   alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' dcleanup='sudo apt-get autoremove'
 elif command -v zypper &> /dev/null; then
   alias psearch='zypper search' pinstall='sudo zypper install' premove='sudo zypper remove --clean-deps'
@@ -49,6 +43,12 @@ elif command -v zypper &> /dev/null; then
 elif command -v yum &> /dev/null; then
   alias psearch='yum search' pinstall='sudo yum install' premove='sudo yum remove'
   alias dupdate='sudo yum check-update' dupgrade='sudo yum update' dcleanup='sudo yum autoremove'
+elif command -v pacman &> /dev/null; then
+  alias psearch='pacman -Ss' pinstall='sudo pacman -S' premove='sudo pacman -R'
+  alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' dcleanup='sudo pacman -Rsn'
+elif command -v emerge &> /dev/null; then
+  alias psearch='emerge -s' pinstall='sudo emerge -av' premove='sudo emerge -avC'
+  alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @security' dcleanup='sudo emerge --ask --depclean'
 fi
 
 # Mount

@@ -17,7 +17,7 @@
 #xfce-mcs-manager &
 
 # No double sourcing
-[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
+[ ! $(command -v rcm) ] && source ~/.bashrc.d/functions.sh
 
 rcm 9 compton
 
@@ -31,8 +31,8 @@ rcm 9 tint2 -c ~/.config/tint2/panel
 # polybar -qr topbar 2> /dev/null &
 # ~/.config/polybar/launch.sh
 
-PMG="${HOME}/bin/pimp-my-gui.sh"
+PMG="${HOME}/bin/pimp_my_gui.sh"
 # if spice, spice things up.
-if [[ -x "${PMG}" ]]; then
+if [ -x "${PMG}" ]; then
     "${PMG}" &
 fi
