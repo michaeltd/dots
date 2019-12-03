@@ -20,8 +20,8 @@ alpha2morse() {
     [5]='.....' [6]='-....' [7]='--...' [8]='----..' [9]='----.' )
 
   if [[ "${#}" -lt "1" ]]; then
-    echo -ne "Usage: ${FUNCNAME[0]} arguments...\n \
-      ${FUNCNAME[0]} is an IMC transmitter. \n \
+    echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") arguments...\n \
+      $(basename "${BASH_SOURCE[0]}") is an IMC transmitter. \n \
       It'll transmit your messages to International Morse Code.\n" >&2
     return 1
   fi
@@ -31,16 +31,16 @@ alpha2morse() {
       local letter="${1:${i}:1}"
       for (( y = 0; y < ${#alpha_assoc[${letter^^}]}; y++ )); do
         case "${alpha_assoc[${letter^^}]:${y}:1}" in
-          ".") echo -n "dot "; play -q -n -c2 synth .1 2> /dev/null || sleep .1 ;;
-          "-") echo -n "dash "; play -q -n -c2 synth .3 2> /dev/null || sleep .3 ;;
+          ".") echo -n "dot "; play -q -n -c2 synth .05 2> /dev/null || sleep .05 ;;
+          "-") echo -n "dash "; play -q -n -c2 synth .15 2> /dev/null || sleep .15 ;;
         esac
-        sleep .1
+        sleep .05
       done
       echo
-      sleep .3
+      sleep .15
     done
     echo
-    sleep .7
+    sleep .35
     shift
   done
 }

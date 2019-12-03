@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Place applications to be executed when WindowMaker is started here.
 # This should only be used for non-X applications or applications that
@@ -21,13 +21,15 @@
 # APPS=(wmfire wmclockmon wmsystemtray wmMatrix wmbinclock wmbutton wmifinfo wmnd wmmon wmcpuload wmsysmon wmmemload wmacpi wmtime wmcalc wmSpaceWeather wmudmount wmmp3)
 APPS=(wmclockmon wmsystemtray wmifinfo wmacpi wmsysmon wmMatrix wmfire wmBinClock)
 for APP in "${APPS[@]}"; do
-    rcm 9 ${APP}
+    rcm 9 "${APP}"
 done
 # Run this to update your Root menu to reflect themes or apps changes
 # cp ~/GNUstep/Defaults/WMRootMenu ~/GNUstep/Defaults/`date +%s`WMRootMenu # Backup Root menu
 wmgenmenu > ~/GNUstep/Defaults/WMRootMenu # Write new menu
+
 rcm 9 compton -b
-pmg="${HOME}/bin/pimp-my-gui.sh"
+
+pmg="${HOME}/bin/pimp_my_gui.sh"
 if [[ -x "${pmg}" ]]; then # If spice ...
     "${pmg}" & # Spice things up
 fi
