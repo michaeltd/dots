@@ -1,0 +1,265 @@
+(
+  "Window Maker",
+  (
+    Applications,
+<<<<<<< HEAD
+    (Terminals, (xterm, EXEC, xterm)),
+    (
+      Internet,
+      ("Mozilla Firefox", EXEC, firefox),
+      ("Mozilla SeaMonkey", EXEC, seamonkey),
+      (W3M, EXEC, "xterm -e w3m")
+    ),
+    (Mathematics, (bc, EXEC, "xterm -e bc"), (XCalc, EXEC, xcalc)),
+=======
+    (Terminals, (xterm, EXEC, xterm), (Urxvt, EXEC, urxvt)),
+    (Internet, ("Mozilla Firefox", EXEC, firefox)),
+    (Email, (Mutt, EXEC, "xterm -e mutt")),
+    (Mathematics, (XCalc, EXEC, xcalc)),
+>>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
+    (
+      "File Managers",
+      (Thunar, EXEC, thunar),
+      ("Midnight Commander", EXEC, "xterm -e mc")
+    ),
+    (
+      Graphics,
+      (GIMP, EXEC, gimp),
+      (XBitmap, EXEC, bitmap),
+<<<<<<< HEAD
+      (Blender, EXEC, blender),
+      ("ImageMagick Display", EXEC, display)
+    ),
+    (
+      Multimedia,
+      (Audacious, EXEC, audacious),
+      (Audacity, EXEC, audacity),
+      (VLC, EXEC, vlc)
+=======
+      (XFig, EXEC, xfig)
+>>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
+    ),
+    (Multimedia, (Audacious, EXEC, audacious), (VLC, EXEC, vlc)),
+    (
+      Editors,
+      (Emacs, EXEC, emacs),
+      (gVIM, EXEC, gvim),
+      (vi, EXEC, "xterm -e vi"),
+      (VIM, EXEC, "xterm -e vim"),
+      (XEdit, EXEC, xedit),
+      (Pico, EXEC, "xterm -e pico"),
+      (Nano, EXEC, "xterm -e nano")
+    ),
+    (
+      Development,
+<<<<<<< HEAD
+      (gitk, EXEC, gitk),
+      (glade, EXEC, glade),
+=======
+>>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
+      (designer, EXEC, designer),
+      (tclsh, EXEC, "xterm -e tclsh"),
+      (xev, EXEC, "xterm -e xev")
+    ),
+    (
+      "Window Maker",
+      (Matrix, EXEC, wmMatrix),
+      (Fire, EXEC, wmfire),
+      ("Interface Info", EXEC, wmifinfo),
+      ("Clock Mon", EXEC, wmclockmon),
+      ("System Monitor", EXEC, wmsysmon),
+      ("System Tray", EXEC, wmsystemtray),
+      (Magnify, EXEC, wmagnify)
+    ),
+    (
+      Office,
+<<<<<<< HEAD
+      ("OpenOffice.org Writer", EXEC, oowriter),
+      ("OpenOffice.org Calc", EXEC, oocalc),
+      ("OpenOffice.org Draw", EXEC, oodraw),
+      ("OpenOffice.org Impress", EXEC, ooimpress),
+      ("OpenOffice.org Math", EXEC, oomath),
+      (OpenOffice.org, EXEC, ooffice),
+=======
+>>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
+      (StarOffice, EXEC, soffice),
+      ("LibreOffice Writer", EXEC, lowriter),
+      ("LibreOffice Calc", EXEC, localc),
+      ("LibreOffice Draw", EXEC, lodraw),
+      ("LibreOffice Impress", EXEC, loimpress),
+      ("LibreOffice Math", EXEC, lomath),
+      ("LibreOffice Base", EXEC, lobase),
+      ("LibreOffice Web", EXEC, loweb),
+      (LibreOffice, EXEC, libreoffice)
+    ),
+    (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
+    (
+      Utilities,
+<<<<<<< HEAD
+      ("X-CD-Roast", EXEC, xcdroast),
+      (Conky, EXEC, conky),
+      ("GNU Privacy Assistant", EXEC, gpa),
+      (NMap, EXEC, nmapfe),
+=======
+      (XSane, EXEC, xsane),
+      (Conky, EXEC, conky),
+      (oclock, EXEC, oclock),
+>>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
+      (xclock, EXEC, xclock),
+      (Xarchiver, EXEC, xarchiver)
+    ),
+    (
+      System,
+      (Iostat, EXEC, "xterm -e iostat -p -k 5"),
+      (top, EXEC, "xterm -e top")
+    ),
+<<<<<<< HEAD
+    (
+      Games,
+      (XBoard, EXEC, xboard),
+      (Nexuiz, EXEC, nexuiz),
+      (Dosbox, EXEC, dosbox),
+      (Xonotic, EXEC, xonotic)
+    )
+=======
+    ("P2P Network", (sftp, EXEC, "xterm -e sftp"))
+>>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
+  ),
+  (Run..., SHEXEC, "%A(Run, Type command:)"),
+  (
+    Appearance,
+    (
+      Themes,
+      OPEN_MENU,
+      "-noext /usr/share/WindowMaker/Themes $HOME/GNUstep/Library/WindowMaker/Themes WITH setstyle"
+    ),
+    (
+      Styles,
+      OPEN_MENU,
+      "-noext /usr/share/WindowMaker/Styles $HOME/GNUstep/Library/WindowMaker/Styles WITH setstyle"
+    ),
+    (
+      "Icon Sets",
+      OPEN_MENU,
+      "-noext /usr/share/WindowMaker/IconSets $HOME/GNUstep/Library/WindowMaker/IconSets WITH seticons"
+    ),
+    (
+      Background,
+      (
+        Solid,
+        (
+          Black,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(solid, \"black\")'"
+        ),
+        (
+          Blue,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(solid, \"#505075\")'"
+        ),
+        (
+          Indigo,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(solid, \"#243e6c\")'"
+        ),
+        (
+          Bluemarine,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(solid, \"#243e6c\")'"
+        ),
+        (
+          Purple,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(solid, \"#554466\")'"
+        ),
+        (
+          Wheat,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(solid, \"wheat4\")'"
+        ),
+        (
+          "Dark Gray",
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(solid, \"#333340\")'"
+        ),
+        (
+          Wine,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(solid, \"#400020\")'"
+        )
+      ),
+      (
+        Gradient,
+        (
+          Sunset,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(mvgradient, deepskyblue4, black, deepskyblue4, tomato4)'"
+        ),
+        (
+          Sky,
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(vgradient, \"blue4\", \"white\"'"
+        ),
+        (
+          "Blue Shades",
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(vgradient, \"#7080a5\", \"#101020\"'"
+        ),
+        (
+          "Indigo Shades",
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(vgradient, \"#746ebc\", \"#242e4c\"'"
+        ),
+        (
+          "Purple Shades",
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(vgradient, \"#654c66\", \"#151426\"'"
+        ),
+        (
+          "Wheat Shades",
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(vgradient, \"#a09060\", \"#302010\"'"
+        ),
+        (
+          "Grey Shades",
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(vgradient, \"#636380\", \"#131318\"'"
+        ),
+        (
+          "Wine Shades",
+          EXEC,
+          "wdwrite WindowMaker WorkspaceBack '(vgradient, \"#600040\", \"#180010\"'"
+        )
+      ),
+      (
+        Images,
+        OPEN_MENU,
+        "-noext $HOME/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t"
+      )
+    ),
+    (
+      "Save Theme",
+      SHEXEC,
+      "getstyle -p \"%a(Theme name, Name to save theme as)\""
+    ),
+    (
+      "Save IconSet",
+      SHEXEC,
+      "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name,Name to save icon set as)\""
+    )
+  ),
+  (Workspaces, WORKSPACE_MENU),
+  (
+    Workspace,
+    ("Hide Others", HIDE_OTHERS),
+    ("Show All", SHOW_ALL),
+    ("Arrange Icons", ARRANGE_ICONS),
+    (Refresh, REFRESH),
+    ("Save Session", SAVE_SESSION),
+    ("Clear Session", CLEAR_SESSION)
+  ),
+  ("Configure Window Maker", EXEC, WPrefs),
+  ("Info Panel", INFO_PANEL),
+  ("Restart Window Maker", RESTART),
+  ("Exit Window Maker", EXIT)
+)
