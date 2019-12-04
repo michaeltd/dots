@@ -25,7 +25,7 @@ if [ "${ID}" == "gentoo" ]; then
     rcm 9 terminology
     # rcm 9 conky -qdc ~/.conky/ConkyNeon/conkyrc
     # sleep 30; rcm 9 conky -qdc ~/.conky/FreeClox/conkyrc
-    rcm 9 conky -qd
+    rcm 9 conky -qdc ~/.conky/FreeClox/conkyrc
 elif [ "${ID}" == "devuan" ]; then
     rcm 9 xfce4-terminal --disable-server
     rcm 9 conky -qdc ~/.conky/FreeClox/conkyrc

@@ -12,12 +12,13 @@ declare -a NICEC=( "$(type -P nice)" "-n" "19" ) \
 "tsouchlarakis@gmail.com" "--trust-model" "always" "--output" )
 
 #shellcheck disable=SC2034
-declare -a ENC=( "/home/${UTB}/.gnupg/." \
-                   "/home/${UTB}/.ssh/." \
-                   "/home/${UTB}/.ngrok2/." \
-                   "/home/${UTB}/.config/filezilla/." \
-                   "/home/${UTB}/.config/hexchat/." \
-                   "/home/${UTB}/.putty/." ) \
+declare -a \
+        ENC=( "/home/${UTB}/.gnupg/." \
+                "/home/${UTB}/.ssh/." \
+                "/home/${UTB}/.ngrok2/." \
+                "/home/${UTB}/.config/filezilla/." \
+                "/home/${UTB}/.config/hexchat/." \
+                "/home/${UTB}/.putty/." ) \
         USR=( "/home/${UTB}/git/." \
                 "/home/${UTB}/Documents/." ) \
         SYS=( "/boot/grub/." \
