@@ -2,7 +2,6 @@
   "Window Maker",
   (
     Applications,
-<<<<<<< HEAD
     (Terminals, (xterm, EXEC, xterm)),
     (
       Internet,
@@ -10,13 +9,8 @@
       ("Mozilla SeaMonkey", EXEC, seamonkey),
       (W3M, EXEC, "xterm -e w3m")
     ),
-    (Mathematics, (bc, EXEC, "xterm -e bc"), (XCalc, EXEC, xcalc)),
-=======
-    (Terminals, (xterm, EXEC, xterm), (Urxvt, EXEC, urxvt)),
-    (Internet, ("Mozilla Firefox", EXEC, firefox)),
     (Email, (Mutt, EXEC, "xterm -e mutt")),
-    (Mathematics, (XCalc, EXEC, xcalc)),
->>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
+    (Mathematics, (bc, EXEC, "xterm -e bc"), (XCalc, EXEC, xcalc)),
     (
       "File Managers",
       (Thunar, EXEC, thunar),
@@ -26,8 +20,6 @@
       Graphics,
       (GIMP, EXEC, gimp),
       (XBitmap, EXEC, bitmap),
-<<<<<<< HEAD
-      (Blender, EXEC, blender),
       ("ImageMagick Display", EXEC, display)
     ),
     (
@@ -35,29 +27,20 @@
       (Audacious, EXEC, audacious),
       (Audacity, EXEC, audacity),
       (VLC, EXEC, vlc)
-=======
-      (XFig, EXEC, xfig)
->>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
     ),
-    (Multimedia, (Audacious, EXEC, audacious), (VLC, EXEC, vlc)),
     (
       Editors,
       (Emacs, EXEC, emacs),
       (gVIM, EXEC, gvim),
       (vi, EXEC, "xterm -e vi"),
-      (VIM, EXEC, "xterm -e vim"),
-      (XEdit, EXEC, xedit),
-      (Pico, EXEC, "xterm -e pico"),
-      (Nano, EXEC, "xterm -e nano")
+      (VIM, EXEC, "xterm -e vim")
     ),
     (
       Development,
-<<<<<<< HEAD
       (gitk, EXEC, gitk),
       (glade, EXEC, glade),
-=======
->>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
       (designer, EXEC, designer),
+      (idle, EXEC, idle),
       (tclsh, EXEC, "xterm -e tclsh"),
       (xev, EXEC, "xterm -e xev")
     ),
@@ -73,15 +56,12 @@
     ),
     (
       Office,
-<<<<<<< HEAD
       ("OpenOffice.org Writer", EXEC, oowriter),
       ("OpenOffice.org Calc", EXEC, oocalc),
       ("OpenOffice.org Draw", EXEC, oodraw),
       ("OpenOffice.org Impress", EXEC, ooimpress),
       ("OpenOffice.org Math", EXEC, oomath),
       (OpenOffice.org, EXEC, ooffice),
-=======
->>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
       (StarOffice, EXEC, soffice),
       ("LibreOffice Writer", EXEC, lowriter),
       ("LibreOffice Calc", EXEC, localc),
@@ -95,25 +75,19 @@
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
     (
       Utilities,
-<<<<<<< HEAD
       ("X-CD-Roast", EXEC, xcdroast),
       (Conky, EXEC, conky),
       ("GNU Privacy Assistant", EXEC, gpa),
       (NMap, EXEC, nmapfe),
-=======
-      (XSane, EXEC, xsane),
-      (Conky, EXEC, conky),
-      (oclock, EXEC, oclock),
->>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
       (xclock, EXEC, xclock),
       (Xarchiver, EXEC, xarchiver)
     ),
+    (System, (top, EXEC, "xterm -e top")),
     (
-      System,
-      (Iostat, EXEC, "xterm -e iostat -p -k 5"),
-      (top, EXEC, "xterm -e top")
+      "P2P Network",
+      (ftp, EXEC, "xterm -e ftp"),
+      (sftp, EXEC, "xterm -e sftp")
     ),
-<<<<<<< HEAD
     (
       Games,
       (XBoard, EXEC, xboard),
@@ -121,9 +95,6 @@
       (Dosbox, EXEC, dosbox),
       (Xonotic, EXEC, xonotic)
     )
-=======
-    ("P2P Network", (sftp, EXEC, "xterm -e sftp"))
->>>>>>> d7b6ac3a79407b4fe8a84dc3cde1ecfb994b35ea
   ),
   (Run..., SHEXEC, "%A(Run, Type command:)"),
   (

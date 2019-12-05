@@ -1,6 +1,6 @@
 #!/bin/bash
 
-XMTO="2"
+XMTO="1"
 XDTO="$(( XMTO * 1000 ))"
 
 # Xdialog/dialog
@@ -17,9 +17,9 @@ elif [[ -x $(type -P dialog 2> /dev/null) ]]; then # Check for dialog
 fi
 
 display_feedback() {
-    notify-send "${*}" 2> /dev/null && return
-    ${DIALOG} "--title" "Vol" "--infobox" "${*}" "${G[@]}" 2> /dev/null && return
-    xmessage -nearmouse -timeout "${XMTO}" "${*}" 2> /dev/null && return
+    notify-send "${*}" 2> /dev/null && echo -ne "${*}\n" >&2 && return
+    ${DIALOG} "--title" "Vol" "--infobox" "${*}" "${G[@]}" 2> /dev/null && echo -ne "${*}\n" >&2 && return
+    xmessage -nearmouse -timeout "${XMTO}" "${*}" 2> /dev/null && echo -ne "${*}\n" >&2 && return
     echo -ne "${*}\n" >&2
 }
 

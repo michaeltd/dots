@@ -60,7 +60,7 @@ set from = "tsouchlarakis@gmail.com"
 alternates "tsouchlarakis@tutanota.com|michael.tsouchlarakis@protonmail.com"
 # this file must exist, and contains your signature, comment it out if
 # you don't want a signature to be used
-set signature = ~/.signature
+set signature = ~/.pgp.public
 
 # aliases (sort of address book)
 # source ~/.aliases

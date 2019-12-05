@@ -426,13 +426,13 @@ globalkeys = gears.table.join(
     --          {description = "show main menu", group = "awesome"}),
 
     -- Sound Shortcuts
-    awful.key({ modkey,           }, "Up", function () awful.spawn.with_shell("~/bin/vol +")    end,
+    awful.key({ modkey,           }, "Up", function () awful.spawn.with_shell("~/bin/sndvol +")    end,
               {description = "Increase Volume by 5%", group = "utility"}),
-    awful.key({ modkey,           }, "Down", function () awful.spawn.with_shell("~/bin/vol -")    end,
+    awful.key({ modkey,           }, "Down", function () awful.spawn.with_shell("~/bin/sndvol -")    end,
               {description = "Decrease Volume by 5%", group = "utility"}),
-    awful.key({ modkey,           }, "0", function () awful.spawn.with_shell("~/bin/vol 100")    end,
+    awful.key({ modkey,           }, "0", function () awful.spawn.with_shell("~/bin/sndvol 100")    end,
               {description = "Max Volume", group = "utility"}),
-    awful.key({ modkey,           }, "m", function () awful.spawn.with_shell("~/bin/vol 0")    end,
+    awful.key({ modkey,           }, "m", function () awful.spawn.with_shell("~/bin/sndvol 0")    end,
               {description = "Mute Sound", group = "utility"}),
     awful.key({                   }, "Print", function () awful.spawn.with_shell("~/bin/screenshot.sh")    end,
               {description = "Take a screenshot", group = "utility"}),

@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # No double sourcing
-[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
+[ ! $(command -v rcm) ] && source ~/.bashrc.d/functions.sh
 
-function run {
+run() {
   if ! pgrep $1
   then
     $@ &
@@ -12,7 +12,7 @@ function run {
 
 rcm 9 compton -b
 
-PMG="${HOME}/bin/pimp-my-gui.sh"
+PMG="${HOME}/bin/pimp_my_gui.sh"
 if [ -x "${PMG}" ]; then # If spice ...
   "${PMG}" & # Spice things up
 fi
