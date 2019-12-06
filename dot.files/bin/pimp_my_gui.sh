@@ -11,7 +11,7 @@
 # rcm 0 emacs --daemon
 
 # Xfce4 themes
-# rcm 9 xfsettingsd --no-daemon --replace
+rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 
 # XScreenSaver
 rcm 9 xscreensaver -no-splash
@@ -22,12 +22,12 @@ rcm 9 ~/bin/wallpaper_rotate.sh
 # Per distro setup.
 source /etc/os-release
 if [ "${ID}" == "gentoo" ]; then
-    rcm 9 terminology
-    rcm 9 conky -qdc ~/.conky/FreeClox/conkyrc
+  rcm 9 terminology
+  rcm 9 conky -qd
 elif [ "${ID}" == "devuan" ]; then
-    rcm 9 xfce4-terminal --disable-server
-    rcm 9 conky -qdc ~/.conky/FreeClox/conkyrc
+  rcm 9 xfce4-terminal --disable-server
+  rcm 9 conky -qd
 else
-    rcm 9 xterm
-    rcm 9 conky -qd
+  rcm 9 xterm
+  rcm 9 conky -qd
 fi
