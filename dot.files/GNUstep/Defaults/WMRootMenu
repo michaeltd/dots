@@ -14,7 +14,8 @@
     (
       "File Managers",
       (Thunar, EXEC, thunar),
-      ("Midnight Commander", EXEC, "xterm -e mc")
+      ("Midnight Commander", EXEC, "xterm -e mc"),
+      (Xfe, EXEC, xfe)
     ),
     (
       Graphics,

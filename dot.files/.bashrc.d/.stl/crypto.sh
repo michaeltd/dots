@@ -16,33 +16,31 @@ rot_13(){
   shift
 
   [[ "${_func}" != "-e" && "${_func}" != "-d" ]] || [[ -z "${1}" ]] && echo "Usage: ${FUNCNAME[0]} -e|-d argument(s)..." >&2 && return 1
-  #shellcheck disable=SC2190 # go home shellcheck you're drunk!!!
   local -a _ABC=( "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" )
-  #shellcheck disable=SC2190 # go home shellcheck you're drunk!!!
   local -a _abc=( "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z" )
   local -a _NOP=( "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" )
   local -a _nop=( "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" )
 
   while [[ -n "${1}" ]]; do
-      local _word="${1}"
-      local _out
-      for (( i = 0; i <= ${#_word}; i++ )); do
-        for (( x = 0; x <= ${#_abc[*]}; x++ )); do
-          case "${_func}" in
-            "-e")
-              [[ "${_word:$i:1}" == "${_ABC[$x]}" ]] && _out+="${_NOP[$x]}" && break
-              [[ "${_word:$i:1}" == "${_abc[$x]}" ]] && _out+="${_nop[$x]}" && break;;
-            "-d")
-              [[ "${_word:$i:1}" == "${_NOP[$x]}" ]] && _out+="${_ABC[$x]}" && break
-              [[ "${_word:$i:1}" == "${_nop[$x]}" ]] && _out+="${_abc[$x]}" && break;;
-          esac
-          (( x == ${#_abc[*]} )) && _out+="${_word:$i:1}" #If char has not been found by now lets add it as is.
-        done
+    local _word="${1}"
+    local _out
+    for (( i = 0; i <= ${#_word}; i++ )); do
+      for (( x = 0; x <= ${#_abc[*]}; x++ )); do
+        case "${_func}" in
+          "-e")
+            [[ "${_word:$i:1}" == "${_ABC[$x]}" ]] && _out+="${_NOP[$x]}" && break
+            [[ "${_word:$i:1}" == "${_abc[$x]}" ]] && _out+="${_nop[$x]}" && break;;
+          "-d")
+            [[ "${_word:$i:1}" == "${_NOP[$x]}" ]] && _out+="${_ABC[$x]}" && break
+            [[ "${_word:$i:1}" == "${_nop[$x]}" ]] && _out+="${_abc[$x]}" && break;;
+        esac
+        (( x == ${#_abc[*]} )) && _out+="${_word:$i:1}" #If char has not been found by now lets add it as is.
       done
-      shift
-      _out+=" "
     done
-    echo "${_out[*]}"
+    shift
+    _out+=" "
+  done
+  echo "${_out[*]}"
 }
 
 caesar_cipher() {

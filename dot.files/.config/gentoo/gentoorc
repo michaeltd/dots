@@ -451,18 +451,18 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"play_sample"</name>
+   <name>"mouse_right"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
-     <type>"External"</type>
-     <def>"aplay {fup}"</def>
+     <type>"Built-In"</type>
+     <def>"SelectRow action=select"</def>
      <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
-     </CX_External>
+    </CmdRow>
+    <CmdRow>
+     <type>"Built-In"</type>
+     <def>"MenuPopup"</def>
+     <flags>0</flags>
     </CmdRow>
    </CmdRows>
   </CmdSeq>
@@ -478,22 +478,6 @@
       <gflags>4</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"uncompress_zip"</name>
-   <flags>0</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"unzip -qq -o {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>8</bflags>
-      <aflags>2</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -515,18 +499,18 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"mouse_right"</name>
+   <name>"uncompress_zip"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
-     <type>"Built-In"</type>
-     <def>"SelectRow action=select"</def>
+     <type>"External"</type>
+     <def>"unzip -qq -o {fup}"</def>
      <flags>0</flags>
-    </CmdRow>
-    <CmdRow>
-     <type>"Built-In"</type>
-     <def>"MenuPopup"</def>
-     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>8</bflags>
+      <aflags>2</aflags>
+     </CX_External>
     </CmdRow>
    </CmdRows>
   </CmdSeq>
@@ -588,6 +572,22 @@
      <flags>0</flags>
      <CX_External>
       <gflags>1</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
+   <name>"play_sample"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>"aplay {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
       <bflags>0</bflags>
       <aflags>0</aflags>
      </CX_External>
@@ -702,12 +702,12 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"play_sid"</name>
+   <name>"edit_text"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"sidplay {fup}"</def>
+     <def>"{$EDITOR} {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>1</gflags>
@@ -718,12 +718,12 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"edit_text"</name>
+   <name>"play_sid"</name>
    <flags>0</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>"{$EDITOR} {fup}"</def>
+     <def>"sidplay {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>1</gflags>
@@ -846,6 +846,10 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
+   <name>"Unnamed_2"</name>
+   <flags>0</flags>
+  </CmdSeq>
+  <CmdSeq>
    <name>"convert_mp3"</name>
    <flags>1</flags>
    <CmdRows>
@@ -860,10 +864,6 @@
      </CX_External>
     </CmdRow>
    </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
-   <name>"Unnamed_2"</name>
-   <flags>0</flags>
   </CmdSeq>
   <CmdSeq>
    <name>"run_script"</name>
@@ -1138,6 +1138,22 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
+   <name>"view_pdf"</name>
+   <flags>0</flags>
+   <CmdRows>
+    <CmdRow>
+     <type>"External"</type>
+     <def>" evince {fup}"</def>
+     <flags>0</flags>
+     <CX_External>
+      <gflags>0</gflags>
+      <bflags>0</bflags>
+      <aflags>0</aflags>
+     </CX_External>
+    </CmdRow>
+   </CmdRows>
+  </CmdSeq>
+  <CmdSeq>
    <name>"view_tar_gzip"</name>
    <flags>0</flags>
    <CmdRows>
@@ -1154,22 +1170,6 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"uncompress_tar_gzip"</name>
-   <flags>1</flags>
-   <CmdRows>
-    <CmdRow>
-     <type>"External"</type>
-     <def>"tar xzf {fup}"</def>
-     <flags>0</flags>
-     <CX_External>
-      <gflags>0</gflags>
-      <bflags>8</bflags>
-      <aflags>2</aflags>
-     </CX_External>
-    </CmdRow>
-   </CmdRows>
-  </CmdSeq>
-  <CmdSeq>
    <name>"wrap_about"</name>
    <flags>0</flags>
    <CmdRows>
@@ -1181,17 +1181,17 @@
    </CmdRows>
   </CmdSeq>
   <CmdSeq>
-   <name>"view_pdf"</name>
-   <flags>0</flags>
+   <name>"uncompress_tar_gzip"</name>
+   <flags>1</flags>
    <CmdRows>
     <CmdRow>
      <type>"External"</type>
-     <def>" evince {fup}"</def>
+     <def>"tar xzf {fup}"</def>
      <flags>0</flags>
      <CX_External>
       <gflags>0</gflags>
-      <bflags>0</bflags>
-      <aflags>0</aflags>
+      <bflags>8</bflags>
+      <aflags>2</aflags>
      </CX_External>
     </CmdRow>
    </CmdRows>
@@ -2973,8 +2973,8 @@
  <Windows>
   <Window>
    <id>u0</id>
-   <x>8</x>
-   <y>169</y>
+   <x>242</x>
+   <y>170</y>
    <w>638</w>
    <h>417</h>
    <pos_use>TRUE</pos_use>

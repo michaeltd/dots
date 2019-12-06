@@ -34,7 +34,7 @@ hdr_order       From: To: Cc: Bcc: Date: Subject:
 
 # brighten up stuff with colors, for more coloring examples see:
 # http://aperiodic.net/phil/configs/mutt/colors
-color normal      white          black
+color normal      white          default
 color hdrdefault  green          default
 color quoted      green          default
 color quoted1     yellow         default

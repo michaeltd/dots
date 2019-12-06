@@ -9,6 +9,7 @@
 "Graphics" "" menu "menus_apps/Graphics.menu"
 "Network" "" menu "menus_apps/Network.menu"
 "Office" "" menu "menus_apps/Office.menu"
+"Security" "" menu "menus_apps/Security.menu"
 "Settings" "" menu "menus_apps/Settings.menu"
 "System" "" menu "menus_apps/System.menu"
 "Utility" "" menu "menus_apps/Utility.menu"

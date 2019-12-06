@@ -3,12 +3,11 @@
 # math related functions
 #shellcheck shell=bash
 
-# in_range <v> <a> <b> - Returns true if a <= v <= b
 in_range() {
   if [[ "${#}" -eq "3" ]]; then
     [[ "${1}" -ge "${2}" && "${1}" -le "${3}" ]]
   else
-    echo "USAGE: ${FUNCNAME[0]} <v> <a> <b>" >&2
+    echo "USAGE: ${FUNCNAME[0]} num min max" >&2
     return 1
   fi
 }

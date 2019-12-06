@@ -1,7 +1,7 @@
 {
+  DontLinkWorkspaces = NO;
   FrameBorderColor = "#000000";
   FTitleColor = "#ffffff";
-  DontLinkWorkspaces = NO;
   LTCMaximizeKey = None;
   MenuDisabledColor = "#bbbbbb";
   CycleIgnoreMinimized = NO;
@@ -21,14 +21,14 @@
   FTitleBack = (mdgradient, "#020202", "#6e6e72", "#3e3e3e", "#020202");
   Shadow = yes;
   MoveToPrevWorkspaceLayerKey = None;
+  ClipTitleFont = "helvetica:bold:pixelsize=10";
+  MiniwindowPreviewBalloons = NO;
   MaximizeKey = "Mod4+X";
   HideKey = None;
-  MiniwindowPreviewBalloons = NO;
-  ClipTitleFont = "helvetica:bold:pixelsize=10";
   MouseForwardButtonAction = None;
-  MoveToWorkspace7Key = None;
   IconTitleFont = "helvetica:pixelsize=8";
-  LargeDisplayFont = "electroharmonix-72";
+  MoveToWorkspace7Key = None;
+  LargeDisplayFont = "electroharmonix-72:pixelsize=24";
   RBCMaximizeKey = None;
   ResizeCursor = (
     bitmap,
@@ -42,8 +42,8 @@
   MouseWheelTiltAction = None;
   WindowShortcut3Key = None;
   MenuTitleFont = "helvetica:bold:pixelsize=12";
-  WindowRelaunchKey = None;
   SmoothWorkspaceBack = YES;
+  WindowRelaunchKey = None;
   EnableWorkspacePager = YES;
   WindowShortcut4Key = None;
   IconPosition = brh;
@@ -61,10 +61,10 @@
   HelpBalloons = YES;
   WindowSnapping = YES;
   KeepAtBottomKey = None;
-  PrevWorkspaceKey = "Mod4+Left";
   MoveResizeKey = None;
-  KeepOnTopKey = None;
   AutoArrangeIcons = YES;
+  PrevWorkspaceKey = "Mod4+Left";
+  KeepOnTopKey = None;
   ClipTitleColor = "#ffffff";
   AppIconBalloons = YES;
   MoveHalfMaximizedWindowsBetweenScreens = NO;
@@ -121,8 +121,8 @@
   MenuTextBack = (mdgradient, "#000002", "#020202", "#2e2e2e", "#6c6c6c");
   RaiseAppIconsWhenBouncing = NO;
   ResizeIncrement = 0;
-  UShadowColor = black;
   CycleWorkspaces = YES;
+  UShadowColor = black;
   WindowShortcut8Key = None;
   OpaqueMoveResizeKeyboard = NO;
   DisableDithering = YES;
@@ -141,8 +141,8 @@
   WindowTitleExtendSpace = "-1";
   FocusPrevKey = None;
   NormalCursor = (builtin, left_ptr);
-  WindowListKey = "Mod4+ISO_Left_Tab";
   WorkspaceNameDisplayPosition = none;
+  WindowListKey = "Mod4+ISO_Left_Tab";
   FShadowColor = black;
   MenuTextFont = "helvetica:pixelsize=12";
   ScreenSwitchKey = None;

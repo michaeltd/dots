@@ -5,6 +5,7 @@
 "Emixer" "/usr/share/pixmaps/emixer.png" exec "emixer"
 "HDAJackRetask" "" exec "hdajackretask"
 "Hwmixvolume" "/usr/share/icons/hicolor/48x48/apps/hwmixvolume.png" exec "hwmixvolume"
+"PulseAudio System Tray" "/usr/share/pixmaps/pasystray.png" exec "pasystray"
 "PulseAudio Volume Control" "/usr/share/icons/Adwaita/48x48/apps/multimedia-volume-control.png" exec "pavucontrol"
 "SimpleScreenRecorder" "/usr/share/icons/hicolor/48x48/apps/simplescreenrecorder.png" exec "simplescreenrecorder --logfile"
 "VLC media player" "/usr/share/icons/hicolor/48x48/apps/vlc.png" exec "/usr/bin/vlc --started-from-file"

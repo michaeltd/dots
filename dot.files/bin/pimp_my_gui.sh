@@ -8,7 +8,7 @@
 [[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
 
 # Run emacs
-# rcm 0 emacs --daemon
+rcm 0 emacs --daemon
 
 # Xfce4 themes
 rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
@@ -24,6 +24,7 @@ source /etc/os-release
 if [ "${ID}" == "gentoo" ]; then
   rcm 9 terminology
   rcm 9 conky -qd
+  rcm 9 gtkrm.sh
 elif [ "${ID}" == "devuan" ]; then
   rcm 9 xfce4-terminal --disable-server
   rcm 9 conky -qd

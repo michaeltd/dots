@@ -6,10 +6,8 @@
 split() {
   # from pure-bash-bible
   # Usage: split "string" "delimiter"
-  IFS=$'\n'
-  read -d "" -ra arr <<< "${1//${2}/$'\n'}"
-  # echo -ne "${arr[@]}\n"
-  echo -ne "${arr[*]}\n"
+  IFS=$'\n' read -d "" -ra arr <<< "${1//${2}/$'\n'}"
+  echo -ne "${arr[*]}\n"   # echo -ne "${arr[@]}\n"
 }
 
 alphabetic_only() {

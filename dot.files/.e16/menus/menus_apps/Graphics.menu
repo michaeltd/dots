@@ -1,4 +1,5 @@
 "Graphics"
+"Blender" "blender" exec "blender"
 "FontForge" "/usr/share/icons/hicolor/48x48/apps/fontforge.png" exec "fontforge"
 "GNU Image Manipulation Program" "/usr/share/icons/hicolor/48x48/apps/gimp.png" exec "gimp-2.10"
 "Ristretto Image Viewer" "/usr/share/icons/hicolor/48x48/apps/ristretto.png" exec "ristretto"
