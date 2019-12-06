@@ -1,6 +1,0 @@
-[Text]
-Normal=006cb2
-Current=#000000
-NormalBG=#FFFFFF
-SelectedBG=#ade3fa
-Font=tahoma
