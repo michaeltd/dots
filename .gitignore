@@ -29,7 +29,6 @@ dot.files/.config/*
 dot.files/.e16/*
 !dot.files/.e16/Init/e16.sh
 !dot.files/.e16/menus
-!dot.files/.e16/themes
 !dot.files/.e16/bindings.cfg
 
 dot.files/.emacs*
