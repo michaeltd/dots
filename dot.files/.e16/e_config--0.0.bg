@@ -1,0 +1,1238 @@
+5 999
+100 NONE
+1000
+5 999
+100 VERTICAL_GRADIENT_LOGO
+560 200 200 200
+565 /usr/share/e16/themes/Ganymede/backgrounds/images/French-Products-for-Ganymede.png
+566 1 1 512 512 0 0
+567 /usr/share/e16/themes/Ganymede/backgrounds/images/logo_small.png
+568 1 512 512 0 0
+1000
+5 999
+100 VERTICAL_GRADIENT_E
+560 200 200 200
+565 /usr/share/e16/themes/Ganymede/backgrounds/images/French-Products-for-Ganymede.png
+566 1 1 512 512 0 0
+567 /usr/share/e16/themes/Ganymede/backgrounds/images/enlightenment.png
+568 1 512 512 0 0
+1000
+5 999
+100 ApplePlatinum_LightBlue_Texture_ApplePlatinum_Logo
+560 128 128 128
+565 /home/paperjam/.e16/themes/ApplePlatinum/e16/artwork/backgrounds/lightblue_texture.png
+566 1 1 0 0 0 0
+567 /home/paperjam/.e16/themes/ApplePlatinum/e16/artwork/backgrounds/ap_splash.png
+568 1 512 512 0 0
+1000
+5 999
+100 ApplePlatinum_BabyBlue_Foil
+560 128 128 128
+565 /home/paperjam/.e16/themes/ApplePlatinum/e16/artwork/backgrounds/babyblue_foil.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 ApplePlatinum_Watter_Blips
+560 128 128 128
+565 /home/paperjam/.e16/themes/ApplePlatinum/e16/artwork/backgrounds/watter_blips.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 ApplePlatinum_LightBlue_Texture
+560 128 128 128
+565 /home/paperjam/.e16/themes/ApplePlatinum/e16/artwork/backgrounds/lightblue_texture.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 ShinyMetal_Crinkled_Wood
+560 100 70 40
+565 /home/paperjam/.e16/themes/ShinyMetal/e16/artwork/backgrounds/crinkled_wood.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 ShinyMetal_Dark_Iron_Wall
+560 100 70 40
+565 /home/paperjam/.e16/themes/ShinyMetal/e16/artwork/backgrounds/dark_iron_wall.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 MuffyBig_Background
+1000
+5 999
+100 Comely_Background
+565 /home/paperjam/.e16/themes/Comely/e16/artwork/Comely2.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 BrushedMetal_Gradient_Dark_Brushed
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/dark_vertical_gradient_brushed.png
+566 1 0 0 0 0 1024
+1000
+5 999
+100 BrushedMetal_Gradient_Light_Brushed
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/light_vertical_gradient_brushed.png
+566 1 0 0 0 0 1024
+1000
+5 999
+100 BrushedMetal_Light_Brushed
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/light_brushed.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 BrushedMetal_Dark_Brushed
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/dark_brushed.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 BrushedMetal_Small_Pebbles
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/turquoise_small_pebbles.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 BrushedMetal_Large_Pebbles
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/turquoise_large_pebbles.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 BrushedMetal_TreeMoon
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/turquoise_treemoon.jpg
+566 0 1 1024 512 0 1024
+1000
+5 999
+100 BrushedMetal_Leather
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/turquoise_leather.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 BrushedMetal_Slate_Tiles
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/turquoise_slate_tiles.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 BrushedMetal_Wringles
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/turquoise_wrinkles.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 BrushedMetal_Garage_Floor
+560 30 90 90
+565 /home/paperjam/.e16/themes/BrushedMetal/e16/artwork/backgrounds/turquoise_garage_floor.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 GRAD_BRUSHED_METAL_BG_VERTICAL_GRADIENT_DARK_BRUSHED
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/dark_vertical_gradient_brushed.png
+566 1 0 0 0 0 1024
+1000
+5 999
+100 GRAD_BRUSHED_METAL_BG_VERTICAL_GRADIENT_LIGHT_BRUSHED
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/light_vertical_gradient_brushed.png
+566 1 0 0 0 0 1024
+1000
+5 999
+100 DEFAULT_BRUSHED_METAL_BG
+560 30 90 90
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_LIGHT_BRUSHED
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/light_brushed.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_DARK_BRUSHED
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/dark_brushed.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_SMALL_PEBBLES
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/small_turquoise_pebbles.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_LARGE_PEBBLES
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/turqouise_bg.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_TREEMOON
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/turquoise_treemoon.jpg
+566 0 1 1024 512 0 1024
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_LEATHER
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/turquoise_leather.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_SLATE_TILES
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/turquoise_tiles.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_WRINGLES
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/turquoise_wrinkles.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 TILED_BRUSHED_METAL_BG_GARAGE_FLOOR
+560 30 90 90
+565 /usr/share/e16/themes/BrushedMetal-Tigert/backgrounds/images/turquoise_garage_floor.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 CD-E_BG1
+560 50 70 100
+565 /home/paperjam/.e16/themes/CD-E/e16/artwork/backgrds/bg_cde.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 Axios_CarbonDesign
+560 177 177 177
+565 /home/paperjam/.e16/themes/Axios/e16/artwork/backgrounds/carbon_simple.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 Brushed_Motif_Background
+560 160 160 170
+565 /home/paperjam/.e16/themes/BrushedMotif/e16/artwork/bg.png
+566 1 1 0 0 0 0
+567 /home/paperjam/.e16/themes/BrushedMotif/e16/artwork/logo.png
+568 1 1024 1024 0 0
+1000
+5 999
+100 BlueSteel_ALL_GOOD_PEOPLE
+560 33 36 51
+565 /home/paperjam/.e16/themes/BlueSteel/e16/artwork/backgrounds/All-Good-People-4.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 BlueSteel_ENIGMAS_OVEN
+560 38 23 16
+565 /home/paperjam/.e16/themes/BlueSteel/e16/artwork/backgrounds/Enigmas-Oven-2.jpg
+566 1 1 0 0 0 0
+1000
+5 999
+100 FreeFall_Background
+560 200 200 200
+565 /home/paperjam/.e16/themes/FreeFall/e16/artwork/background/background1600.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 JavaSteel_BigDuke
+560 128 128 128
+565 /home/paperjam/.e16/themes/JavaSteel/e16/artwork/backgrounds/Netbeans-Duke.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 JavaSteel_MiniDuke
+560 128 128 128
+565 /home/paperjam/.e16/themes/JavaSteel/e16/artwork/backgrounds/lightblue_texture.png
+566 1 1 0 0 0 0
+567 /home/paperjam/.e16/themes/JavaSteel/e16/artwork/backgrounds/duke.png
+568 1 1024 1024 0 0
+1000
+5 999
+100 DEFAULT_WUI_BLUE
+560 200 200 200
+565 /usr/share/e16/themes/winter/backgrounds/images/winter_ui_blue.png
+566 0 0 0 0 1024 1024
+567 /home/paperjam/.e16/themes/SuedE/artwork/backgrounds/logo.png
+568 0 0 0 1024 1024
+1000
+5 999
+100 DEFAULT_WIU_GREEN
+565 /home/paperjam/.e16/themes/Shade/e16/artwork/backgrounds/winter_ui_green.png
+566 0 0 0 0 1024 1024
+567 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/logo.png
+568 0 0 0 1024 1024
+1000
+5 999
+100 Inbred_PixelSky
+565 /home/paperjam/.e16/themes/Inbred/e16/artwork/backgrounds/pixelsky.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 IceBerg_Background
+565 /home/paperjam/.e16/themes/IceBerg/e16/artwork/backgrounds/bg4.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 SuedE_Background
+560 40 40 50
+565 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/bg.png
+566 1 1 512 512 0 0
+567 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/logo.png
+568 1 512 512 0 0
+1000
+5 999
+100 R9X_BrushedMetal_Checkerboard
+560 30 30 30
+565 /home/paperjam/.e16/themes/R-9X/e16/artwork/backgrounds/BrushedMetal_checkerboard.png
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 Solaris_SUN1
+560 33 36 51
+565 /home/paperjam/.e16/themes/Sun/e16/artwork/backgrounds/sun_back.png
+566 1 1 0 0 0 0
+567 /home/paperjam/.e16/themes/Sun/e16/artwork/backgrounds/sun_logo.png
+568 1 512 512 0 0
+1000
+5 999
+100 Solaris_SUN2
+560 33 36 51
+565 /home/paperjam/.e16/themes/Sun/e16/artwork/backgrounds/bg_sun.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 Aqua_AquaImacLogo
+560 255 255 255
+565 /home/paperjam/.e16/themes/Aqua/e16/artwork/backgrounds/aqua.jpg
+566 0 0 0 0 1024 1024
+567 /home/paperjam/.e16/themes/Aqua/e16/artwork/backgrounds/imac.png
+568 1 512 512 0 0
+1000
+5 999
+100 Aqua_BrushedBlue-XLogo
+560 255 255 255
+565 /home/paperjam/.e16/themes/Aqua/e16/artwork/backgrounds/brushed_blue.png
+566 1 1 0 0 0 0
+567 /home/paperjam/.e16/themes/Aqua/e16/artwork/backgrounds/x.png
+568 1 512 512 0 0
+1000
+5 999
+100 Aqua_SwirledArt-XLogo
+560 255 255 255
+565 /home/paperjam/.e16/themes/Aqua/e16/artwork/backgrounds/swirled_art.jpg
+566 1 1 0 0 0 0
+567 /home/paperjam/.e16/themes/Aqua/e16/artwork/backgrounds/x.png
+568 1 512 512 0 0
+1000
+5 999
+100 Aqua_Aqua
+560 255 255 255
+565 /home/paperjam/.e16/themes/Aqua/e16/artwork/backgrounds/aqua.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 DEFAULT_WUI_GREEN
+565 /usr/share/e16/themes/winter/backgrounds/images/winter_ui_green.png
+566 0 0 0 0 1024 1024
+564 1
+564 2
+564 3
+564 4
+564 5
+564 6
+564 7
+564 8
+564 9
+564 10
+564 11
+564 12
+564 13
+564 14
+564 15
+564 16
+564 17
+564 18
+564 19
+564 20
+564 21
+564 22
+564 23
+564 24
+564 25
+564 26
+564 27
+564 28
+564 29
+564 30
+564 31
+1000
+5 999
+100 Winter_UI_Blue
+560 200 200 200
+565 /home/paperjam/.e16/themes/Winter/e16/artwork/backgrounds/winter_ui_blue.png
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 Winter_UI_Green
+560 200 200 200
+565 /home/paperjam/.e16/themes/Winter/e16/artwork/backgrounds/winter_ui_green.png
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 Winter_UI_Grey
+560 200 200 200
+565 /home/paperjam/.e16/themes/Winter/e16/artwork/backgrounds/winter_ui_grey.png
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 SilverLining_Daisy
+560 50 50 50
+565 /home/paperjam/.e16/themes/SilverLining/e16/artwork/backgrounds/daisy.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 SentiEnce_FocalLight
+560 50 50 50
+565 /home/paperjam/.e16/themes/SentiEnce/e16/artwork/backgrounds/thing.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 OrangeJuice_StepWave
+560 30 30 90
+565 /home/paperjam/.e16/themes/OrangeJuice/e16/artwork/backgrounds/step_wave.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 DarkOne_Background_Logo
+560 100 70 40
+565 /home/paperjam/.e16/themes/DarkOne/e16/artwork/backgrounds/bg.png
+566 1 1 0 0 0 0
+567 /home/paperjam/.e16/themes/DarkOne/e16/artwork/backgrounds/name.png
+568 1 512 512 0 0
+1000
+5 999
+100 Cronos_Metamorphosis
+565 /home/paperjam/.e16/themes/Cronos/e16/artwork/backgrounds/Metamorphosis_v1.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 Cronos_Promises
+565 /home/paperjam/.e16/themes/Cronos/e16/artwork/backgrounds/Promises.jpg
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 CakeWoman_Background
+560 100 70 40
+565 /home/paperjam/.e16/themes/CakeWoman/e16/artwork/background/bg.png
+566 1 1 0 0 0 0
+1000
+5 999
+100 Ergonomy_Background
+1000
+5 999
+100 Egradient_Background
+560 99 99 99
+1000
+5 999
+100 BS-E_CORALREEF
+560 255 255 255
+567 /home/paperjam/.e16/themes/BS-E/artwork/startup_logo.png
+568 1 512 1024 0 0
+1000
+5 999
+100 PsuedoMac_Background
+1000
+5 999
+100 OPENSTEP_Background
+560 200 200 200
+1000
+5 999
+100 NewStep
+560 200 200 200
+1000
+5 999
+100 Luddite_Background
+1000
+5 999
+100 Esizer_Background
+1000
+5 999
+100 Cored_SOLID
+560 109 29 49
+1000
+5 999
+100 Parallelogram_Backgroud1
+560 177 177 177
+1000
+5 999
+100 Heat_Black
+1000
+5 999
+100 Razor_Background
+1000
+5 999
+100 Oblivion_Background
+1000
+5 999
+100 Midnight_Background
+1000
+5 999
+100 Circuit_E_Background
+1000
+5 999
+100 EBACKGROUND_ICON_LOGO
+560 100 70 40
+565 /usr/share/e16/pix/bg.png
+566 1 0 0 0 0 0
+567 pix/Elogo.png
+568 1 512 512 0 0
+1000
+5 999
+100 EBACKGROUND_TILED
+560 100 70 40
+565 /usr/share/e16/pix/bg.png
+566 1 0 0 0 0 0
+1000
+5 999
+100 FEHBG_1457878460
+1000
+5 999
+100 FEHBG_678239655
+565 /home/paperjam/Pictures/dPic/r/nature/peak_and_stars.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1760705650
+565 /home/paperjam/Pictures/dPic/r/nature/1491053579506.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1800402666
+565 /home/paperjam/Pictures/dPic/r/art/rwr6nww0xr311.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1031266702
+565 /home/paperjam/Pictures/dPic/r/art/1378870852724.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1756896234
+565 /home/paperjam/Pictures/dPic/r/nature/b5ih8i06pei21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_349002971
+565 /home/paperjam/Pictures/dPic/r/tech/debian-wallpaper.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1518045780
+565 /home/paperjam/Pictures/dPic/r/art/cityscape_2.png.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_550564499
+565 /home/paperjam/Pictures/dPic/r/tech/starwars-1538914486968-516.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2136143761
+565 /home/paperjam/Pictures/dPic/r/nature/red_falls.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1961693176
+565 /home/paperjam/Pictures/dPic/r/cities/times_square.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2004035028
+565 /home/paperjam/Pictures/dPic/r/cities/dubrovnik-1538913870464-5246.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_84357101
+565 /home/paperjam/Pictures/dPic/r/hardware/blueangels-1538912986002-4815.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2017837294
+565 /home/paperjam/Pictures/dPic/r/art/ED_2048x1536_FederalCapitalShip.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_608789970
+565 /home/paperjam/Pictures/dPic/r/art/titanfall-1538916263280-165.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_42607131
+565 /home/paperjam/Pictures/dPic/r/nature/devils_pulpit.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1792232976
+565 /home/paperjam/Pictures/dPic/r/nature/6a8zmdp35hl21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1474094316
+565 /home/paperjam/Pictures/dPic/r/tech/depian_the_universal_oper.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_741842402
+565 /home/paperjam/Pictures/dPic/r/art/future_23.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_43602705
+565 /home/paperjam/Pictures/dPic/r/nature/wallhaven-479766.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_512261831
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538915135008-9074.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_942770783
+565 /home/paperjam/Pictures/dPic/r/cities/dubrovnik-1538913870464-5246.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_860555775
+565 /home/paperjam/Pictures/dPic/r/tech/emacs-cheat-sheet.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_458401361
+565 /home/paperjam/Pictures/dPic/r/art/1397404638141.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1160355939
+565 /home/paperjam/Pictures/dPic/r/hardware/vehicle-1538912784088-7474.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1298157869
+565 /home/paperjam/Pictures/dPic/r/art/thumb-1920-953699.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1305670939
+565 /home/paperjam/Pictures/dPic/r/nature/thomas-tucker-129635.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1635645497
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538914881321-5824.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_920688308
+565 /home/paperjam/Pictures/dPic/r/art/vkcomqhd-1538915620031-6744.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1138136986
+565 /home/paperjam/Pictures/dPic/r/cities/1436546392748-0.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1707753805
+565 /home/paperjam/Pictures/dPic/r/tech/gentoo_purple.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1234870998
+565 /home/paperjam/Pictures/dPic/r/art/cityscape_12.png.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1006686386
+565 /home/paperjam/Pictures/dPic/r/nature/Miracle_in_the_space_by_Matkraken.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_371869141
+565 /home/paperjam/Pictures/dPic/r/nature/planet_haze_light_nebula_68881_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1925655297
+565 /home/paperjam/Pictures/dPic/r/nature/space_universe_nebula_star_light_95356_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1879705242
+565 /home/paperjam/Pictures/dPic/r/hardware/fgt-racing-Ford-GT-wallpaper-sports-race-car-2016.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1298329209
+565 /home/paperjam/Pictures/dPic/r/art/future_23.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1870834843
+565 /home/paperjam/Pictures/dPic/r/nature/rocket_flight_space_104471_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2046729324
+565 /home/paperjam/Pictures/dPic/r/nature/turq_aurora.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_922310216
+565 /home/paperjam/Pictures/dPic/r/nature/uF_1fmedraDwbr5eYyf2rOCEjjIs4cWjNrlo1aG9ars.jpg.webp.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2129089879
+565 /home/paperjam/Pictures/dPic/r/nature/landscape_7.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1372060589
+565 /home/paperjam/Pictures/dPic/r/art/glbgvti1sn521.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_579272404
+565 /home/paperjam/Pictures/dPic/r/nature/into_the_darkness.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_838675612
+565 /home/paperjam/Pictures/dPic/r/tech/gentoo-larry-bg-1920x1080.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_265285651
+565 /home/paperjam/Pictures/dPic/r/art/samurai-jack-mDpHFEa-wallpaper.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_215327952
+565 /home/paperjam/Pictures/dPic/r/art/c55t8LGSbWZ20JGTwq6cBw0hUNdYRd-MIMTwt9_15Bo.jpg.webp.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1261027984
+565 /home/paperjam/Pictures/dPic/r/nature/planet_glowing_stars_space_67789_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_885492757
+565 /home/paperjam/Pictures/dPic/r/art/drawings_diversity_characters_signs_colorful_63651_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_506103609
+565 /home/paperjam/Pictures/dPic/r/tech/parabola_rainbow.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1509356172
+565 /home/paperjam/Pictures/dPic/r/nature/landscape_19.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1419632305
+565 /home/paperjam/Pictures/dPic/r/nature/space_cataclysm_planet_art_explosion_asteroids_comets_fragments_98315_2560x1440.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1582886576
+565 /home/paperjam/Pictures/dPic/r/art/batman-1538913018659-2173.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1874342486
+565 /home/paperjam/Pictures/dPic/r/cities/cityscape_31.png.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1243696452
+565 /home/paperjam/Pictures/dPic/r/art/meaningless_abstract_vector_drawing_95727_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1624777995
+565 /home/paperjam/Pictures/dPic/r/art/velv.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_537984527
+565 /home/paperjam/Pictures/dPic/r/nature/warmth_in_the_forest.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1188796853
+565 /home/paperjam/Pictures/dPic/r/art/titanfall-1538916235022-5950.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_408614269
+565 /home/paperjam/Pictures/dPic/r/nature/Space-Exploration-124.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1864954463
+565 /home/paperjam/Pictures/dPic/r/nature/real_coordinate_space_space_real_space_space_coordinates_97854_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1299238622
+565 /home/paperjam/Pictures/dPic/r/nature/space_planets_stars_shadow_62610_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_593988789
+565 /home/paperjam/Pictures/dPic/r/hardware/CountachLightTunnel-uHerr_Quattro3840x2160.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_737925432
+565 /home/paperjam/Pictures/dPic/r/nature/planet_glowing_space_stars_65694_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1881537994
+565 /home/paperjam/Pictures/dPic/r/nature/pluto.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_653844458
+565 /home/paperjam/Pictures/dPic/r/art/BR_BLADE-RUNNER-Saigon.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1599702471
+565 /home/paperjam/Pictures/dPic/r/nature/thomas-tucker-129635.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_32984592
+565 /home/paperjam/Pictures/dPic/r/nature/landscape_7.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_871402021
+565 /home/paperjam/Pictures/dPic/r/nature/spacescape_13.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_233804205
+565 /home/paperjam/Pictures/dPic/r/nature/planet_universe_galaxy_stars_flash_59622_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1556146284
+565 /home/paperjam/Pictures/dPic/r/nature/northern_lights_night_night_sky_phenomenon_73483_3840x2160.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1462780431
+565 /home/paperjam/Pictures/dPic/r/art/1921.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1931881663
+565 /home/paperjam/Pictures/dPic/r/art/1401938669273.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_890151211
+565 /home/paperjam/Pictures/dPic/r/nature/space_sky_3d_art_97531_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2028174107
+565 /home/paperjam/Pictures/dPic/r/nature/VLQbSjTL50V1w_deqnC3FtOEZY5fTMz0oqxVDvJI3tA.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_721898146
+565 /home/paperjam/Pictures/dPic/r/nature/meteorite_speed_space_debris_smoke_62623_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_990861618
+565 /home/paperjam/Pictures/dPic/r/nature/1p2q8oj5i2p11.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_305150145
+565 /home/paperjam/Pictures/dPic/r/nature/reflection.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_357956243
+565 /home/paperjam/Pictures/dPic/r/tech/unix-1538915247888-3841.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_32498390
+565 /home/paperjam/Pictures/dPic/r/art/Astronaut-2560x1440.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1646244935
+565 /home/paperjam/Pictures/dPic/r/nature/spacescape_1.png.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1186364684
+565 /home/paperjam/Pictures/dPic/r/nature/atlantis-labyrinth-nebula-wallpaper-for-1920x1080-63-265.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_11204325
+565 /home/paperjam/Pictures/dPic/r/art/dark-1538913892134-3581.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_796634802
+565 /home/paperjam/Pictures/dPic/r/tech/min-debian.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1722340836
+565 /home/paperjam/Pictures/dPic/r/nature/northern_lights_night_night_sky_phenomenon_73483_3840x2160.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1779171410
+565 /home/paperjam/Pictures/dPic/r/art/velv.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_134483454
+565 /home/paperjam/Pictures/dPic/r/cities/Aesthetic-29.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2085792888
+565 /home/paperjam/Pictures/dPic/r/nature/dissolution-wallpaper-for-1920x1080-63-723.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_735758380
+565 /home/paperjam/Pictures/dPic/r/nature/uF_1fmedraDwbr5eYyf2rOCEjjIs4cWjNrlo1aG9ars.jpg.webp.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1585476906
+565 /home/paperjam/Pictures/dPic/r/art/colorful-diamond-wallpaper-for-1920x1080-63-674.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1241421449
+565 /home/paperjam/Pictures/dPic/r/tech/starwars-1538914486968-516.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_381089282
+565 /home/paperjam/Pictures/dPic/r/art/samurai-jack-wallpaper-SJhKYkI.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1764278013
+565 /home/paperjam/Pictures/dPic/r/art/cityscape_40.png.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_128158596
+565 /home/paperjam/Pictures/dPic/r/art/cthulu_orfoia6fvsw21.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1289210360
+565 /home/paperjam/Pictures/dPic/r/hardware/er3yq12sl4i21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1096163359
+565 /home/paperjam/Pictures/dPic/r/nature/1507567607403.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2129430215
+565 /home/paperjam/Pictures/dPic/r/tech/gnu-1538914332074-4111.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1030342055
+565 /home/paperjam/Pictures/dPic/r/nature/earth-at-night-seen-from-space-wallpaper-for-1920x1080-63-814.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_646469634
+565 /home/paperjam/Pictures/dPic/r/tech/GNU_Map.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1429197775
+565 /home/paperjam/Pictures/dPic/r/nature/planet_mercury_space_shine_99467_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1345783318
+565 /home/paperjam/Pictures/dPic/r/hardware/mlf1.1995-McLaren-F1-GTR-V6-1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_183571505
+565 /home/paperjam/Pictures/dPic/r/nature/1494303769136.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_423363008
+565 /home/paperjam/Pictures/dPic/r/nature/tVUlmYnaUXCx-MwdywTuGptZvlkBB3bI81O7aLY3RAU.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_667717768
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538914872681-1291.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1067973767
+565 /home/paperjam/Pictures/dPic/r/art/cthulu.png.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1365040351
+565 /home/paperjam/Pictures/dPic/r/tech/debian-wallpaper.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_775710907
+565 /home/paperjam/Pictures/dPic/r/art/beyond-the-aquila-rift.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_940799595
+565 /home/paperjam/Pictures/dPic/r/art/starwars-The-Falcon.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1408726006
+565 /home/paperjam/Pictures/dPic/r/art/meaningless_abstract_vector_drawing_95727_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2138644628
+565 /home/paperjam/Pictures/dPic/r/nature/1490826025734.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1297397509
+565 /home/paperjam/Pictures/dPic/r/hardware/blueangels-1538912986002-4815.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_739947100
+565 /home/paperjam/Pictures/dPic/r/tech/vim.1458541606774.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1431789630
+565 /home/paperjam/Pictures/dPic/r/nature/universe_planet_planet_disaster_space_94435_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1904206262
+565 /home/paperjam/Pictures/dPic/r/tech/gentoo_purple.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_500383739
+565 /home/paperjam/Pictures/dPic/r/art/thhgttg-hh-symbol.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_275875592
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538914561907-6596.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_778853784
+565 /home/paperjam/Pictures/dPic/r/art/thhgttg-hh-symbol.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1094511795
+565 /home/paperjam/Pictures/dPic/r/art/c55t8LGSbWZ20JGTwq6cBw0hUNdYRd-MIMTwt9_15Bo.jpg.webp.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_270866599
+565 /home/paperjam/Pictures/dPic/r/nature/IMG_0029.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_734045851
+565 /home/paperjam/Pictures/dPic/r/art/batman-Joaquin-Phoenix-as-Joker-3840x2160.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_630834642
+565 /home/paperjam/Pictures/dPic/r/nature/space_atlantis_nebula_star_103363_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1968243084
+565 /home/paperjam/Pictures/dPic/r/tech/gnu.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1571249557
+565 /home/paperjam/Pictures/dPic/r/art/ED_2048x1536_FederalCapitalShip.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_263401337
+565 /home/paperjam/Pictures/dPic/r/tech/gnu.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1801403126
+565 /home/paperjam/Pictures/dPic/r/art/ugitkve8o2r21.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1376912829
+565 /home/paperjam/Pictures/dPic/r/nature/1491053579506.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_528235774
+565 /home/paperjam/Pictures/dPic/r/cities/trinity_college.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_263345004
+565 /home/paperjam/Pictures/dPic/r/nature/moon-SF.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1315504806
+565 /home/paperjam/Pictures/dPic/r/nature/14eqln6py8m21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_358886416
+565 /home/paperjam/Pictures/dPic/r/nature/milky-way-wallpaper-for-1920x1080-63-696.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2014541518
+565 /home/paperjam/Pictures/dPic/r/art/mass-1538913974531-2516.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1332571900
+565 /home/paperjam/Pictures/dPic/r/art/ED_2048x1536_HaulerExplorer.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_58960924
+565 /home/paperjam/Pictures/dPic/r/nature/1494303769136.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1391422576
+565 /home/paperjam/Pictures/dPic/r/nature/1491178505801.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_573048261
+565 /home/paperjam/Pictures/dPic/r/art/g7x5m2nm63y11.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1250029361
+565 /home/paperjam/Pictures/dPic/r/hardware/oxnjrkpln4l21.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1339264443
+565 /home/paperjam/Pictures/dPic/r/nature/h2tl735ox3i21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1936341046
+565 /home/paperjam/Pictures/dPic/r/nature/Miracle_in_the_space_by_Matkraken.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1814798091
+565 /home/paperjam/Pictures/dPic/r/nature/thomas-tucker-129635.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_693784333
+565 /home/paperjam/Pictures/dPic/r/nature/d5kb0sityon21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1627948183
+565 /home/paperjam/Pictures/dPic/r/nature/landscape_20.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1286312120
+565 /home/paperjam/Pictures/dPic/r/nature/milky-way-wallpaper-for-1920x1080-63-696.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_677121301
+565 /home/paperjam/Pictures/dPic/r/art/samurai-jack-wallpaper-zM7GnmP.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_786909622
+565 /home/paperjam/Pictures/dPic/r/nature/landscape_18.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2093740682
+565 /home/paperjam/Pictures/dPic/r/nature/8jqs0bvkmbj21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_260169102
+565 /home/paperjam/Pictures/dPic/r/art/lotr_one_ring.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1166458443
+565 /home/paperjam/Pictures/dPic/r/nature/space_planets_stars_shadow_62610_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1672693773
+565 /home/paperjam/Pictures/dPic/r/art/starwars-1482211612923.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2109777180
+565 /home/paperjam/Pictures/dPic/r/art/qjZyr25xYI17Egeh3rZkDk6tIT6CLFxlrmyKLp14Pts.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1774547754
+565 /home/paperjam/Pictures/dPic/r/nature/northern_lights_night_night_sky_phenomenon_73483_3840x2160.jpg
+566 0 0 512 512 1024 1024
+564 0
+1000
