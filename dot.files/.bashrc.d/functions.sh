@@ -59,7 +59,7 @@ printappsinpath() {
 
 listcat() {
   #shellcheck disable=SC2230
-  $(which ls) --color "/usr/portage/${1}"
+  /bin/ls --color "/usr/portage/${1}"
 }
 
 checkapp() {

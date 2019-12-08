@@ -17,18 +17,12 @@ WPUSAGE=("\n \
     ${blue}$(basename "${BASH_SOURCE[0]}")${reset} ${magenta}help${reset} - this message \n \
     ${blue}$(basename "${BASH_SOURCE[0]}")${reset} without options will start rotating images.\n\n")
 
-#shellcheck disable=SC2034
+#shellcheck disable=SC2034,SC2155
 declare -a FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
         FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
-
 declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] )
-
-#shellcheck disable=SC2155
 declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]}").rc" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]}").log"
-
-#shellcheck disable=SC2155
-declare BGSR="" WAIT="2m" LS=$(command -v ls)
-
+declare BGSR="" WAIT="2m" LS="$(command -v ls)"
 declare -a DIRS=( "${HOME}/Pictures" ) WPS=()
 
 # bash version info check
