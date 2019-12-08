@@ -17,21 +17,25 @@ elif [[ -x $(type -P dialog 2> /dev/null) ]]; then # Check for dialog
 fi
 
 display_feedback() {
-    notify-send "${*}" 2> /dev/null && echo -ne "${*}\n" >&2 && return
-    ${DIALOG} "--title" "Vol" "--infobox" "${*}" "${G[@]}" 2> /dev/null && echo -ne "${*}\n" >&2 && return
-    xmessage -nearmouse -timeout "${XMTO}" "${*}" 2> /dev/null && echo -ne "${*}\n" >&2 && return
-    echo -ne "${*}\n" >&2
+    if [[ -x $(type -P notify-send 2> /dev/null) ]]; then # Check for X, Xdialog
+        notify-send "${*}" 2> /dev/null
+    elif [[ -x $(type -P "${DIALOG}" 2> /dev/null) ]]; then # Check for X, Xdialog
+        ${DIALOG} "--title" "Vol" "--infobox" "${*}" "${G[@]}" 2> /dev/null
+    elif [[ -x $(type -P xmessage 2> /dev/null) ]]; then # Check for X, Xdialog
+        xmessage -nearmouse -timeout "${XMTO}" "${*}" 2> /dev/null
+    fi
+    echo "${*}" >&2
 }
 
 usage() {
-    display_feedback "Usage: $(basename "${BASH_SOURCE[0]}") [+]|[-]|[0-100]|report"
+    display_feedback "Usage: $(basename "${BASH_SOURCE[0]}") [+]|[-]|[0-100]|report|halp"
     exit 1
 }
 
 #shellcheck disable=SC2015
 case "${1}" in
     +|-) VOL="$(amixer sset Master "5dB${1}")";;
-    *[0-9]) [[ "${1}" =~ ^[0-9]{1,3}$ ]] && (( $1 >= 0 && $1 <= 100 )) && VOL="$(amixer sset Master "${1}%")" || usage;;
+    *[0-9]) [[ "${1}" =~ ^[0-9]{1,3}$ ]] && (( $1 >= 0 && $1 <= 100 )) && VOL="$(amixer sset Master "${1}%")";;
     report) VOL="$(amixer sget Master)";;
     *) usage ;;
 esac
