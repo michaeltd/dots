@@ -9,5 +9,5 @@
 # *  *  *  *  * user-name  command to be executed
 
 00 08 * * 1-5 cvlc --random file:///mnt/data/Documents/Music/Stanley-Clarke/ file:///mnt/data/Documents/Music/Marcus-Miller/ file:///mnt/data/Documents/Music/Jaco-Pastorius/ file:///mnt/data/Documents/Music/Esperanza-Spalding/ file:///mnt/data/Documents/Music/Mark-King/Level\ Best/
-00 21 * * * nice -n 9 tar -cvzf "/mnt/el/Documents/BKP/LINUX/${USER}/${USER}.$(date +%y%m%d).$(date +%s).tar.gz" --exclude="*/Downloads/*" --one-file-system /home/${USER}/*
-00 22 * * * nice -n 9 ~/sbin/cleanup_bkps.sh --directory /mnt/el/Documents/BKP/LINUX/${USER}
+00 19 * * * nice -n 9 tar -cvzf "/mnt/el/Documents/BKP/LINUX/${USER}/${USER}.$(date +\%y\%m\%d).$(date +\%s).tar.gz" --exclude="*/Downloads/*" --one-file-system /home/${USER}/*
+00 20 * * * nice -n 9 ~/sbin/cleanup_bkps.sh --directory /mnt/el/Documents/BKP/LINUX/${USER}
