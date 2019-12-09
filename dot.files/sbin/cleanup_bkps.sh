@@ -58,8 +58,6 @@ for (( x = 0; x < ${#FILES[@]}; x++ )); do
   for PART in $(split "${BFN}" .); do
     # 6 digits field check (six digit dates eg: 190508)
     if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then
-      # FNS+=( "${BFN}" )
-      # DTS+=( "${PART}" )
       FNS[${x}]="${BFN}"
       DTS[${x}]="${PART}"
     fi
