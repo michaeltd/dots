@@ -6,10 +6,11 @@
 declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
 
 # Full path executables, no aliases
-declare -a NICEC=( "$(type -P nice)" "-n" "19" ) \
-        TARCM=("$(type -P tar)" "--create" "--gzip" ) \
+declare -a \
+        NICEC=( "$(type -P nice)" "-n" "19" ) \
+        TARCM=( "$(type -P tar)" "--create" "--gzip" "--exclude-backups" "--one-file-system" ) \
         GPG2C=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" \
-"tsouchlarakis@gmail.com" "--trust-model" "always" "--output" )
+                  "tsouchlarakis@gmail.com" "--trust-model" "always" "--output" )
 
 #shellcheck disable=SC2034
 declare -a \
@@ -32,7 +33,8 @@ declare -a BKP=( ENC[@] USR[@] SYS[@] ) \
 
 declare -a EXC=( "*/.idea/*" "*/.git/*" "*/.github/*" "*/node_modules/*" \
                 "*/atom/*" "*/code/*" "*/vscodium/*" "*/sublime-text-3/*" \
-                "*/libreoffice/*" "*/scrap/*" "*/.e16/themes/*" )
+                "*/libreoffice/*" "*/scrap/*" "*/.e16/themes/*" "*/Videos/*" \
+                "*/Downloads/*" )
 
 for x in "${EXC[@]}"; do
   EXL+=( "--exclude=${x}" )
