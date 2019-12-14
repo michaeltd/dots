@@ -1,5 +1,5 @@
 NEW: 0.Enlightenment_Pager
-WIN: 0xa0013d
+WIN: 0xa00145
 NAME: 0
 CLASS: Enlightenment_Pager
 AUTO: yes
@@ -7,7 +7,7 @@ BORDER: DEFAULT
 DESKTOP: 0
 RES: 1440 900
 WH: 384 60
-XY: 531 810 0 0
+XY: 509 820 2 0
 LAYER: 2
 STICKY: 1
 SHADE: 0
@@ -38,15 +38,15 @@ OPACITY: 0 0
 SHADOW: 1
 
 NEW: _ST_.Enlightenment_IconBox
-WIN: 0xa000a3
+WIN: 0xa000ec
 NAME: _ST_
 CLASS: Enlightenment_IconBox
 AUTO: yes
 BORDER: DEFAULT
 DESKTOP: 0
 RES: 1440 900
-WH: 20 72
-XY: 1232 798 0 0
+WH: 8 56
+XY: 1412 824 2 0
 LAYER: 2
 STICKY: 1
 SHADE: 0
@@ -102,15 +102,15 @@ OPACITY: 0 0
 SHADOW: 1
 
 NEW: _IB_2.Enlightenment_IconBox
-WIN: 0xa000ac
+WIN: 0xa000f5
 NAME: _IB_2
 CLASS: Enlightenment_IconBox
 AUTO: yes
 BORDER: DEFAULT
 DESKTOP: 0
 RES: 1440 900
-WH: 20 72
-XY: 0 798 0 0
+WH: 8 56
+XY: 0 823 2 0
 LAYER: 2
 STICKY: 1
 SHADE: 0

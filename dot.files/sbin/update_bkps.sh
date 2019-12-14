@@ -32,9 +32,8 @@ declare -a BKP=( ENC[@] USR[@] SYS[@] ) \
         ARCHV=( "enc.tar.gz" "usr.tar.gz" "sys.tar.gz" )
 
 declare -a EXC=( "*/.idea/*" "*/.git/*" "*/.github/*" "*/node_modules/*" \
-                "*/atom/*" "*/code/*" "*/vscodium/*" "*/sublime-text-3/*" \
-                "*/libreoffice/*" "*/scrap/*" "*/.e16/themes/*" "*/Videos/*" \
-                "*/Downloads/*" )
+                 "*/Atom/*" "*/Code/*" "*/VSCodium/*" "*/libreoffice/*" \
+                 "*/scrap/*" "*/.e16/themes/*" "*/Videos/*" "*/Downloads/*" )
 
 for x in "${EXC[@]}"; do
   EXL+=( "--exclude=${x}" )

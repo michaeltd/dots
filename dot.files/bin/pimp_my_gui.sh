@@ -19,12 +19,12 @@ rcm 9 xscreensaver -no-splash
 # Add some wallpaper variety for your desktop
 rcm 9 ~/bin/wallpaper_rotate.sh
 
+rcm 9 gtkrm.bash
+
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-  rcm 9 terminology
   rcm 9 conky -qd
-  rcm 9 gtkrm.sh
 elif [[ "${ID}" == "devuan" ]]; then
   rcm 9 xfce4-terminal --disable-server
   rcm 9 conky -qd

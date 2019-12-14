@@ -31,7 +31,7 @@
 * Some WM's in no particular order.
 
   * [wmaker](dot.files/GNUstep/), [website](https://www.windowmaker.org/)
-    
+
   <p align="center"><a href="https://en.wikipedia.org/wiki/Window_Maker"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
 
   * [e16](dot.files/.e16/), [website](https://www.enlightenment.org/e16)
@@ -66,7 +66,7 @@
      * [emacs-starter-kit](https://github.com/technomancy/emacs-starter-kit)
      * [prelude](https://github.com/bbatsov/prelude)
      * [a reasonable emacs config](https://github.com/purcell/emacs.d)
-     
+
      My setup consists of [Centaur Emacs](https://github.com/seagle0128/.emacs.d) and a [splashscreen](assets/gnu.png).
 
    * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
@@ -90,4 +90,3 @@ See what other fellow bash'ers are up to.
 
 #### [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/html/abs-guide.html) ([PDF](http://www.tldp.org/LDP/abs/abs-guide.pdf))
 The Bash all in one goto place.
-
