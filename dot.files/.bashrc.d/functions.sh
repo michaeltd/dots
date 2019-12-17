@@ -224,8 +224,9 @@ ping_subnet() {
   # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
   for x in {1..254}; do
     for y in {1..254}; do
-      (ping -c 1 -w 2 192.168.${x}.${y} > /dev/null && \
-         echo "UP 192.168.${x}.${y}" &);
+      {
+        ping -c 1 192.168.${x}.${y} &> /dev/null && echo "UP 192.168.${x}.${y}"
+      } &
     done
   done
 }

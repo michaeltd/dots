@@ -2973,8 +2973,8 @@
  <Windows>
   <Window>
    <id>u0</id>
-   <x>450</x>
-   <y>195</y>
+   <x>552</x>
+   <y>336</y>
    <w>638</w>
    <h>417</h>
    <pos_use>TRUE</pos_use>

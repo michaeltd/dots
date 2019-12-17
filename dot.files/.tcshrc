@@ -53,6 +53,5 @@ set     end="%{\033[0m%}" # This is needed at the end... :(
 #set prompt="${green}%n${blue}@%m ${white}%~ ${green}%%${end} "
 #set prompt="[${green}%n${blue}@%m ${white}%~ ]${end} "
 set prompt="${green}%c${blue}λ${white}:${end}"
-
 # Clean up after ourselves...
 unset red green yellow blue magenta cyan yellow white end

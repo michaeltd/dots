@@ -10,6 +10,35 @@
 568 1 512 512 0 0
 1000
 5 999
+100 DEFAULT_WUI_BLUE
+560 200 200 200
+565 /usr/share/e16/themes/winter/backgrounds/images/winter_ui_blue.png
+566 0 0 0 0 1024 1024
+567 /home/paperjam/.e16/themes/SuedE/artwork/backgrounds/logo.png
+568 0 0 0 1024 1024
+1000
+5 999
+100 DEFAULT_WIU_GREEN
+565 /home/paperjam/.e16/themes/Shade/e16/artwork/backgrounds/winter_ui_green.png
+566 0 0 0 0 1024 1024
+567 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/logo.png
+568 0 0 0 1024 1024
+1000
+5 999
+100 R9X_BrushedMetal_Checkerboard
+560 30 30 30
+565 /home/paperjam/.e16/themes/R-9X/e16/artwork/backgrounds/BrushedMetal_checkerboard.png
+566 0 0 0 0 1024 1024
+1000
+5 999
+100 SuedE_Background
+560 40 40 50
+565 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/bg.png
+566 1 1 512 512 0 0
+567 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/logo.png
+568 1 512 512 0 0
+1000
+5 999
 100 Cronos_Metamorphosis
 565 /home/paperjam/.e16/themes/Cronos/e16/artwork/backgrounds/Metamorphosis_v1.jpg
 566 0 0 0 0 1024 1024
@@ -36,21 +65,6 @@
 560 100 70 40
 565 /home/paperjam/.e16/themes/ShinyMetal/e16/artwork/backgrounds/dark_iron_wall.jpg
 566 0 0 0 0 1024 1024
-1000
-5 999
-100 DEFAULT_WUI_BLUE
-560 200 200 200
-565 /usr/share/e16/themes/winter/backgrounds/images/winter_ui_blue.png
-566 0 0 0 0 1024 1024
-567 /home/paperjam/.e16/themes/SuedE/artwork/backgrounds/logo.png
-568 0 0 0 1024 1024
-1000
-5 999
-100 DEFAULT_WIU_GREEN
-565 /home/paperjam/.e16/themes/Shade/e16/artwork/backgrounds/winter_ui_green.png
-566 0 0 0 0 1024 1024
-567 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/logo.png
-568 0 0 0 1024 1024
 1000
 5 999
 100 BlueSteel_ALL_GOOD_PEOPLE
@@ -298,20 +312,6 @@
 5 999
 100 IceBerg_Background
 565 /home/paperjam/.e16/themes/IceBerg/e16/artwork/backgrounds/bg4.jpg
-566 0 0 0 0 1024 1024
-1000
-5 999
-100 SuedE_Background
-560 40 40 50
-565 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/bg.png
-566 1 1 512 512 0 0
-567 /home/paperjam/.e16/themes/SuedE/e16/artwork/backgrounds/logo.png
-568 1 512 512 0 0
-1000
-5 999
-100 R9X_BrushedMetal_Checkerboard
-560 30 30 30
-565 /home/paperjam/.e16/themes/R-9X/e16/artwork/backgrounds/BrushedMetal_checkerboard.png
 566 0 0 0 0 1024 1024
 1000
 5 999
@@ -1418,6 +1418,601 @@
 5 999
 100 FEHBG_2146367560
 565 /home/paperjam/Pictures/dPic/r/art/samurai-jack-wallpaper-24016.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1897629996
+565 /home/paperjam/Pictures/dPic/r/tech/gentoo-larry-bg-1920x1080.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_83059269
+565 /home/paperjam/Pictures/dPic/r/tech/lubuntu.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_821784926
+565 /home/paperjam/Pictures/dPic/r/tech/bsd_linux_circuitry_392580.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1050572246
+565 /home/paperjam/Pictures/dPic/r/nature/into_the_darkness.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1145284208
+565 /home/paperjam/Pictures/dPic/r/tech/GNU.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_808003495
+565 /home/paperjam/Pictures/dPic/r/nature/space_planet_surface_102201_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_645036924
+565 /home/paperjam/Pictures/dPic/r/hardware/larry-chen-ferrari-f40.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1498134188
+565 /home/paperjam/Pictures/dPic/r/art/Deaths-gifts-black.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1606443345
+565 /home/paperjam/Pictures/dPic/r/nature/purple_landscape.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1550643825
+565 /home/paperjam/Pictures/dPic/r/cities/1433294860574-0.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1295558009
+565 /home/paperjam/Pictures/dPic/r/tech/Minimalistic_texts_ships_pirates_the_pirate_bay_weapons_piracy_captain_swedish_boats_bay_weapon_of_mass_distribution_2560x1600.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1643820545
+565 /home/paperjam/Pictures/dPic/r/nature/planet_beyond_clouds.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1247504591
+565 /home/paperjam/Pictures/dPic/r/tech/parabola_rainbow.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_669734033
+565 /home/paperjam/Pictures/dPic/r/art/A-futuristic-cityscape-by-Imperial-Boy.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_601987598
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538914503167-8335.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1107568561
+565 /home/paperjam/Pictures/dPic/r/art/cthulu_601_4_twitter.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1169401771
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538914881321-5824.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1064413254
+565 /home/paperjam/Pictures/dPic/r/art/ccrejsbmuaj21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1223724218
+565 /home/paperjam/Pictures/dPic/r/nature/landscape_50.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1287972408
+565 /home/paperjam/Pictures/dPic/r/nature/ssc2019-14c.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1889917811
+565 /home/paperjam/Pictures/dPic/r/art/velv.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_756273183
+565 /home/paperjam/Pictures/dPic/r/tech/23eprqb45nd21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1777665240
+565 /home/paperjam/Pictures/dPic/r/art/lotr_middle_earth.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2143834769
+565 /home/paperjam/Pictures/dPic/r/tech/gnu-1538914549798-5080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_328915796
+565 /home/paperjam/Pictures/dPic/r/cities/Aesthetic-29.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_926795421
+565 /home/paperjam/Pictures/dPic/r/nature/1489820907089.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1688729510
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538915155386-6099.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_859246589
+565 /home/paperjam/Pictures/dPic/r/art/wired-earth.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1498127897
+565 /home/paperjam/Pictures/dPic/r/nature/sci_fi_science_astronaut_suit_1920x1200.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_191516174
+565 /home/paperjam/Pictures/dPic/r/nature/turq_aurora.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_606429047
+565 /home/paperjam/Pictures/dPic/r/tech/gnunoise-1.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1195543016
+565 /home/paperjam/Pictures/dPic/r/tech/gnu.bar-n-lounge.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1347037423
+565 /home/paperjam/Pictures/dPic/r/art/samurai-jack-wallpaper-367430-2560x1600-720p.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_298823125
+565 /home/paperjam/Pictures/dPic/r/hardware/blueangels-1538912986002-4815.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1117840356
+565 /home/paperjam/Pictures/dPic/r/cities/architecture-1538913561686-4997.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1328769700
+565 /home/paperjam/Pictures/dPic/r/nature/earth-space.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_20108377
+565 /home/paperjam/Pictures/dPic/r/hardware/1991-Ferrari-F40-by-Larry-Chen-3840x2160.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1127178051
+565 /home/paperjam/Pictures/dPic/r/cities/1433294860574-0.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_677707827
+565 /home/paperjam/Pictures/dPic/r/nature/earth_orbit_shuttle_height_flight_58489_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1690988991
+565 /home/paperjam/Pictures/dPic/r/tech/debian.TheSwirlofDebian_1600x1200.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2111911242
+565 /home/paperjam/Pictures/dPic/r/nature/d5kb0sityon21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_366778261
+565 /home/paperjam/Pictures/dPic/r/nature/j9saafdfbko11.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1722834406
+565 /home/paperjam/Pictures/dPic/r/art/ED_stars-1538915373755-8221.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2078758217
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538914818679-2649.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_692994968
+565 /home/paperjam/Pictures/dPic/r/art/thumb-1920-953699.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_351105576
+565 /home/paperjam/Pictures/dPic/r/art/1378870852724.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_319158026
+565 /home/paperjam/Pictures/dPic/r/tech/Fedora-4K-3840x2160.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_222884895
+565 /home/paperjam/Pictures/dPic/r/art/ugitkve8o2r21.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1365644239
+565 /home/paperjam/Pictures/dPic/r/art/madmaxfuryroad-1538912489554-9087.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1435733971
+565 /home/paperjam/Pictures/dPic/r/cities/the-louvre-wallpaper-for-1920x1080-63-866.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1871110764
+565 /home/paperjam/Pictures/dPic/r/cities/citylounge.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1680895837
+565 /home/paperjam/Pictures/dPic/r/tech/gnu-linux-for-the-masses.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_803637104
+565 /home/paperjam/Pictures/dPic/r/nature/planet_glowing_space_stars_65694_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_60071502
+565 /home/paperjam/Pictures/dPic/r/cities/city_in_the_valley.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1820516326
+565 /home/paperjam/Pictures/dPic/r/art/starwars.spacescape_9.png.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1046184316
+565 /home/paperjam/Pictures/dPic/r/art/59rrguzexwv21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_933779238
+565 /home/paperjam/Pictures/dPic/r/nature/space_planets_stars_shadow_62610_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1952492148
+565 /home/paperjam/Pictures/dPic/r/tech/Fedora-4K-3840x2160.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1406753197
+565 /home/paperjam/Pictures/dPic/r/nature/zcgv2ki8yxf21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_961573101
+565 /home/paperjam/Pictures/dPic/r/nature/space_sky_3d_art_97531_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_658843279
+565 /home/paperjam/Pictures/dPic/r/tech/sparky_linux.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_735832047
+565 /home/paperjam/Pictures/dPic/r/art/lotr_balrog.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1005432212
+565 /home/paperjam/Pictures/dPic/r/nature/85w03r3idfi21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_629068431
+565 /home/paperjam/Pictures/dPic/r/nature/Miracle_in_the_space_by_Matkraken.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1171604557
+565 /home/paperjam/Pictures/dPic/r/nature/planet_ring_star_space_68746_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1451922339
+565 /home/paperjam/Pictures/dPic/r/tech/debian_vert.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1849924692
+565 /home/paperjam/Pictures/dPic/r/art/lotr_balrog.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1404946938
+565 /home/paperjam/Pictures/dPic/r/cities/XdAI7_IFrUMVQoH68Z8eeLYOpkyMYE5rcFNiCoveY2A.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_278336141
+565 /home/paperjam/Pictures/dPic/r/art/qjZyr25xYI17Egeh3rZkDk6tIT6CLFxlrmyKLp14Pts.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_96095595
+565 /home/paperjam/Pictures/dPic/r/nature/1493288510713.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_450919995
+565 /home/paperjam/Pictures/dPic/r/art/ED_2048x1536_HaulerExplorer.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1932972398
+565 /home/paperjam/Pictures/dPic/r/cities/cityscape_17.png.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1066054342
+565 /home/paperjam/Pictures/dPic/r/nature/waterfall-lenovo-wallpaper-wallpapers.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1297737636
+565 /home/paperjam/Pictures/dPic/r/nature/galaxy_nebula_blurring_stars_65152_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_387932891
+565 /home/paperjam/Pictures/dPic/r/art/1379186114972.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1236624249
+565 /home/paperjam/Pictures/dPic/r/nature/1493288510713.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_689655747
+565 /home/paperjam/Pictures/dPic/r/tech/untitled1.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1522681914
+565 /home/paperjam/Pictures/dPic/r/art/skulls-credit-to-uhatchart-1920×1200.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_571576125
+565 /home/paperjam/Pictures/dPic/r/art/ED_2048x1536_StarportEntrance.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1498206003
+565 /home/paperjam/Pictures/dPic/r/tech/gnunoise-1.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1338167784
+565 /home/paperjam/Pictures/dPic/r/art/psychedelic-skull-wallpaper-for-1920x1080-63-981.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1708698907
+565 /home/paperjam/Pictures/dPic/r/nature/1507567607403.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1146844422
+565 /home/paperjam/Pictures/dPic/r/nature/landscape_25.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_988545600
+565 /home/paperjam/Pictures/dPic/r/nature/h2tl735ox3i21.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_717159074
+565 /home/paperjam/Pictures/dPic/r/hardware/Ferrari-F40-AMBER-Horse.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1804472181
+565 /home/paperjam/Pictures/dPic/r/tech/gentoo_purple.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1182086744
+565 /home/paperjam/Pictures/dPic/r/tech/vim.1458541606774.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_936550370
+565 /home/paperjam/Pictures/dPic/r/tech/rms.St.iGNUcius.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1506348461
+565 /home/paperjam/Pictures/dPic/r/art/warhammer-1538915667743-7105.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_322731649
+565 /home/paperjam/Pictures/dPic/r/nature/planet_rays_light_universe_nebula_65147_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1043616590
+565 /home/paperjam/Pictures/dPic/r/art/g7x5m2nm63y11.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1745860936
+565 /home/paperjam/Pictures/dPic/r/nature/andromeda-galaxy-tilt-shift-wallpaper-for-1920x1080-63-834.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1670036774
+565 /home/paperjam/Pictures/dPic/r/art/Astronaut-2560x1440.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_987125615
+565 /home/paperjam/Pictures/dPic/r/nature/Space-Exploration-75.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2046712857
+565 /home/paperjam/Pictures/dPic/r/art/batman-Joker-2560x1440.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_50652055
+565 /home/paperjam/Pictures/dPic/r/nature/space_flight_sky_stars_82970_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1846259768
+565 /home/paperjam/Pictures/dPic/r/nature/1491179395256.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_578137766
+565 /home/paperjam/Pictures/dPic/r/art/cthulu_601_4_twitter.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_4903676
+565 /home/paperjam/Pictures/dPic/r/art/BR_BLADE-RUNNER-Saigon.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1008810425
+565 /home/paperjam/Pictures/dPic/r/art/Dragon-1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1446725440
+565 /home/paperjam/Pictures/dPic/r/art/starwars-LmPhDog.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1082410552
+565 /home/paperjam/Pictures/dPic/r/tech/tux-1538914790356-3532.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_668207367
+565 /home/paperjam/Pictures/dPic/r/art/800-t-800-csm-101-t-800-terminator-the-terminator-terminator.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1989541870
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538914366856-566.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_763946441
+565 /home/paperjam/Pictures/dPic/r/nature/meteorite_speed_space_debris_smoke_62623_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_33215290
+565 /home/paperjam/Pictures/dPic/r/nature/peak_and_stars.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_766961705
+565 /home/paperjam/Pictures/dPic/r/tech/gentoo.842722-gentoo.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_215962643
+565 /home/paperjam/Pictures/dPic/r/nature/space_sky_3d_art_97531_1920x1080.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_485950455
+565 /home/paperjam/Pictures/dPic/r/art/futurama-dSGwd6T.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_814216680
+565 /home/paperjam/Pictures/dPic/r/art/Slums-under-bridge-1920x1200.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2028887933
+565 /home/paperjam/Pictures/dPic/r/art/velv.png
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_2049295396
+565 /home/paperjam/Pictures/dPic/r/nature/Space-Exploration-141.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_978349652
+565 /home/paperjam/Pictures/dPic/r/cities/city_in_the_valley.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1287766016
+565 /home/paperjam/Pictures/dPic/r/tech/linux-1538914916984-521.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_216185325
+565 /home/paperjam/Pictures/dPic/r/tech/debian_drip.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_888034230
+565 /home/paperjam/Pictures/dPic/r/art/a-bar-under-the-sea.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_68636976
+565 /home/paperjam/Pictures/dPic/r/nature/landscape_24.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1671164278
+565 /home/paperjam/Pictures/dPic/r/nature/Miracle_in_the_space_by_Matkraken.jpg
+566 0 0 512 512 1024 1024
+1000
+5 999
+100 FEHBG_1120034060
+565 /home/paperjam/Pictures/dPic/r/hardware/1991-Ferrari-F40-by-Larry-Chen-3840x2160.png
 566 0 0 512 512 1024 1024
 564 0
 1000
