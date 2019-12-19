@@ -19,7 +19,7 @@ rcm 9 xscreensaver -no-splash
 # Add some wallpaper variety for your desktop
 rcm 9 ~/bin/wallpaper_rotate.sh
 
-rcm 9 gtkrm.bash
+rcm 9 gtkdialog-utils.bash
 
 # Per distro setup.
 source /etc/os-release

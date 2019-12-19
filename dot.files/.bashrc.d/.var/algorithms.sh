@@ -3,6 +3,32 @@
 # algorithms in bash
 #shellcheck shell=bash
 
+# Iterative
+fibonacciIterative() {
+  fib=1
+  j=1
+  for (( c = 1; c < $1; c++ )); do
+    (( k = fib + j, fib = j, j = k ))
+  done
+  echo "${fib}"
+}
+
+# Recursive
+fibonacciRecursive() {
+  if [[ "${1}" -le "0" ]]; then
+    echo 0
+    return 0
+  fi
+  if [[ "${1}" -le "2" ]]; then
+    echo "1"
+  else
+    a="$(fibonacciRecursive "$(( $1 - 1 ))")"
+    b="$(fibonacciRecursive "$(( $1 - 2 ))")"
+    echo "$(( a + b ))"
+  fi
+}
+
+
 factorial() {
   # https://rosettacode.org/wiki/Factorial
   if [[ "${1}" -le "1" ]]; then
