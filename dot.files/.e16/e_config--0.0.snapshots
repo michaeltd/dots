@@ -1,5 +1,5 @@
 NEW: 0.Enlightenment_Pager
-WIN: 0xa000de
+WIN: 0xa0015f
 NAME: 0
 CLASS: Enlightenment_Pager
 AUTO: yes
@@ -7,7 +7,7 @@ BORDER: DEFAULT
 DESKTOP: 0
 RES: 1440 900
 WH: 384 60
-XY: 512 816 2 0
+XY: 512 816 0 0
 LAYER: 2
 STICKY: 1
 SHADE: 0
@@ -38,7 +38,7 @@ OPACITY: 0 0
 SHADOW: 1
 
 NEW: _ST_.Enlightenment_IconBox
-WIN: 0xa0006d
+WIN: 0xa00100
 NAME: _ST_
 CLASS: Enlightenment_IconBox
 AUTO: yes
@@ -46,7 +46,7 @@ BORDER: DEFAULT
 DESKTOP: 0
 RES: 1440 900
 WH: 10 60
-XY: 1420 816 2 0
+XY: 1420 816 0 0
 LAYER: 2
 STICKY: 1
 SHADE: 0
@@ -102,7 +102,7 @@ OPACITY: 0 0
 SHADOW: 1
 
 NEW: _IB_2.Enlightenment_IconBox
-WIN: 0xa00076
+WIN: 0xa00109
 NAME: _IB_2
 CLASS: Enlightenment_IconBox
 AUTO: yes
@@ -110,7 +110,7 @@ BORDER: DEFAULT
 DESKTOP: 0
 RES: 1440 900
 WH: 10 60
-XY: 0 816 2 0
+XY: 0 816 0 0
 LAYER: 2
 STICKY: 1
 SHADE: 0
@@ -147,7 +147,6 @@ OPACITY: 0 0
 SHADOW: 1
 
 NEW: gentoo.Gentoo:main
-WIN: 0x1000003
 NAME: gentoo
 CLASS: Gentoo
 ROLE: main
@@ -155,7 +154,7 @@ RES: 1440 900
 XY: 744 383 2 0
 
 NEW: gtkdialog.Gtkdialog
-WIN: 0x1800003
+WIN: 0x1400003
 NAME: gtkdialog
 CLASS: Gtkdialog
 STICKY: 1
