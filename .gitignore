@@ -32,7 +32,6 @@ dot.files/.e16/*
 !dot.files/.e16/Start/*
 !dot.files/.e16/menus/*
 !dot.files/.e16/bindings.cfg
-!dot.files/.e16/e_config--0.0.*
 
 dot.files/.emacs*
 dot.files/.gnupg/*
