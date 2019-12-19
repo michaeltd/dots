@@ -8,5 +8,5 @@
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
 
-00 08 * * 1-5 cvlc --random file:///mnt/data/Documents/Music/Stanley-Clarke/ file:///mnt/data/Documents/Music/Marcus-Miller/ file:///mnt/data/Documents/Music/Jaco-Pastorius/ file:///mnt/data/Documents/Music/Esperanza-Spalding/ file:///mnt/data/Documents/Music/Mark-King/Level\ Best/
-00 19 * * * mkdir -p "/mnt/el/Documents/BKP/LINUX/${USER}" && nice -n 9 tar -cz --exclude-from="${HOME}/.exclude" --exclude-backups --one-file-system /home/${USER}/. |gpg2 --batch --yes --quiet --recipient "tsouchlarakis@gmail.com" --trust-model always --output "/mnt/el/Documents/BKP/LINUX/${USER}/${USER}.tar.gz.pgp" --encrypt
+00 08 * * 1-5 ~/bin/cronjobs.bash -a
+00 19 * * * ~/bin/cronjobs.bash -b
