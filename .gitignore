@@ -33,7 +33,10 @@ dot.files/.e16/*
 !dot.files/.e16/menus/*
 !dot.files/.e16/bindings.cfg
 
-dot.files/.emacs*
+dot.files/.emacs.d/*
+!dot.files/.emacs.d/init.el
+!dot.files/.emacs.d/sanemacs.el
+
 dot.files/.gnupg/*
 dot.files/.ngrok2/*
 dot.files/.ssh/*
