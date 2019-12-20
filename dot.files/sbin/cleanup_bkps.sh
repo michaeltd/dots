@@ -20,9 +20,9 @@ BKPR="1"
 # source /home/paperjam/.bashrc.d/.stl/time.sh # for datedd()
 # source /home/paperjam/.bashrc.d/.stl/string.sh # for split()
 # source /home/paperjam/.bashrc.d/.stl/math.sh # for max()
-declare -a srcs=( "/home/paperjam/.bashrc.d/.stl/time.sh" \
-                    "/home/paperjam/.bashrc.d/.stl/string.sh" \
-                    "/home/paperjam/.bashrc.d/.stl/math.sh" )
+declare -a srcs=( "/home/paperjam/.bashrc.d/.stl/time.bash" \
+                    "/home/paperjam/.bashrc.d/.stl/string.bash" \
+                    "/home/paperjam/.bashrc.d/.stl/math.bash" )
 
 while [[ -n "${1}" ]]; do
   case "${1}" in
@@ -68,10 +68,10 @@ for (( x = 0; x < ${#FILES[@]}; x++ )); do
  for (( y = 0; y < ${#FNS[@]}; y++ )); do
    if (( $(datedd "$(max "${DTS[@]}")" "${DTS[${y}]}") >= BKPK )); then
      #shellcheck disable=SC2154
-     echo -ne "${bold}${blue}will remove:${reset} ${red}${FNS[${y}]}${reset}, created: ${underline}${green}$(date -d "${DTS[${y}]}" +%Y/%m/%d)${reset}${end_underline}.\n"
-     echo -ne "${bold}rm -v ${red}${FNS[${y}]}${reset}${reset}: "
+     # echo -ne "${bold}${blue}will remove:${reset} ${red}${FNS[${y}]}${reset}, created: ${underline}${green}$(date -d "${DTS[${y}]}" +%Y/%m/%d)${reset}${end_underline}.\n"
+     # echo -ne "${bold}rm -v ${red}${FNS[${y}]}${reset}${reset}: "
      if (( BKPR == 0 )); then
-       echo
+       echo "BKPR is ${BKPR} so \'rm -v ${BKPD}/${FNS[${y}]}\' will not run"
      else
        rm -v "${BKPD}/${FNS[${y}]}"
      fi

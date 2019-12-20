@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 #
 # ~/bin/mxcl
 # e[M]a[X] [C][L]ient
 
-if [ -n "${DISPLAY}" ]; then
-    emacsclient -c "${@}" &
+if [[ -n "${DISPLAY}" ]]; then
+    emacsclient --alternate-editor="emacs" --create-frame "${@}" &
 else
-    emacsclient -t "${@}" &
+    emacsclient --alternate-editor="emacs" --tty "${@}" &
 fi
