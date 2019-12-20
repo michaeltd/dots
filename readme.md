@@ -64,10 +64,11 @@
    * If emacs is your "thing", check one of ...
 
      * [emacs-starter-kit](https://github.com/technomancy/emacs-starter-kit)
-     * [prelude](https://github.com/bbatsov/prelude)
      * [a reasonable emacs config](https://github.com/purcell/emacs.d)
+     * [prelude](https://github.com/bbatsov/prelude)
+     * [Centaur Emacs](https://github.com/seagle0128/.emacs.d)
 
-     My setup consists of [Centaur Emacs](https://github.com/seagle0128/.emacs.d) and a [splashscreen](assets/gnu.png).
+          My setup consists of [sanemacs](https://sanemacs.com/) and a [splashscreen](assets/gnu.png).
 
    * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
