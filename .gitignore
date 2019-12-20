@@ -37,6 +37,9 @@ dot.files/.emacs*
 dot.files/emacs/*
 !dot.files/emacs/init.el
 !dot.files/emacs/sanemacs.el
+!dot.files/emacs/personal/gnu.png
+!dot.files/emacs/personal/orig-gnu.png
+!dot.files/emacs/personal/orig-gnu.xcf
 
 dot.files/.gnupg/*
 dot.files/.ngrok2/*
