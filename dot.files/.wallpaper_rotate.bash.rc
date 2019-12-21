@@ -1,0 +1,6 @@
+WAIT=4m
+DIRS=( ${HOME}/Pictures/dPic/r/art \
+	${HOME}/Pictures/dPic/r/cities \
+	${HOME}/Pictures/dPic/r/hardware \
+	${HOME}/Pictures/dPic/r/nature \
+	${HOME}/Pictures/dPic/r/tech )

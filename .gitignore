@@ -62,6 +62,7 @@ dot.files/bin/*
 !dot.files/bin/lol.sh
 !dot.files/bin/mxcl
 !dot.files/bin/pimp_my_gui.sh
+!dot.files/bin/pimp_my_gui.bash
 !dot.files/bin/pukeskull
 !dot.files/bin/runcmd.sh
 !dot.files/bin/screenshot.sh
@@ -70,6 +71,7 @@ dot.files/bin/*
 !dot.files/bin/thuglife.sh
 !dot.files/bin/unix.sh
 !dot.files/bin/wallpaper_rotate.sh
+!dot.files/bin/wallpaper_rotate.bash
 
 dot.files/sbin/.old/*
 

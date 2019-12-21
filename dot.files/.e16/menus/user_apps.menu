@@ -1,25 +1,21 @@
 "User Application List"
-"TkRootMenu" NULL exec "env bash -c ~/bin/tkrm.sh"
+"gtkdilog-utils" NULL exec gtkdialog-utils.bash
 "Volume Controls" "/usr/share/pixmaps/emixer.png" exec "pavucontrol --tab 3"
 "Terminals"
 "Terminology" /usr/share/icons/terminology.png exec "terminology"
-"Xfce Terminal" "utilities-terminal" exec "xfce4-terminal"
 "Net"
 "Firefox" "/opt/firefox/browser/chrome/icons/default/default16.png" exec "firefox"
 "Seamonkey" "/opt/seamonkey/chrome/icons/default/default48.png" exec "seamonkey"
-"Mail" "/opt/seamonkey/chrome/icons/default/messengerWindow48.png" exec "seamonkey -mail"
 "HexChat" "/usr/share/icons/hicolor/48x48/apps/hexchat.png" exec "hexchat --existing"
-"Zoom" "" exec "/opt/zoom/zoom.sh"
 "Editors"
-"Atom" /opt/atom/atom.png exec "atom"
-"VSCode" /opt/vscode/resources/app/resources/linux/code.png exec "code"
-"GNU Emacs" "/usr/share/pixmaps/emacs.png" exec "~/bin/mxcl"
+"GNU Emacs" "/usr/share/pixmaps/emacs.png" exec "emacsclient -a emacs -c"
 "Vim" "/usr/share/icons/hicolor/48x48/apps/gvim.png" exec "xterm -e vim"
 "NetBeans IDE 8.2" "/opt/netbeans-8.2/nb/netbeans.png" exec "/bin/sh /opt/netbeans-8.2/bin/netbeans"
-"Eclipse" /home/paperjam/opt/photon/icon.xpm exec "eclipse"
+"Eclipse" /home/paperjam/opt/photon/icon.xpm exec eclipse
 "File Managers"
-"Thunar File Manager" "/usr/share/icons/hicolor/48x48/apps/Thunar.png" exec "thunar"
-"Double Commander" /home/paperjam/opt/doublecmd/doublecmd.png exec /home/paperjam/bin/doublecmd
+"Thunar File Manager" "/usr/share/icons/hicolor/48x48/apps/Thunar.png" exec thunar
+"Double Commander" /opt/doublecmd/doublecmd.png exec doublecmd
+"Gentoo" /usr/share/pixmaps/gentoo.png exec gentoo
 "Mediums"
 "The GIMP" /home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/gimp.Gimp.xpm exec "gimp"
 "Audacious" /usr/share/icons/hicolor/48x48/apps/audacious.png exec "audacious"

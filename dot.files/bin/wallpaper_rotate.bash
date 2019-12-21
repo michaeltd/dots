@@ -20,10 +20,10 @@ WPUSAGE=("\n \
 #shellcheck disable=SC2034,SC2155
 declare -a FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
         FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
-declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] )
-declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]}").rc" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]}").log"
-declare BGSR="" WAIT="2m" LS="$(command -v ls)"
-declare -a DIRS=( "${HOME}/Pictures" ) WPS=()
+declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
+	DIRS=( "${HOME}/Pictures" ) WPS=()
+declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]}").rc" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]}").log" \
+	BGSR="" WAIT="2m" LS="$(command -v ls)"
 
 # bash version info check
 if (( "${BASH_VERSINFO[0]}" < 4 )); then

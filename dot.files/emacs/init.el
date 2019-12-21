@@ -14,7 +14,8 @@
 ;; Or if you use use-package
 (use-package dashboard
   :ensure t
-  :config
+  :config 
+  
   (dashboard-setup-startup-hook))
 
 ;; emacs --daemon
@@ -38,8 +39,7 @@
 
 ;;To customize which widgets are displayed, you can use the following snippet
 
-(setq dashboard-items '((recents  . 5)
-                        (bookmarks . 5)))
+(setq dashboard-items '((recents  . 20)))
 
 ;;To add icons to the widget headings and their items:
 
@@ -55,24 +55,42 @@
 
 (setq dashboard-set-navigator t)
 
-;; To customize the buttons of the navigator like this:
-;; 
+;;To customize the buttons of the navigator like this:
+
 ;; Format: "(icon title help action face prefix suffix)"
 (setq dashboard-navigator-buttons
       `(;; line1
         ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
-         "Homepage"
-         "Browse homepage"
-         (lambda (&rest _) (browse-url "homepage")))
+         "webpage"
+         "Browse WebPage"
+         (lambda (&rest _) (browse-url "https://michaeltd.netlify.com/")))
+	 (,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
+         "twitter"
+         "Browse twitter"
+         (lambda (&rest _) (browse-url "https://twitter.com/tsouchlarakismd/")))
+	 (,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0)
+          "LinkedIN"
+          "Browse LinkedIN"
+          (lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd/")))
         ("★" "Star" "Show stars" (lambda (&rest _) (show-stars)) warning)
         ("?" "" "?/h" #'show-help nil "<" ">"))
          ;; line 2
         ((,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0)
-          "Linkedin"
-          ""
-          (lambda (&rest _) (browse-url "homepage")))
+          "LinkedIN"
+          "Goto LinkedIN"
+          (lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd/")))
          ("⚑" nil "Show flags" (lambda (&rest _) (message "flag")) error))))
 
-;; To show info about the packages loaded and the init time:
+;;;; To show info about the packages loaded and the init time:
 
 (setq dashboard-set-init-info t)
+
+;; end dashboard
+
+;; themes
+
+(setq custom-safe-themes t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'dracula t)
+;;(add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+;;(add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))

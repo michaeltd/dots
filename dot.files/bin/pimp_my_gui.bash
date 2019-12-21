@@ -8,7 +8,7 @@
 [[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
 
 # Run emacs
-rcm 0 emacs --daemon
+# rcm 0 emacs --daemon
 
 # Xfce4 themes
 rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
@@ -17,7 +17,7 @@ rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 rcm 9 xscreensaver -no-splash
 
 # Add some wallpaper variety for your desktop
-rcm 9 ~/bin/wallpaper_rotate.sh
+rcm 9 ~/bin/wallpaper_rotate.bash
 
 rcm 9 gtkdialog-utils.bash
 
