@@ -5,10 +5,12 @@
 
 declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
 
+declare EXC="/home/${UTB}/.bkp.exclude"
+
 # Full path executables, no aliases
 declare -a \
         NICEC=( "$(type -P nice)" "-n" "19" ) \
-        TARCM=( "$(type -P tar)" "--create" "--gzip" "--exclude-backups" "--one-file-system" ) \
+        TARCM=( "$(type -P tar)" "--create" "--gzip" "--exclude-from=${EXC}" "--exclude-backups" "--one-file-system" ) \
         GPG2C=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" \
                   "tsouchlarakis@gmail.com" "--trust-model" "always" "--output" )
 
@@ -31,14 +33,6 @@ declare -a \
 declare -a BKP=( ENC[@] USR[@] SYS[@] ) \
         ARCHV=( "enc.tar.gz" "usr.tar.gz" "sys.tar.gz" )
 
-declare -a EXC=( "*/.idea/*" "*/.git/*" "*/.github/*" "*/node_modules/*" \
-                 "*/Atom/*" "*/Code/*" "*/VSCodium/*" "*/libreoffice/*" \
-                 "*/scrap/*" "*/.e16/themes/*" "*/Videos/*" "*/Downloads/*" )
-
-for x in "${EXC[@]}"; do
-  EXL+=( "--exclude=${x}" )
-done
-
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
@@ -48,11 +42,11 @@ if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
     if [[ ${ARCHV[$i]} =~ enc ]]; then
       ARCFL="${ELDIR}/${DT}.${EP}.${HOSTNAME}.${ARCHV[$i]}"
       #shellcheck disable=SC2086
-      time "${NICEC[@]}" "${TARCM[@]}" "--file" "${ARCFL}" "${EXL[@]}" ${!BKP[$i]}
+      time "${NICEC[@]}" "${TARCM[@]}" "--file" "${ARCFL}" ${!BKP[$i]}
     else
       ENCFL="${ELDIR}/${DT}.${EP}.${HOSTNAME}.${ARCHV[$i]}.pgp"
       #shellcheck disable=SC2086
-      time "${NICEC[@]}" "${TARCM[@]}" "${EXL[@]}" ${!BKP[$i]} | "${GPG2C[@]}" "${ENCFL}" "--encrypt"
+      time "${NICEC[@]}" "${TARCM[@]}" ${!BKP[$i]} | "${GPG2C[@]}" "${ENCFL}" "--encrypt"
     fi
   done
 else

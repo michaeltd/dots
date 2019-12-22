@@ -42,23 +42,23 @@
 Menu DefaultRootMenu
 {
 	"Root Menu"         f.title
-	"New Window"		f.exec "xterm &"
+	"New Window"		f.exec "terminology &"
 	"Applications" 		f.menu "ApplicationsMenu"
 	"Shuffle Up"		f.circle_up
 	"Shuffle Down"		f.circle_down
-	"Refresh"		    f.refresh
+	"Refresh"		f.refresh
 	"Pack Icons"		f.pack_icons
 !	"Toggle Behavior..."	f.set_behavior
-	 no-label		        f.separator
+	 no-label		f.separator
 	"Restart..."		f.restart
-	"Quit..."		    f.quit_mwm
+	"Quit..."		f.quit_mwm
 
 }
 
 Menu RootMenu_1.1
 {
 	"Root Menu"		f.title
-	"New Window"		f.exec "xterm &"
+	"New Window"		f.exec "terminology &"
 	"Shuffle Up"		f.circle_up
 	"Shuffle Down"		f.circle_down
 	"Refresh"		f.refresh
@@ -75,8 +75,8 @@ Menu ApplicationsMenu
 	"Firefox" 		f.exec "firefox &"
 	"File Manager" 		f.exec "gentoo &"
 	"Editor" 		f.exec "gvim &"
-	"Gui Pimp"		f.exec "~/bin/pimp-my-gui.sh &"
-	"Root Menu" 		f.exec "~/bin/TkRootMenu &"
+	"Gui Pimp"		f.exec "~/bin/pimp-my-gui.bash &"
+	"Root Menu" 		f.exec "gtkdialog-utils.bash &"
 }
 
 !!

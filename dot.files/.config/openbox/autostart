@@ -31,7 +31,7 @@ rcm 9 compton
 # polybar -qr topbar 2> /dev/null &
 # ~/.config/polybar/launch.sh
 
-PMG="${HOME}/bin/pimp_my_gui.sh"
+PMG="${HOME}/bin/pimp_my_gui.bash"
 if [ -x "${PMG}" ]; then # if spice, spice things up.
     "${PMG}"
 fi

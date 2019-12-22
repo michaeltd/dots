@@ -12,7 +12,7 @@ run() {
 
 rcm 9 compton -b
 
-PMG="${HOME}/bin/pimp_my_gui.sh"
+PMG="${HOME}/bin/pimp_my_gui.bash"
 if [ -x "${PMG}" ]; then # If spice ...
   "${PMG}" & # Spice things up
 fi

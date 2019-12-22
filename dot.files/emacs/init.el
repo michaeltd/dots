@@ -88,9 +88,8 @@
 ;; end dashboard
 
 ;; themes
-
-(setq custom-safe-themes t)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'dracula t)
-;;(add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-;;(add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+;; (setq custom-safe-themes t)
+;;  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; (load-theme 'dracula t)
+;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))

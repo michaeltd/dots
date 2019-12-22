@@ -1,2 +1,2 @@
 "FileManager"
-"Enlightenment File Manager" "/usr/share/icons/Adwaita/48x48/apps/system-file-manager.png" exec "enlightenment_filemanager"
+"Enlightenment File Manager" "system-file-manager" exec "enlightenment_filemanager"

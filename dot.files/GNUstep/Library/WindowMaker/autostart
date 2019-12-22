@@ -31,7 +31,7 @@ wmgenmenu > ~/GNUstep/Defaults/WMRootMenu # Write new menu
 
 rcm 9 compton -b
 
-pmg="${HOME}/bin/pimp_my_gui.sh"
+pmg="${HOME}/bin/pimp_my_gui.bash"
 if [[ -x "${pmg}" ]]; then # If spice ...
     "${pmg}" & # Spice things up
 fi

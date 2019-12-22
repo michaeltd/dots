@@ -33,7 +33,7 @@ rcm 9 tint2 -c ~/.config/tint2/panel
 
 # rcm 9 pasystray -m 100
 
-PMG="${HOME}/bin/pimp_my_gui.sh"
+PMG="${HOME}/bin/pimp_my_gui.bash"
 if [ -x "${PMG}" ]; then # If spice ...
   "${PMG}" & # ... spice things up
 fi
