@@ -58,10 +58,9 @@
 
   <p align="center"><a href="https://en.wikipedia.org/wiki/GNU_Emacs"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
 
-
  * Editors, [Utilities](dot.files/.tmux.conf).
 
-   * If you are a follower of the church of emacs, check one of ...
+   * If you are a follower of the church of [emacs](https://en.wikipedia.org/wiki/Emacs), check one of ...
 
      * [emacs-starter-kit](https://github.com/technomancy/emacs-starter-kit)
      * [a reasonable emacs config](https://github.com/purcell/emacs.d)
