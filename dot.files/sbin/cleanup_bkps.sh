@@ -2,10 +2,10 @@
 #
 # ~/sbin/cleanup_bkps.sh - de-clutter backups
 #
-# This will work for any directory containing *tar.gz* backups
-# (eg: name.tar.gz, name.tar.gz.asc)
-# that have a YYMMDD formated date field in their filename seperated by periods(.)
-# (eg: 190326.1553569476.enc.tar.gz.asc)
+# This will work for any directory containing *.tar.gz* backups
+# (eg: name.tar.gz, name.tar.gz.pgp)
+# that have an epoch date field in their filename seperated by periods(.)
+# (eg: 190326.1553569476.enc.tar.gz.pgp)
 
 # BacKuPs Directory => BKPD
 BKPD="/mnt/el/Documents/BKP/LINUX"
@@ -26,11 +26,11 @@ declare -a srcs=( "/home/paperjam/.bashrc.d/.stl/time.bash" \
 
 while [[ -n "${1}" ]]; do
   case "${1}" in
-    "--directory") shift; BKPD="${1}";;
-    "--simulate") BKPR="0";;
-    "--keep") shift; BKPK="${1}";;
-    "--debug") set -x;;
-    *) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [--directory /backups/directory/] [--simulate] [--keep # (int, days. default: 14)] [--debug (default: off)]\n" >&2; exit 1;;
+    "-d"|"--directory") shift; BKPD="${1}";;
+    "-s"|"--simulate") BKPR="0";;
+    "-k"|"--keep") shift; BKPK="${1}";;
+    "-b"|"--debug") set -x;;
+    *) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-d)irectory /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-)de(b)ug (default: off)]\n" >&2; exit 1;;
   esac
   shift
 done
@@ -44,36 +44,36 @@ done
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 for src in "${srcs[@]}"; do
-  #shellcheck source=/dev/null
-  source "${src}"
+    #shellcheck source=/dev/null
+    source "${src}"
 done
 
 #shellcheck disable=SC2207
-FILES=( $("$(type -P ls)" "-t1" "${BKPD}"/*tar.gz* 2> /dev/null) )
+FILES=( $("$(type -P ls)" "-At1" "${BKPD}"/*.tar.gz* 2> /dev/null) )
 
 # File loop to gather stats
 for (( x = 0; x < ${#FILES[@]}; x++ )); do
-  BFN="$(basename "${FILES[${x}]}")"
-  # Name loop to extract dates
-  for PART in $(split "${BFN}" .); do
-    # 6 digits field check (six digit dates eg: 190508)
-    if [[ "${PART}" =~ ^[0-9]{6}$ ]]; then
-      FNS[${x}]="${BFN}"
-      DTS[${x}]="${PART}"
-    fi
-  done
- done
+    BFN="$(basename "${FILES[${x}]}")"
+    # Name loop to extract dates
+    for PART in $(split "${BFN}" .); do
+	# 10 digits field check
+	if [[ "${PART}" =~ ^[0-9]{10}$ ]]; then
+	    FNS[${x}]="${BFN}"
+	    DTS[${x}]="${PART}"
+	fi
+    done
+done
 
- # File NameS loop to execute on stats
- for (( y = 0; y < ${#FNS[@]}; y++ )); do
-   if (( $(datedd "$(max "${DTS[@]}")" "${DTS[${y}]}") >= BKPK )); then
-     #shellcheck disable=SC2154
-     # echo -ne "${bold}${blue}will remove:${reset} ${red}${FNS[${y}]}${reset}, created: ${underline}${green}$(date -d "${DTS[${y}]}" +%Y/%m/%d)${reset}${end_underline}.\n"
-     # echo -ne "${bold}rm -v ${red}${FNS[${y}]}${reset}${reset}: "
-     if (( BKPR == 0 )); then
-       echo "BKPR is ${BKPR} so \'rm -v ${BKPD}/${FNS[${y}]}\' will not run"
-     else
-       rm -v "${BKPD}/${FNS[${y}]}"
-     fi
-   fi
+# File NameS loop to execute on stats
+for (( y = 0; y < ${#FNS[@]}; y++ )); do
+    if (( $(epochdd "$(max "${DTS[@]}")" "${DTS[${y}]}") >= BKPK )); then
+	#shellcheck disable=SC2154
+	# echo -ne "${bold}${blue}will remove:${reset} ${red}${FNS[${y}]}${reset}, created: ${underline}${green}$(date -d "${DTS[${y}]}" +%Y/%m/%d)${reset}${end_underline}.\n"
+	# echo -ne "${bold}rm -v ${red}${FNS[${y}]}${reset}${reset}: "
+	if (( BKPR == 0 )); then
+	    echo "BKPR is ${BKPR} so \'rm -v ${BKPD}/${FNS[${y}]}\' will not run"
+	else
+	    rm -v "${BKPD}/${FNS[${y}]}"
+	fi
+    fi
  done
