@@ -61,7 +61,7 @@
 
  * Editors, [Utilities](dot.files/.tmux.conf).
 
-   * If emacs is your "thing", check one of ...
+   * If you are a follower of the church of emacs, check one of ...
 
      * [emacs-starter-kit](https://github.com/technomancy/emacs-starter-kit)
      * [a reasonable emacs config](https://github.com/purcell/emacs.d)
@@ -70,7 +70,7 @@
 
           My [setup](https://github.com/michaeltd/.emacs.d) consists of [sanemacs](https://sanemacs.com/) and a [splashscreen](assets/gnu.png).
 
-   * If vim is what makes you "tick", check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
+   * If vim is your cup of tea, check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
 <a name="bootstrap.sh"></a>
 #### [bootstrap.sh](bootstrap.sh)
