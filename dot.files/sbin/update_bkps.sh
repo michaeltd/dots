@@ -33,12 +33,12 @@ declare -a \
 declare -a BKP=( ENC[@] USR[@] SYS[@] ) \
         ARCHV=( "enc.tar.gz" "usr.tar.gz" "sys.tar.gz" )
 
+declare EP="$(date +%s)" DT="$(date +%y%m%d)"
+
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
   for ((i = 0; i < ${#ARCHV[*]}; i++ )); do
-    EP="$(date +%s)" DT="$(date +%y%m%d)"
-
     if [[ ${ARCHV[$i]} =~ enc ]]; then
       ARCFL="${ELDIR}/${DT}.${EP}.${HOSTNAME}.${ARCHV[$i]}"
       #shellcheck disable=SC2086
@@ -50,6 +50,6 @@ if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
     fi
   done
 else
-  echo -ne "${ELDIR} not found or root access requirements not met\n" >&2
+  echo -ne "${ELDIR} not found or root access requirements not met.\n" >&2
   exit 1
 fi
