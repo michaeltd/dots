@@ -22,11 +22,11 @@
   * [cleanup_bkps.sh](dot.files/sbin/cleanup_bkps.sh)
   <br/> ... and clean up the mess.
 
-  * [wallpaper_rotate.sh](dot.files/bin/wallpaper_rotate.sh)
+  * [wallpaper_rotate.bash](dot.files/bin/wallpaper_rotate.bash)
   <br/>Script for rolling random images as wallpapers.
   <br/>I get my wallpapers from: [r/spaceporn](https://www.reddit.com/r/spaceporn), [r/earthporn](https://www.reddit.com/r/earthporn/), [r/unixporn](https://www.reddit.com/r/unixporn), [r/wallpapers](https://www.reddit.com/r/wallpapers)
 
-  <p align="center"><a href="dot.files/bin/wallpaper_rotate.sh"><img alt="Help screen" src="assets/wpr.png"></a></p>
+  <p align="center"><a href="dot.files/bin/wallpaper_rotate.bash"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
 * Some WM's in no particular order.
 
