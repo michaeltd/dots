@@ -2,10 +2,10 @@
 #
 # ~/sbin/cleanup_bkps.sh - de-clutter backups
 #
-# This will work for any directory containing *.tar.gz* backups
-# (eg: name.tar.gz, name.tar.gz.pgp)
-# that have an epoch date field in their filename seperated by periods(.)
-# (eg: 190326.1553569476.enc.tar.gz.pgp)
+# This will work for any directory containing *.tar.gz* backups (eg: name.tar.gz, name.tar.gz.pgp)
+# that have an epoch date field in their filename seperated by periods(.) (eg: 190326.1553569476.enc.tar.gz.pgp)
+#
+#shellcheck source=/dev/null
 
 # BacKuPs Directory => BKPD
 BKPD="/mnt/el/Documents/BKP/LINUX"
@@ -16,10 +16,7 @@ BKPK="14"
 # BacKuPs Remove => BKPR (1 remove, 0 don't)
 BKPR="1"
 
-# Load explicitly for non interactive shells.
-# source /home/paperjam/.bashrc.d/.stl/time.sh # for datedd()
-# source /home/paperjam/.bashrc.d/.stl/string.sh # for split()
-# source /home/paperjam/.bashrc.d/.stl/math.sh # for max()
+# Source explicitly for non interactive shells.
 declare -a srcs=( "/home/paperjam/.bashrc.d/.stl/time.bash" \
                     "/home/paperjam/.bashrc.d/.stl/string.bash" \
                     "/home/paperjam/.bashrc.d/.stl/math.bash" )
@@ -44,19 +41,15 @@ done
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 for src in "${srcs[@]}"; do
-    #shellcheck source=/dev/null
     source "${src}"
 done
 
 #shellcheck disable=SC2207
 FILES=( $("$(type -P ls)" "-At1" "${BKPD}"/*.tar.gz* 2> /dev/null) )
 
-# File loop to gather stats
 for (( x = 0; x < ${#FILES[@]}; x++ )); do
     BFN="$(basename "${FILES[${x}]}")"
-    # Name loop to extract dates
     for PART in $(split "${BFN}" .); do
-	# 10 digits field check
 	if [[ "${PART}" =~ ^[0-9]{10}$ ]]; then
 	    FNS[${x}]="${BFN}"
 	    DTS[${x}]="${PART}"
@@ -64,14 +57,10 @@ for (( x = 0; x < ${#FILES[@]}; x++ )); do
     done
 done
 
-# File NameS loop to execute on stats
 for (( y = 0; y < ${#FNS[@]}; y++ )); do
     if (( $(epochdd "$(max "${DTS[@]}")" "${DTS[${y}]}") >= BKPK )); then
-	#shellcheck disable=SC2154
-	# echo -ne "${bold}${blue}will remove:${reset} ${red}${FNS[${y}]}${reset}, created: ${underline}${green}$(date -d "${DTS[${y}]}" +%Y/%m/%d)${reset}${end_underline}.\n"
-	# echo -ne "${bold}rm -v ${red}${FNS[${y}]}${reset}${reset}: "
 	if (( BKPR == 0 )); then
-	    echo "BKPR is ${BKPR} so \'rm -v ${BKPD}/${FNS[${y}]}\' will not run"
+	    echo "BKPR is ${BKPR} so ${bold}'rm -v ${BKPD}/${FNS[${y}]}'${reset} will not run"
 	else
 	    rm -v "${BKPD}/${FNS[${y}]}"
 	fi
