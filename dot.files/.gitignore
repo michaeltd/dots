@@ -1,0 +1,8 @@
+*/*~
+*~
+*.bak
+*.bkp
+*.sh.rc
+*.bash.rc
+.gitconfig
+.my.cnf.*

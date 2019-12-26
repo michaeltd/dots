@@ -47,3 +47,7 @@ done
 # 				   [.public.pgp.key]=".public.pgp.key" \
 # )
 
+declare -A __wms=( ['.config/awesome']='dot.files/.config/awesome' \
+				   ['.config/compiz']='dot.files/.config/compiz' \
+				   ['.config/openbox']='dot.files/.config/openbox' \
+)

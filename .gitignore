@@ -1,37 +1,26 @@
-# for f in $(git status --porcelain | grep '^??' | sed 's/^?? //'); do
-#     test -L "$f" && echo $f >> .gitignore; # add symlinks
-#     #test -d "$f" && echo $f\* >> .gitignore; # add new directories as well
-# done
-# find . -type l | sed -e s'/^\.\///g' >> .gitignore
-
 */*~
 *~
-
 *.bak
 *.bkp
 *.sh.rc
+*.bash.rc
 
 conky.configs/*
 conky.configs
 
-dot.files/.gnupg/*
-dot.files/.ngrok2/*
-dot.files/.ssh/*
-dot.files/.putty/*
-
-dot.files/bkp/*
-
-dot.files/.fvwm/.FvwmConsole-History
-
-dot.files/sbin/.old/*
-
-dot.files/.gitconfig
-
-dot.files/.my.cnf.*
-
 private/*
 
-# dot.files/.fvwm-crystal/*
+# dot.files/.gnupg/*
+# dot.files/.ngrok2/*
+# dot.files/.ssh/*
+# dot.files/.putty/*
+# dot.files/bkp/*
+# dot.files/.fvwm/.FvwmConsole-History
+# dot.files/sbin/.old/*
+# dot.files/.gitconfig
+# dot.files/.my.cnf.*
+
+# # dot.files/.fvwm-crystal/*
 # !dot.files/.fvwm-crystal/preferences/*
 
 # dot.files/.config/*
