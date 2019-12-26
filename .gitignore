@@ -5,6 +5,8 @@
 *.sh.rc
 *.bash.rc
 
+bootstrap.new.bash
+
 conky.configs/*
 conky.configs
 
