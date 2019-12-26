@@ -1,2 +1,0 @@
-"ConsoleOnly"
-"Htop" "/usr/share/pixmaps/htop.png" exec "htop"

@@ -1,7 +1,0 @@
-"Network"
-"HexChat" "/usr/share/icons/hicolor/48x48/apps/hexchat.png" exec "hexchat --existing"
-"Mail Reader" "emblem-mail" exec "exo-open --launch MailReader"
-"Web Browser" "web-browser" exec "exo-open --launch WebBrowser"
-"Wicd Network Manager" "/usr/share/icons/hicolor/48x48/apps/wicd-gtk.png" exec "wicd-gtk --no-tray"
-"Zenmap (as root)" "/usr/share/zenmap/pixmaps/zenmap.png" exec "/usr/share/zenmap/su-to-zenmap.sh"
-"Zenmap" "/usr/share/zenmap/pixmaps/zenmap.png" exec "zenmap"

@@ -1,8 +1,0 @@
-"Game"
-"DOSBox" "/usr/share/pixmaps/dosbox.ico" exec "dosbox"
-"GNU Backgammon" "/usr/share/icons/hicolor/48x48/apps/gnubg.png" exec "gnubg -w"
-"ioquake3" "/home/paperjam/ioquake3//quake3.png" exec "/home/paperjam/ioquake3//ioquake3"
-"Nexuiz (GLX)" "nexuiz" exec "nexuiz-glx"
-"Quake III Team Arena" "/home/paperjam/ioquake3quake3.png" exec "/home/paperjam/ioquake3ioquake3-q3ta"
-"Xboard" "/usr/share/icons/hicolor/48x48/apps/xboard.png" exec "xboard"
-"Xonotic (GLX)" "xonotic" exec "xonotic-glx"
