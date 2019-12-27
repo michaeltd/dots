@@ -1,5 +1,5 @@
 "User Application List"
-"gtkdilog-utils" NULL exec gtkdialog-utils.bash
+"gdutils" NULL exec gdutils
 "Volume Controls" "/usr/share/pixmaps/emixer.png" exec "pavucontrol --tab 3"
 "Terminals"
 "Terminology" /usr/share/icons/terminology.png exec "terminology"
