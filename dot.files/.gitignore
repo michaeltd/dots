@@ -5,7 +5,5 @@
 *.sh.rc
 *.bash.rc
 .gitconfig
-.my.cnf.*
-.crontab
 .bkp.exclude
 .public.pgp.key
