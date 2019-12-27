@@ -8,4 +8,4 @@
 .my.cnf.*
 .crontab
 .bkp.exclude
-.public.pgp.key.new
+.public.pgp.key
