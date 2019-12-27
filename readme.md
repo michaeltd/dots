@@ -67,7 +67,7 @@
      * [prelude](https://github.com/bbatsov/prelude)
      * [Centaur Emacs](https://github.com/seagle0128/.emacs.d)
 
-     My [setup](https://github.com/michaeltd/.emacs.d) consists of [sanemacs](https://sanemacs.com/) and a [dashboard](assets/gnu.png).
+     My [setup](https://github.com/michaeltd/.emacs.d) consists of [sanemacs](https://sanemacs.com/) and a [dashboard](https://github.com/emacs-dashboard/emacs-dashboard).
 
      <p align="center"><a href="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/emacs.png"><img alt="emacs" src="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/emacs.png"></a></p>
 
