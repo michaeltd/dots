@@ -1,5 +1,5 @@
 [submodule "dot.files/.emacs.d"]
-    path = dot.files/.emacs.d
-    active = true
-    branch = master
-    url = git://github.com/michaeltd/.emacs.d.git
+	path = dot.files/.emacs.d
+	active = true
+	branch = master
+	url = https://github.com/michaeltd/.emacs.d.git
