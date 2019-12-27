@@ -69,7 +69,7 @@
 
      My [setup](https://github.com/michaeltd/.emacs.d) consists of [sanemacs](https://sanemacs.com/) and a [dashboard](assets/gnu.png).
 
-     <p align="center"><a href="https://github.com/michaeltd/.emacs.d/assets/emacs.png"><img alt="emacs" src="https://github.com/michaeltd/.emacs.d/assets/emacs.png"></a></p>
+     <p align="center"><a href="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/emacs.png"><img alt="emacs" src="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/emacs.png"></a></p>
 
    * If vim is your cup of tea, check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
