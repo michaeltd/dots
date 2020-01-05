@@ -1,8 +1,4 @@
 "User Application List"
-"gdutils" NULL exec gdutils
-"Volume Controls" "/usr/share/pixmaps/emixer.png" exec "pavucontrol --tab 3"
-"Terminals"
-"Terminology" /usr/share/icons/terminology.png exec "terminology"
 "Net"
 "Firefox" "/opt/firefox/browser/chrome/icons/default/default16.png" exec "firefox"
 "Seamonkey" "/opt/seamonkey/chrome/icons/default/default48.png" exec "seamonkey"
@@ -12,11 +8,16 @@
 "Vim" "/usr/share/icons/hicolor/48x48/apps/gvim.png" exec "xterm -e vim"
 "NetBeans IDE 8.2" "/opt/netbeans-8.2/nb/netbeans.png" exec "/bin/sh /opt/netbeans-8.2/bin/netbeans"
 "Eclipse" /home/paperjam/opt/photon/icon.xpm exec eclipse
+"Terminals"
+"Terminology" /usr/share/icons/terminology.png exec "terminology"
 "File Managers"
 "Thunar File Manager" "/usr/share/icons/hicolor/48x48/apps/Thunar.png" exec thunar
 "Double Commander" /opt/doublecmd/doublecmd.png exec doublecmd
 "Gentoo" /usr/share/pixmaps/gentoo.png exec gentoo
+"Tools"
+"gdutils" NULL exec gdutils
 "Mediums"
+"Volume Controls" "/usr/share/pixmaps/emixer.png" exec "pavucontrol --tab 3"
 "The GIMP" /home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/gimp.Gimp.xpm exec "gimp"
 "Audacious" /usr/share/icons/hicolor/48x48/apps/audacious.png exec "audacious"
 "VLC" /home/paperjam/GNUstep/Library/WindowMaker/CachedPixmaps/vlc.Vlc.xpm exec "vlc"
