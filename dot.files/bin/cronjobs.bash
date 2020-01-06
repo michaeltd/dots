@@ -14,7 +14,7 @@ backup() {
     local bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
           xcldf="${HOME}/.bkp.exclude" rcpnt="tsouchlarakis@gmail.com"
 
-    local outfl="${bkpt}/$(date +%y%m%d).$(date +%s).${USER}.tar.gz.pgp" \
+    local outfl="${bkpt}/${USER}.$(date +%y%m%d).$(date +%H%M%S).$(date +%s).tar.gz.pgp" \
           LS="$(type -P ls)"
 
     # Just in case
