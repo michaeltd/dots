@@ -7,8 +7,7 @@ genpass() {
   #tr -dc [:graph:] < /dev/urandom|tr -d [=\|=][=\"=][=\'=]|head -c "${1:-64}"
   #tr -dc '[:alnum:]~!@#$%^&*()_=+,<.>/?;:[{]}\|-' < /dev/urandom|head -c "${1:-64}"
   #shellcheck disable=SC2005
-  tr -dc '[:alnum:]~!@#$%^_+:?' < /dev/urandom|head -c "${1:-64}"
-  echo
+  echo "$(tr -dc '[:alnum:]~!@#$%^_+:?' < /dev/urandom|head -c "${1:-64}")"
 }
 
 rot_13(){
