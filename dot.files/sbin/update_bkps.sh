@@ -39,7 +39,7 @@ echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
   for ((i = 0; i < ${#ARCHV[*]}; i++ )); do
-    if [[ ${ARCHV[$i]} =~ enc ]]; then
+    if [[ ${ARCHV[$i]} =~ ^enc.* ]]; then
       ARCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHV[$i]}"
       #shellcheck disable=SC2086
       time "${NICEC[@]}" "${TARCM[@]}" "--file" "${ARCFL}" ${!BKP[$i]}
