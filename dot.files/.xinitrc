@@ -38,7 +38,7 @@ elif [[ "${ID}" == "devuan" ]];then
 else
     # Availability check, One line version: WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which fvwm-crystal||which fvwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
     for x in "${!WMA[@]}"; do
-        if [[ -x "$(command -v "${WMA[$x]}" 2> /dev/null)" ]]; then
+        if [[ -x "$(type -P "${WMA[$x]}")" ]]; then
             WM="${WMA[$x]}"
             break
         fi
