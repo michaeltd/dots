@@ -225,26 +225,37 @@
         <wrap>no</wrap>
       </action>
     </keybind>
+
     <keybind key="W-F1">
-      <action name="GoToDesktop">
-        <to>1</to>
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Terminology</name>
+        </startupnotify>
+        <command>terminology</command>
       </action>
     </keybind>
-    <keybind key="W-F2">
-      <action name="GoToDesktop">
-        <to>2</to>
-      </action>
-    </keybind>
-    <keybind key="W-F3">
-      <action name="GoToDesktop">
-        <to>3</to>
-      </action>
-    </keybind>
-    <keybind key="W-F4">
-      <action name="GoToDesktop">
-        <to>4</to>
-      </action>
-    </keybind>
+
+    <!-- <keybind key="W-F1"> -->
+    <!--   <action name="GoToDesktop"> -->
+    <!--     <to>1</to> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="W-F2"> -->
+    <!--   <action name="GoToDesktop"> -->
+    <!--     <to>2</to> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="W-F3"> -->
+    <!--   <action name="GoToDesktop"> -->
+    <!--     <to>3</to> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="W-F4"> -->
+    <!--   <action name="GoToDesktop"> -->
+    <!--     <to>4</to> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>

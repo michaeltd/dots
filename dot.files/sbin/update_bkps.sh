@@ -33,7 +33,7 @@ declare -a \
 declare -a BKP=( ENC[@] USR[@] SYS[@] ) \
         ARCHV=( "enc.tar.gz" "usr.tar.gz" "sys.tar.gz" )
 
-declare EP="$(date +%s)" DT="$(date +%y%m%d)" TM="$(date +%H%M%S)" 
+declare EP="$(date +%s)" DT="$(date +%Y%m%d)" TM="$(date +%H%M%S)" 
 
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 

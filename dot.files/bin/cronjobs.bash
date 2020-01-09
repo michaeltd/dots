@@ -14,7 +14,7 @@ backup() {
     local bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
           xcldf="${HOME}/.bkp.exclude" rcpnt="tsouchlarakis@gmail.com"
 
-    local outfl="${bkpt}/${USER}.$(date +%y%m%d).$(date +%H%M%S).$(date +%s).tar.gz.pgp" \
+    local outfl="${bkpt}/${USER}.$(date +%Y%m%d).$(date +%H%M%S).$(date +%s).tar.gz.pgp" \
           LS="$(type -P ls)"
 
     # Just in case
@@ -30,7 +30,7 @@ backup() {
 	# Keep two most recent bkps
 	~/sbin/cleanup_bkps.sh --directory "${bkpt}" --keep 2
     else
-	echo "FATAL: Backup location: \"${bkpt}\" is not a directory"
+	echo "FATAL: Backup location: \"${bkpt}\" is not a directory" >&2
 	exit 1
     fi
 }
