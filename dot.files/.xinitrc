@@ -32,7 +32,7 @@ declare -A WMA=( [openbox]="openbox-session" \
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-    WM="${WMA[e16]}"
+    WM="${WMA[awesome]}"
 elif [[ "${ID}" == "devuan" ]];then
     WM="${WMA[xfce4]}"
 else
