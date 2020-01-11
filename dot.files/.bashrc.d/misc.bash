@@ -1,4 +1,4 @@
-# ~/.bashrc.d/misc.sh
+# ~/.bashrc.d/misc.bash
 #
 # general bash options
 

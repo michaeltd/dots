@@ -1,4 +1,4 @@
-# ~/.bashrc.d/variables
+# ~/.bashrc.d/variables.bash
 #
 # environment variables
 
@@ -6,35 +6,31 @@
 
 # SUDO_ASKPASS
 #shellcheck disable=SC2155
-export SUDO_ASKPASS=$(command -v x11-ssh-askpass 2> /dev/null || command -v ssh-askpass-fullscreen 2> /dev/null)
+export SUDO_ASKPASS="$(type -P x11-ssh-askpass || type -P ssh-askpass-fullscreen)"
 
 # Used by emacsclient in case of no daemon found.
 #shellcheck disable=SC2155
-export ALTERNATE_EDITOR=$(command -v emacs 2> /dev/null || command -v micro 2> /dev/null || command -v vim 2> /dev/null || command -v vi 2> /dev/null || command -v nano 2> /dev/null)
+export ALTERNATE_EDITOR="$(type -P emacs || type -P gvim||type -P kate||type -P gedit||type -P mousepad)" \
+       TERMINAL_EDITOR="$(type -P emacs || type -P vim||type -P micro||type -P nano)"
 
 if [[ -n "${DISPLAY}" ]]; then
   unset EDITOR
-  if [[ -x $(command -v emacs 2> /dev/null) ]]; then
-    export VISUAL="emacsclient --alternate-editor=emacs -c"
-  elif [[ -x $(command -v gvim 2> /dev/null) ]]; then
-    export VISUAL="gvim"
+  if [[ -x "$(type -P emacs)" ]]; then
+    export VISUAL="emacsclient --alternate-editor=${ALTERNATE_EDITOR} -c"
   else
-    export VISUAL="xterm -e ${ALTERNATE_EDITOR}"
+    export VISUAL="${ALTERNATE_EDITOR}"
   fi
   #shellcheck disable=SC2155
-  export BROWSER=$(command -v firefox 2> /dev/null || \
-                     command -v seamonkey 2> /dev/null)
+  export BROWSER="$(type -P firefox ||type -P seamonkey)"
 else
   unset VISUAL
-  if [[ -x $(command -v emacs 2> /dev/null) ]]; then
-    export EDITOR="emacsclient --alternate-editor=emacs -t"
-  elif [[ -x $(command -v vim 2> /dev/null) ]]; then
-    export EDITOR="vim"
+  if [[ -x "$(type -P emacs)" ]]; then
+    export EDITOR="emacsclient --alternate-editor=${TERMINAL_EDITOR} -t"
   else
-    export EDITOR="${ALTERNATE_EDITOR}"
+    export EDITOR="${TERMINAL_EDITOR}"
   fi
   #shellcheck disable=SC2155
-  export BROWSER=$(command -v w3m 2> /dev/null || command -v links 2> /dev/null || command -v lynx 2> /dev/null)
+  export BROWSER="$(type -P w3m||type -P links||type -P lynx)"
 fi
 
 # Colorfull manpages (works with less as a pager)
@@ -49,7 +45,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # most > less > more in order of preference
 #shellcheck disable=SC2155
-export PAGER=$(command -v most 2> /dev/null || command -v less 2> /dev/null || command -v more 2> /dev/null)
+export PAGER="$(type -P most||type -P less||type -P more)"
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"

@@ -1,4 +1,4 @@
-# ~/.bashrc.d/functions.sh
+# ~/.bashrc.d/functions.bash
 #
 # various functions
 
@@ -63,7 +63,7 @@ listcat() {
 }
 
 checkapp() {
-  if command -v "${1}" &> /dev/null; then
+  if type -P "${1}" &> /dev/null; then
     return 0
   else
     #shellcheck disable=SC2154

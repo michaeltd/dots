@@ -43,9 +43,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
--- beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
+-- beautiful.init("/home/paperjam/.config/awesome/themes/gtk/theme.lua")
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
---beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
@@ -466,7 +466,7 @@ globalkeys = gears.table.join(
     --          {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey,   "Shift"   }, "l",     function () awful.spawn.with_shell("kill -15 -1")    end,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey,           }, "l",     function () awful.spawn.with_shell("~/bin/xlock.sh||xscreensaver-command -lock")    end,
+    awful.key({ modkey,           }, "l",     function () awful.spawn.with_shell("xscreensaver-command -lock")    end,
               {description = "lock screen", group = "awesome"}),
 
     --awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,

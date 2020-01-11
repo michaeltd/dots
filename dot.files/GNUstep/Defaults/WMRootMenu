@@ -14,8 +14,7 @@
     (
       "File Managers",
       (Thunar, EXEC, thunar),
-      ("Midnight Commander", EXEC, "xterm -e mc"),
-      (Xfe, EXEC, xfe)
+      ("Midnight Commander", EXEC, "xterm -e mc")
     ),
     (
       Graphics,
@@ -62,16 +61,7 @@
       ("OpenOffice.org Draw", EXEC, oodraw),
       ("OpenOffice.org Impress", EXEC, ooimpress),
       ("OpenOffice.org Math", EXEC, oomath),
-      (OpenOffice.org, EXEC, ooffice),
-      (StarOffice, EXEC, soffice),
-      ("LibreOffice Writer", EXEC, lowriter),
-      ("LibreOffice Calc", EXEC, localc),
-      ("LibreOffice Draw", EXEC, lodraw),
-      ("LibreOffice Impress", EXEC, loimpress),
-      ("LibreOffice Math", EXEC, lomath),
-      ("LibreOffice Base", EXEC, lobase),
-      ("LibreOffice Web", EXEC, loweb),
-      (LibreOffice, EXEC, libreoffice)
+      (OpenOffice.org, EXEC, ooffice)
     ),
     (Sound, ("ALSA mixer", EXEC, "xterm -e alsamixer")),
     (

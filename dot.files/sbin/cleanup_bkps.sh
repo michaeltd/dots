@@ -58,14 +58,14 @@ for (( x = 0; x < ${#FILES[@]}; x++ )); do
 done
 
 for (( y = 0; y < ${#FNS[@]}; y++ )); do
-    if (( $(epochdd "$(max "${DTS[@]}")" "${DTS[${y}]}") >= BKPK )); then
-	if (( BKPR == 0 )); then
-	    if (( $(lastdayofmonth "@${DTS[${y}]}") == $(date --date="@${DTS[${y}]}" +%d) )); then
+    if [[ "$(epochdd "$(max "${DTS[@]}")" "${DTS[${y}]}")" -ge "${BKPK}" ]]; then
+	if [[ "${BKPR}" -eq "0" ]]; then
+	    if [[ "$(lastdayofmonth "@${DTS[${y}]}")" -eq "$(date --date="@${DTS[${y}]}" +%d)" ]]; then
 		echo "Not running: ${bold}'mkdir -vp ${BKPD}/bkp && cp -v ${BKPD}/${FNS[${y}]} ${BKPD}/bkp/${FNS[${y}]}'${reset}"
 	    fi
 	    echo "Not running: ${bold}'rm -v ${BKPD}/${FNS[${y}]}'${reset}"
 	else
-	    if (( $(lastdayofmonth "@${DTS[${y}]}") == $(date --date="@${DTS[${y}]}" +%d) )); then
+	    if [[ "$(lastdayofmonth "@${DTS[${y}]}")" -eq "$(date --date="@${DTS[${y}]}" +%d)" ]]; then
 		mkdir -vp "${BKPD}/bkp" && cp -v "${BKPD}/${FNS[${y}]}" "${BKPD}/bkp/${FNS[${y}]}"
 	    fi
 	    rm -v "${BKPD}/${FNS[${y}]}"

@@ -1,13 +1,13 @@
-# ~/.bashrc.d/aliases.sh
+# ~/.bashrc.d/aliases.bash
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
 
 #shellcheck shell=bash
 
-if [ -x "$(command -v dircolors 2> /dev/null)" ]; then
+if [[ -x "$(type -P dircolors)" ]]; then
   # Color support
-  if [[ -r ~/.bashrc.d/colors.sh ]]; then
-    eval "$(dircolors -b ~/.bashrc.d/colors.sh)"
+  if [[ -r "${HOME}/.bashrc.d/colors.bash" ]]; then
+    eval "$(dircolors -b "${HOME}/.bashrc.d/colors.bash")"
   else
     eval "$(dircolors -b)"
   fi
@@ -29,24 +29,24 @@ else
 fi
 
 alias du='du -h'
-alias duthis='du -h --max-depth=1 | sort -hr|head'
+alias duthis='du -h -x --max-depth=1 | sort -hr|head'
 alias df='df -h'
 
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
-if command -v apt-get &> /dev/null; then
+if type -P apt-get &> /dev/null; then
   alias psearch='apt search' pinstall='sudo apt-get install' premove='sudo apt-get remove --purge'
   alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' dcleanup='sudo apt-get autoremove'
-elif command -v zypper &> /dev/null; then
+elif type -P zypper &> /dev/null; then
   alias psearch='zypper search' pinstall='sudo zypper install' premove='sudo zypper remove --clean-deps'
   alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' dcleanup='sudo zypper rm -u'
-elif command -v yum &> /dev/null; then
+elif type -P yum &> /dev/null; then
   alias psearch='yum search' pinstall='sudo yum install' premove='sudo yum remove'
   alias dupdate='sudo yum check-update' dupgrade='sudo yum update' dcleanup='sudo yum autoremove'
-elif command -v pacman &> /dev/null; then
+elif type -P pacman &> /dev/null; then
   alias psearch='pacman -Ss' pinstall='sudo pacman -S' premove='sudo pacman -R'
   alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' dcleanup='sudo pacman -Rsn'
-elif command -v emerge &> /dev/null; then
+elif type -P emerge &> /dev/null; then
   alias psearch='emerge -s' pinstall='sudo emerge -av' premove='sudo emerge -avC'
   alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @security' dcleanup='sudo emerge --ask --depclean'
 fi
@@ -80,10 +80,10 @@ alias eckd='emacsclient -e "(kill-emacs)"' # EmacsClient Kill Daemon # Kill an e
 alias cal='cal -m' # First Day Monday Calendars
 
 # cloc
-alias cloc='cloc --by-file-by-lang'
+#alias cloc='cloc --by-file-by-lang'
 
 # fonts for st
-alias st='st -g 80x25 -f SourceCodePro-Regular'
+#alias st='st -g 80x25 -f SourceCodePro-Regular'
 
 # NET
 alias fixnet='ping -c 1 www.gentoo.org||sudo rc-service dhcpcd restart'

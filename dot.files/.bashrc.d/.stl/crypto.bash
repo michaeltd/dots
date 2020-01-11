@@ -3,6 +3,15 @@
 # cryptographic functions
 #shellcheck shell=bash
 
+crypt() {
+    case "${1}" in
+	e|-e|--encrypt) shift; local fn="--encrypt" out="${1}.pgp";;
+	d|-d|--decrypt) shift; local fn="--decrypt" out="${1//.pgp/}";;
+	*) echo "Usage: ${FUNCNAME[0]} e|d file"; return 1;;
+    esac
+    $(type -P gpg2) --default-recipient-self --output "${out}" "${fn}" "${1}"
+}
+
 genpass() {
   #tr -dc [:graph:] < /dev/urandom|tr -d [=\|=][=\"=][=\'=]|head -c "${1:-64}"
   #tr -dc '[:alnum:]~!@#$%^&*()_=+,<.>/?;:[{]}\|-' < /dev/urandom|head -c "${1:-64}"
