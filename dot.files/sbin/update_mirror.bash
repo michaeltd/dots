@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# ~/sbin/update_mirror.sh
+# ~/sbin/update_mirror.bash
 # Update my data
 
 # Full path executables

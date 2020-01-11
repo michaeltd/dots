@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# ~/sbin/check_integrity.sh
+# ~/sbin/check_integrity.bash
 # man qcheck : qcheck - verify integrity of installed packages
 
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"

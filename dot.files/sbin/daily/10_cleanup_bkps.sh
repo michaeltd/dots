@@ -1,1 +1,0 @@
-/home/paperjam/sbin/cleanup_bkps.sh

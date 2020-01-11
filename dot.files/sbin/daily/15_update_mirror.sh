@@ -1,1 +1,0 @@
-/home/paperjam/sbin/update_mirror.sh

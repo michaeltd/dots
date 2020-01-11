@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# ~/sbin/update_bkp.sh
+# ~/sbin/update_bkps.bash
 # Backup sensitive files, user files, system
 
 declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
