@@ -13,13 +13,13 @@
   * [.bashrc.d](dot.files/.bashrc.d)
   <br/>Is a interactive shell initialization routine and it is customization of [Durag](http://dotshare.it/~Durag/)'s [Improved Terminal](http://dotshare.it/dots/1027/) at [http://dotshare.it/](http://dotshare.it/) with a prompt from [mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 
-  * [upgrade_distro.sh](dot.files/sbin/upgrade_distro.sh)
+  * [upgrade_distro.bash](dot.files/sbin/upgrade_distro.bash)
   <br/>Distro neutral upgrade script
 
-  * [update_bkps.sh](dot.files/sbin/update_bkps.sh)
+  * [update_bkps.bash](dot.files/sbin/update_bkps.bash)
   <br/>Back up things ...
 
-  * [cleanup_bkps.sh](dot.files/sbin/cleanup_bkps.sh)
+  * [cleanup_bkps.bash](dot.files/sbin/cleanup_bkps.bash)
   <br/> ... and clean up the mess.
 
   * [wallpaper_rotate.bash](dot.files/bin/wallpaper_rotate.bash)
