@@ -1,4 +1,4 @@
-# ~/.bashrc.d/crypto.sh
+# ~/.bashrc.d/crypto.bash
 #
 # cryptographic functions
 #shellcheck shell=bash
@@ -13,10 +13,11 @@ crypt() {
 }
 
 genpass() {
-  #tr -dc [:graph:] < /dev/urandom|tr -d [=\|=][=\"=][=\'=]|head -c "${1:-64}"
-  #tr -dc '[:alnum:]~!@#$%^&*()_=+,<.>/?;:[{]}\|-' < /dev/urandom|head -c "${1:-64}"
-  #shellcheck disable=SC2005
-  echo "$(tr -dc '[:alnum:]~!@#$%^_+:?' < /dev/urandom|head -c "${1:-64}")"
+    tr -dc [:graph:] < /dev/urandom|tr -d [=\|=][=\"=][=\'=]|head -c "${1:-64}"
+    #tr -dc '[:alnum:]~!@#$%^&*()_=+,<.>/?;:[{]}\|-' < /dev/urandom|head -c "${1:-64}"
+    #shellcheck disable=SC2005
+    # tr -dc '[:alnum:]~!@#$%^_+:?' < /dev/urandom|head -c "${1:-64}"
+    echo
 }
 
 rot_13(){
@@ -36,13 +37,13 @@ rot_13(){
       for (( x = 0; x <= ${#_abc[*]}; x++ )); do
         case "${_func}" in
           "-e")
-            [[ "${_word:$i:1}" == "${_ABC[$x]}" ]] && _out+="${_NOP[$x]}" && break
-            [[ "${_word:$i:1}" == "${_abc[$x]}" ]] && _out+="${_nop[$x]}" && break;;
+            [[ "${_word:i:1}" == "${_ABC[x]}" ]] && _out+="${_NOP[x]}" && break
+            [[ "${_word:i:1}" == "${_abc[x]}" ]] && _out+="${_nop[x]}" && break;;
           "-d")
-            [[ "${_word:$i:1}" == "${_NOP[$x]}" ]] && _out+="${_ABC[$x]}" && break
-            [[ "${_word:$i:1}" == "${_nop[$x]}" ]] && _out+="${_abc[$x]}" && break;;
+            [[ "${_word:i:1}" == "${_NOP[x]}" ]] && _out+="${_ABC[x]}" && break
+            [[ "${_word:i:1}" == "${_nop[x]}" ]] && _out+="${_abc[x]}" && break;;
         esac
-        (( x == ${#_abc[*]} )) && _out+="${_word:$i:1}" #If char has not been found by now lets add it as is.
+        (( x == ${#_abc[*]} )) && _out+="${_word:i:1}" #If char has not been found by now lets add it as is.
       done
     done
     shift
@@ -52,7 +53,6 @@ rot_13(){
 }
 
 caesar_cipher() {
-
   # michaeltd 2019-11-30
   # https://en.wikipedia.org/wiki/Caesar_cipher
   # E n ( x ) = ( x + n ) mod 26.
@@ -76,14 +76,14 @@ caesar_cipher() {
       for (( x = 0; x < ${#_abc[*]}; x++ )); do
         case "${_func}" in
           "-e")
-            [[ "${1:$i:1}" == "${_ABC[$x]}" ]] && _out+="${_ABC[(( ( x + _rotval ) % 26 ))]}" && break
-            [[ "${1:$i:1}" == "${_abc[$x]}" ]] && _out+="${_abc[(( ( x + _rotval ) % 26 ))]}" && break;;
+            [[ "${1:i:1}" == "${_ABC[x]}" ]] && _out+="${_ABC[(( ( x + _rotval ) % 26 ))]}" && break
+            [[ "${1:i:1}" == "${_abc[x]}" ]] && _out+="${_abc[(( ( x + _rotval ) % 26 ))]}" && break;;
           "-d")
-            [[ "${1:$i:1}" == "${_ABC[$x]}" ]] && _out+="${_ABC[(( ( x - _rotval ) % 26 ))]}" && break
-            [[ "${1:$i:1}" == "${_abc[$x]}" ]] && _out+="${_abc[(( ( x - _rotval ) % 26 ))]}" && break;;
+            [[ "${1:i:1}" == "${_ABC[x]}" ]] && _out+="${_ABC[(( ( x - _rotval ) % 26 ))]}" && break
+            [[ "${1:i:1}" == "${_abc[x]}" ]] && _out+="${_abc[(( ( x - _rotval ) % 26 ))]}" && break;;
         esac
         # If char has not been found by now lets add it as is.
-        (( x == ${#_abc[*]} - 1 )) && _out+="${1:$i:1}"
+        (( x == ${#_abc[*]} - 1 )) && _out+="${1:i:1}"
       done
     done
     _out+=" "
@@ -111,9 +111,9 @@ alpha2morse() {
 
   while [[ -n "${1}" ]]; do
     for (( i = 0; i < ${#1}; i++ )); do
-      local letter="${1:${i}:1}"
+      local letter="${1:i:1}"
       for (( y = 0; y < ${#alpha_assoc[${letter^^}]}; y++ )); do
-        case "${alpha_assoc[${letter^^}]:${y}:1}" in
+        case "${alpha_assoc[${letter^^}]:y:1}" in
           ".") echo -n "dot "; play -q -n -c2 synth .05 2> /dev/null || sleep .05 ;;
           "-") echo -n "dash "; play -q -n -c2 synth .15 2> /dev/null || sleep .15 ;;
         esac
