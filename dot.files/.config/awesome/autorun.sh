@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # No double sourcing
-[[ ! $(type -P rcm) ]] && source ~/.bashrc.d/functions.sh
+[[ ! $(type -P rcm) ]] && source ~/.bashrc.d/functions.bash
 
 # run() {
 #   if ! pgrep $1

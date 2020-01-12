@@ -3,7 +3,7 @@
 #shellcheck source=/dev/null
 
 # No double sourcing
-[[ -z "$(command -v rcm)" ]] && source ~/.bashrc.d/functions.sh
+[[ -z "$(command -v rcm)" ]] && source ~/.bashrc.d/functions.bash
 
 # rcm 9 wicd-gtk -t
 

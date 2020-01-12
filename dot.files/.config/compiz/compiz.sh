@@ -3,7 +3,7 @@
 # /usr/local/bin/compiz.sh Compiz startup script.
 
 # No double sourcing
-[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
+[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.bash
 
 source /etc/os-release # Distro details.
 case "${ID}" in # Start Compiz

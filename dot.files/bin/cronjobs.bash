@@ -28,7 +28,7 @@ backup() {
 		   --trust-model always --output "${outfl}" --encrypt
 
 	# Keep two most recent bkps
-	~/sbin/cleanup_bkps.sh --directory "${bkpt}" --keep 2
+	~/sbin/cleanup_bkps.bash --directory "${bkpt}" --keep 2
     else
 	echo "FATAL: Backup location: \"${bkpt}\" is not a directory" >&2
 	exit 1

@@ -17,7 +17,7 @@
 #xfce-mcs-manager &
 
 # No double sourcing
-[ ! $(command -v rcm) ] && source ~/.bashrc.d/functions.sh
+[ ! $(command -v rcm) ] && source ~/.bashrc.d/functions.bash
 
 rcm 9 compton
 

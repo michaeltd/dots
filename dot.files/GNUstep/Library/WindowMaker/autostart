@@ -17,7 +17,7 @@
 # xset m 20/10 4 # Mouse acceleration
 
 # No double sourcing
-[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.sh
+[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.bash
 
 # Replace "${APPS}" list with your desired applets.
 APPS=( "wmclockmon" "wmsystemtray" "wmifinfo" "wmacpi" "wmsysmon" )
