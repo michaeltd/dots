@@ -132,3 +132,6 @@ alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgr
 # NETRIS
 # https://git.sr.ht/~tslocum/netris?0.1.2
 alias netris='ssh netris.rocketnine.space'
+
+# Static
+alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done|lolcat'

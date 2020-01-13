@@ -3,13 +3,18 @@
 # ~/bin/cronjobs.bash
 # gather cronjobs for use with a familiar environment (/bin/bash)
 
-__usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)larm | -(-b)ackup"
+usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)larm | -(-b)ackup"
 
 alarm() {
+
+    echo -ne " -- ${FUNCNAME[0]} --\n"
+
     cvlc --random file:///mnt/data/Documents/Music/Stanley-Clarke/ file:///mnt/data/Documents/Music/Marcus-Miller/ file:///mnt/data/Documents/Music/Jaco-Pastorius/ file:///mnt/data/Documents/Music/Esperanza-Spalding/ file:///mnt/data/Documents/Music/Mark-King/Level\ Best/
 }
 
 backup() {
+
+    echo -ne " -- ${FUNCNAME[0]} --\n"
 
     local bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
           xcldf="${HOME}/.bkp.exclude" rcpnt="tsouchlarakis@gmail.com"
@@ -37,13 +42,13 @@ backup() {
 
 main() {
     if [[ -z "${1}" ]]; then
-	echo "${__usage}" >&2; exit 1
+	echo "${usage}" >&2; exit 1
     else
 	while [[ -n "${1}" ]]; do
 	    case "${1}" in
 		"-a"|"--alarm") alarm;;
 		"-b"|"--backup") backup;;
-		*) echo "${__usage}" >&2; exit 1;;
+		*) echo "${usage}" >&2; exit 1;;
             esac
             shift
 	done

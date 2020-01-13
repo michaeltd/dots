@@ -23,7 +23,7 @@ declare -a FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-ro
 declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
 	DIRS=( "${HOME}/Pictures" ) WPS=()
 declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]}").rc" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]}").log" \
-	BGSR="" WAIT="2m" LS="$(command -v ls)"
+	BGSR="" WAIT="2m" LS="$(type -P ls)"
 
 # bash version info check
 if (( "${BASH_VERSINFO[0]}" < 4 )); then
@@ -34,7 +34,7 @@ fi
 
 # Find a setter
 for (( x = 0; x < "${#BGSRS[@]}"; x++ )); do
-  if [[ -n $(command -v "${!BGSRS[$x]:0:1}" 2> /dev/null) ]]; then
+  if [[ -n $(type -P "${!BGSRS[x]:0:1}" 2> /dev/null) ]]; then
     BGSR="${x}"
     break # Break on first match.
   fi
@@ -77,7 +77,7 @@ if [[ -n "${1}" ]]; then
       shift
       while [[ -n "${1}" ]]; do
         for (( i = 0; i < "${#DIRS[@]}"; i++ )); do
-          if [[ "${DIRS[${i}]}" == "${1}" ]]; then
+          if [[ "${DIRS[i]}" == "${1}" ]]; then
             unset 'DIRS[i]'
           fi
         done
@@ -126,12 +126,12 @@ else
     RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
 
     # Get path and name of image as a selected WallPaper
-    WP="${WPS[$RN]}"
+    WP="${WPS[RN]}"
 
     # set wallpaper, log, wait
-    "${!BGSRS[$BGSR]}" "${WP}" || continue # Skip log and sleep if selected img won't work.
+    "${!BGSRS[BGSR]}" "${WP}" || continue # Skip log and sleep if selected img won't work.
 
-    printf "%s %s %s\n" "$(date +%y%m%d-%H%M%S)" "${!BGSRS[$BGSR]:0:1}" "${WP}" >> "${WPLG}"
+    printf "%s %s %s\n" "$(date +%y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
     sleep "${WAIT}"
   done
 fi
