@@ -4,8 +4,5 @@
 *.bkp
 *.sh.rc
 *.bash.rc
-
 bootstrap.bash
-
 private/*
-
