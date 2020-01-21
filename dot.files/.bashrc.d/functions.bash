@@ -238,3 +238,7 @@ getmimetype(){
 getfiletype(){
   file -b "${1}"|awk '{print $1}'
 }
+
+showInterFaces() {
+    ip -brief -color address show
+}

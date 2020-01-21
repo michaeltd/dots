@@ -14,7 +14,8 @@
     (
       "File Managers",
       (Thunar, EXEC, thunar),
-      ("Midnight Commander", EXEC, "xterm -e mc")
+      ("Midnight Commander", EXEC, "xterm -e mc"),
+      (Xfe, EXEC, xfe)
     ),
     (
       Graphics,
@@ -223,5 +224,6 @@
   ("Configure Window Maker", EXEC, WPrefs),
   ("Info Panel", INFO_PANEL),
   ("Restart Window Maker", RESTART),
+  ("Other Window Managers", ("Start Motif Window Manager", RESTART, mwm)),
   ("Exit Window Maker", EXIT)
 )

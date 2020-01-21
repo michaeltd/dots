@@ -1,3 +1,4 @@
+! docs: https://sites.ualberta.ca/dept/chemeng/AIX-43/share/man/info/C/a_doc_lib/motif/motifug/toc.htm
 !
 ! Motif
 !
@@ -41,14 +42,14 @@
 
 Menu DefaultRootMenu
 {
-	"Root Menu"         f.title
+	"Root Menu"		f.title
 	"New Window"		f.exec "terminology &"
 	"Applications" 		f.menu "ApplicationsMenu"
 	"Shuffle Up"		f.circle_up
 	"Shuffle Down"		f.circle_down
 	"Refresh"		f.refresh
 	"Pack Icons"		f.pack_icons
-!	"Toggle Behavior..."	f.set_behavior
+	"Toggle Behavior..."	f.set_behavior
 	 no-label		f.separator
 	"Restart..."		f.restart
 	"Quit..."		f.quit_mwm
@@ -58,12 +59,12 @@ Menu DefaultRootMenu
 Menu RootMenu_1.1
 {
 	"Root Menu"		f.title
-	"New Window"		f.exec "terminology &"
+	"New Window"		f.exec "terminology"
 	"Shuffle Up"		f.circle_up
 	"Shuffle Down"		f.circle_down
 	"Refresh"		f.refresh
-!	"Pack Icons"		f.pack_icons
-!	"Toggle Behavior"	f.set_behavior
+	"Pack Icons"		f.pack_icons
+	"Toggle Behavior"	f.set_behavior
 	no-label		f.separator
 	"Restart..."		f.restart
 }
@@ -71,12 +72,12 @@ Menu RootMenu_1.1
 Menu ApplicationsMenu
 {
 	"Applications" 		f.title
-	"Terminal" 		f.exec "xterm -sb &"
-	"Firefox" 		f.exec "firefox &"
-	"File Manager" 		f.exec "gentoo &"
-	"Editor" 		f.exec "gvim &"
-	"Gui Pimp"		f.exec "~/bin/pimp-my-gui.bash &"
-	"Root Menu" 		f.exec "gtkdialog-utils.bash &"
+	"Terminal" 		f.exec "xterm"
+	"Firefox" 		f.exec "firefox"
+	"File Manager" 		f.exec "gentoo"
+	"Editor" 		f.exec "~/bin/mxcl"
+	"Gui Pimp"		f.exec "~/bin/pimp_my_gui.bash"
+	"GDUtils" 		f.exec "gdutils"
 }
 
 !!
@@ -131,11 +132,10 @@ Buttons ExplicitButtonBindings
 	<Btn1Down>	frame|icon	f.raise
 	<Btn3Down>	frame|icon	f.post_wmenu
 	<Btn3Down>	root		f.menu	DefaultRootMenu
-!	<Btn1Up>	icon		f.restore
+	<Btn1Up>	icon		f.restore
 	Alt<Btn1Down>	window|icon	f.lower
-!	Alt<Btn2Down>	window|icon	f.resize
-!	Alt<Btn3Down>	window|icon	f.move
-
+	Alt<Btn2Down>	window|icon	f.resize
+	Alt<Btn3Down>	window|icon	f.move
 }
 
 Buttons PointerButtonBindings
@@ -144,10 +144,10 @@ Buttons PointerButtonBindings
 	<Btn3Down>	frame|icon	f.post_wmenu
 	<Btn3Down>	root		f.menu	DefaultRootMenu
 	<Btn1Down>	window		f.raise
-!	<Btn1Up>	icon		f.restore
+	<Btn1Up>	icon		f.restore
 	Alt<Btn1Down>	window|icon	f.lower
-!	Alt<Btn2Down>	window|icon	f.resize
-!	Alt<Btn3Down>	window|icon	f.move
+	Alt<Btn2Down>	window|icon	f.resize
+	Alt<Btn3Down>	window|icon	f.move
 }
 
 !!
