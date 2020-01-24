@@ -24,7 +24,8 @@ rcm 9 ~/bin/wallpaper_rotate.bash
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-  rcm 9 conky -qd
+    # rcm 9 conky -qd
+    true
 elif [[ "${ID}" == "devuan" ]]; then
   rcm 9 xfce4-terminal --disable-server
   rcm 9 conky -qd
