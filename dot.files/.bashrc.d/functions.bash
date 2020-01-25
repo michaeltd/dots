@@ -81,13 +81,17 @@ lcdfe() {
 
 # End stuff
 termapp() {
-  # kill -s 15 $(pgrep "${1}")
-  pkill -TERM -u "${USER}" "${1}"
+    # kill -s 15 $(pgrep "${1}")
+    if [[ -n "${1}" ]]; then
+	pkill -TERM -u "${USER}" "${1}"
+    fi
 }
 
 killapp() {
   # kill -s 9 $(pgrep "${1}")
-  pkill -KILL -u "${USER}" "${1}"
+    if [[ -n "${1}" ]]; then
+	pkill -KILL -u "${USER}" "${1}"
+    fi
 }
 
 # Create a new alias
@@ -232,11 +236,11 @@ ping_subnet() {
 }
 
 getmimetype(){
-  file -b --mime-type "${1}"
+    file -b --mime-type "${1}"
 }
 
 getfiletype(){
-  file -b "${1}"|awk '{print $1}'
+    file -b "${1}"|awk '{print $1}'
 }
 
 showInterFaces() {
