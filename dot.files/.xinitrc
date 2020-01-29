@@ -29,10 +29,13 @@ declare -A WMA=( [openbox]="openbox-session" \
                  [emacs]="emacs" \
                  [kodi]="kodi-standalone" )
 
+# Selected WM (prefered WMA key available in daily driver)
+declare SWM="e16"
+
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-    WM="${WMA[e16]}"
+    WM="${WMA[$SWM]}"
 elif [[ "${ID}" == "devuan" ]];then
     WM="${WMA[xfce4]}"
 else
