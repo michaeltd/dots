@@ -61,28 +61,12 @@ elif type -P emerge &> /dev/null; then
 	  dcleanup='sudo emerge --ask --depclean'
 fi
 
-# Mount
-alias mntc='sudo mount -t auto /dev/sdc1 /mnt/thumb'
-alias mntd='sudo mount -t auto /dev/sdd1 /mnt/thumb'
-alias mnte='sudo mount -t auto /dev/sde1 /mnt/thumb'
-alias mntf='sudo mount -t auto /dev/sdf1 /mnt/thumb'
-
-# PC
-# alias halt='sudo shutdown -h' # Use with "now", "HH:MM" or any other valid (by shutdown) TIME construct.
-# alias reboot='sudo shutdown -r' # as above
-
 # Midnight Commander Safe Terminal
 # alias mcst='mc -a' # In case of malconfigured terminals
 # alias mc='source /usr/share/mc/mc-wrapper.sh'
 
-# URxvt transparency
-# Moved to .Xresouces alias urxvt='urxvt -depth 32 -bg rgba:0000/0000/0000/aaaa'
-
 # Emacs alias
-alias ex='emacs' # EmaX
 alias exnx='emacs -nw' # EmaX No X11
-# emacsclient
-alias ec='emacsclient -c' # EmacsClient
 alias ecnx='emacsclient -t' # EmacsClient No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
 alias eckd='emacsclient -e "(kill-emacs)"' # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
 
