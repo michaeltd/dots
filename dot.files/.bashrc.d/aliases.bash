@@ -107,21 +107,21 @@ alias ttt='for x in {1..10}; do let tt="${x} * 10";for y in $(seq $x $x $tt);do 
 # curl -s http://whatthecommit.com/index.txt
 
 # GIT
-# alias gcl='git clone'
-# alias gfc='git fetch'
-alias gst='git status'
-# alias gdf='git diff'
-# alias gaa='git add --all'
-alias gad='git add .'
-alias gcm='git commit -m "$(curl -s http://whatthecommit.com/index.txt)"'
-#alias gcm='git commit -m "$(wget -q -O - http://whatthecommit.com/index.txt)"'
-alias gps='git push'
-alias gal='gad && gcm && gps'
-alias glp='git log -p'
-alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-# alias gco='git checkout'
-# alias gpl='git pull --rebase'
-# alias grb='git rebase'
+alias gitcl='git clone'
+# alias gitfc='git fetch'
+alias gitst='git status'
+alias gitdf='git diff'
+# alias gitaa='git add --all'
+alias gitad='git add .'
+alias gitcm='git commit -m "$(curl -s http://whatthecommit.com/index.txt)"'
+#alias gitcm='git commit -m "$(wget -q -O - http://whatthecommit.com/index.txt)"'
+alias gitps='git push'
+alias gital='gitad && gitcm && gitps'
+alias gitlp='git log -p'
+alias gitlg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+# alias gitco='git checkout'
+# alias gitpl='git pull --rebase'
+# alias gitrb='git rebase'
 
 # NETRIS
 # https://git.sr.ht/~tslocum/netris?0.1.2

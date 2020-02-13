@@ -62,16 +62,22 @@ export GIT_PS1_SHOWSTASHSTATE=yes
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=yes
 
+# OPT
 export OPT="/opt"
 export HOPT="${HOME}/opt"
+# JAVA
 export JAVA="/opt/java"
 export JAVA_HOME="${JAVA}"
 export ANT="/opt/ant"
 export MAVEN="/opt/maven"
 export GRADLE="/opt/gradle"
+# GO
 export GOPATH="${HOME}/go"
+# NODE
 export NODE="/opt/nodejs"
+# MONGODB
 export MONGODB="/opt/mongodb"
+# SCALA
 # export SBT_HOME="/opt/sbt"
 # export SCALA_HOME="/opt/scala"
 
@@ -79,23 +85,28 @@ export MONGODB="/opt/mongodb"
 #export PATH+=":./"
 export PATH+=":${HOME}/.local/bin"
 # export PATH+=":node_modules/.bin"
+# OPT
 export PATH+=":${OPT}/bin"
 export PATH+=":${HOPT}/bin"
 export PATH+=":${HOME}/bin"
+# JAVA
 export PATH+=":${JAVA_HOME}/bin"
 export PATH+=":${ANT}/bin"
 export PATH+=":${MAVEN}/bin"
 export PATH+=":${GRADLE}/bin"
 export PATH+=":${GOPATH}/bin"
-
+# RUST
 if [[ -d "${HOME}/.cargo" ]]; then
   export PATH+=":${HOME}/.cargo/bin"
 fi
-
+# NODE
 export PATH+=":${NODE}/bin"
+# MONGODB
 export PATH+=":${MONGODB}/bin"
+# SCALA
 # export PATH+=":${SBT_HOME}/bin"
 # export PATH+=":${SCALA_HOME}/bin"
+# RACKET
 # export PATH+=":${HOME}/.racket/7.0.0.9/bin"
 
 #MANPATH
@@ -103,7 +114,7 @@ export MANPATH+=":${HOME}/.local/share/man"
 export MANPATH+=":${HOME}/opt/share/man"
 
 # JAVA classpath
-#export CLASSPATH+=":./"
+# export CLASSPATH+=":./"
 export CLASSPATH+=":${JAVA}/lib"
 export CLASSPATH+=":${ANT}/lib"
 export CLASSPATH+=":${MAVEN}/lib"

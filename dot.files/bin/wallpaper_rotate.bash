@@ -129,9 +129,9 @@ else
     WP="${WPS[RN]}"
 
     # set wallpaper, log, wait
-    "${!BGSRS[BGSR]}" "${WP}" || continue # Skip log and sleep if selected img won't work.
+    "${!BGSRS[BGSR]}" "${WP}" 2> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
 
-    printf "%s %s %s\n" "$(date +%y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
+    printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
     sleep "${WAIT}"
   done
 fi
