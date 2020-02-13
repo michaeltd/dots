@@ -22,7 +22,7 @@ declare -a FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-ro
         FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
 declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
 	DIRS=( "${HOME}/Pictures" ) WPS=()
-declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]}").rc" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]}").log" \
+declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.log}")" \
 	BGSR="" WAIT="2m" LS="$(type -P ls)"
 
 # bash version info check
@@ -129,7 +129,7 @@ else
     WP="${WPS[RN]}"
 
     # set wallpaper, log, wait
-    "${!BGSRS[BGSR]}" "${WP}" 2> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
+    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
 
     printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
     sleep "${WAIT}"

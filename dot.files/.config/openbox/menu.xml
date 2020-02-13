@@ -333,14 +333,50 @@
   </item>
 </menu>
 
-<menu id="apps-installed" label="Installed Apps" execute="~/.config/openbox/scripts/obam.pl"/>
+<menu id="apps-general-menu" label="General">
+  <item label="Term">
+    <action name="Execute">
+      <command>terminology</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Browser">
+    <action name="Execute">
+      <command>firefox</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Editor">
+    <action name="Execute">
+      <command>~/bin/mxcl</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="File Manager">
+    <action name="Execute">
+      <command>gentoo</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+</menu>
 
-<menu id="apps-calendar" label="Calendar" execute="~/.config/openbox/scripts/date_menu.sh"/>
+<menu id="apps-installed-menu" label="Installed Apps" execute="~/.config/openbox/scripts/obam.pl"/>
+
+<menu id="apps-calendar-menu" label="Calendar" execute="~/.config/openbox/scripts/date_menu.sh"/>
 
 <menu id="root-menu" label="Openbox 3">
   <separator label="Applications" />
-  <menu id="apps-installed"/>
-  <menu id="apps-calendar"/>
+  <menu id="apps-general-menu"/>
+  <menu id="apps-installed-menu"/>
+  <menu id="apps-calendar-menu"/>
   <menu id="apps-accessories-menu"/>
   <menu id="apps-editors-menu"/>
   <menu id="apps-graphics-menu"/>

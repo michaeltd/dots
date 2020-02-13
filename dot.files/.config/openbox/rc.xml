@@ -227,12 +227,42 @@
     </keybind>
 
     <keybind key="W-F1">
-      <action name="Execute">
+      <action name="Terminal">
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminology</name>
         </startupnotify>
         <command>terminology</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-F2">
+      <action name="Browser">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Browser</name>
+        </startupnotify>
+        <command>firefox</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-F3">
+      <action name="Editor">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Editor</name>
+        </startupnotify>
+        <command>~/bin/mxcl</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-F4">
+      <action name="File Manager">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>File Manager</name>
+        </startupnotify>
+        <command>gentoo</command>
       </action>
     </keybind>
 
@@ -256,6 +286,7 @@
     <!--     <to>4</to> -->
     <!--   </action> -->
     <!-- </keybind> -->
+
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
