@@ -1,4 +1,4 @@
-# ~/.bashrc.d/string.sh
+# ~/.bashrc.d/.stl/string.bash
 #
 # string related functions
 #shellcheck shell=bash

@@ -1,4 +1,4 @@
-# ~/.bashrc.d/temp.sh
+# ~/.bashrc.d/.stl/temp.bash
 #
 # Temperature conversions celsius - fahrenheit - kelvin
 #shellcheck shell=bash

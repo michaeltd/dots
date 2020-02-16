@@ -1,4 +1,4 @@
-# ~/.bashrc.d/math.sh
+# ~/.bashrc.d/.stl/math.bash
 #
 # math related functions
 #shellcheck shell=bash

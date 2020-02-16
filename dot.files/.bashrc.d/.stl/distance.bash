@@ -1,4 +1,4 @@
-# ~/.bashrc.d/distance.bash
+# ~/.bashrc.d/.stl/distance.bash
 #
 # Distance conversions
 #shellcheck shell=bash
