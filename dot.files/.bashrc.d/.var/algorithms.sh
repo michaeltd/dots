@@ -1,7 +1,22 @@
 # ~/.bashrc.d/algorithms.sh
 #
-# algorithms in bash
+# common algorithms in bash
 #shellcheck shell=bash
+
+fizzbuzz() {
+    [[ -z "${1}" ]] && echo "Usage: ${FUNCNAME[0]} count" && return 1
+    for (( cnt = 1; cnt <= $1; cnt++ ))
+    do
+	if (( cnt % 15 == 0 ))
+	then echo "fizzbuzz"
+	elif (( cnt % 5 == 0 ))
+	then echo "buzz"
+	elif (( cnt % 3 == 0 ))
+	then echo "fizz"
+	else echo "${cnt}"
+	fi
+    done
+}
 
 # Iterative
 fibonacciIterative() {
@@ -28,7 +43,6 @@ fibonacciRecursive() {
   fi
 }
 
-
 factorial() {
   # https://rosettacode.org/wiki/Factorial
   if [[ "${1}" -le "1" ]]; then
@@ -51,24 +65,4 @@ bessel() {
     printf '% *d\n' "${pad%.*}" $i
     sleep .03
   done
-}
-
-UUID() {
-  # https://en.wikipedia.org/wiki/Universally_unique_identifier
-  # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
-
-  local N B C
-
-  C='89ab'
-
-  for (( N = 1; N < 16; N++ )); do
-    B="$(( RANDOM % 256 ))"
-    case "${N}" in
-      6) printf '4%x' "$(( B%16 ))";;
-      8) printf '%c%x' "${C:${RANDOM}%${#C}:1}" "$(( B % 16 ))";;
-      3|5|7|9) printf '%02x-' "${B}";;
-      *) printf '%02x' "${B}";;
-    esac
-  done
-  echo
 }

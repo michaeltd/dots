@@ -31,21 +31,6 @@ countdown() {
   play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
 }
 
-fizzbuzz() {
-    [[ -z "${1}" ]] && echo "Usage: ${FUNCNAME[0]} count" && return 1
-    for (( cnt = 1; cnt <= $1; cnt++ ))
-    do
-	if (( cnt % 15 == 0 ))
-	then echo "fizzbuzz"
-	elif (( cnt % 5 == 0 ))
-	then echo "buzz"
-	elif (( cnt % 3 == 0 ))
-	then echo "fizz"
-	else echo "${cnt}"
-	fi
-    done
-}
-
 # UTILS =======================================================================
 
 pyhttpserv() {

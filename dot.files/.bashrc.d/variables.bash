@@ -6,12 +6,12 @@
 
 # SUDO_ASKPASS
 #shellcheck disable=SC2155
-export SUDO_ASKPASS="$(type -P x11-ssh-askpass || type -P ssh-askpass-fullscreen)"
+export SUDO_ASKPASS="$(type -P x11-ssh-askpass||type -P ssh-askpass-fullscreen)"
 
 # Used by emacsclient in case of no daemon found.
 #shellcheck disable=SC2155
-export ALTERNATE_EDITOR="$(type -P emacs || type -P gvim||type -P kate||type -P gedit||type -P mousepad)" \
-       TERMINAL_EDITOR="$(type -P emacs || type -P vim||type -P micro||type -P nano)"
+export ALTERNATE_EDITOR="$(type -P emacs||type -P gvim||type -P kate||type -P gedit||type -P mousepad)" \
+       TERMINAL_EDITOR="$(type -P emacs||type -P vim||type -P micro||type -P nano)"
 
 if [[ -n "${DISPLAY}" ]]; then
   unset EDITOR

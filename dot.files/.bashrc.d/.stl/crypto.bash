@@ -3,6 +3,26 @@
 # cryptographic functions
 #shellcheck shell=bash
 
+UUID() {
+  # https://en.wikipedia.org/wiki/Universally_unique_identifier
+  # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
+
+  local N B C
+
+  C='89ab'
+
+  for (( N = 1; N < 16; N++ )); do
+    B="$(( RANDOM % 256 ))"
+    case "${N}" in
+      6) printf '4%x' "$(( B%16 ))";;
+      8) printf '%c%x' "${C:${RANDOM}%${#C}:1}" "$(( B % 16 ))";;
+      3|5|7|9) printf '%02x-' "${B}";;
+      *) printf '%02x' "${B}";;
+    esac
+  done
+  echo
+}
+
 transcode_stdin() {
     [[ "${#}" -ne "2" ]] && echo "Usage: ${FUNCNAME[0]} function(e|d) cipher" && return 1
     openssl enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")

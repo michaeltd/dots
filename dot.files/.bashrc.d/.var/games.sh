@@ -8,8 +8,8 @@ rps() {
   declare -a op=("${red}Rock${reset}" "${green}Paper${reset}" "${blue}Scissors${reset}")
   declare -a oc=("${green}WIN${reset}" "${red}Defeat${reset}" "${yellow}Draw${reset}")
   declare -A rs[0,0]=${oc[2]} rs[0,1]=${oc[1]} rs[0,2]=${oc[0]} \
-          rs[1,0]=${oc[0]} rs[1,1]=${oc[2]} rs[1,2]=${oc[1]} \
-          rs[2,0]=${oc[1]} rs[2,1]=${oc[0]} rs[2,2]=${oc[2]}
+             rs[1,0]=${oc[0]} rs[1,1]=${oc[2]} rs[1,2]=${oc[1]} \
+             rs[2,0]=${oc[1]} rs[2,1]=${oc[0]} rs[2,2]=${oc[2]}
 
   declare cs=0 us=0 ns=0 rd=0
 
