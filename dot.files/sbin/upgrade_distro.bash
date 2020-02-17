@@ -29,7 +29,7 @@ for x in "${!PMS[@]}"; do
   fi
 done
 
-printf " -- %s --\n" "$(basename "${BASH_SOURCE[0]}")"
+echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if (( PMIDX == NOTFOUND || EUID != 0 )); then
   #shellcheck disable=SC2154

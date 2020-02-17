@@ -44,7 +44,7 @@ crypt() {
 
 genpass() {
     #shellcheck disable=SC2005
-    echo "$(tr -dc [:graph:] < /dev/urandom|tr -d [=\|=][=\"=][=\'=]|head -c "${1:-64}")"
+    tr -dc [:graph:] < /dev/urandom|tr -d [=\|=][=\"=][=\'=]|head -c "${1:-64}";echo
 }
 
 rot_13(){

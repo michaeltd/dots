@@ -15,22 +15,19 @@ xset m 20/10 4
 # Qt5 theme engine
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-declare -A WMA=( [openbox]="openbox-session" \
-                 [wmaker]="wmaker" \
-                 [jwm]="jwm" \
-                 [awesome]="awesome" \
-                 [mwm]="mwm" \
-                 [fvwm-crystal]="fvwm-crystal" \
-                 [fvwm]="fvwm" \
-                 [e16]="starte16" \
-                 [enlightenment]="enlightenment_start" \
-                 [xfce4]="xfce4-session" \
+declare -A WMA=( [xfce4]="xfce4-session" \
                  [compiz]="compiz.sh" \
+                 [enlightenment]="enlightenment_start" \
+                 [e16]="starte16" \
+		 [openbox]="openbox-session" \
+                 [wmaker]="wmaker" \
+                 [mwm]="mwm" \
+                 [awesome]="awesome" \
                  [emacs]="emacs" \
                  [kodi]="kodi-standalone" )
 
 # Selected WM (prefered WMA key available in daily driver)
-declare SWM="e16"
+declare SWM="awesome"
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
@@ -39,7 +36,7 @@ if [[ "${ID}" == "gentoo" ]]; then
 elif [[ "${ID}" == "devuan" ]];then
     WM="${WMA[xfce4]}"
 else
-    # Availability check, One line version: WM=$(which openbox-session||which wmaker||which jwm||which awesome||which mwm||which fvwm-crystal||which fvwm||which starte16||which enlightenment_start||which xfce4-session||which compiz||which emacs||which kodi-standalone)
+    # Availability check, One line version: WM=$( type -P xfce4-session||type -P compiz.sh||type -P enlightenment_start||type -P starte16||type -P openbox-session||type -P wmaker||type -P mwm||type -P awesome||type -P emacs ||type -P kodi-standalone )
     for x in "${!WMA[@]}"; do
         if [[ -x "$(type -P "${WMA[$x]}")" ]]; then
             WM="${WMA[$x]}"
