@@ -1,14 +1,15 @@
-#!/bin/bash
+#!/bin/env bash
 
-# No double sourcing
-[[ ! $(type -P rcm) ]] && source ~/.bashrc.d/functions.bash
-
+# Old rcm
 # run() {
 #   if ! pgrep $1
 #   then
 #     $@ &
 #   fi
 # }
+
+# No double sourcing
+[[ ! $(type -P rcm) ]] && source ~/.bashrc.d/functions.bash
 
 rcm 9 compton -b
 

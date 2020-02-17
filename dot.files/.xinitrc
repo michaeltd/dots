@@ -27,7 +27,7 @@ declare -A WMA=( [xfce4]="xfce4-session" \
                  [kodi]="kodi-standalone" )
 
 # Selected WM (prefered WMA key available in daily driver)
-declare SWM="awesome"
+declare SWM="e16"
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release
