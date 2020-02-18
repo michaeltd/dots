@@ -7,12 +7,15 @@ declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
 
 declare EXC="/home/${UTB}/.bkp.exclude"
 
+declare RCPNT="tsouchlarakis@gmail.com"
+
 # Full path executables, no aliases
 declare -a \
         NICEC=( "$(type -P nice)" "-n" "19" ) \
-        TARCM=( "$(type -P tar)" "--create" "--gzip" "--exclude-from=${EXC}" "--exclude-backups" "--one-file-system" ) \
+        TARCM=( "$(type -P tar)" "--create" "--gzip" "--exclude-from=${EXC}" \
+		"--exclude-backups" "--one-file-system" ) \
         GPG2C=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" \
-                  "tsouchlarakis@gmail.com" "--trust-model" "always" "--output" )
+                "${RCPNT}" "--trust-model" "always" "--output" )
 
 #shellcheck disable=SC2034
 declare -a \
@@ -46,7 +49,7 @@ if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
     else
       ENCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHV[i]}.pgp"
       #shellcheck disable=SC2086
-      time "${NICEC[@]}" "${TARCM[@]}" ${!BKP[i]} | "${GPG2C[@]}" "${ENCFL}" "--encrypt"
+      time "${NICEC[@]}" "${TARCM[@]}" ${!BKP[i]}|"${GPG2C[@]}" "${ENCFL}" "--encrypt"
     fi
   done
 else

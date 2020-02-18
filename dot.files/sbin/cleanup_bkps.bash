@@ -35,7 +35,7 @@ done
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 # No root access or No backups directory
-(( EUID != 0 )) && echo -ne "privileged access requirements not met.\n" >&2 && exit 1
+# (( EUID != 0 )) && echo -ne "privileged access requirements not met.\n" >&2 && exit 1
 [[ ! -d "${BKPD}" ]] && echo -ne "${BKPD} is not a directory.\n" >&2 && exit 1
 
 for src in "${srcs[@]}"; do

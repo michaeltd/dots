@@ -14,23 +14,23 @@ export ALTERNATE_EDITOR="$(type -P emacs||type -P gvim||type -P kate||type -P ge
        TERMINAL_EDITOR="$(type -P emacs||type -P vim||type -P micro||type -P nano)"
 
 if [[ -n "${DISPLAY}" ]]; then
-  unset EDITOR
-  if [[ -x "$(type -P emacs)" ]]; then
-    export VISUAL="emacsclient --alternate-editor=${ALTERNATE_EDITOR} -c"
-  else
-    export VISUAL="${ALTERNATE_EDITOR}"
-  fi
-  #shellcheck disable=SC2155
-  export BROWSER="$(type -P firefox ||type -P seamonkey)"
+    unset EDITOR
+    if [[ -x "$(type -P emacs)" ]]; then
+	export VISUAL="emacs" # "emacsclient --alternate-editor=${ALTERNATE_EDITOR} -c"
+    else
+	export VISUAL="${ALTERNATE_EDITOR}"
+    fi
+    #shellcheck disable=SC2155
+    export BROWSER="$(type -P firefox ||type -P seamonkey)"
 else
-  unset VISUAL
-  if [[ -x "$(type -P emacs)" ]]; then
-    export EDITOR="emacsclient --alternate-editor=${TERMINAL_EDITOR} -t"
-  else
-    export EDITOR="${TERMINAL_EDITOR}"
-  fi
-  #shellcheck disable=SC2155
-  export BROWSER="$(type -P w3m||type -P links||type -P lynx)"
+    unset VISUAL
+    if [[ -x "$(type -P emacs)" ]]; then
+	export EDITOR="emacs" #"emacsclient --alternate-editor=${TERMINAL_EDITOR} -t"
+    else
+	export EDITOR="${TERMINAL_EDITOR}"
+    fi
+    #shellcheck disable=SC2155
+    export BROWSER="$(type -P w3m||type -P links||type -P lynx)"
 fi
 
 # Colorfull manpages (works with less as a pager)

@@ -4,28 +4,30 @@
 
 #shellcheck shell=bash
 
-if [[ -x "$(type -P dircolors)" ]]; then
-  # Color support
-  if [[ -r "${HOME}/.bashrc.d/colors.bash" ]]; then
-    eval "$(dircolors -b "${HOME}/.bashrc.d/colors.bash")"
-  else
-    eval "$(dircolors -b)"
-  fi
+if [[ -x "$(type -P dircolors)" ]]
+then
+    # Color support
+    if [[ -r "${HOME}/.bashrc.d/colors.bash" ]]
+    then
+	eval "$(dircolors -b "${HOME}/.bashrc.d/colors.bash")"
+    else
+	eval "$(dircolors -b)"
+    fi
 
-  alias ls='ls --color=auto --group-directories-first'
-  alias la='ls --all --human-readable --color=auto --group-directories-first'
-  alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto'
-  alias grep='grep --color=auto -in'
-  alias egrep='egrep --color=auto'
-  alias fgrep='fgrep --color=auto'
+    alias ls='ls --color=auto --group-directories-first'
+    alias la='ls --all --human-readable --color=auto --group-directories-first'
+    alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto -in'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
 else
 
-  alias ls='ls --group-directories-first'
-  alias la='ls --all --human-readable --group-directories-first'
-  alias ll='ls -l --all --human-readable --group-directories-first'
-  alias grep='grep -in'
+    alias ls='ls --group-directories-first'
+    alias la='ls --all --human-readable --group-directories-first'
+    alias ll='ls -l --all --human-readable --group-directories-first'
+    alias grep='grep -in'
 fi
 
 alias du='du -h'
@@ -107,21 +109,21 @@ alias ttt='for x in {1..10}; do let tt="${x} * 10";for y in $(seq $x $x $tt);do 
 # curl -s http://whatthecommit.com/index.txt
 
 # GIT
-alias gitcl='git clone'
-# alias gitfc='git fetch'
-alias gitst='git status'
-alias gitdf='git diff'
-# alias gitaa='git add --all'
-alias gitad='git add .'
-alias gitcm='git commit -m "$(curl -s http://whatthecommit.com/index.txt)"'
+alias gcl='git clone'
+# alias gfc='git fetch'
+alias gst='git status'
+alias gdf='git diff'
+# alias gaa='git add --all'
+alias gad='git add .'
+alias gcm='git commit -m "$(curl -s http://whatthecommit.com/index.txt)"'
 #alias gitcm='git commit -m "$(wget -q -O - http://whatthecommit.com/index.txt)"'
-alias gitps='git push'
-alias gital='gitad && gitcm && gitps'
-alias gitlp='git log -p'
-alias gitlg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-# alias gitco='git checkout'
-# alias gitpl='git pull --rebase'
-# alias gitrb='git rebase'
+alias gps='git push'
+alias gal='gad && gcm && gps'
+alias glp='git log -p'
+alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+# alias gco='git checkout'
+# alias gpl='git pull --rebase'
+# alias grb='git rebase'
 
 # NETRIS
 # https://git.sr.ht/~tslocum/netris?0.1.2
