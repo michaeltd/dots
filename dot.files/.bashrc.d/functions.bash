@@ -31,6 +31,23 @@ countdown() {
     play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
 }
 
+# igor chubbin =================================================================
+
+cheatsh() {
+  # https://github.com/chubin/cheat.sh
+  curl "https://cheat.sh/${1}"
+}
+
+ccxrates() {
+  # https://twitter.com/igor_chubin
+  curl "https://${1:-eur}.rate.sx"
+}
+
+wttrin() {
+  # https://twitter.com/igor_chubin # Try wttr moon
+  curl "https://wttr.in/${1:-moon}"
+}
+
 # UTILS =======================================================================
 
 webp2jpg() {
@@ -44,8 +61,9 @@ measurebashloadtime() {
 }
 
 helloworld() {
-    echo -ne "\n\t${green}Hello${reset} ${bold}${USER}${reset}, today is ${cyan}$(date '+%A, %B %d')${reset}\n"
-    curl "https://wttr.in/${1:-moon}"
+    echo -ne "\n ${green}Hello${reset} ${bold}${USER}${reset}, today is ${cyan}$(date '+%A, %B %d')${reset}\n\n"
+    curl https://wttr.in?0
+    printf "\n"
 }
 
 takeabkp() {
