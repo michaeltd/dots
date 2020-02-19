@@ -33,6 +33,26 @@ countdown() {
 
 # UTILS =======================================================================
 
+webp2jpg() {
+    for i in ${@}; do
+	ffmpeg -i "${i}" "${i}.jpg"
+    done
+}
+
+measurebashloadtime() {
+    time bash -ic exit
+}
+
+helloworld() {
+    echo -ne "\n\t${green}Hello${reset} ${bold}${USER}${reset}, today is ${cyan}$(date '+%A, %B %d')${reset}\n"
+    curl "https://wttr.in/${1:-moon}"
+}
+
+takeabkp() {
+    [[ -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-to-copy\n" && return 1
+    cp -v "${1}" "${1}.$(date +%Y%m%d.%H%M%S.%s).bkp"
+}
+
 pyhttpserv() {
     # pyhttpserv.bash Start an http server in current directory
     # https://twitter.com/climagic/status/1224732676361461765
@@ -54,7 +74,7 @@ pyhttpserv() {
 # Example: rcm 9 conky -qdc ~/.conkyrc
 rcm() {
 
-  (( ${#} < 2 )) && echo -e "Usage: rcm niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" && return 1
+  (( ${#} < 2 )) && echo -e "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" && return 1
   #shellcheck disable=SC2155
   local bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
 
