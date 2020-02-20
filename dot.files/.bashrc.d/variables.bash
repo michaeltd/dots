@@ -53,10 +53,6 @@ export PAGER="$(type -P most||type -P less||type -P more)"
 export LANG="en_US.utf8"
 export LC_COLLATE="C"
 
-export HISTCONTROL=ignoreboth
-export HISTSIZE=99999
-export HISTFILESIZE=99999
-
 export GIT_PS1_SHOWDIRTYSTATE=yes
 export GIT_PS1_SHOWSTASHSTATE=yes
 export GIT_PS1_SHOWUNTRACKEDFILES=true
