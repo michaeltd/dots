@@ -17,9 +17,9 @@ BKPK="14"
 BKPR="1"
 
 # Source explicitly for non interactive shells.
-declare -a srcs=( "/home/paperjam/.bashrc.d/.stl/time.bash" \
-                    "/home/paperjam/.bashrc.d/.stl/string.bash" \
-                    "/home/paperjam/.bashrc.d/.stl/math.bash" )
+declare -a srcs=( "/home/paperjam/.bashrc.d/.stdlib/time.bash" \
+                    "/home/paperjam/.bashrc.d/.stdlib/string.bash" \
+                    "/home/paperjam/.bashrc.d/.stdlib/math.bash" )
 
 while [[ -n "${1}" ]]; do
   case "${1}" in

@@ -4,16 +4,13 @@
 
 #shellcheck shell=bash
 
-if [[ -x "$(type -P dircolors)" ]]
-then
+if [[ -x "$(type -P dircolors)" ]]; then
     # Color support
-    if [[ -r "${HOME}/.bashrc.d/colors.bash" ]]
-    then
+    if [[ -r "${HOME}/.bashrc.d/colors.bash" ]]; then
 	eval "$(dircolors -b "${HOME}/.bashrc.d/colors.bash")"
     else
 	eval "$(dircolors -b)"
     fi
-
     alias ls='ls --color=auto --group-directories-first'
     alias la='ls --all --human-readable --color=auto --group-directories-first'
     alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
@@ -23,7 +20,6 @@ then
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
 else
-
     alias ls='ls --group-directories-first'
     alias la='ls --all --human-readable --group-directories-first'
     alias ll='ls -l --all --human-readable --group-directories-first'
@@ -99,9 +95,8 @@ alias rmdl='find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +'
 alias propaideia='for x in {1..9}; do for y in $(seq 1 $x); do printf "%dx%d=%2d\t" $y $x $((y*x));done;printf "\n";done'
 alias ttt='for x in {1..10}; do let tt="${x} * 10";for y in $(seq $x $x $tt);do printf "%4d" $y;done; printf "\n";done'
 
-
 # https://twitter.com/liamosaur/status/506975850596536320
-# alias fuck='sudo $(history -p \!\!)'
+alias hug='sudo $(history -p \!\!)' # fuck='sudo $(history -p \!\!)' Political stup... err correctess killed this one
 
 # https://gist.github.com/seungwon0/802470
 # curl -s http://whatthecommit.com | perl -p0e '($_)=m{<p>(.+?)</p>}s'
