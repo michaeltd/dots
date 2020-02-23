@@ -29,6 +29,8 @@
   <p align="center"><a href="dot.files/bin/wallpaper_rotate.bash"><img alt="Help screen" src="assets/wpr.png"></a></p>
 
 * Some WM's in no particular order.
+  
+  For a better preview: Right Click -> View Image
 
   * [wmaker](dot.files/GNUstep/), [website](https://www.windowmaker.org/)
 
