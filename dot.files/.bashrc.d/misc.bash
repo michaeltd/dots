@@ -13,8 +13,9 @@ shopt -s checkwinsize
 # https://twitter.com/gumnos/status/1117146713289121797
 # And a couple bash options to control how history is stored:
 #HISTCONTROL=ignorespace:ignoredups:ignoreboth
-export HISTCONTROL=ignorespace:ignoredups:ignoreboth
-export HISTIGNORE=su\*:ll\*:cd\*:pwd:gal:gcm:gps:gal:gst:fg:htop:up
+export HISTCONTROL=ignoreboth # ignorespace:ignoredups
+export HISTIGNORE=pwd:up:fg:jobs:htop:mc:ll:ls:"su -l":gst:gad:gcm:gps:gal
+
 export HISTSIZE=999999
 export HISTFILESIZE=999999
 
