@@ -9,7 +9,9 @@
 # special-vendored-path/* linguist-vendored
 # */rc.lua linguist-vendored=false
 # *.lua linguist-language=Shell
-*.lua linguist-documentation=true
-wallpaper-rotate linguist-language=Shell
-.xinitrc linguist-language=Shell
-dot.files/.bashrc.d/* linguist-language=Shell
+
+# Sun 23 Feb 2020 04:01:42 PM EET 
+# *.lua linguist-documentation=true
+# wallpaper-rotate linguist-language=Shell
+# .xinitrc linguist-language=Shell
+# dot.files/.bashrc.d/* linguist-language=Shell
