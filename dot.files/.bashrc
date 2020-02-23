@@ -28,7 +28,7 @@ bcnf="${HOME}/git/utils/bash-insulter/src/bash.command-not-found"
 
 brcd="${HOME}/.bashrc.d"
 if [[ -d "${brcd}" ]]; then # Load files from ~/.bashrc.d
-    for file in "${brcd}"/*; do
+    for file in "${brcd}"/*.bash; do
         source "${file}"
     done
 fi

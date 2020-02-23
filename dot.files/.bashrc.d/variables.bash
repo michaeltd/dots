@@ -74,8 +74,8 @@ export NODE="/opt/nodejs"
 # MONGODB
 export MONGODB="/opt/mongodb"
 # SCALA
-# export SBT_HOME="/opt/sbt"
 # export SCALA_HOME="/opt/scala"
+# export SBT_HOME="/opt/sbt"
 
 # Path with += op and each tool in it's own line for practical reasons
 #export PATH+=":./"
@@ -100,8 +100,8 @@ export PATH+=":${NODE}/bin"
 # MONGODB
 export PATH+=":${MONGODB}/bin"
 # SCALA
-# export PATH+=":${SBT_HOME}/bin"
 # export PATH+=":${SCALA_HOME}/bin"
+# export PATH+=":${SBT_HOME}/bin"
 # RACKET
 # export PATH+=":${HOME}/.racket/7.0.0.9/bin"
 

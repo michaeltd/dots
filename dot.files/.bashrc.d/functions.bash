@@ -56,7 +56,7 @@ webp2jpg() {
     done
 }
 
-measurebashloadtime() {
+bashloadtimes() {
     time bash -ic exit
 }
 
@@ -74,7 +74,11 @@ takeabkp() {
 pyhttpserv() {
     # pyhttpserv.bash Start an http server in current directory
     # https://twitter.com/climagic/status/1224732676361461765
-    # python3 -m http.server 8080 # Start a simple webserver using python3 on external port 8080 and use the current directory you are in as the document root. Be careful with what you expose to the world. Use --bind 127.0.0.1 if you want to make it local only.
+    # python3 -m http.server 8080 \
+    # Start a simple webserver using python3 on external port 8080 \
+    # and use the current directory you are in as the document root. \
+    # Be careful with what you expose to the world. \
+    # Use --bind 127.0.0.1 if you want to make it local only.
     # Or the old days with python 2: python -m SimpleHTTPServer 8080
     local -a pv=( $(python --version) )
     if [[ "${pv[1]}" =~ ^3.* ]]; then
@@ -91,11 +95,9 @@ pyhttpserv() {
 # Usage : rcm niceness executable command line arguments
 # Example: rcm 9 conky -qdc ~/.conkyrc
 rcm() {
-
   (( ${#} < 2 )) && echo -e "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" && return 1
   #shellcheck disable=SC2155
   local bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
-
   [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
 }
 

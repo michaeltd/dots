@@ -28,7 +28,7 @@ export PROMPT_COMMAND='history -a'
 sl="${HOME}/.bashrc.d/.stdlib"
 # Load files from ~/.bashrc.d/.stdlib
 if [[ -d "${sl}" ]]; then
-  for file in "${sl}"/*; do
+  for file in "${sl}"/*.bash; do
     #shellcheck disable=SC1090
     source "${file}"
   done
