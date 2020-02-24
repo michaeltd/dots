@@ -67,7 +67,7 @@ helloworld() {
 }
 
 takeabkp() {
-    [[ -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-to-copy\n" && return 1
+    [[ ! -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-to-copy\n" && return 1
     cp -v "${1}" "${1}.$(date +%Y%m%d.%H%M%S.%s).bkp"
 }
 

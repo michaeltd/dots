@@ -20,7 +20,7 @@
 [[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.bash
 
 # Replace "${APPS}" list with your desired applets.
-APPS=( "wmclockmon" "wmsystemtray" "wmifinfo" "wmacpi" "wmsysmon" )
+APPS=( "wmclockmon" "wmsystemtray" "wmifinfo" "wmacpi" )
 for APP in "${APPS[@]}"; do
     rcm 9 "${APP}"
 done
