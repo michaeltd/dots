@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # ~/bin/cronjobs.bash
 # gather cronjobs for use with a familiar environment (/bin/bash)
@@ -13,29 +13,22 @@ alarm() {
 }
 
 backup() {
-
-    echo -ne " -- ${FUNCNAME[0]} --\n"
-
     local bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
           xcldf="${HOME}/.bkp.exclude" rcpnt="tsouchlarakis@gmail.com"
-
     local outfl="${bkpt}/${USER}.$(date +%Y%m%d).$(date +%H%M%S).$(date +%s).tar.gz.pgp" \
           LS="$(type -P ls)"
-
-    # Just in case
+    local nicm=( "$(type -P nice)" "-n" "9" ) \
+	  tarc=( "$(type -P tar)" "-cz" "--exclude-from=${xcldf}" \
+		 "--exclude-backups" "--one-file-system" "${bkpd}/." ) \
+	  pgcm=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" \
+		 "--recipient" "${rcpnt}" "--trust-model" "always" "--output" "${outfl}" "--encrypt" )
     mkdir -p "${bkpt}"
-
+    echo -ne " -- ${FUNCNAME[0]} --\n"
     if [[ -d "${bkpt}" ]]; then
-	# Bkp & encrypt things.
-	nice -n 9 tar -cz --exclude-from="${xcldf}" \
-	     --exclude-backups --one-file-system "${bkpd}"/. \
-            | gpg2 --batch --yes --quiet --recipient "${rcpnt}" \
-		   --trust-model always --output "${outfl}" --encrypt
-
-	# Keep two most recent bkps
+	time ${nicm[@]} ${tarc[@]} | ${pgcm[@]}
 	~/sbin/cleanup_bkps.bash --directory "${bkpt}" --keep 2
     else
-	echo "FATAL: Backup location: \"${bkpt}\" is not a directory" >&2
+	echo "ERROR: Backup location: \"${bkpt}\" is not a directory" >&2
 	exit 1
     fi
 }
