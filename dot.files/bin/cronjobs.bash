@@ -6,10 +6,13 @@
 usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)larm | -(-b)ackup"
 
 alarm() {
-
     echo -ne " -- ${FUNCNAME[0]} --\n"
-
-    cvlc --random file:///mnt/data/Documents/Music/Stanley-Clarke/ file:///mnt/data/Documents/Music/Marcus-Miller/ file:///mnt/data/Documents/Music/Jaco-Pastorius/ file:///mnt/data/Documents/Music/Esperanza-Spalding/ file:///mnt/data/Documents/Music/Mark-King/Level\ Best/
+    cvlc --random \
+	 file:///mnt/data/Documents/Music/Stanley-Clarke/ \
+	 file:///mnt/data/Documents/Music/Marcus-Miller/ \
+	 file:///mnt/data/Documents/Music/Jaco-Pastorius/ \
+	 file:///mnt/data/Documents/Music/Esperanza-Spalding/ \
+	 file:///mnt/data/Documents/Music/Mark-King/Level-Best/
 }
 
 backup() {
