@@ -352,7 +352,7 @@
   </item>
   <item label="Editor">
     <action name="Execute">
-      <command>~/bin/mxcl</command>
+      <command>emacs</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -361,6 +361,14 @@
   <item label="File Manager">
     <action name="Execute">
       <command>gentoo</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Pass Man">
+    <action name="Execute">
+      <command>xterm -hold -e bashpass tdm.pgp</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>

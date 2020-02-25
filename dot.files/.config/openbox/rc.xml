@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Syscrash</name>
+    <name>Onyx-Citrus</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -225,19 +225,17 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-
     <keybind key="W-F1">
-      <action name="Terminal">
+      <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Terminology</name>
+          <name>Terminal</name>
         </startupnotify>
         <command>terminology</command>
       </action>
     </keybind>
-
     <keybind key="W-F2">
-      <action name="Browser">
+      <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Browser</name>
@@ -245,9 +243,8 @@
         <command>firefox</command>
       </action>
     </keybind>
-
     <keybind key="W-F3">
-      <action name="Editor">
+      <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Editor</name>
@@ -255,9 +252,8 @@
         <command>emacs</command>
       </action>
     </keybind>
-
     <keybind key="W-F4">
-      <action name="File Manager">
+      <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>File Manager</name>
@@ -265,7 +261,15 @@
         <command>gentoo</command>
       </action>
     </keybind>
-
+    <keybind key="W-F5">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>PassMan</name>
+        </startupnotify>
+        <command>xterm -hold -e bashpass tdm.pgp</command>
+      </action>
+    </keybind>
     <!-- <keybind key="W-F1"> -->
     <!--   <action name="GoToDesktop"> -->
     <!--     <to>1</to> -->
@@ -286,7 +290,6 @@
     <!--     <to>4</to> -->
     <!--   </action> -->
     <!-- </keybind> -->
-
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>

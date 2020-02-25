@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # ~/bin/pimp-my-gui.sh
 # Spice for the desktop
