@@ -9,8 +9,8 @@
 # echo "abcdef" |replace "abc" "XYZ" # mysqld
 
 findstringindir() {
-  # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
-  grep -rnw "${2}" -e "${1}"
+    # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
+    grep -rnw "${2}" -e "${1}"
 }
 
 allemojis() {
@@ -56,8 +56,12 @@ webp2jpg() {
     done
 }
 
-bashloadtimes() {
+timebash() {
     time bash -ic exit
+}
+
+timeemacs(){
+    time emacs -f kill-emacs
 }
 
 helloworld() {

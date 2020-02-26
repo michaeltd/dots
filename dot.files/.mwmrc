@@ -74,8 +74,8 @@ Menu ApplicationsMenu
 	"Applications" 		f.title
 	"Terminal" 		f.exec "xterm"
 	"Firefox" 		f.exec "firefox"
+	"Editor" 		f.exec "emacsclient -a emacs -c"
 	"File Manager" 		f.exec "gentoo"
-	"Editor" 		f.exec "~/bin/mxcl"
 	"Gui Pimp"		f.exec "~/bin/pimp_my_gui.bash"
 	"GDUtils" 		f.exec "gdutils"
 }
@@ -153,4 +153,3 @@ Buttons PointerButtonBindings
 !!
 !!  END OF mwm RESOURCE DESCRIPTION FILE
 !!
-

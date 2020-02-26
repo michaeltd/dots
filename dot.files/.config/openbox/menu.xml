@@ -352,7 +352,7 @@
   </item>
   <item label="Editor">
     <action name="Execute">
-      <command>emacs</command>
+      <command>emacsclient -a emacs -c</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>

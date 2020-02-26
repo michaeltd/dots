@@ -50,7 +50,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "terminology"
 browser = "firefox"
-editor = "emacs"
+editor = "emacsclient -a emacs -c"
 editor_cmd = terminal .. "-e" .. editor
 fileman = "gentoo"
 
@@ -89,8 +89,7 @@ local function client_menu_toggle_fn()
 end
 -- }}}
 
--- {{{ Menu
--- @DOC_MENU@
+-- {{{ Menu-- @DOC_MENU@
 -- Create a launcher widget and a main menu
 myawesomemenu = {
    { "hotkeys", function() return false, hotkeys_popup.show_help end},
