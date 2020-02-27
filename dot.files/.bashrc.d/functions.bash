@@ -61,7 +61,7 @@ timebash() {
 }
 
 timeemacs(){
-    time emacs -f kill-emacs
+    time emacs --eval '(kill-emacs)'
 }
 
 helloworld() {

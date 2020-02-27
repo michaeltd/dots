@@ -66,7 +66,7 @@ fi
 # Emacs alias
 alias exnx='emacs -nw' # EmaX No X11
 alias ecnx='emacsclient -t' # EmacsClient No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
-alias eckd='emacsclient -e "(kill-emacs)"' # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
+alias eckd='emacsclient --eval "(kill-emacs)"' # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
 
 # calendar
 alias cal='cal -m' # First Day Monday Calendars

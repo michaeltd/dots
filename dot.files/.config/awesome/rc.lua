@@ -99,16 +99,17 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end}
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "terminal", terminal },
-                                    { "browser", browser },
-                                    { "editor", editor },
-                                    { "file manager", fileman }
-                                  }
-                        })
+mymainmenu = awful.menu({ items = {
+			     { "awesome", myawesomemenu, beautiful.awesome_icon },
+			     { "terminal", terminal },
+			     { "browser", browser },
+			     { "editor", editor },
+			     { "file manager", fileman }}
+		       })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+mylauncher = awful.widget.launcher({
+      image = beautiful.awesome_icon,
+      menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -124,47 +125,42 @@ mytextclock = wibox.widget.textclock()
 -- Create a wibox for each screen and add it
 -- @TAGLIST_BUTTON@
 local taglist_buttons = gears.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-                )
+   awful.button({ }, 1, function(t) t:view_only() end),
+   awful.button({ modkey }, 1, function(t)
+	 if client.focus then
+	    client.focus:move_to_tag(t)
+	 end
+   end),
+   awful.button({ }, 3, awful.tag.viewtoggle),
+   awful.button({ modkey }, 3, function(t)
+	 if client.focus then
+	    client.focus:toggle_tag(t)
+	 end
+   end),
+   awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+   awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end))
 
 -- @TASKLIST_BUTTON@
 local tasklist_buttons = gears.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  -- Without this, the following
-                                                  -- :isvisible() makes no sense
-                                                  c.minimized = false
-                                                  if not c:isvisible() and c.first_tag then
-                                                      c.first_tag:view_only()
-                                                  end
-                                                  -- This will also un-minimize
-                                                  -- the client, if needed
-                                                  client.focus = c
-                                                  c:raise()
-                                              end
-                                          end),
-                     awful.button({ }, 3, client_menu_toggle_fn()),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
+    awful.button({ }, 1, function (c)
+	if c == client.focus then
+	    c.minimized = true
+        else
+	   -- Without this, the following
+	   -- :isvisible() makes no sense
+	   c.minimized = false
+	   if not c:isvisible() and c.first_tag then
+	      c.first_tag:view_only()
+	   end
+	   -- This will also un-minimize
+	   -- the client, if needed
+	   client.focus = c
+	   c:raise()
+	end
+    end),
+    awful.button({ }, 3, client_menu_toggle_fn()),
+    awful.button({ }, 4, function () awful.client.focus.byidx(1) end),
+    awful.button({ }, 5, function () awful.client.focus.byidx(-1) end))
 
 -- @DOC_WALLPAPER@
 local function set_wallpaper(s)
@@ -173,7 +169,7 @@ local function set_wallpaper(s)
         local wallpaper = beautiful.wallpaper
         -- If wallpaper is a function, call it with the screen
         if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
+	    wallpaper = wallpaper(s)
         end
         gears.wallpaper.maximized(wallpaper, s, true)
     end
@@ -196,10 +192,10 @@ awful.screen.connect_for_each_screen(function(s)
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+			     awful.button({ }, 1, function () awful.layout.inc( 1) end),
+			     awful.button({ }, 3, function () awful.layout.inc(-1) end),
+			     awful.button({ }, 4, function () awful.layout.inc( 1) end),
+			     awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
@@ -213,21 +209,21 @@ awful.screen.connect_for_each_screen(function(s)
     -- @DOC_SETUP_WIDGETS@
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            mylauncher,
-            s.mytaglist,
-            s.mypromptbox,
-        },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
-        },
+       layout = wibox.layout.align.horizontal,
+       { -- Left widgets
+	  layout = wibox.layout.fixed.horizontal,
+	  mylauncher,
+	  s.mytaglist,
+	  s.mypromptbox,
+       },
+       s.mytasklist, -- Middle widget
+       { -- Right widgets
+	  layout = wibox.layout.fixed.horizontal,
+	  mykeyboardlayout,
+	  wibox.widget.systray(),
+	  mytextclock,
+	  s.mylayoutbox,
+       },
     }
 end)
 -- }}}
@@ -362,54 +358,54 @@ for i = 1, 4 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 4,
-                  function ()
-                        local screen = awful.screen.focused()
-                        local tag = screen.tags[i]
-                        if tag then
-                           tag:view_only()
-                        end
-                  end,
-                  {description = "view tag #"..i, group = "tag"}),
+	   function ()
+	      local screen = awful.screen.focused()
+	      local tag = screen.tags[i]
+	      if tag then
+		 tag:view_only()
+	      end
+	   end,
+	   {description = "view tag #"..i, group = "tag"}),
         -- Toggle tag display.
         awful.key({ modkey, "Control" }, "#" .. i + 4,
-                  function ()
-                      local screen = awful.screen.focused()
-                      local tag = screen.tags[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end,
-                  {description = "toggle tag #" .. i, group = "tag"}),
+	   function ()
+	      local screen = awful.screen.focused()
+	      local tag = screen.tags[i]
+	      if tag then
+		 awful.tag.viewtoggle(tag)
+	      end
+	   end,
+	   {description = "toggle tag #" .. i, group = "tag"}),
         -- Move client to tag.
         awful.key({ modkey, "Shift" }, "#" .. i + 4,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:move_to_tag(tag)
-                          end
-                     end
-                  end,
-                  {description = "move focused client to tag #"..i, group = "tag"}),
+	   function ()
+	      if client.focus then
+		 local tag = client.focus.screen.tags[i]
+		 if tag then
+		    client.focus:move_to_tag(tag)
+		 end
+	      end
+	   end,
+	   {description = "move focused client to tag #"..i, group = "tag"}),
         -- Toggle tag on focused client.
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 4,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:toggle_tag(tag)
-                          end
-                      end
-                  end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+	   function ()
+	      if client.focus then
+		 local tag = client.focus.screen.tags[i]
+		 if tag then
+		    client.focus:toggle_tag(tag)
+		 end
+	      end
+	   end,
+	   {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
 end
 
 -- @DOC_CLIENT_BUTTONS@
 clientbuttons = gears.table.join(
-    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
-    awful.button({ modkey }, 1, awful.mouse.client.move),
-    awful.button({ modkey }, 3, awful.mouse.client.resize))
+   awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
+   awful.button({ modkey }, 1, awful.mouse.client.move),
+   awful.button({ modkey }, 3, awful.mouse.client.resize))
 
 -- Set keys
 root.keys(globalkeys)
@@ -430,40 +426,40 @@ awful.rules.rules = {
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
-     }
+      }
     },
 
     -- @DOC_FLOATING_RULE@
     -- Floating clients.
     { rule_any = {
-        instance = {
-          "DTA",  -- Firefox addon DownThemAll.
-          "copyq",  -- Includes session name in class.
-        },
-        class = {
-          "Arandr",
-          "Gpick",
-          "Kruler",
-          "MessageWin",  -- kalarm.
-          "Sxiv",
-          "Wpa_gui",
-          "pinentry",
-          "veromix",
-          "xtightvncviewer"},
-
-        name = {
-          "Event Tester",  -- xev.
-        },
-        role = {
-          "AlarmWindow",  -- Thunderbird's calendar.
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-        }
-      }, properties = { floating = true }},
-
+	 instance = {
+	    "DTA",  -- Firefox addon DownThemAll.
+	    "copyq",  -- Includes session name in class.
+	 },
+	 class = {
+	    "Arandr",
+	    "Gpick",
+	    "Kruler",
+	    "MessageWin",  -- kalarm.
+	    "Sxiv",
+	    "Wpa_gui",
+	    "pinentry",
+	    "veromix",
+	    "xtightvncviewer"},
+	 
+	 name = {
+	    "Event Tester",  -- xev.
+	 },
+	 role = {
+	    "AlarmWindow",  -- Thunderbird's calendar.
+	    "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+	 }
+    }, properties = { floating = true }},
+    
     -- @DOC_DIALOG_RULE@
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+		 }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -476,16 +472,16 @@ awful.rules.rules = {
 -- Signal function to execute when a new client appears.
 -- @DOC_MANAGE_HOOK@
 client.connect_signal("manage", function (c)
-    -- Set the windows at the slave,
-    -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+			 -- Set the windows at the slave,
+			 -- i.e. put it at the end of others instead of setting it master.
+			 -- if not awesome.startup then awful.client.setslave(c) end
 
-    if awesome.startup and
-      not c.size_hints.user_position
-      and not c.size_hints.program_position then
-        -- Prevent clients from being unreachable after screen count changes.
-        awful.placement.no_offscreen(c)
-    end
+			 if awesome.startup and
+			    not c.size_hints.user_position
+			 and not c.size_hints.program_position then
+			    -- Prevent clients from being unreachable after screen count changes.
+			    awful.placement.no_offscreen(c)
+			 end
 end)
 
 -- @DOC_TITLEBARS@
