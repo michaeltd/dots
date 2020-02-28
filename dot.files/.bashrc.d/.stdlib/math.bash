@@ -4,23 +4,23 @@
 #shellcheck shell=bash
 
 in_range() {
-  if [[ "${#}" -eq "3" ]]; then
-    [[ "${1}" -ge "${2}" && "${1}" -le "${3}" ]]
-  else
-    echo "USAGE: ${FUNCNAME[0]} num min max" >&2
-    return 1
-  fi
+    if [[ "${#}" -eq "3" ]]; then
+	[[ "${1}" -ge "${2}" && "${1}" -le "${3}" ]]
+    else
+	echo "USAGE: ${FUNCNAME[0]} num min max" >&2
+	return 1
+    fi
 }
 
 between(){
-  # echo "Usage: between low# high# check#"
-  (( $3 >= $1 && $3 <= $2 ))
+    # echo "Usage: between low# high# check#"
+    (( $3 >= $1 && $3 <= $2 ))
 }
 
 calc() {
-  # echo -e "Usage: calc \"1+2-3%2/1*10+(4*5)-(8*8)\"\n"
-  #echo "scale=6;${@}"| bc -l
-  echo "scale=6;${*}"| bc -l
+    # echo -e "Usage: calc \"1+2-3%2/1*10+(4*5)-(8*8)\"\n"
+    #echo "scale=6;${@}"| bc -l
+    echo "scale=6;${*}"| bc -l
 }
 
 min() {
@@ -30,7 +30,6 @@ min() {
 }
 
 altmin() {
-
     n=${1} # Avoid n initialization issues
     while [[ -n "${1}" ]]; do
 	(( $1 < n )) && n=${1}

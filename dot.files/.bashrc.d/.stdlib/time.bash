@@ -38,17 +38,17 @@ unixepoch() {
     fi
 }
 
-epochtodate() {
+epoch2date() {
     #shellcheck disable=SC2119
     date +%Y/%m/%d --date="@${1-$(unixepoch)}"
 }
 
-epochtotime() {
+epoch2time() {
     #shellcheck disable=SC2119
     date +%H:%M:%S --date="@${1-$(unixepoch)}"
 }
 
-epochtodatetime() {
+epoch2datetime() {
     #shellcheck disable=SC2119
     date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unixepoch)}"
 }

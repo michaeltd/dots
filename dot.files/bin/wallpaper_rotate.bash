@@ -27,30 +27,29 @@ declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" WPLG="${HOME}
 
 # bash version info check
 if (( "${BASH_VERSINFO[0]}" < 4 )); then
-  #shellcheck disable=SC2154
-  echo -ne "${red}Error:${reset} For this to work properly you'll need bash major version greater than 4.\n" >&2
-  exit 1
+    #shellcheck disable=SC2154
+    echo -ne "${red}Error:${reset} For this to work properly you'll need bash major version greater than 4.\n" >&2
+    exit 1
 fi
 
 # Find a setter
 for (( x = 0; x < "${#BGSRS[@]}"; x++ )); do
-  if [[ -n $(type -P "${!BGSRS[x]:0:1}" 2> /dev/null) ]]; then
-    BGSR="${x}"
-    break # Break on first match.
-  fi
+    if [[ -n $(type -P "${!BGSRS[x]:0:1}" 2> /dev/null) ]]; then
+	BGSR="${x}"
+	break # Break on first match.
+    fi
 done
 
 # Quit on no setter
 if [[ -z "${BGSR}" ]]; then
-  echo -ne "${WPUSAGE[*]}\n"
-  echo -ne "\n\n ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n" >&2
-  exit 1
-
+    echo -ne "${WPUSAGE[*]}\n"
+    echo -ne "\n\n ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n" >&2
+    exit 1
 fi
 
 # If there's no readable settings file, write it...
 if [[ ! -r "${WPRC}" ]]; then
-  echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}"
+    echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}"
 fi
 
 # and read it.
@@ -59,79 +58,75 @@ source "${WPRC}"
 
 # If options, proccess, else rotate things
 if [[ -n "${1}" ]]; then
-  case "${1}" in
-    "add")
-      shift
-      while [[ -n "${1}" ]]; do
-        if [[ -d "${1}" ]]; then
-          DIRS+=( "${1}" )
-        else
-          echo -ne "${yellow}Warning:${reset} ${1} is not a directory.\n" >&2
-        fi
-        shift
-      done
-      # https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
-      sv="DIRS" rv="DIRS=( ${DIRS[*]} )"
-      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
-    "rem")
-      shift
-      while [[ -n "${1}" ]]; do
-        for (( i = 0; i < "${#DIRS[@]}"; i++ )); do
-          if [[ "${DIRS[i]}" == "${1}" ]]; then
-            unset 'DIRS[i]'
-          fi
-        done
-        shift
-      done
-      sv="DIRS"
-      rv="DIRS=( ${DIRS[*]} )"
-      sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
-    "delay")
-      shift
-      # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
-      if [[ "${1}" =~ ^[0-9]+$ ]]; then
-        sv="WAIT" rv="WAIT=${1}m"
-        sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
-      else
-        echo -ne "${yellow}Warning:${reset} ${1} is not a valid time construct.\nProvide an integer as interval in minutes\n" >&2
-      fi ;;
-    "replay")
-      shift
-      tail -n "${1:-1}" "${WPLG}" |head -n 1|awk '{print $NF}' ;;
-    *) echo -ne "${WPUSAGE[*]}" ;;
-  esac
+    case "${1}" in
+	"add") shift
+	    while [[ -n "${1}" ]]; do
+		if [[ -d "${1}" ]]; then
+		    DIRS+=( "${1}" )
+		else
+		    echo -ne "${yellow}Warning:${reset} ${1} is not a directory.\n" >&2
+		fi
+		shift
+	    done
+	    # https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
+	    sv="DIRS" rv="DIRS=( ${DIRS[*]} )"
+	    sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
+	"rem") shift
+	    while [[ -n "${1}" ]]; do
+		for (( i = 0; i < "${#DIRS[@]}"; i++ )); do
+		    if [[ "${DIRS[i]}" == "${1}" ]]; then
+			unset 'DIRS[i]'
+		    fi
+		done
+		shift
+	    done
+	    sv="DIRS"
+	    rv="DIRS=( ${DIRS[*]} )"
+	    sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
+	"delay") shift
+	    # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
+	    if [[ "${1}" =~ ^[0-9]+$ ]]; then
+		sv="WAIT" rv="WAIT=${1}m"
+		sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
+	    else
+		echo -ne "${yellow}Warning:${reset} ${1} is not a valid time construct.\nProvide an integer as interval in minutes\n" >&2
+	    fi ;;
+	"replay") shift
+	    tail -n "${1:-1}" "${WPLG}" |head -n 1|awk '{print $NF}' ;;
+	*) echo -ne "${WPUSAGE[*]}" ;;
+    esac
 else
 
-  # Reset log
-  echo '' > "${WPLG}"
+    # Reset log
+    echo '' > "${WPLG}"
 
-  while :; do
+    while :; do
 
-    # re-read rc (to pick up config updates).
-    #shellcheck source=/dev/null
-    source "${WPRC}"
+	# re-read rc (to pick up config updates).
+	#shellcheck source=/dev/null
+	source "${WPRC}"
 
-    # fill a WallPaperS list
-    for D in "${DIRS[@]}"; do
-      for P in $("${LS}" -1 "${D}"); do
-        FN="${D}/${P}" FE="${P:(-4)}"
-        if [[ -f "${FN}" ]] && [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
-          WPS+=( "${FN}" )
-        fi
-      done
+	# fill a WallPaperS list
+	for D in "${DIRS[@]}"; do
+	    for P in $("${LS}" -1 "${D}"); do
+		FN="${D}/${P}" FE="${P:(-4)}"
+		if [[ -f "${FN}" ]] && [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
+		    WPS+=( "${FN}" )
+		fi
+	    done
+	done
+
+	# limit a random number to upper array bounds as a RundomNumber
+	# let "RN = ${RANDOM} % ${#WPS[@]}"
+	RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
+
+	# Get path and name of image as a selected WallPaper
+	WP="${WPS[RN]}"
+
+	# set wallpaper, log, wait
+	"${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
+
+	printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
+	sleep "${WAIT}"
     done
-
-    # limit a random number to upper array bounds as a RundomNumber
-    # let "RN = ${RANDOM} % ${#WPS[@]}"
-    RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
-
-    # Get path and name of image as a selected WallPaper
-    WP="${WPS[RN]}"
-
-    # set wallpaper, log, wait
-    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
-
-    printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
-    sleep "${WAIT}"
-  done
 fi

@@ -22,14 +22,14 @@ declare -a srcs=( "/home/paperjam/.bashrc.d/.stdlib/time.bash" \
                     "/home/paperjam/.bashrc.d/.stdlib/math.bash" )
 
 while [[ -n "${1}" ]]; do
-  case "${1}" in
-    "-d"|"--directory") shift; BKPD="${1}";;
-    "-s"|"--simulate") BKPR="0";;
-    "-k"|"--keep") shift; BKPK="${1}";;
-    "-b"|"--debug") set -x;;
-    *) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-d)irectory /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-)de(b)ug (default: off)]\n" >&2; exit 1;;
-  esac
-  shift
+    case "${1}" in
+	"-d"|"--directory") shift; BKPD="${1}";;
+	"-s"|"--simulate") BKPR="0";;
+	"-k"|"--keep") shift; BKPK="${1}";;
+	"-b"|"--debug") set -x;;
+	*) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-d)irectory /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-)de(b)ug (default: off)]\n" >&2; exit 1;;
+    esac
+    shift
 done
 
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"

@@ -41,18 +41,18 @@ declare EP="$(date +%s)" DT="$(date +%Y%m%d)" TM="$(date +%H%M%S)"
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
-  for ((i = 0; i < ${#ARCHV[*]}; i++ )); do
-    if [[ ${ARCHV[i]} =~ ^enc.* ]]; then
-      ARCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHV[i]}"
-      #shellcheck disable=SC2086
-      time "${NICEC[@]}" "${TARCM[@]}" "--file" "${ARCFL}" ${!BKP[i]}
-    else
-      ENCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHV[i]}.pgp"
-      #shellcheck disable=SC2086
-      time "${NICEC[@]}" "${TARCM[@]}" ${!BKP[i]}|"${GPG2C[@]}" "${ENCFL}" "--encrypt"
-    fi
-  done
+    for ((i = 0; i < ${#ARCHV[*]}; i++ )); do
+	if [[ ${ARCHV[i]} =~ ^enc.* ]]; then
+	    ARCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHV[i]}"
+	    #shellcheck disable=SC2086
+	    time "${NICEC[@]}" "${TARCM[@]}" "--file" "${ARCFL}" ${!BKP[i]}
+	else
+	    ENCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHV[i]}.pgp"
+	    #shellcheck disable=SC2086
+	    time "${NICEC[@]}" "${TARCM[@]}" ${!BKP[i]}|"${GPG2C[@]}" "${ENCFL}" "--encrypt"
+	fi
+    done
 else
-  echo -ne "${ELDIR} not found or root access requirements not met.\n" >&2
-  exit 1
+    echo -ne "${ELDIR} not found or root access requirements not met.\n" >&2
+    exit 1
 fi

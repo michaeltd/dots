@@ -56,11 +56,11 @@ webp2jpg() {
     done
 }
 
-measure_bash() {
+measureBash() {
     time bash -ic exit
 }
 
-measure_emacs(){
+measureEmacs(){
     time emacs --eval='(kill-emacs)'
 }
 
@@ -70,7 +70,7 @@ helloworld() {
     printf "\n"
 }
 
-takeabkp() {
+takeaBkp() {
     [[ ! -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-to-copy\n" && return 1
     cp -v "${1}" "${1}.bkp.$(date +%s)"
 }
@@ -105,7 +105,7 @@ rcm() {
     [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
 }
 
-printappsinpath() {
+printAppsInPath() {
     # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
     # The directories in $PATH are separated by ":",
     # so we split by it to get individual directories
@@ -117,12 +117,12 @@ printappsinpath() {
     printf "\n"
 }
 
-listcat() {
+listCat() {
     #shellcheck disable=SC2230
     /bin/ls --color "/usr/portage/${1}"
 }
 
-checkapp() {
+checkApp() {
     # if type -P "${1}" &> /dev/null
     # then return 0
     # else
@@ -142,14 +142,14 @@ lcdfe() {
 }
 
 # End stuff
-termapp() {
+termApp() {
     # kill -s 15 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -TERM -u "${USER}" "${1}"
     fi
 }
 
-killapp() {
+killApp() {
     # kill -s 9 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -KILL -u "${USER}" "${1}"
@@ -204,7 +204,7 @@ up() {
     done
 }
 
-listen_port() {
+listenOnPort() {
     # Returns service listening on given port
     if [[ -z "${1}" ]]; then
 	printf "port number expected\n" >&2
@@ -214,7 +214,7 @@ listen_port() {
     fi
 }
 
-dir_sizes() {
+dirSizes() {
     # Report first params directory sizes in human readable format
     #shellcheck disable=SC2230
     local ls=$(which ls) du=$(which du)
@@ -227,7 +227,7 @@ dir_sizes() {
     fi
 }
 
-mem_sum() {
+memSum() {
     ps -eo size,pid,user,command --sort -size | \
 	awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' | \
 	cut -d "" -f2 | \
@@ -235,7 +235,7 @@ mem_sum() {
 	grep "${1}"
 }
 
-print_mem() {
+printMem() {
     #Report Total Used and Available mem in human readable format
     total=$(head -1 /proc/meminfo |awk '{print $2}')
     avail=$(head -2 /proc/meminfo |tail -1 |awk '{print $2}')
@@ -262,18 +262,18 @@ services() {
     done
 }
 
-set_date() {
+setDate() {
     sudo ntpdate 0.gentoo.pool.ntp.org
 }
 
-show_uptime() {
+showUptime() {
     #shellcheck disable=SC2154
     echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
     uptime | \
 	awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
-log_out() {
+logOut() {
     # Can't log out root like that
     if [ "${EUID}" -eq "0" ]; then
 	printf "Can't log out root this way\n" >&2
@@ -283,7 +283,7 @@ log_out() {
     fi
 }
 
-ping_subnet() {
+pingSubnet() {
     # One liner:
     # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
     for x in {1..254}; do
@@ -293,11 +293,11 @@ ping_subnet() {
     done
 }
 
-getmimetype(){
+getMimeType(){
     file -b --mime-type "${1}"
 }
 
-getfiletype(){
+getFileType(){
     file -b "${1}"|awk '{print $1}'
 }
 

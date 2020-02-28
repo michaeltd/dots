@@ -6,5 +6,5 @@
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if (( EUID == 0 )); then
-  time qcheck
+    time qcheck
 fi
