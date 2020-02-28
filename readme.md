@@ -62,14 +62,7 @@
 
  * Editors, [Utilities](dot.files/.tmux.conf).
 
-   * If you are a follower of the church of [emacs](https://en.wikipedia.org/wiki/Emacs), check one of ...
-
-     * [emacs-starter-kit](https://github.com/technomancy/emacs-starter-kit)
-     * [a reasonable emacs config](https://github.com/purcell/emacs.d)
-     * [prelude](https://github.com/bbatsov/prelude)
-     * [Centaur Emacs](https://github.com/seagle0128/.emacs.d)
-
-     My setup is minimal and you can read everything about it [here](https://github.com/michaeltd/.emacs.d).
+   * If you are a follower of the church of [emacs](https://en.wikipedia.org/wiki/Emacs), check out [my setup](https://github.com/michaeltd/.emacs.d).
 
      <p align="center"><a href="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/screenshot.png"><img alt="emacs" src="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/screenshot.png"></a></p>
 
