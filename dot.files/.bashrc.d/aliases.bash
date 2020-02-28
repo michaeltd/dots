@@ -66,7 +66,7 @@ fi
 # Emacs alias
 alias exnx='emacs -nw' # EmaX No X11
 alias ecnx='emacsclient -t' # EmacsClient No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
-alias eckd='emacsclient --eval "(kill-emacs)"' # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
+alias eckd='emacsclient --eval="(kill-emacs)"' # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
 
 # calendar
 alias cal='cal -m' # First Day Monday Calendars
@@ -96,7 +96,7 @@ alias propaideia='for x in {1..9}; do for y in $(seq 1 $x); do printf "%dx%d=%2d
 alias ttt='for x in {1..10}; do let tt="${x} * 10";for y in $(seq $x $x $tt);do printf "%4d" $y;done; printf "\n";done'
 
 # https://twitter.com/liamosaur/status/506975850596536320
-alias hug='sudo $(history -p \!\!)' # fuck='sudo $(history -p \!\!)' Political stup... err correctess killed this one
+alias hug='sudo $(history -p \!\!)' # fuck='sudo $(history -p \!\!)' Political stupi... err correctess killed this one
 
 # https://gist.github.com/seungwon0/802470
 # curl -s http://whatthecommit.com | perl -p0e '($_)=m{<p>(.+?)</p>}s'

@@ -34,18 +34,18 @@ countdown() {
 # igor chubbin =================================================================
 
 cheatsh() {
-  # https://github.com/chubin/cheat.sh
-  curl "https://cheat.sh/${1}"
+    # https://github.com/chubin/cheat.sh
+    curl "https://cheat.sh/${1}"
 }
 
 ccxrates() {
-  # https://twitter.com/igor_chubin
-  curl "https://${1:-eur}.rate.sx"
+    # https://twitter.com/igor_chubin
+    curl "https://${1:-eur}.rate.sx"
 }
 
 wttrin() {
-  # https://twitter.com/igor_chubin # Try wttr moon
-  curl "https://wttr.in/${1:-moon}"
+    # https://twitter.com/igor_chubin # Try wttr moon
+    curl "https://wttr.in/${1:-moon}"
 }
 
 # UTILS =======================================================================
@@ -56,12 +56,12 @@ webp2jpg() {
     done
 }
 
-timebash() {
+measure_bash() {
     time bash -ic exit
 }
 
-timeemacs(){
-    time emacs --eval '(kill-emacs)'
+measure_emacs(){
+    time emacs --eval='(kill-emacs)'
 }
 
 helloworld() {
@@ -72,7 +72,7 @@ helloworld() {
 
 takeabkp() {
     [[ ! -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-to-copy\n" && return 1
-    cp -v "${1}" "${1}.$(date +%Y%m%d.%H%M%S.%s).bkp"
+    cp -v "${1}" "${1}.bkp.$(date +%s)"
 }
 
 pyhttpserv() {
@@ -95,20 +95,20 @@ pyhttpserv() {
     fi
 }
 
-# (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
-# Usage : rcm niceness executable command line arguments
-# Example: rcm 9 conky -qdc ~/.conkyrc
 rcm() {
-  (( ${#} < 2 )) && echo -e "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" && return 1
-  #shellcheck disable=SC2155
-  local bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
-  [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
+    # (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
+    # Usage : rcm niceness executable command line arguments
+    # Example: rcm 9 conky -qdc ~/.conkyrc
+    (( ${#} < 2 )) && echo -e "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" && return 1
+    #shellcheck disable=SC2155
+    local bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
+    [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
 }
 
 printappsinpath() {
-  # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
-  # The directories in $PATH are separated by ":",
-  # so we split by it to get individual directories
+    # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
+    # The directories in $PATH are separated by ":",
+    # so we split by it to get individual directories
     for pdir in $(echo "$PATH" | tr ":" "\n");do
 	# We `find` all files in the directory
 	# which are executable and print the filename
@@ -158,13 +158,13 @@ killapp() {
 
 # Create a new alias
 mkalias() {
-    echo alias "${@}" >> "${HOME}/.bashrc.d/aliases.sh"
+    echo alias "${@}" >> "${HOME}/.bashrc.d/aliases.bash"
     alias "${@}"
 }
 
 # Remove an alias
 rmalias() {
-    unalias "${1}" # && sed --follow-symlinks -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases
+    unalias "${1}" # && sed --follow-symlinks -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases.bash
 }
 
 # Functions to unify archive management in linux CLI environments
@@ -215,16 +215,16 @@ listen_port() {
 }
 
 dir_sizes() {
-  # Report first params directory sizes in human readable format
-  #shellcheck disable=SC2230
-  local ls=$(which ls) du=$(which du)
-  if [[ -x "${ls}" && -x "${du}" ]]; then
-      for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
-	  if [[ -d "${d}" ]]; then
-              "${du}" -hs "${d}"
-	  fi
-      done
-  fi
+    # Report first params directory sizes in human readable format
+    #shellcheck disable=SC2230
+    local ls=$(which ls) du=$(which du)
+    if [[ -x "${ls}" && -x "${du}" ]]; then
+	for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
+	    if [[ -d "${d}" ]]; then
+		"${du}" -hs "${d}"
+	    fi
+	done
+    fi
 }
 
 mem_sum() {
@@ -252,7 +252,7 @@ services() {
 	echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2
 	return 1
     elif [[ ("${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status") && ("${2}" == "all") ]]; then
-	declare -a srvcs=( "postgresql-11" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
+	declare -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
     else
 	declare -a srvcs=( "${@}" )
 	unset "srvcs[0]"
@@ -262,37 +262,35 @@ services() {
     done
 }
 
-update_date() {
-  sudo ntpdate 0.gentoo.pool.ntp.org
+set_date() {
+    sudo ntpdate 0.gentoo.pool.ntp.org
 }
 
 show_uptime() {
-  #shellcheck disable=SC2154
-  echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
-  uptime | \
-    awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
+    #shellcheck disable=SC2154
+    echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
+    uptime | \
+	awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
 log_out() {
-  # Can't log out root like that
-  if [ "${EUID}" -eq "0" ]; then
-    printf "Can't log out root this way\n" >&2
-    return 1
-  else
-    kill -15 -1
-  fi
+    # Can't log out root like that
+    if [ "${EUID}" -eq "0" ]; then
+	printf "Can't log out root this way\n" >&2
+	return 1
+    else
+	kill -15 -1
+    fi
 }
 
 ping_subnet() {
-  # One liner:
-  # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
-  for x in {1..254}; do
-    for y in {1..254}; do
-      {
-        ping -c 1 192.168.${x}.${y} &> /dev/null && echo "UP 192.168.${x}.${y}"
-      } &
+    # One liner:
+    # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
+    for x in {1..254}; do
+	for y in {1..254}; do
+	    (ping -c 1 192.168.${x}.${y} &> /dev/null && echo "UP 192.168.${x}.${y}" &) &
+	done
     done
-  done
 }
 
 getmimetype(){
