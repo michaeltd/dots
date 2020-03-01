@@ -3,26 +3,26 @@
 # Temperature conversions celsius - fahrenheit - kelvin
 #shellcheck shell=bash
 
-ctof() {
+c2f() {
     echo "scale=2;((9/5) * ${1}) + 32"|bc -ql
 }
 
-ctok() {
+c2k() {
     echo "scale=2;${1} + 273.15"|bc -ql
 }
 
-ktoc() {
+k2c() {
     echo "scale=2; ${1} - 273.15"|bc -ql
 }
 
-ktof() {
-    echo "scale=2;((9/5) * $(ktoc "${1}")) + 32"|bc -ql
+k2f() {
+    echo "scale=2;((9/5) * $(k2c "${1}")) + 32"|bc -ql
 }
 
-ftoc() {
+f2c() {
     echo "scale=2;(${1} - 32) * (5 / 9)"|bc -ql
 }
 
-ftok() {
-    echo "scale=2;$(ftoc "${1}") + 273.15"|bc -ql
+f2k() {
+    echo "scale=2;$(f2c "${1}") + 273.15"|bc -ql
 }

@@ -56,22 +56,22 @@ webp2jpg() {
     done
 }
 
-measureBash() {
+bash_load_times() {
     time bash -ic exit
 }
 
-measureEmacs(){
+emacs_load_times(){
     time emacs --eval='(kill-emacs)'
 }
 
-helloworld() {
+hello_world() {
     echo -ne "\n ${green}Hello${reset} ${bold}${USER}${reset}, today is ${cyan}$(date '+%A, %B %d')${reset}\n\n"
     curl https://wttr.in?0
     printf "\n"
 }
 
-takeaBkp() {
-    [[ ! -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-to-copy\n" && return 1
+makebackup() {
+    [[ ! -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-2-backup\n" && return 1
     cp -v "${1}" "${1}.bkp.$(date +%s)"
 }
 
@@ -105,7 +105,7 @@ rcm() {
     [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
 }
 
-printAppsInPath() {
+print_apps_in_path() {
     # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
     # The directories in $PATH are separated by ":",
     # so we split by it to get individual directories
@@ -117,20 +117,13 @@ printAppsInPath() {
     printf "\n"
 }
 
-listCat() {
+list_cat() {
     #shellcheck disable=SC2230
     /bin/ls --color "/usr/portage/${1}"
 }
 
-checkApp() {
-    # if type -P "${1}" &> /dev/null
-    # then return 0
-    # else
-    # 	#shellcheck disable=SC2154
-    # 	echo -ne "${red}Error:${reset} \"${bold}${1}${reset}\" is not installed.\n" >&2
-    # 	return 1
-    # fi
-    [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} bin-to-check-for-availability" >&2 && return 1
+check_app() {
+    [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} executable" >&2 && return 1
     type -P "${1}" &> /dev/null
 }
 
@@ -142,14 +135,14 @@ lcdfe() {
 }
 
 # End stuff
-termApp() {
+term_app() {
     # kill -s 15 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -TERM -u "${USER}" "${1}"
     fi
 }
 
-killApp() {
+kill_app() {
     # kill -s 9 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -KILL -u "${USER}" "${1}"
@@ -204,17 +197,15 @@ up() {
     done
 }
 
-listenOnPort() {
+listening2() {
     # Returns service listening on given port
-    if [[ -z "${1}" ]]; then
-	printf "port number expected\n" >&2
+    [[ -z "${1}" ]] && \
+	printf "Usage: ${FUNCNAME[0]} port-number\n" >&2 && \
 	return 1
-    else
-	lsof -n -iTCP:"${1}" |grep LISTEN
-    fi
+    sudo lsof -n -iTCP:"${1}" |grep LISTEN
 }
 
-dirSizes() {
+dir_sizes() {
     # Report first params directory sizes in human readable format
     #shellcheck disable=SC2230
     local ls=$(which ls) du=$(which du)
@@ -227,7 +218,7 @@ dirSizes() {
     fi
 }
 
-memSum() {
+mem_sum() {
     ps -eo size,pid,user,command --sort -size | \
 	awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' | \
 	cut -d "" -f2 | \
@@ -235,7 +226,7 @@ memSum() {
 	grep "${1}"
 }
 
-printMem() {
+print_mem() {
     #Report Total Used and Available mem in human readable format
     total=$(head -1 /proc/meminfo |awk '{print $2}')
     avail=$(head -2 /proc/meminfo |tail -1 |awk '{print $2}')
@@ -262,18 +253,18 @@ services() {
     done
 }
 
-setDate() {
+set_date() {
     sudo ntpdate 0.gentoo.pool.ntp.org
 }
 
-showUptime() {
+show_uptime() {
     #shellcheck disable=SC2154
     echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
     uptime | \
 	awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
-logOut() {
+log_out() {
     # Can't log out root like that
     if [ "${EUID}" -eq "0" ]; then
 	printf "Can't log out root this way\n" >&2
@@ -283,7 +274,7 @@ logOut() {
     fi
 }
 
-pingSubnet() {
+ping_subnet() {
     # One liner:
     # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
     for x in {1..254}; do
@@ -293,15 +284,14 @@ pingSubnet() {
     done
 }
 
-getMimeType(){
+get_mime_type(){
     file -b --mime-type "${1}"
 }
 
-getFileType(){
+get_file_type(){
     file -b "${1}"|awk '{print $1}'
 }
 
-showInterfaces() {
+show_interfaces() {
     ip -brief -color address show
 }
-

@@ -3,20 +3,20 @@
 # Distance conversions
 #shellcheck shell=bash
 
-mltokm() {
+ml2km() {
     #shellcheck disable=SC2005
     printf "%.2f\n" "$(echo "scale=2;${1} * 1.609344"|bc -ql)"
 }
 
-kmtoml(){
+km2ml(){
     #shellcheck disable=SC2005
     printf "%.2f\n" "$(echo "scale=2;${1} * 0.621371192237334"|bc -ql)"
 }
 
-mphtokph() {
-    mltokm "${1}"
+mph2kph() {
+    ml2km "${1}"
 }
 
-kphtomph() {
-    kmtoml "${1}"
+kph2mph() {
+    km2ml "${1}"
 }
