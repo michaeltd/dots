@@ -3,7 +3,8 @@
 # /etc/cron.daily/daily_maint
 # script to run daily maintenance tasks
 
-DS="/home/paperjam/sbin/cronjobs/daily"
+SDN="$(dirname $(realpath $0))"
+DS="${SDN}/daily"
 if [ -d "${DS}" ]; then
     cd "${DS}"
     for SCPT in ./*; do

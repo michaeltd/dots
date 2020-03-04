@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 while read -r i ; do
     if [[ -n "$(qdepends -Qq "${i}")" ]]; then

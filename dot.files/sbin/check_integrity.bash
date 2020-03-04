@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # ~/sbin/check_integrity.bash
 # man qcheck : qcheck - verify integrity of installed packages

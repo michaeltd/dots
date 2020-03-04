@@ -90,7 +90,7 @@ pyhttpserv() {
     elif [[ "${pv[1]}" =~ ^2.* ]]; then
 	python -m SimpleHTTPServer 8080
     else
-	echo "Fatal: No suitable python version found!"
+	echo "Fatal: No suitable python version found!" >&2
 	return 1
     fi
 }
@@ -99,9 +99,9 @@ rcm() {
     # (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
     # Usage : rcm niceness executable command line arguments
     # Example: rcm 9 conky -qdc ~/.conkyrc
-    (( ${#} < 2 )) && echo -e "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" && return 1
+    (( ${#} < 2 )) && echo -e "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" >&2 && return 1
     #shellcheck disable=SC2155
-    local bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
+    local -r bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
     [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
 }
 
@@ -260,18 +260,13 @@ set_date() {
 show_uptime() {
     #shellcheck disable=SC2154
     echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
-    uptime | \
-	awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
+    uptime|awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
 log_out() {
     # Can't log out root like that
-    if [ "${EUID}" -eq "0" ]; then
-	printf "Can't log out root this way\n" >&2
-	return 1
-    else
-	kill -15 -1
-    fi
+    [[ "${EUID}" -eq "0" ]] && printf "Can't log out root this way\n" >&2 && return 1
+    kill -15 -1
 }
 
 ping_subnet() {

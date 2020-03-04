@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # ~/sbin/update_bkps.bash
 # Backup sensitive files, user files, system

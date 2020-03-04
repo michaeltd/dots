@@ -43,7 +43,7 @@
 Menu DefaultRootMenu
 {
 	"Root Menu"		f.title
-	"New Window"		f.exec "terminology &"
+	"New Window"		f.exec "uxterm"
 	"Applications" 		f.menu "ApplicationsMenu"
 	"Shuffle Up"		f.circle_up
 	"Shuffle Down"		f.circle_down
@@ -59,7 +59,7 @@ Menu DefaultRootMenu
 Menu RootMenu_1.1
 {
 	"Root Menu"		f.title
-	"New Window"		f.exec "terminology"
+	"New Window"		f.exec "uxterm"
 	"Shuffle Up"		f.circle_up
 	"Shuffle Down"		f.circle_down
 	"Refresh"		f.refresh
@@ -72,7 +72,7 @@ Menu RootMenu_1.1
 Menu ApplicationsMenu
 {
 	"Applications" 		f.title
-	"Terminal" 		f.exec "xterm"
+	"Terminal" 		f.exec "uxterm"
 	"Firefox" 		f.exec "firefox"
 	"Editor" 		f.exec "emacsclient -a emacs -c"
 	"File Manager" 		f.exec "gentoo"

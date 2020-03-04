@@ -15,7 +15,7 @@ xset m 20/10 4
 # Qt5 theme engine
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-declare -A WMA=( [xfce4]="xfce4-session" \
+declare -rA WMA=( [xfce4]="xfce4-session" \
                  [compiz]="compiz.sh" \
                  [enlightenment]="enlightenment_start" \
                  [e16]="starte16" \
@@ -27,7 +27,7 @@ declare -A WMA=( [xfce4]="xfce4-session" \
                  [kodi]="kodi-standalone" )
 
 # Selected WM (prefered WMA key available in daily driver)
-declare SWM="e16"
+declare -r SWM="wmaker"
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release

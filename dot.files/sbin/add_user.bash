@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -z "${1}" || "${EUID}" -ne "0" ]]; then
     echo -ne "Usage: sudo $(basename "${0}") 'new username'\n" >&2

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # ~/sbin/cleanup_bkps.bash - de-clutter backups
 #
@@ -7,26 +7,23 @@
 #
 #shellcheck source=/dev/null
 
-# BacKuPs Directory => BKPD
-BKPD="/mnt/el/Documents/BKP/LINUX"
-
-# BacKuPs to Keep => BKPK (in days)
-BKPK="14"
-
+# BacKuPs Directory => BKPD,
+# BacKuPs to Keep => BKPK (in days),
 # BacKuPs Remove => BKPR (1 remove, 0 don't)
-BKPR="1"
+BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 
 # Source explicitly for non interactive shells.
-declare -a srcs=( "/home/paperjam/.bashrc.d/.stdlib/time.bash" \
-                    "/home/paperjam/.bashrc.d/.stdlib/string.bash" \
-                    "/home/paperjam/.bashrc.d/.stdlib/math.bash" )
+SRCSPATH="$(dirname $(dirname $(realpath ${BASH_SOURCE[0]})))/.bashrc.d/.stdlib"
+declare -ra srcs=( "${SRCSPATH}/time.bash" \
+                  "${SRCSPATH}/string.bash" \
+                  "${SRCSPATH}/math.bash" )
 
 while [[ -n "${1}" ]]; do
     case "${1}" in
-	"-d"|"--directory") shift; BKPD="${1}";;
+	"-b"|"--bkpdir") shift; BKPD="${1}";;
 	"-s"|"--simulate") BKPR="0";;
 	"-k"|"--keep") shift; BKPK="${1}";;
-	"-b"|"--debug") set -x;;
+	"-d"|"--debug") set -x;;
 	*) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-d)irectory /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-)de(b)ug (default: off)]\n" >&2; exit 1;;
     esac
     shift

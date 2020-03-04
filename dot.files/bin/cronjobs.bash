@@ -3,7 +3,7 @@
 # ~/bin/cronjobs.bash
 # gather cronjobs for use with a familiar environment (/bin/bash)
 
-usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)larm | -(-b)ackup"
+declare -r usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)larm | -(-b)ackup"
 
 alarm() {
     echo -ne " -- ${FUNCNAME[0]} --\n"
@@ -29,7 +29,7 @@ backup() {
     echo -ne " -- ${FUNCNAME[0]} --\n"
     if [[ -d "${bkpt}" ]]; then
 	time ${nicm[@]} ${tarc[@]} | ${pgcm[@]}
-	~/sbin/cleanup_bkps.bash --directory "${bkpt}" --keep 2
+	~/sbin/cleanup_bkps.bash --bkpdir "${bkpt}" --keep 2
     else
 	echo "ERROR: Backup location: \"${bkpt}\" is not a directory" >&2
 	exit 1

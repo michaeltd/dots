@@ -2,7 +2,7 @@
 !add_user.bash
 !check_integrity.bash
 !cleanup_bkps.bash
-!cronjobs
+!cronjobs/*
 !kernel_upgrade.bash
 !update_bkps.bash
 !update_hosts.bash
