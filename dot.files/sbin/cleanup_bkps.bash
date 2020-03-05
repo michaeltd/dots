@@ -24,7 +24,7 @@ while [[ -n "${1}" ]]; do
 	"-s"|"--simulate") BKPR="0";;
 	"-k"|"--keep") shift; BKPK="${1}";;
 	"-d"|"--debug") set -x;;
-	*) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-d)irectory /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-)de(b)ug (default: off)]\n" >&2; exit 1;;
+	*) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-b)kpdir /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-d)ebug (default: off)]\n" >&2; exit 1;;
     esac
     shift
 done

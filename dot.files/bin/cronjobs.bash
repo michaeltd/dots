@@ -16,11 +16,11 @@ alarm() {
 }
 
 backup() {
-    local bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
+    local -r bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
           xcldf="${HOME}/.bkp.exclude" rcpnt="tsouchlarakis@gmail.com"
-    local outfl="${bkpt}/${USER}.$(date +%Y%m%d).$(date +%H%M%S).$(date +%s).tar.gz.pgp" \
+    local -r outfl="${bkpt}/${USER}.$(date +%Y%m%d).$(date +%H%M%S).$(date +%s).tar.gz.pgp" \
           LS="$(type -P ls)"
-    local nicm=( "$(type -P nice)" "-n" "9" ) \
+    local -r nicm=( "$(type -P nice)" "-n" "9" ) \
 	  tarc=( "$(type -P tar)" "-cz" "--exclude-from=${xcldf}" \
 		 "--exclude-backups" "--one-file-system" "${bkpd}/." ) \
 	  pgcm=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" \
@@ -29,7 +29,7 @@ backup() {
     echo -ne " -- ${FUNCNAME[0]} --\n"
     if [[ -d "${bkpt}" ]]; then
 	time ${nicm[@]} ${tarc[@]} | ${pgcm[@]}
-	~/sbin/cleanup_bkps.bash --bkpdir "${bkpt}" --keep 2
+	~/sbin/cleanup_bkps.bash -b "${bkpt}" -k 2
     else
 	echo "ERROR: Backup location: \"${bkpt}\" is not a directory" >&2
 	exit 1
