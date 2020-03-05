@@ -336,7 +336,7 @@
 <menu id="apps-general-menu" label="General">
   <item label="Term">
     <action name="Execute">
-      <command>terminology</command>
+      <command>xterm</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>

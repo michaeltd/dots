@@ -1,17 +1,17 @@
-# ~/.bashrc.d/.stl/crypto.bash
+# ~/.bashrc.d/.stdlib/crypto.bash
 #
 # cryptographic functions
 #shellcheck shell=bash
 
-genpass() {
+gen_pass() {
     #shellcheck disable=SC2005
     tr -dc [:graph:] < /dev/urandom | \
-	tr -d [=\|=][=\"=][=\'=] | \
+	tr -d [=\|=][=\"=][=\'=][=\,=] | \
 	head -c "${1:-64}"
     echo
 }
 
-genuuid() {
+gen_uuid() {
     # https://en.wikipedia.org/wiki/Universally_unique_identifier
     # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
 
@@ -156,7 +156,7 @@ caesar_cipher() {
 
 alpha2morse() {
 
-    local -A alpha_assoc=( \
+    local -rA alpha_assoc=( \
         [A]='.-'    [B]='-...'  [C]='-.-.'  [D]='-..'    [E]='.' [F]='..-.' \
 	[G]='--.'   [H]='....'  [I]='..'    [J]='.---'   [K]='-.-' \
 	[L]='.-..'  [M]='--'    [N]='-.'    [O]='---'    [P]='.--.' \
@@ -166,9 +166,7 @@ alpha2morse() {
 	[5]='.....' [6]='-....' [7]='--...' [8]='----..' [9]='----.' )
 
     if [[ "${#}" -lt "1" ]]; then
-	echo -ne "Usage: ${FUNCNAME[0]} arguments...\n \
-      	    ${FUNCNAME[0]} is an IMC transmitter. \n \
-	    It'll transmit your messages to International Morse Code.\n" >&2
+	echo -ne "Usage: ${FUNCNAME[0]} arguments...\n ${FUNCNAME[0]} is an IMC transmitter. \n It'll transmit your messages to International Morse Code.\n" >&2
 	return 1
     fi
 

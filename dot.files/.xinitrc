@@ -1,6 +1,6 @@
 # ~/.xinitrc
 #
-# Or: "The dedicated WM hoppers ~/.xinitrc"
+# The dedicated WM hoppers ~/.xinitrc
 #shellcheck shell=bash
 
 # ~/.Xresources
@@ -27,7 +27,7 @@ declare -rA WMA=( [xfce4]="xfce4-session" \
                  [kodi]="kodi-standalone" )
 
 # Selected WM (prefered WMA key available in daily driver)
-declare -r SWM="wmaker"
+declare -r SWM="openbox"
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release

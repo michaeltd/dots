@@ -78,7 +78,8 @@ alias cal='cal -m' # First Day Monday Calendars
 #alias st='st -g 80x25 -f SourceCodePro-Regular'
 
 # NET
-alias fixnet='ping -c 1 www.gentoo.org||sudo rc-service dhcpcd restart'
+# alias fixnet='ping -c 1 www.gentoo.org||sudo rc-service NetworkManager restart'
+alias test_net='ping -c 1 www.gentoo.org &> /dev/null;[[ $? == 0 ]] && echo "Net OK!" || echo "Net Down!"'
 
 # Help wan-ip-howto
 alias wip4='curl ipv4.whatismyip.akamai.com;echo'

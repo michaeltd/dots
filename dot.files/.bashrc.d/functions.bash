@@ -33,9 +33,9 @@ countdown() {
 
 # igor chubbin =================================================================
 
-cheatsh() {
+chtsh() {
     # https://github.com/chubin/cheat.sh
-    curl "https://cheat.sh/${1}"
+    curl "cht.sh/${1}"
 }
 
 ccxrates() {
@@ -99,7 +99,7 @@ rcm() {
     # (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
     # Usage : rcm niceness executable command line arguments
     # Example: rcm 9 conky -qdc ~/.conkyrc
-    (( ${#} < 2 )) && echo -e "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t" >&2 && return 1
+    (( ${#} < 2 )) && echo -ne "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t\n" >&2 && return 1
     #shellcheck disable=SC2155
     local -r bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
     [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
@@ -139,6 +139,9 @@ term_app() {
     # kill -s 15 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -TERM -u "${USER}" "${1}"
+    else
+	echo -ne "Usage: ${FUNCNAME[0]} process-2-TERM\n" >&2
+	return 1
     fi
 }
 
@@ -146,6 +149,9 @@ kill_app() {
     # kill -s 9 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -KILL -u "${USER}" "${1}"
+    else
+	echo -ne "Usage: ${FUNCNAME[0]} process-2-KILL\n" >&2
+	return 1
     fi
 }
 

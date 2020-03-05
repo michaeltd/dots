@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
-# ~/bin/wallpaper-rotate.sh
+# ~/bin/wallpaper_rotate.bash
 # Script to go through a directory of background images as wallpapers in a timely fashion
 #shellcheck shell=bash
 
 #shellcheck disable=SC2034,SC2155
-declare -a WPUSAGE=("\n \
+declare -ra WPUSAGE=("\n \
     ${bold}Script to rotate backgrounds in wm's with out such options \n \
     like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
     ${underline}Usage${end_underline}: ${blue}$(basename "${BASH_SOURCE[0]}")${reset} & from a terminal or your startup scripts.\n\n \
@@ -18,7 +18,7 @@ declare -a WPUSAGE=("\n \
     ${blue}$(basename "${BASH_SOURCE[0]}")${reset} without options will start rotating images.\n\n")
 
 #shellcheck disable=SC2034,SC2155
-declare -a FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
+declare -ra FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
         FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
 declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
 	DIRS=( "${HOME}/Pictures" ) WPS=()

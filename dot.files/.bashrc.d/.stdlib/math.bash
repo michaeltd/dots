@@ -1,4 +1,4 @@
-# ~/.bashrc.d/.stl/math.bash
+# ~/.bashrc.d/.stdlib/math.bash
 #
 # math related functions
 #shellcheck shell=bash
@@ -7,12 +7,12 @@ in_range() {
     if [[ "${#}" -eq "3" ]]; then
 	[[ "${1}" -ge "${2}" && "${1}" -le "${3}" ]]
     else
-	echo "USAGE: ${FUNCNAME[0]} num min max" >&2
+	echo "Usage: ${FUNCNAME[0]} num min max" >&2
 	return 1
     fi
 }
 
-between(){
+between() {
     # echo "Usage: between low# high# check#"
     (( $3 >= $1 && $3 <= $2 ))
 }
