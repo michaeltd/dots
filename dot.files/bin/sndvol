@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Timeout settings for Xdialog, Xmessage
-XMTO="3" # xmessage timeout is in seconds...
+XMTO="1" # xmessage timeout is in seconds...
 XDTO="$(( XMTO * 1000 ))" # Xdialog/dialog is in milliseconds.
 
 # Xdialog/dialog

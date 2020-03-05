@@ -121,10 +121,14 @@
     <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>■ □ □ □</name>
-      <name>□ ■ □ □</name>
-      <name>□ □ ■ □</name>
-      <name>□ □ □ ■</name>
+      <!-- <name>■ □ □ □</name> -->
+      <!-- <name>□ ■ □ □</name> -->
+      <!-- <name>□ □ ■ □</name> -->
+      <!-- <name>□ □ □ ■</name> -->
+      <name>Term</name>
+      <name>Browse</name>
+      <name>Edit</name>
+      <name>File Man</name>
     </names>
     <popupTime>500</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -294,6 +298,12 @@
       <action name="ToggleShowDesktop"/>
     </keybind>
     <!-- Keybindings for windows -->
+    <keybind key="W-z">
+      <action name="Iconify"></action>
+    </keybind>
+    <keybind key="W-x">
+      <action name="ToggleMaximize"></action>
+    </keybind>
     <keybind key="W-q">
       <action name="Close"/>
     </keybind>
@@ -414,6 +424,8 @@
       </action>
     </keybind>
   </keyboard>
+
+  <!-- Mouse Bindings -->
   <mouse>
     <dragThreshold>1</dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->
