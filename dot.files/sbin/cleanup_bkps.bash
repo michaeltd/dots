@@ -7,12 +7,10 @@
 #shellcheck source=/dev/null
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
-NOTHING2DO=0
-
 # BacKuPs Directory => BKPD,
 # BacKuPs to Keep => BKPK (in days),
 # BacKuPs Remove => BKPR (1 remove, 0 don't)
-BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
+BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="0" NOTHING2DO="0"
 
 # Source explicitly for non interactive shells.
 SRCSPATH="$(dirname $(dirname $(realpath ${BASH_SOURCE[0]})))/.bashrc.d/.stdlib"
@@ -24,7 +22,7 @@ declare -ra srcs=( "${SRCSPATH}/time.bash" \
 while [[ -n "${1}" ]]; do
     case "${1}" in
 	"-b"|"--bkpdir") shift; BKPD="${1}";;
-	"-s"|"--simulate") BKPR="0";;
+	"-s"|"--simulate") BKPR="1";;
 	"-k"|"--keep") shift; BKPK="${1}";;
 	"-d"|"--debug") set -x;;
 	*) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-b)kpdir /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-d)ebug (default: off)]\n" >&2; exit 1;;
@@ -65,8 +63,8 @@ done
 
 for (( y = 0; y < ${#FNS[@]}; y++ )); do
     if [[ "$(epochdd "$(max "${DTS[@]}")" "${DTS[y]}")" -ge "${BKPK}" ]]; then
-	NOTHING2DO=1
-	if [[ "${BKPR}" == "0" ]]; then
+	NOTHING2DO="1"
+	if [[ "${BKPR}" -eq "1" ]]; then
 	    if [[ "$(lastdayofmonth "@${DTS[y]}")" == "$(date +%d --date="@${DTS[y]}")" ]]; then
 		echo "Not running: ${bold}'mkdir -vp ${BKPD}/bkp && cp -v ${BKPD}/${FNS[y]} ${BKPD}/bkp/${FNS[y]}'${reset}"
 	    fi
@@ -80,4 +78,4 @@ for (( y = 0; y < ${#FNS[@]}; y++ )); do
     fi
  done
 
-[[ "${NOTHING2DO}" == 0 ]] && echo "Nothing left to do!" >&2
+[[ "${NOTHING2DO}" -eq "0" ]] && echo "Nothing left to do!" >&2
