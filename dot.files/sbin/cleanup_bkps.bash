@@ -15,7 +15,7 @@ NOTHING2DO=0
 BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 
 # Source explicitly for non interactive shells.
-SRCSPATH="$(dirname $(cd -P $(dirname $(realpath ${BASH_SOURCE[0]})) && pwd -P))/.bashrc.d/.stdlib"
+SRCSPATH="$(dirname $(dirname $(realpath ${BASH_SOURCE[0]})))/.bashrc.d/.stdlib"
 
 declare -ra srcs=( "${SRCSPATH}/time.bash" \
                   "${SRCSPATH}/string.bash" \
@@ -36,7 +36,7 @@ done
 # (( EUID != 0 )) && echo -ne "privileged access requirements not met.\n" >&2 && exit 1
 [[ ! -d "${BKPD}" ]] && echo -ne "${BKPD} is not a directory.\n" >&2 && exit 1
 
-if [[ -d "${SRCPATH}" ]]; then
+if [[ -d "${SRCSPATH}" ]]; then
     for src in "${srcs[@]}"; do
 	if [[ -r "${src}" ]]; then
 	    source "${src}"
@@ -46,7 +46,7 @@ if [[ -d "${SRCPATH}" ]]; then
 	fi
     done
 else
-    echo -ne "${SRCPATH} not found.\n" >&2
+    echo -ne "${SRCSPATH} not found.\n" >&2
     exit 1
 fi
 
@@ -80,4 +80,4 @@ for (( y = 0; y < ${#FNS[@]}; y++ )); do
     fi
  done
 
-[[ "${NOTHING2DO}" ]] && echo "Nothing left to do!" >&2
+[[ "${NOTHING2DO}" == 0 ]] && echo "Nothing left to do!" >&2

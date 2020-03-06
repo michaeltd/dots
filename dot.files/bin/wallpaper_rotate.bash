@@ -28,7 +28,7 @@ declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" WPLG="${HOME}
 # bash version info check
 if (( "${BASH_VERSINFO[0]}" < 4 )); then
     #shellcheck disable=SC2154
-    echo -ne "${red}Error:${reset} For this to work properly you'll need bash major version greater than 4.\n" >&2
+    echo -ne "${red}Error:${reset} For this to work you'll need bash major version no less than 4.\n" >&2
     exit 1
 fi
 
@@ -56,77 +56,87 @@ fi
 #shellcheck source=/dev/null
 source "${WPRC}"
 
-# If options, proccess, else rotate things
-if [[ -n "${1}" ]]; then
-    case "${1}" in
-	"add") shift
-	    while [[ -n "${1}" ]]; do
-		if [[ -d "${1}" ]]; then
-		    DIRS+=( "${1}" )
-		else
-		    echo -ne "${yellow}Warning:${reset} ${1} is not a directory.\n" >&2
-		fi
+main() {
+    # If options, proccess, else rotate things
+    if [[ -n "${1}" ]]; then
+	case "${1}" in
+	    "add")
 		shift
-	    done
-	    # https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
-	    sv="DIRS" rv="DIRS=( ${DIRS[*]} )"
-	    sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
-	"rem") shift
-	    while [[ -n "${1}" ]]; do
-		for (( i = 0; i < "${#DIRS[@]}"; i++ )); do
-		    if [[ "${DIRS[i]}" == "${1}" ]]; then
-			unset 'DIRS[i]'
+		while [[ -n "${1}" ]]; do
+		    if [[ -d "${1}" ]]; then
+			DIRS+=( "${1}" )
+		    else
+			echo -ne "${yellow}Warning:${reset} ${1} is not a directory.\n" >&2
+		    fi
+		    shift
+		done
+		# https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
+		sv="DIRS" rv="DIRS=( ${DIRS[*]} )"
+		sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
+	    "rem")
+		shift
+		while [[ -n "${1}" ]]; do
+		    for (( i = 0; i < "${#DIRS[@]}"; i++ )); do
+			if [[ "${DIRS[i]}" == "${1}" ]]; then
+			    unset 'DIRS[i]'
+			fi
+		    done
+		    shift
+		done
+		sv="DIRS"
+		rv="DIRS=( ${DIRS[*]} )"
+		sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
+	    "delay")
+		shift
+		# https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
+		if [[ "${1}" =~ ^[0-9]+$ ]]; then
+		    sv="WAIT" rv="WAIT=${1}m"
+		    sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
+		else
+		    echo -ne "${yellow}Warning:${reset} ${1} is not a valid time construct.\nProvide an integer as interval in minutes\n" >&2
+		fi ;;
+	    "replay")
+		shift
+		tail -n "${1:-1}" "${WPLG}" |head -n 1|awk '{print $NF}' ;;
+	    *)
+		echo -ne "${WPUSAGE[*]}" ;;
+	esac
+    else
+	# Reset log
+	echo '' > "${WPLG}"
+
+	while :; do
+
+	    # re-read rc (to pick up config updates).
+	    #shellcheck source=/dev/null
+	    source "${WPRC}"
+
+	    # fill a WallPaperS list
+	    for D in "${DIRS[@]}"; do
+		for P in $("${LS}" -1 "${D}"); do
+		    FN="${D}/${P}" FE="${P:(-4)}"
+		    if [[ -f "${FN}" ]] && [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
+			WPS+=( "${FN}" )
 		    fi
 		done
-		shift
 	    done
-	    sv="DIRS"
-	    rv="DIRS=( ${DIRS[*]} )"
-	    sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
-	"delay") shift
-	    # https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
-	    if [[ "${1}" =~ ^[0-9]+$ ]]; then
-		sv="WAIT" rv="WAIT=${1}m"
-		sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
-	    else
-		echo -ne "${yellow}Warning:${reset} ${1} is not a valid time construct.\nProvide an integer as interval in minutes\n" >&2
-	    fi ;;
-	"replay") shift
-	    tail -n "${1:-1}" "${WPLG}" |head -n 1|awk '{print $NF}' ;;
-	*) echo -ne "${WPUSAGE[*]}" ;;
-    esac
-else
 
-    # Reset log
-    echo '' > "${WPLG}"
+	    # limit a random number to upper array bounds as a RundomNumber
+	    # let "RN = ${RANDOM} % ${#WPS[@]}"
+	    RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
+	    
+	    # Get path and name of image as a selected WallPaper
+	    WP="${WPS[RN]}"
 
-    while :; do
-
-	# re-read rc (to pick up config updates).
-	#shellcheck source=/dev/null
-	source "${WPRC}"
-
-	# fill a WallPaperS list
-	for D in "${DIRS[@]}"; do
-	    for P in $("${LS}" -1 "${D}"); do
-		FN="${D}/${P}" FE="${P:(-4)}"
-		if [[ -f "${FN}" ]] && [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
-		    WPS+=( "${FN}" )
-		fi
-	    done
+	    # set wallpaper, log, wait
+	    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
+	    
+	    printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
+	    sleep "${WAIT}"
 	done
+    fi
+}
 
-	# limit a random number to upper array bounds as a RundomNumber
-	# let "RN = ${RANDOM} % ${#WPS[@]}"
-	RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
-
-	# Get path and name of image as a selected WallPaper
-	WP="${WPS[RN]}"
-
-	# set wallpaper, log, wait
-	"${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
-
-	printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
-	sleep "${WAIT}"
-    done
+if [[ "${0}" == "${BASH_SOURCE[0]}" ]]; then
+    main ${@}
 fi
