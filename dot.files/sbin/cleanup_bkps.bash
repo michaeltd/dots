@@ -15,7 +15,8 @@ NOTHING2DO=0
 BKPD="/mnt/el/Documents/BKP/LINUX" BKPK="14" BKPR="1"
 
 # Source explicitly for non interactive shells.
-SRCSPATH="$(dirname $(dirname $(realpath ${BASH_SOURCE[0]})))/.bashrc.d/.stdlib"
+SRCSPATH="$(dirname $(cd -P $(dirname $(realpath ${BASH_SOURCE[0]})) && pwd -P))/.bashrc.d/.stdlib"
+
 declare -ra srcs=( "${SRCSPATH}/time.bash" \
                   "${SRCSPATH}/string.bash" \
                   "${SRCSPATH}/math.bash" )

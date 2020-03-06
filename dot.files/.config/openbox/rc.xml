@@ -8,8 +8,8 @@
   </resistance>
   <focus>
     <focusNew>yes</focusNew>
-    <!-- always try to focus new windows when they appear. other rules do
-       apply -->
+    <!-- always try to focus new windows when they appear. other rules 
+	 do apply -->
     <followMouse>no</followMouse>
     <!-- move focus to a window when you move the mouse into it -->
     <focusLast>yes</focusLast>
@@ -262,7 +262,7 @@
           <enabled>true</enabled>
           <name>File Manager</name>
         </startupnotify>
-        <command>gentoo</command>
+        <command>xterm -e mc</command>
       </action>
     </keybind>
     <keybind key="W-F5">
