@@ -3,6 +3,7 @@
 # ~/sbin/upgrade_distro.bash
 # Distro neutral upgrade script michaeltd 171124
 # From https://en.wikipedia.org/wiki/Package_manager
+echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 # For this to work package manager arrays must be in following format...
 # | #1 package manager executable | #2 repo update switch | #3 distro upgrade switch(es)| #4 ...
@@ -28,8 +29,6 @@ for x in "${!PMS[@]}"; do
 	break # break on first match.
     fi
 done
-
-echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if (( PMIDX == NOTFOUND || EUID != 0 )); then
     #shellcheck disable=SC2154

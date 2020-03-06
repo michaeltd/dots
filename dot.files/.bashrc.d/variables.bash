@@ -45,7 +45,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # most > less > more in order of preference
 #shellcheck disable=SC2155
-export PAGER="$(type -P most||type -P less||type -P more)"
+export PAGER="$(type -P less||type -P most||type -P more)"
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"

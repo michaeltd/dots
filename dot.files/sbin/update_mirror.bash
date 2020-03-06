@@ -2,6 +2,7 @@
 #
 # ~/sbin/update_mirror.bash
 # Update my data
+echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 # Full path executables
 NICEC=( "$(type -P nice)" "-n" "19" )
@@ -11,8 +12,6 @@ RSNCM=( "$(type -P rsync)" "--verbose" "--recursive" "--times" "--delete" "--exc
 ELMNT="/mnt/el/Documents"
 
 DTMNT="/mnt/data/Documents"
-
-echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if [[ -d "${ELMNT}" && -d "${DTMNT}" ]]; then
     time "${NICEC[@]}" "${RSNCM[@]}" /mnt/el/* /mnt/data/

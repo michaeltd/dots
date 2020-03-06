@@ -2,6 +2,7 @@
 #
 # ~/sbin/update_hosts.bash
 # 1) Set a strict /etc/hosts file 2) Make sure you have one
+echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 PROTOCOL="https://"
 
@@ -14,8 +15,6 @@ URL="${PROTOCOL}${DOMAIN}/${PAGE}"
 HOSTS_FILE="/etc/hosts"
 
 RANDOM_FILE="/tmp/${RANDOM}.$$"
-
-echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 curl "${URL}" > "${RANDOM_FILE}"
 

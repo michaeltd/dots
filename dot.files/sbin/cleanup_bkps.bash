@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 #
 # ~/sbin/cleanup_bkps.bash - de-clutter backups
-#
 # This will work for any directory containing *.tar.gz* backups (eg: name.tar.gz, name.tar.gz.pgp)
 # that have an epoch date field in their filename seperated by periods(.) (eg: 190326.1553569476.enc.tar.gz.pgp)
 #
 #shellcheck source=/dev/null
+echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
+
+NOTHING2DO=0
 
 # BacKuPs Directory => BKPD,
 # BacKuPs to Keep => BKPK (in days),
@@ -29,15 +31,23 @@ while [[ -n "${1}" ]]; do
     shift
 done
 
-echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
-
 # No root access or No backups directory
 # (( EUID != 0 )) && echo -ne "privileged access requirements not met.\n" >&2 && exit 1
 [[ ! -d "${BKPD}" ]] && echo -ne "${BKPD} is not a directory.\n" >&2 && exit 1
 
-for src in "${srcs[@]}"; do
-    source "${src}"
-done
+if [[ -d "${SRCPATH}" ]]; then
+    for src in "${srcs[@]}"; do
+	if [[ -r "${src}" ]]; then
+	    source "${src}"
+	else
+	    echo -ne "${src} not readable.\n" >&2
+	    exit 1
+	fi
+    done
+else
+    echo -ne "${SRCPATH} not found.\n" >&2
+    exit 1
+fi
 
 #shellcheck disable=SC2207
 FILES=( $("$(type -P ls)" "-At1" "${BKPD}"/*.tar.gz* 2> /dev/null) )
@@ -54,6 +64,7 @@ done
 
 for (( y = 0; y < ${#FNS[@]}; y++ )); do
     if [[ "$(epochdd "$(max "${DTS[@]}")" "${DTS[y]}")" -ge "${BKPK}" ]]; then
+	NOTHING2DO=1
 	if [[ "${BKPR}" == "0" ]]; then
 	    if [[ "$(lastdayofmonth "@${DTS[y]}")" == "$(date +%d --date="@${DTS[y]}")" ]]; then
 		echo "Not running: ${bold}'mkdir -vp ${BKPD}/bkp && cp -v ${BKPD}/${FNS[y]} ${BKPD}/bkp/${FNS[y]}'${reset}"
@@ -67,3 +78,5 @@ for (( y = 0; y < ${#FNS[@]}; y++ )); do
 	fi
     fi
  done
+
+[[ "${NOTHING2DO}" ]] && echo "Nothing left to do!" >&2

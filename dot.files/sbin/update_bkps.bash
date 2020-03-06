@@ -2,6 +2,7 @@
 #
 # ~/sbin/update_bkps.bash
 # Backup sensitive files, user files, system
+echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
 
@@ -37,8 +38,6 @@ declare -a BKP=( ENC[@] USR[@] SYS[@] ) \
         ARCHV=( "enc.tar.gz" "usr.tar.gz" "sys.tar.gz" )
 
 declare EP="$(date +%s)" DT="$(date +%Y%m%d)" TM="$(date +%H%M%S)" 
-
-echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
     for ((i = 0; i < ${#ARCHV[*]}; i++ )); do
