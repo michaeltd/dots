@@ -137,6 +137,4 @@ main() {
     fi
 }
 
-if [[ "${0}" == "${BASH_SOURCE[0]}" ]]; then
-    main ${@}
-fi
+[[ "${0}" == "${BASH_SOURCE[0]}" ]] && main ${@}
