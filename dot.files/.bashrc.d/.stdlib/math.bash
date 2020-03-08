@@ -19,17 +19,16 @@ between() {
 
 calc() {
     # echo -e "Usage: calc \"1+2-3%2/1*10+(4*5)-(8*8)\"\n"
-    #echo "scale=6;${@}"| bc -l
     echo "scale=6;${*}"| bc -l
 }
 
-min() {
+altmin() {
     printf "%s\n" "${@}" | \
 	sort -n | \
 	head -1
 }
 
-altmin() {
+min() {
     n=${1} # Avoid n initialization issues
     while [[ -n "${1}" ]]; do
 	(( $1 < n )) && n=${1}
@@ -38,13 +37,13 @@ altmin() {
     echo "${n}"
 }
 
-max() {
+altmax() {
     printf "%d\n" "${@}" | \
 	sort -rn | \
 	head -1
 }
 
-altmax() {
+max() {
     local x
     x="${1}" # Avoid x initialization issues
     while [[ -n "${1}" ]]; do

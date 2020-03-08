@@ -23,8 +23,8 @@ rcm 9 compton
 
 # A nice status bar (before gui as we'll need that tray)
 # nice -n 9 tint2 &
-# rcm 9 tint2 -c ~/.config/tint2/taskbar
-rcm 9 tint2 -c ~/.config/tint2/panel
+nice -n 9 tint2 -c ~/.config/tint2/taskbar &>/dev/null &
+nice -n 9 tint2 -c ~/.config/tint2/panel &>/dev/null &
 
 # ~/.config/polybar/launch.sh
 # polybar example 2> /dev/null &

@@ -21,6 +21,12 @@ rcm 9 ~/bin/wallpaper_rotate.bash
 
 # rcm 9 gdutils
 
+rcm 9 pasystray
+
+rcm 9 nm-applet
+
+rcm 0 mpd
+
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then

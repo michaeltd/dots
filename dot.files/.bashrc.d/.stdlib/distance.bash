@@ -5,7 +5,7 @@
 
 ml2km() {
     #shellcheck disable=SC2005
-    printf "%.2f\n" "$(echo "scale=2;${1} * 1.609344"|bc -ql)"
+    printf "%.2f\n" "$(echo "scale=2;${1} /0.621371192237334"|bc -ql)"
 }
 
 km2ml(){
