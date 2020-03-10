@@ -5,7 +5,7 @@
 #shellcheck source=/dev/null
 
 # No double sourcing
-[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/functions.bash
+[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/30_functions.bash
 
 # Run emacs
 # rcm 0 emacs --daemon

@@ -9,7 +9,7 @@
 # }
 
 # No double sourcing
-[[ ! $(type -P rcm) ]] && source ~/.bashrc.d/functions.bash
+[[ ! $(type -P rcm) ]] && source ~/.bashrc.d/30_functions.bash
 
 rcm 9 compton -b
 

@@ -5,15 +5,16 @@
 
 in_range() {
     if [[ "${#}" -eq "3" ]]; then
-	[[ "${1}" -ge "${2}" && "${1}" -le "${3}" ]]
+	[[ "${3}" -ge "${1}" && "${3}" -le "${2}" ]]
     else
-	echo "Usage: ${FUNCNAME[0]} num min max" >&2
+	echo "Usage: ${FUNCNAME[0]} min max num" >&2
 	return 1
     fi
 }
 
 between() {
     # echo "Usage: between low# high# check#"
+    [[ "${#}" -ne "3" ]] && echo "Usage: ${FUNCNAME[0]} lbound ubound check" >&2 && return 1
     (( $3 >= $1 && $3 <= $2 ))
 }
 
