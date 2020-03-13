@@ -87,8 +87,6 @@ __check_arr(){
 	if [[ ! -e "${i}" ]]; then
 	    echo "fatal: ${i} not found"
 	    return 1
-	elif [[ -L "${i}" ]]; then
-	    echo "link ${i} is : $(/bin/ls ${i})"
 	elif [[ -d "${i}" ]]; then
 	    echo "dir ${i} is : $(/bin/ls -d ${i})"
 	elif [[ -f "${i}" ]]; then
@@ -114,8 +112,6 @@ __check_assoc() {
 	    if [[ ! -e "${!assoc[x]:i:1}" ]]; then
 		echo "fatal: ${!assoc[x]:i:1} not found"
 		return 1
-	    elif [[ -L "${!assoc[x]:i:1}" ]]; then
-		echo "link ${!assoc[x]:i:1} is : $(/bin/ls ${!assoc[x]:i:1})"
 	    elif [[ -d "${!assoc[x]:i:1}" ]]; then
 		echo "dir ${!assoc[x]:i:1} is : $(/bin/ls -d ${!assoc[x]:i:1})"
 	    elif [[ -f "${!assoc[x]:i:1}" ]]; then

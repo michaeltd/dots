@@ -70,7 +70,7 @@
 
 <a name="bootstrap.bash"></a>
 #### [bootstrap.sh](bootstrap.sh)
-How I migrate my .dots in new systems. Don't use this unless you know exactly what you're getting into.
+How I migrate my .dots in new systems. Available only as reference, not for use.
 
 ## Reference
 #### [GitHub ❤ ~/](https://dotfiles.github.io/)
