@@ -5,7 +5,7 @@
 
 #shellcheck disable=SC2155
 declare -r SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-
+#shellcheck disable=2164 #SHUT UP SHELLCHECK, MY CD'S DO NOT FAIL!!!
 cd "${SDN}"
 
 # Backup File Extension
