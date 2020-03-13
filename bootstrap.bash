@@ -142,23 +142,26 @@ __link_assoc() {
 }
 
 __do_link() {
-    ln --verbose --symbolic --force --backup --suffix=".${BFE}" "${1}" "${2}"
+    if [[ -e "${2}" ]]; then
+	mv -v "${2}" "${2}.${BFE}"
+    fi
+    ln --verbose --symbolic --force --backup --suffix=".${BFE}"  "${1}" "${2}"
 }
 
 __do_arr(){
-    __check_arr "${1}" || exit $?
-    __link_arr "${1}" || exit $?
+    __check_arr "${1}"
+    __link_arr "${1}"
 }
 
 __do_assoc(){
-    __check_assoc "${1}" || exit $?
-    __link_assoc "${1}" || exit $?
+    __check_assoc "${1}"
+    __link_assoc "${1}"
 }
 
 __do_everything() {
     for assoc in "console" "xorg"; do
-	__check_assoc "${assoc}" || exit $?
-	__link_assoc "${assoc}" || exit $?
+	__check_assoc "${assoc}"
+	__link_assoc "${assoc}"
     done
 }
 
