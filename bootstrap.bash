@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# bootstrap.bash 
+# dots/bootstrap.bash 
 # Migrates my .dots in new systems.
 
 # Backup File Extension
@@ -90,9 +90,9 @@ __check_arr() {
 	    echo "fatal: ${i} not found"
 	    return 1
 	elif [[ -d "${i}" ]]; then
-	    echo "dir ${i} is : $(/bin/ls -d "${i}")"
+	    echo "dir ${i} is : $($(type -P ls) -d "${i}")"
 	elif [[ -f "${i}" ]]; then
-	    echo "file ${i} is : $(/bin/ls "${i}")"
+	    echo "file ${i} is : $($(type -P ls) "${i}")"
 	fi
     done
 }
@@ -101,7 +101,6 @@ __link_arr() {
     eval "arr=(\"\${$1[@]}\")"
     for i in "${arr[@]}"; do
 	local realfile="$(realpath "${i}")" homefile="${HOME}${i:9}"
-	mkdir -vp "$(dirname "${homefile}")"
 	__do_link "${realfile}" "${homefile}"
     done
 }
@@ -115,9 +114,9 @@ __check_assoc() {
 		echo "fatal: ${!assoc[x]:i:1} not found"
 		return 1
 	    elif [[ -d "${!assoc[x]:i:1}" ]]; then
-		echo "dir ${!assoc[x]:i:1} is : $(/bin/ls -d "${!assoc[x]:i:1}")"
+		echo "dir ${!assoc[x]:i:1} is : $($(type -P ls) -d "${!assoc[x]:i:1}")"
 	    elif [[ -f "${!assoc[x]:i:1}" ]]; then
-		echo "file ${!assoc[x]:i:1} is : $(/bin/ls "${!assoc[x]:i:1}")"
+		echo "file ${!assoc[x]:i:1} is : $($(type -P ls) "${!assoc[x]:i:1}")"
 	    fi
 	    (( ++i ))
 	done
@@ -132,7 +131,6 @@ __link_assoc() {
 	    local repofile="${!assoc[x]:i:1}"
     	    local realfile="$(realpath "${repofile}")"
 	    local homefile="${HOME}${repofile:9}"
-	    mkdir -vp "$(dirname "${homefile}")"
 	    __do_link "${realfile}" "${homefile}"
 	    (( ++i ))
 	done
@@ -142,25 +140,26 @@ __link_assoc() {
 __do_link() {
     # ln force switch for directory links appears broken, so there ...
     if [[ -e "${2}" ]]; then
-	mv -v "${2}" "${2}.${BFE}"
+	$(type -P mv) --verbose "${2}" "${2}.${BFE}"
     fi
     #ln --verbose --symbolic --force --backup --suffix=".${BFE}"  "${1}" "${2}"
-    ln --verbose --symbolic "${1}" "${2}"
+    $(type -P mkdir) --verbose --parents "$(dirname "${2}")"
+    $(type -P ln) --verbose --symbolic "${1}" "${2}"
 }
 
 __do_arr(){
-    __check_arr "${1}"
+    __check_arr "${1}" || exit $?
     __link_arr "${1}"
 }
 
 __do_assoc(){
-    __check_assoc "${1}"
+    __check_assoc "${1}" || exit $?
     __link_assoc "${1}"
 }
 
 __do_everything() {
     for assoc in "console" "xorg"; do
-	__check_assoc "${assoc}"
+	__check_assoc "${assoc}" || exit $?
 	__link_assoc "${assoc}"
     done
 }
