@@ -94,10 +94,6 @@ __check_arr() {
 	if [[ ! -e "${i}" ]]; then
 	    echo "fatal: ${i} not found"
 	    return 1
-	elif [[ -d "${i}" ]]; then
-	    echo "dir ${i} is : $($(type -P ls) -d "${i}")"
-	elif [[ -f "${i}" ]]; then
-	    echo "file ${i} is : $($(type -P ls) "${i}")"
 	fi
     done
 }
@@ -118,10 +114,6 @@ __check_assoc() {
 	    if [[ ! -e "${!assoc[x]:i:1}" ]]; then
 		echo "fatal: ${!assoc[x]:i:1} not found"
 		return 1
-	    elif [[ -d "${!assoc[x]:i:1}" ]]; then
-		echo "dir ${!assoc[x]:i:1} is : $($(type -P ls) -d "${!assoc[x]:i:1}")"
-	    elif [[ -f "${!assoc[x]:i:1}" ]]; then
-		echo "file ${!assoc[x]:i:1} is : $($(type -P ls) "${!assoc[x]:i:1}")"
 	    fi
 	    (( ++i ))
 	done
