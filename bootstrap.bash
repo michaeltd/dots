@@ -3,6 +3,7 @@
 # bootstrap.bash 
 # Migrates my .dots in new systems.
 
+# Backup File Extension
 declare -r BFE="dots.$(basename $(realpath ${BASH_SOURCE[0]/\.bash/})).${$}.$(date +%s).bkp"
 
 declare -ra bash=( 'dot.files/.bash_logout' \
@@ -100,7 +101,7 @@ __link_arr() {
     eval arr=( "\${$1[@]}" )
     for i in "${arr[@]}"; do
 	local realfile="$(realpath ${i})" homefile="${HOME}${i:9}"
-	mkdir -vp "$(basename "${homefile}")"
+	mkdir -vp "$(dirname "${homefile}")"
 	__do_link "${realfile}" "${homefile}"
     done
 }
@@ -132,7 +133,7 @@ __link_assoc() {
 	while [[ -n "${!assoc[x]:i:1}" ]]; do
 	    local repofile="${!assoc[x]:i:1}"
     	    local realfile="$(realpath "${repofile}")" homefile="${HOME}${repofile:9}"
-	    mkdir -vp "$(basename "${homefile}")"
+	    mkdir -vp "$(dirname "${homefile}")"
 	    __do_link "${realfile}" "${homefile}"
 	    (( ++i ))
 	done
