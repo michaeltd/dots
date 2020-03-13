@@ -100,6 +100,7 @@ __link_arr() {
     eval arr=( "\${$1[@]}" )
     for i in "${arr[@]}"; do
 	local realfile="$(realpath ${i})" homefile="${HOME}${i:9}"
+	mkdir -vp "$(basename "${homefile}")"
 	__do_link "${realfile}" "${homefile}"
     done
 }
@@ -131,6 +132,7 @@ __link_assoc() {
 	while [[ -n "${!assoc[x]:i:1}" ]]; do
 	    local repofile="${!assoc[x]:i:1}"
     	    local realfile="$(realpath "${repofile}")" homefile="${HOME}${repofile:9}"
+	    mkdir -vp "$(basename "${homefile}")"
 	    __do_link "${realfile}" "${homefile}"
 	    (( ++i ))
 	done
