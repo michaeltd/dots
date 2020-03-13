@@ -13,13 +13,13 @@ in_range() {
 }
 
 between() {
-    # echo "Usage: between low# high# check#"
-    [[ "${#}" -ne "3" ]] && echo "Usage: ${FUNCNAME[0]} lbound ubound check" >&2 && return 1
+    [[ "${#}" -ne "3" ]] && \
+	echo "Usage: ${FUNCNAME[0]} lbound ubound check" >&2 && \
+	return 1
     (( $3 >= $1 && $3 <= $2 ))
 }
 
 calc() {
-    # echo -e "Usage: calc \"1+2-3%2/1*10+(4*5)-(8*8)\"\n"
     echo "scale=6;${*}"| bc -l
 }
 

@@ -71,7 +71,9 @@ hello_world() {
 }
 
 makebackup() {
-    [[ ! -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-2-backup\n" && return 1
+    [[ ! -f "${1}" ]] && \
+	echo -ne "Usage: ${FUNCNAME[0]} file-2-backup\n" && \
+	return 1
     cp -v "${1}" "${1}.bkp.$(date +%s)"
 }
 
@@ -174,7 +176,7 @@ compress() {
 	*.tar.gz| *.tgz) tar czf $@;;
 	*.zip) zip $@;;
 	*.rar) rar a $@;;
-	*) echo -ne "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}${1}${reset}\".\n" >&2; return 1;;
+	*) echo -ne "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}${1}${reset}\".\n" >&2;return 1;;
     esac
 }
 
