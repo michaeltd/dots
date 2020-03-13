@@ -3,6 +3,11 @@
 # dots/bootstrap.bash 
 # Migrates my .dots in new systems.
 
+#shellcheck disable=SC2155
+declare -r SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+
+cd "${SDN}"
+
 # Backup File Extension
 #shellcheck disable=SC2155
 declare -r BFE="dots.$(basename "$(realpath "${BASH_SOURCE[0]/\.bash/}")").${$}.$(date +%s).bkp"
