@@ -4,13 +4,19 @@
 # Migrates my .dots in new systems.
 
 #shellcheck disable=SC2155
-declare -r SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+declare -r SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	SBN="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+
+# No Extension Script Name
+#shellcheck disable=SC2155
+declare -r NESN="${SBN/\.bash/}"
+
 #shellcheck disable=2164 #SHUT UP SHELLCHECK, MY CD'S DO NOT FAIL!!!
 cd "${SDN}"
 
 # Backup File Extension
 #shellcheck disable=SC2155
-declare -r BFE="dots.$(basename "$(realpath "${BASH_SOURCE[0]/\.bash/}")").${$}.$(date +%s).bkp"
+declare -r BFE="dots.${NESN}.${$}.$(date +%s).bkp"
 #shellcheck disable=SC2034
 declare -ra bash=( 'dot.files/.bash_logout' \
 		      'dot.files/.bash_profile' \

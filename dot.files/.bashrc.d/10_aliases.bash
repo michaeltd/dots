@@ -127,3 +127,6 @@ alias netris='ssh netris.rocketnine.space'
 
 # Static
 alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done|lolcat'
+
+# TermBin https://termbin.com/
+alias termbin='nc termbin.com 9999'
