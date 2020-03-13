@@ -69,7 +69,7 @@
    * If vim is your cup of tea, check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
 <a name="bootstrap.bash"></a>
-#### [bootstrap.sh](bootstrap.sh)
+#### [bootstrap.bash](bootstrap.bash)
 How I migrate my .dots in new systems. Available only as reference, not for use.
 
 ## Reference

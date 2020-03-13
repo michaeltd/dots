@@ -228,11 +228,11 @@ __main() {
     if [[ -n "${1}" ]]; then
 	while [[ -n "${1}" ]]; do
     	    case "${1}" in
-		"a"|"-a"|"--all") shift; __do_everything;;
-		"c"|"-c"|"--console") shift; __do_console;;
-		"x"|"-x"|"--xorg") shift; __do_xorg;;
-		"m"|"-m"|"--menu") shift; __menu;;
-		*) shift; echo "${usage}"; exit 1;;
+		"a"|"-a"|"--all") shift; __do_everything ;;
+		"c"|"-c"|"--console") shift; __do_assoc "console" ;;
+		"x"|"-x"|"--xorg") shift; __do_assoc "xorg" ;;
+		"m"|"-m"|"--menu") shift; __menu ;;
+		*) shift; echo "${usage}"; exit 1 ;;
 	    esac
 	done
     else
