@@ -4,8 +4,9 @@
 # Migrates my .dots in new systems.
 
 # Backup File Extension
-declare -r BFE="dots.$(basename $(realpath ${BASH_SOURCE[0]/\.bash/})).${$}.$(date +%s).bkp"
-
+#shellcheck disable=SC2155
+declare -r BFE="dots.$(basename "$(realpath "${BASH_SOURCE[0]/\.bash/}")").${$}.$(date +%s).bkp"
+#shellcheck disable=SC2034
 declare -ra bash=( 'dot.files/.bash_logout' \
 		      'dot.files/.bash_profile' \
 		      'dot.files/.bashrc' \
@@ -19,9 +20,9 @@ declare -ra bash=( 'dot.files/.bash_logout' \
 	tmux=( 'dot.files/.tmux.conf' ) \
 	music=( 'dot.files/.config/mpd/mpd.conf' \
 		    'dot.files/.config/ncmpcpp/config' )
-
+#shellcheck disable=SC2034
 declare -ra console=( bash[@] vim[@] mutt[@] top[@] tmux[@] music[@] )
-
+#shellcheck disable=SC2034
 declare -ra x11=( 'dot.files/.Xdefaults' \
 		      'dot.files/.Xresources' \
 		      'dot.files/.Xresources.d' \
@@ -51,20 +52,21 @@ declare -ra x11=( 'dot.files/.Xdefaults' \
 	tint2=( 'dot.files/.config/tint2/panel' \
 		    'dot.files/.config/tint2/taskbar' ) \
 	compton=( 'dot.files/.config/compton.conf' )
-
+#shellcheck disable=SC2034
 declare -ra xorg=( x11[@] awesome[@] compiz[@] openbox[@] e16[@] \
 		      gnustep[@] mwm[@] polybar[@] tint2[@] compton[@] )
 
-declare -r usage="Usage: $(basename ${BASH_SOURCE[0]}) -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp"
+declare -r usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp"
 
-__is_link_set(){
+__is_link_set() {
     local -r homefile="${HOME}${1:9}"
-    local -r realfile="$(realpath ${1})"
-    [[ -L "${homefile}" ]] && [[ "$(realpath ${homefile})" == "${realfile}" ]]
+    local -r realfile="$(realpath "${1}")"
+    [[ -L "${homefile}" ]] && [[ "$(realpath "${homefile}")" == "${realfile}" ]]
 }
 
-__all_links_set(){
-    eval arr=( "\${$1[@]}" )
+__all_links_set() {
+    eval "arr=(\"\${$1[@]}\")"
+    #shellcheck disable=SC2154
     for i in "${arr[@]}"; do
 	if ! __is_link_set "${i}"; then
 	    return 1
@@ -72,8 +74,8 @@ __all_links_set(){
     done
 }
 
-__no_links_set(){
-    eval arr=( "\${$1[@]}" )
+__no_links_set() {
+    eval "arr=(\"\${$1[@]}\")"
     for i in "${arr[@]}"; do
 	if __is_link_set "${i}"; then
 	    return 1
@@ -81,31 +83,31 @@ __no_links_set(){
     done
 }
 
-__check_arr(){
-    eval arr=( "\${$1[@]}" )
+__check_arr() {
+    eval "arr=(\"\${$1[@]}\")"
     for i in "${arr[@]}"; do
 	if [[ ! -e "${i}" ]]; then
 	    echo "fatal: ${i} not found"
 	    return 1
 	elif [[ -d "${i}" ]]; then
-	    echo "dir ${i} is : $(/bin/ls -d ${i})"
+	    echo "dir ${i} is : $(/bin/ls -d "${i}")"
 	elif [[ -f "${i}" ]]; then
-	    echo "file ${i} is : $(/bin/ls ${i})"
+	    echo "file ${i} is : $(/bin/ls "${i}")"
 	fi
     done
 }
 
 __link_arr() {
-    eval arr=( "\${$1[@]}" )
+    eval "arr=(\"\${$1[@]}\")"
     for i in "${arr[@]}"; do
-	local realfile="$(realpath ${i})" homefile="${HOME}${i:9}"
+	local realfile="$(realpath "${i}")" homefile="${HOME}${i:9}"
 	mkdir -vp "$(dirname "${homefile}")"
 	__do_link "${realfile}" "${homefile}"
     done
 }
 
 __check_assoc() {
-    eval assoc=( "\${$1[@]}" )
+    eval "assoc=(\"\${$1[@]}\")"
     for x in "${!assoc[@]}"; do
 	local i=0
 	while [[ -n "${!assoc[x]:i:1}" ]]; do
@@ -113,9 +115,9 @@ __check_assoc() {
 		echo "fatal: ${!assoc[x]:i:1} not found"
 		return 1
 	    elif [[ -d "${!assoc[x]:i:1}" ]]; then
-		echo "dir ${!assoc[x]:i:1} is : $(/bin/ls -d ${!assoc[x]:i:1})"
+		echo "dir ${!assoc[x]:i:1} is : $(/bin/ls -d "${!assoc[x]:i:1}")"
 	    elif [[ -f "${!assoc[x]:i:1}" ]]; then
-		echo "file ${!assoc[x]:i:1} is : $(/bin/ls ${!assoc[x]:i:1})"
+		echo "file ${!assoc[x]:i:1} is : $(/bin/ls "${!assoc[x]:i:1}")"
 	    fi
 	    (( ++i ))
 	done
@@ -123,7 +125,7 @@ __check_assoc() {
 }
 
 __link_assoc() {
-    eval assoc=( "\${$1[@]}" )
+    eval "assoc=(\"\${$1[@]}\")"
     for x in "${!assoc[@]}"; do
 	local i=0
 	while [[ -n "${!assoc[x]:i:1}" ]]; do
@@ -138,10 +140,12 @@ __link_assoc() {
 }
 
 __do_link() {
+    # backup switch of ln for directory links appears broken, so there ...
     if [[ -e "${2}" ]]; then
 	mv -v "${2}" "${2}.${BFE}"
     fi
-    ln --verbose --symbolic --force --backup --suffix=".${BFE}"  "${1}" "${2}"
+    #ln --verbose --symbolic --force --backup --suffix=".${BFE}"  "${1}" "${2}"
+    ln --verbose --symbolic "${1}" "${2}"
 }
 
 __do_arr(){
@@ -204,7 +208,7 @@ __menu(){
         TUI_HMSG+=( "Use ${x}, for ${SDESC[x]}, which will ${DESC[x]}\n" )
     done
 
-    TUI_MENU+=( "\nChoose[0-$((${#TUI_OPS[@]}-1))]:" )
+    TUI_MENU+=( "Choose[0-$((${#TUI_OPS[@]}-1))]:" )
 
     while :; do
         echo -ne " ${TUI_MENU[*]}"
