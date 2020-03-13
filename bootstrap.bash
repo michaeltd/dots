@@ -140,7 +140,7 @@ __link_assoc() {
 }
 
 __do_link() {
-    # backup switch of ln for directory links appears broken, so there ...
+    # ln force switch for directory links appears broken, so there ...
     if [[ -e "${2}" ]]; then
 	mv -v "${2}" "${2}.${BFE}"
     fi
