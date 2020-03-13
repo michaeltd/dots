@@ -132,7 +132,8 @@ __link_assoc() {
 	local i=0
 	while [[ -n "${!assoc[x]:i:1}" ]]; do
 	    local repofile="${!assoc[x]:i:1}"
-    	    local realfile="$(realpath "${repofile}")" homefile="${HOME}${repofile:9}"
+    	    local realfile="$(realpath "${repofile}")"
+	    local homefile="${HOME}${repofile:9}"
 	    mkdir -vp "$(dirname "${homefile}")"
 	    __do_link "${realfile}" "${homefile}"
 	    (( ++i ))
