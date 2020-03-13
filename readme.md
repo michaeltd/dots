@@ -68,11 +68,10 @@
 
    * If vim is your cup of tea, check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
 
-<!--
-<a name="bootstrap.sh"></a>
+<a name="bootstrap.bash"></a>
 #### [bootstrap.sh](bootstrap.sh)
 How I migrate my .dots in new systems. Don't use this unless you know exactly what you're getting into.
--->
+
 ## Reference
 #### [GitHub ❤ ~/](https://dotfiles.github.io/)
 Your unofficial guide to dotfiles on GitHub.
