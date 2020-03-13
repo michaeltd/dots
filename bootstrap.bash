@@ -144,12 +144,12 @@ __do_link() {
     $(type -P ln) --verbose --symbolic "${1}" "${2}"
 }
 
-__do_arr(){
+__do_arr() {
     __check_arr "${1}" || exit $?
     __link_arr "${1}"
 }
 
-__do_assoc(){
+__do_assoc() {
     __check_assoc "${1}" || exit $?
     __link_assoc "${1}"
 }
@@ -161,7 +161,7 @@ __do_everything() {
     done
 }
 
-__menu(){
+__menu() {
     # Build menus and help messages.
     local -ra TUI_OPS=( "bash" "vim" "mutt" "tmux" "top" "music" "x11" \
 			      "awesome" "compiz" "openbox" "e16" "gnustep" \
