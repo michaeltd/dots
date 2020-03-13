@@ -211,8 +211,9 @@ __menu(){
         read -r USRINPT
 
         case "${USRINPT}" in
-            0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15) __do_arr "${TUI_OPS[$USRINPT]}";;
-	    16|17) __do_assoc "${TUI_OPS[$USRINPT]}";;
+	    # Thanks to https://www.reddit.com/user/Schreq/
+            [0-9]|1[0-5]) __do_arr "${TUI_OPS[$USRINPT]}";;
+	    1[6-7]) __do_assoc "${TUI_OPS[$USRINPT]}";;
 	    18) __do_"${TUI_OPS[$USRINPT]}";;
             19) echo -ne "${TUI_HMSG[*]}";;
             20) exit;;
