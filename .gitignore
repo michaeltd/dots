@@ -5,3 +5,4 @@
 *.sh.rc
 *.bash.rc
 private/*
+new.bootstrap.bash
