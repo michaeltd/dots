@@ -30,7 +30,9 @@ declare -ra bash=( 'dot.files/.bash_logout' \
 	top=( 'dot.files/.toprc' ) \
 	tmux=( 'dot.files/.tmux.conf' ) \
 	music=( 'dot.files/.config/mpd/mpd.conf' \
-		    'dot.files/.config/ncmpcpp/config' )
+		    'dot.files/.config/ncmpcpp/config' \
+		    'dot.files/.moc/config' \
+		    'dot.files/.moc/keymap' )
 #shellcheck disable=SC2034
 declare -ra console=( bash[@] vim[@] mutt[@] top[@] tmux[@] music[@] )
 #shellcheck disable=SC2034
@@ -184,7 +186,7 @@ __menu() {
 			"link ${SDESC[2]} rc" \
 			"link ${SDESC[3]}'s tmux.conf" \
 			"link ${SDESC[4]}'s toprc" \
-			"link ${SDESC[5]} mpd and npmpcpp config files" \
+			"link ${SDESC[5]} mpd, npmpcpp, mocp config files" \
 			"link ${SDESC[6]} rc files" \
 			"link ${SDESC[7]} config and autostart files" \
 			"link ${SDESC[8]} configs" \
