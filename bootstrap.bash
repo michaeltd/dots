@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # dots/bootstrap.bash 
 # Migrates my .dots in new systems.
@@ -145,11 +145,11 @@ __link_assoc() {
 __do_link() {
     # ln force switch for directory links appears broken, so there ...
     if [[ -e "${2}" ]]; then
-	$(type -P mv) --verbose "${2}" "${2}.${BFE}"
+	$(type -P mv) -v "${2}" "${2}.${BFE}"
     fi
     #ln --verbose --symbolic --force --backup --suffix=".${BFE}"  "${1}" "${2}"
-    $(type -P mkdir) --verbose --parents "$(dirname "${2}")"
-    $(type -P ln) --verbose --symbolic "${1}" "${2}"
+    $(type -P mkdir) -vp "$(dirname "${2}")"
+    $(type -P ln) -vs "${1}" "${2}"
 }
 
 __do_arr() {
