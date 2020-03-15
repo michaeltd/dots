@@ -57,6 +57,11 @@ elif type -P emerge &> /dev/null; then
 	  premove='sudo emerge -avC'
     alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @world' \
 	  dcleanup='sudo emerge --ask --depclean'
+elif type -P pkg &> /dev/null; then
+    alias psearch='pkg -o search' pinstall='sudo pkg install' \
+	  premove='sudo pkg remove'
+    alias dupdate='sudo pkg update' dupgrade='sudo pkg upgrade' \
+	  dcleanup='sudo pkg autoremove'
 fi
 
 # Midnight Commander Safe Terminal

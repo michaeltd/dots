@@ -13,9 +13,10 @@ declare -ra APT_GET=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgra
         YUM=( "yum" "check-update" "update" ) \
         ZYPPER=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) \
         PACMAN=( "pacman" "-Sy" "-Syu" ) \
-        EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@security}" )
+        EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@security}" ) \
+        PKG=( "pkg" "update" "upgrade" )
 
-declare -ra PMS=( APT_GET[@] YUM[@] ZYPPER[@] PACMAN[@] EMERGE[@] )
+declare -ra PMS=( APT_GET[@] YUM[@] ZYPPER[@] PACMAN[@] EMERGE[@] PKG[@])
 
 readonly NOTFOUND="404"
 
@@ -31,7 +32,7 @@ done
 
 if (( PMIDX == NOTFOUND || EUID != 0 )); then
     #shellcheck disable=SC2154
-    printf "${red}Error:${reset} ${bold}Package manager not found, or required access privilages not met.${reset}\n For this to work you need ${underline}${green}root${reset}${end_underline} account privilages and a \n ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline} or ${underline}${green}%s${reset}${end_underline} based distro.\n Quithing.\n" "${!PMS[0]:0:1}" "${!PMS[1]:0:1}" "${!PMS[2]:0:1}" "${!PMS[3]:0:1}" "${!PMS[4]:0:1}" >&2
+    printf "${red}Error:${reset} ${bold}Package manager not found, or required access privilages not met.${reset}\n For this to work you need ${underline}${green}root${reset}${end_underline} account privilages and a \n ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline},  ${underline}${green}%s${reset}${end_underline} or ${underline}${green}%s${reset}${end_underline} based distro.\n Quithing.\n" "${!PMS[0]:0:1}" "${!PMS[1]:0:1}" "${!PMS[2]:0:1}" "${!PMS[3]:0:1}" "${!PMS[4]:0:1}" "${!PMS[5]:0:1}" >&2
     exit 1
 else
     time "${!PMS[PMIDX]:0:1}" "${!PMS[PMIDX]:1:1}" && time "${!PMS[PMIDX]:0:1}" "${!PMS[PMIDX]:2}"
