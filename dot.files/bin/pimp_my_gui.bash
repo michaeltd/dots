@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 #
-# ~/bin/pimp-my-gui.sh
+# ~/bin/pimp-my-gui.bash
 # Spice for the desktop
 #shellcheck source=/dev/null
 
 # No double sourcing
 [[ ! $(command -v rcm) ]] && source ~/.bashrc.d/30_functions.bash
 
+# Music daemon
+rcm 0 mpd
+
 # Run emacs
-# rcm 0 emacs --daemon
+rcm 0 emacs --daemon
 
 # Xfce4 themes
 rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
@@ -19,13 +22,11 @@ rcm 9 xscreensaver -no-splash
 # Add some wallpaper variety for your desktop
 rcm 9 ~/bin/wallpaper_rotate.bash
 
-# rcm 9 gdutils
-
+# Systray volume control
 rcm 9 pasystray
 
+# Systray network manager applet
 rcm 9 nm-applet
-
-rcm 0 mpd
 
 # Per distro setup.
 source /etc/os-release
