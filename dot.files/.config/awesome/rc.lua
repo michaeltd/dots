@@ -50,8 +50,8 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
 browser = "firefox"
-editor = "emacsclient -a emacs -c"
-editor_cmd = terminal .. " -e" .. " emacs" .. " -nw"
+editor = "emacs"
+editor_cmd = editor
 fileman = "gentoo"
 
 -- Default modkey.

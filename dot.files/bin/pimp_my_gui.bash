@@ -11,7 +11,7 @@
 rcm 0 mpd
 
 # Run emacs
-rcm 0 emacs --daemon
+# rcm 0 emacs --daemon
 
 # Xfce4 themes
 rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable

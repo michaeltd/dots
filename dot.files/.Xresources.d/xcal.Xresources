@@ -1,14 +1,11 @@
-*daynumbers*Foreground: Black
-
-*daynumbers.1*Foreground: Black
-*daynumbers.8*Foreground: Black
-*daynumbers.15*Foreground: Black
-*daynumbers.22*Foreground: Black
-*daynumbers.29*Foreground: Black
-*daynumbers.36*Foreground: Black
-
 *firstDay: 1
-
+*daynumbers*Foreground: Grey
+*daynumbers.1*Foreground: White
+*daynumbers.8*Foreground: White
+*daynumbers.15*Foreground: White
+*daynumbers.22*Foreground: White
+*daynumbers.29*Foreground: White
+*daynumbers.36*Foreground: White
 *daynumbers.7*Foreground: Red
 *daynumbers.14*Foreground: Red
 *daynumbers.21*Foreground: Red
