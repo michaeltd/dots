@@ -81,7 +81,7 @@ nnoremap <LocalLeader>j :tabmove-<CR>
 nnoremap <LocalLeader>k :tabmove+<CR>
 nnoremap <LocalLeader>l :tabmove$<CR>
 
-tnoremap <silent> <esc> <C-\><C-n>
+noremap <silent> <esc> <C-\><C-n>
 
 noremap gf :vertical wincmd f<CR>
 noremap gF :wincmd f<CR>
