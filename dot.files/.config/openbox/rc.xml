@@ -8,7 +8,7 @@
   </resistance>
   <focus>
     <focusNew>yes</focusNew>
-    <!-- always try to focus new windows when they appear. other rules 
+    <!-- always try to focus new windows when they appear. other rules
 	 do apply -->
     <followMouse>no</followMouse>
     <!-- move focus to a window when you move the mouse into it -->
@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Triste-Crimson</name>
+    <name>Blat</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
