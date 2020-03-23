@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 # Timeout settings for Xdialog, Xmessage
-XMTO="1" # xmessage timeout is in seconds...
-XDTO="$(( XMTO * 1000 ))" # Xdialog/dialog is in milliseconds.
+readonly XMTO="1" # xmessage timeout is in seconds...
+readonly XDTO="$(( XMTO * 1000 ))" # Xdialog/dialog is in milliseconds.
+
+readonly scrpt_name="$(basename $(realpath ${BASH_SOURCE[0]}))"
 
 # Xdialog/dialog
 declare -rx XDIALOG_HIGH_DIALOG_COMPAT=1 XDIALOG_FORCE_AUTOSIZE=1 \
@@ -21,13 +23,13 @@ fi
 
 display_feedback() {
     if [[ -x "$(type -P "${DIALOG}")" ]]; then # Check for X, Xdialog
-        ${DIALOG} --title "sndvol:" --infobox "${*}" "${G[@]}" 2> /dev/null
+        ${DIALOG} --title "${scrpt_name}:" --infobox "${*}" "${G[@]}" 2> /dev/null
     elif [[ -x "$(type -P notify-send)" ]]; then # Check for X, Xdialog
-        notify-send "sndvol:" "${*}" 2> /dev/null
+        notify-send "${scrpt_name}:" "${*}" 2> /dev/null
     elif [[ -x "$(type -P xmessage)" ]]; then # Check for X, Xdialog
         xmessage -nearmouse -timeout "${XMTO}" "${*}" 2> /dev/null
     fi
-    echo "sndvol: ${*}" >&2
+    echo "${scrpt_name}: ${*}" >&2
 }
 
 usage() {
