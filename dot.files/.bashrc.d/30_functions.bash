@@ -287,6 +287,13 @@ ping_subnet() {
     done
 }
 
+tcp_port_scan() {
+    echo "Scanning TCP ports..."
+    for p in {1..1023}; do
+	(echo > /dev/tcp/localhost/$p) > /dev/null 2>&1 && echo "$p open"
+    done
+}
+
 get_mime_type(){
     file -b --mime-type "${1}"
 }
