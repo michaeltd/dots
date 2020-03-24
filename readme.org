@@ -32,57 +32,57 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
   
     For a better preview: Right Click -> View Image
 
-    + [wmaker](dot.files/GNUstep/), [website](https://www.windowmaker.org/)
+    + [[dot.files/GNUstep/][wmaker]], [[https://www.windowmaker.org/]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Window_Maker"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
-    + [e16](dot.files/.e16/), [website](https://www.enlightenment.org/e16)
+    + [[dot.files/.e16/][e16]], [[https://www.enlightenment.org/e16]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Enlightenment_(software)#E16"><img width="200" alt="e16" src="assets/e16.png"></a></p>
 
-    + [openbox](dot.files/.config/openbox/), [website](http://openbox.org/)
+    + [[dot.files/.config/openbox/][openbox]], [[http://openbox.org/]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Openbox"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
 
-    + [awesome](dot.files/.config/awesome/), [website](https://awesomewm.org/)
+    + [[dot.files/.config/awesome/][awesome]], [[https://awesomewm.org/]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Awesome_(window_manager)"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
 
-    + [compiz](dot.files/.config/compiz/), [website](https://launchpad.net/compiz)
+    + [[dot.files/.config/compiz/][compiz]], [[https://launchpad.net/compiz]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Compiz"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
      
-    + [mwm](dot.files/.mwmrc), [website](https://motif.ics.com/)
+    + [[dot.files/.mwmrc][mwm]], [[https://motif.ics.com/]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Motif_Window_Manager"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
       
-    + [exwm](dot.files/.xinitrc#L69), [website](https://github.com/ch11ng/exwm/wiki)
+    + [[dot.files/.xinitrc#L69][exwm]], [[https://github.com/ch11ng/exwm/wiki]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/GNU_Emacs"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>
 
-*** Editors, [Utilities](dot.files/.tmux.conf).
+*** Editors, [[dot.files/.tmux.conf][Utilities]].
 
-**** If you are a follower of the church of [emacs](https://en.wikipedia.org/wiki/Emacs), check out [my setup](https://github.com/michaeltd/.emacs.d).
+**** If you are a follower of the church of [[https://en.wikipedia.org/wiki/Emacs][emacs]], check out [[https://github.com/michaeltd/.emacs.d][my setup]].
 
      #+html:<p align="center"><a href="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/screenshot.png"><img alt="emacs" src="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/screenshot.png"></a></p>
 
-**** If vim is your cup of tea, check out [SpaceVim](https://github.com/SpaceVim/SpaceVim), a community maintained vim distribution.
+**** If vim is your cup of tea, check out [[https://github.com/SpaceVim/SpaceVim][SpaceVim]], a community maintained vim distribution.
 
-*** [bootstrap.bash](bootstrap.bash)
+*** [[bootstrap.bash]]
     #+html:<a name="bootstrap.bash"></a>
     How I migrate my .dots in new systems. Available only as reference, not for use.
 
 ** Reference
-*** [GitHub ❤ ~/](https://dotfiles.github.io/)
+*** [[https://dotfiles.github.io/][GitHub ❤ ~/]]
     Your unofficial guide to dotfiles on GitHub.
 
-*** [Awesome Bash](https://github.com/awesome-lists/awesome-bash) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+*** [[https://github.com/awesome-lists/awesome-bash][Awesome Bash]] #+html: <a href="https://github.com/awesome-lists/awesome-bash"><img alt="emacs" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"></a>
     A curated list of delightful Bash scripts and resources.
 
-*** [EbookFoundation free-programming-books - bash](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash)
+*** [[https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#bash][EbookFoundation free-programming-books - bash]]
     Free books relevant to bash (and much more).
 
-*** [bash-hackers wiki](http://wiki.bash-hackers.org/)
+*** [[http://wiki.bash-hackers.org/][bash-hackers wiki]]
     See what other fellow bash'ers are up to.
 
-*** [Advanced Bash Scripting Guide](http://www.tldp.org/LDP/abs/html/abs-guide.html) ([PDF](http://www.tldp.org/LDP/abs/abs-guide.pdf))
+*** [[http://www.tldp.org/LDP/abs/html/abs-guide.html][Advanced Bash Scripting Guide]] ([[http://www.tldp.org/LDP/abs/abs-guide.pdf][PDF]])
     The Bash all in one goto place.
