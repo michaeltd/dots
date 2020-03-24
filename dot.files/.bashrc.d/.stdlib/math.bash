@@ -3,6 +3,46 @@
 # math related functions
 #shellcheck shell=bash
 
+rom2dec() {
+    # https://rosettacode.org/wiki/Roman_numerals/Decode#UNIX_Shell
+    local -ra ROM=( I V X L C D M ) DEC=( 1 5 10 50 100 500 1000 )
+    while [[ -n "${1}" ]]; do
+	local NUM="${1}" RES=0 PRE=0
+	for (( i = ${#NUM}-1; i >= 0; i-- )); do
+	    for (( x = ${#ROM[*]} - 1 ; x >= 0  ; x-- )); do
+		if [[ "${NUM:$i:1}" == "${ROM[x]}" ]]; then
+		    local DIG="${DEC[x]}"
+		    break
+		fi
+	    done
+	    (( DIG < PRE )) && (( RES -= DIG )) || (( RES += DIG ))
+	    PRE="${DIG}"
+	done
+	echo "$NUM = $RES"
+	shift
+    done
+}
+
+dec2rom() {
+    # https://rosettacode.org/wiki/Roman_numerals/Encode#UNIX_Shell
+    local values=( 1000 900 500 400 100 90 50 40 10 5 4 1 )
+    local roman=(
+        [1000]=M [900]=CM [500]=D [400]=CD 
+         [100]=C  [90]=XC  [50]=L  [40]=XL 
+          [10]=X   [9]=IX   [5]=V   [4]=IV   
+           [1]=I
+    )
+    local nvmber=""
+    local num=$1
+    for value in ${values[@]}; do
+        while (( num >= value )); do
+            nvmber+=${roman[value]}
+            ((num -= value))
+        done
+    done
+    echo $nvmber
+}
+ 
 in_range() {
     if [[ "${#}" -eq "3" ]]; then
 	[[ "${3}" -ge "${1}" && "${3}" -le "${2}" ]]
