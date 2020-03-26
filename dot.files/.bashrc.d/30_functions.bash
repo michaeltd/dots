@@ -51,6 +51,9 @@ wttrin() {
 # UTILS =======================================================================
 
 webp2jpg() {
+    [[ -z "${1}" ]] && \
+	echo -ne "Usage: ${FUNCNAME[0]} files to convert\n" && \
+	return 1
     for i in ${@}; do
 	ffmpeg -i "${i}" "${i}.jpg"
     done
@@ -105,18 +108,6 @@ rcm() {
     #shellcheck disable=SC2155
     local -r bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
     [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
-}
-
-print_apps_in_path() {
-    # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
-    # The directories in $PATH are separated by ":",
-    # so we split by it to get individual directories
-    for pdir in $(echo "$PATH" | tr ":" "\n");do
-	# We `find` all files in the directory
-	# which are executable and print the filename
-	find "$pdir" -maxdepth 1 -executable -type f -printf "%f "
-    done
-    printf "\n"
 }
 
 list_cat() {
@@ -205,27 +196,6 @@ up() {
     done
 }
 
-listening2() {
-    # Returns service listening on given port
-    [[ -z "${1}" ]] && \
-	printf "Usage: ${FUNCNAME[0]} port-number\n" >&2 && \
-	return 1
-    sudo lsof -n -iTCP:"${1}" |grep LISTEN
-}
-
-dir_sizes() {
-    # Report first params directory sizes in human readable format
-    #shellcheck disable=SC2230
-    local ls=$(which ls) du=$(which du)
-    if [[ -x "${ls}" && -x "${du}" ]]; then
-	for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
-	    if [[ -d "${d}" ]]; then
-		"${du}" -hs "${d}"
-	    fi
-	done
-    fi
-}
-
 mem_sum() {
     ps -eo size,pid,user,command --sort -size | \
 	awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' | \
@@ -277,6 +247,8 @@ log_out() {
     kill -15 -1
 }
 
+# NET ==========================================================================
+
 ping_subnet() {
     # One liner:
     # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
@@ -288,11 +260,29 @@ ping_subnet() {
 }
 
 tcp_port_scan() {
-    echo "Scanning TCP ports..."
+    # echo "Scanning TCP ports..."
     for p in {1..1023}; do
-	(echo > /dev/tcp/localhost/$p) > /dev/null 2>&1 && echo "$p open"
+	# (echo > /dev/tcp/localhost/$p) > /dev/null 2>&1 && echo "$p open"
+	(echo > /dev/tcp/localhost/$p) > /dev/null 2>&1 && echo "${p}"
     done
 }
+
+listening2() {
+    # Returns service listening on given port
+    [[ -z "${1}" ]] && \
+	printf "Usage: ${FUNCNAME[0]} port-number\n" >&2 && \
+	return 1
+    while [[ -n "${1}" ]]; do
+	sudo lsof -n -iTCP:"${1}" |grep LISTEN
+	shift
+    done
+}
+
+show_interfaces() {
+    ip -brief -color address show
+}
+
+# FS ===========================================================================
 
 get_mime_type(){
     file -b --mime-type "${1}"
@@ -302,6 +292,28 @@ get_file_type(){
     file -b "${1}"|awk '{print $1}'
 }
 
-show_interfaces() {
-    ip -brief -color address show
+dir_sizes() {
+    # Report first params directory sizes in human readable format
+    #shellcheck disable=SC2230
+    local ls=$(which ls) du=$(which du)
+    if [[ -x "${ls}" && -x "${du}" ]]; then
+	for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
+	    if [[ -d "${d}" ]]; then
+		"${du}" -hs "${d}"
+	    fi
+	done
+    fi
 }
+
+print_apps_in_path() {
+    # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
+    # The directories in $PATH are separated by ":",
+    # so we split by it to get individual directories
+    for pdir in $(echo "$PATH" | tr ":" "\n");do
+	# We `find` all files in the directory
+	# which are executable and print the filename
+	find "$pdir" -maxdepth 1 -executable -type f -printf "%f "
+    done
+    printf "\n"
+}
+
