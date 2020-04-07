@@ -7,8 +7,8 @@
 xterm*faceName: SourceCodePro
 xterm*faceSize: 10
 xterm*renderFont: true
-xterm*font: fixed
-xterm*boldFont: fixed
+! xterm*font: fixed
+! xterm*boldFont: fixed
 xterm*cursorBlink: true
 xterm*loginShell: true
 xterm*vt100*geometry: 80x26

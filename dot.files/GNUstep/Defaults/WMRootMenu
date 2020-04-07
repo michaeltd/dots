@@ -7,6 +7,8 @@
       Internet,
       ("Mozilla Firefox", EXEC, firefox),
       ("Mozilla SeaMonkey", EXEC, seamonkey),
+      (Links, EXEC, "xterm -e links"),
+      (Lynx, EXEC, "xterm -e lynx"),
       (W3M, EXEC, "xterm -e w3m")
     ),
     (Email, (Mutt, EXEC, "xterm -e mutt")),
