@@ -39,16 +39,16 @@
 # Now, I know there are other ways of doing this and that this is pretty rough (I have to escape some characters), but I've found this useful over the years to keep track of Christmas or B-Day gift ideas, movie/tv suggestions, etc. Maybe one of you will find this simple system helpful. Two basic aliases, and one pretty basic function. I'm open to suggestions for improving it, I know that it's not real robust but I just haven't felt the need to tighten it up.
 
 main() {
+
     notes_file="${HOME}/.notes"
 
     add() {
-	echo $(date +%A,\ %d\ %B\ %Y/%m/%d\ ) "${*}" >> "${notes_file}"
+	echo "$(date "+%A, %d %B %Y/%m/%d %H:%M:%S") ${*}" >> "${notes_file}"
     }
 
     rem() {
 	grep -h "${1}" "${notes_file}"
-	read -rp "Delete above entr(y/ies) from notes? [y/N] " response
-	if [[ "${response:-N}" =~ ^[Yy]* ]]; then
+	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
             cp -f "${notes_file}" "${notes_file}.bck"
             grep -hv "${1}" "${notes_file}.bck" > "${notes_file}"
 	fi
@@ -59,7 +59,7 @@ main() {
     }
 
     list () {
-	cat "${notes_file}"
+	nl -b a "${notes_file}"
     }
 
     case "${1}" in
@@ -71,4 +71,7 @@ main() {
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
+then
+    main "${@}"
+fi
