@@ -40,7 +40,7 @@
 
 main() {
 
-    notes_file="${HOME}/.notes"
+    local -r notes_file="${HOME}/.notes"
 
     add() {
 	echo "$(date "+%A, %d %B %Y/%m/%d %H:%M:%S") ${*}" >> "${notes_file}"
@@ -48,7 +48,8 @@ main() {
 
     rem() {
 	grep -h "${1}" "${notes_file}"
-	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
+	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]
+	then
             cp -f "${notes_file}" "${notes_file}.bck"
             grep -hv "${1}" "${notes_file}.bck" > "${notes_file}"
 	fi
@@ -67,7 +68,7 @@ main() {
 	rem) "${@}";;
 	search) "${@}";;
 	list) "${@}";;
-	*) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [add note to add] [search keyword] [rem keyword...] [list]\n" >&2; exit 1;;
+	*) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") add 'some notes' | search keyword | rem keyword... | list\n" >&2; exit 1;;
     esac
 }
 
