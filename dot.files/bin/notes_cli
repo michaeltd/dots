@@ -63,12 +63,16 @@ main() {
 	nl -b a "${notes_file}"
     }
 
+    usage() {
+	echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") add 'some notes' | search keyword | rem keyword... | list\n" >&2
+    }
+    
     case "${1}" in
 	add) "${@}";;
 	rem) "${@}";;
 	search) "${@}";;
 	list) "${@}";;
-	*) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") add 'some notes' | search keyword | rem keyword... | list\n" >&2; exit 1;;
+	*) usage; list; exit 1;;
     esac
 }
 
