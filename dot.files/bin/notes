@@ -47,7 +47,7 @@ main() {
 
     rem() {
 	grep -h "${1}" "${notes_file}"
-	read -rp "Delete all this entr(y/ies) from notes? [y/N] " response
+	read -rp "Delete above entr(y/ies) from notes? [y/N] " response
 	if [[ "${response:-N}" =~ ^[Yy]* ]]; then
             cp -f "${notes_file}" "${notes_file}.bck"
             grep -hv "${1}" "${notes_file}.bck" > "${notes_file}"

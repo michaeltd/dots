@@ -11,17 +11,8 @@
 
 file="${HOME}/.todo"
 ( [ -e "$file" ] || touch "$file" ) && [ ! -w "$file" ] && echo cannot write to $file && exit 1
-if [[ -z $1 || $1 == "--help" || $1 == "-h" || $1 == "help" ]]; then
-    echo ""
-    echo "     ██                 ██"
-    echo "    ░██                ░██"
-    echo "   ██████  ██████   ██████  ██████"
-    echo "  ░░░██  ░██░░░░██░██░░░██░██   ░██"
-    echo "    ░██  ░██   ░██░██  ░██░██   ░██"
-    echo "    ░░██ ░░██████ ░░██████░░██████"
-    echo "     ░░   ░░░░░░   ░░░░░░  ░░░░░░"
-    echo ""
-    echo "     _ __ __________________ __ _"
+if [[ -z $1 || $1 == "--help" || $1 == "-h" || $1 == "help" ]]
+then
     echo ""
     echo "┌──────[ todo ]──[ version 0.0.1 ]─────── ─ ─"
     echo "│ usage: todo <options>"
@@ -32,7 +23,8 @@ if [[ -z $1 || $1 == "--help" || $1 == "-h" || $1 == "help" ]]; then
     echo "│ -d, --delete <number> delete a todo item"
     echo "│ -h, --help            display this screen"
     echo "└──────────────────────────────────────── ─ ─"
-elif [[ $1 = '--show' || $1 = '-s' || $1 == "show" ]]; then
+elif [[ $1 = '--show' || $1 = '-s' || $1 == "show" ]]
+then
     while :
     do
 	clear
