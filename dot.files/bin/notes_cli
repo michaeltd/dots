@@ -43,7 +43,7 @@ main() {
     local -r notes_file="${HOME}/.notes"
 
     add() {
-	echo "$(date "+%A, %d %B %Y/%m/%d %H:%M:%S") ${*}" >> "${notes_file}"
+	echo "$(date "+%Y/%m/%d %H:%M:%S %A, %B %d "): ${*}" >> "${notes_file}"
     }
 
     rem() {
