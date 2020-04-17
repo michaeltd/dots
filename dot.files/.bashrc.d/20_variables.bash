@@ -4,31 +4,24 @@
 
 #shellcheck shell=bash
 
+# Used by mc themes
+export COLORTERM="truecolor"
+
 # SUDO_ASKPASS
 #shellcheck disable=SC2155
 export SUDO_ASKPASS="$(type -P x11-ssh-askpass||type -P ssh-askpass-fullscreen)"
 
-# Used by emacsclient in case of no daemon found.
+# Used by emacsclient in case of server not running.
 #shellcheck disable=SC2155
 export ALTERNATE_EDITOR="$(type -P emacs||type -P gvim||type -P kate||type -P gedit||type -P mousepad)" \
        TERMINAL_EDITOR="$(type -P emacs||type -P vim||type -P micro||type -P nano)"
 
+export EDITOR="${TERMINAL_EDITOR}" VISUAL="${ALTERNATE_EDITOR}"
+
 if [[ -n "${DISPLAY}" ]]; then
-    unset EDITOR
-    if [[ -x "$(type -P emacs)" ]]; then
-	export VISUAL="emacs" # "emacsclient --alternate-editor=${ALTERNATE_EDITOR} -c"
-    else
-	export VISUAL="${ALTERNATE_EDITOR}"
-    fi
     #shellcheck disable=SC2155
     export BROWSER="$(type -P firefox ||type -P seamonkey)"
 else
-    unset VISUAL
-    if [[ -x "$(type -P emacs)" ]]; then
-	export EDITOR="emacs" #"emacsclient --alternate-editor=${TERMINAL_EDITOR} -t"
-    else
-	export EDITOR="${TERMINAL_EDITOR}"
-    fi
     #shellcheck disable=SC2155
     export BROWSER="$(type -P w3m||type -P links||type -P lynx)"
 fi
@@ -45,7 +38,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # most > less > more in order of preference
 #shellcheck disable=SC2155
-export PAGER="$(type -P less||type -P most||type -P more)"
+export PAGER="$(type -P most ||type -P less||type -P more)"
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
