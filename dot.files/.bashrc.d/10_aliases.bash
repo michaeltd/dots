@@ -4,30 +4,27 @@
 
 #shellcheck shell=bash
 
-if [[ -x "$(type -P dircolors)" ]]; then
-    # Color support
-    if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
-	eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
-    else
-	eval "$(dircolors -b)"
-    fi
-    alias ls='ls --color=auto --group-directories-first'
-    alias la='ls --all --human-readable --color=auto --group-directories-first'
-    alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
-    # alias ls='ls --color=auto'
-    # alias la='ls --all --human-readable --color=auto'
-    # alias ll='ls -l --all --human-readable --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto -in'
-    alias egrep='egrep --color=auto'
-    alias fgrep='fgrep --color=auto'
-else
-    alias ls='ls --group-directories-first'
-    alias la='ls --all --human-readable --group-directories-first'
-    alias ll='ls -l --all --human-readable --group-directories-first'
-    alias grep='grep -in'
-fi
+# if [[ -x "$(type -P dircolors)" ]]; then
+#     # Color support
+#     if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
+# 	eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
+#     else
+# 	eval "$(dircolors -b)"
+#     fi
+alias ls='ls --color=auto --group-directories-first'
+alias la='ls --all --human-readable --color=auto --group-directories-first'
+alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto -in'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+# else
+#     alias ls='ls --group-directories-first'
+#     alias la='ls --all --human-readable --group-directories-first'
+#     alias ll='ls -l --all --human-readable --group-directories-first'
+#     alias grep='grep -in'
+# fi
 
 alias du='du -h'
 alias duthis='du -h -x --max-depth=1 | sort -hr|head'
@@ -69,12 +66,16 @@ fi
 
 # Midnight Commander Safe Terminal
 # alias mcst='mc -a' # In case of malconfigured terminals
+# Midnight Commander wrapper script
 # alias mc='source /usr/share/mc/mc-wrapper.sh'
 
 # Emacs alias
-alias exnx='emacs -nw' # EmaX No X11
-alias ecnx='emacsclient -t' # EmacsClient No X11 # No use for -a switch as we exported ALTERNATE_EDITOR in variables
-alias eckd='emacsclient --eval="(kill-emacs)"' # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
+# EmaX No X11
+alias exnx='emacs -nw'
+# EmacsClient No X11
+alias ecnx='emacsclient -t'
+# EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
+alias eckd='emacsclient --eval="(kill-emacs)"'
 
 # calendar
 alias cal='cal -m' # First Day Monday Calendars
@@ -114,15 +115,14 @@ alias hug='sudo $(history -p \!\!)' # fuck='sudo $(history -p \!\!)' Political s
 
 # GIT
 alias gcl='git clone'
-# alias gfc='git fetch'
+alias gfc='git fetch'
 alias gst='git status'
 alias gdf='git diff'
-# alias gaa='git add --all'
+alias gaa='git add --all'
 alias gad='git add .'
 alias gcm='git commit -m "$(curl -s http://whatthecommit.com/index.txt)"'
-#alias gitcm='git commit -m "$(wget -q -O - http://whatthecommit.com/index.txt)"'
 alias gps='git push'
-alias gal='gad && gcm && gps'
+alias gal='gaa && gcm && gps'
 alias glp='git log -p'
 alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 # alias gco='git checkout'
