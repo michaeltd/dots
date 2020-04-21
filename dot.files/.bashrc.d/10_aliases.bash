@@ -26,6 +26,7 @@ alias fgrep='fgrep --color=auto'
 #     alias grep='grep -in'
 # fi
 
+# Add --human-readable for various commands
 alias du='du -h'
 alias duthis='du -h -x --max-depth=1 | sort -hr|head'
 alias df='df -h'
