@@ -23,6 +23,7 @@ declare -rA WMA=( [xfce4]="xfce4-session" \
                  [wmaker]="wmaker" \
                  [mwm]="mwm" \
                  [awesome]="awesome" \
+                 [bspwm]="bspwm" \
                  [emacs]="emacs" \
                  [kodi]="kodi-standalone" )
 
@@ -67,6 +68,8 @@ elif [[ "${WM[0]}" =~ emacs ]]; then
 elif [[ "${WM[0]}" =~ starte16 || "${WM[0]}" =~ enlightenment_start ]]; then
     # e17 svg support
     export E_COMP_ENGINE=sw
+elif [[ "${WM[0]}" =~ bspwm ]]; then
+    WM=( "/etc/X11/Sessions/bspwm" )
 fi
 
 exec "${WM[@]}"

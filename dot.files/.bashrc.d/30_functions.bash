@@ -175,9 +175,9 @@ extract() {
     case "${1,,}" in # Compare lowercased filename for known extensions.
 	*.7z| *.7za| *.exe| *.cab) 7z x "${1}";;
 	*.tar) tar -xf "${1}";;
-	*.tar.gz| *.tar.z| *.tgz) tar -xzf "${1}";;
-	*.tar.bz2| *.tbz2) tar -xjf "${1}";;
-	*.tar.xz| *.txz) tar -xJf "${1}";;
+	*.t?(ar.)gz| *.tar.z) tar -xzf "${1}";;
+	*.t?(ar.)bz2) tar -xjf "${1}";;
+	*.t?(ar.)xz) tar -xJf "${1}";;
 	*.tar.lz) tar --lzip -xvf "${1}";;
 	*.bz2) bunzip2 "${1}";;
 	*.rar) rar x "${1}";;
