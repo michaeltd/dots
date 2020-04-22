@@ -178,7 +178,7 @@ extract() {
 	*.t?(ar.)gz| *.tar.z) tar -xzf "${1}";;
 	*.t?(ar.)bz2) tar -xjf "${1}";;
 	*.t?(ar.)xz) tar -xJf "${1}";;
-	*.tar.lz) tar --lzip -xvf "${1}";;
+	*.tar.lz) tar --lzip -xf "${1}";;
 	*.bz2) bunzip2 "${1}";;
 	*.rar) rar x "${1}";;
 	*.gz) gunzip "${1}";;
