@@ -1,7 +1,6 @@
 # ~/.bashrc.d/variables.bash
 #
 # environment variables
-
 #shellcheck shell=bash
 
 # Used by mc themes
@@ -66,14 +65,9 @@ export GOPATH="${HOME}/go"
 export NODE="/opt/nodejs"
 # MONGODB
 export MONGODB="/opt/mongodb"
-# SCALA
-# export SCALA_HOME="/opt/scala"
-# export SBT_HOME="/opt/sbt"
 
 # Path with += op and each tool in it's own line for practical reasons
-#export PATH+=":./"
 export PATH+=":${HOME}/.local/bin"
-# export PATH+=":node_modules/.bin"
 # OPT
 export PATH+=":${OPT}/bin"
 export PATH+=":${HOPT}/bin"
@@ -92,18 +86,12 @@ fi
 export PATH+=":${NODE}/bin"
 # MONGODB
 export PATH+=":${MONGODB}/bin"
-# SCALA
-# export PATH+=":${SCALA_HOME}/bin"
-# export PATH+=":${SBT_HOME}/bin"
-# RACKET
-# export PATH+=":${HOME}/.racket/7.0.0.9/bin"
 
 #MANPATH
 export MANPATH+=":${HOME}/.local/share/man"
 export MANPATH+=":${HOME}/opt/share/man"
 
 # JAVA classpath
-# export CLASSPATH+=":./"
 export CLASSPATH+=":${JAVA}/lib"
 export CLASSPATH+=":${ANT}/lib"
 export CLASSPATH+=":${MAVEN}/lib"

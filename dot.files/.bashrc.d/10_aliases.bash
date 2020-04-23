@@ -40,11 +40,11 @@ fi
 
 if [[ -x "$(type -P dircolors)" ]]; then
     # Color support
-    #     if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
-    # 	eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
-    #     else
-    # 	eval "$(dircolors -b)"
-    #     fi
+    # if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
+    # 	  eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
+    # else
+    #     eval "$(dircolors -b)"
+    # fi
     alias ls='ls --color=auto --group-directories-first'
     alias la='ls --all --human-readable --color=auto --group-directories-first'
     alias ll='ls -l --all --human-readable --color=auto --group-directories-first'

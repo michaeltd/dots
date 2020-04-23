@@ -1,9 +1,3 @@
-# /etc/skel/.bashrc
-esbrc="/etc/skel/.bashrc"
-if [[ -f "${esbrc}" ]]; then
-    source "${esbrc}"
-fi
-
 # This file is sourced by all *interactive* bash shells on startup,
 # including some apparently interactive shells such as scp and rcp
 # that can't tolerate any output.  So make sure this doesn't display
@@ -26,7 +20,7 @@ bcnf="${HOME}/git/utils/bash-insulter/src/bash.command-not-found"
 
 brcd="${HOME}/.bashrc.d"
 if [[ -d "${brcd}" ]]; then # Load files from ~/.bashrc.d
-    for file in "${brcd}"/*\.bash; do
+    for file in "${brcd}/"*\.bash; do
         source "${file}"
     done
 fi

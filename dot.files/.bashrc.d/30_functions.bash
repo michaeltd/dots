@@ -67,6 +67,10 @@ emacs_load_times(){
     time emacs --eval='(kill-emacs)'
 }
 
+term_geom() {
+    echo "${COLUMNS}x${LINES}"
+}
+
 hello_world() {
     echo -ne "\n ${green}Hello${reset} ${bold}${USER}${reset}, today is ${cyan}$(date '+%A, %B %d')${reset}\n\n"
     curl https://wttr.in?0
