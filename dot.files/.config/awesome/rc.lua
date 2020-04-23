@@ -48,7 +48,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "terminology"
 browser = "firefox"
 editor = "emacs"
 editor_cmd = editor

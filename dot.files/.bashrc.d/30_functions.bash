@@ -267,13 +267,13 @@ tcp_port_scan() {
     done
 }
 
-listening2() {
+listening_on() {
     # Returns service listening on given port
     [[ -z "${1}" ]] && \
 	printf "Usage: ${FUNCNAME[0]} port-number\n" >&2 && \
 	return 1
     while [[ -n "${1}" ]]; do
-	sudo lsof -n -iTCP:"${1}" |grep LISTEN
+	sudo lsof -niTCP:"${1}" |grep LISTEN
 	shift
     done
 }

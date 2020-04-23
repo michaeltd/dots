@@ -1,69 +1,71 @@
 # ~/.bashrc.d/aliases.bash
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
-
 #shellcheck shell=bash
 
-# if [[ -x "$(type -P dircolors)" ]]; then
-#     # Color support
-#     if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
-# 	eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
-#     else
-# 	eval "$(dircolors -b)"
-#     fi
-alias ls='ls --color=auto --group-directories-first'
-alias la='ls --all --human-readable --color=auto --group-directories-first'
-alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto -in'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-# else
-#     alias ls='ls --group-directories-first'
-#     alias la='ls --all --human-readable --group-directories-first'
-#     alias ll='ls -l --all --human-readable --group-directories-first'
-#     alias grep='grep -in'
-# fi
-
-# Add --human-readable for various commands
-alias du='du -h'
-alias duthis='du -h -x --max-depth=1 | sort -hr|head'
-alias df='df -h'
-
+# Distro independent utils
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
 if type -P apt-get &> /dev/null; then
-    alias psearch='apt search' pinstall='sudo apt-get install' \
-	  premove='sudo apt-get remove --purge'
-    alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' \
-	  dcleanup='sudo apt-get autoremove'
+    alias pkg_search='apt search' pkg_install='sudo apt-get install' \
+	  pkg_remove='sudo apt-get remove --purge'
+    alias dist_update='sudo apt-get update' dist_upgrade='sudo apt-get dist-upgrade' \
+	  dist_cleanup='sudo apt-get autoremove'
 elif type -P zypper &> /dev/null; then
-    alias psearch='zypper search' pinstall='sudo zypper install' \
-	  premove='sudo zypper remove --clean-deps'
-    alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' \
-	  dcleanup='sudo zypper rm -u'
+    alias pkg_search='zypper search' pkg_install='sudo zypper install' \
+	  pkg_remove='sudo zypper remove --clean-deps'
+    alias dist_update='sudo zypper refresh' dist_upgrade='sudo zypper update' \
+	  dist_cleanup='sudo zypper rm -u'
 elif type -P yum &> /dev/null; then
-    alias psearch='yum search' pinstall='sudo yum install' \
-	  premove='sudo yum remove'
-    alias dupdate='sudo yum check-update' dupgrade='sudo yum update' \
-	  dcleanup='sudo yum autoremove'
+    alias pkg_search='yum search' pkg_install='sudo yum install' \
+	  pkg_remove='sudo yum remove'
+    alias dist_update='sudo yum check-update' dist_upgrade='sudo yum update' \
+	  dist_cleanup='sudo yum autoremove'
 elif type -P pacman &> /dev/null; then
-    alias psearch='pacman -Ss' pinstall='sudo pacman -S' \
-	  premove='sudo pacman -R'
-    alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' \
-	  dcleanup='sudo pacman -Rsn'
+    alias pkg_search='pacman -Ss' pkg_install='sudo pacman -S' \
+	  pkg_remove='sudo pacman -R'
+    alias dist_update='sudo pacman -Sy' dist_upgrade='sudo pacman -Syu' \
+	  dist_cleanup='sudo pacman -Rsn'
 elif type -P emerge &> /dev/null; then
-    alias psearch='emerge -s' pinstall='sudo emerge -av' \
-	  premove='sudo emerge -avC'
-    alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @world' \
-	  dcleanup='sudo emerge --ask --depclean'
+    alias pkg_search='emerge -s' pkg_install='sudo emerge -av' \
+	  pkg_remove='sudo emerge -avC'
+    alias dist_update='sudo emerge --sync' dist_upgrade='sudo emerge -avuND @world' \
+	  dist_cleanup='sudo emerge --ask --depclean'
 elif type -P pkg &> /dev/null; then
-    alias psearch='pkg -o search' pinstall='sudo pkg install' \
-	  premove='sudo pkg remove'
-    alias dupdate='sudo pkg update' dupgrade='sudo pkg upgrade' \
-	  dcleanup='sudo pkg autoremove'
+    alias pkg_search='pkg -o search' pkg_install='sudo pkg install' \
+	  pkg_remove='sudo pkg remove'
+    alias dist_update='sudo pkg update' dist_upgrade='sudo pkg upgrade' \
+	  dist_cleanup='sudo pkg autoremove'
 fi
+
+if [[ -x "$(type -P dircolors)" ]]; then
+    # Color support
+    #     if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
+    # 	eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
+    #     else
+    # 	eval "$(dircolors -b)"
+    #     fi
+    alias ls='ls --color=auto --group-directories-first'
+    alias la='ls --all --human-readable --color=auto --group-directories-first'
+    alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto -in'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+else
+    alias ls='ls --group-directories-first'
+    alias la='ls --all --human-readable --group-directories-first'
+    alias ll='ls -l --all --human-readable --group-directories-first'
+    alias grep='grep -in'
+fi
+
+# Interactive & Verbose copy, move and remove commands
+alias cp='cp -iv' mv='mv -iv' rm='rm -iv'
+
+# Add --human-readable for various commands
+alias du='du -h' df='df -h'
+alias duthis='du -x --max-depth=1 | sort -hr|head'
 
 # Midnight Commander Safe Terminal
 # alias mcst='mc -a' # In case of malconfigured terminals
