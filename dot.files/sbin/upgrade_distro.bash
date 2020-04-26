@@ -36,4 +36,6 @@ if (( PMIDX == NOTFOUND || EUID != 0 )); then
     exit 1
 else
     time "${!PMS[PMIDX]:0:1}" "${!PMS[PMIDX]:1:1}" && time "${!PMS[PMIDX]:0:1}" "${!PMS[PMIDX]:2}"
+    time eclean -C -q -p packages
+    time eclean -C -q -p -d -t1w distfiles
 fi
