@@ -246,19 +246,20 @@ globalkeys = gears.table.join(
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
-
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.byidx( 1)
-        end,
-        {description = "focus next by index", group = "client"}
-    ),
-    awful.key({ modkey, "Shift" }, "Tab",
-        function ()
-            awful.client.focus.byidx(-1)
-        end,
-        {description = "focus previous by index", group = "client"}
-    ),
+    awful.key({ modkey,           }, "Tab", function () awful.spawn.with_shell("rofi -show window")    end,
+               {description = "show rofi windows", group = "client"}),
+    -- awful.key({ modkey,           }, "Tab",
+    --     function ()
+    --         awful.client.focus.byidx( 1)
+    --     end,
+    --     {description = "focus next by index", group = "client"}
+    -- ),
+    -- awful.key({ modkey, "Shift" }, "Tab",
+    --     function ()
+    --         awful.client.focus.byidx(-1)
+    --     end,
+    --     {description = "focus previous by index", group = "client"}
+    -- ),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
@@ -281,16 +282,13 @@ globalkeys = gears.table.join(
               {description = "open an editor", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.spawn(fileman) end,
               {description = "open a file manager", group = "launcher"}),
-
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-
     awful.key({ modkey,   "Shift"   }, "l",     function () awful.spawn.with_shell("kill -15 -1")    end,
               {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey,           }, "l",     function () awful.spawn.with_shell("xscreensaver-command -lock")    end,
        {description = "lock screen", group = "awesome"}),
-    
-    awful.key({ modkey, "Control" }, "n",
+        awful.key({ modkey, "Control" }, "n",
               function ()
                   local c = awful.client.restore()
                   -- Focus restored client
@@ -300,7 +298,6 @@ globalkeys = gears.table.join(
                   end
               end,
               {description = "restore minimized", group = "client"}),
-
     awful.key({ modkey,           }, "r", function () awful.spawn.with_shell("rofi -show run")    end,
                {description = "show rofi", group = "launcher"})
 )

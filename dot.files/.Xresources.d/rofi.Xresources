@@ -1,14 +1,14 @@
 ! https://gist.github.com/rawsh/9ae04a2bdbfce513ad0851d9277515d2
 ! === rofi ===
 
-rofi.modi:                           ssh,window,drun,run
+rofi.modi:                           ssh,window,drun,run,keys
 rofi.sidebar-mode:                   true
 rofi.terminal:                       st
 rofi.ssh-client:                     ssh
 rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
 rofi.opacity:                        75
 rofi.width:                          25
-rofi.lines:                          1
+!rofi.lines:                          1
 rofi.columns:                        1
 rofi.font:                           SourceCodePro 10
 rofi.fg:                             #5294E2
@@ -50,5 +50,5 @@ rofi.scrollbar-width:                8
 ! rofi.theme:                          gruve_box_dark.rasi
 ! rofi.theme: 			     dmenu.rasi
 ! rofi.theme:			     arthur.rasi
-! rofi.theme:			     sidebar.rasi
-rofi.theme:			     Arc-Dark.rasi
+rofi.theme:			     sidebar.rasi
+!rofi.theme:			     Arc-Dark.rasi

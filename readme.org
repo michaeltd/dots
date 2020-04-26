@@ -35,6 +35,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
     + [[dot.files/GNUstep/][wmaker]], [[https://www.windowmaker.org/]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Window_Maker"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
+
     + [[dot.files/.e16/][e16]], [[https://www.enlightenment.org/e16]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Enlightenment_(software)#E16"><img width="200" alt="e16" src="assets/e16.png"></a></p>
@@ -61,11 +62,11 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
 *** Editors, [[dot.files/.tmux.conf][Utilities]].
 
-**** If you are a follower of the church of [[https://en.wikipedia.org/wiki/Emacs][emacs]], check out [[https://github.com/michaeltd/.emacs.d][my setup]].
+    - If you are a follower of the church of [[https://en.wikipedia.org/wiki/Emacs][emacs]], check out [[https://github.com/michaeltd/.emacs.d][my setup]].
 
-     #+html:<p align="center"><a href="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/screenshot.png"><img alt="emacs" src="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/screenshot.png"></a></p>
+    #+html:<p align="center"><a href="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/screenshot.png"><img alt="emacs" src="https://raw.githubusercontent.com/michaeltd/.emacs.d/master/assets/screenshot.png"></a></p>
 
-**** If vim is your cup of tea, check out [[https://github.com/SpaceVim/SpaceVim][SpaceVim]], a community maintained vim distribution.
+    - If vim is your cup of tea, check out [[https://github.com/SpaceVim/SpaceVim][SpaceVim]], a community maintained vim distribution.
 
 *** [[bootstrap.bash]]
     #+html:<a name="bootstrap.bash"></a>
