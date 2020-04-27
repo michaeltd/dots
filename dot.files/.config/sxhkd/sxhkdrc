@@ -4,11 +4,15 @@ super + alt + Escape
 super + l
       ${HOME}/bin/xlock.sh
 
+# Quit BSPWM - pkill -x panel; bspc quit
 super + shift + l
-      pkill -x panel; bspc quit
+      bspc quit
 
 super + r
       rofi -show run
+
+super + Tab
+      rofi -show window
 
 super + e
       xterm -e mc
@@ -34,3 +38,10 @@ super + Right
 
 super + Left
 	bspc monitor -f prev
+
+# Sound
+super + Up
+	${HOME}/bin/sndvol +
+
+super + Down
+	${HOME}/bin/sndvol -
