@@ -1,0 +1,36 @@
+super + alt + Escape
+      pkill -x panel; bspc quit
+
+super + l
+      ${HOME}/bin/xlock.sh
+
+super + shift + l
+      pkill -x panel; bspc quit
+
+super + r
+      rofi -show run
+
+super + e
+      xterm -e mc
+
+super + Return
+      xterm
+
+super + F1
+      xterm
+
+super + F2
+      firefox
+
+super + F3
+      emacs
+
+super + F4
+      gentoo
+
+# Workstation Monitor
+super + Right
+	bspc monitor -f next
+
+super + Left
+	bspc monitor -f prev
