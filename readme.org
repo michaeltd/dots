@@ -91,7 +91,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
 *** [[http://www.tldp.org/LDP/abs/html/abs-guide.html][Advanced Bash Scripting Guide]] ([[http://www.tldp.org/LDP/abs/abs-guide.pdf][PDF]])
     The Bash all in one goto place.
-** Contributing
+** Contributing [[http://unmaintained.tech/][http://unmaintained.tech/badge.svg]]
    Typos, syntactics and grammar welcome.
 
    Other than that and unless you mind reading game is top notch, try your luck with a PR.
