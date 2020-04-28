@@ -11,7 +11,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 ** [[dot.files][dot.files]]
 *** [[dot.files/.bash_profile][Shell]], [[dot.files/.xinitrc][X setup]], [[dot.files/bin/][bin]], [[dot.files/sbin/][sbin (maintenance scripts)]]
 **** [[dot.files/.bashrc.d][.bashrc.d]]
-     Is a interactive shell initialization routine and it is customization of [[http://dotshare.it/~Durag/][Durag]]'s [[http://dotshare.it/dots/1027/][Improved Terminal]] at [[http://dotshare.it/][http://dotshare.it/]] with a prompt from [[https://github.com/mathiasbynens/dotfiles][mathiasbynens]]
+     Is an interactive shell initialization routine and it is customization of [[http://dotshare.it/~Durag/][Durag]]'s [[http://dotshare.it/dots/1027/][Improved Terminal]] at [[http://dotshare.it/][http://dotshare.it/]].
 
 **** [[dot.files/sbin/upgrade_distro.bash][upgrade_distro.bash]]
      Distro neutral upgrade script
@@ -91,3 +91,11 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
 *** [[http://www.tldp.org/LDP/abs/html/abs-guide.html][Advanced Bash Scripting Guide]] ([[http://www.tldp.org/LDP/abs/abs-guide.pdf][PDF]])
     The Bash all in one goto place.
+** Contributing
+   Typos, syntactics and grammar welcome.
+
+   Other than that and unless you mind reading game is top notch, try your luck with a PR.
+
+   Now if you really MUST contribute, try buying me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs).
+
+** [[file:license][MIT License] [[https://opensource.org/licenses/MIT][https://img.shields.io/badge/License-MIT-yellow.svg]]

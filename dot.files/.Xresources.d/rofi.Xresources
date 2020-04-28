@@ -8,7 +8,7 @@ rofi.ssh-client:                     ssh
 rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
 rofi.opacity:                        75
 rofi.width:                          25
-!rofi.lines:                          1
+rofi.lines:                          5
 rofi.columns:                        1
 rofi.font:                           SourceCodePro 10
 rofi.fg:                             #5294E2
@@ -35,7 +35,7 @@ rofi.bw:                             10
 ! 1 2 3
 ! 8 0 4
 ! 7 6 5
-rofi.location:                       2
+rofi.location:                       0
 rofi.padding:                        20
 rofi.levenshtein-sort:               true
 rofi.case-sensitive:                 false
@@ -50,5 +50,5 @@ rofi.scrollbar-width:                8
 ! rofi.theme:                          gruve_box_dark.rasi
 ! rofi.theme: 			     dmenu.rasi
 ! rofi.theme:			     arthur.rasi
-rofi.theme:			     sidebar.rasi
-!rofi.theme:			     Arc-Dark.rasi
+!rofi.theme:			     sidebar.rasi
+rofi.theme:			     Arc-Dark.rasi
