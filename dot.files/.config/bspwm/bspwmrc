@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# sxhkd &
-
 bspc monitor -d I II III IV
 
 bspc config border_width         2
@@ -11,15 +9,11 @@ bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^4' state=floating follow=on
 bspc rule -a Firefox desktop='^2'
-bspc rule -a emacs desktop='^3'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+bspc rule -a Xdialog manage=off
 
-polybar topbar &>/dev/null &
+pgrep -u "${USER}" polybar &>/dev/null || nice -n 9 polybar topbar &>/dev/null &
 
-compton &>/dev/null &
+pgrep -u "${USER}" compton &>/dev/null || nice -n 9 compton &>/dev/null &
 
-${HOME}/bin/pimp_my_gui.bash &>/dev/null &
+${HOME}/bin/pimp_my_gui.bash &> /dev/null &

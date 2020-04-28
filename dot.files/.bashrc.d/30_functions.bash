@@ -167,28 +167,29 @@ rmalias() {
 compress() {
     #shellcheck disable=SC2154,SC2068
     case "${1,,}" in
-	*.tar.bz2) tar cjf $@;;
-	*.tar.gz| *.tgz) tar czf $@;;
+	*.tar.bz2|*.tbz2) tar cjf $@;;
+	*.tar.gz|*.tgz) tar czf $@;;
 	*.zip) zip $@;;
 	*.rar) rar a $@;;
+	*.7z|*.7za) 7z a $@;;
 	*) echo -ne "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}${1}${reset}\".\n" >&2;return 1;;
     esac
 }
 
 extract() {
     case "${1,,}" in # Compare lowercased filename for known extensions.
-	*.7z| *.7za| *.exe| *.cab) 7z x "${1}";;
+	*.7z|*.7za|*.exe|*.cab) 7z x "${1}";;
 	*.tar) tar -xf "${1}";;
-	*.t?(ar.)gz| *.tar.z) tar -xzf "${1}";;
-	*.t?(ar.)bz2) tar -xjf "${1}";;
-	*.t?(ar.)xz) tar -xJf "${1}";;
+	*.tar.gz|*.tgz|*.tar.z) tar -xzf "${1}";;
+	*.tar.bz2|*.tbz2) tar -xjf "${1}";;
+	*.tar.xz|*.txz) tar -xJf "${1}";;
 	*.tar.lz) tar --lzip -xf "${1}";;
 	*.bz2) bunzip2 "${1}";;
 	*.rar) rar x "${1}";;
 	*.gz) gunzip "${1}";;
-	*.zip| *.jar| *.war) unzip "${1}";;
-	*.z ) uncompress "${1}";;
-	* ) echo -ne "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}${1}${reset}\".\n" >&2; return 1;;
+	*.zip|*.jar|*.war) unzip "${1}";;
+	*.z) uncompress "${1}";;
+	*) echo -ne "${bold}Cannot${reset} operate on ${underline}unknown${end_underline} file extension \"${red}${1}${reset}\".\n" >&2; return 1;;
     esac
 }
 
