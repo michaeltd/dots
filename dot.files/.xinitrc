@@ -28,7 +28,7 @@ declare -rA WMA=( [xfce4]="xfce4-session" \
                  [kodi]="kodi-standalone" )
 
 # Selected WM (prefered WMA key available in daily driver)
-declare -r SWM="awesome"
+declare -r SWM="bspwm"
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release

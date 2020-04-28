@@ -1,47 +1,46 @@
-super + alt + Escape
-      pkill -x panel; bspc quit
+# Quit BSPWM
+super + shift + l
+    bspc quit
 
 super + l
-      ${HOME}/bin/xlock.sh
-
-# Quit BSPWM - pkill -x panel; bspc quit
-super + shift + l
-      bspc quit
+    ${HOME}/bin/xlock.sh
 
 super + r
-      rofi -show run
+    rofi -show run
 
 super + Tab
-      rofi -show window
-
-super + e
-      xterm -e mc
-
-super + Return
-      xterm
+    rofi -show window
 
 super + F1
-      xterm
+    xterm
 
 super + F2
-      firefox
+    firefox
 
 super + F3
-      emacs
+    emacs
 
 super + F4
-      gentoo
+    xterm -e mc
 
 # Workstation Monitor
 super + Right
-	bspc monitor -f next
+    bspc desktop -f next
 
 super + Left
-	bspc monitor -f prev
+    bspc desktop -f prev
 
-# Sound
+# Window
+ctrl + q
+    bspc window -c
+
+# Audio
 super + Up
-	${HOME}/bin/sndvol +
+    ${HOME}/bin/sndvol +
 
 super + Down
-	${HOME}/bin/sndvol -
+    ${HOME}/bin/sndvol -
+	
+# Screenshot
+Print
+    xfce4-screenshooter
