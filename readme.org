@@ -92,10 +92,10 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 *** [[http://www.tldp.org/LDP/abs/html/abs-guide.html][Advanced Bash Scripting Guide]] ([[http://www.tldp.org/LDP/abs/abs-guide.pdf][PDF]])
     The Bash all in one goto place.
 ** Contributing [[http://unmaintained.tech/][http://unmaintained.tech/badge.svg]]
-   Typos, syntactics and grammar welcome.
+   Typos, syntactic and grammar welcome.
 
    Other than that and unless you mind reading game is top notch, try your luck with a PR.
 
-   Now in the rare case that you really MUST contribute, try buying me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs).
+   Now in the rare case that you really MUST contribute, feel free to buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs).
 
 ** [[file:license][MIT License]] [[https://opensource.org/licenses/MIT][https://img.shields.io/badge/License-MIT-yellow.svg]]
