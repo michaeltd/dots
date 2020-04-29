@@ -68,10 +68,7 @@ main() {
     }
     
     case "${1}" in
-	add) "${@}";;
-	rem) "${@}";;
-	search) "${@}";;
-	list) "${@}";;
+	add|rem|search|list) "${@}";;
 	*) usage; list; exit 1;;
     esac
 }

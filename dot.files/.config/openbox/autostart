@@ -24,8 +24,10 @@ rcm 9 compton
 
 # A nice status bar (before gui as we'll need that tray)
 # nice -n 9 tint2 &
-rcm 9 tint2 -c ~/.config/tint2/taskbar
+# rcm 9 tint2 -c ~/.config/tint2/taskbar
 # nice -n 9 tint2 -c ~/.config/tint2/panel
+
+rcm 9 polybar topbar
 
 PMG="${HOME}/bin/pimp_my_gui.bash"
 if [ -x "${PMG}" ]; then # if spice, spice things up.
