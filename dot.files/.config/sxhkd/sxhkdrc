@@ -5,11 +5,8 @@ super + shift + l
 super + l
     ${HOME}/bin/xlock.sh
 
-super + r
-    rofi -show run
-
-super + Tab
-    rofi -show window
+super + {r,Tab}
+    rofi -show {run,window}
 
 super + F1
     xterm
@@ -24,19 +21,13 @@ super + F4
     xterm -e mc
 
 # Workstation Monitor
-super + Right
-    bspc desktop -f next
-
-super + Left
-    bspc desktop -f prev
+super + {Right,Left}
+    bspc desktop -f {next,prev}
 
 # Audio
-super + Up
-    ${HOME}/bin/sndvol +
+super + {Up,Down}
+    ${HOME}/bin/sndvol {+,-}
 
-super + Down
-    ${HOME}/bin/sndvol -
-	
 # Screenshot
 Print
     xfce4-screenshooter

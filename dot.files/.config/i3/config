@@ -31,6 +31,10 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+F1 exec terminology
+bindsym $mod+F2 exec firefox
+bindsym $mod+F3 exec emacs
+bindsym $mod+F4 exec terminology -e mc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -45,8 +49,8 @@ bindsym $mod+d exec rofi -show run
 
 bindsym $mod+l exec ~/bin/xlock.sh
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+Control+Up exec ~/bin/sndvol +
-bindsym $mod+Control+Down exec ~/bin/sndvol -
+bindsym $mod+Up exec ~/bin/sndvol +
+bindsym $mod+Down exec ~/bin/sndvol -
 
 # enable floating mode for all Xdialog windows
 for_window [class="Xdialog"] floating enable
@@ -57,7 +61,7 @@ for_window [class="Xdialog"] floating enable
 #     xrdb ~/.Xresources
 # This value is picked up on by other applications (e.g., the URxvt terminal
 # emulator) and can be used in i3 like this:
-set_from_resource $black i3wm.color0 #000000
+#set_from_resource $black i3wm.color0 #000000
 
 # change focus
 # bindsym $mod+j focus left
@@ -66,10 +70,10 @@ set_from_resource $black i3wm.color0 #000000
 # bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Control+Left focus left
+bindsym $mod+Control+Down focus down
+bindsym $mod+Control+Up focus up
+bindsym $mod+Control+Right focus right
 
 # move focused window
 # bindsym $mod+Shift+j move left
@@ -161,10 +165,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        # bindsym j resize shrink width 10 px or 10 ppt
+        # bindsym k resize grow height 10 px or 10 ppt
+        # bindsym l resize shrink height 10 px or 10 ppt
+        # bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
