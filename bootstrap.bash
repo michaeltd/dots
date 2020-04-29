@@ -43,6 +43,10 @@ declare -ra x11=( 'dot.files/.Xdefaults' \
 		      'dot.files/.xsession' ) \
 	awesome=( 'dot.files/.config/awesome/autorun.sh' \
 		      'dot.files/.config/awesome/rc.lua' ) \
+	bspwm=( 'dot.files/.config/bspwm/bspwmrc' \
+		      'dot.files/.config/sxhkd/sxhkdrc' ) \
+	i3wm=( 'dot.files/.config/i3/config' \
+		      'dot.files/.config/i3status/config' ) \
 	compiz=( 'dot.files/.config/compiz/compiz.sh' \
 		     'dot.files/.config/compiz/compizconfig/Default.ini' \
 		     'dot.files/.config/compiz/compizconfig/config' ) \
@@ -66,7 +70,7 @@ declare -ra x11=( 'dot.files/.Xdefaults' \
 		    'dot.files/.config/tint2/taskbar' ) \
 	compton=( 'dot.files/.config/compton.conf' )
 #shellcheck disable=SC2034
-declare -ra xorg=( x11[@] awesome[@] compiz[@] openbox[@] e16[@] \
+declare -ra xorg=( x11[@] awesome[@] bspwm[@] i3wm[@] compiz[@] openbox[@] e16[@] \
 		      gnustep[@] mwm[@] polybar[@] tint2[@] compton[@] )
 
 declare -r usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp"
@@ -172,12 +176,12 @@ __do_everything() {
 __menu() {
     # Build menus and help messages.
     local -ra TUI_OPS=( "bash" "vim" "mutt" "tmux" "top" "music" "x11" \
-			      "awesome" "compiz" "openbox" "e16" "gnustep" \
+			      "awesome" "bspwm" "i3wm" "compiz" "openbox" "e16" "gnustep" \
 			      "mwm" "polybar" "tint2" "compton" "console" \
 			      "xorg" "everything" "help" "quit" )
 
     local -ra SDESC=( "Bash" "Vim/Gvim" "Mutt" "Tmux" "Top" "Music" "X11" \
-			    "Awesome" "Compiz" "OpenBox" "E16" "GNUstep" \
+			    "Awesome" "bspwm" "i3wm" "Compiz" "OpenBox" "E16" "GNUstep" \
 			    "Mwm" "Polybar" "Tint2" "Compton" "Console" \
 			    "Xorg" "Everything" "Help" "Quit" )
 
@@ -188,31 +192,33 @@ __menu() {
 			"link ${SDESC[4]}'s toprc" \
 			"link ${SDESC[5]} mpd, npmpcpp, mocp config files" \
 			"link ${SDESC[6]} rc files" \
-			"link ${SDESC[7]} config and autostart files" \
+			"link ${SDESC[7]} config and autostart" \
 			"link ${SDESC[8]} configs" \
-			"link ${SDESC[9]} xml and scripts" \
-			"link ${SDESC[10]} configs" \
-			"link ${SDESC[11]} WindowMaker files" \
-			"link ${SDESC[12]} Motif Window Manager configs" \
-			"link ${SDESC[13]} config" \
-			"link ${SDESC[14]} files" \
+			"link ${SDESC[9]} configs" \
+			"link ${SDESC[10]} config and startup files" \
+			"link ${SDESC[11]} xml and scripts" \
+			"link ${SDESC[12]} configs" \
+			"link ${SDESC[13]} WindowMaker files" \
+			"link ${SDESC[14]} Motif Window Manager configs" \
 			"link ${SDESC[15]} config" \
-			"link all ${SDESC[16]} related configs" \
-			"link all ${SDESC[17]} related configs" \
-			"link ${SDESC[18]}" \
-			"show this ${SDESC[19]} screen" \
-			"${SDESC[20]} this script" )
+			"link ${SDESC[16]} files" \
+			"link ${SDESC[17]} config" \
+			"link all ${SDESC[18]} related configs" \
+			"link all ${SDESC[19]} related configs" \
+			"link ${SDESC[20]}" \
+			"show this ${SDESC[21]} screen" \
+			"${SDESC[22]} this script" )
 
     local -a TUI_MENU=( )
-    local -a TUI_HMSG=( "${usage}\n" )
+    local -a TUI_HMSG=( "\n${usage}\n\n" )
 
     for (( x = 0; x < ${#TUI_OPS[*]}; x++ )); do
         TUI_MENU+=( "${x}:${TUI_OPS[x]}" )
-	(( x > 0 && x % 5 == 0 )) && TUI_MENU+=( "\n" ) || TUI_MENU+=( "\t" )
+	(( (x + 1) % 4 == 0 )) && TUI_MENU+=( "\n" ) || TUI_MENU+=( "\t" )
         TUI_HMSG+=( "Use ${x}, for ${SDESC[x]}, which will ${DESC[x]}\n" )
     done
 
-    TUI_MENU+=( "Choose[0-$((${#TUI_OPS[@]}-1))]:" )
+    TUI_MENU+=( "\nChoose[0-$((${#TUI_OPS[@]}-1))]:" )
 
     while :; do
         echo -ne " ${TUI_MENU[*]}"
@@ -220,11 +226,11 @@ __menu() {
 
         case "${USRINPT}" in
 	    # Thanks to https://www.reddit.com/user/Schreq/
-            [0-9]|1[0-5]) __do_arr "${TUI_OPS[$USRINPT]}";;
-	    1[6-7]) __do_assoc "${TUI_OPS[$USRINPT]}";;
-	    18) __do_"${TUI_OPS[$USRINPT]}";;
-            19) echo -ne "${TUI_HMSG[*]}";;
-            20) exit;;
+            [0-9]|1[0-7]) __do_arr "${TUI_OPS[$USRINPT]}";;
+	    1[8-9]) __do_assoc "${TUI_OPS[$USRINPT]}";;
+	    20) __do_"${TUI_OPS[$USRINPT]}";;
+            21) echo -ne "${TUI_HMSG[*]}";;
+            22) exit;;
             *) echo -ne "Invalid responce: ${USRINPT}. Choose from 0 to $((${#TUI_OPS[*]}-1))\n" >&2;;
         esac
     done
@@ -238,7 +244,7 @@ __main() {
 		"c"|"-c"|"--console") shift; __do_assoc "console" ;;
 		"x"|"-x"|"--xorg") shift; __do_assoc "xorg" ;;
 		"m"|"-m"|"--menu") shift; __menu ;;
-		*) shift; echo "${usage}"; exit 1 ;;
+		*) shift; echo -ne "\n${usage}\n"; exit 1 ;;
 	    esac
 	done
     else
