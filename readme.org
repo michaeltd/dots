@@ -52,6 +52,10 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Draft:Bspwm"><img width="200" alt="bspwm" src="assets/bspwm.png"></a></p>
 
+    + [[dot.files/.config/i3/][i3wm]], [[https://i3wm.org/]]
+
+      #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/I3_(window_manager)"><img width="200" alt="i3wm" src="assets/i3wm.png"></a></p>
+
     + [[dot.files/.config/compiz/][compiz]], [[https://launchpad.net/compiz]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Compiz"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
