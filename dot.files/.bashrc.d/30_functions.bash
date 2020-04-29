@@ -110,8 +110,8 @@ rcm() {
     # Example: rcm 9 conky -qdc ~/.conkyrc
     (( ${#} < 2 )) && echo -ne "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t\n" >&2 && return 1
     #shellcheck disable=SC2155
-    local -r bin=$(command -v "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
-    [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &
+    local -r bin=$(type -P "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
+    [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &>/dev/null &
 }
 
 list_cat() {

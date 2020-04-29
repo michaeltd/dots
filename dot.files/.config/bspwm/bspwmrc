@@ -12,8 +12,17 @@ bspc config gapless_monocle      true
 bspc rule -a Firefox desktop='^2'
 bspc rule -a Xdialog manage=off
 
-pgrep -u "${USER}" polybar &>/dev/null || nice -n 9 polybar topbar &>/dev/null &
+# No double sourcing
+type rcm &>/dev/null || source ~/.bashrc.d/30_functions.bash
 
-pgrep -u "${USER}" compton &>/dev/null || nice -n 9 compton &>/dev/null &
+# pgrep -u "${USER}" compton &>/dev/null || nice -n 9 compton &>/dev/null &
+rcm 9 compton
 
-${HOME}/bin/pimp_my_gui.bash &> /dev/null &
+# pgrep -u "${USER}" polybar &>/dev/null || nice -n 9 polybar topbar &>/dev/null &
+rcm 9 polybar topbar
+
+PMG="${HOME}/bin/pimp_my_gui.bash"
+if [ -x "${PMG}" ]; then # if spice, spice things up.
+    "${PMG}"
+fi
+

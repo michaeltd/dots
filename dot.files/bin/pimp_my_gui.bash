@@ -5,7 +5,7 @@
 #shellcheck source=/dev/null
 
 # No double sourcing
-[[ ! $(type rcm &> /dev/null) ]] && source ~/.bashrc.d/30_functions.bash
+type rcm &>/dev/null || source ~/.bashrc.d/30_functions.bash
 
 # Music daemon
 # rcm 0 mpd

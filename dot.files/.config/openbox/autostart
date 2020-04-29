@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 # These things are run when an Openbox X Session is started.
 # You may place a similar script in $HOME/.config/openbox/autostart
@@ -17,19 +18,14 @@
 #xfce-mcs-manager &
 
 # No double sourcing
-[ ! $(command -v rcm) ] && source ~/.bashrc.d/30_functions.bash
+type rcm &>/dev/null || source ~/.bashrc.d/30_functions.bash
 
 rcm 9 compton
 
 # A nice status bar (before gui as we'll need that tray)
 # nice -n 9 tint2 &
-nice -n 9 tint2 -c ~/.config/tint2/taskbar &>/dev/null &
-nice -n 9 tint2 -c ~/.config/tint2/panel &>/dev/null &
-
-# ~/.config/polybar/launch.sh
-# polybar example 2> /dev/null &
-# polybar -qr topbar 2> /dev/null &
-# ~/.config/polybar/launch.sh
+rcm 9 tint2 -c ~/.config/tint2/taskbar
+# nice -n 9 tint2 -c ~/.config/tint2/panel
 
 PMG="${HOME}/bin/pimp_my_gui.bash"
 if [ -x "${PMG}" ]; then # if spice, spice things up.
