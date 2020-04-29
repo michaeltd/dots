@@ -24,11 +24,12 @@ declare -rA WMA=( [xfce4]="xfce4-session" \
                  [mwm]="mwm" \
                  [awesome]="awesome" \
                  [bspwm]="bspwm" \
+                 [i3wm]="i3" \
                  [emacs]="emacs" \
                  [kodi]="kodi-standalone" )
 
 # Selected WM (prefered WMA key available in daily driver)
-declare -r SWM="bspwm"
+declare -r SWM="i3wm"
 
 # Per distro selection. If you've got preferences for specific distros, set them up here.
 source /etc/os-release

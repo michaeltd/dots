@@ -48,6 +48,7 @@ bindsym $mod+d exec rofi -show run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 bindsym $mod+l exec ~/bin/xlock.sh
+bindsym $mod+shift+l exit
 bindsym $mod+Tab exec rofi -show window
 bindsym $mod+Up exec ~/bin/sndvol +
 bindsym $mod+Down exec ~/bin/sndvol -
