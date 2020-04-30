@@ -31,7 +31,7 @@ rcm 9 nm-applet
 # Per distro setup.
 source /etc/os-release
 if [[ "${ID}" == "gentoo" ]]; then
-    :
+    rcm 9 conky -qd
 elif [[ "${ID}" == "devuan" ]]; then
     rcm 9 conky -qd
 else
