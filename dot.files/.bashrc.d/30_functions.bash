@@ -55,7 +55,7 @@ webp2jpg() {
 	echo -ne "Usage: ${FUNCNAME[0]} files to convert\n" && \
 	return 1
     for i in ${@}; do
-	ffmpeg -i "${i}" "${i}.jpg"
+	ffmpeg -i "${i}" "${i//.webp/.jpg}"
     done
 }
 
@@ -132,7 +132,7 @@ lcdfe() {
 }
 
 # End stuff
-term_app() {
+bin_term() {
     # kill -s 15 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -TERM -u "${USER}" "${1}"
@@ -142,7 +142,7 @@ term_app() {
     fi
 }
 
-kill_app() {
+bin_kill() {
     # kill -s 9 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -KILL -u "${USER}" "${1}"
