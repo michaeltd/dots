@@ -41,6 +41,7 @@
 main() {
 
     local -r notes_file="${HOME}/.notes"
+    local -r notes_bak="${notes_file}.bak"
 
     add() {
 	echo "$(date "+%Y/%m/%d %H:%M:%S %A, %B %d "): ${*}" >> "${notes_file}"
@@ -50,8 +51,8 @@ main() {
 	grep -h "${1}" "${notes_file}"
 	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]
 	then
-            cp -f "${notes_file}" "${notes_file}.bck"
-            grep -hv "${1}" "${notes_file}.bck" > "${notes_file}"
+            cp -f "${notes_file}" "${notes_bak}"
+            grep -hv "${1}" "${notes_bak}" > "${notes_file}"
 	fi
     }
 
@@ -64,7 +65,7 @@ main() {
     }
 
     usage() {
-	echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") add 'some notes' | search keyword | rem keyword... | list\n" >&2
+	echo -ne "\nUsage: $(basename "${BASH_SOURCE[0]}") add 'some notes' | search keyword | rem keyword... | list\n\n" >&2
     }
     
     case "${1}" in
