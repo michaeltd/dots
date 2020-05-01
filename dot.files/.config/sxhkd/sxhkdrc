@@ -34,8 +34,12 @@ super + {Right,Left}
 
 # Windows
 ## Send focused window to another workspace
-super + {_,control + }{1-4}
-	bspc {desktop -f,node -d} '^{1-4}'
+## super + {_,control + }{1-4}
+##	bspc {desktop -f,node -d} '^{1-4}'
+
+## Send focused window to another workspace
+super + control {1-4}
+      bspc node -d '^{1-4}'
 
 ## Expanding windows
 super + control + {Left,Right,Up,Down}
