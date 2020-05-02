@@ -3,19 +3,19 @@
 # /usr/local/bin/compiz.sh Compiz startup script.
 
 # No double sourcing
-[[ ! $(command -v rcm) ]] && source ~/.bashrc.d/30_functions.bash
+type rcm &>/dev/null || . ~/.bashrc.d/30_functions.bash
 
 source /etc/os-release # Distro details.
 case "${ID}" in # Start Compiz
-  "gentoo") # Gentoo Solution
-    #/usr/bin/compiz-manager & ;;
-    fusion-icon -f & ;;
-  "devuan") # Devuan solution
-    compiz --replace "${@}" & ;;
-  *) # Others
-    # emerald --replace &
-    # compiz-manager --replace &
-    compiz --replace "${@}" & ;;
+    "gentoo") # Gentoo Solution
+    # compiz-manager &
+	fusion-icon -f &;;
+    "devuan") # Devuan solution
+	compiz --replace "${@}" &;;
+    *) # Others
+	# emerald --replace &
+	# compiz-manager --replace &
+	compiz --replace "${@}" &;;
 esac
 
 # ~/.config/polybar/launch.sh
@@ -35,7 +35,7 @@ rcm 9 tint2 -c ~/.config/tint2/panel
 
 PMG="${HOME}/bin/pimp_my_gui.bash"
 if [ -x "${PMG}" ]; then # If spice ...
-  "${PMG}" & # ... spice things up
+    "${PMG}" & # ... spice things up
 fi
 
 sleep 999d # Wait

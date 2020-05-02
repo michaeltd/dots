@@ -13,7 +13,7 @@ strut_policy = minimum
 #Launchers
 launcher_item_app = /usr/share/applications/terminology.desktop
 launcher_item_app = /usr/share/applications/mc.desktop
-launcher_item_app = /usr/share/applications/Firefox.desktop
+launcher_item_app = /home/paperjam/.local/share/applications/Firefox.desktop
 launcher_item_app = /usr/share/applications/hexchat.desktop
 launcher_item_app = /usr/share/applications/atom.desktop
 launcher_item_app = /usr/share/applications/codium.desktop
