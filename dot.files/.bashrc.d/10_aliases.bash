@@ -80,6 +80,11 @@ alias ecnx='emacsclient -t'
 # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
 alias eckd='emacsclient --eval="(kill-emacs)"'
 
+# Various utils
+alias bash_load_times='time bash -ic exit'
+alias emacs_load_times="time emacs --eval='(kill-emacs)'"
+alias term_geom='echo "${COLUMNS}x${LINES}"'
+
 # calendar
 alias cal='cal -m' # First Day Monday Calendars
 

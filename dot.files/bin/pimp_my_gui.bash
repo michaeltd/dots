@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # ~/bin/pimp-my-gui.bash
 # Spice for the desktop
@@ -28,12 +28,14 @@ rcm 9 pasystray
 # Systray network manager applet
 rcm 9 nm-applet
 
-# Per distro setup.
-source /etc/os-release
-if [[ "${ID}" == "gentoo" ]]; then
-    rcm 9 conky -qd
-elif [[ "${ID}" == "devuan" ]]; then
-    rcm 9 conky -qd
-else
-    rcm 9 conky -qd
+if [[ -r "/etc/os-release" ]]; then 
+    # Per distro setup.
+    . /etc/os-release
+    if [[ "${ID}" == "gentoo" ]]; then
+	: # rcm 9 conky -qd
+    elif [[ "${ID}" == "devuan" ]]; then
+	rcm 9 conky -qd
+    else
+	rcm 9 conky -qd
+    fi
 fi
