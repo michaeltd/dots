@@ -141,7 +141,8 @@ alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgr
 # https://git.sr.ht/~tslocum/netris?0.1.2
 alias netris='ssh netris.rocketnine.space'
 
-# Static
+# Static, Good luck with high lvl lang implementations of lolcat.
+# Recomended lolcat is: https://github.com/jaseg/lolcat
 alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done|lolcat'
 
 # TermBin https://termbin.com/
