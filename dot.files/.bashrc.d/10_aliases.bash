@@ -6,32 +6,32 @@
 # Distro independent utils
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
-if type -P apt-get &> /dev/null; then
+if type -P apt-get &>/dev/null; then
     alias pkg_search='apt search' pkg_install='sudo apt-get install' \
 	  pkg_remove='sudo apt-get remove --purge'
     alias dist_update='sudo apt-get update' dist_upgrade='sudo apt-get dist-upgrade' \
 	  dist_cleanup='sudo apt-get autoremove'
-elif type -P zypper &> /dev/null; then
+elif type -P zypper &>/dev/null; then
     alias pkg_search='zypper search' pkg_install='sudo zypper install' \
 	  pkg_remove='sudo zypper remove --clean-deps'
     alias dist_update='sudo zypper refresh' dist_upgrade='sudo zypper update' \
 	  dist_cleanup='sudo zypper rm -u'
-elif type -P yum &> /dev/null; then
+elif type -P yum &>/dev/null; then
     alias pkg_search='yum search' pkg_install='sudo yum install' \
 	  pkg_remove='sudo yum remove'
     alias dist_update='sudo yum check-update' dist_upgrade='sudo yum update' \
 	  dist_cleanup='sudo yum autoremove'
-elif type -P pacman &> /dev/null; then
+elif type -P pacman &>/dev/null; then
     alias pkg_search='pacman -Ss' pkg_install='sudo pacman -S' \
 	  pkg_remove='sudo pacman -R'
     alias dist_update='sudo pacman -Sy' dist_upgrade='sudo pacman -Syu' \
 	  dist_cleanup='sudo pacman -Rsn'
-elif type -P emerge &> /dev/null; then
+elif type -P emerge &>/dev/null; then
     alias pkg_search='emerge -s' pkg_install='sudo emerge -av' \
 	  pkg_remove='sudo emerge -avC'
     alias dist_update='sudo emerge --sync' dist_upgrade='sudo emerge -avuND @world' \
 	  dist_cleanup='sudo emerge --ask --depclean'
-elif type -P pkg &> /dev/null; then
+elif type -P pkg &>/dev/null; then
     alias pkg_search='pkg -o search' pkg_install='sudo pkg install' \
 	  pkg_remove='sudo pkg remove'
     alias dist_update='sudo pkg update' dist_upgrade='sudo pkg upgrade' \
@@ -81,9 +81,9 @@ alias ecnx='emacsclient -t'
 alias eckd='emacsclient --eval="(kill-emacs)"'
 
 # Various utils
-alias bash_load_times='time bash -ic exit'
-alias emacs_load_times="time emacs --eval='(kill-emacs)'"
-alias term_geom='echo "${COLUMNS}x${LINES}"'
+alias cronobash='time bash -ic exit'
+alias cronoemacs="time emacs --eval='(kill-emacs)'"
+alias termgeom='echo "${COLUMNS}x${LINES}"'
 
 # calendar
 alias cal='cal -m' # First Day Monday Calendars
