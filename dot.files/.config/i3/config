@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:SourceCodePro 8
+font pango:Inconsolata 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -107,7 +107,7 @@ set $ws1 ""
 set $ws2 ""
 set $ws3 ""
 set $ws4 ""
-# set $ws5 "5"
+set $ws5 ""
 # set $ws6 "6"
 # set $ws7 "7"
 # set $ws8 "8"
@@ -120,11 +120,13 @@ bindsym $mod+F1 workspace $ws1; exec i3-sensible-terminal
 bindsym $mod+F2 workspace $ws2; exec firefox
 bindsym $mod+F3 workspace $ws3; exec emacs
 bindsym $mod+F4 workspace $ws4; exec i3-sensible-terminal mc
+bindsym $mod+F5 workspace $ws5; exec vlc
 
 bindsym $mod+control+1 workspace $ws1
 bindsym $mod+control+2 workspace $ws2
 bindsym $mod+control+3 workspace $ws3
 bindsym $mod+control+4 workspace $ws4
+bindsym $mod+control+5 workspace $ws5
 
 # switch to workspace
 # bindsym $mod+1 workspace $ws1
@@ -143,7 +145,7 @@ bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
-# bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+5 move container to workspace $ws5
 # bindsym $mod+Shift+6 move container to workspace $ws6
 # bindsym $mod+Shift+7 move container to workspace $ws7
 # bindsym $mod+Shift+8 move container to workspace $ws8
@@ -188,18 +190,8 @@ bindsym $mod+d mode "  "
 # finds out, if available)
 bar {
     workspace_buttons yes
-    # strip_workspace_numbers no
-    # strip_workspace_name no
     position top
     status_command i3status
-    colors {
-    	   background #1d232500
-    	   separator #1d232500
-    	   focused_workspace #1d232500 #1d232500 #FFFFFF
-    	   active_workspace #1d232500 #1d232500 #E0E0E0
-    	   inactive_workspace #1d232500 #1d232500 #777777
-    	   urgent_workspace #1d232500 #1d232500 #CE672F
-    }
 }
 
 # class                 border  backgr. text    indicator child_border

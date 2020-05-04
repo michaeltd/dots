@@ -31,7 +31,7 @@ gen_uuid() {
 
 transcode_stdin() {
     [[ "${#}" -ne "2" ]] && \
-	echo "Usage: ${FUNCNAME[0]} function(e|d) cipher" && \
+	echo "Usage: ${FUNCNAME[0]} e|d cipher" && \
 	return 1
     openssl enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
 }
@@ -43,7 +43,7 @@ hash_stdin() {
     openssl dgst -"${1}"
 }
 
-crypt() {
+mtd_crypt() {
     case "${1}" in
 	e|-e|--encrypt) shift; local fn="--encrypt" out="${1}.pgp";;
 	d|-d|--decrypt) shift; local fn="--decrypt" out="${1//.pgp/}";;
