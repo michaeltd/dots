@@ -11,11 +11,11 @@ general {
         interval = 5
 }
 
-order += "ipv6"
-order += "disk /"
-order += "disk /mnt/data"
+#order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
+order += "disk /"
+order += "disk /mnt/data"
 order += "battery all"
 order += "load"
 order += "tztime local"

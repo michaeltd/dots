@@ -41,7 +41,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -show run
+bindsym $mod+r exec rofi -show run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -185,7 +185,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+d mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -197,10 +197,25 @@ bar {
     status_command i3status
 }
 
-# workspace 1 output primary
-# workspace 2 output primary
-# workspace 3 output primary
-# workspace 4 output primary
+# 4.16. X resources
+
+# [variables] can also be created using a value configured in the X resource database. This is useful, for example, to avoid configuring color values within the i3 configuration. Instead, the values can be configured, once, in the X resource database to achieve an easily maintainable, consistent color theme across many X applications.
+
+# Defining a resource will load this resource from the resource database and assign its value to the specified variable. This is done verbatim and the value must therefore be in the format that i3 uses. A fallback must be specified in case the resource cannot be loaded from the database.
+
+# Syntax:
+
+# set_from_resource $<name> <resource_name> <fallback>
+
+# Example:
+
+# # The ~/.Xresources should contain a line such as
+# #     *color0: #121212
+# # and must be loaded properly, e.g., by using
+# #     xrdb ~/.Xresources
+# # This value is picked up on by other applications (e.g., the URxvt terminal
+# # emulator) and can be used in i3 like this:
+# set_from_resource $black i3wm.color0 #000000
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577

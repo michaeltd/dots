@@ -7,7 +7,7 @@ SDN="$(dirname $(realpath $0))"
 MS="${SDN}/monthly"
 if [ -d "${MS}" ]; then
     cd "${MS}"
-    for SCPT in ./*; do
+    for SCPT in ./*.bash; do
         "${SCPT}"
     done
 fi

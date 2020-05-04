@@ -7,7 +7,7 @@ SDN="$(dirname $(realpath $0))"
 WS="${SDN}/weekly"
 if [ -d "${WS}" ]; then
     cd "${WS}"
-    for SCPT in ./*; do
+    for SCPT in ./*.bash; do
         "${SCPT}"
     done
 fi
