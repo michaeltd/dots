@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:SourceCodePro 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -28,13 +28,6 @@ font pango:monospace 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+F1 exec i3-sensible-terminal
-bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec emacs
-bindsym $mod+F4 exec terminology -e mc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -57,14 +50,6 @@ bindsym $mod+Right workspace next
 
 # enable floating mode for all Xdialog windows
 for_window [class="Xdialog"] floating enable
-
-# The ~/.Xresources should contain a line such as
-#     *color0: #121212
-# and must be loaded properly, e.g., by using
-#     xrdb ~/.Xresources
-# This value is picked up on by other applications (e.g., the URxvt terminal
-# emulator) and can be used in i3 like this:
-#set_from_resource $black i3wm.color0 #000000
 
 # change focus
 # bindsym $mod+j focus left
@@ -118,10 +103,10 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
+set $ws1 ""
+set $ws2 ""
+set $ws3 ""
+set $ws4 ""
 # set $ws5 "5"
 # set $ws6 "6"
 # set $ws7 "7"
@@ -129,11 +114,23 @@ set $ws4 "4"
 # set $ws9 "9"
 # set $ws10 "10"
 
+# start a terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+F1 workspace $ws1; exec i3-sensible-terminal
+bindsym $mod+F2 workspace $ws2; exec firefox
+bindsym $mod+F3 workspace $ws3; exec emacs
+bindsym $mod+F4 workspace $ws4; exec i3-sensible-terminal mc
+
+bindsym $mod+control+1 workspace $ws1
+bindsym $mod+control+2 workspace $ws2
+bindsym $mod+control+3 workspace $ws3
+bindsym $mod+control+4 workspace $ws4
+
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
+# bindsym $mod+1 workspace $ws1
+# bindsym $mod+2 workspace $ws2
+# bindsym $mod+3 workspace $ws3
+# bindsym $mod+4 workspace $ws4
 # bindsym $mod+5 workspace $ws5
 # bindsym $mod+6 workspace $ws6
 # bindsym $mod+7 workspace $ws7
@@ -158,10 +155,10 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Exit i3 ' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "  " {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -185,7 +182,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+d mode "resize"
+bindsym $mod+d mode "  "
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -195,30 +192,18 @@ bar {
     # strip_workspace_name no
     position top
     status_command i3status
+    colors {
+    	   background #1d232500
+    	   separator #1d232500
+    	   focused_workspace #1d232500 #1d232500 #FFFFFF
+    	   active_workspace #1d232500 #1d232500 #E0E0E0
+    	   inactive_workspace #1d232500 #1d232500 #777777
+    	   urgent_workspace #1d232500 #1d232500 #CE672F
+    }
 }
 
-# 4.16. X resources
-
-# [variables] can also be created using a value configured in the X resource database. This is useful, for example, to avoid configuring color values within the i3 configuration. Instead, the values can be configured, once, in the X resource database to achieve an easily maintainable, consistent color theme across many X applications.
-
-# Defining a resource will load this resource from the resource database and assign its value to the specified variable. This is done verbatim and the value must therefore be in the format that i3 uses. A fallback must be specified in case the resource cannot be loaded from the database.
-
-# Syntax:
-
-# set_from_resource $<name> <resource_name> <fallback>
-
-# Example:
-
-# # The ~/.Xresources should contain a line such as
-# #     *color0: #121212
-# # and must be loaded properly, e.g., by using
-# #     xrdb ~/.Xresources
-# # This value is picked up on by other applications (e.g., the URxvt terminal
-# # emulator) and can be used in i3 like this:
-# set_from_resource $black i3wm.color0 #000000
-
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused          #333333 #111111 #ffffff #232323   #111111
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
