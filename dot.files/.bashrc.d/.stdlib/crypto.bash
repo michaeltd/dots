@@ -29,13 +29,6 @@ gen_uuid() {
     printf '\n'
 }
 
-transcode_stdin() {
-    [[ "${#}" -ne "2" ]] && \
-	echo "Usage: ${FUNCNAME[0]} e|d cipher" && \
-	return 1
-    openssl enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
-}
-
 hash_stdin() {
     [[ "${#}" -ne "1" ]] && \
 	echo "Usage: ${FUNCNAME[0]} cipher" && \
@@ -43,11 +36,18 @@ hash_stdin() {
     openssl dgst -"${1}"
 }
 
-mtd_crypt() {
+transcode_stdin() {
+    [[ "${#}" -ne "2" ]] && \
+	echo "Usage: ${FUNCNAME[0]} e|d cipher" && \
+	return 1
+    openssl enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
+}
+
+transcode_pgp() {
     case "${1}" in
 	e|-e|--encrypt) shift; local fn="--encrypt" out="${1}.pgp";;
 	d|-d|--decrypt) shift; local fn="--decrypt" out="${1//.pgp/}";;
-	*) echo "Usage: ${FUNCNAME[0]} e|d file"; return 1;;
+	*) echo "Usage: ${FUNCNAME[0]} e|d file|file.pgp"; return 1;;
     esac
     $(type -P gpg2) --default-recipient-self --output "${out}" "${fn}" "${1}"
 }
