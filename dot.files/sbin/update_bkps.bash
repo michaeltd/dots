@@ -12,6 +12,18 @@
 # fill out above files with include and exclude rules respectively
 # 3) Update bkpto(where to bkp) bkpfrom(user to read files from) and recipient(pubkey to encrypt to).
 # 4) Profit
+#
+# Example ~/.bkp.include.usr file:
+#
+# /home/paperjam/git/.
+# /home/paperjam/Documents/.
+#
+# Example ~/.bkp.exclude file:
+#
+# */.git/*
+# */.github/*
+# */node_modules/*
+#
 
 main(){
     local -r BKPTO="/mnt/el/Documents/BKP/LINUX" BKPFROM="paperjam" RCPNT="tsouchlarakis@gmail.com"
