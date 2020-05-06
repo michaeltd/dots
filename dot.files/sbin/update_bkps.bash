@@ -5,51 +5,39 @@
 
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
-declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
+readonly ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
 
-declare EXC="/home/${UTB}/.bkp.exclude"
+declare -ra INC=( $($(type -P ls) /home/${UTB}/.bkp.include.*) )
 
-declare RCPNT="tsouchlarakis@gmail.com"
+readonly EXC="/home/${UTB}/.bkp.exclude"
+
+readonly RCPNT="tsouchlarakis@gmail.com"
 
 # Full path executables, no aliases
-declare -a \
+declare -ra \
         NICEC=( "$(type -P nice)" "-n" "19" ) \
         TARCM=( "$(type -P tar)" "--create" "--gzip" "--exclude-from=${EXC}" \
 		"--exclude-backups" "--one-file-system" ) \
         GPG2C=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" \
                 "${RCPNT}" "--trust-model" "always" "--output" )
 
-#shellcheck disable=SC2034
-declare -a \
-        ENC=( "/home/${UTB}/.gnupg/." \
-                "/home/${UTB}/.ssh/." \
-                "/home/${UTB}/.ngrok2/." \
-                "/home/${UTB}/.config/filezilla/." \
-                "/home/${UTB}/.config/hexchat/." \
-                "/home/${UTB}/.putty/." ) \
-        USR=( "/home/${UTB}/git/." \
-                "/home/${UTB}/Documents/." ) \
-        SYS=( "/boot/grub/." \
-                "/etc/." \
-                "/usr/share/xsessions/." \
-                "/usr/share/WindowMaker/." \
-                "/var/www/." )
+declare -r DT="$(date +%Y%m%d)" TM="$(date +%H%M%S)" EP="$(date +%s)"
 
-declare -a BKP=( ENC[@] USR[@] SYS[@] ) \
-        ARCHV=( "enc.tar.gz" "usr.tar.gz" "sys.tar.gz" )
-
-declare EP="$(date +%s)" DT="$(date +%Y%m%d)" TM="$(date +%H%M%S)" 
+for BKP in "${INC[@]}"; do
+    declare -a BKPS2DO+=( "${BKP: -3}" )
+    declare -a ARCHEXT+=( "${BKP: -3}.tar.gz" )
+done
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
-    for ((i = 0; i < ${#ARCHV[*]}; i++ )); do
-	if [[ ${ARCHV[i]} =~ ^enc.* ]]; then
-	    ARCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHV[i]}"
+    for ((i = 0; i < ${#INC[*]}; i++ )); do
+	if [[ ${BKPS2DO[i]} == "enc" ]]; then
+	    ARCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHEXT[i]}"
 	    #shellcheck disable=SC2086
-	    time "${NICEC[@]}" "${TARCM[@]}" "--file" "${ARCFL}" ${!BKP[i]}
+	    time "${NICEC[@]}" "${TARCM[@]}" "--file" "${ARCFL}" $(cat ${INC[i]})
 	else
-	    ENCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHV[i]}.pgp"
+	    ENCFL="${ELDIR}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHEXT[i]}.pgp"
 	    #shellcheck disable=SC2086
-	    time "${NICEC[@]}" "${TARCM[@]}" ${!BKP[i]}|"${GPG2C[@]}" "${ENCFL}" "--encrypt"
+	    time "${NICEC[@]}" "${TARCM[@]}" $(cat ${INC[i]}) | "${GPG2C[@]}" "${ENCFL}" "--encrypt"
 	fi
     done
 else
