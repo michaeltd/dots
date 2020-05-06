@@ -25,10 +25,10 @@
 # */node_modules/*
 #
 
-main(){
-    local -r BKPTO="/mnt/el/Documents/BKP/LINUX" BKPFROM="paperjam" RCPNT="tsouchlarakis@gmail.com"
-
+main() {
     echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
+
+    local -r BKPTO="/mnt/el/Documents/BKP/LINUX" BKPFROM="paperjam" RCPNT="tsouchlarakis@gmail.com"
     #shellcheck disable=SC2207
     local -ra INC=( $($(type -P ls) /home/${BKPFROM}/.bkp.include.*) )
 
