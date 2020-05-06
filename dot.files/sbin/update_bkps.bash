@@ -51,7 +51,7 @@ main(){
 	done
     else
 	echo -ne "${BKPTO} not found or root access requirements not met.\n" >&2
-	exit 1
+	return 1
     fi
 }
 
