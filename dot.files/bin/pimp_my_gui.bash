@@ -32,7 +32,7 @@ if [[ -r "/etc/os-release" ]]; then
     # Per distro setup.
     . /etc/os-release
     if [[ "${ID}" == "gentoo" ]]; then
-	: # rcm 9 conky -qd
+	rcm 9 conky -qd
     elif [[ "${ID}" == "devuan" ]]; then
 	rcm 9 conky -qd
     else
