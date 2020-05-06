@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # ~/sbin/update_bkps.bash
-# Backup sensitive files, user files, system
+# Backup sensitive files, user files, system files.
+
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
 declare ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
