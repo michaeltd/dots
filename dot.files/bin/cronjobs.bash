@@ -21,7 +21,7 @@ backup() {
     local -r bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
           xcldf="${HOME}/.bkp.exclude" rcpnt="tsouchlarakis@gmail.com"
 
-    local -r outfl="${bkpt}/${USER}.$(date +%Y%m%d).$(date +%H%M%S).$(date +%s).tar.gz.pgp" \
+    local -r outfl="${bkpt}/${USER}.$(date +%y%m%d).$(date +%H%M).$(date +%s).tar.gz.pgp" \
           LS="$(type -P ls)"
 
     local -r nicm=( "$(type -P nice)" "-n" "9" ) \
@@ -57,4 +57,3 @@ main() {
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
-

@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 #
 # ~/sbin/update_bkps.bash
-# Backup sensitive files, user files, system files.
+# Configure bkp jobs with ~/.bkp.include.job files
+# Prereq's you'll need for this to work:
+# 0) add your users public key ($RCPNT) to root's keyring
+# 1) ~/.bkp.include.myawesomebkpjob
+# 2) ~/.bkp.exclude
+# fill out above files with include and exclude rules respectively
+# 3) Update eldir(where to bkp) utb(user to bkp) and recipient.
+# 4) Profit
+readonly ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam" RCPNT="tsouchlarakis@gmail.com"
 
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
-
-readonly ELDIR="/mnt/el/Documents/BKP/LINUX" UTB="paperjam"
 
 declare -ra INC=( $($(type -P ls) /home/${UTB}/.bkp.include.*) )
 
 readonly EXC="/home/${UTB}/.bkp.exclude"
 
-readonly RCPNT="tsouchlarakis@gmail.com"
 
 # Full path executables, no aliases
 declare -ra \
@@ -21,11 +26,11 @@ declare -ra \
         GPG2C=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" \
                 "${RCPNT}" "--trust-model" "always" "--output" )
 
-declare -r DT="$(date +%Y%m%d)" TM="$(date +%H%M%S)" EP="$(date +%s)"
+declare -r DT="$(date +%y%m%d)" TM="$(date +%H%M)" EP="$(date +%s)"
 
 for BKP in "${INC[@]}"; do
-    declare -a BKPS2DO+=( "${BKP: -3}" )
-    declare -a ARCHEXT+=( "${BKP: -3}.tar.gz" )
+    declare -a BKPS2DO+=( "${BKP##*.}" )
+    declare -a ARCHEXT+=( "${BKP##*.}.tar.gz" )
 done
 
 if [[ -d "${ELDIR}" && "${EUID}" -eq "0" ]]; then
