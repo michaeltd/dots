@@ -14,14 +14,14 @@
 # .backup_include.* file name explanation:
 # /home/paperjam/.backup_include.*.job_name
 #        1              2        3    4
-# 1) This part will be given by your [-(-f)rom] switch (default paperjam)
-#    The script will use it as a starting point to search for .backup_include.* files
-#    The reason this var needs to be hardcoded or switched is so you can run
+# 1) This part will be given by your [-(-f)rom] switch (default /home/paperjam)
+#    The script will use it as a starting point to search for all .backup_* related files.
+#    The reason this var needs to be hardcoded or switched in is so you can run
 #    this script from cronjobs.
 # 2) .backup_include.* will be the search term for the definitions array.
 # 4) This part should be aither *.encrypt.* or *.compress.*.
-#    encrypt file definitions will result in encrypted backups,
-#    compress file definitions will result in compressed backups.
+#    encrypt file definitions will result in encrypted tarballs,
+#    compress file definitions will result in unencrypted tarballs.
 # 5) The fifth and last part serves as the jobs name.
 #    It will end up in the resulting *.pgp or *.tar.gz file name
 #    so you know what you're dealing with at a quick glance.
@@ -37,7 +37,7 @@
 main() {
     echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
     # Some defaults
-    local BACKUP_TO="/mnt/el/Documents/BKP/LINUX" BACKUP_FROM="paperjam" RECIPIENT="tsouchlarakis@gmail.com"
+    local BACKUP_TO="/mnt/el/Documents/BKP/LINUX" BACKUP_FROM="/home/paperjam" RECIPIENT="tsouchlarakis@gmail.com"
 
     while [[ -n "${1}" ]]; do
 	case "${1}" in
@@ -45,14 +45,14 @@ main() {
 	    "-f"|"--from") shift; BACKUP_FROM="${1}";;
 	    "-k"|"--key") shift; RECIPIENT="${1}";;
 	    "-d"|"--debug") set -x;;
-	    *) echo -ne "Usage: sudo $(basename "${BASH_SOURCE[0]}") [-(-t)o /backup/to/] [-(-f)rom username] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
+	    *) echo -ne "Usage: sudo $(basename "${BASH_SOURCE[0]}") [-(-t)o /backup/to/] [-(-f)rom /path/to/.backup_include.*] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
 	esac
 	shift
     done
 
     #shellcheck disable=SC2207
-    local -ra INCLUDES=( $($(type -P ls) /home/${BACKUP_FROM}/.backup_include.*) )
-    [[ -r "/home/${BACKUP_FROM}/.backup_exclude" ]] && local -r EXCLUDE="/home/${BACKUP_FROM}/.backup_exclude"
+    local -ra INCLUDES=( $($(type -P ls) ${BACKUP_FROM}/.backup_include.*) )
+    [[ -r "${BACKUP_FROM}/.backup_exclude" ]] && local -r EXCLUDE="${BACKUP_FROM}/.backup_exclude"
     local -r DATE="$(date +%y%m%d)" TIME="$(date +%H%M)" EPOCH="$(date +%s)"
     
     # Full path executables, no aliases
@@ -63,7 +63,7 @@ main() {
 
     # Sanity checks ...
     [[ ! -d "${BACKUP_TO}" ]] && echo -ne "${BACKUP_TO} not found.\n" >&2 && return 1
-    [[ ! -d "/home/${BACKUP_FROM}" ]] && echo -ne "/home/${BACKUP_FROM} not found.\n" >&2 && return 1
+    [[ ! -d "${BACKUP_FROM}" ]] && echo -ne "${BACKUP_FROM} not found.\n" >&2 && return 1
     [[ -z "${INCLUDES[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
     [[ "${EUID}" -ne "0" ]] && echo -ne "Root access requirements not met.\n" >&2 && return 1
 
@@ -81,7 +81,7 @@ main() {
 	if [[ ${INCLUDES[i]} =~ (compress|encrypt) ]]; then
 	    "${BASH_REMATCH[1]}" "${INCLUDES[i]##*.}.tar.gz" "${INCLUDES[i]}"
 	else
-	    echo "${INCLUDES[i]} does not appear to have 'compress' or 'encrypt' in its name." >&2
+	    echo "$(basename "${INCLUDES[i]}") does not appear to have 'compress' or 'encrypt' in its name." >&2
 	fi
     done
 }
