@@ -12,7 +12,7 @@
 # 3) Update $DEFINITIONS(user to read files from), $BACKUP_TO(where to backup) and $RECIPIENT(pubkey to encrypt to).
 #    Or call script with parameters: update_bkps.bash -f /path_to_defs -t /backups/folder -k some@key.org
 
-# .backup_include.* file name explanation:
+# .backup_include.*.* file name explanation:
 # /home/paperjam/.backup_include.*.job_name
 #        1              2        3    4
 # 1) This part will be given by your [-(-f)rom] switch (default /home/paperjam)
@@ -20,10 +20,10 @@
 #    The reason this var needs to be hardcoded or switched in is so you can run
 #    this script from cronjobs.
 # 2) .backup_include.* will be the search term for the definitions array.
-# 4) This part should be aither *.encrypt.* or *.compress.*.
+# 3) This part should be aither *.encrypt.* or *.compress.*.
 #    encrypt file definitions will result in encrypted tarballs,
 #    compress file definitions will result in unencrypted tarballs.
-# 5) The fifth and last part serves as the jobs name.
+# 4) The fifth and last part serves as the jobs name.
 #    It will end up in the resulting *.pgp or *.tar.gz file name
 #    so you know what you're dealing with at a quick glance.
 
