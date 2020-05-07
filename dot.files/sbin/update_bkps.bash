@@ -9,8 +9,8 @@
 #    Root access is required for system wide backups.
 # 1) ~/.backup_include.(compress|encrypt).job_name
 # 2) ~/.backup_exclude (optional)
-# 3) Update $BKP_TO(where to backup), $BACKUP_FROM(user to read files from) and $RECIPIENT(pubkey to encrypt to).
-#    Or call script with parameters: sudo update_bkps.bash -f /home/username -t /my/backups -k some@key.org
+# 3) Update $DEFINITIONS(user to read files from), $BACKUP_TO(where to backup) and $RECIPIENT(pubkey to encrypt to).
+#    Or call script with parameters: update_bkps.bash -f /path_to_defs -t /backups/folder -k some@key.org
 
 # .backup_include.* file name explanation:
 # /home/paperjam/.backup_include.*.job_name
@@ -41,23 +41,23 @@
 main() {
     echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
     # Some defaults
-    local BACKUP_TO="/mnt/el/Documents/BKP/LINUX" BACKUP_FROM="/home/paperjam" RECIPIENT="tsouchlarakis@gmail.com"
+    local DEFINITIONS="/home/paperjam" BACKUP_TO="/mnt/el/Documents/BKP/LINUX" RECIPIENT="tsouchlarakis@gmail.com"
 
     while [[ -n "${1}" ]]; do
 	case "${1}" in
+	    "-f"|"--from") shift; DEFINITIONS="${1}";;
 	    "-t"|"--to") shift; BACKUP_TO="${1}";;
-	    "-f"|"--from") shift; BACKUP_FROM="${1}";;
 	    "-k"|"--key") shift; RECIPIENT="${1}";;
 	    "-d"|"--debug") set -x;;
-	    *) echo -ne "Usage: sudo $(basename "${BASH_SOURCE[0]}") [-(-t)o /backups] [-(-f)rom /path_to_defs] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
+	    *) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
 	esac
 	shift
     done
 
     #shellcheck disable=SC2207
-    local -ra INCLUDES=( $($(type -P ls) ${BACKUP_FROM}/.backup_include.*) )
-    [[ -r "${BACKUP_FROM}/.backup_exclude" ]] && local -r EXCLUDE="${BACKUP_FROM}/.backup_exclude"
-    local -r DATE="$(date +%y%m%d)" TIME="$(date +%H%M)" EPOCH="$(date +%s)"
+    local -ra INCLUDES=( $($(type -P ls) ${DEFINITIONS}/.backup_include.* 2>/dev/null) )
+    [[ -r "${DEFINITIONS}/.backup_exclude" ]] && local -r EXCLUDE="${DEFINITIONS}/.backup_exclude"
+    local -r JOB_FN="${BACKUP_TO}/${HOSTNAME}.$(date +%y%m%d).$(date +%H%M).$(date +%s)"
     
     # Full path executables, no aliases
     local -ra \
@@ -66,26 +66,26 @@ main() {
 	  PGP_CMD=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" "${RECIPIENT}" "--trust-model" "always" "--output" )
 
     # Sanity checks ...
+    [[ ! -d "${DEFINITIONS}" ]] && echo -ne "${DEFINITIONS} not found.\n" >&2 && return 1
     [[ ! -d "${BACKUP_TO}" ]] && echo -ne "${BACKUP_TO} not found.\n" >&2 && return 1
-    [[ ! -d "${BACKUP_FROM}" ]] && echo -ne "${BACKUP_FROM} not found.\n" >&2 && return 1
-    [[ -z "${INCLUDES[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
+    [[ -z "${INCLUDES[@]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
     [[ "${EUID}" -ne "0" ]] && echo -ne "Root access requirements not met.\n" >&2 && return 1
 
     compress() {
 	#shellcheck disable=SC2086,SC2046
-	time "${NICE_CDM[@]}" "${TAR_CMD[@]}" "--file" "${BACKUP_TO}/${HOSTNAME}.${DATE}.${TIME}.${EPOCH}.${1}" $(cat "${2}")
+	time "${NICE_CDM[@]}" "${TAR_CMD[@]}" "--file" "${JOB_FN}.${1##*.}.tar.gz" $(cat "${1}")
     }
 
     encrypt() {
 	#shellcheck disable=SC2086,SC2046
-	time "${NICE_CMD[@]}" "${TAR_CMD[@]}" $(cat "${2}") | "${PGP_CMD[@]}" "${BACKUP_TO}/${HOSTNAME}.${DATE}.${TIME}.${EPOCH}.${1}.pgp" "--encrypt"
+	time "${NICE_CMD[@]}" "${TAR_CMD[@]}" $(cat "${1}") | "${PGP_CMD[@]}" "${JOB_FN}.${1##*.}.tar.gz.pgp" "--encrypt"
     }
 
-    for ((i = 0; i < ${#INCLUDES[*]}; i++ )); do
-	if [[ ${INCLUDES[i]} =~ (compress|encrypt) ]]; then
-	    "${BASH_REMATCH[1]}" "${INCLUDES[i]##*.}.tar.gz" "${INCLUDES[i]}"
+    for INCLUDE in ${INCLUDES[@]}; do
+	if [[ ${INCLUDE} =~ (compress|encrypt) ]]; then
+	    "${BASH_REMATCH[1]}" "${INCLUDE}"
 	else
-	    echo "$(basename "${INCLUDES[i]}") does not appear to have 'compress' or 'encrypt' in its name." >&2
+	    echo "$(basename "${INCLUDE}") does not appear to have 'compress' or 'encrypt' in its name." >&2
 	fi
     done
 }
