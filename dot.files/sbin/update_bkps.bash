@@ -39,7 +39,7 @@
 # You can ommit exlude file safely
 
 main() {
-    echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
+    echo -ne " -- $(basename "$(realpath "${BASH_SOURCE[0]}")") --\n"
     # Some defaults
     local DEFINITIONS="/home/paperjam" BACKUP_TO="/mnt/el/Documents/BKP/LINUX" RECIPIENT="tsouchlarakis@gmail.com"
 
@@ -55,13 +55,11 @@ main() {
     done
     #shellcheck disable=SC2207
     local -ra INCLUDES=( $($(type -P ls) "${DEFINITIONS}"/.backup_include.* 2>/dev/null) )
-    [[ -r "${DEFINITIONS}/.backup_exclude" ]] && local -r EXCLUDE="${DEFINITIONS}/.backup_exclude"
-    local -r JOB_FN="${BACKUP_TO}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
+    local -r EXCLUDE="${DEFINITIONS}/.backup_exclude" JOB_FN="${BACKUP_TO}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
 
     # Full path executables, no aliases
-    local -ra \
-	  NICE_CMD=( "$(type -P nice)" "-n" "19" ) \
-	  TAR_CMD=( "$(type -P tar)" "--create" "--gzip" "$([[ -n "${EXCLUDE}" ]] && echo -n "--exclude-from=${EXCLUDE}")" "--exclude-backups" "--one-file-system" ) \
+    local -ra NICE_CMD=( "$(type -P nice)" "-n" "19" ) \
+	  TAR_CMD=( "$(type -P tar)" "--create" "--gzip" "$([[ -r "${EXCLUDE}" ]] && echo -n "--exclude-from=${EXCLUDE}")" "--exclude-backups" "--one-file-system" ) \
 	  PGP_CMD=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" "${RECIPIENT}" "--trust-model" "always" "--output" )
 
     # Sanity checks ...
@@ -81,11 +79,7 @@ main() {
     }
 
     for INCLUDE in "${INCLUDES[@]}"; do
-	if [[ ${INCLUDE} =~ (compress|encrypt) ]]; then
-	    "${BASH_REMATCH[1]}" "${INCLUDE}"
-	else
-	    echo "$(basename "${INCLUDE}") does not appear to have 'compress' or 'encrypt' in its name." >&2
-	fi
+	[[ ${INCLUDE} =~ (compress|encrypt) ]] && "${BASH_REMATCH[1]}" "${INCLUDE}"
     done
 }
 

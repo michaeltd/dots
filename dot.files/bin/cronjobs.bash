@@ -21,8 +21,7 @@ backup() {
     local -r bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
           xcldf="${HOME}/.bkp.exclude" rcpnt="tsouchlarakis@gmail.com"
 
-    local -r outfl="${bkpt}/${USER}.$(date +%y%m%d).$(date +%H%M).$(date +%s).tar.gz.pgp" \
-          LS="$(type -P ls)"
+    local -r outfl="${bkpt}/${USER}.$(date +%y%m%d.%H%M.%s).tar.gz.pgp"
 
     local -r nicm=( "$(type -P nice)" "-n" "9" ) \
 	  tarc=( "$(type -P tar)" "-cz" "--exclude-from=${xcldf}" \
@@ -36,7 +35,7 @@ backup() {
 	time ${nicm[@]} ${tarc[@]} | ${pgcm[@]}
 	~/sbin/cleanup_bkps.bash -b "${bkpt}" -k 2
     else
-	echo "ERROR: Backup location: \"${bkpt}\" is not a directory" >&2
+	echo "Backup location: ${bkpt} not found." >&2
 	exit 1
     fi
 }
