@@ -22,7 +22,7 @@
 # 4) This part should be aither *.enc.* or *.cmp.*.
 #    enc file definitions will result in encrypted backups,
 #    cmp file definitions will result in compressed backups.
-# 5) The last part is a job short description,
+# 5) The fifth and last part serves as a job name.
 #    It will end up in the resulting *.pgp or *.tar.gz files
 #    so you know what you're dealing with at a quick glance.
 # Example ~/.bkp.inc.*.* file contents:
