@@ -53,12 +53,11 @@ main() {
 	esac
 	shift
     done
-
     #shellcheck disable=SC2207
-    local -ra INCLUDES=( $($(type -P ls) ${DEFINITIONS}/.backup_include.* 2>/dev/null) )
+    local -ra INCLUDES=( $($(type -P ls) "${DEFINITIONS}"/.backup_include.* 2>/dev/null) )
     [[ -r "${DEFINITIONS}/.backup_exclude" ]] && local -r EXCLUDE="${DEFINITIONS}/.backup_exclude"
-    local -r JOB_FN="${BACKUP_TO}/${HOSTNAME}.$(date +%y%m%d).$(date +%H%M).$(date +%s)"
-    
+    local -r JOB_FN="${BACKUP_TO}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
+
     # Full path executables, no aliases
     local -ra \
 	  NICE_CMD=( "$(type -P nice)" "-n" "19" ) \
@@ -68,12 +67,12 @@ main() {
     # Sanity checks ...
     [[ ! -d "${DEFINITIONS}" ]] && echo -ne "${DEFINITIONS} not found.\n" >&2 && return 1
     [[ ! -d "${BACKUP_TO}" ]] && echo -ne "${BACKUP_TO} not found.\n" >&2 && return 1
-    [[ -z "${INCLUDES[@]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
+    [[ -z "${INCLUDES[*]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
     [[ "${EUID}" -ne "0" ]] && echo -ne "Root access requirements not met.\n" >&2 && return 1
 
     compress() {
 	#shellcheck disable=SC2086,SC2046
-	time "${NICE_CDM[@]}" "${TAR_CMD[@]}" "--file" "${JOB_FN}.${1##*.}.tar.gz" $(cat "${1}")
+	time "${NICE_CMD[@]}" "${TAR_CMD[@]}" "--file" "${JOB_FN}.${1##*.}.tar.gz" $(cat "${1}")
     }
 
     encrypt() {
@@ -81,7 +80,7 @@ main() {
 	time "${NICE_CMD[@]}" "${TAR_CMD[@]}" $(cat "${1}") | "${PGP_CMD[@]}" "${JOB_FN}.${1##*.}.tar.gz.pgp" "--encrypt"
     }
 
-    for INCLUDE in ${INCLUDES[@]}; do
+    for INCLUDE in "${INCLUDES[@]}"; do
 	if [[ ${INCLUDE} =~ (compress|encrypt) ]]; then
 	    "${BASH_REMATCH[1]}" "${INCLUDE}"
 	else
