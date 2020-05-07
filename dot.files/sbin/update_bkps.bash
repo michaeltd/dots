@@ -3,14 +3,15 @@
 # ~/sbin/update_bkps.bash
 #
 # Configure backups with ~/.backup_include.(encrypt|compress).job_name definition files
+
 # Prereq's you'll need for this to work:
 # 0) add your users public key ($RECIPIENT) to root's keyring.
 #    Root access is required for system wide backups.
 # 1) ~/.backup_include.(compress|encrypt).job_name
 # 2) ~/.backup_exclude (optional)
 # 3) Update $BKP_TO(where to backup), $BACKUP_FROM(user to read files from) and $RECIPIENT(pubkey to encrypt to).
-#    Or call script with parameters: sudo update_bkps.bash -f username -t /my/bkps -k some@key.org
-# 4) Profit
+#    Or call script with parameters: sudo update_bkps.bash -f /home/username -t /my/backups -k some@key.org
+
 # .backup_include.* file name explanation:
 # /home/paperjam/.backup_include.*.job_name
 #        1              2        3    4
@@ -25,13 +26,16 @@
 # 5) The fifth and last part serves as the jobs name.
 #    It will end up in the resulting *.pgp or *.tar.gz file name
 #    so you know what you're dealing with at a quick glance.
+
 # Example ~/.backup_include.*.* file contents:
 # /home/paperjam/git/.
 # /home/paperjam/Documents/.
+
 # Example ~/.backup_exclude file contents:
 # */.git/*
 # */.github/*
 # */node_modules/*
+
 # You can ommit exlude file safely
 
 main() {
@@ -45,7 +49,7 @@ main() {
 	    "-f"|"--from") shift; BACKUP_FROM="${1}";;
 	    "-k"|"--key") shift; RECIPIENT="${1}";;
 	    "-d"|"--debug") set -x;;
-	    *) echo -ne "Usage: sudo $(basename "${BASH_SOURCE[0]}") [-(-t)o /backup/to/] [-(-f)rom /path/to/.backup_include.*] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
+	    *) echo -ne "Usage: sudo $(basename "${BASH_SOURCE[0]}") [-(-t)o /backups] [-(-f)rom /path_to_defs] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
 	esac
 	shift
     done
