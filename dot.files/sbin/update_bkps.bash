@@ -2,29 +2,29 @@
 #
 # ~/sbin/update_bkps.bash
 #
-# Configure bkp jobs with ~/.bkp.inc.(enc|cmp).job files
-# (enc.job files will be encrypted,
-# cmp.job files will be compressed)
+# Configure backups with ~/.bkp.inc.(enc|cmp).job definition files
 # Prereq's you'll need for this to work:
 # 0) add your users public key ($RCPNT) to root's keyring.
 #    Root access is required for system wide backups.
 # 1) ~/.bkp.inc.(cmp|enc).job_desc
 # 2) ~/.bkp.exc (optional)
-# 3) Update bkpto(where to bkp) bkpfrom(user to read files from) and recipient(pubkey to encrypt to).
-#    Or call script with parameters: sudo update_bkps.bash -f username -t /my/bkps -k mykey@name.org
+# 3) Update $bkpto(where to bkp), $bkpfrom(user to read files from) and $rcpnt(pubkey to encrypt to).
+#    Or call script with parameters: sudo update_bkps.bash -f username -t /my/bkps -k some@key.org
 # 4) Profit
 # .bkp.inc.* file name explanation:
 # /home/paperjam/.bkp.inc.enc.job
 #        1        2    3   4   5 
 # 1) This part will be given by your [-(-f)rom] switch (default paperjam)
 #    The script will use it as a starting point to search for .bkp.inc.* files
-# 2 & 3) In .bkp.inc.* files we will store the job definitions
+#    The reason this var needs to be hardcoded or switched is so you can run
+#    this script from cronjobs.
+# 2&3) .bkp.inc.* will be the search term for the definitions array.
 # 4) This part should be aither *.enc.* or *.cmp.*.
-#    enc file definitions will get encrypted,
-#    cmp file definitions will get compressed.
+#    enc file definitions will result in encrypted backups,
+#    cmp file definitions will result in compressed backups.
 # 5) The last part is a job short description,
-#    It will end up in the resulting *.pgp or *.tar.gz files,
-#    so we know what we're dealing with at a quick glance.
+#    It will end up in the resulting *.pgp or *.tar.gz files
+#    so you know what you're dealing with at a quick glance.
 # Example ~/.bkp.inc.*.* file contents:
 # /home/paperjam/git/.
 # /home/paperjam/Documents/.
@@ -45,7 +45,7 @@ main() {
 	    "-f"|"--from") shift; BKPFROM="${1}";;
 	    "-k"|"--key") shift; RCPNT="${1}";;
 	    "-d"|"--debug") set -x;;
-	    *) echo -ne "Usage: sudo $(basename "${BASH_SOURCE[0]}") [-(-t)o /backup/to/] [-(-f)rom username] [-(-k)ey some@email.org] [-(-d)ebug]\n" >&2; return 1;;
+	    *) echo -ne "Usage: sudo $(basename "${BASH_SOURCE[0]}") [-(-t)o /backup/to/] [-(-f)rom username] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
 	esac
 	shift
     done
@@ -61,29 +61,24 @@ main() {
 	  TARCM=( "$(type -P tar)" "--create" "--gzip" "$([[ -n "${EXC}" ]] && echo -n "--exclude-from=${EXC}")" "--exclude-backups" "--one-file-system" ) \
 	  GPG2C=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" "${RCPNT}" "--trust-model" "always" "--output" )
 
-    # Some sanity checking ...
+    # Sanity checks ...
     [[ ! -d "${BKPTO}" ]] && echo -ne "${BKPTO} not found.\n" >&2 && return 1
     [[ ! -d "/home/${BKPFROM}" ]] && echo -ne "/home/${BKPFROM} not found.\n" >&2 && return 1
     [[ -z "${INC[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
     [[ "${EUID}" -ne "0" ]] && echo -ne "Root access requirements not met.\n" >&2 && return 1
 
+    cmp() {
+	#shellcheck disable=SC2086,SC2046
+	time "${NICEC[@]}" "${TARCM[@]}" "--file" "${BKPTO}/${HOSTNAME}.${DT}.${TM}.${EP}.${1}" $(cat "${2}")
+    }
+
+    enc() {
+	#shellcheck disable=SC2086,SC2046
+	time "${NICEC[@]}" "${TARCM[@]}" $(cat "${2}") | "${GPG2C[@]}" "${BKPTO}/${HOSTNAME}.${DT}.${TM}.${EP}.${1}.pgp" "--encrypt"
+    }
+
     for ((i = 0; i < ${#INC[*]}; i++ )); do
-	[[ ${INC[i]} =~ (enc|cmp) ]] && local FUNC2DO="${BASH_REMATCH[1]}"
-	local ARCHEXT="${INC[i]##*.}.tar.gz"
-	case "${FUNC2DO}" in
-	    "cmp")
-		local CMPFL="${BKPTO}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHEXT}"
-		#shellcheck disable=SC2086,SC2046
-		time "${NICEC[@]}" "${TARCM[@]}" "--file" "${CMPFL}" $(cat ${INC[i]})
-		;;
-	    "enc")
-		local ENCFL="${BKPTO}/${HOSTNAME}.${DT}.${TM}.${EP}.${ARCHEXT}.pgp"
-		#shellcheck disable=SC2086,SC2046
-		time "${NICEC[@]}" "${TARCM[@]}" $(cat ${INC[i]}) | "${GPG2C[@]}" "${ENCFL}" "--encrypt"
-		;;
-	    *)
-		echo -ne "Error in ${INC[i]} file name.\nIt needs a '*.enc|cmp.*' part in it.\n" >&2
-	esac
+	[[ ${INC[i]} =~ (enc|cmp) ]] && "${BASH_REMATCH[1]}" "${INC[i]##*.}.tar.gz" "${INC[i]}"
     done
 }
 
