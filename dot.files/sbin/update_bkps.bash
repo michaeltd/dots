@@ -5,17 +5,17 @@
 # Configure backups with ~/.backup_include.(encrypt|compress).job_name definition files
 
 # Prereq's you'll need for this to work:
-# 0) add your users public key ($recipient) to root's keyring.
-#    Root access is required for system wide backups.
 # 1) ~/.backup_include.(compress|encrypt).job_name
 # 2) ~/.backup_exclude (optional)
-# 3) Update $definitions(user to read files from), $backup_to(where to backup) and $recipient(pubkey to encrypt to).
-#    Or call script with parameters: update_bkps.bash -f /path_to_defs -t /backups/folder -k some@key.org
+# 3) Update $definitions (localtion to read definitions from), $backup_to (where to backup) and $recipient (pubkey to encrypt to).
+#    Or call script with parameters: update_bkps.bash -f /path/to/defs -t /path/to/backups -k some@key.org
+# NOTE: add your $recipient public key to root's keyring, If you link this to /etc/cron.anything
 
 # .backup_include.*.* file name explanation:
-# /home/paperjam/.backup_include.*.job_name
-#        1              2        3    4
-# 1) This part will be given by your [-(-f)rom] switch (default /home/paperjam)
+# /path/to/defs/.backup_include.*.job_name
+# '            '               ' '        '
+#       1              2        3    4
+# 1) This part will be given by your [-(-f)rom] switch (default /home/username)
 #    The script will use it as a starting point to search for all .backup_* related files.
 #    The reason this var needs to be hardcoded or switched in is so you can run
 #    this script from cronjobs.
@@ -28,8 +28,8 @@
 #    so you know what you're dealing with at a quick glance.
 
 # Example ~/.backup_include.*.* file contents:
-# /home/paperjam/git/.
-# /home/paperjam/Documents/.
+# /home/username/git/.
+# /home/username/Documents/.
 
 # Example ~/.backup_exclude file contents:
 # */.git/*
