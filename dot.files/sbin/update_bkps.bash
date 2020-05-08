@@ -40,7 +40,6 @@
 
 main() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-    # Some defaults
     local definitions="/home/paperjam" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com"
 
     while [[ -n "${1}" ]]; do
@@ -61,19 +60,16 @@ main() {
     [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
     [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} is not a directory.\n" >&2 && return 1
 
-    # Full path executables, no aliases
     local -ra nice_cmd=( "nice" "-n" "19" ) \
 	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
 	  pgp_cmd=( "gpg2" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 
     compress() {
-	#shellcheck disable=SC2086,SC2046
-	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_fn}.${1##*.}.tar.gz" $(cat "${1}")
+	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_fn}.${1##*.}.tar.gz" "$(cat "${1}")"
     }
 
     encrypt() {
-	#shellcheck disable=SC2086,SC2046
-	time "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_fn}.${1##*.}.tar.gz.pgp" "--encrypt"
+	time "${nice_cmd[@]}" "${tar_cmd[@]}" "$(cat "${1}")" | "${pgp_cmd[@]}" "${job_fn}.${1##*.}.tar.gz.pgp" "--encrypt"
     }
 
     for include in "${includes[@]}"; do
