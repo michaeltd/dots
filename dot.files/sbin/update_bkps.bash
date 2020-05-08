@@ -57,7 +57,7 @@ main() {
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
 
     [[ ! -d "${definitions}" ]] && echo -ne "${definitions} is not a directory.\n" >&2 && return 1
-    [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
+    [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!\n" >&2 && return 1
     [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} is not a directory.\n" >&2 && return 1
 
     local -ra nice_cmd=( "nice" "-n" "19" ) \
