@@ -65,11 +65,13 @@ main() {
 	  pgp_cmd=( "gpg2" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 
     compress() {
-	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_fn}.${1##*.}.tar.gz" "$(cat "${1}")"
+	#shellcheck disable=SC2046
+	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_fn}.${1##*.}.tar.gz" $(cat "${1}")
     }
 
     encrypt() {
-	time "${nice_cmd[@]}" "${tar_cmd[@]}" "$(cat "${1}")" | "${pgp_cmd[@]}" "${job_fn}.${1##*.}.tar.gz.pgp" "--encrypt"
+	#shellcheck disable=SC2046
+	time "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_fn}.${1##*.}.tar.gz.pgp" "--encrypt"
     }
 
     for include in "${includes[@]}"; do
