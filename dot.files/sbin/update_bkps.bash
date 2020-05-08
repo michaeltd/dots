@@ -54,7 +54,6 @@ main() {
 	shift
     done
 
-    #shellcheck disable=SC2207
     local -ra includes=( "${definitions}"/.backup_include.* )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
 
