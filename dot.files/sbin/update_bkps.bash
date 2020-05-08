@@ -62,9 +62,9 @@ main() {
     [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} is not a directory.\n" >&2 && return 1
 
     # Full path executables, no aliases
-    local -ra nice_cmd=( "$(type -P nice)" "-n" "19" ) \
-	  tar_cmd=( "$(type -P tar)" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
-	  pgp_cmd=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
+    local -ra nice_cmd=( "nice" "-n" "19" ) \
+	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
+	  pgp_cmd=( "gpg2" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 
     compress() {
 	#shellcheck disable=SC2086,SC2046
