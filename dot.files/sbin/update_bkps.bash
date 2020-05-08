@@ -17,15 +17,12 @@
 #       1              2        3    4
 # 1) This part will be given by your [-(-f)rom] switch (default /home/username)
 #    The script will use it as a starting point to search for all .backup_* related files.
-#    The reason this var needs to be hardcoded or switched in is so you can run
-#    this script from cronjobs.
 # 2) .backup_include.* will be the search term for the definitions array.
 # 3) This part should be aither *.encrypt.* or *.compress.*.
 #    encrypt file definitions will result in encrypted tarballs,
 #    compress file definitions will result in unencrypted tarballs.
 # 4) The fifth and last part serves as the jobs name.
-#    It will end up in the resulting *.pgp or *.tar.gz file name
-#    so you know what you're dealing with at a quick glance.
+#    It will end up in the resulting *.pgp or *.tar.gz file name.
 
 # Example ~/.backup_include.*.* file contents:
 # /home/username/git/.
@@ -56,7 +53,6 @@ main() {
     local -ra includes=( "${definitions}"/.backup_include.* )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
 
-    [[ ! -d "${definitions}" ]] && echo -ne "${definitions} is not a directory.\n" >&2 && return 1
     [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!\n" >&2 && return 1
     [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} is not a directory.\n" >&2 && return 1
 
