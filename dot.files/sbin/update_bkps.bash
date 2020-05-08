@@ -53,20 +53,19 @@ main() {
 	esac
 	shift
     done
+
     #shellcheck disable=SC2207
     local -ra includes=( $("$(type -P ls)" "${definitions}"/.backup_include.*) )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
+
+    [[ ! -d "${definitions}" ]] && echo -ne "${definitions} is not a directory.\n" >&2 && return 1
+    [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
+    [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} is not a directory.\n" >&2 && return 1
 
     # Full path executables, no aliases
     local -ra nice_cmd=( "$(type -P nice)" "-n" "19" ) \
 	  tar_cmd=( "$(type -P tar)" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
 	  pgp_cmd=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
-
-    # Sanity checks ...
-    [[ ! -d "${definitions}" ]] && echo -ne "${definitions} not found.\n" >&2 && return 1
-    [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} not found.\n" >&2 && return 1
-    [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
-    [[ "${EUID}" -ne "0" ]] && echo -ne "Privilaged access requirements not met.\n" >&2 && return 1
 
     compress() {
 	#shellcheck disable=SC2086,SC2046

@@ -15,34 +15,9 @@ alarm() {
 	 file:///mnt/data/Documents/Music/Mark-King/Level-Best/
 }
 
-backup(){
-    /home/paperjam/sbin/update_bkps.bash -f "/home/paperjam/.bkps" -t "/mnt/el/Documents/BKP/LINUX/paperjam" -k "tsouchlarakis@gmail.com"
-    /home/paperjam/sbin/cleanup_bkps.bash -b "/mnt/el/Documents/BKP/LINUX/paperjam" -k 2
-}
-
-_backup() {
-    echo -ne " -- ${FUNCNAME[0]} --\n"
-
-    local -r bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \
-          xcldf="${HOME}/.bkp.exclude" rcpnt="tsouchlarakis@gmail.com"
-
-    local -r outfl="${bkpt}/${USER}.$(date +%y%m%d.%H%M.%s).tar.gz.pgp"
-
-    local -r nicm=( "$(type -P nice)" "-n" "9" ) \
-	  tarc=( "$(type -P tar)" "-cz" "--exclude-from=${xcldf}" \
-		 "--exclude-backups" "--one-file-system" "${bkpd}/." ) \
-	  pgcm=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" \
-		 "--recipient" "${rcpnt}" "--trust-model" "always" "--output" "${outfl}" "--encrypt" )
-
-    mkdir -p "${bkpt}"
-
-    if [[ -d "${bkpt}" ]]; then
-	time ${nicm[@]} ${tarc[@]} | ${pgcm[@]}
-	~/sbin/cleanup_bkps.bash -b "${bkpt}" -k 2
-    else
-	echo "Backup location: ${bkpt} not found." >&2
-	exit 1
-    fi
+backup() {
+    ~/sbin/update_bkps.bash -f ~/".bkps" -t "/mnt/el/Documents/BKP/LINUX/paperjam" -k "tsouchlarakis@gmail.com"
+    ~/sbin/cleanup_bkps.bash -b "/mnt/el/Documents/BKP/LINUX/paperjam" -k 2
 }
 
 main() {
