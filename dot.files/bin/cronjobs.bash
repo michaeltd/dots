@@ -15,7 +15,12 @@ alarm() {
 	 file:///mnt/data/Documents/Music/Mark-King/Level-Best/
 }
 
-backup() {
+backup(){
+    /home/paperjam/sbin/update_bkps.bash -f "/home/paperjam/.bkps" -t "/mnt/el/Documents/BKP/LINUX/paperjam" -k "tsouchlarakis@gmail.com"
+    /home/paperjam/sbin/cleanup_bkps.bash -b "/mnt/el/Documents/BKP/LINUX/paperjam" -k 2
+}
+
+_backup() {
     echo -ne " -- ${FUNCNAME[0]} --\n"
 
     local -r bkpt="/mnt/el/Documents/BKP/LINUX/${USER}" bkpd="${HOME}" \

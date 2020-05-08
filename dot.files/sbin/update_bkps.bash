@@ -5,11 +5,11 @@
 # Configure backups with ~/.backup_include.(encrypt|compress).job_name definition files
 
 # Prereq's you'll need for this to work:
-# 0) add your users public key ($RECIPIENT) to root's keyring.
+# 0) add your users public key ($recipient) to root's keyring.
 #    Root access is required for system wide backups.
 # 1) ~/.backup_include.(compress|encrypt).job_name
 # 2) ~/.backup_exclude (optional)
-# 3) Update $DEFINITIONS(user to read files from), $BACKUP_TO(where to backup) and $RECIPIENT(pubkey to encrypt to).
+# 3) Update $definitions(user to read files from), $backup_to(where to backup) and $recipient(pubkey to encrypt to).
 #    Or call script with parameters: update_bkps.bash -f /path_to_defs -t /backups/folder -k some@key.org
 
 # .backup_include.*.* file name explanation:
@@ -39,47 +39,47 @@
 # You can ommit exlude file safely
 
 main() {
-    echo -ne " -- $(basename "$(realpath "${BASH_SOURCE[0]}")") --\n"
+    echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
     # Some defaults
-    local DEFINITIONS="/home/paperjam" BACKUP_TO="/mnt/el/Documents/BKP/LINUX" RECIPIENT="tsouchlarakis@gmail.com"
+    local definitions="/home/paperjam" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com"
 
     while [[ -n "${1}" ]]; do
 	case "${1}" in
-	    "-f"|"--from") shift; DEFINITIONS="${1}";;
-	    "-t"|"--to") shift; BACKUP_TO="${1}";;
-	    "-k"|"--key") shift; RECIPIENT="${1}";;
+	    "-f"|"--from") shift; definitions="${1}";;
+	    "-t"|"--to") shift; backup_to="${1}";;
+	    "-k"|"--key") shift; recipient="${1}";;
 	    "-d"|"--debug") set -x;;
-	    *) echo -ne "Usage: $(basename "${BASH_SOURCE[0]}") [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
+	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-d)ebug]\n" >&2; return 1;;
 	esac
 	shift
     done
     #shellcheck disable=SC2207
-    local -ra INCLUDES=( $($(type -P ls) "${DEFINITIONS}"/.backup_include.* 2>/dev/null) )
-    local -r EXCLUDE="${DEFINITIONS}/.backup_exclude" JOB_FN="${BACKUP_TO}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
+    local -ra includes=( $(/bin/ls "${definitions}"/.backup_include.*) )
+    local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
 
     # Full path executables, no aliases
-    local -ra NICE_CMD=( "$(type -P nice)" "-n" "19" ) \
-	  TAR_CMD=( "$(type -P tar)" "--create" "--gzip" "$([[ -r "${EXCLUDE}" ]] && echo -n "--exclude-from=${EXCLUDE}")" "--exclude-backups" "--one-file-system" ) \
-	  PGP_CMD=( "$(type -P gpg2)" "--batch" "--yes" "--quiet" "--recipient" "${RECIPIENT}" "--trust-model" "always" "--output" )
+    local -ra nice_cmd=( "nice" "-n" "19" ) \
+	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
+	  pgp_cmd=( "gpg2" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 
     # Sanity checks ...
-    [[ ! -d "${DEFINITIONS}" ]] && echo -ne "${DEFINITIONS} not found.\n" >&2 && return 1
-    [[ ! -d "${BACKUP_TO}" ]] && echo -ne "${BACKUP_TO} not found.\n" >&2 && return 1
-    [[ -z "${INCLUDES[*]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
+    [[ ! -d "${definitions}" ]] && echo -ne "${definitions} not found.\n" >&2 && return 1
+    [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} not found.\n" >&2 && return 1
+    [[ -z "${includes[@]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!" >&2 && return 1
     [[ "${EUID}" -ne "0" ]] && echo -ne "Root access requirements not met.\n" >&2 && return 1
 
     compress() {
 	#shellcheck disable=SC2086,SC2046
-	time "${NICE_CMD[@]}" "${TAR_CMD[@]}" "--file" "${JOB_FN}.${1##*.}.tar.gz" $(cat "${1}")
+	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_fn}.${1##*.}.tar.gz" $(cat "${1}")
     }
 
     encrypt() {
 	#shellcheck disable=SC2086,SC2046
-	time "${NICE_CMD[@]}" "${TAR_CMD[@]}" $(cat "${1}") | "${PGP_CMD[@]}" "${JOB_FN}.${1##*.}.tar.gz.pgp" "--encrypt"
+	time "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_fn}.${1##*.}.tar.gz.pgp" "--encrypt"
     }
 
-    for INCLUDE in "${INCLUDES[@]}"; do
-	[[ ${INCLUDE} =~ (compress|encrypt) ]] && "${BASH_REMATCH[1]}" "${INCLUDE}"
+    for include in "${includes[@]}"; do
+	[[ ${include} =~ (compress|encrypt) ]] && "${BASH_REMATCH[1]}" "${include}"
     done
 }
 
