@@ -55,7 +55,7 @@ main() {
     done
 
     #shellcheck disable=SC2207
-    local -ra includes=( $("$(type -P ls)" "${definitions}"/.backup_include.*) )
+    local -ra includes=( "${definitions}"/.backup_include.* )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
 
     [[ ! -d "${definitions}" ]] && echo -ne "${definitions} is not a directory.\n" >&2 && return 1
