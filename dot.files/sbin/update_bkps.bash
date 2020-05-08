@@ -56,6 +56,7 @@ main() {
     [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!\n" >&2 && return 1
     [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} is not a directory.\n" >&2 && return 1
 
+
     local -ra nice_cmd=( "nice" "-n" "19" ) \
 	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
 	  pgp_cmd=( "gpg2" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
