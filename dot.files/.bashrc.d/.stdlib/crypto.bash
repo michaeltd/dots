@@ -33,14 +33,14 @@ hash_stdin() {
     [[ "${#}" -ne "1" ]] && \
 	echo "Usage: ${FUNCNAME[0]} cipher" && \
 	return 1
-    openssl dgst -"${1}"
+    $(type -P openssl) dgst -"${1}"
 }
 
 transcode_stdin() {
     [[ "${#}" -ne "2" ]] && \
 	echo "Usage: ${FUNCNAME[0]} e|d cipher" && \
 	return 1
-    openssl enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
+    $(type -P openssl) enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
 }
 
 transcode_pgp() {
@@ -49,7 +49,7 @@ transcode_pgp() {
 	d|-d|--decrypt) shift; local fn="--decrypt" out="${1//.pgp/}";;
 	*) echo "Usage: ${FUNCNAME[0]} e|d file|file.pgp"; return 1;;
     esac
-    $(type -P gpg2) --default-recipient-self --output "${out}" "${fn}" "${1}"
+    $(type -P gpg) --default-recipient-self --output "${out}" "${fn}" "${1}"
 }
 
 rot_13(){

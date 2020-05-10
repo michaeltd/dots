@@ -4,29 +4,23 @@
 # 1) Set a strict /etc/hosts file 2) Make sure you have one
 echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
 
-PROTOCOL="https://"
+url="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 
-DOMAIN="raw.githubusercontent.com"
+hosts_file="/etc/hosts"
 
-PAGE="StevenBlack/hosts/master/hosts"
+random_file="/tmp/${RANDOM}.$$"
 
-URL="${PROTOCOL}${DOMAIN}/${PAGE}"
-
-HOSTS_FILE="/etc/hosts"
-
-RANDOM_FILE="/tmp/${RANDOM}.$$"
-
-curl "${URL}" > "${RANDOM_FILE}"
+curl "${url}" > "${random_file}"
 
 #wget -q -O - "${URL}" > "${RANDOM_FILE}"
 
 #shellcheck disable=SC2207
-BYTES=($(wc -c "${RANDOM_FILE}"))
+bytes=($(wc -c "${random_file}"))
 
-if [[ "${BYTES[0]}" -eq "0" || "${EUID}" != "0" ]]; then
-    echo -ne "\$EUID != 0 or ${RANDOM_FILE} is empty (zero bytes in size).\nCheck your network status or/and status of this page:\n${URL}\n" >&2
+if [[ "${bytes[0]}" -eq "0" || "${EUID}" != "0" ]]; then
+    echo -ne "\$EUID != 0 or ${random_file} is empty (zero bytes in size).\nCheck your network status or/and status of this page:\n${url}\n" >&2
     exit 1
 else
-    echo -ne "cat ${RANDOM_FILE} > ${HOSTS_FILE}\n"
-    cat "${RANDOM_FILE}" > "${HOSTS_FILE}"
+    echo -ne "cat ${random_file} > ${hosts_file}\n"
+    cat "${random_file}" > "${hosts_file}"
 fi

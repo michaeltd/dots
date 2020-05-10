@@ -24,11 +24,11 @@
 # 4) The fifth and last part serves as the jobs name.
 #    It will end up in the resulting *.pgp or *.tar.gz file name.
 
-# Example ~/.backup_include.*.* file contents:
+# Sample ~/.backup_include.*.* file contents:
 # /home/username/git/.
 # /home/username/Documents/.
 
-# Example ~/.backup_exclude file contents:
+# Sample ~/.backup_exclude file contents:
 # */.git/*
 # */.github/*
 # */node_modules/*
@@ -55,7 +55,6 @@ main() {
 
     [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!\n" >&2 && return 1
     [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} is not a directory.\n" >&2 && return 1
-
 
     local -ra nice_cmd=( "nice" "-n" "19" ) \
 	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \

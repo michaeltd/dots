@@ -6,18 +6,24 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 
+
 general {
-        colors = true
-        interval = 5
+	output_format = "i3bar"
+	colors = true
+	interval = 5
+	color_good = "#00FF00"
+	color_degraded = "#FFFF00"
+	color_bad = "#FF0000"
 }
 
-#order += "ipv6"
+# order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "disk /"
 order += "disk /mnt/data"
 order += "battery all"
 order += "load"
+# order += "memory"
 order += "tztime local"
 
 wireless _first_ {
@@ -48,5 +54,5 @@ disk "/" {
 }
 
 disk "/mnt/data" {
-        format = "%avail"
+        format = "%free"
 }

@@ -7,35 +7,35 @@
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
 if type -P apt-get &>/dev/null; then
-    alias pkg_search='apt search' pkg_install='sudo apt-get install' \
-	  pkg_remove='sudo apt-get remove --purge'
-    alias dist_update='sudo apt-get update' dist_upgrade='sudo apt-get dist-upgrade' \
-	  dist_cleanup='sudo apt-get autoremove'
+    alias psearch='apt search' pinstall='sudo apt-get install' \
+	  premove='sudo apt-get remove --purge'
+    alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' \
+	  dcleanup='sudo apt-get autoremove'
 elif type -P zypper &>/dev/null; then
-    alias pkg_search='zypper search' pkg_install='sudo zypper install' \
-	  pkg_remove='sudo zypper remove --clean-deps'
-    alias dist_update='sudo zypper refresh' dist_upgrade='sudo zypper update' \
-	  dist_cleanup='sudo zypper rm -u'
+    alias psearch='zypper search' pinstall='sudo zypper install' \
+	  premove='sudo zypper remove --clean-deps'
+    alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' \
+	  dcleanup='sudo zypper rm -u'
 elif type -P yum &>/dev/null; then
-    alias pkg_search='yum search' pkg_install='sudo yum install' \
-	  pkg_remove='sudo yum remove'
-    alias dist_update='sudo yum check-update' dist_upgrade='sudo yum update' \
-	  dist_cleanup='sudo yum autoremove'
+    alias psearch='yum search' pinstall='sudo yum install' \
+	  premove='sudo yum remove'
+    alias dupdate='sudo yum check-update' dupgrade='sudo yum update' \
+	  dcleanup='sudo yum autoremove'
 elif type -P pacman &>/dev/null; then
-    alias pkg_search='pacman -Ss' pkg_install='sudo pacman -S' \
-	  pkg_remove='sudo pacman -R'
-    alias dist_update='sudo pacman -Sy' dist_upgrade='sudo pacman -Syu' \
-	  dist_cleanup='sudo pacman -Rsn'
+    alias psearch='pacman -Ss' pinstall='sudo pacman -S' \
+	  premove='sudo pacman -R'
+    alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' \
+	  dcleanup='sudo pacman -Rsn'
 elif type -P emerge &>/dev/null; then
-    alias pkg_search='emerge -s' pkg_install='sudo emerge -av' \
-	  pkg_remove='sudo emerge -avC'
-    alias dist_update='sudo emerge --sync' dist_upgrade='sudo emerge -avuND @world' \
-	  dist_cleanup='sudo emerge --ask --depclean'
+    alias psearch='emerge -s' pinstall='sudo emerge -av' \
+	  premove='sudo emerge -avC'
+    alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @world' \
+	  dcleanup='sudo emerge --ask --depclean'
 elif type -P pkg &>/dev/null; then
-    alias pkg_search='pkg -o search' pkg_install='sudo pkg install' \
-	  pkg_remove='sudo pkg remove'
-    alias dist_update='sudo pkg update' dist_upgrade='sudo pkg upgrade' \
-	  dist_cleanup='sudo pkg autoremove'
+    alias psearch='pkg -o search' pinstall='sudo pkg install' \
+	  premove='sudo pkg remove'
+    alias dupdate='sudo pkg update' dupgrade='sudo pkg upgrade' \
+	  dcleanup='sudo pkg autoremove'
 fi
 
 if [[ -x "$(type -P dircolors)" ]]; then
@@ -146,4 +146,5 @@ alias netris='ssh netris.rocketnine.space'
 alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done|lolcat'
 
 # TermBin https://termbin.com/
+# Usage: "command | termbin" or termbin <<<$(command)
 alias termbin='nc termbin.com 9999'

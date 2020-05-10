@@ -4,11 +4,11 @@
 
 main() {
     if [ $(type -P i3lock) ]; then
-	local -r IMAGE="/tmp/${$}.i3lock.png" BLURTYPE="0x05"
-	scrot -z "${IMAGE}"
-	convert "${IMAGE}" -blur "${BLURTYPE}" "${IMAGE}"
-	i3lock -i "${IMAGE}"
-	rm "${IMAGE}"
+	local -r image="/tmp/${$}.i3lock.png" blurtype="0x05"
+	scrot -z "${image}"
+	convert "${image}" -blur "${blurtype}" "${image}"
+	i3lock -i "${image}"
+	rm "${image}"
     elif [ $(type -P xscreensaver-command) ]; then
 	xscreensaver-command -lock
     else
