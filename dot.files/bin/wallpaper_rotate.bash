@@ -4,18 +4,23 @@
 # Script to go through a directory of background images as wallpapers in a timely fashion
 #shellcheck shell=bash
 
+# Font attributes, Colors, bg colors
+declare -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)"
+declare -r black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)"
+declare -r bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
+
 #shellcheck disable=SC2034,SC2155
 declare -ra WPUSAGE=("\n \
     ${bold}Script to rotate backgrounds in wm's with out such options \n \
     like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
-    ${underline}Usage${end_underline}: ${blue}$(basename "${BASH_SOURCE[0]}")${reset} & from a terminal or your startup scripts.\n\n \
+    ${underline}Usage${end_underline}: ${green}${BASH_SOURCE[0]##*/}${reset} & from a terminal or your startup scripts.\n\n \
     Options may be: \n \
-    ${blue}$(basename "${BASH_SOURCE[0]}")${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
-    ${blue}$(basename "${BASH_SOURCE[0]}")${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
-    ${blue}$(basename "${BASH_SOURCE[0]}")${reset} ${magenta}delay${reset} ${yellow}1440${reset} - set interval (in minutes) \n \
-    ${blue}$(basename "${BASH_SOURCE[0]}")${reset} ${magenta}replay${reset} [${yellow}3${reset}] - display previous image # \n \
-    ${blue}$(basename "${BASH_SOURCE[0]}")${reset} ${magenta}help${reset} - this message \n \
-    ${blue}$(basename "${BASH_SOURCE[0]}")${reset} without options will start rotating images.\n\n")
+    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
+    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
+    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}delay${reset} ${yellow}1440${reset} - set interval (in minutes) \n \
+    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}replay${reset} [${yellow}3${reset}] - display previous image # \n \
+    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}help${reset} - this message \n \
+    ${green}${BASH_SOURCE[0]##*/}${reset} without options will start rotating images.\n\n")
 
 #shellcheck disable=SC2034,SC2155
 declare -ra FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
