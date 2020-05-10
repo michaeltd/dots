@@ -6,16 +6,16 @@
 # │                                                       │
 # │           Michael Tsouchlarakis / michaeltd           │
 # │                                                       │
-# │      Work:  tsouchlarakis@gmail.com                   │
-# │      FOSS:  Gentoo Linux avocado.                     │
+# │        Work:  tsouchlarakis@gmail.com                 │
+# │        FOSS:  Gentoo Linux avocado.                   │
 # │                                                       │
-# │   Twitter:  https://twitter.com/tsouchlarakismd       │
-# │       npm:  https://npmjs.com/~michaeltd              │
-# │    GitHub:  https://github.com/michaeltd              │ 
-# │  LinkedIn:  https://linkedin.com/in/michaeltd         │
-# │       Web:  https://michaeltd.netlify.com/            │
+# │     Twitter:  https://twitter.com/tsouchlarakismd     │
+# │         npm:  https://npmjs.com/~michaeltd            │
+# │      GitHub:  https://github.com/michaeltd            │ 
+# │    LinkedIn:  https://linkedin.com/in/michaeltd       │
+# │         Web:  https://michaeltd.netlify.com/          │
 # │                                                       │
-# │      Card:  curl -sL https://tinyurl.com/mtd-card|sh  │
+# │        Card:  curl -sL tinyurl.com/mtd-card|sh        │
 # │                                                       │
 # ╰───────────────────────────────────────────────────────╯
 # Font attributes, colors, bg colors
@@ -25,16 +25,16 @@ l[1]="    ${green}╭───────────────────�
 l[2]="    ${green}│                                                       │"
 l[3]="    ${green}│${reset}           ${bold}${blue}Michael Tsouchlarakis / michaeltd${reset}           ${green}│"
 l[4]="    ${green}│                                                       │"
-l[5]="    ${green}│${reset}      ${bold}Work:${reset}  tsouchlarakis@gmail.com                   ${green}│"
-l[6]="    ${green}│${reset}      ${bold}FOSS:${reset}  Gentoo Linux avocado.                     ${green}│"
+l[5]="    ${green}│${reset}        ${bold}Work:${reset}  tsouchlarakis@gmail.com                 ${green}│"
+l[6]="    ${green}│${reset}        ${bold}FOSS:${reset}  Gentoo Linux avocado.                   ${green}│"
 l[7]="    ${green}│                                                       │"
-l[8]="    ${green}│${reset}   ${bold}Twitter:${reset}  ${dim}https://twitter.com/${reset}${magenta}tsouchlarakismd       ${green}│"
-l[9]="    ${green}│${reset}       ${bold}npm:${reset}  ${dim}https://npmjs.com/${reset}~${red}michaeltd              ${green}│"
-l[10]="    ${green}│${reset}    ${bold}GitHub:${reset}  ${dim}https://github.com/${reset}${green}michaeltd              ${green}│"
-l[11]="    ${green}│${reset}  ${bold}LinkedIn:${reset}  ${dim}https://linkedin.com/in/${reset}${blue}michaeltd         ${green}│"
-l[12]="    ${green}│${reset}       ${bold}Web:${reset}  ${dim}https://${yellow}michaeltd${reset}${dim}.netlify.com/${reset}            ${green}│"
+l[8]="    ${green}│${reset}     ${bold}Twitter:${reset}  ${dim}https://twitter.com/${reset}${magenta}tsouchlarakismd     ${green}│"
+l[9]="    ${green}│${reset}         ${bold}npm:${reset}  ${dim}https://npmjs.com/${reset}~${red}michaeltd            ${green}│"
+l[10]="    ${green}│${reset}      ${bold}GitHub:${reset}  ${dim}https://github.com/${reset}${green}michaeltd            ${green}│"
+l[11]="    ${green}│${reset}    ${bold}LinkedIn:${reset}  ${dim}https://linkedin.com/in/${reset}${blue}michaeltd       ${green}│"
+l[12]="    ${green}│${reset}         ${bold}Web:${reset}  ${dim}https://${yellow}michaeltd${reset}${dim}.netlify.com/${reset}          ${green}│"
 l[13]="    ${green}│                                                       │"
-l[14]="    ${green}│${reset}      ${bold}Card:${reset}  curl -sL https://tinyurl.com/mtd-card|sh  ${green}│"
+l[14]="    ${green}│${reset}        ${bold}Card:${reset}  curl -sL tinyurl.com/mtd-card|sh        ${green}│"
 l[15]="    ${green}│                                                       │"
 l[16]="    ${green}╰───────────────────────────────────────────────────────╯"
 
