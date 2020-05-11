@@ -10,7 +10,7 @@ main() {
     
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
-    backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="0" nothing2do="0"
+    backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="0"
 
     # Source explicitly for non interactive shells.
     srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
@@ -22,7 +22,7 @@ main() {
     while [[ -n "${1}" ]]; do
 	case "${1}" in
 	    "-b"|"--bkpdir") shift; backup_dir="${1}";;
-	    "-s"|"--simulate") remove_backups="1";;
+	    "-s"|"--simulate") remove_backups="0";;
 	    "-k"|"--keep") shift; days2keep="${1}";;
 	    "-d"|"--debug") set -x;;
 	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-(-b)kpdir /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-d)ebug (default: off)]\n" >&2; return 1;;
@@ -51,30 +51,34 @@ main() {
     #shellcheck disable=SC2207
     files=( "${backup_dir}"/*.tar.gz* )
 
-    for (( x = 0; x < ${#files[@]}; x++ )); do
+    for x in "${!files[@]}"; do
+	bfns+=( "${files[x]##*/}" )
 	bfn="${files[x]##*/}"
-	for part in $(split "${bfn}" .); do
-	    if [[ "${part}" =~ ^[0-9]{10}$ ]]; then
-		fns[x]="${bfn}"
-		dts[x]="${part}"
-	    fi
-	done
+	if [[ "${bfn}" =~ ([0-9]{10}) ]]; then
+	    fns[x]="${bfn}"
+	    dts[x]="${BASH_REMATCH[1]}"
+	fi
     done
+
+    # echo ${bfns[@]}
+    # echo ${fns[@]}
+    # echo ${dts[@]}
 
     for (( y = 0; y < ${#fns[@]}; y++ )); do
 	if [[ "$(epochdd "$(max "${dts[@]}")" "${dts[y]}")" -ge "${days2keep}" ]]; then
 	    nothing2do="1"
-	    if [[ "${remove_backups}" -eq "1" ]]; then
-		if [[ "$(lastdayofmonth "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
-		    #shellcheck disable=SC2154
-		    echo "Not running: ${bold}'mkdir -vp ${backup_dir}/bkp && cp -v ${backup_dir}/${fns[y]} ${backup_dir}/bkp/${fns[y]}'${reset}"
-		fi
-		echo "Not running: ${bold}'rm -v ${backup_dir}/${fns[y]}'${reset}"
-	    else
-		if [[ "$(lastdayofmonth "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
+	    if [[ "$(lastdayofmonth "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
+	    	#shellcheck disable=SC2154
+		if [[ "${remove_backups}" -eq "1" ]]; then
 		    mkdir -vp "${backup_dir}/bkp" && cp -v "${backup_dir}/${fns[y]}" "${backup_dir}/bkp/${fns[y]}"
+		else
+		    echo "Not running: mkdir -vp ${backup_dir}/bkp && cp -v ${backup_dir}/${fns[y]} ${backup_dir}/bkp/${fns[y]}"
 		fi
+	    fi
+	    if [[ "${remove_backups}" -eq "1" ]]; then
 		rm -v "${backup_dir}/${fns[y]}"
+	    else
+		echo "Not running: rm -v ${backup_dir}/${fns[y]}"
 	    fi
 	fi
     done

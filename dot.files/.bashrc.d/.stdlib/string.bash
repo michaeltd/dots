@@ -10,6 +10,20 @@ split() {
     echo -ne "${arr[*]}\n"   # echo -ne "${arr[@]}\n"
 }
 
+lower() {
+    while [[ -n "${1}" ]]; do
+	printf '%s\n' "${1,,}"
+	shift
+    done
+}
+
+upper() {
+    while [[ -n "${1}" ]]; do
+	printf '%s\n' "${1^^}"
+	shift
+    done
+}
+
 alphabetic_only() {
     # echo -ne "${@//[![:alpha:]]}\n"
     echo -ne "${*//[![:alpha:]]}\n"

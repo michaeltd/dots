@@ -103,6 +103,9 @@ main() {
 	    "replay")
 		shift
 		tail -n "${1:-1}" "${WPLG}" |head -n 1|awk '{print $NF}' ;;
+	    "showlog")
+		shift
+		cat "${WPLG}";;
 	    *)
 		echo -ne "${WPUSAGE[*]}" ;;
 	esac
@@ -118,10 +121,10 @@ main() {
 
 	    # fill a WallPaperS list
 	    for D in "${DIRS[@]}"; do
-		for P in $("${LS}" -1 "${D}"); do
-		    FN="${D}/${P}" FE="${P:(-4)}"
-		    if [[ -f "${FN}" ]] && [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
-			WPS+=( "${FN}" )
+		for P in "${D}"/*; do
+		    FE="${P:(-4)}"
+		    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
+			WPS+=( "${P}" )
 		    fi
 		done
 	    done
@@ -136,7 +139,7 @@ main() {
 	    # set wallpaper, log, wait
 	    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
 	    
-	    printf "%s %s %s\n" "$(date +%Y%m%d-%H%M%S)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
+	    printf "%s %s %s\n" "$(date +%y%m%d_%H%M)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
 	    sleep "${WAIT}"
 	done
     fi

@@ -13,13 +13,13 @@ findstringindir() {
     grep -rnw "${2}" -e "${1}"
 }
 
-allemojis() {
-    for (( x = 2600; x <= 2700; x++ )); do
-	echo -n -e " \u${x}"
-	sleep .1
-    done
-    echo
-}
+# allemojis() {
+#     for (( x = 2600; x <= 2700; x++ )); do
+# 	echo -n -e " \u${x}"
+# 	sleep .1
+#     done
+#     echo
+# }
 
 countdown() {
     clear
@@ -54,7 +54,7 @@ webp2jpg() {
     [[ -z "${1}" ]] && \
 	echo -ne "Usage: ${FUNCNAME[0]} files to convert\n" && \
 	return 1
-    for i in ${@}; do
+    for i in "${@}"; do
 	ffmpeg -i "${i}" "${i//.webp/.jpg}"
     done
 }
@@ -81,7 +81,7 @@ pyhttpserv() {
     # Be careful with what you expose to the world. \
     # Use --bind 127.0.0.1 if you want to make it local only.
     # Or the old days with python 2: python -m SimpleHTTPServer 8080
-    local -a pv=( $(python --version) )
+    local -ar pv=( $(python --version) )
     if [[ "${pv[1]}" =~ ^3.* ]]; then
 	python -m http.server 8080 --bind 127.0.0.1
     elif [[ "${pv[1]}" =~ ^2.* ]]; then
@@ -96,7 +96,7 @@ rcm() {
     # (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
     # Usage : rcm niceness executable command line arguments
     # Example: rcm 9 conky -qdc ~/.conkyrc
-    (( ${#} < 2 )) && echo -ne "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t\n" >&2 && return 1
+    [[ "${#}" -lt "2" ]] && printf "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t\n" >&2 && return 1
     #shellcheck disable=SC2155
     local -r bin=$(type -P "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
     [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &>/dev/null &
@@ -197,7 +197,7 @@ mem_sum() {
 	grep "${1}"
 }
 
-print_mem() {
+mem_useage() {
     #Report Total Used and Available mem in human readable format
     total=$(head -1 /proc/meminfo |awk '{print $2}')
     avail=$(head -2 /proc/meminfo |tail -1 |awk '{print $2}')
@@ -210,10 +210,10 @@ print_mem() {
 }
 
 services() {
-    if [[ -z "${1}" ]]; then
-	echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2
+    [[ -z "${1}" ]] && \
+	echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
 	return 1
-    elif [[ ("${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status") && ("${2}" == "all") ]]; then
+    if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
 	declare -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
     else
 	declare -a srvcs=( "${@}" )
@@ -224,17 +224,13 @@ services() {
     done
 }
 
-set_date() {
-    sudo ntpdate 0.gentoo.pool.ntp.org
-}
-
 show_uptime() {
     #shellcheck disable=SC2154
     echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
     uptime|awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
-log_out() {
+logmeout() {
     # Can't log out root like that
     [[ "${EUID}" -eq "0" ]] && printf "Can't log out root this way\n" >&2 && return 1
     kill -15 -1

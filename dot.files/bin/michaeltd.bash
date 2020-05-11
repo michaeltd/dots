@@ -21,7 +21,7 @@
 # Font attributes, colors, bg_colors
 readonly reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" \
 	 blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" \
-	 reverse="$(tput rev)" hidden="$(tput invis)" 
+	 reverse="$(tput rev)" hidden="$(tput invis)"
 
 readonly black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" \
 	 yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" \

@@ -28,12 +28,12 @@ rcm 9 pasystray
 # Systray network manager applet
 rcm 9 nm-applet
 
-if [[ -r "/etc/os-release" ]]; then 
+if [ -r "/etc/os-release" ]; then 
     # Per distro setup.
     . /etc/os-release
-    if [[ "${ID}" == "gentoo" ]]; then
+    if [ "${ID}" == "gentoo" ]; then
 	rcm 9 conky -qd
-    elif [[ "${ID}" == "devuan" ]]; then
+    elif [ "${ID}" == "devuan" ]; then
 	rcm 9 conky -qd
     else
 	rcm 9 conky -qd

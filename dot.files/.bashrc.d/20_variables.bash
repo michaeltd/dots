@@ -25,7 +25,7 @@ else
     export BROWSER="$(type -P w3m||type -P links||type -P lynx)"
 fi
 
-export TERMINAL="$(type -P gnome-terminal||type -P konsole||type -P terminology||type -P xfce4-terminal||type -P xterm)"
+export TERMINAL="$(type -P xterm||type -P konsole||type -P gnome-terminal||type -P terminology||type -P xfce4-terminal)"
 
 # Colorfull manpages (works with less as a pager)
 # https://www.tecmint.com/view-colored-man-pages-in-linux/

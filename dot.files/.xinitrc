@@ -73,4 +73,5 @@ elif [[ "${WM[0]}" =~ bspwm ]]; then
     WM=( "/etc/X11/Sessions/bspwm" )
 fi
 
-exec "${WM[@]}"
+# exec "${WM[@]}"
+dbus-launch --exit-with-session "${WM[@]}"
