@@ -7,36 +7,30 @@ split() {
     # from pure-bash-bible
     # Usage: split "string" "delimiter"
     IFS=$'\n' read -d "" -ra arr <<< "${1//${2}/$'\n'}"
-    echo -ne "${arr[*]}\n"   # echo -ne "${arr[@]}\n"
+    printf "${arr[*]}"
 }
 
-lower() {
-    while [[ -n "${1}" ]]; do
-	printf '%s\n' "${1,,}"
-	shift
-    done
+2lower_case() {
+    printf '%s' "${*,,}"
 }
 
-upper() {
-    while [[ -n "${1}" ]]; do
-	printf '%s\n' "${1^^}"
-	shift
-    done
+2upper_case() {
+    printf '%s' "${*^^}"
 }
 
 alphabetic_only() {
     # echo -ne "${@//[![:alpha:]]}\n"
-    echo -ne "${*//[![:alpha:]]}\n"
+    printf "${*//[![:alpha:]]}"
 }
 
 alphanumeric_only() {
     # echo -ne "${@//[![:alnum:]]}\n"
-    echo -ne "${*//[![:alnum:]]}\n"
+    printf "${*//[![:alnum:]]}"
 }
 
 digits_only() {
     # echo -ne "${@//[![:digit:]]}\n"
-    echo -ne "${*//[![:digit:]]}\n"
+    printf "${*//[![:digit:]]}"
 }
 
 remove_spaces() {
@@ -49,7 +43,7 @@ remove_spaces() {
     # shopt -u extglob
 
     shopt -s extglob # Allow extended globbing
-    echo -ne "${*//+([[:space:]])/}\n"
+    printf "${*//+([[:space:]])/}"
     shopt -u extglob
 }
 
@@ -67,7 +61,7 @@ trim() {
     var="${var#"${var%%[![:space:]]*}"}"
     # remove trailing whitespace characters
     var="${var%"${var##*[![:space:]]}"}"
-    echo -ne "${var}\n"
+    printf "${var}"
 }
 
 left_pad() {
@@ -78,7 +72,7 @@ left_pad() {
     # remove trailing whitespace characters
     # var="${var%"${var##*[![:space:]]}"}"
     # echo -n "$var"
-    echo -n "${@#"${@%%[![:space:]]*}"}"
+    printf "${@#"${@%%[![:space:]]*}"}"
 }
 
 right_pad() {
@@ -89,5 +83,5 @@ right_pad() {
     # remove trailing whitespace characters
     # var="${var%"${var##*[![:space:]]}"}"
     # echo -n "$var"
-    echo -n "${@%"${@##*[![:space:]]}"}"
+    printf "${@%"${@##*[![:space:]]}"}"
 }
