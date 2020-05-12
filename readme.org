@@ -76,35 +76,33 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
     - If vim is your cup of tea, check out [[https://github.com/SpaceVim/SpaceVim][SpaceVim]], a community maintained vim distribution.
 
-*** Business Card
-    
-    Last but not least,
-
-    Two catchy little terminal business cards to flash to your coworkers - colleagues.
-
-    Shamelessly stolen from [[https://github.com/bnb/bitandbang][bitandbang]]
-
-    + [[dot.files/bin/michaeltd.bash][Terminal buisiness card v1.0]]
-    
-      ~curl -sL tinyurl.com/mtd-card|sh~
-      
-      Full bling business card.
-
-      It may or may not trigger your most security aware colleagues depending on sec. awareness and proximity.
-
-      #+html:<p align="center"><a href="dot.files/bin/michaeltd.bash"><img alt="tbcv1" src="assets/tbcv1.0.png"></a></p>
-
-    + [[card.txt][Terminal buisiness card v2.0]]
-
-      ~curl -sL tinyurl.com/mick-card~
-      
-      Non security triggering version for the low cost of minut less bling factor.
-    
-      #+html:<p align="center"><a href="card.txt"><img alt="tbcv2" src="assets/tbcv2.0.png"></a></p>
-
 *** [[bootstrap.bash]]
     #+html:<a name="bootstrap.bash"></a>
     How I migrate my .dots in new systems. Available only as reference, not for use.
+
+** Business Cards
+    
+   Two catchy little terminal business cards to flash to your coworkers - colleagues.
+
+   Shamelessly stolen from [[https://github.com/bnb/bitandbang][bitandbang]]
+
+   + [[dot.files/bin/michaeltd.bash][Terminal buisiness card v1.0]]
+    
+     ~curl -sL tinyurl.com/mtd-card|sh~
+      
+     Full bling business card.
+
+     It may or may not trigger your most security aware colleagues depending on sec. awareness and proximity.
+
+     #+html:<p align="center"><a href="dot.files/bin/michaeltd.bash"><img alt="tbcv1" src="assets/tbcv1.0.png"></a></p>
+
+   + [[card.txt][Terminal buisiness card v2.0]]
+
+     ~curl -sL tinyurl.com/mick-card~
+      
+     Non security triggering version for the low cost of minut less bling factor.
+    
+     #+html:<p align="center"><a href="card.txt"><img alt="tbcv2" src="assets/tbcv2.0.png"></a></p>
 
 ** Reference
 *** [[https://dotfiles.github.io/][GitHub ❤ ~/]]
