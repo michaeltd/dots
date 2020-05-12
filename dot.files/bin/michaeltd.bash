@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 #
+# Terminal business card v1.0
+#
 # https://tinyurl.com/create.php?source=create&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmichaeltd%2Fdots%2Fmaster%2Fdot.files%2Fbin%2Fmichaeltd.bash&alias=mtd-card
 # Write a nice business card on the terminal.
 #    ╭───────────────────────────────────────────────────────╮
