@@ -98,7 +98,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
       ~curl -sL tinyurl.com/mick-card~
       
-      Non security triggering version for the low cost of minute less bling factor.
+      Non security triggering version for the low cost of minut less bling factor.
     
       #+html:<p align="center"><a href="card.txt"><img alt="tbcv2" src="assets/tbcv2.0.png"></a></p>
 
