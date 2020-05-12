@@ -76,10 +76,6 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
     - If vim is your cup of tea, check out [[https://github.com/SpaceVim/SpaceVim][SpaceVim]], a community maintained vim distribution.
 
-*** [[bootstrap.bash]]
-    #+html:<a name="bootstrap.bash"></a>
-    How I migrate my .dots in new systems. Available only as reference, not for use.
-
 *** Business Card
     
     Last but not least,
@@ -105,6 +101,10 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
       Non security triggering version for the low cost of minute less bling factor.
     
       #+html:<p align="center"><a href="card.txt"><img alt="tbcv2" src="assets/tbcv2.0.png"></a></p>
+
+*** [[bootstrap.bash]]
+    #+html:<a name="bootstrap.bash"></a>
+    How I migrate my .dots in new systems. Available only as reference, not for use.
 
 ** Reference
 *** [[https://dotfiles.github.io/][GitHub ❤ ~/]]
