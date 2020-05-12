@@ -9,8 +9,35 @@
 # https://jonasjacek.github.io/colors/data.json
 # https://github.com/jonasjacek/colors
 # https://stackoverflow.com/questions/1955505/parsing-json-with-unix-tools
+# https://opensource.com/article/19/9/linux-terminal-colors
 #
 # curl -s 'https://jonasjacek.github.io/colors/data.json' | sed -e 's/[{}]//g' | awk -v RS=',"' -F: '/^name/ {print $2}'|sed 's/\(^"\|"$\)//g'
+
+# For your reference, here are the foreground and background color codes. Foreground colors are in the 30 range, while background colors are in the 40 range:
+# Color 	Foreground 	Background
+# Black 	\033[30m 	\033[40m
+# Red 	        \033[31m 	\033[41m
+# Green 	\033[32m 	\033[42m
+# Orange 	\033[33m 	\033[43m
+# Blue 	        \033[34m 	\033[44m
+# Magenta 	\033[35m 	\033[45m
+# Cyan 	        \033[36m 	\033[46m
+# Light gray 	\033[37m 	\033[47m
+# Fallback  	\033[39m 	\033[49m
+# to defaults
+
+# There are some additional colors available for the background:
+# Color 	Background
+# Dark gray 	\033[100m
+# Light red 	\033[101m
+# Light green 	\033[102m
+# Yellow 	\033[103m
+# Light blue 	\033[104m
+# Light purple 	\033[105m
+# Teal 	        \033[106m
+# White 	\033[107m
+
+# infocmp
 
 # Font attributes
 # export reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)"

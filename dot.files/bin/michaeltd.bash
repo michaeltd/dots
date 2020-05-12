@@ -2,22 +2,22 @@
 #
 # https://tinyurl.com/create.php?source=create&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmichaeltd%2Fdots%2Fmaster%2Fdot.files%2Fbin%2Fmichaeltd.bash&alias=mtd-card
 # Write a nice business card on the terminal.
-# ╭───────────────────────────────────────────────────────╮
-# │                                                       │
-# │           Michael Tsouchlarakis / michaeltd           │
-# │                                                       │
-# │        Work:  tsouchlarakis@gmail.com                 │
-# │        FOSS:  Gentoo Linux avocado.                   │
-# │                                                       │
-# │     Twitter:  https://twitter.com/tsouchlarakismd     │
-# │         npm:  https://npmjs.com/~michaeltd            │
-# │      GitHub:  https://github.com/michaeltd            │ 
-# │    LinkedIn:  https://linkedin.com/in/michaeltd       │
-# │         Web:  https://michaeltd.netlify.com/          │
-# │                                                       │
-# │        Card:  curl -sL tinyurl.com/mtd-card|sh        │
-# │                                                       │
-# ╰───────────────────────────────────────────────────────╯
+#    ╭───────────────────────────────────────────────────────╮
+#    │                                                       │
+#    │           Michael Tsouchlarakis / michaeltd           │
+#    │                                                       │
+#    │        Work:  tsouchlarakis@gmail.com                 │
+#    │        FOSS:  Gentoo Linux avocado.                   │
+#    │                                                       │
+#    │     Twitter:  https://twitter.com/tsouchlarakismd     │
+#    │         npm:  https://npmjs.com/~michaeltd            │
+#    │      GitHub:  https://github.com/michaeltd            │ 
+#    │    LinkedIn:  https://linkedin.com/in/michaeltd       │
+#    │         Web:  https://michaeltd.netlify.com/          │
+#    │                                                       │
+#    │        Card:  curl -sL tinyurl.com/mtd-card|sh        │
+#    │                                                       │
+#    ╰───────────────────────────────────────────────────────╯
 # Font attributes, colors, bg_colors
 readonly reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" \
 	 blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" \
