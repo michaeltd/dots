@@ -2,6 +2,7 @@
 #
 # ~/sbin/update_mirror.bash
 # Update my data
+
 echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
 # Full path executables

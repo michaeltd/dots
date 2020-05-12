@@ -2,7 +2,8 @@
 #
 # ~/sbin/update_hosts.bash
 # 1) Set a strict /etc/hosts file 2) Make sure you have one
-echo -ne " -- $(basename "${BASH_SOURCE[0]}") --\n"
+
+echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
 url="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 

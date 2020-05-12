@@ -4,6 +4,10 @@
 # Script to go through a directory of background images as wallpapers in a timely fashion
 #shellcheck shell=bash
 
+# Unofficial Bash Strict Mode
+set -euo pipefail
+IFS=$'\t\n'
+
 # Font attributes, Colors, bg colors
 declare -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)"
 declare -r black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)"
@@ -17,7 +21,7 @@ declare -ra WPUSAGE=("\n \
     Options may be: \n \
     ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
     ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
-    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}delay${reset} ${yellow}1440${reset} - set interval (in minutes) \n \
+    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}delay${reset} ${yellow}240${reset} - set interval (seconds) \n \
     ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}replay${reset} [${yellow}3${reset}] - display previous image # \n \
     ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}help${reset} - this message \n \
     ${green}${BASH_SOURCE[0]##*/}${reset} without options will start rotating images.\n\n")
@@ -63,24 +67,22 @@ source "${WPRC}"
 
 main() {
     # If options, proccess, else rotate things
-    if [[ -n "${1}" ]]; then
+    if [[ -n "${1-}" ]]; then
 	case "${1}" in
 	    "add")
 		shift
-		while [[ -n "${1}" ]]; do
+		while [[ -n "${1-}" ]]; do
 		    if [[ -d "${1}" ]]; then
 			DIRS+=( "${1}" )
 		    else
-			echo -ne "${yellow}Warning:${reset} ${1} is not a directory.\n" >&2
+			echo -ne "${yellow}Warning:${reset} \"${bold}${1}${reset}\" is not a directory.\n" >&2
 		    fi
 		    shift
 		done
-		# https://stackoverflow.com/questions/525592/find-and-replace-inside-a-text-file-from-a-bash-command
-		sv="DIRS" rv="DIRS=( ${DIRS[*]} )"
-		sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
+		echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}";;
 	    "rem")
 		shift
-		while [[ -n "${1}" ]]; do
+		while [[ -n "${*}" ]]; do
 		    for (( i = 0; i < "${#DIRS[@]}"; i++ )); do
 			if [[ "${DIRS[i]}" == "${1}" ]]; then
 			    unset 'DIRS[i]'
@@ -88,17 +90,14 @@ main() {
 		    done
 		    shift
 		done
-		sv="DIRS"
-		rv="DIRS=( ${DIRS[*]} )"
-		sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}" ;;
+		echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}";;
 	    "delay")
 		shift
-		# https://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
-		if [[ "${1}" =~ ^[0-9]+$ ]]; then
-		    sv="WAIT" rv="WAIT=${1}m"
-		    sed --follow-symlinks -i "s|^${sv}.*|${rv}|g" "${WPRC}"
+		WAIT=${1}
+		if [[ "${WAIT}" =~ ^[0-9]+$ ]]; then
+		    echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}"
 		else
-		    echo -ne "${yellow}Warning:${reset} ${1} is not a valid time construct.\nProvide an integer as interval in minutes\n" >&2
+		    echo -ne "${yellow}Warning:${reset} \"${bold}${WAIT}${reset}\" is not a valid time construct.\nProvide an integer as interval in seconds\n" >&2
 		fi ;;
 	    "replay")
 		shift
@@ -122,7 +121,7 @@ main() {
 	    # fill a WallPaperS list
 	    for D in "${DIRS[@]}"; do
 		for P in "${D}"/*; do
-		    FE="${P:(-4)}"
+		    local FE="${P:(-4)}"
 		    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
 			WPS+=( "${P}" )
 		    fi

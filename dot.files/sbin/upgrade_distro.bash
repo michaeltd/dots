@@ -3,6 +3,7 @@
 # ~/sbin/upgrade_distro.bash
 # Distro neutral upgrade script michaeltd 171124
 # From https://en.wikipedia.org/wiki/Package_manager
+
 echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
 # For this to work package manager arrays must be in following format...
@@ -32,7 +33,7 @@ done
 
 if (( PMIDX == NOTFOUND || EUID != 0 )); then
     #shellcheck disable=SC2154
-    printf "${red}Error:${reset} ${bold}Package manager not found, or required access privilages not met.${reset}\n For this to work you need ${underline}${green}root${reset}${end_underline} account privilages and a \n ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline}, ${underline}${green}%s${reset}${end_underline},  ${underline}${green}%s${reset}${end_underline} or ${underline}${green}%s${reset}${end_underline} based distro.\n Quithing.\n" "${!PMS[0]:0:1}" "${!PMS[1]:0:1}" "${!PMS[2]:0:1}" "${!PMS[3]:0:1}" "${!PMS[4]:0:1}" "${!PMS[5]:0:1}" >&2
+    printf "Error: Package manager not found, or required access privilages not met.\n For this to work you need root account privilages and a \n %s, %s, %s, %s, %s or %s based distro.\n Quithing.\n" "${!PMS[0]:0:1}" "${!PMS[1]:0:1}" "${!PMS[2]:0:1}" "${!PMS[3]:0:1}" "${!PMS[4]:0:1}" "${!PMS[5]:0:1}" >&2
     exit 1
 else
     time "${!PMS[PMIDX]:0:1}" "${!PMS[PMIDX]:1:1}" && time "${!PMS[PMIDX]:0:1}" "${!PMS[PMIDX]:2}"

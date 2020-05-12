@@ -7,7 +7,7 @@
 #shellcheck source=/dev/null
 
 main() {
-    
+
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
     backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="0"
@@ -59,10 +59,6 @@ main() {
 	    dts[x]="${BASH_REMATCH[1]}"
 	fi
     done
-
-    # echo ${bfns[@]}
-    # echo ${fns[@]}
-    # echo ${dts[@]}
 
     for (( y = 0; y < ${#fns[@]}; y++ )); do
 	if [[ "$(epochdd "$(max "${dts[@]}")" "${dts[y]}")" -ge "${days2keep}" ]]; then
