@@ -21,6 +21,7 @@ order += "wireless _first_"
 order += "ethernet _first_"
 order += "disk /"
 order += "disk /mnt/data"
+order += "disk /mnt/el"
 order += "battery all"
 order += "load"
 # order += "memory"
@@ -54,5 +55,9 @@ disk "/" {
 }
 
 disk "/mnt/data" {
+        format = "%free"
+}
+
+disk "/mnt/el" {
         format = "%free"
 }

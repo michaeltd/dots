@@ -1,0 +1,1 @@
+../../world_check.bash

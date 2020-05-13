@@ -6,8 +6,7 @@
 SDN="$(dirname $(realpath $0))"
 DS="${SDN}/daily"
 if [ -d "${DS}" ]; then
-    cd "${DS}"
-    for SCPT in ./*.bash; do
+    for SCPT in "${DS}/"*\.bash; do
         "${SCPT}"
     done
 fi

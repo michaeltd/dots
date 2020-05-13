@@ -1,0 +1,1 @@
+../../dist_cleanup.bash
