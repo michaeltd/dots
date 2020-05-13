@@ -13,6 +13,7 @@
 #    │                                                       │
 #    │     Twitter:  https://twitter.com/tsouchlarakismd     │
 #    │         npm:  https://npmjs.com/~michaeltd            │
+#    │      GitLab:  https://gitlab.com/michaeltd            │ 
 #    │      GitHub:  https://github.com/michaeltd            │ 
 #    │    LinkedIn:  https://linkedin.com/in/michaeltd       │
 #    │         Web:  https://michaeltd.netlify.com/          │
@@ -44,6 +45,7 @@ cat <<EOF
     ${green}│                                                       │${reset}
     ${green}│${reset}     ${bg_black}Twitter:${reset}  ${dim}https://twitter.com/${reset}${magenta}tsouchlarakismd${reset}     ${green}│${reset}
     ${green}│${reset}         ${bg_black}npm:${reset}  ${dim}https://npmjs.com/${reset}~${red}michaeltd            ${green}│${reset}
+    ${green}│${reset}      ${bg_black}GitLab:${reset}  ${dim}https://gitlab.com/${reset}${green}michaeltd            ${green}│${reset}
     ${green}│${reset}      ${bg_black}GitHub:${reset}  ${dim}https://github.com/${reset}${green}michaeltd            ${green}│${reset}
     ${green}│${reset}    ${bg_black}LinkedIn:${reset}  ${dim}https://linkedin.com/in/${reset}${blue}michaeltd       ${green}│${reset}
     ${green}│${reset}         ${bg_black}Web:${reset}  ${dim}https://${reset}${yellow}michaeltd${reset}${dim}.netlify.com/${reset}          ${green}│${reset}
