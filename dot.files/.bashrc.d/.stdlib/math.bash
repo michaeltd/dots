@@ -6,7 +6,7 @@
 rom2dec() {
     # https://rosettacode.org/wiki/Roman_numerals/Decode#UNIX_Shell
     local -ra ROM=( I V X L C D M ) DEC=( 1 5 10 50 100 500 1000 )
-    while [[ -n "${1}" ]]; do
+    while [[ -n "${*}" ]]; do
 	local NUM="${1}" RES=0 PRE=0
 	for (( i = ${#NUM}-1; i >= 0; i-- )); do
 	    for (( x = ${#ROM[*]} - 1 ; x >= 0  ; x-- )); do
@@ -71,7 +71,7 @@ altmin() {
 
 min() {
     n=${1} # Avoid n initialization issues
-    while [[ -n "${1}" ]]; do
+    while [[ -n "${*}" ]]; do
 	(( $1 < n )) && n=${1}
 	shift
     done
@@ -87,7 +87,7 @@ altmax() {
 max() {
     local x
     x="${1}" # Avoid x initialization issues
-    while [[ -n "${1}" ]]; do
+    while [[ -n "${*}" ]]; do
 	(( $1 > x )) && x="${1}"
 	shift
     done

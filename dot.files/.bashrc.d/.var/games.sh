@@ -1,4 +1,4 @@
-# ~/.bashrc.d/games.sh
+# ~/.bashrc.d/.var/games.sh
 #
 # games
 #shellcheck shell=bash
@@ -64,5 +64,5 @@ russian_rulette() {
 	printf "${red}BOOM, HEADSHOT!!! [x.x]${reset} ${bold}You've rolled a ${reset}${red}%s${reset}\n" "${RV}" || \
 	    printf "${blue}LUCKY DUDE!!! [+.-]${reset} ${bold}You've rolled a ${reset}${green}%s${reset}\n" "${RV}"
 
-    [[ "$(read -rp "Again? [Y/n]: " r;echo "${r:-y}")" == "y" ]] && russian_rulette
+    [[ "$(read -rp "Again? [Y/n]: " r;echo "${r:-y}")" =~ ^[Yy] ]] && russian_rulette
 }

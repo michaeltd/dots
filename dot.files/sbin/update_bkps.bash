@@ -35,11 +35,14 @@
 
 # You can ommit exlude file safely
 
+set -uo pipefail
+IFS=$'\t\n'
+
 main() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
     local definitions="/home/paperjam" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com"
 
-    while [[ -n "${1}" ]]; do
+    while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    "-f"|"--from") shift; definitions="${1}";;
 	    "-t"|"--to") shift; backup_to="${1}";;
@@ -53,12 +56,12 @@ main() {
     local -ra includes=( "${definitions}"/.backup_include.* )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
 
-    [[ -z "${includes[0]}" ]] && echo -ne "No job file definitions found.\nNothing left to do!\n" >&2 && return 1
-    [[ ! -d "${backup_to}" ]] && echo -ne "${backup_to} is not a directory.\n" >&2 && return 1
+    [[ -e "${includes[0]}" ]] || { echo -ne "No job file definitions found.\nNothing left to do!\n" >&2; return 1; }
+    [[ -d "${backup_to}" ]] || { echo -ne "${backup_to} is not a directory.\n" >&2; return 1; }
 
     local -ra nice_cmd=( "nice" "-n" "19" ) \
 	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
-	  pgp_cmd=( "gpg2" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
+	  pgp_cmd=( "gpg" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 
     compress() {
 	#shellcheck disable=SC2046

@@ -6,54 +6,39 @@
 #
 #shellcheck source=/dev/null
 
+set -euo pipefail
+IFS=$'\t\n'
+
 main() {
 
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
-    backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="0"
+    local backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="0"
 
     # Source explicitly for non interactive shells.
     srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
 
-    local -ra srcs=( "${srcspath}/time.bash" \
-			   "${srcspath}/string.bash" \
-			   "${srcspath}/math.bash" )
-
-    while [[ -n "${1}" ]]; do
+    while [[ -n "${*}" ]]; do
 	case "${1}" in
-	    "-b"|"--bkpdir") shift; backup_dir="${1}";;
-	    "-s"|"--simulate") remove_backups="0";;
-	    "-k"|"--keep") shift; days2keep="${1}";;
+	    "-b"|"--bkpdir") shift; local backup_dir="${1}";;
+	    "-s"|"--simulate") local remove_backups="0";;
+	    "-k"|"--keep") shift; local days2keep="${1}";;
 	    "-d"|"--debug") set -x;;
-	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-(-b)kpdir /backups/directory/] [-(-s)imulate] [-(-k)eep # (int, days. default: 14)] [-(-d)ebug (default: off)]\n" >&2; return 1;;
+	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-(-b)kpdir /backups/directory/] [-(-s)imulate] [-(-k)eep # (int days)] [-(-d)ebug]\n" >&2; return 1;;
 	esac
 	shift
     done
 
-    # No root access or No backups directory
-    # (( EUID != 0 )) && echo -ne "privileged access requirements not met.\n" >&2 && return 1
-    [[ ! -d "${backup_dir}" ]] && echo -ne "${backup_dir} is not a directory.\n" >&2 && return 1
+    local -ra sources=( "${srcspath}/"*.bash ) backups=( "${backup_dir}"/*.tar.gz* )
+    
+    for src in "${sources[@]}"; do
+	source "${src}" || { echo -ne "${src} not readable.\n" >&2; return 1; }
+    done
 
-    if [[ -d "${srcspath}" ]]; then
-	for src in "${srcs[@]}"; do
-	    if [[ -r "${src}" ]]; then
-		source "${src}"
-	    else
-		echo -ne "${src} not readable.\n" >&2
-		return 1
-	    fi
-	done
-    else
-	echo -ne "${srcspath} not found.\n" >&2
-	return 1
-    fi
+    [[ -e "${backups[0]}" ]] || { echo -ne "No backups found!\n" >&2; return 1; }
 
-    #shellcheck disable=SC2207
-    files=( "${backup_dir}"/*.tar.gz* )
-
-    for x in "${!files[@]}"; do
-	bfns+=( "${files[x]##*/}" )
-	bfn="${files[x]##*/}"
+    for x in "${!backups[@]}"; do
+	bfn="${backups[x]##*/}"
 	if [[ "${bfn}" =~ ([0-9]{10}) ]]; then
 	    fns[x]="${bfn}"
 	    dts[x]="${BASH_REMATCH[1]}"

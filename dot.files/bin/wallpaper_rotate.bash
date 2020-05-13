@@ -32,7 +32,7 @@ declare -ra FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-r
 declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
 	DIRS=( "${HOME}/Pictures" ) WPS=()
 declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.log}")" \
-	BGSR="" WAIT="2m" LS="$(type -P ls)"
+	BGSR="" WAIT="2m"
 
 # bash version info check
 if (( "${BASH_VERSINFO[0]}" < 4 )); then

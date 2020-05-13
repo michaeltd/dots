@@ -125,9 +125,9 @@ bindsym $mod+F2 workspace $ws2; exec firefox
 bindsym $mod+F3 workspace $ws3; exec emacs
 bindsym $mod+F4 workspace $ws4; exec i3-sensible-terminal -e mc
 bindsym $mod+F5 workspace $ws5; exec vlc
-bindsym $mod+F6 workspace $ws6; exec ooffice
+bindsym $mod+F6 workspace $ws6; exec libreoffice||ooffice
 bindsym $mod+F7 workspace $ws7; exec hexchat
-bindsym $mod+F8 workspace $ws8; exec filezilla
+bindsym $mod+F8 workspace $ws8; exec gimp
 bindsym $mod+F9 workspace $ws9; exec xfce4-settings-manager
 
 bindsym $mod+control+0 workspace $ws0
