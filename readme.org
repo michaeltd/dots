@@ -94,7 +94,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
      It may or may not trigger your most security aware colleagues depending on sec. awareness and proximity.
 
-     #+html:<p align="center"><a href="dot.files/bin/michaeltd.bash"><img alt="tbcv1" src="assets/tbcv1.0.png"></a></p>
+     #+html:<p align="center"><a href="dot.files/bin/michaeltd"><img alt="tbcv1" src="assets/tbcv1.0.png"></a></p>
 
    + [[card.txt][Terminal buisiness card v2.0]]
 
