@@ -17,7 +17,7 @@
 #    │    LinkedIn:  https://linkedin.com/in/michaeltd       │
 #    │         Web:  https://michaeltd.netlify.com/          │
 #    │                                                       │
-#    │        Card:  curl -sL tinyurl.com/mtd-card|sh        │
+#    │        Card:  curl -sL tinyurl.com/mtd-bcard          │
 #    │                                                       │
 #    ╰───────────────────────────────────────────────────────╯
 # Font attributes, colors, bg_colors
@@ -48,7 +48,7 @@ cat <<EOF
     ${green}│${reset}    ${bg_black}LinkedIn:${reset}  ${dim}https://linkedin.com/in/${reset}${blue}michaeltd       ${green}│${reset}
     ${green}│${reset}         ${bg_black}Web:${reset}  ${dim}https://${reset}${yellow}michaeltd${reset}${dim}.netlify.com/${reset}          ${green}│${reset}
     ${green}│                                                       │${reset}
-    ${green}│${reset}        ${bg_black}Card:${reset}  curl -sL tinyurl.com/mtd-card|sh        ${green}│${reset}
+    ${green}│${reset}        ${bg_black}Card:${reset}  curl -sL tinyurl.com/mtd-bcard         ${green}│${reset}
     ${green}│                                                       │${reset}
     ${green}╰───────────────────────────────────────────────────────╯${reset}
 
