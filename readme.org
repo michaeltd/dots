@@ -86,10 +86,10 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
    Shamelessly stolen from [[https://github.com/bnb/bitandbang][bitandbang]]
 
-   + [[dot.files/bin/michaeltd.bash][Terminal buisiness card v1.0]]
+   + [[dot.files/bin/michaeltd][Terminal buisiness card v1.0]
     
-     ~curl -sL tinyurl.com/mtd-card|sh~
-      
+     ~curl -sL tinyurl.com/mtd-bcard|sh~
+
      Full bling business card.
 
      It may or may not trigger your most security aware colleagues depending on sec. awareness and proximity.
