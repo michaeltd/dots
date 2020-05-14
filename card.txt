@@ -6,12 +6,10 @@
     [38;5;2m│[m(B        [48;5;0mWork:[m(B  tsouchlarakis@gmail.com                 [38;5;2m│[m(B
     [38;5;2m│[m(B        [48;5;0mFOSS:[m(B  Gentoo Linux avocado.                   [38;5;2m│[m(B
     [38;5;2m│                                                       │[m(B
-    [38;5;2m│[m(B     [48;5;0mTwitter:[m(B  https://twitter.com/[m(B[38;5;5mtsouchlarakismd[m(B     [38;5;2m│[m(B
-    [38;5;2m│[m(B         [48;5;0mnpm:[m(B  https://npmjs.com/[m(B~[38;5;1mmichaeltd            [38;5;2m│[m(B
-    [38;5;2m│[m(B      [48;5;0mGitLab:[m(B  https://gitlab.com/[m(B[38;5;2mmichaeltd            [38;5;2m│[m(B
-    [38;5;2m│[m(B      [48;5;0mGitHub:[m(B  https://github.com/[m(B[38;5;2mmichaeltd            [38;5;2m│[m(B
-    [38;5;2m│[m(B    [48;5;0mLinkedIn:[m(B  https://linkedin.com/in/[m(B[38;5;4mmichaeltd       [38;5;2m│[m(B
     [38;5;2m│[m(B         [48;5;0mWeb:[m(B  https://[38;5;3mmichaeltd[m(B.netlify.com/[m(B          [38;5;2m│[m(B
+    [38;5;2m│[m(B      [48;5;0mGitLab:[m(B  https://gitlab.com/[m(B[38;5;2mmichaeltd            [38;5;2m│[m(B
+    [38;5;2m│[m(B         [48;5;0mnpm:[m(B  https://npmjs.com/[m(B~[38;5;1mmichaeltd            [38;5;2m│[m(B
+    [38;5;2m│[m(B     [48;5;0mTwitter:[m(B  https://twitter.com/[m(B[38;5;5mtsouchlarakismd[m(B     [38;5;2m│[m(B
     [38;5;2m│                                                       │[m(B
     [38;5;2m│[m(B        [48;5;0mCard:[m(B  curl -sL tinyurl.com/mick-card          [38;5;2m│[m(B
     [38;5;2m│                                                       │[m(B

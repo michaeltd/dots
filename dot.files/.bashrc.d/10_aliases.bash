@@ -27,7 +27,7 @@ elif type -P pacman &>/dev/null; then
     alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' \
 	  dcleanup='sudo pacman -Rsn'
 elif type -P emerge &>/dev/null; then
-    alias psearch='emerge -s' pinstall='sudo emerge -av' \
+    alias psearch='emerge -s' pinstall='sudo emerge -av --autounmask' \
 	  premove='sudo emerge -avC'
     alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @world' \
 	  dcleanup='sudo emerge --ask --depclean'

@@ -21,15 +21,15 @@ findstringindir() {
 #     echo
 # }
 
-countdown() {
-    clear
-    for i in $(seq "${1-10}" -1 0); do
-	printf "%04d\n" "${i}" |figlet |lolcat
-	sleep 1
-	clear
-    done
-    play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
-}
+# countdown() {
+#     clear
+#     for i in $(seq "${1-10}" -1 0); do
+# 	printf "%04d\n" "${i}" |figlet |lolcat
+# 	sleep 1
+# 	clear
+#     done
+#     play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
+# }
 
 # igor chubbin =================================================================
 
