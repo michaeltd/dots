@@ -6,7 +6,7 @@
 
 # Prereq's you'll need for this to work:
 # 1) ~/.backup_include.(compress|encrypt).job_name
-# 2) ~/.backup_exclude (optional)
+# 2) ~/.backup_exclude (optional, can be ommited safely)
 # 3) Update $definitions (location to read definitions from), $backup_to (where to backup) and $recipient (pubkey to encrypt to).
 #    Or call script with parameters: update_bkps.bash -f /path/to/defs -t /path/to/backups -k some@key.org
 # NOTE: add your $recipient public key to root's keyring, If you link this to /etc/cron.anything
@@ -33,9 +33,8 @@
 # */.github/*
 # */node_modules/*
 
-# You can ommit exlude file safely
-
-set -uo pipefail
+# Unofficial Bash Strict Mode
+set -u
 IFS=$'\t\n'
 
 main() {

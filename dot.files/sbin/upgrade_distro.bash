@@ -4,37 +4,41 @@
 # Distro neutral upgrade script michaeltd 171124
 # From https://en.wikipedia.org/wiki/Package_manager
 
+# Unofficial Bash Strict Mode
+set -u
+IFS=$'\t\n'
+
 echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
 # For this to work package manager arrays must be in following format...
 # | #1 package manager executable | #2 repo update switch | #3 distro upgrade switch(es)| #4 ...
 # PS: By ignoring dpkg and rpm we are avoiding issues with systems where alien has been installed.
 #shellcheck disable=SC2034
-declare -ra APT_GET=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrade" ) \
-        YUM=( "yum" "check-update" "update" ) \
-        ZYPPER=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) \
-        PACMAN=( "pacman" "-Sy" "-Syu" ) \
-        EMERGE=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@security}" ) \
-        PKG=( "pkg" "update" "upgrade" )
+declare -ra apt_get=( "apt-get" "update" "--assume-yes" "--simulate" "dist-upgrade" ) \
+        yum=( "yum" "check-update" "update" ) \
+        zypper=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) \
+        pacman=( "pacman" "-Sy" "-Syu" ) \
+        emerge=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@security}" ) \
+        pkg=( "pkg" "update" "upgrade" )
 
-declare -ra PMS=( APT_GET[@] YUM[@] ZYPPER[@] PACMAN[@] EMERGE[@] PKG[@])
+declare -ra pms=( apt_get[@] yum[@] zypper[@] pacman[@] emerge[@] pkg[@])
 
-readonly NOTFOUND="404"
+readonly notfound="404"
 
-declare PMIDX="${NOTFOUND}"
+declare pmidx="${notfound}"
 
 # Which is the first available pm in this system?
-for x in "${!PMS[@]}"; do
-    if [[ -n "$(type -P "${!PMS[x]:0:1}")" ]]; then
-	PMIDX="${x}"
+for x in "${!pms[@]}"; do
+    if [[ -n "$(type -P "${!pms[x]:0:1}")" ]]; then
+	pmidx="${x}"
 	break # break on first match.
     fi
 done
 
-if (( PMIDX == NOTFOUND || EUID != 0 )); then
+if (( pmidx == notfound || euid != 0 )); then
     #shellcheck disable=SC2154
-    printf "Error: Package manager not found, or required access privilages not met.\n For this to work you need root account privilages and a \n %s, %s, %s, %s, %s or %s based distro.\n Quithing.\n" "${!PMS[0]:0:1}" "${!PMS[1]:0:1}" "${!PMS[2]:0:1}" "${!PMS[3]:0:1}" "${!PMS[4]:0:1}" "${!PMS[5]:0:1}" >&2
+    printf "Error: Package manager not found, or required access privilages not met.\n For this to work you need root account privilages and a \n %s, %s, %s, %s, %s or %s based distro.\n Quithing.\n" "${!pms[0]:0:1}" "${!pms[1]:0:1}" "${!pms[2]:0:1}" "${!pms[3]:0:1}" "${!pms[4]:0:1}" "${!pms[5]:0:1}" >&2
     exit 1
 else
-    time "${!PMS[PMIDX]:0:1}" "${!PMS[PMIDX]:1:1}" && time "${!PMS[PMIDX]:0:1}" "${!PMS[PMIDX]:2}"
+    time "${!pms[pmidx]:0:1}" "${!pms[pmidx]:1:1}" && time "${!pms[pmidx]:0:1}" "${!pms[pmidx]:2}"
 fi

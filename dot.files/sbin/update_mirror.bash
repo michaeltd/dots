@@ -3,6 +3,10 @@
 # ~/sbin/update_mirror.bash
 # Update my data
 
+# Unofficial Bash Strict Mode
+set -u
+IFS=$'\t\n'
+
 echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
 # Full path executables

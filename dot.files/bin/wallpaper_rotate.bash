@@ -67,11 +67,11 @@ source "${WPRC}"
 
 main() {
     # If options, proccess, else rotate things
-    if [[ -n "${1-}" ]]; then
+    if [[ -n "${*}" ]]; then
 	case "${1}" in
 	    "add")
 		shift
-		while [[ -n "${1-}" ]]; do
+		while [[ -n "${*}" ]]; do
 		    if [[ -d "${1}" ]]; then
 			DIRS+=( "${1}" )
 		    else

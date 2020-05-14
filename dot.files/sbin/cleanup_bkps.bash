@@ -6,14 +6,15 @@
 #
 #shellcheck source=/dev/null
 
-set -euo pipefail
+# Unofficial Bash Strict Mode
+set -u
 IFS=$'\t\n'
 
 main() {
 
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
-    local backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="0"
+    local backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="1"
 
     # Source explicitly for non interactive shells.
     srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
@@ -47,7 +48,7 @@ main() {
 
     for (( y = 0; y < ${#fns[@]}; y++ )); do
 	if [[ "$(epochdd "$(max "${dts[@]}")" "${dts[y]}")" -ge "${days2keep}" ]]; then
-	    nothing2do="1"
+	    nothing2do="0"
 	    if [[ "$(lastdayofmonth "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
 	    	#shellcheck disable=SC2154
 		if [[ "${remove_backups}" -eq "1" ]]; then
@@ -64,7 +65,7 @@ main() {
 	fi
     done
 
-    [[ "${nothing2do}" -eq "0" ]] && echo "Nothing left to do!" >&2
+    [[ "${nothing2do}" -eq "1" ]] && echo "Nothing left to do!" >&2
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
