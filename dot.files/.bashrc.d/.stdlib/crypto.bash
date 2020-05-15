@@ -3,6 +3,8 @@
 # cryptographic functions
 #shellcheck shell=bash
 
+[[ ${SHELL} =~ bash$ ]] || return 1
+
 gen_pass() {
     #shellcheck disable=SC2005
     tr -dc [:graph:] < /dev/urandom | \
@@ -33,23 +35,26 @@ hash_stdin() {
     [[ "${#}" -ne "1" ]] && \
 	echo "Usage: ${FUNCNAME[0]} cipher" && \
 	return 1
-    $(type -P openssl) dgst -"${1}"
+    openssl dgst -"${1}"
 }
 
 transcode_stdin() {
     [[ "${#}" -ne "2" ]] && \
 	echo "Usage: ${FUNCNAME[0]} e|d cipher" && \
 	return 1
-    $(type -P openssl) enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
+    openssl enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
 }
 
 transcode_pgp() {
     case "${1}" in
 	e|-e|--encrypt) shift; local fn="--encrypt" out="${1}.pgp";;
-	d|-d|--decrypt) shift; local fn="--decrypt" out="${1//.pgp/}";;
-	*) echo "Usage: ${FUNCNAME[0]} e|d file|file.pgp"; return 1;;
+	d|-d|--decrypt)
+	    shift
+	    [[ "${1}" =~ \.pgp$ ]] || { echo "Need a .pgp file to decrypt!"; return 1; }
+	    local fn="--decrypt" out="${1//\.pgp/}";;
+	*) echo "Usage: ${FUNCNAME[0]} [e|d] [file|file.pgp]"; return 1;;
     esac
-    $(type -P gpg) --default-recipient-self --output "${out}" "${fn}" "${1}"
+    gpg --default-recipient-self --output "${out}" "${fn}" "${1}"
 }
 
 rot_13(){
@@ -192,3 +197,60 @@ alpha2morse() {
 	shift
     done
 }
+
+rom2dec() {
+    # https://rosettacode.org/wiki/Roman_numerals/Decode#UNIX_Shell
+    local rnum="${1}"
+    local n="0"
+    local prev="0"
+    local -A romans=( [M]="1000" [D]="500" [C]="100" [L]="50" [X]="10" [V]="5" [I]="1" )
+
+    for (( i = ${#rnum}-1; i >= 0; i-- )); do
+	a="${romans[${rnum:$i:1}]}"
+     	[[ $a -lt $prev ]] && let n-=a || let n+=a
+     	prev=$a
+    done
+       
+    echo "$n"
+}
+
+dec2rom() {
+    # https://rosettacode.org/wiki/Roman_numerals/Encode#UNIX_Shell
+    local values=( 1000 900 500 400 100 90 50 40 10 9 5 4 1 )
+    local roman=(
+        [1000]=M [900]=CM [500]=D [400]=CD 
+         [100]=C  [90]=XC  [50]=L  [40]=XL 
+          [10]=X   [9]=IX   [5]=V   [4]=IV   
+           [1]=I
+    )
+    local nvmber=""
+    local num=$1
+    for value in ${values[@]}; do
+        while (( num >= value )); do
+            nvmber+=${roman[value]}
+            ((num -= value))
+        done
+    done
+    echo $nvmber
+ 
+}
+ 
+rom2dec_alt(){
+    local -ra ROM=( I V X L C D M ) DEC=( 1 5 10 50 100 500 1000 )
+    while [[ -n "${*}" ]]; do
+    	local NUM="${1}" RES=0 PRE=0
+    	for (( i = ${#NUM}-1; i >= 0; i-- )); do
+    	    for (( x = ${#ROM[*]} - 1 ; x >= 0  ; x-- )); do
+    		if [[ "${NUM:$i:1}" == "${ROM[x]}" ]]; then
+    		    local DIG="${DEC[x]}"
+    		    break
+    		fi
+    	    done
+    	    (( DIG < PRE )) && (( RES -= DIG )) || (( RES += DIG ))
+    	    PRE="${DIG}"
+    	done
+    	echo "$NUM = $RES"
+    	shift
+    done
+}
+

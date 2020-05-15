@@ -3,9 +3,11 @@
 # Distance conversions
 #shellcheck shell=bash
 
+[[ ${SHELL} =~ bash$ ]] || return 1
+
 ml2km() {
     #shellcheck disable=SC2005
-    printf "%.2f\n" "$(echo "scale=2;${1} /0.621371192237334"|bc -ql)"
+    printf "%.2f\n" "$(echo "scale=2;${1} / 0.621371192237334"|bc -ql)"
 }
 
 km2ml(){
