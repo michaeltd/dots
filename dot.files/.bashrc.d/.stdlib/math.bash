@@ -94,6 +94,17 @@ max() {
     echo "${x}"
 }
 
+avg() {
+    local i=0 sum=0 usage="Usage: ${FUNCNAME[0]} n1 n2 n3..."
+    die() { echo "${usage[*]}" >&2; return 1; }
+    [[ -z "${*}" ]] && { die; return $?; }
+    while [[ -n "${*}" ]]; do
+	[[ "${1}" =~ ^[0-9]+$ ]] || { die; return $?; }
+	(( i++ )); (( sum += $1 )); shift
+    done
+    printf "%d\n" "$(( sum / i ))"
+}
+
 sqrt() {
     echo "scale=6;sqrt(${1})"| bc -l
 }

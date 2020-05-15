@@ -65,7 +65,7 @@ hello_world() {
     printf "\n"
 }
 
-makebackup() {
+makeabackup() {
     [[ ! -f "${1}" ]] && \
 	echo -ne "Usage: ${FUNCNAME[0]} file-2-backup\n" && \
 	return 1

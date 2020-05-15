@@ -11,11 +11,10 @@
 #    │        Work:  tsouchlarakis@gmail.com                 │
 #    │        FOSS:  Gentoo Linux avocado.                   │
 #    │                                                       │
-#    │     Twitter:  https://twitter.com/tsouchlarakismd     │
-#    │         npm:  https://npmjs.com/~michaeltd            │
-#    │      GitLab:  https://gitlab.com/michaeltd            │ 
-#    │    LinkedIn:  https://linkedin.com/in/michaeltd       │
 #    │         Web:  https://michaeltd.netlify.com/          │
+#    │      GitLab:  https://gitlab.com/michaeltd            │ 
+#    │         npm:  https://npmjs.com/~michaeltd            │
+#    │    Mastodon:  https://mastodon.technology/@tdm        │
 #    │                                                       │
 #    │        Card:  curl -sL tinyurl.com/mtd-bcard|sh       │
 #    │                                                       │
@@ -45,7 +44,7 @@ cat <<EOF
     ${green}│${reset}         ${bg_black}Web:${reset}  ${dim}https://${reset}${yellow}michaeltd${reset}${dim}.netlify.com/${reset}          ${green}│${reset}
     ${green}│${reset}      ${bg_black}GitLab:${reset}  ${dim}https://gitlab.com/${reset}${green}michaeltd            ${green}│${reset}
     ${green}│${reset}         ${bg_black}npm:${reset}  ${dim}https://npmjs.com/${reset}~${red}michaeltd            ${green}│${reset}
-    ${green}│${reset}     ${bg_black}Twitter:${reset}  ${dim}https://twitter.com/${reset}${magenta}tsouchlarakismd${reset}     ${green}│${reset}
+    ${green}│${reset}    ${bg_black}Mastodon:${reset}  ${dim}https://mastodon.technology/${reset}@${magenta}tdm${reset}        ${green}│${reset}
     ${green}│                                                       │${reset}
     ${green}│${reset}        ${bg_black}Card:${reset}  curl -sL tinyurl.com/mtd-bcard|sh       ${green}│${reset}
     ${green}│                                                       │${reset}
