@@ -53,47 +53,43 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=yes
 
 # OPT
-export OPT="/opt"
-export HOPT="${HOME}/opt"
+[[ -d "/opt" ]] && export OPT="/opt"
 # JAVA
-export JAVA="/opt/java"
-export JAVA_HOME="${JAVA}"
-export ANT="/opt/ant"
-export MAVEN="/opt/maven"
-export GRADLE="/opt/gradle"
+[[ -d "/opt/java" ]] && export JAVA="/opt/java"
+[[ -n "${JAVA}" ]] && export JAVA_HOME="${JAVA}"
+[[ -d "/opt/ant" ]] && export ANT="/opt/ant"
+[[ -d "/opt/maven" ]] && export MAVEN="/opt/maven"
+[[ -d "/opt/gradle" ]] && export GRADLE="/opt/gradle"
 # GO
-export GOPATH="${HOME}/go"
+[[ -d "${HOME}/go" ]] && export GOPATH="${HOME}/go"
 # NODE
-export NODE="/opt/nodejs"
+[[ -d "/opt/nodejs" ]] && export NODE="/opt/nodejs"
 # MONGODB
-export MONGODB="/opt/mongodb"
+[[ -d "/opt/mongodb" ]] && export MONGODB="/opt/mongodb"
 
 # Path with += op and each tool in it's own line for practical reasons
-export PATH+=":${HOME}/.local/bin"
+[[ -d "${HOME}/.local/bin" ]] && export PATH+=":${HOME}/.local/bin"
 # OPT
-export PATH+=":${OPT}/bin"
-export PATH+=":${HOPT}/bin"
-export PATH+=":${HOME}/bin"
+[[ -n "${OPT}" && -d "/opt/bin" ]] && export PATH+=":${OPT}/bin"
+[[ -d ~"/bin" ]] && export PATH+=":${HOME}/bin"
 # JAVA
-export PATH+=":${JAVA_HOME}/bin"
-export PATH+=":${ANT}/bin"
-export PATH+=":${MAVEN}/bin"
-export PATH+=":${GRADLE}/bin"
-export PATH+=":${GOPATH}/bin"
+[[ -n "${JAVA_HOME}" ]] && export PATH+=":${JAVA_HOME}/bin"
+[[ -n "${ANT}" ]] && export PATH+=":${ANT}/bin"
+[[ -n "${MAVEN}" ]] && export PATH+=":${MAVEN}/bin"
+[[ -n "${GRADLE}" ]] && export PATH+=":${GRADLE}/bin"
+[[ -n "${GOPATH}" ]] && export PATH+=":${GOPATH}/bin"
 # RUST
-if [[ -d "${HOME}/.cargo" ]]; then
-  export PATH+=":${HOME}/.cargo/bin"
-fi
+[[ -d "${HOME}/.cargo/bin" ]] && export PATH+=":${HOME}/.cargo/bin"
 # NODE
-export PATH+=":${NODE}/bin"
+[[ -n "${NODE}" ]] && export PATH+=":${NODE}/bin"
 # MONGODB
-export PATH+=":${MONGODB}/bin"
+[[ -n "${MONGODB}" ]] && export PATH+=":${MONGODB}/bin"
 
 #MANPATH
-export MANPATH+=":${HOME}/.local/share/man"
-export MANPATH+=":${HOME}/opt/share/man"
+[[ -d "${HOME}/.local/share/man" ]] && export MANPATH+=":${HOME}/.local/share/man"
+[[ -d "${HOME}/opt/share/man" ]] && export MANPATH+=":${HOME}/opt/share/man"
 
 # JAVA classpath
-export CLASSPATH+=":${JAVA}/lib"
-export CLASSPATH+=":${ANT}/lib"
-export CLASSPATH+=":${MAVEN}/lib"
+[[ -n "${JAVA}" ]] && export CLASSPATH+=":${JAVA}/lib"
+[[ -n "${ANT}" ]] && export CLASSPATH+=":${ANT}/lib"
+[[ -n "${MAVEN}" ]] && export CLASSPATH+=":${MAVEN}/lib"
