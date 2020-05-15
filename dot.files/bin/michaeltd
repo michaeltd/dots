@@ -4,21 +4,44 @@
 #
 # https://tinyurl.com/create.php?source=create&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmichaeltd%2Fdots%2Fmaster%2Fdot.files%2Fbin%2Fmichaeltd.bash&alias=mtd-card
 # Write a nice business card on the terminal.
-#    ╭───────────────────────────────────────────────────────╮
-#    │                                                       │
-#    │           Michael Tsouchlarakis / michaeltd           │
-#    │                                                       │
-#    │        Work:  tsouchlarakis@gmail.com                 │
-#    │        FOSS:  Gentoo Linux avocado.                   │
-#    │                                                       │
-#    │         Web:  https://michaeltd.netlify.com/          │
-#    │      GitLab:  https://gitlab.com/michaeltd            │ 
-#    │         npm:  https://npmjs.com/~michaeltd            │
-#    │    Mastodon:  https://mastodon.technology/@tdm        │
-#    │                                                       │
-#    │        Card:  curl -sL tinyurl.com/mtd-bcard|sh       │
-#    │                                                       │
-#    ╰───────────────────────────────────────────────────────╯
+
+# 
+#          ╭───────────────────────────────────────────────────╮
+#          │                                                   │
+#          │       Michael Tsouchlarakis / michaeltd           │
+#          │                                                   │
+#          │        Work:  tsouchlarakis@gmail.com             │
+#          │        FOSS:  Gentoo Linux avocado.               │
+#          │                                                   │
+#          │         Web:  https://michaeltd.netlify.com/      │
+#          │      GitLab:  https://gitlab.com/michaeltd        │
+#          │         npm:  https://npmjs.com/~michaeltd        │
+#          │       Toots:  https://mastodon.technology/@tdm    │
+#          │                                                   │
+#          │        Card:  curl -sL tinyurl.com/mtd-bcard|sh   │
+#          │                                                   │
+#          ╰───────────────────────────────────────────────────╯
+# 
+#
+# [32m[39m
+# [32m   ╭───────────────────────────────────────────────────╮[39m
+# [32m   │                                                   │[39m
+# [32m   │   [37m    Michael Tsouchlarakis[32m / [37mmichaeltd[32m           │[39m
+# [32m   │                                                   │[39m
+# [32m   │   [37m[1m     Work:[22m[32m  [37mtsouchlarakis@gmail.com[32m             │[39m
+# [32m   │   [37m[1m     FOSS:[22m[32m  [37mGentoo Linux avocado.[32m               │[39m
+# [32m   │                                                   │[39m
+# [32m   │   [37m[1m      Web:[22m[32m  [90mhttps://[32m[33mmichaeltd[32m[90m.netlify.com/[32m      │[39m
+# [32m   │   [37m[1m   GitLab:[22m[32m  [90mhttps://[32m[90mgitlab.com/[32m[32mmichaeltd[32m        │[39m
+# [32m   │   [37m[1m      npm:[22m[32m  [90mhttps://[32m[90mnpmjs.com/[32m[31m~michaeltd[32m        │[39m
+# [32m   │   [37m[1m    Toots:[22m[32m  [90mhttps://[32m[90mmastodon.technology/[32m[37m@[32m[35mtdm[32m    │[39m
+# [32m   │                                                   │[39m
+# [32m   │   [37m[1m     Card:[22m[32m  [31mcurl -sL[32m [37mtinyurl.com/[32m[32mmick-card[32m      │[39m
+# [32m   │                                                   │[39m
+# [32m   ╰───────────────────────────────────────────────────╯[39m
+# [32m[39m
+#
+#
 # Font attributes, colors, bg_colors
 readonly reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" \
 	 blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" \
@@ -34,20 +57,20 @@ readonly bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput se
 
 cat <<EOF
 
-    ${green}╭───────────────────────────────────────────────────────╮${reset}
-    ${green}│                                                       │${reset}
-    ${green}│${reset}           ${bold}${green}${bg_blue}Michael Tsouchlarakis / michaeltd${reset}           ${green}│${reset}
-    ${green}│                                                       │${reset}
-    ${green}│${reset}        ${bg_black}Work:${reset}  tsouchlarakis@gmail.com                 ${green}│${reset}
-    ${green}│${reset}        ${bg_black}FOSS:${reset}  Gentoo Linux avocado.                   ${green}│${reset}
-    ${green}│                                                       │${reset}
-    ${green}│${reset}         ${bg_black}Web:${reset}  ${dim}https://${reset}${yellow}michaeltd${reset}${dim}.netlify.com/${reset}          ${green}│${reset}
-    ${green}│${reset}      ${bg_black}GitLab:${reset}  ${dim}https://gitlab.com/${reset}${green}michaeltd            ${green}│${reset}
-    ${green}│${reset}         ${bg_black}npm:${reset}  ${dim}https://npmjs.com/${reset}~${red}michaeltd            ${green}│${reset}
-    ${green}│${reset}    ${bg_black}Mastodon:${reset}  ${dim}https://mastodon.technology/${reset}@${magenta}tdm${reset}        ${green}│${reset}
-    ${green}│                                                       │${reset}
-    ${green}│${reset}        ${bg_black}Card:${reset}  curl -sL tinyurl.com/mtd-bcard|sh       ${green}│${reset}
-    ${green}│                                                       │${reset}
-    ${green}╰───────────────────────────────────────────────────────╯${reset}
+    ${green}╭─────────────────────────────────────────────────────╮${reset}
+    ${green}│                                                     │${reset}
+    ${green}│${reset}           ${bold}${green}${bg_blue}Michael Tsouchlarakis / michaeltd${reset}         ${green}│${reset}
+    ${green}│                                                     │${reset}
+    ${green}│${reset}        ${bg_black}Work:${reset}  tsouchlarakis@gmail.com               ${green}│${reset}
+    ${green}│${reset}        ${bg_black}FOSS:${reset}  Gentoo Linux avocado.                 ${green}│${reset}
+    ${green}│                                                     │${reset}
+    ${green}│${reset}         ${bg_black}Web:${reset}  ${dim}https://${reset}${yellow}michaeltd${reset}${dim}.netlify.com/${reset}        ${green}│${reset}
+    ${green}│${reset}      ${bg_black}GitLab:${reset}  ${dim}https://gitlab.com/${reset}${green}michaeltd          ${green}│${reset}
+    ${green}│${reset}         ${bg_black}npm:${reset}  ${dim}https://npmjs.com/${reset}~${red}michaeltd          ${green}│${reset}
+    ${green}│${reset}       ${bg_black}Toots:${reset}  ${dim}https://mastodon.technology/${reset}@${magenta}tdm${reset}      ${green}│${reset}
+    ${green}│                                                     │${reset}
+    ${green}│${reset}        ${bg_black}Card:${reset}  ${red}curl -sL ${dim}${white}tinyurl.com/${reset}${magenta}mtd-bcard${dim}${white}|sh${reset}     ${green}│${reset}
+    ${green}│                                                     │${reset}
+    ${green}╰─────────────────────────────────────────────────────╯${reset}
 
 EOF
