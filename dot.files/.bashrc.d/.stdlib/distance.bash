@@ -3,7 +3,7 @@
 # Distance conversions
 #shellcheck shell=bash
 
-[[ ${SHELL} =~ bash$ ]] || return 1
+# [[ ${SHELL} =~ bash$ ]] || return 1
 
 ml2km() {
     #shellcheck disable=SC2005

@@ -3,7 +3,7 @@
 # Temperature conversions celsius - fahrenheit - kelvin
 #shellcheck shell=bash
 
-[[ ${SHELL} =~ bash$ ]] || return 1
+# [[ ${SHELL} =~ bash$ ]] || return 1
 
 c2f() {
     printf "%.2f\n" "$(echo "scale=2;(${1} * 1.8) + 32"|bc -ql)"

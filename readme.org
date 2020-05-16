@@ -32,25 +32,9 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
   
     For a better preview: Right Click -> View Image
 
-    + [[dot.files/GNUstep/][wmaker]], [[https://www.windowmaker.org/]]
-
-      #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Window_Maker"><img width="200" alt="Window Maker" src="assets/wmaker.png"></a></p>
-
     + [[dot.files/.e16/][e16]], [[https://www.enlightenment.org/e16]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Enlightenment_(software)#E16"><img width="200" alt="e16" src="assets/e16.png"></a></p>
-
-    + [[dot.files/.config/openbox/][openbox]], [[http://openbox.org/]]
-
-      #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Openbox"><img width="200" alt="openbox" src="assets/openbox.png"></a></p>
-
-    + [[dot.files/.config/awesome/][awesome]], [[https://awesomewm.org/]]
-
-      #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Awesome_(window_manager)"><img width="200" alt="awesome" src="assets/awesome.png"></a></p>
-
-    + [[dot.files/.config/bspwm/][bspwm]], [[https://github.com/baskerville/bspwm/wiki/]]
-
-      #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Draft:Bspwm"><img width="200" alt="bspwm" src="assets/bspwm.png"></a></p>
 
     + [[dot.files/.config/i3/][i3wm]], [[https://i3wm.org/]]
 
@@ -60,10 +44,6 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Compiz"><img width="200" alt="compiz" src="assets/compiz.png"></a></p>
      
-    + [[dot.files/.mwmrc][mwm]], [[https://motif.ics.com/]]
-
-      #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/Motif_Window_Manager"><img width="200" alt="Motif WM" src="assets/mwm.png"></a></p>
-      
     + [[dot.files/.xinitrc#L69][exwm]], [[https://github.com/ch11ng/exwm/wiki]]
 
       #+html:<p align="center"><a href="https://en.wikipedia.org/wiki/GNU_Emacs"><img width="200" alt="emacs(exwm)" src="assets/exwm.png"></a></p>

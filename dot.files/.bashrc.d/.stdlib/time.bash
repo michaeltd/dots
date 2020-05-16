@@ -3,7 +3,7 @@
 # date, time related functions
 #shellcheck shell=bash
 
-[[ ${SHELL} =~ bash$ ]] || return 1
+# [[ ${SHELL} =~ bash$ ]] || return 1
 
 isdate() {
     [[ -z "${1}" ]] && return 1  # apparently `date -d ""` echoes today's day and returns 0

@@ -3,7 +3,7 @@
 # math related functions
 #shellcheck shell=bash
 
-[[ ${SHELL} =~ bash$ ]] || return 1
+# [[ ${SHELL} =~ bash$ ]] || return 1
 
 in_range() {
     if [[ "${#}" -eq "3" ]]; then

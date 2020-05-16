@@ -61,16 +61,20 @@ export GIT_PS1_SHOWUPSTREAM=yes
 [[ -d "/opt/maven" ]] && export MAVEN="/opt/maven"
 [[ -d "/opt/gradle" ]] && export GRADLE="/opt/gradle"
 # GO
-[[ -d "${HOME}/go" ]] && export GOPATH="${HOME}/go"
+[[ -d ~/"go" ]] && export GOPATH=~/"go"
+# RUST
+[[ -d ~/"cargo" ]] && export RUST=~/".cargo"
 # NODE
 [[ -d "/opt/nodejs" ]] && export NODE="/opt/nodejs"
+# DENO
+[[ -d ~/".deno" ]] && export DENO=~/".deno"
 # MONGODB
 [[ -d "/opt/mongodb" ]] && export MONGODB="/opt/mongodb"
 
 # Path with += op and each tool in it's own line for practical reasons
-[[ -d "${HOME}/.local/bin" ]] && export PATH+=":${HOME}/.local/bin"
+[[ -d ~/".local/bin" ]] && export PATH+=":${HOME}/.local/bin"
 # OPT
-[[ -n "${OPT}" && -d "/opt/bin" ]] && export PATH+=":${OPT}/bin"
+[[ -n "${OPT}" ]] && export PATH+=":${OPT}/bin"
 [[ -d ~"/bin" ]] && export PATH+=":${HOME}/bin"
 # JAVA
 [[ -n "${JAVA_HOME}" ]] && export PATH+=":${JAVA_HOME}/bin"
@@ -79,9 +83,11 @@ export GIT_PS1_SHOWUPSTREAM=yes
 [[ -n "${GRADLE}" ]] && export PATH+=":${GRADLE}/bin"
 [[ -n "${GOPATH}" ]] && export PATH+=":${GOPATH}/bin"
 # RUST
-[[ -d "${HOME}/.cargo/bin" ]] && export PATH+=":${HOME}/.cargo/bin"
+[[ -n "${RUST}" ]] && export PATH+=":${RUST}/bin"
 # NODE
 [[ -n "${NODE}" ]] && export PATH+=":${NODE}/bin"
+# DENO
+[[ -n "${DENO}" ]] && export PATH+=":${DENO}/bin"
 # MONGODB
 [[ -n "${MONGODB}" ]] && export PATH+=":${MONGODB}/bin"
 

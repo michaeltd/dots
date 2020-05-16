@@ -30,9 +30,8 @@ declare -ra bash=( 'dot.files/.bash_logout' \
 	top=( 'dot.files/.toprc' ) \
 	tmux=( 'dot.files/.tmux.conf' ) \
 	music=( 'dot.files/.config/mpd/mpd.conf' \
-		    'dot.files/.config/ncmpcpp/config' \
-		    'dot.files/.moc/config' \
-		    'dot.files/.moc/keymap' )
+		    'dot.files/.config/ncmpcpp/config' )
+
 #shellcheck disable=SC2034
 declare -ra console=( bash[@] vim[@] mutt[@] top[@] tmux[@] music[@] )
 #shellcheck disable=SC2034
@@ -41,37 +40,19 @@ declare -ra x11=( 'dot.files/.Xdefaults' \
 		      'dot.files/.Xresources.d' \
 		      'dot.files/.xinitrc' \
 		      'dot.files/.xsession' ) \
-	awesome=( 'dot.files/.config/awesome/autorun.sh' \
-		      'dot.files/.config/awesome/rc.lua' ) \
-	bspwm=( 'dot.files/.config/bspwm/bspwmrc' \
-		      'dot.files/.config/sxhkd/sxhkdrc' ) \
 	i3wm=( 'dot.files/.config/i3/config' \
 		      'dot.files/.config/i3status/config' ) \
 	compiz=( 'dot.files/.config/compiz/compiz.sh' \
 		     'dot.files/.config/compiz/compizconfig/Default.ini' \
 		     'dot.files/.config/compiz/compizconfig/config' ) \
-	openbox=( 'dot.files/.config/openbox/autostart' \
-		      'dot.files/.config/openbox/environment' \
-		      'dot.files/.config/openbox/menu.xml' \
-		      'dot.files/.config/openbox/rc.xml' \
-		      'dot.files/.config/openbox/scripts/date_menu.sh' \
-		      'dot.files/.config/openbox/scripts/obam.pl' ) \
 	e16=( 'dot.files/.e16/Init/e16.sh' \
 		  'dot.files/.e16/bindings.cfg' \
 		  'dot.files/.e16/menus/user_apps.menu' ) \
-	gnustep=( 'dot.files/GNUstep/Defaults/WindowMaker' \
-		      'dot.files/GNUstep/Defaults/WMRootMenu' \
-		      'dot.files/GNUstep/Library/WindowMaker/autostart' \
-		      'dot.files/GNUstep/Library/WindowMaker/exitscript' ) \
-	mwm=( 'dot.files/.mwmrc' 'dot.files/Mwm' ) \
-	polybar=( 'dot.files/.config/polybar/config' \
-		      'dot.files/.config/polybar/launch.sh' ) \
 	tint2=( 'dot.files/.config/tint2/panel' \
 		    'dot.files/.config/tint2/taskbar' ) \
 	compton=( 'dot.files/.config/compton.conf' )
 #shellcheck disable=SC2034
-declare -ra xorg=( x11[@] awesome[@] bspwm[@] i3wm[@] compiz[@] openbox[@] e16[@] \
-		      gnustep[@] mwm[@] polybar[@] tint2[@] compton[@] )
+declare -ra xorg=( x11[@] i3wm[@] compiz[@] e16[@] tint2[@] compton[@] )
 
 declare -r usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp"
 
@@ -176,38 +157,30 @@ __do_everything() {
 __menu() {
     # Build menus and help messages.
     local -ra TUI_OPS=( "bash" "vim" "mutt" "tmux" "top" "music" "x11" \
-			      "awesome" "bspwm" "i3wm" "compiz" "openbox" "e16" "gnustep" \
-			      "mwm" "polybar" "tint2" "compton" "console" \
+			      "i3wm" "compiz" "e16" "tint2" "compton" "console" \
 			      "xorg" "everything" "help" "quit" )
 
     local -ra SDESC=( "Bash" "Vim/Gvim" "Mutt" "Tmux" "Top" "Music" "X11" \
-			    "Awesome" "bspwm" "i3wm" "Compiz" "OpenBox" "E16" "GNUstep" \
-			    "Mwm" "Polybar" "Tint2" "Compton" "Console" \
+			    "i3wm" "Compiz" "E16" "Tint2" "Compton" "Console" \
 			    "Xorg" "Everything" "Help" "Quit" )
 
-    local -ra DESC=( "link ${SDESC[0]} related files" \
-			"link ${SDESC[1]} rc files" \
-			"link ${SDESC[2]} rc" \
-			"link ${SDESC[3]}'s tmux.conf" \
-			"link ${SDESC[4]}'s toprc" \
-			"link ${SDESC[5]} mpd, npmpcpp, mocp config files" \
-			"link ${SDESC[6]} rc files" \
-			"link ${SDESC[7]} config and autostart" \
-			"link ${SDESC[8]} configs" \
-			"link ${SDESC[9]} configs" \
-			"link ${SDESC[10]} config and startup files" \
-			"link ${SDESC[11]} xml and scripts" \
-			"link ${SDESC[12]} configs" \
-			"link ${SDESC[13]} WindowMaker files" \
-			"link ${SDESC[14]} Motif Window Manager configs" \
-			"link ${SDESC[15]} config" \
-			"link ${SDESC[16]} files" \
-			"link ${SDESC[17]} config" \
-			"link all ${SDESC[18]} related configs" \
-			"link all ${SDESC[19]} related configs" \
-			"link ${SDESC[20]}" \
-			"show this ${SDESC[21]} screen" \
-			"${SDESC[22]} this script" )
+    local -ra DESC=( "link Bash related files" \
+			"link Gvim/Vim rc files" \
+			"link Mutt rc" \
+			"link Tmux's tmux.conf" \
+			"link Top's toprc" \
+			"link Music mpc, mpd, npmpcpp config files" \
+			"link X11 rc files" \
+			"link i3wm and i3status configs" \
+			"link Compiz configs" \
+			"link E16 configs" \
+			"link Tint2 configs" \
+			"link Compton config" \
+			"link all Console related configs" \
+			"link all Xorg related configs" \
+			"link all Console and Xorg files" \
+			"show this Help screen" \
+			"Exit this script" )
 
     local -a TUI_MENU=( )
     local -a TUI_HMSG=( "\n${usage}\n\n" )
@@ -226,11 +199,11 @@ __menu() {
 
         case "${USRINPT}" in
 	    # Thanks to https://www.reddit.com/user/Schreq/
-            [0-9]|1[0-7]) __do_arr "${TUI_OPS[$USRINPT]}";;
-	    1[8-9]) __do_assoc "${TUI_OPS[$USRINPT]}";;
-	    20) __do_"${TUI_OPS[$USRINPT]}";;
-            21) echo -ne "${TUI_HMSG[*]}";;
-            22) exit;;
+            [0-9]|1[0-1]) __do_arr "${TUI_OPS[$USRINPT]}";;
+	    1[2-3]) __do_assoc "${TUI_OPS[$USRINPT]}";;
+	    14) __do_"${TUI_OPS[$USRINPT]}";;
+            15) echo -ne "${TUI_HMSG[*]}";;
+            16) exit;;
             *) echo -ne "Invalid responce: ${USRINPT}. Choose from 0 to $((${#TUI_OPS[*]}-1))\n" >&2;;
         esac
     done

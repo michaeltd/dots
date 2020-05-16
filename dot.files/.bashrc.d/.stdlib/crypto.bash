@@ -3,7 +3,7 @@
 # cryptographic functions
 #shellcheck shell=bash
 
-[[ ${SHELL} =~ bash$ ]] || return 1
+# [[ ${SHELL} =~ bash$ ]] || return 1
 
 gen_pass() {
     #shellcheck disable=SC2005
