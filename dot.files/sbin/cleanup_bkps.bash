@@ -29,18 +29,7 @@ main() {
 	esac
     done
 
-    # while [[ -n "${*}" ]]; do
-    # 	case "${1}" in
-    # 	    "-b"|"--bkpdir") shift; local backup_dir="${1}";;
-    # 	    "-s"|"--simulate") local remove_backups="0";;
-    # 	    "-k"|"--keep") shift; local days2keep="${1}";;
-    # 	    "-d"|"--debug") set -x;;
-    # 	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-(-b)kpdir /backups/directory/] [-(-s)imulate] [-(-k)eep # (int days)] [-(-d)ebug]\n" >&2; return 1;;
-    # 	esac
-    # 	shift
-    # done
-
-    local -ra sources=( "${srcspath}/"*.bash ) backups=( "${backup_dir}"/*.tar.gz* )
+    local -ra sources=( "${srcspath}/"*\.bash ) backups=( "${backup_dir}"/*\.tar.gz* )
     
     for src in "${sources[@]}"; do
 	source "${src}" || { echo -ne "${src} not readable.\n" >&2; return 1; }
@@ -57,7 +46,7 @@ main() {
     done
 
     for (( y = 0; y < ${#fns[@]}; y++ )); do
-	if [[ "$(epochdd "$(max "${dts[@]}")" "${dts[y]}")" -ge "${days2keep}" ]]; then
+	if [[ "$(epochdd "$(max "${dts[@]}")" "${dts[y]}")" -gt "${days2keep}" ]]; then
 	    nothing2do="0"
 	    if [[ "$(lastdayofmonth "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
 	    	#shellcheck disable=SC2154
