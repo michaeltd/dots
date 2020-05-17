@@ -75,7 +75,7 @@ export GIT_PS1_SHOWUPSTREAM=yes
 [[ -d ~/".local/bin" ]] && export PATH+=":${HOME}/.local/bin"
 # OPT
 [[ -n "${OPT}" ]] && export PATH+=":${OPT}/bin"
-[[ -d ~"/bin" ]] && export PATH+=":${HOME}/bin"
+[[ -d ~/"bin" ]] && export PATH+=":${HOME}/bin"
 # JAVA
 [[ -n "${JAVA_HOME}" ]] && export PATH+=":${JAVA_HOME}/bin"
 [[ -n "${ANT}" ]] && export PATH+=":${ANT}/bin"

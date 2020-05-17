@@ -19,16 +19,26 @@ main() {
     # Source explicitly for non interactive shells.
     srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
 
-    while [[ -n "${*}" ]]; do
-	case "${1}" in
-	    "-b"|"--bkpdir") shift; local backup_dir="${1}";;
-	    "-s"|"--simulate") local remove_backups="0";;
-	    "-k"|"--keep") shift; local days2keep="${1}";;
-	    "-d"|"--debug") set -x;;
-	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-(-b)kpdir /backups/directory/] [-(-s)imulate] [-(-k)eep # (int days)] [-(-d)ebug]\n" >&2; return 1;;
+    while getopts "b:k:sd" opt; do
+	case "${opt}" in
+	    b) backup_dir="${OPTARG}";;
+	    k) days2keep="${OPTARG}";;
+	    s) remove_backups="0";;
+	    d) set -x;;
+	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-b /backups/directory/] [-s (simulate)] [-k # (backups in days to keep)] [-d (debug)]\n" >&2; return 1;;
 	esac
-	shift
     done
+
+    # while [[ -n "${*}" ]]; do
+    # 	case "${1}" in
+    # 	    "-b"|"--bkpdir") shift; local backup_dir="${1}";;
+    # 	    "-s"|"--simulate") local remove_backups="0";;
+    # 	    "-k"|"--keep") shift; local days2keep="${1}";;
+    # 	    "-d"|"--debug") set -x;;
+    # 	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-(-b)kpdir /backups/directory/] [-(-s)imulate] [-(-k)eep # (int days)] [-(-d)ebug]\n" >&2; return 1;;
+    # 	esac
+    # 	shift
+    # done
 
     local -ra sources=( "${srcspath}/"*.bash ) backups=( "${backup_dir}"/*.tar.gz* )
     
