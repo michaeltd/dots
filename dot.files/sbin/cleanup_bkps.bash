@@ -21,9 +21,9 @@ main() {
 
     while getopts "b:k:sd" opt; do
 	case "${opt}" in
-	    b) backup_dir="${OPTARG}";;
-	    k) days2keep="${OPTARG}";;
-	    s) remove_backups="0";;
+	    b) local backup_dir="${OPTARG}";;
+	    k) local days2keep="${OPTARG}";;
+	    s) local remove_backups="0";;
 	    d) set -x;;
 	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-b /backups/directory/] [-s (simulate)] [-k # (backups in days to keep)] [-d (debug)]\n" >&2; return 1;;
 	esac
