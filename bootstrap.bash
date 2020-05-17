@@ -78,9 +78,7 @@ declare -ra DESC=( "link Bash related files" \
 declare -r usage="Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp"
 
 __is_link_set() {
-    local -r homefile="${HOME}${1:9}"
-    local -r realfile="$(realpath "${1}")"
-    [[ -L "${homefile}" ]] && [[ "$(realpath "${homefile}")" == "${realfile}" ]]
+    [[ -L "${HOME}${1:9}" ]] && [[ "$(realpath "${HOME}${1:9}")" == "$(realpath "${1}")" ]]
 }
 
 __all_links_set() {
@@ -221,6 +219,4 @@ __main() {
     fi
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    __main "${@}"
-fi
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] __main "${@}"
