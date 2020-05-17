@@ -65,7 +65,7 @@ export GIT_PS1_SHOWUPSTREAM=yes
 # RUST
 [[ -d ~/"cargo" ]] && export RUST=~/".cargo"
 # NODE
-[[ -d "/opt/nodejs" ]] && export NODE="/opt/nodejs"
+[[ -d ~/".node" ]] && export NODE=~/".node"
 # DENO
 [[ -d ~/".deno" ]] && export DENO=~/".deno"
 # MONGODB
