@@ -18,13 +18,9 @@ cd "${SDN}"
 #shellcheck disable=SC2155
 declare -r BFE="dots.${NESN}.${$}.$(date +%s).bkp"
 #shellcheck disable=SC2034
-declare -ra bash=( 'dot.files/.bash_logout' \
-		      'dot.files/.bash_profile' \
-		      'dot.files/.bashrc' \
-		      'dot.files/.bashrc.d' \
-		      'dot.files/.profile' \
-		      'dot.files/bin' \
-		      'dot.files/sbin' ) \
+declare -ra bash=( 'dot.files/.bash_logout' 'dot.files/.bash_profile' \
+		      'dot.files/.bashrc' 'dot.files/.bashrc.d' \
+		      'dot.files/.profile' 'dot.files/bin' 'dot.files/sbin' ) \
 	vim=( 'dot.files/.vimrc' 'dot.files/.gvimrc' ) \
 	mutt=( 'dot.files/.muttrc' ) \
 	top=( 'dot.files/.toprc' ) \
@@ -35,10 +31,8 @@ declare -ra bash=( 'dot.files/.bash_logout' \
 #shellcheck disable=SC2034
 declare -ra console=( bash[@] vim[@] mutt[@] top[@] tmux[@] music[@] )
 #shellcheck disable=SC2034
-declare -ra x11=( 'dot.files/.Xdefaults' \
-		      'dot.files/.Xresources' \
-		      'dot.files/.Xresources.d' \
-		      'dot.files/.xinitrc' \
+declare -ra x11=( 'dot.files/.Xdefaults' 'dot.files/.Xresources' \
+		      'dot.files/.Xresources.d' 'dot.files/.xinitrc' \
 		      'dot.files/.xsession' ) \
 	i3wm=( 'dot.files/.config/i3/config' \
 		      'dot.files/.config/i3status/config' ) \
@@ -54,7 +48,34 @@ declare -ra x11=( 'dot.files/.Xdefaults' \
 #shellcheck disable=SC2034
 declare -ra xorg=( x11[@] i3wm[@] compiz[@] e16[@] tint2[@] compton[@] )
 
-declare -r usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp"
+# Build menus and help messages.
+declare -ra TUI_OPS=( "bash" "vim" "mutt" "tmux" "top" "music" "x11" \
+			     "i3wm" "compiz" "e16" "tint2" "compton" "console" \
+			     "xorg" "everything" "help" "quit" )
+
+declare -ra SDESC=( "Bash" "Vim/Gvim" "Mutt" "Tmux" "Top" "Music" "X11" \
+			   "i3wm" "Compiz" "E16" "Tint2" "Compton" "Console" \
+			   "Xorg" "Everything" "Help" "Quit" )
+
+declare -ra DESC=( "link Bash related files" \
+		     "link Gvim/Vim rc files" \
+		     "link Mutt rc" \
+		     "link Tmux's tmux.conf" \
+		     "link Top's toprc" \
+		     "link Music mpc, mpd, npmpcpp config files" \
+		     "link X11 rc files" \
+		     "link i3wm and i3status configs" \
+		     "link Compiz configs" \
+		     "link E16 configs" \
+		     "link Tint2 configs" \
+		     "link Compton config" \
+		     "link all Console related configs" \
+		     "link all Xorg related configs" \
+		     "link all Console and Xorg files" \
+		     "show this Help screen" \
+		     "Exit this script" )
+
+declare -r usage="Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp"
 
 __is_link_set() {
     local -r homefile="${HOME}${1:9}"
@@ -155,32 +176,6 @@ __do_everything() {
 }
 
 __menu() {
-    # Build menus and help messages.
-    local -ra TUI_OPS=( "bash" "vim" "mutt" "tmux" "top" "music" "x11" \
-			      "i3wm" "compiz" "e16" "tint2" "compton" "console" \
-			      "xorg" "everything" "help" "quit" )
-
-    local -ra SDESC=( "Bash" "Vim/Gvim" "Mutt" "Tmux" "Top" "Music" "X11" \
-			    "i3wm" "Compiz" "E16" "Tint2" "Compton" "Console" \
-			    "Xorg" "Everything" "Help" "Quit" )
-
-    local -ra DESC=( "link Bash related files" \
-			"link Gvim/Vim rc files" \
-			"link Mutt rc" \
-			"link Tmux's tmux.conf" \
-			"link Top's toprc" \
-			"link Music mpc, mpd, npmpcpp config files" \
-			"link X11 rc files" \
-			"link i3wm and i3status configs" \
-			"link Compiz configs" \
-			"link E16 configs" \
-			"link Tint2 configs" \
-			"link Compton config" \
-			"link all Console related configs" \
-			"link all Xorg related configs" \
-			"link all Console and Xorg files" \
-			"show this Help screen" \
-			"Exit this script" )
 
     local -a TUI_MENU=( )
     local -a TUI_HMSG=( "\n${usage}\n\n" )
