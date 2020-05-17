@@ -184,14 +184,12 @@ __menu() {
         TUI_HMSG+=( "Use ${x}, for ${SDESC[x]}, which will ${DESC[x]}\n" )
     done
 
-    TUI_MENU+=( "\nChoose[0-$((${#TUI_OPS[@]}-1))]:" )
-
     while :; do
-        echo -ne " ${TUI_MENU[*]}"
-        read -r USRINPT
+
+	echo -ne " ${TUI_MENU[*]}"|column -t -s $'\t'
+	read -rp "Choose[0-$((${#TUI_OPS[*]}-1))]: " USRINPT
 
         case "${USRINPT}" in
-	    # Thanks to https://www.reddit.com/user/Schreq/
             [0-9]|1[0-1]) __do_arr "${TUI_OPS[$USRINPT]}";;
 	    1[2-3]) __do_assoc "${TUI_OPS[$USRINPT]}";;
 	    14) __do_"${TUI_OPS[$USRINPT]}";;
@@ -219,4 +217,4 @@ __main() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] __main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && __main "${@}"
