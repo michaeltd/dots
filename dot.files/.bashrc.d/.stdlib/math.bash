@@ -32,9 +32,9 @@ altmin() {
 }
 
 min() {
-    n=${1} # Avoid n initialization issues
+    local n=${1} # Avoid n initialization issues
     while [[ -n "${*}" ]]; do
-	(( $1 < n )) && n=${1}
+	(( $1 < n )) && n="${1}"
 	shift
     done
     echo "${n}"
@@ -47,8 +47,7 @@ altmax() {
 }
 
 max() {
-    local x
-    x="${1}" # Avoid x initialization issues
+    local x="${1}" # Avoid x initialization issues
     while [[ -n "${*}" ]]; do
 	(( $1 > x )) && x="${1}"
 	shift
