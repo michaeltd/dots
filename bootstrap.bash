@@ -17,66 +17,72 @@ cd "${SDN}"
 # Backup File Extension
 #shellcheck disable=SC2155
 declare -r BFE="dots.${NESN}.${$}.$(date +%s).bkp"
-#shellcheck disable=SC2034
-declare -ra bash=( 'dot.files/.bash_logout' 'dot.files/.bash_profile' \
-		      'dot.files/.bashrc' 'dot.files/.bashrc.d' \
-		      'dot.files/.profile' 'dot.files/bin' 'dot.files/sbin' ) \
-	vim=( 'dot.files/.vimrc' 'dot.files/.gvimrc' ) \
-	mutt=( 'dot.files/.muttrc' ) \
-	top=( 'dot.files/.toprc' ) \
-	tmux=( 'dot.files/.tmux.conf' ) \
-	music=( 'dot.files/.config/mpd/mpd.conf' \
-		    'dot.files/.config/ncmpcpp/config' )
 
 #shellcheck disable=SC2034
-declare -ra console=( bash[@] vim[@] mutt[@] top[@] tmux[@] music[@] )
-#shellcheck disable=SC2034
-declare -ra x11=( 'dot.files/.Xdefaults' 'dot.files/.Xresources' \
-		      'dot.files/.Xresources.d' 'dot.files/.xinitrc' \
-		      'dot.files/.xsession' ) \
-	i3wm=( 'dot.files/.config/i3/config' \
-		      'dot.files/.config/i3status/config' ) \
-	compiz=( 'dot.files/.config/compiz/compiz.sh' \
-		     'dot.files/.config/compiz/compizconfig/Default.ini' \
-		     'dot.files/.config/compiz/compizconfig/config' ) \
+declare -ra compton=( 'dot.files/.config/compton.conf' ) \
+	tint2=( 'dot.files/.config/tint2/panel' \
+		    'dot.files/.config/tint2/taskbar' ) \
 	e16=( 'dot.files/.e16/Init/e16.sh' \
 		  'dot.files/.e16/bindings.cfg' \
 		  'dot.files/.e16/menus/user_apps.menu' ) \
-	tint2=( 'dot.files/.config/tint2/panel' \
-		    'dot.files/.config/tint2/taskbar' ) \
-	compton=( 'dot.files/.config/compton.conf' )
+	compiz=( 'dot.files/.config/compiz/compiz.sh' \
+		     'dot.files/.config/compiz/compizconfig/Default.ini' \
+		     'dot.files/.config/compiz/compizconfig/config' ) \
+	i3wm=( 'dot.files/.config/i3/config' \
+		      'dot.files/.config/i3status/config' ) \
+	x11=( 'dot.files/.Xdefaults' 'dot.files/.Xresources' \
+		      'dot.files/.Xresources.d' 'dot.files/.xinitrc' \
+		      'dot.files/.xsession' )
+
 #shellcheck disable=SC2034
-declare -ra xorg=( x11[@] i3wm[@] compiz[@] e16[@] tint2[@] compton[@] )
+declare -ra xorg=( compton[@] tint2[@] e16[@] compiz[@] i3wm[@] x11[@] )
 
+#shellcheck disable=SC2034
+declare -ra music=( 'dot.files/.config/mpd/mpd.conf' \
+			'dot.files/.config/ncmpcpp/config' ) \
+	tmux=( 'dot.files/.tmux.conf' ) \
+	top=( 'dot.files/.toprc' ) \
+	mutt=( 'dot.files/.muttrc' ) \
+	vim=( 'dot.files/.vimrc' 'dot.files/.gvimrc' ) \
+	bash=( 'dot.files/.bash_logout' 'dot.files/.bash_profile' \
+					'dot.files/.bashrc' 'dot.files/.bashrc.d' \
+					'dot.files/.profile' 'dot.files/bin' 'dot.files/sbin' )
+
+#shellcheck disable=SC2034
+declare -ra console=( music[@] tmux[@] top[@] mutt[@] vim[@] bash[@] )
 # Build menus and help messages.
-declare -ra TUI_OPS=( "bash" "vim" "mutt" "tmux" "top" "music" "x11" \
-			     "i3wm" "compiz" "e16" "tint2" "compton" "console" \
-			     "xorg" "everything" "help" "quit" )
+declare -ra TUI_OPS=( "quit" "help" "everything" "xorg" "console" \
+			      "compton" "tint2" "e16" "compiz" "i3wm" "x11" \
+			      "music" "tmux" "top" "mutt" "vim" "bash" )
 
-declare -ra DESC=( "link Bash related files" \
-		     "link Gvim/Vim rc files" \
-		     "link Mutt rc" \
+declare -ra DESC=( "Exit this script" \
+		     "show this Help screen" \
+		     "link Everything available" \
+		     "link all Xorg related configs" \
+		     "link all Console related configs" \
+		     "link Compton config" \
+		     "link Tint2 configs" \
+		     "link E16 configs" \
+		     "link Compiz configs" \
+		     "link i3wm and i3status configs" \
+		     "link X11 rc files" \
+		     "link Music mpc, mpd, npmpcpp config files" \
 		     "link Tmux's tmux.conf" \
 		     "link Top's toprc" \
-		     "link Music mpc, mpd, npmpcpp config files" \
-		     "link X11 rc files" \
-		     "link i3wm and i3status configs" \
-		     "link Compiz configs" \
-		     "link E16 configs" \
-		     "link Tint2 configs" \
-		     "link Compton config" \
-		     "link all Console related configs" \
-		     "link all Xorg related configs" \
-		     "link Everything available" \
-		     "show this Help screen" \
-		     "Exit this script" )
+		     "link Mutt rc" \
+		     "link Gvim/Vim rc files" \
+		     "link Bash related files" \
+)
 
-declare -r usage="Usage: ${BASH_SOURCE[0]##*/} -a|-c|-x|-m|-h 
- -a	to link everything
- -c	to link console related configs
- -x	to link Xorg related configs
- -m	to show a menu with all available options
- -h	for this help message
+declare -r usage="
+ Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp 
+
+ -(-a)ll    		 to link everything
+ -(-c)onsole 		 to link console related configs
+ -(-x)org 		 to link Xorg related configs
+ -(-m)enu 		 to show a menu with all available options
+ -(-h)elp 		 for this help message
+
 "
 
 __is_link_set() {
@@ -115,8 +121,7 @@ __check_arr() {
 __link_arr() {
     eval "arr=(\"\${$1[@]}\")"
     for i in "${arr[@]}"; do
-	local realfile="$(realpath "${i}")" homefile="${HOME}${i:9}"
-	__do_link "${realfile}" "${homefile}"
+	__do_link "$(realpath "${i}")" "${HOME}${i:9}"
     done
 }
 
@@ -178,7 +183,7 @@ __do_everything() {
 __menu() {
 
     local -a TUI_MENU=( )
-    local -a TUI_HMSG=( "\n${usage}\n" )
+    local -a TUI_HMSG=( "${usage}" )
 
     for (( x = 0; x < ${#TUI_OPS[*]}; x++ )); do
         TUI_MENU+=( "${x}:${TUI_OPS[x]}" )
@@ -192,31 +197,24 @@ __menu() {
 	read -rp "Choose[0-$((${#TUI_OPS[*]}-1))]: " USRINPT
 
         case "${USRINPT}" in
-            [0-9]|1[0-1]) __do_arr "${TUI_OPS[$USRINPT]}";;
-	    1[2-3]) __do_assoc "${TUI_OPS[$USRINPT]}";;
-	    14) __do_"${TUI_OPS[$USRINPT]}";;
-            15) echo -ne "${TUI_HMSG[*]}";;
-            16) exit;;
+            0) exit;;
+            1) echo -ne "${TUI_HMSG[*]}";;
+	    2) __do_"${TUI_OPS[$USRINPT]}";;
+	    [3-4]) __do_assoc "${TUI_OPS[$USRINPT]}";;
+            [5-9]|1[0-16]) __do_arr "${TUI_OPS[$USRINPT]}";;
             *) echo -ne "Invalid selection: ${USRINPT}. Choose from 0 to $((${#TUI_OPS[*]}-1))\n" >&2;;
         esac
     done
 }
 
 __main() {
-    if [[ -n "${1}" ]]; then
-	while getopts "acxm" opt; do
-    	    case "${opt}" in
-		"a") shift; __do_everything ;;
-		"c") shift; __do_assoc "console" ;;
-		"x") shift; __do_assoc "xorg" ;;
-		"m") shift; __menu ;;
-		*) shift; echo -ne "\n${usage}\n"; exit 1 ;;
-	    esac
-	done
-    else
-	echo "${usage}"
-	exit 1
-    fi
+    case "${1}" in
+	-a|--all) __do_everything ;;
+	-c|--console) __do_assoc "console" ;;
+	-x|--xorg) __do_assoc "xorg" ;;
+	-m|--menu) __menu ;;
+	*) echo -ne "\n${usage}\n"; exit 1 ;;
+    esac
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && __main "${@}"
