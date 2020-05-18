@@ -16,17 +16,29 @@ main() {
 
     local backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="1"
 
+    local usage="
+
+ Usage: ${BASH_SOURCE[0]##*/} [-(-b)ackups /backups/directory/] [-(-k)eep # (int, days)] [-(-s)simulate] [-(-d)ebug)]
+
+ -(-b)ackups 		      backups location, eg: /backups/directory/
+ -(-k)eep # 		      backups to keep in days, eg:7
+ -(-s)simulate 		      show what would be done.
+ -(-d)ebug)		      display lots of letters.
+
+"
+
     # Source explicitly for non interactive shells.
     srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
 
-    while getopts "b:k:sd" opt; do
-	case "${opt}" in
-	    b) local backup_dir="${OPTARG}";;
-	    k) local days2keep="${OPTARG}";;
-	    s) local remove_backups="0";;
-	    d) set -x;;
-	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-b /backups/directory/] [-s (simulate)] [-k # (backups in days to keep)] [-d (debug)]\n" >&2; return 1;;
+    while [[ -n "${*}" ]]; do
+	case "${1}" in
+	    -b|--backups) shift; local backup_dir="${1}";;
+	    -k|--keep) shift; local days2keep="${1}";;
+	    -s|--simulate) local remove_backups="0";;
+	    -d|--debug) set -x;;
+	    *) echo -ne "${usage}" >&2; return 1;;
 	esac
+	shift
     done
 
     local -ra sources=( "${srcspath}/"*\.bash ) backups=( "${backup_dir}"/*\.tar.gz* )

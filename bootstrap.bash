@@ -53,10 +53,6 @@ declare -ra TUI_OPS=( "bash" "vim" "mutt" "tmux" "top" "music" "x11" \
 			     "i3wm" "compiz" "e16" "tint2" "compton" "console" \
 			     "xorg" "everything" "help" "quit" )
 
-declare -ra SDESC=( "Bash" "Vim/Gvim" "Mutt" "Tmux" "Top" "Music" "X11" \
-			   "i3wm" "Compiz" "E16" "Tint2" "Compton" "Console" \
-			   "Xorg" "Everything" "Help" "Quit" )
-
 declare -ra DESC=( "link Bash related files" \
 		     "link Gvim/Vim rc files" \
 		     "link Mutt rc" \
@@ -71,11 +67,17 @@ declare -ra DESC=( "link Bash related files" \
 		     "link Compton config" \
 		     "link all Console related configs" \
 		     "link all Xorg related configs" \
-		     "link all Console and Xorg files" \
+		     "link Everything available" \
 		     "show this Help screen" \
 		     "Exit this script" )
 
-declare -r usage="Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp"
+declare -r usage="Usage: ${BASH_SOURCE[0]##*/} -a|-c|-x|-m|-h 
+ -a	to link everything
+ -c	to link console related configs
+ -x	to link Xorg related configs
+ -m	to show a menu with all available options
+ -h	for this help message
+"
 
 __is_link_set() {
     [[ -L "${HOME}${1:9}" ]] && [[ "$(realpath "${HOME}${1:9}")" == "$(realpath "${1}")" ]]
@@ -176,12 +178,12 @@ __do_everything() {
 __menu() {
 
     local -a TUI_MENU=( )
-    local -a TUI_HMSG=( "\n${usage}\n\n" )
+    local -a TUI_HMSG=( "\n${usage}\n" )
 
     for (( x = 0; x < ${#TUI_OPS[*]}; x++ )); do
         TUI_MENU+=( "${x}:${TUI_OPS[x]}" )
 	(( (x + 1) % 4 == 0 )) && TUI_MENU+=( "\n" ) || TUI_MENU+=( "\t" )
-        TUI_HMSG+=( "Use ${x}, for ${SDESC[x]}, which will ${DESC[x]}\n" )
+        TUI_HMSG+=( "Use ${x}, which will ${DESC[x]}\n" )
     done
 
     while :; do
@@ -195,19 +197,19 @@ __menu() {
 	    14) __do_"${TUI_OPS[$USRINPT]}";;
             15) echo -ne "${TUI_HMSG[*]}";;
             16) exit;;
-            *) echo -ne "Invalid responce: ${USRINPT}. Choose from 0 to $((${#TUI_OPS[*]}-1))\n" >&2;;
+            *) echo -ne "Invalid selection: ${USRINPT}. Choose from 0 to $((${#TUI_OPS[*]}-1))\n" >&2;;
         esac
     done
 }
 
 __main() {
     if [[ -n "${1}" ]]; then
-	while [[ -n "${1}" ]]; do
-    	    case "${1}" in
-		"a"|"-a"|"--all") shift; __do_everything ;;
-		"c"|"-c"|"--console") shift; __do_assoc "console" ;;
-		"x"|"-x"|"--xorg") shift; __do_assoc "xorg" ;;
-		"m"|"-m"|"--menu") shift; __menu ;;
+	while getopts "acxm" opt; do
+    	    case "${opt}" in
+		"a") shift; __do_everything ;;
+		"c") shift; __do_assoc "console" ;;
+		"x") shift; __do_assoc "xorg" ;;
+		"m") shift; __menu ;;
 		*) shift; echo -ne "\n${usage}\n"; exit 1 ;;
 	    esac
 	done

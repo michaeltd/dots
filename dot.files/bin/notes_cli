@@ -51,8 +51,7 @@ main() {
 
     rem() {
 	grep -h "${1}" "${notes_file}"
-	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]
-	then
+	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
             cp -f "${notes_file}" "${notes_bak}"
             grep -hv "${1}" "${notes_bak}" > "${notes_file}"
 	fi

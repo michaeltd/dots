@@ -2,6 +2,10 @@
 #
 # ~/bin/sndvol lil script to play around with volume settings
 
+# Unofficial Bash Strict Mode
+set -euo pipefail
+IFS=$'\t\n'
+
 main() {
     
     # Timeout settings for Xdialog, Xmessage

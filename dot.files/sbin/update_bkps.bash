@@ -40,15 +40,26 @@ IFS=$'\t\n'
 main() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
     local definitions="/home/paperjam" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com"
+    local usage="
 
-    while getopts "f:t:k:d" opt; do
-	case "${opt}" in
-	    f) definitions="${OPTARG}";;
-	    t) backup_to="${OPTARG}";;
-	    k) recipient="${OPTARG}";;
-	    d) set -x;;
-	    *) echo -ne "Usage: ${BASH_SOURCE[0]##*/} [-f /path/to/defs (read definitions from)] [-t /path/to/backups (save backups to)] [-k some@key.org (encrypt to key)] [-d (debug)]\n" >&2; return 1;;
+ Usage: ${BASH_SOURCE[0]##*/} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-d)ebug]
+
+ -(-f)rom /path/to/defs       where to read definitions from.
+ -(-t)o /path/to/backups      where to save backups to.
+ -(-k)ey some@key.org 	      key to encrypt to.
+ -(-d)ebug		      display lots of words.
+
+"
+
+    while [[ -n "${*}" ]]; do
+	case "${1}" in
+	    -f|--from) shift; definitions="${1}";;
+	    -t|--to) shift; backup_to="${1}";;
+	    -k|--key) shift; recipient="${1}";;
+	    -d|--debug) set -x;;
+	    *) echo -ne "${usage}" >&2; return 1;;
 	esac
+	shift
     done
 
     local -ra includes=( "${definitions}"/.backup_include.* )
