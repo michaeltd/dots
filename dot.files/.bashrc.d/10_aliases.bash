@@ -114,7 +114,7 @@ alias propaideia='for x in {1..9}; do for y in $(seq 1 $x); do printf "%dx%d=%2d
 # alias ttt='for x in {1..10}; do let tt="${x} * 10";for y in $(seq $x $x $tt);do printf "%4d" $y;done; printf "\n";done'
 
 # https://twitter.com/liamosaur/status/506975850596536320
-alias hug='sudo $(history -p \!\!)' # fuck='sudo $(history -p \!\!)' Political stupi... err correctess killed this one
+alias hugit='sudo $(history -p \!\!)' # fuckit='sudo $(history -p \!\!)' Political stup... err correctess killed this one
 
 # https://gist.github.com/seungwon0/802470
 # curl -s http://whatthecommit.com | perl -p0e '($_)=m{<p>(.+?)</p>}s'
@@ -149,3 +149,5 @@ alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];
 # TermBin https://termbin.com/
 # Usage: "command | termbin" or termbin <<<$(command)
 alias termbin='nc termbin.com 9999'
+
+alias youtdl='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
