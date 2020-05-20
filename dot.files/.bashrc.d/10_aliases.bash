@@ -96,7 +96,7 @@ alias cal='cal -m' # First Day Monday Calendars
 
 # NET
 # alias fixnet='ping -c 1 www.gentoo.org||sudo rc-service NetworkManager restart'
-alias test_net='ping -c 1 www.gentoo.org &> /dev/null;[[ $? == 0 ]] && echo "Net OK!" || echo "Net Down!"'
+alias netis='ping -c 1 www.gentoo.org &> /dev/null;[[ $? == 0 ]] && echo "Net is UP!" || echo "Net is Down!"'
 
 # Help wan-ip-howto
 alias wip4='curl ipv4.whatismyip.akamai.com;echo'
@@ -150,4 +150,5 @@ alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];
 # Usage: "command | termbin" or termbin <<<$(command)
 alias termbin='nc termbin.com 9999'
 
-alias youtdl='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
+alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
+alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
