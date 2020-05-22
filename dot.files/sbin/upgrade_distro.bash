@@ -8,7 +8,7 @@
 set -u
 IFS=$'\t\n'
 
-main() {
+upgrade() {
 
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
@@ -47,4 +47,4 @@ main() {
 
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && upgrade "${@}"

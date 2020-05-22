@@ -39,15 +39,15 @@
 # Now, I know there are other ways of doing this and that this is pretty rough (I have to escape some characters), but I've found this useful over the years to keep track of Christmas or B-Day gift ideas, movie/tv suggestions, etc. Maybe one of you will find this simple system helpful. Two basic aliases, and one pretty basic function. I'm open to suggestions for improving it, I know that it's not real robust but I just haven't felt the need to tighten it up.
 
 # Unofficial Bash Strict Mode
-set -u
+set -euo pipefail
 IFS=$'\t\n'
 
-main() {
+notes() {
 
     local -r notes_file="${HOME}/.notes"
     local -r notes_bak="${notes_file}.bak"
 
-    add() { echo "$(date "+%Y/%m/%d %H:%M:%S %A, %B %d "): ${*}" >> "${notes_file}"; }
+    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S %A, %B %d "): ${*}" >> "${notes_file}"; }
 
     rem() {
 	grep -h "${1}" "${notes_file}"
@@ -63,10 +63,10 @@ main() {
 
     usage() { echo -ne "\nUsage: ${BASH_SOURCE[0]##*/} add 'some notes' | search keyword | rem keyword... | list | halp\n\n" >&2; }
     
-    case "${1}" in
-	add|rem|search|list) "${@}";;
+    case "${*}" in
+	add*|rem*|search*|list*) "${@}";;
 	*) usage; list; return 1;;
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && notes "${@}"

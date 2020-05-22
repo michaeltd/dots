@@ -7,10 +7,10 @@
 #shellcheck source=/dev/null
 
 # Unofficial Bash Strict Mode
-set -u
+set -euo pipefail
 IFS=$'\t\n'
 
-main() {
+cleanup() {
 
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
@@ -42,7 +42,7 @@ main() {
     done
 
     local -ra sources=( "${srcspath}/"*\.bash ) backups=( "${backup_dir}"/*\.tar.gz* )
-    
+
     for src in "${sources[@]}"; do
 	source "${src}" || { echo -ne "${src} not readable.\n" >&2; return 1; }
     done
@@ -79,4 +79,4 @@ main() {
     [[ "${nothing2do}" -eq "1" ]] && echo "Nothing left to do!" >&2
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && cleanup "${@}"

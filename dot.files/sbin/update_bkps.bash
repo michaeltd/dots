@@ -37,7 +37,7 @@
 set -u
 IFS=$'\t\n'
 
-main() {
+backup() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
     local definitions="/home/paperjam" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com"
     local usage="
@@ -87,4 +87,4 @@ main() {
     done
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && backup "${@}"

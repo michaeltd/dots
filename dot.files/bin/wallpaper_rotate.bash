@@ -8,13 +8,15 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-# Font attributes, Colors, bg colors
-declare -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)"
-declare -r black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)"
-declare -r bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
+wprotate() {
 
-#shellcheck disable=SC2034,SC2155
-declare -ra WPUSAGE=("\n \
+    # Font attributes, Colors, bg colors
+    local -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)" \
+	  black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)" \
+	  bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
+
+    #shellcheck disable=SC2034,SC2155
+    local -ra WPUSAGE=("\n \
     ${bold}Script to rotate backgrounds in wm's with out such options \n \
     like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
     ${underline}Usage${end_underline}: ${green}${BASH_SOURCE[0]##*/}${reset} & from a terminal or your startup scripts.\n\n \
@@ -26,46 +28,45 @@ declare -ra WPUSAGE=("\n \
     ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}help${reset} - this message \n \
     ${green}${BASH_SOURCE[0]##*/}${reset} without options will start rotating images.\n\n")
 
-#shellcheck disable=SC2034,SC2155
-declare -ra FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
-        FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
-declare -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
-	DIRS=( "${HOME}/Pictures" ) WPS=()
-declare WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.log}")" \
-	BGSR="" WAIT="2m"
+    #shellcheck disable=SC2034,SC2155
+    local -ra FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
+          FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
+    local -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
+	  DIRS=( "${HOME}/Pictures" ) WPS=()
+    local WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.log}")" \
+	  BGSR="" WAIT="2m"
 
-# bash version info check
-if (( "${BASH_VERSINFO[0]}" < 4 )); then
-    #shellcheck disable=SC2154
-    echo -ne "${red}Error:${reset} For this to work you'll need bash major version no less than 4.\n" >&2
-    exit 1
-fi
-
-# Find a setter
-for (( x = 0; x < "${#BGSRS[@]}"; x++ )); do
-    if [[ -n $(type -P "${!BGSRS[x]:0:1}" 2> /dev/null) ]]; then
-	BGSR="${x}"
-	break # Break on first match.
+    # bash version info check
+    if (( "${BASH_VERSINFO[0]}" < 4 )); then
+	#shellcheck disable=SC2154
+	echo -ne "${red}Error:${reset} For this to work you'll need bash major version no less than 4.\n" >&2
+	exit 1
     fi
-done
 
-# Quit on no setter
-if [[ -z "${BGSR}" ]]; then
-    echo -ne "${WPUSAGE[*]}\n"
-    echo -ne "\n\n ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n" >&2
-    exit 1
-fi
+    # Find a setter
+    for (( x = 0; x < "${#BGSRS[@]}"; x++ )); do
+	if [[ -n $(type -P "${!BGSRS[x]:0:1}" 2> /dev/null) ]]; then
+	    BGSR="${x}"
+	    break # Break on first match.
+	fi
+    done
 
-# If there's no readable settings file, write it...
-if [[ ! -r "${WPRC}" ]]; then
-    echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}"
-fi
+    # Quit on no setter
+    if [[ -z "${BGSR}" ]]; then
+	echo -ne "${WPUSAGE[*]}\n"
+	echo -ne "\n\n ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n" >&2
+	exit 1
+    fi
 
-# and read it.
-#shellcheck source=/dev/null
-source "${WPRC}"
+    # If there's no readable settings file, write it...
+    if [[ ! -r "${WPRC}" ]]; then
+	echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}"
+    fi
 
-main() {
+    # and read it.
+    #shellcheck source=/dev/null
+    source "${WPRC}"
+
     # If options, proccess, else rotate things
     if [[ -n "${*}" ]]; then
 	case "${1}" in
@@ -123,17 +124,17 @@ main() {
 		for P in "${D}"/*; do
 		    local FE="${P:(-4)}"
 		    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
-			WPS+=( "${P}" )
+			local -a WPS+=( "${P}" )
 		    fi
 		done
 	    done
 
 	    # limit a random number to upper array bounds as a RundomNumber
 	    # let "RN = ${RANDOM} % ${#WPS[@]}"
-	    RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
+	    local RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
 	    
 	    # Get path and name of image as a selected WallPaper
-	    WP="${WPS[RN]}"
+	    local WP="${WPS[RN]}"
 
 	    # set wallpaper, log, wait
 	    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
@@ -144,4 +145,4 @@ main() {
     fi
 }
 
-[[ "${0}" == "${BASH_SOURCE[0]}" ]] && main ${@}
+[[ "${0}" == "${BASH_SOURCE[0]}" ]] && wprotate ${@}
