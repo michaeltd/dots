@@ -2,7 +2,7 @@
 #
 # ~/sbin/cleanup_bkps.bash - de-clutter backups
 # This will work for any directory containing *.tar.gz* backups (eg: name.tar.gz, name.tar.gz.pgp)
-# that have an epoch date field in their filename seperated by periods(.) (eg: 190326.1553569476.enc.tar.gz.pgp)
+# that have an epoch date field in their filename (eg: 190326.1553569476.enc.tar.gz.pgp).
 #
 #shellcheck source=/dev/null
 
@@ -18,17 +18,14 @@ cleanup() {
 
     local usage="
 
- Usage: ${BASH_SOURCE[0]##*/} [-(-b)ackups /backups/directory/] [-(-k)eep # (int, days)] [-(-s)simulate] [-(-d)ebug)]
+ Usage: ${BASH_SOURCE[0]##*/} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
 
  -(-b)ackups 		      backups location, eg: /backups/directory/
  -(-k)eep # 		      backups to keep in days, eg:7
  -(-s)simulate 		      show what would be done.
- -(-d)ebug)		      display lots of letters.
+ -(-d)ebug		      display lots of letters.
 
 "
-
-    # Source explicitly for non interactive shells.
-    srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
 
     while [[ -n "${*}" ]]; do
 	case "${1}" in
@@ -40,6 +37,9 @@ cleanup() {
 	esac
 	shift
     done
+
+    # Source explicitly for non interactive shells.
+    srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
 
     local -ra sources=( "${srcspath}/"*\.bash ) backups=( "${backup_dir}"/*\.tar.gz* )
 

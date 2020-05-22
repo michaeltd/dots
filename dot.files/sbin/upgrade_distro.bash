@@ -23,7 +23,7 @@ upgrade() {
             emerge=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@security}" ) \
             pkg=( "pkg" "update" "upgrade" )
 
-    local -ra pms=( apt_get[@] yum[@] zypper[@] pacman[@] emerge[@] pkg[@])
+    local -ra pms=( apt_get[@] yum[@] zypper[@] pacman[@] emerge[@] pkg[@] )
 
     local -r notfound="404"
 
@@ -31,13 +31,13 @@ upgrade() {
 
     # Which is the first available pm in this system?
     for x in "${!pms[@]}"; do
-	if [[ -n "$(type -P "${!pms[x]:0:1}")" ]]; then
+	if type -P "${!pms[x]:0:1}"&>/dev/null; then
 	    local -r pmidx="${x}"
 	    break # break on first match.
 	fi
     done
 
-    if (( pmidx == notfound || EUID != 0 )); then
+    if [[ "${pmidx}" == "${notfound}" || "${EUID}" != "0" ]]; then
 	#shellcheck disable=SC2154
 	printf " Error: required access privilages not met,\n or package manager not found. \n For this to work you need root account privilages \n and a %s, %s, %s, %s, %s or %s based distro.\n Quithing.\n" "${!pms[0]:0:1}" "${!pms[1]:0:1}" "${!pms[2]:0:1}" "${!pms[3]:0:1}" "${!pms[4]:0:1}" "${!pms[5]:0:1}" >&2
 	return 1
