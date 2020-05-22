@@ -55,7 +55,7 @@ webp2jpg() {
 	echo -ne "Usage: ${FUNCNAME[0]} files to convert\n" && \
 	return 1
     for i in "${@}"; do
-	ffmpeg -i "${i}" "${i//.webp/.jpg}"
+	ffmpeg -i "${i}" "${i/%\.webp/\.jpg}"
     done
 }
 
@@ -82,9 +82,9 @@ pyhttpserv() {
     # Use --bind 127.0.0.1 if you want to make it local only.
     # Or the old days with python 2: python -m SimpleHTTPServer 8080
     local -ar pv=( $(python --version) )
-    if [[ "${pv[1]}" =~ ^3.* ]]; then
+    if [[ "${pv[1]}" =~ ^3. ]]; then
 	python -m http.server 8080 --bind 127.0.0.1
-    elif [[ "${pv[1]}" =~ ^2.* ]]; then
+    elif [[ "${pv[1]}" =~ ^2. ]]; then
 	python -m SimpleHTTPServer 8080
     else
 	echo "Fatal: No suitable python version found!" >&2

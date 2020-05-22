@@ -6,13 +6,13 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-main() {
+sndvol() {
     
     # Timeout settings for Xdialog, Xmessage
     local -r XMTO="1" # xmessage timeout is in seconds...
     local -r XDTO="$(( XMTO * 1000 ))" # Xdialog/dialog is in milliseconds.
 
-    local -r scrpt_name="${BASH_SOURCE[0]##*/}"
+    local -r scrpt_name="${FUNCNAME[0]}"
 
     # Xdialog/dialog
     declare -rx XDIALOG_HIGH_DIALOG_COMPAT=1 XDIALOG_FORCE_AUTOSIZE=1 \
@@ -59,4 +59,4 @@ main() {
     display_feedback "Master: ${VOL}"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && sndvol "${@}"

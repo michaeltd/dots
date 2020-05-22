@@ -50,6 +50,7 @@ bindsym $mod+Right workspace next
 
 # enable floating mode for all Xdialog windows
 for_window [class="Xdialog"] floating enable
+for_window [class="Gtkdialog"] floating enable
 
 # change focus
 # bindsym $mod+j focus left

@@ -145,4 +145,4 @@ wprotate() {
     fi
 }
 
-[[ "${0}" == "${BASH_SOURCE[0]}" ]] && wprotate ${@}
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && wprotate ${@}
