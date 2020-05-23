@@ -38,7 +38,7 @@ elif type -P pkg &>/dev/null; then
 	  dcleanup='sudo pkg autoremove'
 fi
 
-if [[ -x "$(type -P dircolors)" ]]; then
+if type -P dircolors &>/dev/null; then
     # Color support
     # if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
     # 	  eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
@@ -101,6 +101,10 @@ alias netis='ping -c 1 www.gentoo.org &> /dev/null;[[ $? == 0 ]] && echo "Net is
 # Help wan-ip-howto
 alias wip4='curl ipv4.whatismyip.akamai.com;echo'
 alias wip6='curl ipv6.whatismyip.akamai.com;echo'
+
+# Shutdown > halt & reboot & poweroff
+# alias halt='sudo shutdown -h'
+# alias reboot='sudo shutdown -r'
 
 # ReMove Dead Links from current directory
 alias rmdl='find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +'
