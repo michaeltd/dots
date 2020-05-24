@@ -46,8 +46,19 @@ notes() {
 
     local -r notes_file="${HOME}/.notes"
     local -r notes_bak="${notes_file}.bak"
+    local -r notes_header="
+        ::::    ::: ::::::::::::::::::::::::::::::::::::: 
+       :+:+:   :+::+:    :+:   :+:    :+:      :+:    :+: 
+      :+:+:+  +:++:+    +:+   +:+    +:+      +:+         
+     +#+ +:+ +#++#+    +:+   +#+    +#++:++# +#++:++#++   
+    +#+  +#+#+#+#+    +#+   +#+    +#+             +#+    
+   #+#   #+#+##+#    #+#   #+#    #+#      #+#    #+#     
+  ###    #### ########    ###    ##################
+"
 
-    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S %A, %B %d "): ${*}" >> "${notes_file}"; }
+    show_header() { echo "${notes_header}"; }
+
+    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; }
 
     rem() {
 	grep -h "${1}" "${notes_file}"
@@ -61,11 +72,11 @@ notes() {
 
     list() { nl -b a "${notes_file}"; }
 
-    usage() { echo -ne "\nUsage: ${BASH_SOURCE[0]##*/} add 'some notes' | search keyword | rem keyword... | list | halp\n\n" >&2; }
+    usage() { echo -ne "Usage: ${BASH_SOURCE[0]##*/} add 'some notes' | search keyword | rem keyword... | list | halp\n\n" >&2; }
     
     case "${*}" in
-	add*|rem*|search*|list*) "${@}";;
-	*) usage; list; return 1;;
+	add*|rem*|search*|list*) show_header; "${@}";;
+	*) show_header; usage; return 1;;
     esac
 }
 
