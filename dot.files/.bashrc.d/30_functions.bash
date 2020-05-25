@@ -8,6 +8,12 @@
 # while read a ; do echo ${a//abc/XYZ} ; done < /tmp/file.txt > /tmp/file.txt.t ; mv /tmp/file.txt{.t,}
 # echo "abcdef" |replace "abc" "XYZ" # mysqld
 
+# Font attributes # Font colors # Font background colors
+#shellcheck disable=SC2034,SC2155
+declare -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)" \
+	black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)" \
+	bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
+
 findstringindir() {
     # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
     grep -rnw "${2}" -e "${1}"
@@ -81,10 +87,10 @@ pyhttpserv() {
     # Be careful with what you expose to the world. \
     # Use --bind 127.0.0.1 if you want to make it local only.
     # Or the old days with python 2: python -m SimpleHTTPServer 8080
-    local -ar pv=( $(python --version) )
-    if [[ "${pv[1]}" =~ ^3. ]]; then
+    local -r pv="$(python --version 2>&1)" # Fun fact: python2 outputs version in stderr while python3 to stdout
+    if [[ "${pv}" =~ ^Python\ 3. ]]; then
 	python -m http.server 8080 --bind 127.0.0.1
-    elif [[ "${pv[1]}" =~ ^2. ]]; then
+    elif [[ "${pv}" =~ ^Python\ 2. ]]; then
 	python -m SimpleHTTPServer 8080
     else
 	echo "Fatal: No suitable python version found!" >&2
@@ -96,7 +102,7 @@ rcm() {
     # (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
     # Usage : rcm niceness executable command line arguments
     # Example: rcm 9 conky -qdc ~/.conkyrc
-    [[ "${#}" -lt "2" ]] && printf "Usage: ${FUNCNAME[0]} niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t\n" >&2 && return 1
+    [[ "${#}" -lt "2" ]] && printf "Usage: %s niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t\n" "${FUNCNAME[0]}" >&2 && return 1
     #shellcheck disable=SC2155
     local -r bin=$(type -P "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
     [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &>/dev/null &
@@ -243,7 +249,7 @@ ping_subnet() {
     # for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
     for x in {1..254}; do
 	for y in {1..254}; do
-	    (ping -c 1 192.168.${x}.${y} &> /dev/null && echo "UP 192.168.${x}.${y}" &) &
+	    (ping -c 1 "192.168.${x}.${y}" &> /dev/null && echo "UP 192.168.${x}.${y}" &) &
 	done
     done
 }
@@ -252,14 +258,14 @@ tcp_port_scan() {
     # echo "Scanning TCP ports..."
     for p in {1..1023}; do
 	# (echo > /dev/tcp/localhost/$p) > /dev/null 2>&1 && echo "$p open"
-	(echo > /dev/tcp/localhost/$p) > /dev/null 2>&1 && echo "${p}"
+	(echo > "/dev/tcp/localhost/${p}") > /dev/null 2>&1 && echo "${p}"
     done
 }
 
 listening_on() {
     # Returns service listening on given port
     [[ -z "${1}" ]] && \
-	printf "Usage: ${FUNCNAME[0]} port-number\n" >&2 && \
+	printf "Usage: %s port-number\n" "${FUNCNAME[0]}" >&2 && \
 	return 1
     while [[ -n "${1}" ]]; do
 	sudo lsof -niTCP:"${1}" |grep LISTEN
@@ -283,7 +289,7 @@ get_file_type(){
 
 dir_sizes() {
     # Report first params directory sizes in human readable format
-    #shellcheck disable=SC2230
+    #shellcheck disable=SC2230,SC2155
     local ls=$(which ls) du=$(which du)
     if [[ -x "${ls}" && -x "${du}" ]]; then
 	for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do

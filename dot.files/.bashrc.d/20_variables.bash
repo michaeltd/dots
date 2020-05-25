@@ -25,6 +25,7 @@ else
     export BROWSER="$(type -P w3m||type -P links||type -P lynx)"
 fi
 
+#shellcheck disable=SC2155
 export TERMINAL="$(type -P xterm||type -P konsole||type -P gnome-terminal||type -P terminology||type -P xfce4-terminal)"
 
 # Colorfull manpages (works with less as a pager)
