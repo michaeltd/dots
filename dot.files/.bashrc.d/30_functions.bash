@@ -8,13 +8,7 @@
 # while read a ; do echo ${a//abc/XYZ} ; done < /tmp/file.txt > /tmp/file.txt.t ; mv /tmp/file.txt{.t,}
 # echo "abcdef" |replace "abc" "XYZ" # mysqld
 
-# Font attributes # Font colors # Font background colors
-#shellcheck disable=SC2034,SC2155
-declare -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)" \
-	black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)" \
-	bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
-
-findstringindir() {
+s4StrInDir() {
     # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
     grep -rnw "${2}" -e "${1}"
 }
@@ -66,7 +60,7 @@ webp2jpg() {
 }
 
 hello_world() {
-    echo -ne "\n ${green}Hello${reset} ${bold}${USER}${reset}, today is ${cyan}$(date '+%A, %B %d')${reset}\n\n"
+    echo -ne "\n $(tput setaf 2)Hello$(tput sgr0) $(tput bold)${USER}$(tput sgr0), today is $(tput setaf 5)$(date '+%A, %B %d')$(tput sgr0)\n\n"
     curl https://wttr.in?0
     printf "\n"
 }
