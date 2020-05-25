@@ -60,7 +60,7 @@ notes() {
 
     show_header() { echo "${notes_header}"; }
 
-    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; }
+    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; list;}
 
     rem() {
 	grep -h "${1}" "${notes_file}"
