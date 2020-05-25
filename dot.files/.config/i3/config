@@ -129,7 +129,7 @@ bindsym $mod+F5 workspace $ws5; exec vlc
 bindsym $mod+F6 workspace $ws6; exec libreoffice||ooffice
 bindsym $mod+F7 workspace $ws7; exec hexchat
 bindsym $mod+F8 workspace $ws8; exec gimp
-bindsym $mod+F9 workspace $ws9; exec xfce4-settings-manager
+bindsym $mod+F9 workspace $ws9; exec pavucontrol
 
 bindsym $mod+control+0 workspace $ws0
 bindsym $mod+control+1 workspace $ws1
