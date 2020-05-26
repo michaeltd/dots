@@ -3,8 +3,6 @@
 # math related functions
 #shellcheck shell=bash
 
-# [[ ${SHELL} =~ bash$ ]] || return 1
-
 in_range() {
     if [[ "${#}" -eq "3" ]]; then
 	[[ "${3}" -ge "${1}" && "${3}" -le "${2}" ]]

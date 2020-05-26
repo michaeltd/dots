@@ -3,7 +3,8 @@
 # cryptographic functions
 #shellcheck shell=bash
 
-# [[ ${SHELL} =~ bash$ ]] || return 1
+# Can I haz bash?
+[[ "${SHELL}" =~ bash$ ]] || return 1
 
 gen_pass() {
     #shellcheck disable=SC2005
@@ -33,14 +34,14 @@ gen_uuid() {
 
 hash_stdin() {
     [[ "${#}" -ne "1" ]] && \
-	echo "Usage: echo \"text to hash\" | ${FUNCNAME[0]} cipher" && \
+	echo "Usage: echo/cat \"text/file to hash\" | ${FUNCNAME[0]} cipher" && \
 	return 1
     openssl dgst -"${1}"
 }
 
 transcode_stdin() {
     [[ "${#}" -ne "2" ]] && \
-	echo "Usage: echo \"text to encode/decode\" | ${FUNCNAME[0]} e|d cipher" && \
+	echo "Usage: echo/cat \"text/file to encode/decode\" | ${FUNCNAME[0]} (e/d) cipher" && \
 	return 1
     openssl enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
 }
