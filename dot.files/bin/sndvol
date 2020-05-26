@@ -23,7 +23,6 @@ sndvol() {
 
     # No process spam
     local -ar pids=( $(pgrep -U "${USER}" -f "${scrpt_name}") )
-
     [[ "${#pids[*]}" -gt "1" ]] && return 1
 
     # Pick a default available UI ...
