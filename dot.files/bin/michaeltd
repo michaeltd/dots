@@ -4,7 +4,6 @@
 #
 # https://tinyurl.com/create.php?source=create&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmichaeltd%2Fdots%2Fmaster%2Fdot.files%2Fbin%2Fmichaeltd.bash&alias=mtd-card
 # Write a nice business card on the terminal.
-
 # 
 #          ╭───────────────────────────────────────────────────╮
 #          │                                                   │
@@ -22,36 +21,14 @@
 #          │                                                   │
 #          ╰───────────────────────────────────────────────────╯
 # 
-#
-# [32m[39m
-# [32m   ╭───────────────────────────────────────────────────╮[39m
-# [32m   │                                                   │[39m
-# [32m   │   [37m    Michael Tsouchlarakis[32m / [37mmichaeltd[32m           │[39m
-# [32m   │                                                   │[39m
-# [32m   │   [37m[1m     Work:[22m[32m  [37mtsouchlarakis@gmail.com[32m             │[39m
-# [32m   │   [37m[1m     FOSS:[22m[32m  [37mGentoo Linux avocado.[32m               │[39m
-# [32m   │                                                   │[39m
-# [32m   │   [37m[1m      Web:[22m[32m  [90mhttps://[32m[33mmichaeltd[32m[90m.netlify.com/[32m      │[39m
-# [32m   │   [37m[1m   GitLab:[22m[32m  [90mhttps://[32m[90mgitlab.com/[32m[32mmichaeltd[32m        │[39m
-# [32m   │   [37m[1m      npm:[22m[32m  [90mhttps://[32m[90mnpmjs.com/[32m[31m~michaeltd[32m        │[39m
-# [32m   │   [37m[1m    Toots:[22m[32m  [90mhttps://[32m[90mmastodon.technology/[32m[37m@[32m[35mtdm[32m    │[39m
-# [32m   │                                                   │[39m
-# [32m   │   [37m[1m     Card:[22m[32m  [31mcurl -sL[32m [37mtinyurl.com/[32m[32mmick-card[32m      │[39m
-# [32m   │                                                   │[39m
-# [32m   ╰───────────────────────────────────────────────────╯[39m
-# [32m[39m
-#
-#
 # Font attributes, colors, bg_colors
 readonly reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" \
 	 blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" \
-	 reverse="$(tput rev)" hidden="$(tput invis)"
-
-readonly black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" \
+	 reverse="$(tput rev)" hidden="$(tput invis)" \
+	 black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" \
 	 yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" \
-	 cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)"
-
-readonly bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" \
+	 cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)" \
+	 bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" \
 	 bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" \
 	 bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
 
