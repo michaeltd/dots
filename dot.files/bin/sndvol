@@ -7,12 +7,10 @@ set -euo pipefail
 IFS=$'\t\n'
 
 sndvol() {
-    
+
     # Timeout settings for Xdialog, Xmessage
     local -r XMTO="1" # xmessage timeout is in seconds...
     local -r XDTO="$(( XMTO * 1000 ))" # Xdialog/dialog is in milliseconds.
-
-    local -r scrpt_name="${FUNCNAME[0]}"
 
     # Xdialog/dialog
     declare -rx XDIALOG_HIGH_DIALOG_COMPAT=1 XDIALOG_FORCE_AUTOSIZE=1 \
@@ -21,21 +19,30 @@ sndvol() {
 	    DIALOG_EXTRA=3 DIALOG_ITEM_HELP=4 DIALOG_ESC=255 \
 	    SIG_NONE=0 SIG_HUP=1 SIG_INT=2 SIG_QUIT=3 SIG_KILL=9 SIG_TERM=15
 
+    local -r scrpt_name="${BASH_SOURCE[0]##*/}"
+
+    # No process spam
+    local -ar pids=( $(pgrep -U "${USER}" -f "${scrpt_name}") )
+
+    [[ "${#pids[*]}" -gt "1" ]] && return 1
+
     # Pick a default available UI ...
     #shellcheck disable=SC2155
     if [[ -x "$(type -P Xdialog)" && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
 	local -r DIALOG="$(type -P Xdialog)" G=( "0" "0" "${XDTO}" )
     elif [[ -x "$(type -P dialog)" ]]; then # Check for dialog
 	local -r DIALOG="$(type -P dialog)" G=( "0" "0" )
+    else
+	local -r DIALOG=""
     fi
 
     display_feedback() {
 	if [[ -x "$(type -P "${DIALOG}")" ]]; then # Check for X, Xdialog
-            ${DIALOG} --title "${scrpt_name}:" --infobox "${*}" "${G[@]}" 2> /dev/null
+            ${DIALOG} --title "${scrpt_name}:" --infobox "${*}" "${G[@]}"
 	elif [[ -x "$(type -P notify-send)" ]]; then # Check for X, Xdialog
-            notify-send "${scrpt_name}:" "${*}" 2> /dev/null
+            notify-send "${scrpt_name}:" "${*}"
 	elif [[ -x "$(type -P xmessage)" ]]; then # Check for X, Xdialog
-            xmessage -nearmouse -timeout "${XMTO}" "${*}" 2> /dev/null
+            xmessage -nearmouse -timeout "${XMTO}" "${*}"
 	fi
 	echo "${scrpt_name}: ${*}" >&2
     }
