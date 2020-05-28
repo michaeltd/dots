@@ -4,7 +4,7 @@
 #shellcheck shell=bash
 
 # Can I haz bash?
-[[ "${SHELL}" =~ bash$ ]] || return 1
+# [[ "${SHELL}" =~ bash$ ]] || return 1
 
 gen_pass() {
     #shellcheck disable=SC2005

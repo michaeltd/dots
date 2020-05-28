@@ -55,8 +55,19 @@ webp2jpg() {
 	echo -ne "Usage: ${FUNCNAME[0]} files to convert\n" && \
 	return 1
     for i in "${@}"; do
-	ffmpeg -i "${i}" "${i/%\.webp/\.jpg}"
+	ffmpeg -i "${i}" "${i/%.webp/.jpg}"
     done
+}
+
+cifrom2(){
+    [[ "${#}" -ne "2" ]] && echo -ne "\n\tUsage: ${FUNCNAME[0]} from to\n\tConvert image(s) from to formats.\n\n" && return 1
+    for i in *."${1}"; do
+	convert "${i}" "${i/%.$1/.$2}" && rm "${i}"
+    done
+}
+
+fixel() {
+    [[ -d /mnt/el/Documents ]] && ls /mnt/el/ || sudo mount /mnt/el
 }
 
 hello_world() {
@@ -65,11 +76,10 @@ hello_world() {
     printf "\n"
 }
 
-makeabackup() {
-    [[ ! -f "${1}" ]] && \
-	echo -ne "Usage: ${FUNCNAME[0]} file-2-backup\n" && \
-	return 1
-    cp -v "${1}" "${1}.bkp.$(date +%s)"
+mkbkp() {
+    [[ ! -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-2-backup\n" && return 1
+    # cp -v "${1}" "${1}.bkp.$(date +%s)"
+    compress "${1}.$(date +%s).tgz" "${1}"
 }
 
 pyhttpserv() {
@@ -107,7 +117,7 @@ list_cat() {
     /bin/ls --color "/usr/portage/${1}"
 }
 
-check_app() {
+is_executable() {
     [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} executable" >&2 && return 1
     type -P "${1}" &> /dev/null
 }
@@ -119,8 +129,8 @@ lcdfe() {
     find "${1}" -iname "${2}" -exec wc -l {} +
 }
 
-# End stuff
-bin_term() {
+# # End stuff
+termbin() {
     # kill -s 15 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -TERM -u "${USER}" "${1}"
@@ -130,7 +140,7 @@ bin_term() {
     fi
 }
 
-bin_kill() {
+killbin() {
     # kill -s 9 $(pgrep "${1}")
     if [[ -n "${1}" ]]; then
 	pkill -KILL -u "${USER}" "${1}"
@@ -140,15 +150,28 @@ bin_kill() {
     fi
 }
 
+rwpi(){
+    [[ ! -d "${1}" ]] && echo -ne "\n\tUsage: ${FUNCNAME[0]} images-directory\n\tSet a random wallpaper from a directory with images.\n\n" && return 1
+    feh -rz --bg-scale "${1}" 
+}
+
+rncmmd(){
+    # One liner: TMPFILE=/tmp/${RANDOM}.input.box.txt && dialog --title 'Command Input' --default-button 'ok' --inputbox 'Enter command to continue' 10 40 command 2> ${TMPFILE} && $(cat ${TMPFILE})
+    local -r DIALOG="$(type -P Xdialog || type -P dialog)" TMPFILE="/tmp/${$}.${RANDOM}.input.box.txt"
+    "${DIALOG}" --title "Command Input" --default-button "ok" --inputbox "Enter command to continue" 10 40 command 2> "${TMPFILE}"
+    $(cat "${TMPFILE}")
+    return "${?}"
+}
+
 # Create a new alias
 mkalias() {
-    echo alias "${@}" >> "${HOME}/.bashrc.d/aliases.bash"
-    alias "${@}"
+    echo alias "${*}" >> "${HOME}/.bashrc.d/aliases.bash"
+    alias "${*}"
 }
 
 # Remove an alias
 rmalias() {
-    unalias "${1}" # && sed --follow-symlinks -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases.bash
+    unalias "${1}" && sed --follow-symlinks -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases.bash
 }
 
 # Functions to unify archive management in linux CLI environments

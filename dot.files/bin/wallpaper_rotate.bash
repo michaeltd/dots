@@ -136,10 +136,11 @@ wprotate() {
 	    # Get path and name of image as a selected WallPaper
 	    local WP="${WPS[RN]}"
 
-	    # set wallpaper, log, wait
-	    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}" || continue # Skip log and sleep if selected img won't work.
-	    
+	    # set log, set wallpaper, wait
 	    printf "%s %s %s\n" "$(date +%y%m%d_%H%M)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
+
+	    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}"
+	    
 	    sleep "${WAIT}"
 	done
     fi

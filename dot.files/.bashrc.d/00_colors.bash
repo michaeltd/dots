@@ -4,7 +4,7 @@
 #shellcheck shell=bash
 
 # Can I haz bash?
-[[ "${SHELL}" =~ bash$ ]] || return 1
+# [[ "${SHELL}" =~ bash$ ]] || return 1
 
 # https://robotmoon.com/256-colors/
 # https://github.com/philosophos/Xresources

@@ -153,7 +153,7 @@ alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];
 
 # TermBin https://termbin.com/
 # Usage: "command | termbin" or termbin <<<$(command)
-alias termbin='nc termbin.com 9999'
+alias tbc='nc termbin.com 9999'
 
 alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
