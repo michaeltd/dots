@@ -12,9 +12,9 @@
 # NOTE: add your $recipient public key to root's keyring, If you link this to /etc/cron.anything
 
 # .backup_include.*.* file name explanation:
-# /path/to/defs/.backup_include.*.job_name
-# '            '               ' '        '
-#       1              2        3    4
+# /path/to/defs/.backup_include.compress|encrypt.job_name
+# '            '               '                '        '
+#       1              2                3           4
 # 1) This part will be given by your [-(-f)rom] switch (default /home/username)
 #    The script will use it as a starting point to search for all .backup_* related files.
 # 2) .backup_include.* will be the search term for the definitions array.
@@ -34,19 +34,20 @@
 # */node_modules/*
 
 # Unofficial Bash Strict Mode
-set -u
+set -euo pipefail
 IFS=$'\t\n'
 
 backup() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-    local definitions="/home/paperjam" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com"
+    local definitions="/home/paperjam" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
     local usage="
 
- Usage: ${BASH_SOURCE[0]##*/} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-d)ebug]
+ Usage: ${BASH_SOURCE[0]##*/} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug]
 
  -(-f)rom /path/to/defs       where to read definitions from.
  -(-t)o /path/to/backups      where to save backups to.
  -(-k)ey some@key.org 	      key to encrypt to.
+ -(-n)iceness {0..19} 	      niceness to run with.
  -(-d)ebug		      display lots of words.
 
 "
@@ -56,6 +57,7 @@ backup() {
 	    -f|--from) shift; definitions="${1}";;
 	    -t|--to) shift; backup_to="${1}";;
 	    -k|--key) shift; recipient="${1}";;
+	    -n|--niceness) shift; [[ "${1}" =~ ^[0-9]+$ ]] && (( $1 >= 0 && $1 <= 19 )) && niceness="${1}";;
 	    -d|--debug) set -x;;
 	    *) echo -ne "${usage}" >&2; return 1;;
 	esac
@@ -68,7 +70,7 @@ backup() {
     [[ -e "${includes[0]}" ]] || { echo -ne "No job file definitions found.\nNothing left to do!\n" >&2; return 1; }
     [[ -d "${backup_to}" ]] || { echo -ne "${backup_to} is not a directory.\n" >&2; return 1; }
 
-    local -ra nice_cmd=( "nice" "-n" "19" ) \
+    local -ra nice_cmd=( "nice" "-n" "${niceness}" ) \
 	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
 	  pgp_cmd=( "gpg" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 

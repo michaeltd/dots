@@ -67,7 +67,11 @@ cifrom2(){
 }
 
 fixel() {
-    [[ -d /mnt/el/Documents ]] && ls /mnt/el/ || sudo mount /mnt/el
+    if [[ -d /mnt/el/Documents ]]; then
+	ls /mnt/el/
+    else
+	sudo mount /mnt/el
+    fi
 }
 
 hello_world() {
@@ -159,7 +163,8 @@ rncmmd(){
     # One liner: TMPFILE=/tmp/${RANDOM}.input.box.txt && dialog --title 'Command Input' --default-button 'ok' --inputbox 'Enter command to continue' 10 40 command 2> ${TMPFILE} && $(cat ${TMPFILE})
     local -r DIALOG="$(type -P Xdialog || type -P dialog)" TMPFILE="/tmp/${$}.${RANDOM}.input.box.txt"
     "${DIALOG}" --title "Command Input" --default-button "ok" --inputbox "Enter command to continue" 10 40 command 2> "${TMPFILE}"
-    $(cat "${TMPFILE}")
+    #shellcheck disable=SC2091
+    "$(cat "${TMPFILE}")"
     return "${?}"
 }
 
@@ -171,7 +176,7 @@ mkalias() {
 
 # Remove an alias
 rmalias() {
-    unalias "${1}" && sed --follow-symlinks -i "/alias $1\=/d" ${HOME}/.bashrc.d/aliases.bash
+    unalias "${1}" && sed --follow-symlinks -i "/alias $1\=/d" "${HOME}/.bashrc.d/aliases.bash"
 }
 
 # Functions to unify archive management in linux CLI environments

@@ -3,6 +3,10 @@
 # math related functions
 #shellcheck shell=bash
 
+is_numeric() {
+    [[ "${1}" =~ ^[0-9]+$ ]]
+}
+
 in_range() {
     if [[ "${#}" -eq "3" ]]; then
 	[[ "${3}" -ge "${1}" && "${3}" -le "${2}" ]]
