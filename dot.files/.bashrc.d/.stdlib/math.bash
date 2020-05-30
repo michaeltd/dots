@@ -16,17 +16,15 @@ is_decimal() {
 }
 
 in_range() {
-    if [[ "${#}" -eq "3" ]]; then
-	[[ "${3}" -ge "${1}" && "${3}" -le "${2}" ]]
-    else
-	echo "Usage: ${FUNCNAME[0]} min max num" >&2
+    [ "${#}" -ne "3" ] && \
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} min max num\n\n" >&2 && \
 	return 1
-    fi
+    [ "${3}" -ge "${1}" -a "${3}" -le "${2}" ]
 }
 
 between() {
     [[ "${#}" -ne "3" ]] && \
-	echo "Usage: ${FUNCNAME[0]} lbound ubound check" >&2 && \
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} lbound ubound check\n\n" >&2 && \
 	return 1
     (( $3 >= $1 && $3 <= $2 ))
 }
@@ -35,28 +33,15 @@ calc() {
     echo "scale=6;${*}"| bc -l
 }
 
-altmin() {
-    printf "%s\n" "${@}" | \
-	sort -n | \
-	head -1
+max() {
+    printf "%d\n" "${@}" | sort -rn | head -1
 }
 
 min() {
-    local n=${1} # Avoid n initialization issues
-    while [[ -n "${*}" ]]; do
-	(( $1 < n )) && n="${1}"
-	shift
-    done
-    echo "${n}"
+    printf "%d\n" "${@}" | sort -n | head -1
 }
 
 altmax() {
-    printf "%d\n" "${@}" | \
-	sort -rn | \
-	head -1
-}
-
-max() {
     local x="${1}" # Avoid x initialization issues
     while [[ -n "${*}" ]]; do
 	(( $1 > x )) && x="${1}"
@@ -65,15 +50,27 @@ max() {
     echo "${x}"
 }
 
+altmin() {
+    local n=${1} # Avoid n initialization issues
+    while [[ -n "${*}" ]]; do
+	(( $1 < n )) && n="${1}"
+	shift
+    done
+    echo "${n}"
+}
+
 avg() {
-    local i=0 sum=0 usage="Usage: ${FUNCNAME[0]} #1 #2 #3..."
-    die() { echo "${usage[*]}" >&2; return 1; }
+    local i=0 sum=0 usage="\n\tUsage: ${FUNCNAME[0]} #1 #2 #3...\n\n"
+    die() { echo -ne "${usage[*]}" >&2; return 1; }
     [[ -z "${*}" ]] && { die; return $?; }
     while [[ -n "${*}" ]]; do
-	[[ "${1}" =~ ^[0-9]+$ ]] || { die; return $?; }
-	(( i++ )); (( sum += $1 )); shift
+	is_numeric "${1}" || { die; return $?; }
+	(( i++ ))
+	# (( sum += $1 ))
+	sum="$(calc "${sum} + ${1}")"
+	shift
     done
-    printf "%d\n" "$(( sum / i ))"
+    printf "%f\n" "$(calc "${sum} / ${i}")"
 }
 
 sqrt() {
@@ -84,7 +81,7 @@ sqr() {
     echo "scale=6;${1}^2"| bc -l
 }
 
-powr() {
+pwr() {
     echo "scale=6;${1}^${2}"| bc -l
 }
 

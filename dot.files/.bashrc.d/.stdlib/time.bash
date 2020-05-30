@@ -13,7 +13,7 @@ isepoch() {
 }
 
 daydiff () {
-    if (( $# == 2 )); then
+    if [[ "${#}" -eq "2" ]]; then
 	echo -ne "$(( (${1} - ${2}) / (60 * 60 * 24) ))\n"
     else
 	echo -ne "Usage: ${FUNCNAME[0]} epoch1 epoch2.\n" >&2

@@ -48,6 +48,12 @@ wttrin() {
     curl "https://wttr.in/${1:-moon}"
 }
 
+hello_world() {
+    echo -ne "\n $(tput setaf 2)Hello$(tput sgr0) $(tput bold)${USER}$(tput sgr0), today is $(tput setaf 5)$(date '+%A, %B %d')$(tput sgr0)\n\n"
+    curl https://wttr.in?0
+    printf "\n"
+}
+
 # UTILS =======================================================================
 
 webp2jpg() {
@@ -60,7 +66,9 @@ webp2jpg() {
 }
 
 cifrom2(){
-    [[ "${#}" -ne "2" ]] && echo -ne "\n\tUsage: ${FUNCNAME[0]} from to\n\tConvert image(s) from to formats.\n\n" && return 1
+    [[ "${#}" -ne "2" ]] && \
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} from to\n\tConvert image(s) from to formats.\n\teg: ${FUNCNAME[0]} png jpg\n\n" && \
+	return 1
     for i in *."${1}"; do
 	convert "${i}" "${i/%.$1/.$2}" && rm "${i}"
     done
@@ -72,12 +80,6 @@ fixel() {
     else
 	sudo mount /mnt/el
     fi
-}
-
-hello_world() {
-    echo -ne "\n $(tput setaf 2)Hello$(tput sgr0) $(tput bold)${USER}$(tput sgr0), today is $(tput setaf 5)$(date '+%A, %B %d')$(tput sgr0)\n\n"
-    curl https://wttr.in?0
-    printf "\n"
 }
 
 mkbkp() {
@@ -242,9 +244,9 @@ services() {
 	echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
 	return 1
     if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
-	declare -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
+	local -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
     else
-	declare -a srvcs=( "${@}" )
+	local -a srvcs=( "${@}" )
 	unset "srvcs[0]"
     fi
     for srvc in "${srvcs[@]}"; do
@@ -333,4 +335,3 @@ print_apps_in_path() {
     done
     printf "\n"
 }
-
