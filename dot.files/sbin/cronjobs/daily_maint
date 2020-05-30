@@ -3,10 +3,10 @@
 # /etc/cron.daily/daily_maint
 # script to run daily maintenance tasks
 
-SDN="$(dirname $(realpath $0))"
+SDN="$(dirname "$(realpath $0)")"
 DS="${SDN}/daily"
 if [ -d "${DS}" ]; then
-    for SCPT in "${DS}/"*\.bash; do
+    for SCPT in "${DS}/"*.bash; do
         "${SCPT}"
     done
 fi

@@ -3,10 +3,10 @@
 # /etc/cron.monthly/monthly_maint
 # script to run monthly maintenance tasks
 
-SDN="$(dirname $(realpath $0))"
+SDN="$(dirname "$(realpath $0)")"
 MS="${SDN}/monthly"
 if [ -d "${MS}" ]; then
-    for SCPT in "${MS}/"*\.bash; do
+    for SCPT in "${MS}/"*.bash; do
         "${SCPT}"
     done
 fi
