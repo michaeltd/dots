@@ -1,1 +1,1 @@
-../../check_integrity.bash
+../../dist_check.bash
