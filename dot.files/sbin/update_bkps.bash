@@ -57,12 +57,13 @@ backup() {
 	    -f|--from) shift; definitions="${1}";;
 	    -t|--to) shift; backup_to="${1}";;
 	    -k|--key) shift; recipient="${1}";;
-	    -n|--niceness) shift; [[ "${1}" =~ ^[0-9]+$ ]] && (( $1 >= 0 && $1 <= 19 )) && niceness="${1}";;
+	    -n|--niceness) shift; [[ "${1}" =~ ^[-|+]?[0-9]+?$ ]] && (( $1 >= 0 && $1 <= 19 )) && niceness="${1}";;
 	    -d|--debug) set -x;;
 	    *) echo -ne "${usage}" >&2; return 1;;
 	esac
 	shift
     done
+
 
     local -ra includes=( "${definitions}"/.backup_include.* )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
