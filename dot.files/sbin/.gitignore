@@ -1,9 +1,11 @@
 *
-!check_integrity.bash
-!cleanup_bkps.bash
 !cronjobs/*
+!dist_check.bash
+!dist_cleanup.bash
+!dist_upgrade.bash
+!dist_wrldchck.bash
+!fbgrab
 !update_bkps.bash
 !update_hosts.bash
+!update_housekeep.bash
 !update_mirror.bash
-!upgrade_distro.bash
-!world_check.bash

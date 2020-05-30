@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ~/sbin/cleanup_bkps.bash - de-clutter backups
+# ~/sbin/update_housekeep.bash - de-clutter backups
 # This will work for any directory containing *.tar.gz* backups (eg: name.tar.gz, name.tar.gz.pgp)
 # that have an epoch date field in their filename (eg: 190326.1553569476.enc.tar.gz.pgp).
 #

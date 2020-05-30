@@ -1,0 +1,64 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# extra_commands="configtest modules virtualhosts"
+# extra_started_commands="configdump fullstatus graceful gracefulstop reload"
+
+# description_configdump="Dumps the configuration of the runing apache server. Requires server-info to be enabled and www-client/lynx."
+# description_configtest="Run syntax tests for configuration files."
+# description_fullstatus="Gives the full status of the server. Requires lynx and server-status to be enabled."
+# description_graceful="A graceful restart advises the children to exit after the current request and reloads the configuration."
+# description_gracefulstop="A graceful stop advises the children to exit after the current request and stops the server."
+# description_modules="Dump a list of loaded Static and Shared Modules."
+# description_reload="Kills all children and reloads the configuration."
+# description_virtualhosts="Show the settings as parsed from the config file (currently only shows the virtualhost settings)."
+# description_stop="Kills all children and stops the server."
+
+# Apply default values for some conf.d variables.
+# PIDFILE="${PIDFILE:-/var/run/apache2.pid}"
+# TIMEOUT=${TIMEOUT:-15}
+# SERVERROOT="${SERVERROOT:-/usr/lib64/apache2}"
+# CONFIGFILE="${CONFIGFILE:-/etc/apache2/httpd.conf}"
+# LYNX="${LYNX:-lynx -dump}"
+# STATUSURL="${STATUSURL:-http://localhost/server-status}"
+# RELOAD_TYPE="${RELOAD_TYPE:-graceful}"
+
+# Append the server root and configuration file parameters to the
+# user's APACHE2_OPTS.
+# APACHE2_OPTS="${APACHE2_OPTS} -d ${SERVERROOT}"
+# APACHE2_OPTS="${APACHE2_OPTS} -f ${CONFIGFILE}"
+
+# The path to the apache2 binary.
+FBGRAB="/home/paperjam/.local/bin/fbgrab"
+FBCAT="/home/paperjam/.local/bin/fbcat"
+
+start() {
+
+	ebegin "Starting ${SVCNAME}"
+
+	sudo -u paperjam -g paperjam "${FBCAT}" > "/home/paperjam/Pictures/${SVCNAME}.$(date +%s).${FUNCNAME[0]}.${$}.ppm"
+
+	eend ${?}
+}
+
+stop() {
+
+	ebegin "Stopping ${SVCNAME}"
+
+	sudo -u paperjam -g paperjam "${FBCAT}" > "/home/paperjam/Pictures/${SVCNAME}.$(date +%s).${FUNCNAME[0]}.${$}.ppm"
+
+	eend ${?}
+}
+
+reload() {
+
+    ebegin "Restarting ${SVCNAME}"
+
+    stop
+    start
+
+    eend ${?}
+}
+
+# vim: ts=4 filetype=gentoo-init-d
