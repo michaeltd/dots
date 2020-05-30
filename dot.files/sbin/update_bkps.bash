@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# ~/sbin/update_bkps.bash
-#
 # Configure backups with ~/.backup_include.(encrypt|compress).job_name definition files
 
 # Prereq's you'll need for this to work:

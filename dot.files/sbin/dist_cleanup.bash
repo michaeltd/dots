@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# ~/sbin/dist_cleanup.bash
-# man qcheck : qcheck - verify integrity of installed packages
 
 echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 

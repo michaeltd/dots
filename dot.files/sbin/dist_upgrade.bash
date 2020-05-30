@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #
-# ~/sbin/upgrade_distro.bash
 # Distro neutral upgrade script michaeltd 171124
 # From https://en.wikipedia.org/wiki/Package_manager
 

@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# /etc/cron.monthly/monthly_maint
-# script to run monthly maintenance tasks
 
 SDN="$(dirname "$(realpath $0)")"
 MS="${SDN}/monthly"

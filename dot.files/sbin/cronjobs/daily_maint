@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# /etc/cron.daily/daily_maint
-# script to run daily maintenance tasks
 
 SDN="$(dirname "$(realpath $0)")"
 DS="${SDN}/daily"

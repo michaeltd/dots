@@ -1,7 +1,5 @@
 #!/bin/bash
 #
-# ~/sbin/update_mirror.bash
-# Update my data
 
 # Unofficial Bash Strict Mode
 set -u
