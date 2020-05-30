@@ -4,7 +4,6 @@
 !dist_cleanup.bash
 !dist_upgrade.bash
 !dist_wrldchck.bash
-!fbgrab
 !update_bkps.bash
 !update_hosts.bash
 !update_housekeep.bash
