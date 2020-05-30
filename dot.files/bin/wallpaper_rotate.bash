@@ -9,8 +9,8 @@ set -euo pipefail
 IFS=$'\t\n'
 
 wprotate() {
-
     # Font attributes, Colors, bg colors
+    #shellcheck disable=SC2034 
     local -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)" \
 	  black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)" \
 	  bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
@@ -33,6 +33,7 @@ wprotate() {
           FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
     local -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
 	  DIRS=( "${HOME}/Pictures" ) WPS=()
+    #shellcheck disable=SC2155
     local WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.log}")" \
 	  BGSR="" WAIT="2m"
 
@@ -131,6 +132,7 @@ wprotate() {
 
 	    # limit a random number to upper array bounds as a RundomNumber
 	    # let "RN = ${RANDOM} % ${#WPS[@]}"
+	    #shellcheck disable=SC2155
 	    local RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
 	    
 	    # Get path and name of image as a selected WallPaper
@@ -146,4 +148,4 @@ wprotate() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && wprotate ${@}
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && wprotate "${@}"

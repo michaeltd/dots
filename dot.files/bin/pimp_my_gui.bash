@@ -5,7 +5,7 @@
 #shellcheck source=/dev/null
 
 # No double sourcing
-type rcm &>/dev/null || . ~/.bashrc.d/30_functions.bash
+type rcm 2>/dev/null || . ~/.bashrc.d/30_functions.bash
 
 # Music daemon
 # rcm 0 mpd
@@ -31,9 +31,9 @@ rcm 9 nm-applet
 if [ -r "/etc/os-release" ]; then 
     # Per distro setup.
     . /etc/os-release
-    if [ "${ID}" == "gentoo" ]; then
+    if [ "${ID}" = "gentoo" ]; then
 	rcm 9 conky -qd
-    elif [ "${ID}" == "devuan" ]; then
+    elif [ "${ID}" = "devuan" ]; then
 	rcm 9 conky -qd
     else
 	rcm 9 conky -qd

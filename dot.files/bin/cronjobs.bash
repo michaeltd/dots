@@ -3,7 +3,8 @@
 # ~/bin/cronjobs.bash
 # gather cronjobs for use with a familiar environment (/bin/bash)
 
-declare -r usage="Usage: $(basename "${BASH_SOURCE[0]}") -(-a)larm | -(-b)ackup"
+#shellcheck disable=SC2155
+declare -r usage="Usage: ${BASH_SOURCE[0]##*/} -(-a)larm | -(-b)ackup"
 
 alarm() {
     echo -ne " -- ${FUNCNAME[0]} --\n"
@@ -20,7 +21,7 @@ backup() {
     ~/sbin/cleanup_bkps.bash -b "/mnt/el/Documents/BKP/LINUX/paperjam" -k 2
 }
 
-main() {
+cronjobs() {
     if [[ -z "${1}" ]]; then
 	echo "${usage}" >&2; exit 1
     else
@@ -35,4 +36,4 @@ main() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && cronjobs "${@}"

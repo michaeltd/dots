@@ -8,8 +8,8 @@
 
 gen_pass() {
     #shellcheck disable=SC2005
-    tr -dc [:graph:] < /dev/urandom | \
-	tr -d [=\|=][=\"=][=\'=][=\,=] | \
+    tr -dc "[:graph:]" < /dev/urandom | \
+	tr -d "[=\|=][=\"=][=\'=][=\,=]" | \
 	head -c "${1:-64}"
     echo
 }
@@ -43,7 +43,7 @@ transcode_stdin() {
     [[ "${#}" -ne "2" ]] && \
 	echo "Usage: echo/cat \"text/file to encode/decode\" | ${FUNCNAME[0]} (e/d) cipher" && \
 	return 1
-    openssl enc -"${2}" -base64 $([[ "${1}" == "d" ]] && echo "-d")
+    openssl enc -"${2}" -base64 "$([[ "${1}" == "d" ]] && echo "-d")"
 }
 
 transcode_pgp() {
@@ -216,18 +216,22 @@ alpha2morse() {
 
 rom2dec() {
     # https://rosettacode.org/wiki/Roman_numerals/Decode#UNIX_Shell
-    local rnum="${1}"
+    local rnum="${1^^}"
     local n="0"
     local prev="0"
     local -A romans=( [M]="1000" [D]="500" [C]="100" [L]="50" [X]="10" [V]="5" [I]="1" )
 
     for (( i = ${#rnum}-1; i >= 0; i-- )); do
 	a="${romans[${rnum:$i:1}]}"
-     	[[ $a -lt $prev ]] && let n-=a || let n+=a
-     	prev=$a
+     	if [[ "${a}" -lt "${prev}" ]]; then
+	    (( n -= a ))
+	else
+	    (( n += a))
+	fi
+     	prev="${a}"
     done
-       
-    echo "$n"
+
+    echo "${n}"
 }
 
 dec2rom() {
@@ -240,15 +244,14 @@ dec2rom() {
            [1]=I
     )
     local nvmber=""
-    local num=$1
-    for value in ${values[@]}; do
+    local num="${1}"
+    for value in "${values[@]}"; do
         while (( num >= value )); do
-            nvmber+=${roman[value]}
-            ((num -= value))
+            nvmber+="${roman[value]}"
+            (( num -= value ))
         done
     done
-    echo $nvmber
- 
+    echo "${nvmber}"
 }
  
 rom2dec_alt(){
@@ -262,7 +265,11 @@ rom2dec_alt(){
     		    break
     		fi
     	    done
-    	    (( DIG < PRE )) && (( RES -= DIG )) || (( RES += DIG ))
+    	    if (( DIG < PRE )); then
+		(( RES -= DIG ))
+	    else
+		(( RES += DIG ))
+	    fi
     	    PRE="${DIG}"
     	done
     	echo "$NUM = $RES"

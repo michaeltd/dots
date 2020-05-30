@@ -23,6 +23,22 @@ source "${BATS_TEST_DIRNAME}/dot.files/.bashrc"
 }
 
 @test "ShellCheck check's out .bashrc.d sources" {
-    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.bashrc.d"/*
+    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.bashrc.d"/*.bash
     [ "$status" -eq 0 ]
 }
+
+@test "ShellCheck check's out .stdlib sources" {
+    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.bashrc.d/.stdlib"/*.bash
+    [ "$status" -eq 0 ]
+}
+
+@test "ShellCheck check's out bin sources" {
+    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/bin"/*.bash
+    [ "$status" -eq 0 ]
+}
+
+@test "ShellCheck check's out sbin sources" {
+    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/sbin"/*.bash
+    [ "$status" -eq 0 ]
+}
+

@@ -7,7 +7,7 @@ split() {
     # from pure-bash-bible
     # Usage: split "string" "delimiter"
     IFS=$'\n' read -d "" -ra arr <<< "${1//${2}/$'\n'}"
-    printf "${arr[*]}\n"
+    printf "%s\n" "${arr[*]}"
 }
 
 2lower_case() {
@@ -20,17 +20,17 @@ split() {
 
 alphabetic_only() {
     # echo -ne "${@//[![:alpha:]]}\n"
-    printf "${*//[![:alpha:]]}\n"
+    printf "%s\n" "${*//[![:alpha:]]}"
 }
 
 alphanumeric_only() {
     # echo -ne "${@//[![:alnum:]]}\n"
-    printf "${*//[![:alnum:]]}\n"
+    printf "%s\n" "${*//[![:alnum:]]}"
 }
 
 digits_only() {
     # echo -ne "${@//[![:digit:]]}\n"
-    printf "${*//[![:digit:]]}\n"
+    printf "%s\n" "${*//[![:digit:]]}"
 }
 
 remove_spaces() {
@@ -43,7 +43,7 @@ remove_spaces() {
     # shopt -u extglob
 
     shopt -s extglob # Allow extended globbing
-    printf "${*//+([[:space:]])/}\n"
+    printf "%s\n" "${*//+([[:space:]])/}"
     shopt -u extglob
 }
 
@@ -56,12 +56,12 @@ trim() {
     # var="${var%"${var##*[![:space:]]}"}"
     # echo -n "$var"
     
-    local var="$*"
+    local var="${*}"
     # remove leading whitespace characters
     var="${var#"${var%%[![:space:]]*}"}"
     # remove trailing whitespace characters
     var="${var%"${var##*[![:space:]]}"}"
-    printf "${var}\n"
+    printf "%s\n" "${var}"
 }
 
 left_pad() {
@@ -72,7 +72,7 @@ left_pad() {
     # remove trailing whitespace characters
     # var="${var%"${var##*[![:space:]]}"}"
     # echo -n "$var"
-    printf "${@#"${@%%[![:space:]]*}"}\n"
+    printf "%s\n" "${@#"${@%%[![:space:]]*}"}"
 }
 
 right_pad() {
@@ -83,5 +83,5 @@ right_pad() {
     # remove trailing whitespace characters
     # var="${var%"${var##*[![:space:]]}"}"
     # echo -n "$var"
-    printf "${@%"${@##*[![:space:]]}"}\n"
+    printf "%s\n" "${@%"${@##*[![:space:]]}"}"
 }
