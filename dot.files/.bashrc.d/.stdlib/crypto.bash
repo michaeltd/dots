@@ -47,15 +47,30 @@ transcode_stdin() {
 }
 
 transcode_pgp() {
-    case "${1}" in
-	e|-e|--encrypt) shift; local fn="--encrypt" out="${1}.pgp";;
-	d|-d|--decrypt)
-	    shift
-	    [[ "${1}" =~ \.pgp$ ]] || { echo "Need a .pgp file to decrypt!"; return 1; }
-	    local fn="--decrypt" out="${1//\.pgp/}";;
-	*) echo "Usage: ${FUNCNAME[0]} [e|d] [file|file.pgp]"; return 1;;
-    esac
-    gpg --default-recipient-self --output "${out}" "${fn}" "${1}"
+
+    usage() { echo -ne "\n\t Usage: ${FUNCNAME[0]} [file(s)|file(s).pgp...] [-(-h)elp]\n\t Decrypt/Encrypt files from/to pgp.\n\n" >&2; }
+
+    [[ "${#}" -eq "0" ]] && usage && return 1
+
+    while [[ -n "${*}" ]]; do
+	case "${1}" in
+	    -h|--help) usage; return 1;;
+	    *)
+		if [[ -r "${1}" ]]; then
+		    if [[ "$(file -b "${1}")" =~ ^PGP ]]; then
+			local func="--decrypt" out="${1//.pgp/}"
+		    else
+			local func="--encrypt" out="${1}.pgp"
+		    fi
+		else
+		    echo -ne " ${1} is not readable!\n" >&2
+		    usage
+		    return 1
+		fi;;
+	esac
+	gpg --default-recipient-self --output "${out}" "${func}" "${1}"
+	shift
+    done
 }
 
 rot_13(){
