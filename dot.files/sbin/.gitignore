@@ -4,7 +4,7 @@
 !dist_cleanup.bash
 !dist_upgrade.bash
 !dist_wrldchck.bash
-!update_bkps.bash
+!update_backups.bash
+!update_cleanup.bash
 !update_hosts.bash
-!update_housekeep.bash
 !update_mirror.bash
