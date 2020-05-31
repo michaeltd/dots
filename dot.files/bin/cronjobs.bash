@@ -17,8 +17,8 @@ alarm() {
 }
 
 backup() {
-    ~/sbin/update_bkps.bash -f ~/".bkps" -t "/mnt/el/Documents/BKP/LINUX/paperjam" -k "tsouchlarakis@gmail.com"
-    ~/sbin/cleanup_bkps.bash -b "/mnt/el/Documents/BKP/LINUX/paperjam" -k 2
+    ~/sbin/update_backup.bash -f ~/".bkps" -t "/mnt/el/Documents/BKP/LINUX/paperjam" -k "tsouchlarakis@gmail.com"
+    ~/sbin/update_cleanup.bash -b "/mnt/el/Documents/BKP/LINUX/paperjam" -k 2
 }
 
 cronjobs() {
