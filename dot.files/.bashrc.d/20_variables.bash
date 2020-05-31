@@ -56,8 +56,7 @@ export GIT_PS1_SHOWUPSTREAM=yes
 # OPT
 [[ -d "/opt" ]] && export OPT="/opt"
 # JAVA
-[[ -d "/opt/java" ]] && export JAVA="/opt/java"
-[[ -n "${JAVA}" ]] && export JAVA_HOME="${JAVA}"
+[[ -d "/opt/java" ]] && export JAVA_HOME="/opt/java"
 [[ -d "/opt/ant" ]] && export ANT="/opt/ant"
 [[ -d "/opt/maven" ]] && export MAVEN="/opt/maven"
 [[ -d "/opt/gradle" ]] && export GRADLE="/opt/gradle"
@@ -97,6 +96,6 @@ export GIT_PS1_SHOWUPSTREAM=yes
 [[ -d "${HOME}/opt/share/man" ]] && export MANPATH+=":${HOME}/opt/share/man"
 
 # JAVA classpath
-[[ -n "${JAVA}" ]] && export CLASSPATH+=":${JAVA}/lib"
+[[ -n "${JAVA_HOME}" ]] && export CLASSPATH+=":${JAVA_HOME}/lib"
 [[ -n "${ANT}" ]] && export CLASSPATH+=":${ANT}/lib"
 [[ -n "${MAVEN}" ]] && export CLASSPATH+=":${MAVEN}/lib"

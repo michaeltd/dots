@@ -23,7 +23,7 @@ rcm 9 xscreensaver -no-splash
 rcm 9 ~/bin/wallpaper_rotate.bash
 
 # Systray volume control
-rcm 9 pasystray
+# rcm 9 pasystray
 
 # Systray network manager applet
 rcm 9 nm-applet
