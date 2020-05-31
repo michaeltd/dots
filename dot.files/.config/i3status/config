@@ -22,12 +22,12 @@ order += "ethernet _first_"
 order += "disk /"
 order += "disk /mnt/data"
 order += "disk /mnt/el"
-order += "battery all"
 order += "load"
 # order += "memory"
-order += "tztime NYC"
-order += "tztime local"
+order += "battery all"
 order += "volume master"
+# order += "tztime NYC"
+order += "tztime local"
 
 wireless _first_ {
 	format_up = "Wlan: (%quality at %essid) %ip"
@@ -52,24 +52,12 @@ disk "/mnt/el" {
         format = "%free"
 }
 
-battery all {
-        format = "%status %percentage %remaining"
-}
-
 load {
         format = "%1min"
 }
 
-tztime NYC {
-        # format = "<span foreground='#ffffff'>time:</span> %time"
-	format = "NYC: %time"
-	# format = "%H:%M %Z"
-        format_time = "%H:%M %Z"
-        timezone = "America/New_York"
-}
-
-tztime local {
-        format = "%y/%m/%d %A %H:%M"
+battery all {
+        format = "%status %percentage %remaining"
 }
 
 volume master {
@@ -78,4 +66,16 @@ volume master {
         device = "default"
         mixer = "Master"
         mixer_idx = 0
+}
+
+# tztime NYC {
+#         # format = "<span foreground='#ffffff'>time:</span> %time"
+# 	format = "NYC: %time"
+# 	# format = "%H:%M %Z"
+#         format_time = "%H:%M %Z"
+#         timezone = "America/New_York"
+# }
+
+tztime local {
+        format = "%y/%m/%d %A %H:%M"
 }
