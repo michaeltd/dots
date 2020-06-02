@@ -19,14 +19,8 @@ declare -rA WMA=( [xfce4]="xfce4-session" \
                  [compiz]="compiz.sh" \
                  [enlightenment]="enlightenment_start" \
                  [e16]="starte16" \
-		 [openbox]="openbox-session" \
-                 [wmaker]="wmaker" \
-                 [mwm]="mwm" \
-                 [awesome]="awesome" \
-                 [bspwm]="bspwm" \
                  [i3wm]="i3" \
-                 [emacs]="emacs" \
-                 [kodi]="kodi-standalone" )
+                 [emacs]="emacs" )
 
 # Selected WM (prefered WMA key available in daily driver)
 declare -r SWM="i3wm"
@@ -58,19 +52,13 @@ for y in "${@}"; do
 done
 
 # Per wm customizations. If there is a wm specific permutation to be done, here is the place.
-if [[ "${WM[0]}" =~ awesome ]]; then
-    # Awesome: /etc/X11/Sessions/awesome -c ~/.config/awesome/rc.lua
-    WM=( "/etc/X11/Sessions/awesome" "--replace" "--config" "${HOME}/.config/awesome/rc.lua" )
-elif [[ "${WM[0]}" =~ emacs ]]; then
+if [[ "${WM[0]}" =~ emacs ]]; then
     # Just "emacs" would suffice if you don't mind a M-x:exwm-init on X boot.
-    # emacs --daemon -f exwm-enable
-    emacs --daemon
+    emacs --daemon -f exwm-enable
     WM=( "emacsclient" "-c" )
 elif [[ "${WM[0]}" =~ starte16 || "${WM[0]}" =~ enlightenment_start ]]; then
     # e17 svg support
     export E_COMP_ENGINE=sw
-elif [[ "${WM[0]}" =~ bspwm ]]; then
-    WM=( "/etc/X11/Sessions/bspwm" )
 fi
 
 # exec "${WM[@]}"
