@@ -3,6 +3,39 @@
 # math related functions
 #shellcheck shell=bash
 
+# https://unix.stackexchange.com/questions/98948/ascii-to-binary-and-binary-to-ascii-conversion-tools
+ascii2bin() {
+    ordbin() {
+	a=$(printf '%d' "'$1")
+	echo "obase=2; $a" | bc
+    }
+    echo -n $* | while IFS= read -r -n1 char
+    do
+        ordbin $char | tr -d '\n'
+        echo -n " "
+    done
+    printf "\n"
+}
+
+bin2ascii() {
+    chrbin() {
+	echo $(printf \\$(echo "ibase=2; obase=8; $1" | bc))
+    }
+    for bin in $*
+    do
+        chrbin $bin | tr -d '\n'
+    done
+    printf "\n"
+}
+
+ascii2b64(){
+    echo "${*}" | base64
+}
+
+b642ascii(){
+    echo "${*}" | base64 -d
+}
+
 is_numeric() {
     [[ "${1}" =~ ^[-|+]?[0-9]+([.][0-9]+)?$ ]]
 }
@@ -41,27 +74,9 @@ min() {
     printf "%d\n" "${@}" | sort -n | head -1
 }
 
-altmax() {
-    local x="${1}" # Avoid x initialization issues
-    while [[ -n "${*}" ]]; do
-	(( $1 > x )) && x="${1}"
-	shift
-    done
-    echo "${x}"
-}
-
-altmin() {
-    local n=${1} # Avoid n initialization issues
-    while [[ -n "${*}" ]]; do
-	(( $1 < n )) && n="${1}"
-	shift
-    done
-    echo "${n}"
-}
-
-avg() {
+avrg() {
     local i=0 sum=0 usage="\n\tUsage: ${FUNCNAME[0]} #1 #2 #3...\n\n"
-    die() { echo -ne "${usage[*]}" >&2; return 1; }
+    die() { echo -ne "${usage}" >&2; return 1; }
     [[ -z "${*}" ]] && { die; return $?; }
     while [[ -n "${*}" ]]; do
 	is_numeric "${1}" || { die; return $?; }

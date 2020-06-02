@@ -14,47 +14,59 @@ gen_pass() {
     echo
 }
 
-gen_uuid() {
-    # https://en.wikipedia.org/wiki/Universally_unique_identifier
-    # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
+# gen_uuid() {
+#     # https://en.wikipedia.org/wiki/Universally_unique_identifier
+#     # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
+#
+#     local N B C='89ab'
+#
+#     for (( N = 1; N < 16; N++ )); do
+# 	B="$(( RANDOM % 256 ))"
+# 	case "${N}" in
+# 	    6) printf '4%x' "$(( B % 16 ))";;
+# 	    8) printf '%c%x' "${C:${RANDOM}%${#C}:1}" "$(( B % 16 ))";;
+# 	    3|5|7|9) printf '%02x-' "${B}";;
+# 	    *) printf '%02x' "${B}";;
+# 	esac
+#     done
+#     printf '\n'
+# }
 
-    local N B C='89ab'
-
-    for (( N = 1; N < 16; N++ )); do
-	B="$(( RANDOM % 256 ))"
-	case "${N}" in
-	    6) printf '4%x' "$(( B % 16 ))";;
-	    8) printf '%c%x' "${C:${RANDOM}%${#C}:1}" "$(( B % 16 ))";;
-	    3|5|7|9) printf '%02x-' "${B}";;
-	    *) printf '%02x' "${B}";;
-	esac
-    done
-    printf '\n'
+get_uuid() {
+    local -r eight=$(tr -dc a-f0-9 < /dev/urandom | dd bs=8 count=1 2> /dev/null)
+    local -r foura=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
+    local -r fourb=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
+    local -r fourc=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
+    local -r twelve=$(tr -dc a-f0-9 < /dev/urandom | dd bs=12 count=1 2> /dev/null)
+    local -r uuid="${eight}-${foura}-${fourb}-${fourc}-${twelve}"
+    printf "%s\n" "${uuid^^}"
 }
 
 hash_stdin() {
     [[ "${#}" -ne "1" ]] && \
-	echo "Usage: echo/cat \"text/file to hash\" | ${FUNCNAME[0]} cipher" && \
+	echo -ne "\n\tUsage: echo/cat \"text/file to hash\" | ${FUNCNAME[0]} cipher\n\n" >&2 && \
 	return 1
     openssl dgst -"${1}"
 }
 
 transcode_stdin() {
     [[ "${#}" -ne "2" ]] && \
-	echo "Usage: echo/cat \"text/file to encode/decode\" | ${FUNCNAME[0]} (e/d) cipher" && \
+	echo -ne "\n\tUsage: echo/cat \"text/file to encode/decode\" | ${FUNCNAME[0]} (e/d) cipher\n\teg: echo 'Hello World'|transcode_stdin e blowfish\n\n" >&2 && \
 	return 1
-    openssl enc -"${2}" -base64 "$([[ "${1}" == "d" ]] && echo "-d")"
+    openssl enc -base64 -"${2}" -"${1}"
 }
 
 transcode_pgp() {
 
-    usage() { echo -ne "\n\t Usage: ${FUNCNAME[0]} [file(s)|file(s).pgp...] [-(-h)elp]\n\t Decrypt/Encrypt files from/to pgp.\n\n" >&2; }
+    local usage="\n\t Usage: ${FUNCNAME[0]} [file(s)|file(s).pgp...] [-(-h)elp]\n\t Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
 
-    [[ "${#}" -eq "0" ]] && usage && return 1
+    [[ "${#}" -eq "0" ]] && echo -ne "${usage}" >&2 && return 1
 
     while [[ -n "${*}" ]]; do
 	case "${1}" in
-	    -h|--help) usage; return 1;;
+	    -h|--help)
+		echo -ne "${usage}" >&2 ;
+		return 1;;
 	    *)
 		if [[ -r "${1}" ]]; then
 		    if [[ "$(file -b "${1}")" =~ ^PGP ]]; then
@@ -63,8 +75,8 @@ transcode_pgp() {
 			local func="--encrypt" out="${1}.pgp"
 		    fi
 		else
-		    echo -ne " ${1} is not readable!\n" >&2
-		    usage
+		    echo -ne "${1} is not readable!\n" >&2
+		    echo -ne "${usage}" >&2 ;
 		    return 1
 		fi;;
 	esac
