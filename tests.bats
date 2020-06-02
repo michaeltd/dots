@@ -1,4 +1,4 @@
-#!/usr/bin/env bats
+#!/usr/bin/env -S bats --tap
 
 source "${BATS_TEST_DIRNAME}/dot.files/.bashrc"
 
@@ -28,19 +28,19 @@ source "${BATS_TEST_DIRNAME}/dot.files/.bashrc"
 }
 
 @test "ShellCheck check's out .stdlib sources" {
-    skip
+    # skip
     run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.bashrc.d/.stdlib"/*.bash
     [ "$status" -eq 0 ]
 }
 
 @test "ShellCheck check's out bin sources" {
-    skip
+    # skip
     run shellcheck "${BATS_TEST_DIRNAME}/dot.files/bin"/*.bash
     [ "$status" -eq 0 ]
 }
 
 @test "ShellCheck check's out sbin sources" {
-    skip
+    # skip
     run shellcheck "${BATS_TEST_DIRNAME}/dot.files/sbin"/*.bash
     [ "$status" -eq 0 ]
 }

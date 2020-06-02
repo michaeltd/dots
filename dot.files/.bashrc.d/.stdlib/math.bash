@@ -5,13 +5,10 @@
 
 # https://unix.stackexchange.com/questions/98948/ascii-to-binary-and-binary-to-ascii-conversion-tools
 ascii2bin() {
-    ordbin() {
-	a=$(printf '%d' "'$1")
-	echo "obase=2; $a" | bc
-    }
+    #shellcheck disable=SC2048,SC2086
     echo -n $* | while IFS= read -r -n1 char
     do
-        ordbin $char | tr -d '\n'
+        echo "obase=2; $(printf '%d' "'$char")" | bc | tr -d '\n'
         echo -n " "
     done
     printf "\n"
@@ -19,21 +16,16 @@ ascii2bin() {
 
 bin2ascii() {
     chrbin() {
+	#shellcheck disable=SC2046,SC2005,SC2059
 	echo $(printf \\$(echo "ibase=2; obase=8; $1" | bc))
     }
+    #shellcheck disable=SC2048
     for bin in $*
     do
+	#shellcheck disable=SC2086
         chrbin $bin | tr -d '\n'
     done
     printf "\n"
-}
-
-ascii2b64(){
-    echo "${*}" | base64
-}
-
-b642ascii(){
-    echo "${*}" | base64 -d
 }
 
 is_numeric() {
@@ -49,10 +41,10 @@ is_decimal() {
 }
 
 in_range() {
-    [ "${#}" -ne "3" ] && \
+    [[ "${#}" -ne "3" ]] && \
 	echo -ne "\n\tUsage: ${FUNCNAME[0]} min max num\n\n" >&2 && \
 	return 1
-    [ "${3}" -ge "${1}" -a "${3}" -le "${2}" ]
+    [[ "${3}" -ge "${1}" && "${3}" -le "${2}" ]]
 }
 
 between() {
