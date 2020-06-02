@@ -2,9 +2,9 @@
 !cronjobs/*
 !dist_check.bash
 !dist_cleanup.bash
+!dist_hosts.bash
 !dist_upgrade.bash
 !dist_wrldchck.bash
 !update_backups.bash
 !update_cleanup.bash
-!update_hosts.bash
 !update_mirror.bash
