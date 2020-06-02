@@ -37,7 +37,7 @@ IFS=$'\t\n'
 
 backup() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-    local definitions="/home/paperjam" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
+    local definitions="/home/paperjam/.cronjobbkps" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
     local usage="
 
  Usage: ${BASH_SOURCE[0]##*/} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug]
