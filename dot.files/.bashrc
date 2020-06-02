@@ -12,15 +12,18 @@ if [[ $- != *i* ]]; then
 fi
 
 # Put your fun stuff here.
-gps="/usr/share/git/git-prompt.sh"
-[[ -r "${gps}" ]] && source "${gps}"
-
-bcnf="${HOME}/git/utils/bash-insulter/src/bash.command-not-found"
-[[ -r "${bcnf}" ]] && source "${bcnf}"
-
 brcd="${HOME}/.bashrc.d"
 if [[ -d "${brcd}" ]]; then # Load files from ~/.bashrc.d
     for file in "${brcd}/"*\.bash; do
         source "${file}"
     done
 fi
+unset brcd
+
+gps="/usr/share/git/git-prompt.sh"
+[[ -r "${gps}" ]] && source "${gps}"
+unset gps
+
+# bcnf="${HOME}/git/utils/bash-insulter/src/bash.command-not-found"
+# [[ -r "${bcnf}" ]] && source "${bcnf}"
+# unset bcnf
