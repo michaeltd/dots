@@ -1,5 +1,7 @@
 #!/bin/bash
 
-scrpt_drnm="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-
-"${scrpt_drnm}/../../dist_upgrade.bash" "@security"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    bash_file="${BASH_SOURCE[0]##*/}"
+    bash_file="${bash_file:3}"
+    "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/../../${bash_file}" "@security"
+fi
