@@ -26,7 +26,7 @@ upgrade() {
 
     local -r notfound="404"
 
-    local pmidx="${notfound}" x=0
+    local pmidx="${notfound}" x=""
 
     # Which is the first available pm in this system?
     for x in "${!pms[@]}"; do
