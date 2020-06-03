@@ -126,7 +126,7 @@ up() {
 
 # SYSTEM =======================================================================
 
-if [[ "${SHELL}" =~ bash$ ]]; then
+if command -v shopt &>/dev/null; then
     services() {
 	[[ -z "${1}" ]] && \
 	    echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
