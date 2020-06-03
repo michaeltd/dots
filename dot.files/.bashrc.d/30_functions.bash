@@ -126,20 +126,22 @@ up() {
 
 # SYSTEM =======================================================================
 
-services() {
-    [[ -z "${1}" ]] && \
-	echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
-	return 1
-    if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
-	local -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
-    else
-	local -a srvcs=( "${@}" )
-	unset "srvcs[0]"
-    fi
-    for srvc in "${srvcs[@]}"; do
-	sudo rc-service "${srvc}" "${1}"
-    done
-}
+if [[ "${SHELL}" =~ bash$ ]]; then
+    services() {
+	[[ -z "${1}" ]] && \
+	    echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
+	    return 1
+	if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
+	    local -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
+	else
+	    local -a srvcs=( "${@}" )
+	    unset "srvcs[0]"
+	fi
+	for srvc in "${srvcs[@]}"; do
+	    sudo rc-service "${srvc}" "${1}"
+	done
+    }
+fi
 
 list_cat() {
     #shellcheck disable=SC2230
@@ -214,10 +216,10 @@ rcm() {
     # (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
     # Usage : rcm niceness executable command line arguments
     # Example: rcm 9 conky -qdc ~/.conkyrc
-    [[ "${#}" -lt "2" ]] && printf "Usage: %s niceness command [arguments ...]\neg: rcm 0 wicd-gtk -t\n" "${FUNCNAME[0]}" >&2 && return 1
     #shellcheck disable=SC2155
-    local -r bin=$(type -P "${2}") pid=$(pgrep -U "${USER}" -f "${2}")
-    [[ -z "${pid}" && -x "${bin}" ]] && exec nice -n "${@}" &>/dev/null &
+    local thebin="$(command -v "${2}")" thepid="$(pgrep -U "${USER}" -f "${2}")"
+    [ "${#}" -lt "2" ] && printf "\n\tUsage: %s niceness command [arguments ...]\n\teg: rcm 0 wicd-gtk -t\n\n" "${FUNCNAME[0]}" >&2 && return 1
+    [ -z "${thepid}" ] && [ -x "${thebin}" ] && exec nice -n "${@}" &
 }
 
 # NET ==========================================================================
