@@ -120,7 +120,7 @@ rmalias() {
 up() {
     local -r deep="${1}"
     for i in $(seq 1 "${deep:-1}"); do
-	cd ../
+	cd ..
     done
 }
 
