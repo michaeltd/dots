@@ -3,21 +3,23 @@
 # gather cronjobs for use with a familiar environment (/bin/bash)
 
 #shellcheck disable=SC2155
-declare -r usage="\n\tUsage: ${BASH_SOURCE[0]##*/} -(-a)larm ([genre]) | -(-b)ackup\n\n"
+declare -r usage="\n\tUsage: ${BASH_SOURCE[0]##*/} -(-a)larm ([genre]) | -(-b)ackup\n"
 
 alarm() {
 
     echo -ne " -- ${FUNCNAME[0]} --\n"
-    local -ar bass=( "file:///mnt/data/Documents/Music/Stanley-Clarke/" "file:///mnt/data/Documents/Music/Marcus-Miller/" "file:///mnt/data/Documents/Music/Jaco-Pastorius/" "file:///mnt/data/Documents/Music/Esperanza-Spalding/" "file:///mnt/data/Documents/Music/Mark-King/Level-Best" "file:///mnt/data/Documents/Music/JOHN-PATITUCCI" )
-    local -ar pop=( "file:///mnt/data/Documents/Music/All\ Saints" "file:///mnt/data/Documents/Music/AVICII" "file:///mnt/data/Documents/Music/Black-Eyed-Pees" "file:///mnt/data/Documents/Music/Bruno-Mars" )
-    local -ar rock=( "file:///mnt/data/Documents/Music/Bad-Company" "file:///mnt/data/Documents/Music/Deep-Purple" "file:///mnt/data/Documents/Music/Doobie-Brothers" "file:///mnt/data/Documents/Music/FRANK-ZAPPA" "file:///mnt/data/Documents/Music/Janis-Joplin" "file:///mnt/data/Documents/Music/Jethro-Tull" "file:///mnt/data/Documents/Music/Joe-Cocker" )
+
+    local -ar pop=( "file:///mnt/data/Documents/Music/All\ Saints" "file:///mnt/data/Documents/Music/AVICII" "file:///mnt/data/Documents/Music/Black-Eyed-Pees" "file:///mnt/data/Documents/Music/Bruno-Mars" "file:///mnt/data/Documents/Music/Daft-Punk" "file:///mnt/data/Documents/Music/GORILLAZ" )
+    local -ar rock=( "file:///mnt/data/Documents/Music/Bad-Company" "file:///mnt/data/Documents/Music/Deep-Purple" "file:///mnt/data/Documents/Music/Doobie-Brothers" "file:///mnt/data/Documents/Music/FRANK-ZAPPA" "file:///mnt/data/Documents/Music/Janis-Joplin" "file:///mnt/data/Documents/Music/Jethro-Tull"  "file:///mnt/data/Documents/Music/Joe-Cocker" "file:///mnt/data/Documents/Music/Led-Zeppelin"  "file:///mnt/data/Documents/Music/Lenny-Kravitz"  "file:///mnt/data/Documents/Music/The-Who" "file:///mnt/data/Documents/Music/Ten-Years-After" "file:///mnt/data/Documents/Music/Sting" "file:///mnt/data/Documents/Music/Santana" )
+    local -ar reggae=( "file:///mnt/data/Documents/Music/UB40" "file:///mnt/data/Documents/Music/Matisyahu" "file:///mnt/data/Documents/Music/Bob-Marley" )
     local -ar rnb=( "file:///mnt/data/Documents/Music/Amy-Winehouse" "file:///mnt/data/Documents/Music/Blues-Brothers" )
-    local -ar jazz=( "file:///mnt/data/Documents/Music/Bill-Evans" "file:///mnt/data/Documents/Music/CANNONBALL-ADDERLEY" "file:///mnt/data/Documents/Music/EDDIE-GOMEZ" "file:///mnt/data/Documents/Music/Getz-Meets-Mulligan" "file:///mnt/data/Documents/Music/HERBIE-HANCOCK" )
-    local -ar funk=( "file:///mnt/data/Documents/Music/Average-White-Band" "file:///mnt/data/Documents/Music/Blood-Sweat-And-Tears" )
-    local -ar classical=( "file:///mnt/data/Documents/Music/Carl-Orff" "file:///mnt/data/Documents/Music/NIKOS-SKALKOTAS" )
+    local -ar jazz=( "file:///mnt/data/Documents/Music/Bill-Evans" "file:///mnt/data/Documents/Music/CANNONBALL-ADDERLEY" "file:///mnt/data/Documents/Music/Charlie-Parker" "file:///mnt/data/Documents/Music/Chick-Corea"  "file:///mnt/data/Documents/Music/EDDIE-GOMEZ" "file:///mnt/data/Documents/Music/Getz-Meets-Mulligan"  "file:///mnt/data/Documents/Music/HERBIE-HANCOCK"  "file:///mnt/data/Documents/Music/John-Coltrane" 	 "file:///mnt/data/Documents/Music/Miles_Davis" "file:///mnt/data/Documents/Music/RON-CARTER" "file:///mnt/data/Documents/Music/Sarah-Vaughan" "file:///mnt/data/Documents/Music/Stanley-Clarke/"  "file:///mnt/data/Documents/Music/Marcus-Miller/"  "file:///mnt/data/Documents/Music/Jaco-Pastorius/"  "file:///mnt/data/Documents/Music/Esperanza-Spalding/"  "file:///mnt/data/Documents/Music/Mark-King/Level-Best"  "file:///mnt/data/Documents/Music/JOHN-PATITUCCI"  "file:///mnt/data/Documents/Music/VICTOR-WOOTEN" )
+    local -ar latin=( "file:///mnt/data/Documents/Music/IRAKERE" "file:///mnt/data/Documents/Music/MAMBO-KINGS" "file:///mnt/data/Documents/Music/PACO-DE-LUCIA" "file:///mnt/data/Documents/Music/Tito-Puente" )
+    local -ar funk=( "file:///mnt/data/Documents/Music/Average-White-Band" "file:///mnt/data/Documents/Music/Blood-Sweat-And-Tears" "file:///mnt/data/Documents/Music/Jamiroquai" "file:///mnt/data/Documents/Music/Tower-Of-Power" "file:///mnt/data/Documents/Music/Chaka-Khan" )
+    local -ar classical=( "file:///mnt/data/Documents/Music/Carl-Orff" "file:///mnt/data/Documents/Music/NIKOS-SKALKOTAS" "file:///mnt/data/Documents/Music/Vaggelis" )
     local -ar OST=( "file:///mnt/data/Documents/Music/OST-BF" "file:///mnt/data/Documents/Music/OST-COD" "file:///mnt/data/Documents/Music/OST-ED" "file:///mnt/data/Documents/Music/OST-HALO" "file:///mnt/data/Documents/Music/OST-TITANFALL" )
 
-    local -ar genres=( bass[@] pop[@] rock[@] rnb[@] jazz[@] funk[@] classical[@] OST[@] )
+    local -ar genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] OST[@] )
 
     if [[ -n "${1}" ]]; then
 	if [[ "${genres[*]}" =~ "${1}" ]]; then
@@ -27,7 +29,8 @@ alarm() {
 	    for i in "${genres[@]}"; do
 		local -a gen_alpha+=( "$(printf "%s" "${i//[![:alpha:]]}")" )
 	    done
-	    echo -ne "\n\t${1} not found.\n\tCheck one of: ${gen_alpha[@]}!\n\n"
+	    echo -ne "${usage}" >&2
+	    echo -ne "\n\t${1} not found.\n\tCheck one of: ${gen_alpha[@]}!\n" >&2
 	    exit 1
 	fi
     else
