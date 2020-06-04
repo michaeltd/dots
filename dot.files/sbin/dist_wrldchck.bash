@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+command -v emerge &>/dev/null || { echo -ne "\n Need a Gentoo distro!\n"; exit 1; }
+
 while read -r i ; do
     if [[ -n "$(qdepends -Qq "${i}")" ]]; then
 	echo -ne "\nchecking ${i}\n"
