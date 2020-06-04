@@ -6,39 +6,39 @@
 # Distro independent utils
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
-if type -P apt-get &>/dev/null; then
+if command -v apt-get &>/dev/null; then
     alias psearch='apt search' pinstall='sudo apt-get install' \
 	  premove='sudo apt-get remove --purge'
     alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' \
 	  dcleanup='sudo apt-get autoremove'
-elif type -P zypper &>/dev/null; then
+elif command -v zypper &>/dev/null; then
     alias psearch='zypper search' pinstall='sudo zypper install' \
 	  premove='sudo zypper remove --clean-deps'
     alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' \
 	  dcleanup='sudo zypper rm -u'
-elif type -P yum &>/dev/null; then
+elif command -v yum &>/dev/null; then
     alias psearch='yum search' pinstall='sudo yum install' \
 	  premove='sudo yum remove'
     alias dupdate='sudo yum check-update' dupgrade='sudo yum update' \
 	  dcleanup='sudo yum autoremove'
-elif type -P pacman &>/dev/null; then
+elif command -v pacman &>/dev/null; then
     alias psearch='pacman -Ss' pinstall='sudo pacman -S' \
 	  premove='sudo pacman -R'
     alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' \
 	  dcleanup='sudo pacman -Rsn'
-elif type -P emerge &>/dev/null; then
+elif command -v emerge &>/dev/null; then
     alias psearch='emerge -s' pinstall='sudo emerge -av --autounmask' \
 	  premove='sudo emerge -avC'
     alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @world' \
 	  dcleanup='sudo emerge --ask --depclean'
-elif type -P pkg &>/dev/null; then
+elif command -v pkg &>/dev/null; then
     alias psearch='pkg -o search' pinstall='sudo pkg install' \
 	  premove='sudo pkg remove'
     alias dupdate='sudo pkg update' dupgrade='sudo pkg upgrade' \
 	  dcleanup='sudo pkg autoremove'
 fi
 
-if type -P dircolors &>/dev/null; then
+if command -v dircolors &>/dev/null; then
     # Color support
     # if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
     # 	  eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
