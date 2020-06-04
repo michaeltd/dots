@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 #
 # ~/bin/pimp-my-gui.bash
 # Spice for the desktop
 #shellcheck source=/dev/null
 
 # No double sourcing
-type rcm 2>/dev/null || . ~/.bashrc.d/30_functions.bash
+test command -v rcm &>/dev/null || source ~/.bashrc.d/30_functions.bash
 
 # Music daemon
 # rcm 0 mpd
@@ -14,7 +14,7 @@ type rcm 2>/dev/null || . ~/.bashrc.d/30_functions.bash
 # rcm 0 emacs --daemon
 
 # Xfce4 themes
-rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
+# rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 
 # XScreenSaver
 rcm 9 xscreensaver -no-splash
@@ -23,18 +23,20 @@ rcm 9 xscreensaver -no-splash
 rcm 9 ~/bin/wallpaper_rotate.bash
 
 # Systray volume control
-# rcm 9 pasystray
+rcm 9 pasystray
 
-# Systray network manager applet
+# Systray network manager applet || wicd-gtk -t
 rcm 9 nm-applet
+rcm 9 wicd-gtk -t
 
+# Per distro setup.
 if [ -r "/etc/os-release" ]; then 
-    # Per distro setup.
-    . /etc/os-release
+    source /etc/os-release
     if [ "${ID}" = "gentoo" ]; then
-	:
-	# rcm 9 conky -qd
+	: # rcm 9 conky -qd
     elif [ "${ID}" = "devuan" ]; then
+	rcm 9 conky -qd
+    elif [ "${ID}" = "debian" ]; then
 	rcm 9 conky -qd
     else
 	rcm 9 conky -qd

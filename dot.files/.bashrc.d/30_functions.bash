@@ -51,29 +51,31 @@ hello_world() {
 
 # UTILS =======================================================================
 
-pyhttpserv() {
-    # pyhttpserv.bash Start an http server in current directory
-    # https://twitter.com/climagic/status/1224732676361461765
-    # python3 -m http.server 8080 \
-    # Start a simple webserver using python3 on external port 8080 \
-    # and use the current directory you are in as the document root. \
-    # Be careful with what you expose to the world. \
-    # Use --bind 127.0.0.1 if you want to make it local only.
-    # Or the old days with python 2: python -m SimpleHTTPServer 8080
-    local -r pv="$(python --version 2>&1)" # Fun fact: python2 outputs version in stderr while python3 to stdout
-    if [[ "${pv}" =~ ^Python\ 3. ]]; then
-	python -m http.server 8080 --bind 127.0.0.1
-    elif [[ "${pv}" =~ ^Python\ 2. ]]; then
-	python -m SimpleHTTPServer 8080
-    else
-	echo "Fatal: No suitable python version found!" >&2
-	return 1
-    fi
-}
+
+    pyhttpserv() {
+	# pyhttpserv.bash Start an http server in current directory
+	# https://twitter.com/climagic/status/1224732676361461765
+	# python3 -m http.server 8080 \
+	    # Start a simple webserver using python3 on external port 8080 \
+	    # and use the current directory you are in as the document root. \
+	    # Be careful with what you expose to the world. \
+	    # Use --bind 127.0.0.1 if you want to make it local only.
+	# Or the old days with python 2: python -m SimpleHTTPServer 8080
+	local -r pv="$(python --version 2>&1)" # Fun fact: python2 outputs version in stderr while python3 to stdout
+	if [[ "${pv}" =~ ^Python\ 3. ]]; then
+	    python -m http.server 8080 --bind 127.0.0.1
+	elif [[ "${pv}" =~ ^Python\ 2. ]]; then
+	    python -m SimpleHTTPServer 8080
+	else
+	    echo "Fatal: No suitable python version found!" >&2
+	    return 1
+	fi
+    }
+
 
 is_executable() {
     [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} executable" >&2 && return 1
-    type -P "${1}" &> /dev/null
+    command -v "${1}" 2>&1 >/dev/null
 }
 
 # Line Count Directory ($1), For file Extension (${2}).
@@ -126,22 +128,20 @@ up() {
 
 # SYSTEM =======================================================================
 
-if command -v shopt &>/dev/null; then
-    services() {
-	[[ -z "${1}" ]] && \
-	    echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
-	    return 1
-	if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
-	    local -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
-	else
-	    local -a srvcs=( "${@}" )
-	    unset "srvcs[0]"
-	fi
-	for srvc in "${srvcs[@]}"; do
-	    sudo rc-service "${srvc}" "${1}"
-	done
-    }
-fi
+services() {
+    [[ -z "${1}" ]] && \
+	echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
+	return 1
+    if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
+	local -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
+    else
+	local -a srvcs=( "${@}" )
+	unset "srvcs[0]"
+    fi
+    for srvc in "${srvcs[@]}"; do
+	sudo rc-service "${srvc}" "${1}"
+    done
+}
 
 list_cat() {
     #shellcheck disable=SC2230
@@ -218,8 +218,8 @@ rcm() {
     # Example: rcm 9 conky -qdc ~/.conkyrc
     #shellcheck disable=SC2155
     local thebin="$(command -v "${2}")" thepid="$(pgrep -U "${USER}" -f "${2}")"
-    [ "${#}" -lt "2" ] && printf "\n\tUsage: %s niceness command [arguments ...]\n\teg: rcm 0 wicd-gtk -t\n\n" "${FUNCNAME[0]}" >&2 && return 1
-    [ -z "${thepid}" ] && [ -x "${thebin}" ] && exec nice -n "${@}" &
+    [[ "${#}" -lt "2" ]] && printf "\n\tUsage: %s niceness command [arguments ...]\n\teg: rcm 0 wicd-gtk -t\n\n" "${FUNCNAME[0]}" >&2 && return 1
+    [[ -z "${thepid}" && -x "${thebin}" ]] && exec nice -n "${@}" &
 }
 
 # NET ==========================================================================
