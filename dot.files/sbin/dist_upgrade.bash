@@ -7,7 +7,7 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-upgrade() {
+dist_upgrade() {
 
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
@@ -46,4 +46,8 @@ upgrade() {
 
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && upgrade "${@}"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    fn_nm="$(basename "${BASH_SOURCE[0]}")"
+    fn_nm="${fn_nm%%.bash}"
+    "${fn_nm}" "${@}"
+fi

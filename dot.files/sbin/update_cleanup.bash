@@ -9,7 +9,7 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-cleanup() {
+update_cleanup() {
 
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
@@ -78,4 +78,8 @@ cleanup() {
     [[ "${nothing2do}" -eq "1" ]] && echo "Nothing left to do!" >&2
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && cleanup "${@}"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    fn_nm="$(basename "${BASH_SOURCE[0]}")"
+    fn_nm="${fn_nm%%.bash}"
+    "${fn_nm}" "${@}"
+fi

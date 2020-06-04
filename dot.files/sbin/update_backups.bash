@@ -35,7 +35,7 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-backup() {
+update_backups() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
     local definitions="/home/paperjam/.cronjobbkps" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
     local usage="
@@ -88,4 +88,8 @@ backup() {
     done
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && backup "${@}"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    fn_nm="$(basename "${BASH_SOURCE[0]}")"
+    fn_nm="${fn_nm%%.bash}"
+    "${fn_nm}" "${@}"
+fi
