@@ -25,18 +25,17 @@ rcm 9 ~/bin/wallpaper_rotate.bash
 # Systray volume control
 rcm 9 pasystray
 
-# Systray network manager applet || wicd-gtk -t
-rcm 9 nm-applet
-rcm 9 wicd-gtk -t
-
 # Per distro setup.
-if [ -r "/etc/os-release" ]; then 
+if [[ -r "/etc/os-release" ]]; then 
     source /etc/os-release
-    if [ "${ID}" = "gentoo" ]; then
-	: # rcm 9 conky -qd
-    elif [ "${ID}" = "devuan" ]; then
+    if [[ "${ID}" == "gentoo" ]]; then
+	# Systray network manager applet || wicd-gtk -t
+	rcm 9 nm-applet
+    elif [[ "${ID}" == "devuan" ]]; then
 	rcm 9 conky -qd
-    elif [ "${ID}" = "debian" ]; then
+    elif [[ "${ID}" == "debian" ]]; then
+	# Systray network manager applet || wicd-gtk -t
+	rcm 9 wicd-gtk -t
 	rcm 9 conky -qd
     else
 	rcm 9 conky -qd

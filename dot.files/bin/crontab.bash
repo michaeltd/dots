@@ -17,9 +17,9 @@ alarm() {
     local -ar latin=( "file:///mnt/data/Documents/Music/IRAKERE" "file:///mnt/data/Documents/Music/MAMBO-KINGS" "file:///mnt/data/Documents/Music/PACO-DE-LUCIA" "file:///mnt/data/Documents/Music/Tito-Puente" )
     local -ar funk=( "file:///mnt/data/Documents/Music/Average-White-Band" "file:///mnt/data/Documents/Music/Blood-Sweat-And-Tears" "file:///mnt/data/Documents/Music/Jamiroquai" "file:///mnt/data/Documents/Music/Tower-Of-Power" "file:///mnt/data/Documents/Music/Chaka-Khan" )
     local -ar classical=( "file:///mnt/data/Documents/Music/Carl-Orff" "file:///mnt/data/Documents/Music/NIKOS-SKALKOTAS" "file:///mnt/data/Documents/Music/Vaggelis" )
-    local -ar OST=( "file:///mnt/data/Documents/Music/OST-BF" "file:///mnt/data/Documents/Music/OST-COD" "file:///mnt/data/Documents/Music/OST-ED" "file:///mnt/data/Documents/Music/OST-HALO" "file:///mnt/data/Documents/Music/OST-TITANFALL" )
+    local -ar ost=( "file:///mnt/data/Documents/Music/OST-BF" "file:///mnt/data/Documents/Music/OST-COD" "file:///mnt/data/Documents/Music/OST-ED" "file:///mnt/data/Documents/Music/OST-HALO" "file:///mnt/data/Documents/Music/OST-TITANFALL" )
 
-    local -ar genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] OST[@] )
+    local -ar genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] ost[@] )
 
     if [[ -n "${1}" ]]; then
 	if [[ "${genres[*]}" =~ "${1}" ]]; then
@@ -45,14 +45,17 @@ backup() {
 }
 
 crontab() {
-    if [[ -z "${1}" ]]; then
-	echo -ne "${usage}" >&2; exit 1
+    if [[ -n "${1}" ]]; then
+	while [[ -n "${1}" ]]; do
+	    case "${1}" in
+		"-a"|"--alarm") shift; alarm "${1}";;
+		"-b"|"--backup") backup;;
+		*) echo -ne "${usage}" >&2; return 1;;
+            esac
+	    shift
+	done
     else
-	case "${1}" in
-	    "-a"|"--alarm") alarm "${2}";;
-	    "-b"|"--backup") backup;;
-	    *) echo -ne "${usage}" >&2; exit 1;;
-        esac
+	echo -ne "${usage}" >&2; return 1
     fi
 }
 
