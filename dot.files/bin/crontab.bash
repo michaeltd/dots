@@ -9,7 +9,7 @@ alarm() {
 
     echo -ne " -- ${FUNCNAME[0]} --\n"
 
-    local -ar pop=( "file:///mnt/data/Documents/Music/All\ Saints" "file:///mnt/data/Documents/Music/AVICII" "file:///mnt/data/Documents/Music/Black-Eyed-Pees" "file:///mnt/data/Documents/Music/Bruno-Mars" "file:///mnt/data/Documents/Music/Daft-Punk" "file:///mnt/data/Documents/Music/GORILLAZ" )
+    local -ar pop=( "file:///mnt/data/Documents/Music/All-Saints" "file:///mnt/data/Documents/Music/AVICII" "file:///mnt/data/Documents/Music/Black-Eyed-Pees" "file:///mnt/data/Documents/Music/Bruno-Mars" "file:///mnt/data/Documents/Music/Daft-Punk" "file:///mnt/data/Documents/Music/GORILLAZ" )
     local -ar rock=( "file:///mnt/data/Documents/Music/Bad-Company" "file:///mnt/data/Documents/Music/Deep-Purple" "file:///mnt/data/Documents/Music/Doobie-Brothers" "file:///mnt/data/Documents/Music/FRANK-ZAPPA" "file:///mnt/data/Documents/Music/Janis-Joplin" "file:///mnt/data/Documents/Music/Jethro-Tull"  "file:///mnt/data/Documents/Music/Joe-Cocker" "file:///mnt/data/Documents/Music/Led-Zeppelin"  "file:///mnt/data/Documents/Music/Lenny-Kravitz"  "file:///mnt/data/Documents/Music/The-Who" "file:///mnt/data/Documents/Music/Ten-Years-After" "file:///mnt/data/Documents/Music/Sting" "file:///mnt/data/Documents/Music/Santana" )
     local -ar reggae=( "file:///mnt/data/Documents/Music/UB40" "file:///mnt/data/Documents/Music/Matisyahu" "file:///mnt/data/Documents/Music/Bob-Marley" )
     local -ar rnb=( "file:///mnt/data/Documents/Music/Amy-Winehouse" "file:///mnt/data/Documents/Music/Blues-Brothers" )
