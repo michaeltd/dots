@@ -79,7 +79,5 @@ update_cleanup() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    fn_nm="$(basename "${BASH_SOURCE[0]}")"
-    fn_nm="${fn_nm%%.bash}"
-    "${fn_nm}" "${@}"
+    "$(basename "${BASH_SOURCE[0]%%.bash}")" "${@}"
 fi

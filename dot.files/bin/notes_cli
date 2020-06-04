@@ -42,7 +42,7 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-notes() {
+notes_cli() {
 
     local -r notes_file="${HOME}/.notes"
     local -r notes_bak="${notes_file}.bak"
@@ -74,7 +74,7 @@ notes() {
 
     list() { nl -b a "${notes_file}"; }
 
-    usage() { echo -ne "\tUsage: ${BASH_SOURCE[0]##*/} add 'some notes' | search keyword | rem keyword... | list | halp\n\n" >&2; }
+    usage() { echo -ne "\n\tUsage: ${BASH_SOURCE[0]##*/} add 'some notes' | search keyword | rem keyword... | list | halp\n\n" >&2; }
     
     case "${*}" in
 	add*|rem*|search*|list*) show_header; "${@}";;
@@ -82,4 +82,6 @@ notes() {
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && notes "${@}"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    "$(basename "${BASH_SOURCE[0]}")" "${@}"
+fi

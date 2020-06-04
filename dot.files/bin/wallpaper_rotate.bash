@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #
-# ~/bin/wallpaper_rotate.bash
 # Script to go through a directory of background images as wallpapers in a timely fashion
 #shellcheck shell=bash
 
@@ -8,7 +7,7 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-wprotate() {
+wallpaper_rotate() {
     # Font attributes, Colors, bg colors
     #shellcheck disable=SC2034 
     local -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)" \
@@ -148,4 +147,6 @@ wprotate() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && wprotate "${@}"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    "$(basename "${BASH_SOURCE[0]%%.bash}")" "${@}"
+fi

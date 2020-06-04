@@ -3,7 +3,7 @@
 term_music() {
 
     #shellcheck disable=SC2155
-    local -r usage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre] | [-(-h)elp]\n"
+    local -r usage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n"
 
     #shellcheck disable=SC2034
     local -ar pop=( "file:///mnt/data/Documents/Music/All-Saints" "file:///mnt/data/Documents/Music/AVICII" "file:///mnt/data/Documents/Music/Black-Eyed-Pees" "file:///mnt/data/Documents/Music/Bruno-Mars" "file:///mnt/data/Documents/Music/Daft-Punk" "file:///mnt/data/Documents/Music/GORILLAZ" ) \
@@ -37,7 +37,5 @@ term_music() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    fn_nm="$(basename "${BASH_SOURCE[0]}")"
-    fn_nm="${fn_nm%%.bash}"
-    "${fn_nm}" "${@}"
+    "$(basename "${BASH_SOURCE[0]%%.bash}")" "${@}"
 fi

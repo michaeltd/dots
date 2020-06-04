@@ -65,4 +65,6 @@ sndvol() {
     display_feedback "Master: ${VOL}"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && sndvol "${@}"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    "$(basename "${BASH_SOURCE[0]}")" "${@}"
+fi
