@@ -3,7 +3,7 @@
 # ~/bin/sndvol lil script to play around with volume settings
 
 # Unofficial Bash Strict Mode
-set -euo pipefail
+set -eo pipefail
 IFS=$'\t\n'
 
 sndvol() {
@@ -29,6 +29,8 @@ sndvol() {
     #shellcheck disable=SC2155
     if [[ -x "$(type -P Xdialog)" && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
 	local -r DIALOG="$(type -P Xdialog)" G=( "0" "0" "${XDTO}" )
+    elif [[ -x "$(type -P dialog)" && -z "${DISPLAY}" ]]; then
+	local -r DIALOG="$(type -P dialog)" G=( "0" "0" )
     else
 	local -r DIALOG=''
     fi
