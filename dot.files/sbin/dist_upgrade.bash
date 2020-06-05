@@ -47,7 +47,7 @@ dist_upgrade() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    scrptnm="$(basename $(realpath "${BASH_SOURCE[0]}")")"
+    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
     fncnm="${scrptnm%.*}"
     "${fncnm}" "${@}"
 fi

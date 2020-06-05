@@ -21,5 +21,5 @@ xlock() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    "$(basename "${BASH_SOURCE[0]%%.sh}")" "${@}"
+    "$(basename "${BASH_SOURCE[0]%.*}")" "${@}"
 fi

@@ -33,8 +33,8 @@ wallpaper_rotate() {
     local -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
 	  DIRS=( "${HOME}/Pictures" ) WPS=()
     #shellcheck disable=SC2155
-    local WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" \
-	  WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.log}")" \
+    local WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.rc}")" \
+	  WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.log}")" \
 	  BGSR="" \
 	  WAIT="2m"
 
@@ -150,7 +150,7 @@ wallpaper_rotate() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    scrptnm="$(basename $(realpath "${BASH_SOURCE[0]}")")"
+    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
     fncnm="${scrptnm%.*}"
     "${fncnm}" "${@}"
 fi
