@@ -1,4 +1,3 @@
-# ~/.bashrc.d/variables.bash
 #
 # environment variables
 #shellcheck shell=bash

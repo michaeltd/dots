@@ -62,7 +62,6 @@ update_backups() {
 	shift
     done
 
-
     local -ra includes=( "${definitions}"/.backup_include.* )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
 
@@ -88,8 +87,6 @@ update_backups() {
     done
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-    fncnm="${scrptnm%.*}"
-    "${fncnm}" "${@}"
-fi
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
+    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
+    "${scrptnm%.*}" "${@}"

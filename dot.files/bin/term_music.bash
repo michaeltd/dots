@@ -36,8 +36,6 @@ term_music() {
     cvlc --random "${dir_list[@]}"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-    fncnm="${scrptnm%.*}"
-    "${fncnm}" "${@}"
-fi
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
+    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
+    "${scrptnm%.*}" "${@}"

@@ -20,6 +20,6 @@ xlock() {
     fi
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    "$(basename "${BASH_SOURCE[0]%.*}")" "${@}"
-fi
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
+    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
+    "${scrptnm%.*}" "${@}"

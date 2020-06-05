@@ -1,4 +1,3 @@
-# ~/.bashrc.d/.stdlib/crypto.bash
 #
 # cryptographic functions
 #shellcheck shell=bash

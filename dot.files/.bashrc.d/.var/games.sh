@@ -1,4 +1,3 @@
-# ~/.bashrc.d/.var/games.sh
 #
 # games
 #shellcheck shell=bash

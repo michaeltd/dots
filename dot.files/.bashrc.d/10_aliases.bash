@@ -1,4 +1,3 @@
-# ~/.bashrc.d/aliases.bash
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
 #shellcheck shell=bash

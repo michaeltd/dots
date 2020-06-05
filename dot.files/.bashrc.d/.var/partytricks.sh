@@ -1,4 +1,3 @@
-# partytricks.sh
 #
 # https://climagic.org/coolstuff/let-it-snow.html
 #shellcheck shell=bash

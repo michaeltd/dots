@@ -1,4 +1,3 @@
-# ~/.bashrc.d/misc.bash
 #
 # general bash options
 

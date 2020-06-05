@@ -1,4 +1,3 @@
-# ~/.bashrc.d/colors.bash
 #
 # colors for general/ls use
 #shellcheck shell=bash

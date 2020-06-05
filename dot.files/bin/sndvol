@@ -21,7 +21,7 @@ sndvol() {
 
     local -r scrpt_name="${BASH_SOURCE[0]##*/}"
 
-    # No process spam
+    # Mutexify to avoid process spam
     local -ar pids=( $(pgrep -U "${USER}" -f "${scrpt_name}") )
     [[ "${#pids[*]}" -gt "1" ]] && return 1
 
@@ -29,19 +29,17 @@ sndvol() {
     #shellcheck disable=SC2155
     if [[ -x "$(type -P Xdialog)" && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
 	local -r DIALOG="$(type -P Xdialog)" G=( "0" "0" "${XDTO}" )
-    elif [[ -x "$(type -P dialog)" ]]; then # Check for dialog
-	local -r DIALOG="$(type -P dialog)" G=( "0" "0" )
     else
-	local -r DIALOG=""
+	local -r DIALOG=''
     fi
 
     display_feedback() {
-	if [[ -x "$(type -P "${DIALOG}")" ]]; then # Check for X, Xdialog
-            ${DIALOG} --title "${scrpt_name}:" --infobox "${*}" "${G[@]}"
-	elif [[ -x "$(type -P notify-send)" ]]; then # Check for X, Xdialog
-            notify-send "${scrpt_name}:" "${*}"
-	elif [[ -x "$(type -P xmessage)" ]]; then # Check for X, Xdialog
+	if [[ -n "${DIALOG}" ]]; then
+            "${DIALOG}" --title "${scrpt_name}:" --infobox "${*}" "${G[@]}"
+	elif [[ -x "$(type -P xmessage)" ]]; then
             xmessage -nearmouse -timeout "${XMTO}" "${*}"
+	elif [[ -x "$(type -P notify-send)" ]]; then
+            notify-send "${scrpt_name}:" "${*}"
 	fi
 	echo "${scrpt_name}: ${*}" >&2
     }
@@ -65,6 +63,4 @@ sndvol() {
     display_feedback "Master: ${VOL}"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    "$(basename "$(realpath "${BASH_SOURCE[0]}")")" "${@}"
-fi
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "$(basename "$(realpath "${BASH_SOURCE[0]}")")" "${@}"

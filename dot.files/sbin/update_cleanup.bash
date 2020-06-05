@@ -78,8 +78,6 @@ update_cleanup() {
     [[ "${nothing2do}" -eq "1" ]] && echo "Nothing left to do!" >&2
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-    fncnm="${scrptnm%.*}"
-    "${fncnm}" "${@}"
-fi
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
+    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
+    "${scrptnm%.*}" "${@}"

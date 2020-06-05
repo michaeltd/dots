@@ -2,7 +2,7 @@
 #
 
 # Unofficial Bash Strict Mode
-set -u
+set -euo pipefail
 IFS=$'\t\n'
 
 echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"

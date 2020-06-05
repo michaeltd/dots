@@ -1,4 +1,3 @@
-# ~/.bashrc.d/.stdlib/time.bash
 #
 # date, time related functions
 #shellcheck shell=bash

@@ -1,4 +1,3 @@
-# ~/.bashrc.d/.var/parsing.sh
 #
 # various parsing functions
 #shellcheck shell=bash

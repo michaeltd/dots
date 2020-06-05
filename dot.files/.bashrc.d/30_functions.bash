@@ -1,4 +1,3 @@
-# ~/.bashrc.d/functions.bash
 #
 # various functions
 

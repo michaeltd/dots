@@ -1,4 +1,3 @@
-# ~/.bashrc.d/algorithms.sh
 #
 # common algorithms in bash
 #shellcheck shell=bash

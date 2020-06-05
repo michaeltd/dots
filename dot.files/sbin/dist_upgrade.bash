@@ -43,11 +43,8 @@ dist_upgrade() {
     else
 	time "${!pms[pmidx]:0:1}" "${!pms[pmidx]:1:1}" && time "${!pms[pmidx]:0:1}" "${!pms[pmidx]:2}"
     fi
-
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-    fncnm="${scrptnm%.*}"
-    "${fncnm}" "${@}"
-fi
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
+    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
+    "${scrptnm%.*}" "${@}"

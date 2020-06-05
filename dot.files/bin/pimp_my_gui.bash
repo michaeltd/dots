@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-# ~/bin/pimp-my-gui.bash
 # Spice for the desktop
 #shellcheck source=/dev/null
 

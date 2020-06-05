@@ -1,4 +1,3 @@
-# ~/.bashrc.d/.stdlib/math.bash
 #
 # math related functions
 #shellcheck shell=bash
