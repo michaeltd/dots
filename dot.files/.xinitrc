@@ -12,6 +12,9 @@ xset b off
 # Mouse acceleration
 xset m 20/10 4
 
+# Set NumLock ON
+setleds +num
+
 # Qt5 theme engine
 export QT_QPA_PLATFORMTHEME=qt5ct
 

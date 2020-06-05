@@ -60,7 +60,11 @@ notes_cli() {
 
     show_header() { echo "${notes_header}"; }
 
-    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; list;}
+    usage() { echo -ne "\n\tUsage: ${BASH_SOURCE[0]##*/} add 'some notes' | search keyword | rem keyword... | list | halp\n\n" >&2; }
+    
+    list() { nl -b a "${notes_file}"; }
+
+    search() { grep -h "${1}" "${notes_file}"; }
 
     rem() {
 	grep -h "${1}" "${notes_file}"
@@ -70,18 +74,12 @@ notes_cli() {
 	fi
     }
 
-    search() { grep -h "${1}" "${notes_file}"; }
+    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; list; }
 
-    list() { nl -b a "${notes_file}"; }
-
-    usage() { echo -ne "\n\tUsage: ${BASH_SOURCE[0]##*/} add 'some notes' | search keyword | rem keyword... | list | halp\n\n" >&2; }
-    
     case "${*}" in
 	add*|rem*|search*|list*) show_header; "${@}";;
 	*) show_header; usage; return 1;;
     esac
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    "$(basename "$(realpath "${BASH_SOURCE[0]}")")" "${@}"
-fi
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "$(basename "$(realpath "${BASH_SOURCE[0]}")")" "${@}"

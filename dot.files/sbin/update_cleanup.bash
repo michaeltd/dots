@@ -40,7 +40,7 @@ update_cleanup() {
     # Source explicitly for non interactive shells.
     srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
 
-    local -ra sources=( "${srcspath}/"*\.bash ) backups=( "${backup_dir}"/*\.tar.gz* )
+    local -ra sources=( "${srcspath}/"*.bash ) backups=( "${backup_dir}"/*.tar.gz* )
 
     for src in "${sources[@]}"; do
 	source "${src}" || { echo -ne "${src} not readable.\n" >&2; return 1; }
