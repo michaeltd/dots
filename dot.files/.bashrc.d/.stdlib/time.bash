@@ -3,16 +3,16 @@
 # date, time related functions
 #shellcheck shell=bash
 
-isdate() {
+is_date() {
     [[ -z "${1}" ]] && return 1  # apparently `date -d ""` echoes today's day and returns 0
     date -d "${1}" &> /dev/null
 }
 
-isepoch() {
+is_epoch() {
     date -d "@${1}" &> /dev/null
 }
 
-daydiff () {
+day_diff () {
     if [[ "${#}" -eq "2" ]]; then
 	echo -ne "$(( (${1} - ${2}) / (60 * 60 * 24) ))\n"
     else
@@ -21,16 +21,16 @@ daydiff () {
     fi
 }
 
-epochdd () {
-    daydiff "${1}" "${2}"
+epoch_dd () {
+    day_diff "${1}" "${2}"
 }
 
-datedd () {
-    daydiff "$(date +%s --date="${1}")" "$(date +%s --date="${2}")"
+date_dd () {
+    day_diff "$(date +%s --date="${1}")" "$(date +%s --date="${2}")"
 }
 
 #shellcheck disable=SC2120
-unixepoch() {
+unix_epoch() {
     if [[ -n "${1}" ]]; then
 	date +%s --date="${1}"
     else
@@ -40,20 +40,20 @@ unixepoch() {
 
 epoch2date() {
     #shellcheck disable=SC2119
-    date +%Y/%m/%d --date="@${1-$(unixepoch)}"
+    date +%Y/%m/%d --date="@${1-$(unix_epoch)}"
 }
 
 epoch2time() {
     #shellcheck disable=SC2119
-    date +%H:%M:%S --date="@${1-$(unixepoch)}"
+    date +%H:%M:%S --date="@${1-$(unixe_poch)}"
 }
 
 epoch2datetime() {
     #shellcheck disable=SC2119
-    date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unixepoch)}"
+    date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unix_epoch)}"
 }
 
-lastdayofmonth() {
+last_dom() {
     # https://en.wikipedia.org/wiki/Leap_year
     # if (year is not divisible by 4) then (it is a common year)
     # else if (year is not divisible by 100) then (it is a leap year)
@@ -72,7 +72,7 @@ lastdayofmonth() {
 
     local y m
     if [[ -n "${1}" ]]; then
-	[[ ! $(date --date="${1}") ]] && return 1
+	date --date="${1}" &>/dev/null || return 1
 	y=$(date +%Y --date="${1}")
 	m=$(date +%m --date="${1}")
     else

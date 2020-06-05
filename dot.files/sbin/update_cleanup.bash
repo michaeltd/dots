@@ -57,9 +57,9 @@ update_cleanup() {
     done
 
     for (( y = 0; y < ${#fns[@]}; y++ )); do
-	if [[ "$(epochdd "$(max "${dts[@]}")" "${dts[y]}")" -gt "${days2keep}" ]]; then
+	if [[ "$(epoch_dd "$(max "${dts[@]}")" "${dts[y]}")" -gt "${days2keep}" ]]; then
 	    nothing2do="0"
-	    if [[ "$(lastdayofmonth "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
+	    if [[ "$(last_dom "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
 	    	#shellcheck disable=SC2154
 		if [[ "${remove_backups}" -eq "1" ]]; then
 		    mkdir -vp "${backup_dir}/bkp" && cp -v "${backup_dir}/${fns[y]}" "${backup_dir}/bkp/${fns[y]}"

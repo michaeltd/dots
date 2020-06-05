@@ -88,7 +88,7 @@ transcode_pgp() {
 rot_13(){
 
     [[ "${1}" != "-e" && "${1}" != "-d" ]] || [[ -z "${2}" ]] && \
-	echo "Usage: ${FUNCNAME[0]} -e|-d argument(s)..." >&2 && return 1
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} [-(e|d)] [argument/(s)...]\n\n" >&2 && return 1
 
     local -a _ABC=( "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" \
 			"K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" \
@@ -147,11 +147,11 @@ caesar_cipher() {
 
     local _out
 
-    if (( $# < 3 )) || \
+    if [[ "${#}" -lt "3" ]] || \
 	   [[ "$1" != "-e" && "$1" != "-d" ]] || \
-	   (( $2 < 1 || $2 > 25 ))
+	   [[ "${2}" -lt "1" || "${2}" -gt "25" ]]
     then
-	echo "Usage: ${FUNCNAME[0]} -e|-d rotation (1-25) argument[(s)...]" >&2
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} [-(e|d)] [rotation {1..25}] [argument/(s)...]\n\n" >&2
 	return 1
     fi
 
@@ -199,7 +199,7 @@ alpha2morse() {
 	[5]='.....' [6]='-....' [7]='--...' [8]='----..' [9]='----.' )
 
     if [[ "${#}" -lt "1" ]]; then
-	echo -ne "Usage: ${FUNCNAME[0]} arguments...\n ${FUNCNAME[0]} is an IMC transmitter. \n It'll transmit your messages to International Morse Code.\n" >&2
+	echo -ne "\n\t Usage: ${FUNCNAME[0]} arguments...\n\t ${FUNCNAME[0]} is an IMC transmitter. \n\t It'll transmit your messages to International Morse Code.\n\n" >&2
 	return 1
     fi
 
@@ -223,6 +223,29 @@ alpha2morse() {
 	echo
 	sleep .35
 	shift
+    done
+}
+
+rom2dec_alt(){
+    local -ra ROM=( I V X L C D M ) DEC=( 1 5 10 50 100 500 1000 )
+    while [[ -n "${*}" ]]; do
+    	local NUM="${1}" RES=0 PRE=0
+    	for (( i = ${#NUM}-1; i >= 0; i-- )); do
+    	    for (( x = ${#ROM[*]} - 1 ; x >= 0  ; x-- )); do
+    		if [[ "${NUM:$i:1}" == "${ROM[x]}" ]]; then
+    		    local DIG="${DEC[x]}"
+    		    break
+    		fi
+    	    done
+    	    if (( DIG < PRE )); then
+		(( RES -= DIG ))
+	    else
+		(( RES += DIG ))
+	    fi
+    	    PRE="${DIG}"
+    	done
+    	echo "$NUM = $RES"
+    	shift
     done
 }
 
@@ -265,27 +288,3 @@ dec2rom() {
     done
     echo "${nvmber}"
 }
- 
-rom2dec_alt(){
-    local -ra ROM=( I V X L C D M ) DEC=( 1 5 10 50 100 500 1000 )
-    while [[ -n "${*}" ]]; do
-    	local NUM="${1}" RES=0 PRE=0
-    	for (( i = ${#NUM}-1; i >= 0; i-- )); do
-    	    for (( x = ${#ROM[*]} - 1 ; x >= 0  ; x-- )); do
-    		if [[ "${NUM:$i:1}" == "${ROM[x]}" ]]; then
-    		    local DIG="${DEC[x]}"
-    		    break
-    		fi
-    	    done
-    	    if (( DIG < PRE )); then
-		(( RES -= DIG ))
-	    else
-		(( RES += DIG ))
-	    fi
-    	    PRE="${DIG}"
-    	done
-    	echo "$NUM = $RES"
-    	shift
-    done
-}
-
