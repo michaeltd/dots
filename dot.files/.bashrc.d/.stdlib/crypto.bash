@@ -32,7 +32,7 @@ gen_pass() {
 #     printf '\n'
 # }
 
-get_uuid() {
+gen_uuid() {
     local -r eight=$(tr -dc a-f0-9 < /dev/urandom | dd bs=8 count=1 2> /dev/null)
     local -r foura=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
     local -r fourb=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
