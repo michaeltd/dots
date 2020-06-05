@@ -3,30 +3,30 @@
 # math related functions
 #shellcheck shell=bash
 
-hex2dec() {
-    # echo "$((0x$1))"
-    echo "ibase=16;${1^^}" | bc -l
-}
-
 dec2hex() {
     # printf '%x\n' "${1}"
     echo "obase=16;${1}" | bc -l
-}
-
-bin2dec() {
-    echo "ibase=2;${1}" | bc -l
 }
 
 dec2bin() {
     echo "obase=2;${1}" | bc -l
 }
 
-bin2hex() {
-    echo "obase=16;ibase=2;${1}" | bc -l
+hex2dec() {
+    # echo "$((0x$1))"
+    echo "ibase=16;${1^^}" | bc -l
 }
 
 hex2bin() {
     echo "obase=2;ibase=16;${1^^}" | bc -l
+}
+
+bin2dec() {
+    echo "ibase=2;${1}" | bc -l
+}
+
+bin2hex() {
+    echo "obase=16;ibase=2;${1}" | bc -l
 }
 
 is_numeric() {
