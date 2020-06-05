@@ -83,5 +83,5 @@ notes_cli() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    "$(basename "${BASH_SOURCE[0]}")" "${@}"
+    "$(basename "$(realpath "${BASH_SOURCE[0]}")")" "${@}"
 fi

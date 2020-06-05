@@ -37,5 +37,7 @@ term_music() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    "$(basename "${BASH_SOURCE[0]%%.bash}")" "${@}"
+    scrptnm="$(basename $(realpath "${BASH_SOURCE[0]}")")"
+    fncnm="${scrptnm%.*}"
+    "${fncnm}" "${@}"
 fi
