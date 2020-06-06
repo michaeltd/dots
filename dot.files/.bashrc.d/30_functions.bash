@@ -83,7 +83,7 @@ pyhttpserv() {
     # Be careful with what you expose to the world. \
     # Use --bind 127.0.0.1 if you want to make it local only.
     # Or the old days with python 2: python -m SimpleHTTPServer 8080
-    # https://mastodon.technology/web/statuses/104227605689658556
+
     local -r pv="$(python --version 2>&1)"
     if [[ "${pv}" =~ ^Python\ 3. ]]; then
 	python -m http.server 8080 --bind 127.0.0.1
