@@ -45,13 +45,15 @@ bindsym $mod+l exec ~/bin/xlock.sh
 #bindsym $mod+shift+l exit
 bindsym $mod+Up exec ~/bin/sndvol +
 bindsym $mod+Down exec ~/bin/sndvol -
-bindsym $mod+Left workspace prev
-bindsym $mod+Right workspace next
+bindsym Print exec xfce4-screenshooter
 
 # enable floating mode for all Xdialog windows
 for_window [class="Xdialog"] floating enable
 for_window [class="Gtkdialog"] floating enable
 for_window [class="Xmessage"] floating enable
+
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
 
 # change focus
 # bindsym $mod+j focus left
