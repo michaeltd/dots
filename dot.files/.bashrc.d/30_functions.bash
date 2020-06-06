@@ -50,26 +50,6 @@ hello_world() {
 
 # UTILS =======================================================================
 
-pyhttpserv() {
-    # pyhttpserv.bash Start an http server in current directory
-    # https://twitter.com/climagic/status/1224732676361461765
-    # python3 -m http.server 8080 \
-    # Start a simple webserver using python3 on external port 8080 \
-    # and use the current directory you are in as the document root. \
-    # Be careful with what you expose to the world. \
-    # Use --bind 127.0.0.1 if you want to make it local only.
-    # Or the old days with python 2: python -m SimpleHTTPServer 8080
-    local -r pv="$(python --version 2>&1)" # Fun fact: python2 outputs version in stderr while python3 to stdout
-    if [[ "${pv}" =~ ^Python\ 3. ]]; then
-	python -m http.server 8080 --bind 127.0.0.1
-    elif [[ "${pv}" =~ ^Python\ 2. ]]; then
-	python -m SimpleHTTPServer 8080
-    else
-	echo "Fatal: No suitable python version found!" >&2
-	return 1
-    fi
-}
-
 is_executable() {
     [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} executable" >&2 && return 1
     command -v "${1}" >/dev/null 2>&1 
@@ -91,6 +71,27 @@ rwpi() {
 	feh -rz --bg-scale "${mypics}"
     else
 	echo -ne "${usage}"
+    fi
+}
+
+pyhttpserv() {
+    # pyhttpserv.bash Start an http server in current directory
+    # https://twitter.com/climagic/status/1224732676361461765
+    # python3 -m http.server 8080 \
+    # Start a simple webserver using python3 on external port 8080 \
+    # and use the current directory you are in as the document root. \
+    # Be careful with what you expose to the world. \
+    # Use --bind 127.0.0.1 if you want to make it local only.
+    # Or the old days with python 2: python -m SimpleHTTPServer 8080
+    # https://mastodon.technology/web/statuses/104227605689658556
+    local -r pv="$(python --version 2>&1)"
+    if [[ "${pv}" =~ ^Python\ 3. ]]; then
+	python -m http.server 8080 --bind 127.0.0.1
+    elif [[ "${pv}" =~ ^Python\ 2. ]]; then
+	python -m SimpleHTTPServer 8080
+    else
+	echo "Fatal: No suitable python version found!" >&2
+	return 1
     fi
 }
 
