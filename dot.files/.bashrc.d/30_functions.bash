@@ -131,7 +131,7 @@ if command -v emerge &>/dev/null; then
 	    echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
 	    return 1
 	if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
-	    local -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
+	    local -a srvcs=( "postgresql-12" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
 	else
 	    local -a srvcs=( "${@}" )
 	    unset "srvcs[0]"
@@ -285,32 +285,25 @@ extract() {
     esac
 }
 
-s4StrInDir() {
+s4strInDir() {
     # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
-    grep -rnw "${2}" -e "${1}"
-}
-
-webp2jpg() {
     [[ -z "${1}" ]] && \
-	echo -ne "Usage: ${FUNCNAME[0]} files to convert\n" && \
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} search-term [directory]\n\t(S)earch (4) (s)tring (in) (D)irectory.\n\teg: ${FUNCNAME[0]} author ./\n\n" && \
 	return 1
-    for i in "${@}"; do
-	ffmpeg -i "${i}" "${i/%.webp/.jpg}"
-    done
+    grep -rnw "${2:-./}" -e "${1}"
 }
 
 cif2(){
     [[ "${#}" -ne "2" ]] && \
 	echo -ne "\n\tUsage: ${FUNCNAME[0]} from to\n\tConvert Image(s) From - To formats.\n\teg: ${FUNCNAME[0]} png jpg\n\n" && \
 	return 1
-    for i in *."${1}"; do
-	convert "${i}" "${i/%.$1/.$2}" && rm "${i}"
+    for i in *"${1}"; do
+	convert "${i}" "${i/%.${1}/.${2}}" # && rm "${i}"
     done
 }
 
 mkbkp() {
-    [[ ! -f "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} file-2-backup\n" && return 1
-    # cp -v "${1}" "${1}.bkp.$(date +%s)"
+    [[ ! -f "${1}" ]] && echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" && return 1
     compress "${1}.$(date +%s).tgz" "${1}"
 }
 
