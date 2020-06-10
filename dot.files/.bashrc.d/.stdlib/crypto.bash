@@ -13,25 +13,11 @@ gen_pass() {
     echo
 }
 
-# gen_uuid() {
-#     # https://en.wikipedia.org/wiki/Universally_unique_identifier
-#     # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
-#
-#     local N B C='89ab'
-#
-#     for (( N = 1; N < 16; N++ )); do
-# 	B="$(( RANDOM % 256 ))"
-# 	case "${N}" in
-# 	    6) printf '4%x' "$(( B % 16 ))";;
-# 	    8) printf '%c%x' "${C:${RANDOM}%${#C}:1}" "$(( B % 16 ))";;
-# 	    3|5|7|9) printf '%02x-' "${B}";;
-# 	    *) printf '%02x' "${B}";;
-# 	esac
-#     done
-#     printf '\n'
-# }
-
 gen_uuid() {
+    # https://en.wikipedia.org/wiki/Universally_unique_identifier
+    # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
+    # https://gist.github.com/markusfisch/6110640
+    # https://github.com/lowerpower/UUID-with-bash
     local -r eight=$(tr -dc a-f0-9 < /dev/urandom | dd bs=8 count=1 2> /dev/null)
     local -r foura=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
     local -r fourb=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
@@ -59,7 +45,7 @@ transcode_pgp() {
 
     local usage="\n\t Usage: ${FUNCNAME[0]} [file(s)|file(s).pgp...] [-(-h)elp]\n\t Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
 
-    [[ "${#}" -eq "0" ]] && echo -ne "${usage}" >&2 && return 1
+    [[ "${#}" -lt "1" ]] && echo -ne "${usage}" >&2 && return 1
 
     while [[ -n "${*}" ]]; do
 	case "${1}" in
