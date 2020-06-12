@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash --noprofile --norc
 #
 # Script to go through a directory of background images as wallpapers in a timely fashion
 #shellcheck shell=bash
@@ -9,7 +9,7 @@ IFS=$'\t\n'
 
 wallpaper_rotate() {
     # Font attributes, Colors, bg colors
-    #shellcheck disable=SC2034 
+    #shellcheck disable=SC2034
     local -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)" \
 	  black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)" \
 	  bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
@@ -104,7 +104,7 @@ wallpaper_rotate() {
 		fi ;;
 	    "replay")
 		shift
-		tail -n "${1:-1}" "${WPLG}" |head -n 1|awk '{print $NF}' ;;
+		tail -n "${1:-1}" "${WPLG}"|head -n 1|awk '{print $NF}';;
 	    "showlog")
 		shift
 		cat "${WPLG}";;
@@ -116,7 +116,6 @@ wallpaper_rotate() {
 	echo '' > "${WPLG}"
 
 	while :; do
-
 	    # re-read rc (to pick up config updates).
 	    #shellcheck source=/dev/null
 	    source "${WPRC}"
@@ -135,7 +134,7 @@ wallpaper_rotate() {
 	    # let "RN = ${RANDOM} % ${#WPS[@]}"
 	    #shellcheck disable=SC2155
 	    local RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
-	    
+
 	    # Get path and name of image as a selected WallPaper
 	    local WP="${WPS[RN]}"
 
@@ -143,12 +142,10 @@ wallpaper_rotate() {
 	    printf "%s %s %s\n" "$(date +%y%m%d_%H%M)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
 
 	    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}"
-	    
+
 	    sleep "${WAIT}"
 	done
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
-    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
-    "${scrptnm%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "$(basename "${BASH_SOURCE[0]%.*}")" "${@}"
