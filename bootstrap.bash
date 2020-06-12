@@ -75,7 +75,7 @@ declare -ra DESC=( "Exit this script" \
 )
 
 declare -r usage="
- Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp 
+ Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp
 
  -(-a)ll    		 to link everything
  -(-c)onsole 		 to link console related configs
@@ -197,7 +197,7 @@ __menu() {
 	read -rp "Choose[0-$((${#TUI_OPS[*]}-1))]: " USRINPT
 
         case "${USRINPT}" in
-            0) exit;;
+            0) return "${?}";;
             1) echo -ne "${TUI_HMSG[*]}";;
 	    2) __do_"${TUI_OPS[$USRINPT]}";;
 	    [3-4]) __do_assoc "${TUI_OPS[$USRINPT]}";;
@@ -207,14 +207,14 @@ __menu() {
     done
 }
 
-__main() {
+__bootstrap() {
     case "${1}" in
 	-a|--all) __do_everything ;;
 	-c|--console) __do_assoc "console" ;;
 	-x|--xorg) __do_assoc "xorg" ;;
 	-m|--menu) __menu ;;
-	*) echo -ne "\n${usage}\n"; exit 1 ;;
+	*) echo -ne "\n${usage}\n"; return 1 ;;
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && __main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "__${NESN}" "${@}"

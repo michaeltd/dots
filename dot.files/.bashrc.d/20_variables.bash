@@ -27,22 +27,39 @@ fi
 #shellcheck disable=SC2155
 export TERMINAL="$(type -P xterm||type -P konsole||type -P gnome-terminal||type -P terminology||type -P xfce4-terminal)"
 
-# Colorfull manpages (works with less as a pager)
-# https://www.tecmint.com/view-colored-man-pages-in-linux/
-# export LESS_TERMCAP_mb=$'\e[1;32m'
-# export LESS_TERMCAP_md=$'\e[1;32m'
-# export LESS_TERMCAP_me=$'\e[0m'
-# export LESS_TERMCAP_se=$'\e[0m'
-# export LESS_TERMCAP_so=$'\e[01;33m'
-# export LESS_TERMCAP_ue=$'\e[0m'
-# export LESS_TERMCAP_us=$'\e[1;4;31m'
-
 # most > less > more in order of preference
 #shellcheck disable=SC2155
-export PAGER="$(type -P most ||type -P less||type -P more)"
+export PAGER="$(command -v less 2> /dev/null || command -v most 2> /dev/null || type -P more 2> /dev/null)"
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
+
+if command -v tput > /dev/null 2>&1; then
+    man() {
+	# Color man pages
+	env LESS_TERMCAP_mb=$(printf "$(tput bold)$(tput setaf 1)") \
+	    LESS_TERMCAP_md=$(printf "$(tput bold)$(tput setaf 1)") \
+	    LESS_TERMCAP_me=$(printf "$(tput sgr0)") \
+	    LESS_TERMCAP_se=$(printf "$(tput sgr0)") \
+	    LESS_TERMCAP_so=$(printf "$(tput bold)$(tput setab 4)$(tput setaf 3)") \
+	    LESS_TERMCAP_ue=$(printf "$(tput sgr0)") \
+	    LESS_TERMCAP_us=$(printf "$(tput bold)$(tput setaf 2)") \
+	    "$(command -v man 2> /dev/null)" "$@"
+    }
+else
+    man() {
+	# Colorfull manpages (works with less as a pager)
+	# https://www.tecmint.com/view-colored-man-pages-in-linux/
+	env LESS_TERMCAP_mb=$'\e[1;32m' \
+	    LESS_TERMCAP_md=$'\e[1;32m' \
+	    LESS_TERMCAP_me=$'\e[0m' \
+	    LESS_TERMCAP_se=$'\e[0m' \
+	    LESS_TERMCAP_so=$'\e[01;33m' \
+	    LESS_TERMCAP_ue=$'\e[0m' \
+	    LESS_TERMCAP_us=$'\e[1;4;31m' \
+	    "$(command -v man 2> /dev/null)" "${@}"
+    }
+fi
 
 export LANG="en_US.utf8"
 export LC_COLLATE="C"
@@ -90,7 +107,7 @@ export GIT_PS1_SHOWUPSTREAM=yes
 # MONGODB
 [[ -n "${MONGODB}" ]] && export PATH+=":${MONGODB}/bin"
 
-#MANPATH
+# MANPATH
 [[ -d "${HOME}/.local/share/man" ]] && export MANPATH+=":${HOME}/.local/share/man"
 [[ -d "${HOME}/opt/share/man" ]] && export MANPATH+=":${HOME}/opt/share/man"
 

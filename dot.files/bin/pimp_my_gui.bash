@@ -30,6 +30,7 @@ if [[ -r "/etc/os-release" ]]; then
     if [[ "${ID}" == "gentoo" ]]; then
 	# Systray network manager applet || wicd-gtk -t
 	rcm 9 nm-applet
+	:
     elif [[ "${ID}" == "devuan" ]]; then
 	rcm 9 conky -qd
     elif [[ "${ID}" == "debian" ]]; then
