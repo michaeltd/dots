@@ -34,16 +34,17 @@ export PAGER="$(command -v less 2> /dev/null || command -v most 2> /dev/null || 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
 
+# Man page wrapper
 if command -v tput > /dev/null 2>&1; then
     man() {
 	# Color man pages
-	env LESS_TERMCAP_mb=$(printf "$(tput bold)$(tput setaf 1)") \
-	    LESS_TERMCAP_md=$(printf "$(tput bold)$(tput setaf 1)") \
-	    LESS_TERMCAP_me=$(printf "$(tput sgr0)") \
-	    LESS_TERMCAP_se=$(printf "$(tput sgr0)") \
-	    LESS_TERMCAP_so=$(printf "$(tput bold)$(tput setab 4)$(tput setaf 3)") \
-	    LESS_TERMCAP_ue=$(printf "$(tput sgr0)") \
-	    LESS_TERMCAP_us=$(printf "$(tput bold)$(tput setaf 2)") \
+	env LESS_TERMCAP_mb="$(printf "%s" "$(tput bold)$(tput setaf 1)")" \
+	    LESS_TERMCAP_md="$(printf "%s" "$(tput bold)$(tput setaf 1)")" \
+	    LESS_TERMCAP_me="$(printf "%s" "$(tput sgr0)")" \
+	    LESS_TERMCAP_se="$(printf "%s" "$(tput sgr0)")" \
+	    LESS_TERMCAP_so="$(printf "%s" "$(tput bold)$(tput setab 4)$(tput setaf 3)")" \
+	    LESS_TERMCAP_ue="$(printf "%s" "$(tput sgr0)")" \
+	    LESS_TERMCAP_us="$(printf "%s" "$(tput bold)$(tput setaf 2)")" \
 	    "$(command -v man 2> /dev/null)" "$@"
     }
 else

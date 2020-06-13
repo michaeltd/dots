@@ -18,13 +18,13 @@ gen_uuid() {
     # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
     # https://gist.github.com/markusfisch/6110640
     # https://github.com/lowerpower/UUID-with-bash
-    local -r eight=$(tr -dc a-f0-9 < /dev/urandom | dd bs=8 count=1 2> /dev/null)
-    local -r foura=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
-    local -r fourb=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
-    local -r fourc=$(tr -dc a-f0-9 < /dev/urandom | dd bs=4 count=1 2> /dev/null)
-    local -r twelve=$(tr -dc a-f0-9 < /dev/urandom | dd bs=12 count=1 2> /dev/null)
-    local -r uuid="${eight}-${foura}-${fourb}-${fourc}-${twelve}"
-    printf "%s\n" "${uuid^^}"
+    mkpart(){
+	tr -dc A-F0-9 < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
+    }
+    for i in 8 4 4 4 12; do
+	uuid+="$(mkpart $i)-"
+    done
+    printf "%s\n" "${uuid%-}"
 }
 
 hash_stdin() {
