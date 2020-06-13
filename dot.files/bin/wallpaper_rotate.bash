@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bash --noprofile --norc
+#!/usr/bin/env -S bash --norc --noprofile
 #
 # Script to go through a directory of background images as wallpapers in a timely fashion
 #shellcheck shell=bash
@@ -33,9 +33,9 @@ wallpaper_rotate() {
     local -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
 	  DIRS=( "${HOME}/Pictures" ) WPS=()
     #shellcheck disable=SC2155
-    local WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.rc}")" \
-	  WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.log}")" \
-	  BGSR="" \
+    local -r WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.rc}")" \
+	  WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.log}")"
+    local BGSR="" \
 	  WAIT="2m"
 
     # bash version info check
@@ -68,6 +68,10 @@ wallpaper_rotate() {
     # and read it.
     #shellcheck source=/dev/null
     source "${WPRC}"
+
+    timestamp() {
+	date +%y%m%d-%H%M%S
+    }
 
     # If options, proccess, else rotate things
     if [[ -n "${*}" ]]; then
@@ -109,12 +113,9 @@ wallpaper_rotate() {
 		shift
 		cat "${WPLG}";;
 	    *)
-		echo -ne "${WPUSAGE[*]}" ;;
+		echo -ne "${WPUSAGE[*]}";;
 	esac
     else
-	# Reset log
-	echo '' > "${WPLG}"
-
 	while :; do
 	    # re-read rc (to pick up config updates).
 	    #shellcheck source=/dev/null
@@ -138,10 +139,10 @@ wallpaper_rotate() {
 	    # Get path and name of image as a selected WallPaper
 	    local WP="${WPS[RN]}"
 
-	    # set log, set wallpaper, wait
-	    printf "%s %s %s\n" "$(date +%y%m%d_%H%M)" "${!BGSRS[BGSR]:0:1}" "${WP}" >> "${WPLG}"
+	    # Set wallpaper, write log, wait
+	    "${!BGSRS[BGSR]}" "${WP}" >> "${WPLG}" 2>&1
 
-	    "${!BGSRS[BGSR]}" "${WP}" 2>> "${WPLG}"
+	    echo "$(timestamp) ${!BGSRS[BGSR]} ${WP}" >> "${WPLG}"
 
 	    sleep "${WAIT}"
 	done
