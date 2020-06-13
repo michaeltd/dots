@@ -53,6 +53,7 @@ for_window [class="Gtkdialog"] floating enable
 for_window [class="Xmessage"] floating enable
 for_window [class="XCalendar"] floating enable
 for_window [class="XCalc"] floating enable
+for_window [class="Xarchiver"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
