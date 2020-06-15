@@ -35,6 +35,12 @@
 set -euo pipefail
 IFS=$'\t\n'
 
+#link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
+#shellcheck disable=SC2155
+readonly scriptdir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 scriptbas="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+readonly scriptnex="${scriptbas%.*}"
+
 update_backups() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
     local definitions="/home/paperjam/.cronjobbkps" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
@@ -87,6 +93,4 @@ update_backups() {
     done
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
-    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
-    "${scrptnm%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${scriptnex}" "${@}"
