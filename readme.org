@@ -16,7 +16,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 **** [[dot.files/sbin/upgrade_distro.bash][upgrade_distro.bash]]
      Distro neutral upgrade script
 
-**** [[dot.files/sbin/update_bkps.bash][update_backups.bash]]
+**** [[dot.files/sbin/update_backups.bash][update_backups.bash]]
      Back up things ...
 
 **** [[dot.files/sbin/update_cleanup.bash][update_cleanup.bash]]
