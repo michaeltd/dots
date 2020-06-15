@@ -236,22 +236,25 @@ rom2dec_alt(){
 
 rom2dec() {
     # https://rosettacode.org/wiki/Roman_numerals/Decode#UNIX_Shell
-    local rnum="${1^^}"
-    local n="0"
-    local prev="0"
     local -A romans=( [M]="1000" [D]="500" [C]="100" [L]="50" [X]="10" [V]="5" [I]="1" )
-
-    for (( i = ${#rnum}-1; i >= 0; i-- )); do
-	a="${romans[${rnum:$i:1}]}"
-     	if [[ "${a}" -lt "${prev}" ]]; then
-	    (( n -= a ))
-	else
-	    (( n += a))
-	fi
-     	prev="${a}"
+    while [[ -n "${1}" ]]; do
+	local rnum="${1^^}"
+	local n="0"
+	local prev="0"
+	for (( i = ${#rnum}-1; i >= 0; i-- )); do
+	    local a="${romans[${rnum:$i:1}]}"
+     	    if [[ "${a}" -lt "${prev}" ]]; then
+		(( n -= a ))
+	    else
+		(( n += a))
+	    fi
+     	    prev="${a}"
+	done
+	
+	echo -n "${n} "
+	shift
     done
-
-    echo "${n}"
+    echo
 }
 
 dec2rom() {
@@ -263,13 +266,17 @@ dec2rom() {
           [10]=X   [9]=IX   [5]=V   [4]=IV   
            [1]=I
     )
-    local nvmber=""
-    local num="${1}"
-    for value in "${values[@]}"; do
-        while (( num >= value )); do
-            nvmber+="${roman[value]}"
-            (( num -= value ))
-        done
+    while [[ -n "${1}" ]]; do
+	local num="${1}"
+	local nvmber=""
+	for value in "${values[@]}"; do
+            while (( num >= value )); do
+		nvmber+="${roman[value]}"
+		(( num -= value ))
+            done
+	done
+	echo -n "${nvmber} "
+	shift
     done
-    echo "${nvmber}"
+    echo
 }
