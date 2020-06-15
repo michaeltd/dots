@@ -8,6 +8,12 @@
 set -euo pipefail
 IFS=$'\t\n'
 
+#link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
+#shellcheck disable=SC2155
+readonly SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 SBN="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+readonly SNE="${SBN%.*}"
+
 wallpaper_rotate() {
     # Font attributes, Colors, bg colors
     #shellcheck disable=SC2034
@@ -150,4 +156,4 @@ wallpaper_rotate() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "$(basename "${BASH_SOURCE[0]%.*}")" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${SNE}" "${@}"

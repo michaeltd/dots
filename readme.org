@@ -16,10 +16,10 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 **** [[dot.files/sbin/upgrade_distro.bash][upgrade_distro.bash]]
      Distro neutral upgrade script
 
-**** [[dot.files/sbin/update_bkps.bash][update_bkps.bash]]
+**** [[dot.files/sbin/update_bkps.bash][update_backups.bash]]
      Back up things ...
 
-**** [[dot.files/sbin/cleanup_bkps.bash][cleanup_bkps.bash]]
+**** [[dot.files/sbin/update_cleanup.bash][update_cleanup.bash]]
      ... and clean up the mess.
 
 **** [[dot.files/bin/wallpaper_rotate.bash][wallpaper_rotate.bash]]

@@ -9,12 +9,15 @@
 set -euo pipefail
 IFS=$'\t\n'
 
+#link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
+#shellcheck disable=SC2155
+readonly SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 SBN="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+readonly SNE="${SBN%.*}"
+
 update_cleanup() {
-
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-
     local backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="1"
-
     local usage="
 
  Usage: ${BASH_SOURCE[0]##*/} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
@@ -25,7 +28,6 @@ update_cleanup() {
  -(-d)ebug		      display lots of letters.
 
 "
-
     while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    -b|--backups) shift; local backup_dir="${1}";;
@@ -36,7 +38,6 @@ update_cleanup() {
 	esac
 	shift
     done
-
     # Source explicitly for non interactive shells.
     srcspath="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")/.bashrc.d/.stdlib"
 
@@ -78,6 +79,4 @@ update_cleanup() {
     [[ "${nothing2do}" -eq "1" ]] && echo "Nothing left to do!" >&2
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
-    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
-    "${scrptnm%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${SNE}" "${@}"
