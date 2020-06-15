@@ -21,8 +21,8 @@ gen_uuid() {
     mkpart(){
 	tr -dc A-F0-9 < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
     }
-    for i in 8 4 4 4 12; do
-	uuid+="$(mkpart $i)-"
+    for i in {8,4,4,4,12}; do
+	local uuid+="$(mkpart $i)-"
     done
     printf "%s\n" "${uuid%-}"
 }

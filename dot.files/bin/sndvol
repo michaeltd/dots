@@ -22,8 +22,8 @@ sndvol() {
     local -r scrpt_name="${BASH_SOURCE[0]##*/}"
 
     # Mutexify to avoid process spam
-    local -ar pids=( $(pgrep -U "${USER}" -f "${scrpt_name}") )
-    [[ "${#pids[*]}" -gt "1" ]] && return 1
+    # local -ar pids=( $(pgrep -U "${USER}" -f "${scrpt_name}") )
+    # [[ "${#pids[*]}" -gt "1" ]] && return 1
 
     # Pick a default available UI ...
     #shellcheck disable=SC2155
