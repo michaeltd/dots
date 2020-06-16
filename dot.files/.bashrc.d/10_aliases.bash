@@ -139,7 +139,7 @@ alias gal='gaa && gcm && gps'
 alias glp='git log -p'
 alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 # alias gco='git checkout'
-# alias gpl='git pull --rebase'
+alias gpl='git pull --rebase'
 # alias grb='git rebase'
 
 # NETRIS
