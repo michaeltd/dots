@@ -42,13 +42,13 @@ usage() {
 	    exec >&2
 	    printf '%s: %s\n\n' "$script_base_name" "$*"
 	}
-	printf %s\\n "$help_text"
+	printf '%s\n' "$help_text"
 	exit ${1:+1}
 }
 
-info()    { printf %s\\n "$*" >&2; }
+info()    { printf '%s\n' "$*" >&2; }
 
-version() { printf %s\\n "$version_text"; exit; }
+version() { printf '%s\n' "$version_text"; exit; }
 
 # For a given optstring, this function sets the variables
 # "option_<optchar>" to true/false and param_<optchar> to its parameter.
@@ -83,8 +83,8 @@ set_defaults() {
     trap 'clean_exit HUP' HUP
     trap 'clean_exit INT' INT
     # IFS=' '
-    set -- $(printf '\n \r \t \033')
-    declare -x nl=$1 cr=$2 tab=$3 esc=$4
+    # set -- $(printf '\n \r \t \033')
+    declare -x nl=$'\n' cr=$'\r' tab=$'\t' esc=$'\033'
     # IFS=\ $tab
 }
 
