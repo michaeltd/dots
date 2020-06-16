@@ -17,7 +17,7 @@ elmnt="/mnt/el/Documents"
 dtmnt="/mnt/data/Documents"
 
 if [[ -d "${elmnt}" && -d "${dtmnt}" ]]; then
-    time "${nicec[@]}" "${rsncm[@]}" /mnt/el/* /mnt/data/
+    times "${nicec[@]}" "${rsncm[@]}" /mnt/el/* /mnt/data/
 else
     echo -ne "${elmnt} or ${dtmnt} not found\n" >&2
     exit 1

@@ -37,9 +37,9 @@ IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 #shellcheck disable=SC2155
-readonly scriptdir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
-	 scriptbas="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly scriptnex="${scriptbas%.*}"
+readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+readonly sne="${sbn%.*}"
 
 update_backups() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
@@ -80,12 +80,12 @@ update_backups() {
 
     compress() {
 	#shellcheck disable=SC2046
-	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_fn}.${1##*.}.tar.gz" $(cat "${1}")
+	times "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_fn}.${1##*.}.tar.gz" $(cat "${1}")
     }
 
     encrypt() {
 	#shellcheck disable=SC2046
-	time "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_fn}.${1##*.}.tar.gz.pgp" "--encrypt"
+	times "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_fn}.${1##*.}.tar.gz.pgp" "--encrypt"
     }
 
     for include in "${includes[@]}"; do
@@ -93,4 +93,4 @@ update_backups() {
     done
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${scriptnex}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"
