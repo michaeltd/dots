@@ -10,9 +10,9 @@ IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 #shellcheck disable=SC2155
-readonly SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
-	 SBN="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly SNE="${SBN%.*}"
+readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+readonly sne="${sbn%.*}"
 
 wallpaper_rotate() {
     # Font attributes, Colors, bg colors
@@ -22,7 +22,7 @@ wallpaper_rotate() {
 	  bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
 
     #shellcheck disable=SC2034,SC2155
-    local -ra WPUSAGE=("\n \
+    local -ra wpusage=("\n \
     ${bold}Script to rotate backgrounds in wm's with out such options \n \
     like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
     ${underline}Usage${end_underline}: ${green}${BASH_SOURCE[0]##*/}${reset} & from a terminal or your startup scripts.\n\n \
@@ -35,15 +35,15 @@ wallpaper_rotate() {
     ${green}${BASH_SOURCE[0]##*/}${reset} without options will start rotating images.\n\n")
 
     #shellcheck disable=SC2034,SC2155
-    local -ra FEH=( "feh" "--bg-scale" ) WMSETBG=( "wmsetbg" ) FVWM_ROOT=( "fvwm-root" ) \
-          FBSETBG=( "fbsetbg" ) BSETBG=( "bsetbg" ) HSETROOT=( "hsetroot" "-fill" ) XSETBG=( "xsetbg" )
-    local -a BGSRS=( FEH[@] WMSETBG[@] FVWM_ROOT[@] FBSETBG[@] BSETBG[@] HSETROOT[@] XSETBG[@] ) \
-	  DIRS=( "${HOME}/Pictures" ) WPS=()
+    local -ra feh=( "feh" "--bg-scale" ) wmsetbg=( "wmsetbg" ) fvwm_root=( "fvwm-root" ) \
+          fbsetbg=( "fbsetbg" ) bsetbg=( "bsetbg" ) hsetroot=( "hsetroot" "-fill" ) xsetbg=( "xsetbg" )
+    local -a bgsrs=( feh[@] wmsetbg[@] fvwm_root[@] fbsetbg[@] bsetbg[@] hsetroot[@] xsetbg[@] ) \
+	  dirs=( "${HOME}/Pictures" ) wps=()
     #shellcheck disable=SC2155
-    local -r WPRC="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.rc}")" \
-	  WPLG="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.log}")"
-    local BGSR="" \
-	  WAIT="2m"
+    local -r wprc="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.rc}")" \
+	  wplg="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.log}")"
+    local bgsr="" \
+	  wait="2m"
 
     # bash version info check
     if (( "${BASH_VERSINFO[0]}" < 4 )); then
@@ -53,28 +53,28 @@ wallpaper_rotate() {
     fi
 
     # Find a setter
-    for (( x = 0; x < "${#BGSRS[@]}"; x++ )); do
-	if [[ -n $(type -P "${!BGSRS[x]:0:1}" 2> /dev/null) ]]; then
-	    BGSR="${x}"
+    for (( x = 0; x < "${#bgsrs[@]}"; x++ )); do
+	if [[ -n $(type -P "${!bgsrs[x]:0:1}" 2> /dev/null) ]]; then
+	    bgsr="${x}"
 	    break # Break on first match.
 	fi
     done
 
     # Quit on no setter
-    if [[ -z "${BGSR}" ]]; then
-	echo -ne "${WPUSAGE[*]}\n"
+    if [[ -z "${bgsr}" ]]; then
+	echo -ne "${wpusage[*]}\n"
 	echo -ne "\n\n ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n" >&2
 	exit 1
     fi
 
     # If there's no readable settings file, write it...
-    if [[ ! -r "${WPRC}" ]]; then
-	echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}"
+    if [[ ! -r "${wprc}" ]]; then
+	echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
     fi
 
     # and read it.
     #shellcheck source=/dev/null
-    source "${WPRC}"
+    source "${wprc}"
 
     timestamp() {
 	date +%y%m%d-%H%M%S
@@ -93,67 +93,67 @@ wallpaper_rotate() {
 		    fi
 		    shift
 		done
-		echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}";;
+		echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}";;
 	    "rem")
 		shift
 		while [[ -n "${*}" ]]; do
-		    for (( i = 0; i < "${#DIRS[@]}"; i++ )); do
-			if [[ "${DIRS[i]}" == "${1}" ]]; then
-			    unset 'DIRS[i]'
+		    for (( i = 0; i < "${#dirs[@]}"; i++ )); do
+			if [[ "${dirs[i]}" == "${1}" ]]; then
+			    unset 'dirs[i]'
 			fi
 		    done
 		    shift
 		done
-		echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}";;
+		echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}";;
 	    "delay")
 		shift
-		WAIT=${1}
-		if [[ "${WAIT}" =~ ^[0-9]+$ ]]; then
-		    echo -ne "WAIT=${WAIT}\nDIRS=( ${DIRS[*]} )\n" > "${WPRC}"
+		wait=${1}
+		if [[ "${wait}" =~ ^[0-9]+$ ]]; then
+		    echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
 		else
-		    echo -ne "${yellow}Warning:${reset} \"${bold}${WAIT}${reset}\" is not a valid time construct.\nProvide an integer as interval in seconds\n" >&2
+		    echo -ne "${yellow}Warning:${reset} \"${bold}${wait}${reset}\" is not a valid time construct.\nProvide an integer as interval in seconds\n" >&2
 		fi ;;
 	    "replay")
 		shift
-		tail -n "${1:-1}" "${WPLG}"|head -n 1|awk '{print $NF}';;
+		tail -n "${1:-1}" "${wplg}"|head -n 1|awk '{print $NF}';;
 	    "showlog")
 		shift
-		cat "${WPLG}";;
+		"${PAGER}" "${wplg}";;
 	    *)
-		echo -ne "${WPUSAGE[*]}";;
+		echo -ne "${wpusage[*]}";;
 	esac
     else
 	while :; do
 	    # re-read rc (to pick up config updates).
 	    #shellcheck source=/dev/null
-	    source "${WPRC}"
+	    source "${wprc}"
 
 	    # fill a WallPaperS list
-	    for D in "${DIRS[@]}"; do
-		for P in "${D}"/*; do
-		    local FE="${P:(-4)}"
-		    if [[ "${FE,,}" == ".jpg" || "${FE,,}" == ".png" ]]; then
-			local -a WPS+=( "${P}" )
+	    for d in "${dirs[@]}"; do
+		for p in "${d}"/*; do
+		    local fe="${p:(-4)}"
+		    if [[ "${fe,,}" == ".jpg" || "${fe,,}" == ".png" ]]; then
+			local -a wps+=( "${p}" )
 		    fi
 		done
 	    done
 
 	    # limit a random number to upper array bounds as a RundomNumber
-	    # let "RN = ${RANDOM} % ${#WPS[@]}"
+	    # let "rn = ${RANDOM} % ${#wps[@]}"
 	    #shellcheck disable=SC2155
-	    local RN=$(shuf -n 1 -i 0-"${#WPS[@]}")
+	    local rn=$(shuf -n 1 -i 0-"${#wps[@]}")
 
 	    # Get path and name of image as a selected WallPaper
-	    local WP="${WPS[RN]}"
+	    local wp="${wps[rn]}"
 
 	    # Set wallpaper, write log, wait
-	    "${!BGSRS[BGSR]}" "${WP}" >> "${WPLG}" 2>&1
+	    "${!bgsrs[bgsr]}" "${wp}" >> "${wplg}" 2>&1
 
-	    echo "$(timestamp) ${!BGSRS[BGSR]} ${WP}" >> "${WPLG}"
+	    echo "$(timestamp) ${!bgsrs[bgsr]} ${wp}" >> "${wplg}"
 
-	    sleep "${WAIT}"
+	    sleep "${wait}"
 	done
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${SNE}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"

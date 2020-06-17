@@ -9,9 +9,9 @@ IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 #shellcheck disable=SC2155
-readonly SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
-	 SBN="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly SNE="${SBN%.*}"
+readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+readonly sne="${sbn%.*}"
 
 dist_upgrade() {
 
@@ -47,8 +47,8 @@ dist_upgrade() {
 	printf " Error: required access privilages not met,\n or package manager not found. \n For this to work you need root account privilages \n and a %s, %s, %s, %s, %s or %s based distro.\n Quithing.\n" "${!pms[0]:0:1}" "${!pms[1]:0:1}" "${!pms[2]:0:1}" "${!pms[3]:0:1}" "${!pms[4]:0:1}" "${!pms[5]:0:1}" >&2
 	return 1
     else
-	times "${!pms[pmidx]:0:1}" "${!pms[pmidx]:1:1}" && times "${!pms[pmidx]:0:1}" "${!pms[pmidx]:2}"
+	time "${!pms[pmidx]:0:1}" "${!pms[pmidx]:1:1}" && time "${!pms[pmidx]:0:1}" "${!pms[pmidx]:2}"
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${SNE}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"

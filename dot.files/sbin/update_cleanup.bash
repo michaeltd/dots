@@ -11,9 +11,9 @@ IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 #shellcheck disable=SC2155
-readonly SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
-	 SBN="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly SNE="${SBN%.*}"
+readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+readonly sne="${sbn%.*}"
 
 update_cleanup() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
@@ -39,9 +39,9 @@ update_cleanup() {
 	shift
     done
     # Source explicitly for non interactive shells.
-    srcspath="${SDN}/../.bashrc.d/.stdlib"
+    srcspath="${sdn}/../.bashrc.d/.stdlib"
 
-    local -ra sources=( "${srcspath}/"*.bash ) backups=( "${backup_dir}"/*.tar.gz* )
+    local -ra sources=( "${srcspath}"/*.bash ) backups=( "${backup_dir}"/*.tar.gz* )
 
     for src in "${sources[@]}"; do
 	source "${src}" || { echo -ne "${src} not readable.\n" >&2; return 1; }
@@ -79,4 +79,4 @@ update_cleanup() {
     [[ "${nothing2do}" -eq "1" ]] && echo "Nothing left to do!" >&2
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${SNE}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"

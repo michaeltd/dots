@@ -13,7 +13,7 @@ xset b off
 xset m 20/10 4
 
 # Set NumLock ON
-setleds +num
+# setleds +num
 
 # Qt5 theme engine
 export QT_QPA_PLATFORMTHEME=qt5ct
