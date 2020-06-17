@@ -25,14 +25,14 @@ wallpaper_rotate() {
     local -ra wpusage=("\n \
     ${bold}Script to rotate backgrounds in wm's with out such options \n \
     like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
-    ${underline}Usage${end_underline}: ${green}${BASH_SOURCE[0]##*/}${reset} & from a terminal or your startup scripts.\n\n \
+    ${underline}Usage${end_underline}: ${green}${sbn}${reset} & from a terminal or your startup scripts.\n\n \
     Options may be: \n \
-    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
-    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
-    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}delay${reset} ${yellow}240${reset} - set interval (seconds) \n \
-    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}replay${reset} [${yellow}3${reset}] - display previous image # \n \
-    ${green}${BASH_SOURCE[0]##*/}${reset} ${magenta}help${reset} - this message \n \
-    ${green}${BASH_SOURCE[0]##*/}${reset} without options will start rotating images.\n\n")
+    ${green}${sbn}${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
+    ${green}${sbn}${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
+    ${green}${sbn}${reset} ${magenta}delay${reset} ${yellow}240${reset} - set interval (seconds) \n \
+    ${green}${sbn}${reset} ${magenta}replay${reset} [${yellow}3${reset}] - display previous image # \n \
+    ${green}${sbn}${reset} ${magenta}help${reset} - this message \n \
+    ${green}${sbn}${reset} without options will start rotating images.\n\n")
 
     #shellcheck disable=SC2034,SC2155
     local -ra feh=( "feh" "--bg-scale" ) wmsetbg=( "wmsetbg" ) fvwm_root=( "fvwm-root" ) \
