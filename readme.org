@@ -62,7 +62,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
 ** Business Cards
     
-   Two catchy little terminal business cards to flash to your coworkers - colleagues.
+   Two catchy little terminal business cards to flash your coworkers/colleagues with.
 
    Shamelessly stolen from [[https://github.com/bnb/bitandbang][bitandbang]]
 
