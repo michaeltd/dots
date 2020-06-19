@@ -1,14 +1,16 @@
 #!/usr/bin/env -S bash --norc --noprofile
 #
+#shellcheck shell=bash
+#shellcheck disable=SC1008,SC2096
 
-#shellcheck disable=SC2155
+#shellcheck disable=SC2155,SC2034
 readonly script_dir_name="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 readonly script_base_name="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly script_no_extension="${SBN%.*}"
+readonly script_no_extension="${script_base_name%.*}"
 readonly version=1.0
 readonly version_text="Boilerplate for new scripts v$version"
 readonly options="h o: q v V"
-readonly help_text="Usage: $prog_name [-o <text>] [-hqvV] [<file>]...
+readonly help_text="Usage: $script_base_name [-o <text>] [-hqvV] [<file>]...
 
 Boilerplate for new scripts
 

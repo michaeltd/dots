@@ -5,7 +5,7 @@ set -euo pipefail
 IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
-#shellcheck disable=SC2155
+#shellcheck disable=SC2155,SC2034
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 readonly sne="${sbn%.*}"
