@@ -7,6 +7,7 @@
 readonly script_dir_name="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 readonly script_base_name="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 readonly script_no_extension="${script_base_name%.*}"
+readonly script_pid="${$}"
 readonly version=1.0
 readonly version_text="Boilerplate for new scripts v$version"
 readonly options="h o: q v V"
