@@ -4,19 +4,17 @@
 # Migrates my .dots in new systems.
 
 #shellcheck disable=SC2155
-declare -r SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
-	SBN="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-
-# No Extension Script Name
+declare -r sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 #shellcheck disable=SC2155
-declare -r NESN="${SBN/\.bash/}"
+declare -r nes="${sbn/\.bash/}"
 
 #shellcheck disable=2164 #SHUT UP SHELLCHECK, MY CD'S DO NOT FAIL!!!
-cd "${SDN}"
+cd "${sdn}"
 
 # Backup File Extension
 #shellcheck disable=SC2155
-declare -r BFE="dots.${NESN}.${$}.$(date +%s).bkp"
+declare -r bfe="dots.${nes}.${$}.$(date +%s).bkp"
 
 #shellcheck disable=SC2034
 declare -ra compton=( 'dot.files/.config/compton.conf' ) \
@@ -156,7 +154,7 @@ __link_assoc() {
 __do_link() {
     # ln force switch for directory links appears broken, so there ...
     if [[ -e "${2}" ]]; then
-	$(type -P mv) -v "${2}" "${2}.${BFE}"
+	$(type -P mv) -v "${2}" "${2}.${bfe}"
     fi
     #ln --verbose --symbolic --force --backup --suffix=".${BFE}"  "${1}" "${2}"
     $(type -P mkdir) -vp "$(dirname "${2}")"
@@ -217,4 +215,4 @@ __bootstrap() {
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "__${NESN}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "__${nes}" "${@}"
