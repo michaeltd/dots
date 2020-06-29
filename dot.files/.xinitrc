@@ -57,7 +57,7 @@ done
 # Per wm customizations. If there is a wm specific permutation to be done, here is the place.
 if [[ "${WM[0]}" =~ emacs ]]; then
     # Just "emacs" would suffice if you don't mind a M-x:exwm-init on X boot.
-    emacs --daemon -f exwm-enable
+    emacs --daemon # -f exwm-enable
     WM=( "emacsclient" "-c" )
 elif [[ "${WM[0]}" =~ starte16 || "${WM[0]}" =~ enlightenment_start ]]; then
     # e17 svg support

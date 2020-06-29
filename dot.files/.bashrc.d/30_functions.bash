@@ -15,6 +15,10 @@
 #     echo
 # }
 
+focolol(){
+    fortune -o|cowsay -f "${1:-eyes}"|lolcat
+}
+
 mycountdown() {
     clear
     for i in $(seq "${1-10}" -1 0); do

@@ -57,6 +57,7 @@ for_window [class="XCalc"] floating enable
 for_window [class="Xarchiver"] floating enable
 for_window [class="electrum"] floating enable
 for_window [class="Audacious"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next

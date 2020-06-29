@@ -102,7 +102,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 ** Contributing [[http://unmaintained.tech/][http://unmaintained.tech/badge.svg]]
    Typos, syntactic and grammar welcome.
 
-   Other than that and unless you mind reading game is top notch, try your luck with a PR.
+   Other than that and unless your mind reading game is top notch, try your luck with a PR.
 
    Now in the rare case that you *really* must contribute, feel free to buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:19TznUEx2QZF6hQxL64bf3x15VWNy8Xitm][₿]] (bitcoin:19TznUEx2QZF6hQxL64bf3x15VWNy8Xitm).
 
