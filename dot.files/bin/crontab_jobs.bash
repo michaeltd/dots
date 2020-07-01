@@ -9,7 +9,7 @@ alarm() {
 
 backup() {
     ~/sbin/update_backups.bash -f ~/".crontabbkps" -t "/mnt/el/Documents/BKP/LINUX/paperjam" -k "tsouchlarakis@gmail.com"
-    ~/sbin/update_cleanup.bash -b "/mnt/el/Documents/BKP/LINUX/paperjam" -k 2
+    ~/sbin/update_cleanup.bash -b "/mnt/el/Documents/BKP/LINUX/paperjam" -k 3
 }
 
 crontab_jobs() {

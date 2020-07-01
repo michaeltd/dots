@@ -17,7 +17,7 @@ readonly sne="${sbn%.*}"
 
 update_cleanup() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-    local backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="14" remove_backups="1" nothing2do="1"
+    local backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="3" remove_backups="1" nothing2do="1"
     local usage="
 
  Usage: ${BASH_SOURCE[0]##*/} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
