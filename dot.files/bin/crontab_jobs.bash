@@ -2,6 +2,8 @@
 #
 # gather cronjobs for use with a familiar environment (/bin/bash)
 
+sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+
 alarm() {
     echo -ne " -- ${FUNCNAME[0]} --\n"
     ~/bin/term_music.bash "${1}"
@@ -30,6 +32,4 @@ crontab_jobs() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && \
-    scrptnm="$(basename "$(realpath "${BASH_SOURCE[0]}")")" && \
-    "${scrptnm%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
