@@ -70,8 +70,9 @@ rwpi() {
 	  mypics="${HOME}/Pictures/dPic/r"
     if [[ -d "${1}" ]]; then
 	feh -rz --bg-scale "${1}"
+    elif [[ -f "${1}" ]]; then
+	feh --bg-scale "${1}"
     elif [[ -d "${mypics}" ]]; then
-	echo -ne "${usage}"
 	feh -rz --bg-scale "${mypics}"
     else
 	echo -ne "${usage}"
