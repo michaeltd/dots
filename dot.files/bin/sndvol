@@ -65,4 +65,4 @@ sndvol() {
     display_feedback "Master: ${VOL}"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "$(basename "$(realpath "${BASH_SOURCE[0]}")")" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${BASH_SOURCE[0]##*/}" "${@}"
