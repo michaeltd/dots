@@ -119,6 +119,10 @@ wallpaper_rotate() {
 	    "showlog")
 		shift
 		"${PAGER}" "${wplg}";;
+	    "trimlog")
+		shift
+		local -r tempdate="$(date +%y%m%d)"
+		sed -i "/^${tempdate}/!d" "${wplg}";;
 	    *)
 		echo -ne "${wpusage[*]}";;
 	esac
