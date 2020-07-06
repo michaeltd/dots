@@ -44,7 +44,7 @@ epoch2date() {
 
 epoch2time() {
     #shellcheck disable=SC2119
-    date +%H:%M:%S --date="@${1-$(unixe_poch)}"
+    date +%H:%M:%S --date="@${1-$(unix_epoch)}"
 }
 
 epoch2datetime() {

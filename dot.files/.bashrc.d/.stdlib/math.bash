@@ -66,7 +66,7 @@ min() {
     printf "%d\n" "${@}" | sort -n | head -1
 }
 
-avrg() {
+avg() {
     local i=0 sum=0 usage="\n\tUsage: ${FUNCNAME[0]} #1 #2 #3...\n\n"
     die() { echo -ne "${usage}" >&2; return 1; }
     [[ -z "${*}" ]] && { die; return $?; }
