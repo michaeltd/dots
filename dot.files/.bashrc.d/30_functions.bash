@@ -65,7 +65,8 @@ lcdfe() {
     find "${1}" -iname "${2}" -exec wc -l {} +
 }
 
-rwpi() {
+srwpi() {
+    # Set Random WallPaper Image
     local -r usage="\n\tUsage: ${FUNCNAME[0]} images-directory\n\tSet a Random WallPaper Image from a directory with images.\n\n" \
 	  mypics="${HOME}/Pictures/dPic/r"
     if [[ -d "${1}" ]]; then

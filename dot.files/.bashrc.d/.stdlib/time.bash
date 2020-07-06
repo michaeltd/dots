@@ -52,6 +52,10 @@ epoch2datetime() {
     date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unix_epoch)}"
 }
 
+week_day(){
+    date -d @"${1:-$(unix_epoch)}" +%u
+}
+
 last_dom() {
     # https://en.wikipedia.org/wiki/Leap_year
     # if (year is not divisible by 4) then (it is a common year)
