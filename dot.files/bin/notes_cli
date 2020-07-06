@@ -60,7 +60,7 @@ notes_cli() {
 
     show_header() { echo "${notes_header}"; }
 
-    usage() { echo -ne "\n\tUsage: ${BASH_SOURCE[0]##*/} add 'some notes' | search keyword | rem keyword... | list | halp\n\n" >&2; }
+    usage() { echo -ne "\n\tUsage: ${BASH_SOURCE[0]##*/} [add 'some notes' | search keyword | rem keyword... | list]\n\n" >&2; }
     
     list() { nl -b a "${notes_file}"; }
 
@@ -82,4 +82,4 @@ notes_cli() {
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "$(basename "$(realpath "${BASH_SOURCE[0]}")")" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${BASH_SOURCE[0]##*/}" "${@}"

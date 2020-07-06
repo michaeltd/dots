@@ -2,9 +2,6 @@
 # cryptographic functions
 #shellcheck shell=bash
 
-# Can I haz bash?
-# [[ "${SHELL}" =~ bash$ ]] || return 1
-
 gen_pass() {
     #shellcheck disable=SC2005
     tr -dc "[:graph:]" < /dev/urandom | \
@@ -185,7 +182,9 @@ alpha2morse() {
 	[5]='.....' [6]='-....' [7]='--...' [8]='----..' [9]='----.' )
 
     if [[ "${#}" -lt "1" ]]; then
-	echo -ne "\n\t Usage: ${FUNCNAME[0]} arguments...\n\t ${FUNCNAME[0]} is an IMC transmitter. \n\t It'll transmit your messages to International Morse Code.\n\n" >&2
+	echo -ne "\n\t Usage: ${FUNCNAME[0]} arguments...
+\t ${FUNCNAME[0]} is an IMC transmitter. 
+\t It'll transmit your messages to International Morse Code.\n\n" >&2
 	return 1
     fi
 
@@ -251,7 +250,6 @@ rom2dec() {
 	    fi
      	    prev="${a}"
 	done
-	
 	echo -n "${n} "
 	shift
     done
@@ -261,12 +259,7 @@ rom2dec() {
 dec2rom() {
     # https://rosettacode.org/wiki/Roman_numerals/Encode#UNIX_Shell
     local values=( 1000 900 500 400 100 90 50 40 10 9 5 4 1 )
-    local roman=(
-        [1000]=M [900]=CM [500]=D [400]=CD 
-         [100]=C  [90]=XC  [50]=L  [40]=XL 
-          [10]=X   [9]=IX   [5]=V   [4]=IV   
-           [1]=I
-    )
+    local roman=( [1000]=M [900]=CM [500]=D [400]=CD [100]=C [90]=XC [50]=L [40]=XL [10]=X [9]=IX [5]=V [4]=IV [1]=I )
     while [[ -n "${1}" ]]; do
 	local num="${1}"
 	local nvmber=""
