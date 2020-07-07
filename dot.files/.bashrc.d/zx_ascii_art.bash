@@ -93,13 +93,23 @@ dennis_ritchie() {
 eof
 }
 
-focolol(){
+4tunecowfunky(){
+    local -r myusage="\n\tUsage: ${FUNCNAME[0]} [cowsay file]\n\teg: ${FUNCNAME[0]} default\n\t'cowsay -l' for a list of available files\n\tRequires fortune, cowsay and lolcat.\n"
+    type -P fortune &>/dev/null && \
+	type -P cowsay &>/dev/null && \
+	type -P lolcat &>/dev/null || \
+	    { echo -e "${myusage}"; return 1; }
     fortune -o|cowsay -f "${1:-eyes}"|lolcat
 }
 
 mycountdown() {
+    local -r myusage="\n\tUsage: ${FUNCNAME[0]} [#countdown seconds]\n\teg: ${FUNCNAME[0]} 60\n\tRequires figlet, lolcat and sox.\n"
+    type -P figlet &>/dev/null && \
+	type -P lolcat &>/dev/null && \
+	type -P play &>/dev/null || \
+	    { echo -e "${myusage}"; return 1; }
     clear
-    for i in $(seq "${1-10}" -1 0); do
+    for i in $(seq "${1:-10}" -1 0); do
 	printf "%04d\n" "${i}" |figlet |lolcat
 	sleep 1
 	clear
