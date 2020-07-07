@@ -4,9 +4,6 @@
 #shellcheck shell=bash
 # SCRAPPAD ====================================================================
 
-# while read a ; do echo ${a//abc/XYZ} ; done < /tmp/file.txt > /tmp/file.txt.t ; mv /tmp/file.txt{.t,}
-# echo "abcdef" |replace "abc" "XYZ" # mysqld
-
 # allemojis() {
 #     for (( x = 2600; x <= 2700; x++ )); do
 # 	echo -n -e " \u${x}"
@@ -79,119 +76,6 @@ cat << 'EOF'
     [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
     [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
 EOF
-}
-
-thug_life(){
-    echo -n "( •_•)"|lolcat
-    sleep .75
-    echo -n -e "\r( •_•)>⌐■-■"|lolcat
-    sleep .75
-    echo -n -e "\r               "
-    echo  -e "\r(⌐■_■)"|lolcat
-    sleep .5
-}
-
-animate_bash(){
-##!/bin/bash
-#
-# https://wiki.bash-hackers.org/scripting/terminalcodes
-
-    DATA[0]="     _/  _/    _/                            _/    "
-    DATA[1]="  _/_/_/_/_/  _/_/_/      _/_/_/    _/_/_/  _/_/_/ "
-    DATA[2]="   _/  _/    _/    _/  _/    _/  _/_/      _/    _/"
-    DATA[3]="_/_/_/_/_/  _/    _/  _/    _/      _/_/  _/    _/ "
-    DATA[4]=" _/  _/    _/_/_/      _/_/_/  _/_/_/    _/    _/  "
-    
-    # virtual coordinate system is X*Y ${#DATA} * 5
-
-    REAL_OFFSET_X=0
-    REAL_OFFSET_Y=0
-    
-    draw_char() {
-	V_COORD_X=$1
-	V_COORD_Y=$2
-
-	tput cup $((REAL_OFFSET_Y + V_COORD_Y)) $((REAL_OFFSET_X + V_COORD_X))
-
-	echo -ne "${DATA[V_COORD_Y]:V_COORD_X:1}"
-    }
-
-    trap 'exit 1' INT TERM
-    trap 'tput setaf 9; tput cvvis; clear' EXIT
-
-    tput civis
-    clear
-
-    while :; do
-	for ((c=1; c <= 7; c++)); do
-	    tput setaf $c
-	    for ((x=0; x<${#DATA[0]}; x++)); do
-		for ((y=0; y<=4; y++)); do
-		    draw_char $x $y
-		done
-	    done
-	done
-    done
-}
-
-alien_stats() {
-    ##!/bin/bash
-    # https://gist.githubusercontent.com/brunomiguel/efa59fe50a0ad361dbe99edb33aa02f0/raw/4979855b27f12f1b1abe572f58a06aab3e6e686c/gistfile1.txt
-
-    UPTIME_DAYS=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 / 86400 ))
-    UPTIME_HOURS=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 % 86400 / 3600 ))
-    UPTIME_MINUTES=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 % 86400 % 3600 / 60 ))
-
-    # Basic info
-    HOSTNAME=$(uname -n)
-    ROOT=$(df -Ph | grep -w sda1 | awk '{print $4}' | tr -d '\n')
-
-    # System load
-    MEMORY1=$(free -t -m | grep "Total:" | awk '{print $3" MB";}')
-    MEMORY2=$(free -t -m | grep "Mem:" | awk '{print $2" MB";}')
-    LOAD1=$(awk '{print $1}' /proc/loadavg)
-    LOAD5=$(awk '{print $2}' /proc/loadavg)
-    LOAD15=$(awk '{print $3}' /proc/loadavg)
-
-    cat << 'EOF' |lolcat
-.     .       .  .   . .   .   . .    +  .
-  .     .  :     .    .. :. .___---------___.
-       .  .   .    .  :.:. _".^ .^ ^.  '.. :"-_. .
-    .  :       .  .  .:../:            . .^  :.:\.
-        .   . :: +. :.:/: .   .    .        . . .:\
- .  :    .     . _ :::/:               .  ^ .  . .:\
-  .. . .   . - : :.:./.                        .  .:\
-  .      .     . :..|:                    .  .  ^. .:|
-    .       . : : ..||        .                . . !:|
-  .     . . . ::. ::\(                           . :)/
- .   .     : . : .:.|. ######              .#######::|
-  :.. .  :-  : .:  ::|.#######           ..########:|
- .  .  .  ..  .  .. :\ ########          :######## :/
-  .        .+ :: : -.:\ ########       . ########.:/
-    .  .+   . . . . :.:\. #######       #######..:/
-      :: . . . . ::.:..:.\           .   .   ..:/
-   .   .   .  .. :  -::::.\.       | |     . .:/
-      .  :  .  .  .-:.":.::.\             ..:/
- .      -.   . . . .: .:::.:.\.           .:/
-.   .   .  :      : ....::_:..:\   ___.  :/
-   .   .  .   .:. .. .  .: :.:.:\       :/
-     +   .   .   : . ::. :.:. .:.|\  .:/|
-     .         +   .  .  ...:: ..|  --.:|
-.      . . .   .  .  . ... :..:.."(  ..)"
- .   .       .      :  .   .: ::/  .  .::\
-EOF
-
-    echo "
-===============================================
- - Hostname............: $HOSTNAME
- - Uptime..............: $UPTIME_DAYS days, $UPTIME_HOURS hours, $UPTIME_MINUTES minutes
- - Disk Space..........: $ROOT remaining
-===============================================
- - CPU usage...........: $LOAD1, $LOAD5, $LOAD15 (1, 5, 15 min)
- - Memory used.........: $MEMORY1 / $MEMORY2
- - Swap in use.........: $(free -m | tail -n 1 | awk '{print $3}') MB
-===============================================
-" |lolcat
 }
 
 dennis_ritchie() {
