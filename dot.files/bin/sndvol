@@ -19,10 +19,10 @@ sndvol() {
 	    DIALOG_EXTRA=3 DIALOG_ITEM_HELP=4 DIALOG_ESC=255 \
 	    SIG_NONE=0 SIG_HUP=1 SIG_INT=2 SIG_QUIT=3 SIG_KILL=9 SIG_TERM=15
 
-    local -r scrpt_name="${BASH_SOURCE[0]##*/}"
+    local -r script_name="${BASH_SOURCE[0]##*/}"
 
     # Mutexify to avoid process spam
-    # local -ar pids=( $(pgrep -U "${USER}" -f "${scrpt_name}") )
+    # local -ar pids=( $(pgrep -U "${USER}" -f "${script_name}") )
     # [[ "${#pids[*]}" -gt "1" ]] && return 1
 
     # Pick a default available UI ...
@@ -37,17 +37,17 @@ sndvol() {
 
     display_feedback() {
 	if [[ -n "${DIALOG}" ]]; then
-            "${DIALOG}" --title "${scrpt_name}:" --infobox "${*}" "${G[@]}"
+            "${DIALOG}" --title "${script_name}:" --infobox "${*}" "${G[@]}"
 	elif [[ -x "$(type -P xmessage)" ]]; then
             xmessage -nearmouse -timeout "${XMTO}" "${*}"
 	elif [[ -x "$(type -P notify-send)" ]]; then
-            notify-send "${scrpt_name}:" "${*}"
+            notify-send "${script_name}:" "${*}"
 	fi
-	echo "${scrpt_name}: ${*}" >&2
+	echo "${script_name}: ${*}" >&2
     }
 
     usage() {
-	display_feedback "Usage: $scrpt_name [+]|[-]|[0-100]|report|halp"
+	display_feedback "Usage: $script_name [+]|[-]|[0-100]|report|halp"
 	return 1
     }
 

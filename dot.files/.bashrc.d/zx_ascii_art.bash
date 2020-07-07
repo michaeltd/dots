@@ -106,8 +106,3 @@ mycountdown() {
     done
     play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
 }
-
-takeascreenshot() {
-    FN="${HOME}/ScreenShot-$(date +%s).png"
-    import -delay "${1:-5}" -window root "${FN}" && ristretto "${FN}"
-}

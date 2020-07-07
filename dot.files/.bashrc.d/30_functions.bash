@@ -326,3 +326,12 @@ lsbin() {
     done
     printf "\n"
 }
+
+takeascreenshot() {
+    local -r thisusage="\n\tUsage: ${FUNCNAME[0]} [#delay (in seconds)]\n\tRequires imagemagick & ristretto\n"
+    type -P import &>/dev/null && \
+	type -P ristretto &>/dev/null && \
+	[[ -n "${DISPLAY}" ]] || { echo -e "${thisusage}"; return 1; }
+    local FN="${HOME}/ScreenShot-$(date +%s).png"
+    import -delay "${1:-2}" -window root "${FN}" && ristretto "${FN}"
+}
