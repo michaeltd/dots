@@ -15,6 +15,185 @@
 #     echo
 # }
 
+# ascii art ====================================================================
+
+pukeskull(){
+##!/bin/sh
+#
+#  ┳━┓┳━┓0┏┓┓┳━┓┏━┓┓ ┳
+#  ┃┳┛┃━┫┃┃┃┃┃━┃┃ ┃┃┃┃
+#  ┃┗┛┛ ┃┃┃┗┛┻━┛┛━┛┗┻┛
+#     ┳━┓┳ ┓┳┏ ┳━┓
+#     ┃━┛┃ ┃┣┻┓┣━
+#     ┇  ┗━┛┃ ┛┻━┛
+#    ┓━┓┳┏ ┳ ┓┳  ┳
+#    ┗━┓┣┻┓┃ ┃┃  ┃
+#    ━━┛┇ ┛┗━┛┗━┛┗━┛
+#
+# the worst color script
+# by xero <http://0w.nz>
+
+cat << 'EOF'
+[1;37m                  .................
+[1;37m             .syhhso++++++++/++osyyhys+.
+[1;37m          -oddyo+o+++++++++++++++o+oo+osdms:
+[1;37m        :dmyo++oosssssssssssssssooooooo+/+ymm+`
+[1;37m       hmyo++ossyyhhddddddddddddhyyyssss+//+ymd-
+[1;37m     -mho+oosyhhhddmmmmmmmmmmmmmmddhhyyyso+//+hN+
+[1;37m     my+++syhhhhdmmNNNNNNNNNNNNmmmmmdhhyyyyo//+sd:
+[1;37m    hs//+oyhhhhdmNNNNNNNNNNNNNNNNNNmmdhyhhhyo//++y
+[1;37m    s+++shddhhdmmNNNNNNNNNNNNNNNNNNNNmdhhhdhyo/++/
+[1;37m    'hs+shmmmddmNNNNNNNNNNNNNNNNNNNNNmddddddhs+oh/
+[1;37m     shsshdmmmmmNNMMMMMMMMMMMNNNNNNNNmmmmmmdhssdh-
+[1;37m      +ssohdmmmmNNNNNMMMMMMMMNNNNNNmmmmmNNmdhhhs:`
+[1;37m  -+oo++////++sydmNNNNNNNNNNNNNNNNNNNdyyys/--://+//:
+[1;37m  d/+hmNNNmmdddhhhdmNNNNNNNNNNNNNNNmdhyyyhhhddmmNmdyd-
+[1;37m  ++--+ymNMMNNNNNNmmmmNNNNNNNNNNNmdhddmNNMMMMMMNmhyss
+[1;37m   /d+` -+ydmNMMMMMMNNmNMMMMMMMmmmmNNMMMMMNNmh- :sdo
+[1;37m    sNo   ` /ohdmNNMMMMNNMMMMMNNNMMMMMNmdyo/ `  hNh
+[1;37m     M+'     ``-/oyhmNNMNhNMNhNMMMMNmho/ `     'MN/
+[1;37m     d+'         `-+osydh0w.nzmNNmho:          'mN:
+[1;37m    +o/             ` :oo+:s :+o/-`            -dds
+[1;37m   :hdo       [0;31mx[1;37m    `-/ooss:':+ooo: `    [0;31m0[1;37m      :sdm+
+[1;37m  +dNNNh+         :ydmNNm'   `sddmyo          +hmNmds
+[1;37m dhNMMNNNNmddhsyhdmmNNNM:      NNmNmhyo+oyyyhmNMMNmysd
+[1;37m ydNNNNNh+/++ohmMMMMNMNh       oNNNNNNNmho++++yddhyssy
+[1;37m              `:sNMMMMN'       `mNMNNNd/`
+    [1;31mXXXX[0;31mXXXX[1;33mX[1;37m y/hMMNm/  .dXb.  -hdmdy: ` [0;34mXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;37m `o+hNNds. -ymNNy-  .yhys+/`` [0;34mXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;37m +-+//o/+odMNMMMNdmh++////-/s [0;34mXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXX[1;37m mhNd -+d/+myo++ysy/hs -mNsdh/ [0;34mXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;37m mhMN+ dMm-/-smy-::dMN/sMMmdo [0;34mXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXX[1;37m NMy+NMMh oMMMs yMMMyNMMs+ [0;34mXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXX[1;37m dy-hMMm+dMMMdoNMMh ydo [1;34mX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mX [1;37m smm 'NMMy dms  sm  [1;34mXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXX                   [1;34mXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+EOF
+}
+
+thug_life(){
+    echo -n "( •_•)"|lolcat
+    sleep .75
+    echo -n -e "\r( •_•)>⌐■-■"|lolcat
+    sleep .75
+    echo -n -e "\r               "
+    echo  -e "\r(⌐■_■)"|lolcat
+    sleep .5
+}
+
+animate_bash(){
+##!/bin/bash
+#
+# https://wiki.bash-hackers.org/scripting/terminalcodes
+
+    DATA[0]="     _/  _/    _/                            _/    "
+    DATA[1]="  _/_/_/_/_/  _/_/_/      _/_/_/    _/_/_/  _/_/_/ "
+    DATA[2]="   _/  _/    _/    _/  _/    _/  _/_/      _/    _/"
+    DATA[3]="_/_/_/_/_/  _/    _/  _/    _/      _/_/  _/    _/ "
+    DATA[4]=" _/  _/    _/_/_/      _/_/_/  _/_/_/    _/    _/  "
+    
+    # virtual coordinate system is X*Y ${#DATA} * 5
+
+    REAL_OFFSET_X=0
+    REAL_OFFSET_Y=0
+    
+    draw_char() {
+	V_COORD_X=$1
+	V_COORD_Y=$2
+
+	tput cup $((REAL_OFFSET_Y + V_COORD_Y)) $((REAL_OFFSET_X + V_COORD_X))
+
+	echo -ne "${DATA[V_COORD_Y]:V_COORD_X:1}"
+    }
+
+    trap 'exit 1' INT TERM
+    trap 'tput setaf 9; tput cvvis; clear' EXIT
+
+    tput civis
+    clear
+
+    while :; do
+	for ((c=1; c <= 7; c++)); do
+	    tput setaf $c
+	    for ((x=0; x<${#DATA[0]}; x++)); do
+		for ((y=0; y<=4; y++)); do
+		    draw_char $x $y
+		done
+	    done
+	done
+    done
+}
+
+alien_stats() {
+    ##!/bin/bash
+    # https://gist.githubusercontent.com/brunomiguel/efa59fe50a0ad361dbe99edb33aa02f0/raw/4979855b27f12f1b1abe572f58a06aab3e6e686c/gistfile1.txt
+
+    UPTIME_DAYS=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 / 86400 ))
+    UPTIME_HOURS=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 % 86400 / 3600 ))
+    UPTIME_MINUTES=$(( $(cut -d '.' -f1 /proc/uptime) % 31556926 % 86400 % 3600 / 60 ))
+
+    # Basic info
+    HOSTNAME=$(uname -n)
+    ROOT=$(df -Ph | grep -w sda1 | awk '{print $4}' | tr -d '\n')
+
+    # System load
+    MEMORY1=$(free -t -m | grep "Total:" | awk '{print $3" MB";}')
+    MEMORY2=$(free -t -m | grep "Mem:" | awk '{print $2" MB";}')
+    LOAD1=$(awk '{print $1}' /proc/loadavg)
+    LOAD5=$(awk '{print $2}' /proc/loadavg)
+    LOAD15=$(awk '{print $3}' /proc/loadavg)
+
+    cat << 'EOF' |lolcat
+.     .       .  .   . .   .   . .    +  .
+  .     .  :     .    .. :. .___---------___.
+       .  .   .    .  :.:. _".^ .^ ^.  '.. :"-_. .
+    .  :       .  .  .:../:            . .^  :.:\.
+        .   . :: +. :.:/: .   .    .        . . .:\
+ .  :    .     . _ :::/:               .  ^ .  . .:\
+  .. . .   . - : :.:./.                        .  .:\
+  .      .     . :..|:                    .  .  ^. .:|
+    .       . : : ..||        .                . . !:|
+  .     . . . ::. ::\(                           . :)/
+ .   .     : . : .:.|. ######              .#######::|
+  :.. .  :-  : .:  ::|.#######           ..########:|
+ .  .  .  ..  .  .. :\ ########          :######## :/
+  .        .+ :: : -.:\ ########       . ########.:/
+    .  .+   . . . . :.:\. #######       #######..:/
+      :: . . . . ::.:..:.\           .   .   ..:/
+   .   .   .  .. :  -::::.\.       | |     . .:/
+      .  :  .  .  .-:.":.::.\             ..:/
+ .      -.   . . . .: .:::.:.\.           .:/
+.   .   .  :      : ....::_:..:\   ___.  :/
+   .   .  .   .:. .. .  .: :.:.:\       :/
+     +   .   .   : . ::. :.:. .:.|\  .:/|
+     .         +   .  .  ...:: ..|  --.:|
+.      . . .   .  .  . ... :..:.."(  ..)"
+ .   .       .      :  .   .: ::/  .  .::\
+EOF
+
+    echo "
+===============================================
+ - Hostname............: $HOSTNAME
+ - Uptime..............: $UPTIME_DAYS days, $UPTIME_HOURS hours, $UPTIME_MINUTES minutes
+ - Disk Space..........: $ROOT remaining
+===============================================
+ - CPU usage...........: $LOAD1, $LOAD5, $LOAD15 (1, 5, 15 min)
+ - Memory used.........: $MEMORY1 / $MEMORY2
+ - Swap in use.........: $(free -m | tail -n 1 | awk '{print $3}') MB
+===============================================
+" |lolcat
+}
+
 dennis_ritchie() {
 #original artwork by https://sanderfocus.nl/portfolio/tech-heroes/
 #converted to shell by #nixers @ irc.unix.chat.
@@ -55,6 +234,11 @@ mycountdown() {
 	clear
     done
     play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
+}
+
+takeascreenshot() {
+    FN="${HOME}/ScreenShot-$(date +%s).png"
+    import -delay "${1:-5}" -window root "${FN}" && ristretto "${FN}"
 }
 
 # igor chubbin =================================================================
