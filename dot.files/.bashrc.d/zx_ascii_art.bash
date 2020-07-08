@@ -93,8 +93,8 @@ dennis_ritchie() {
 eof
 }
 
-4tunecowfunky(){
-    local -r myusage="\n\tUsage: ${FUNCNAME[0]} [cowsay file]\n\teg: ${FUNCNAME[0]} default\n\t'cowsay -l' for a list of available files\n\tRequires fortune, cowsay and lolcat.\n"
+funky4tune(){
+    local -r myusage="\n\tUsage: ${FUNCNAME[0]} [cowsay file]\n\teg: ${FUNCNAME[0]} default\n\tYou can try: 'cowsay -l' for a list of available files\n\tRequires fortune, cowsay and lolcat.\n"
     type -P fortune &>/dev/null && \
 	type -P cowsay &>/dev/null && \
 	type -P lolcat &>/dev/null || \
