@@ -30,9 +30,8 @@ wallpaper_rotate() {
     ${green}${sbn}${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
     ${green}${sbn}${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
     ${green}${sbn}${reset} ${magenta}delay${reset} ${yellow}240${reset} - set interval (seconds) \n \
-    ${green}${sbn}${reset} ${magenta}replay${reset} [${yellow}3${reset}] - display previous image # \n \
-    ${green}${sbn}${reset} ${magenta}help${reset} - this message \n \
-    ${green}${sbn}${reset} without options will start rotating images.\n\n")
+    ${green}${sbn}${reset} ${magenta}showimg${reset} [${yellow}3${reset}] - display previous image # \n \
+    ${green}${sbn}${reset} ${magenta}help${reset} - this message\n\n")
 
     #shellcheck disable=SC2034,SC2155
     local -ra feh=( "feh" "--bg-scale" ) wmsetbg=( "wmsetbg" ) fvwm_root=( "fvwm-root" ) \
@@ -113,7 +112,7 @@ wallpaper_rotate() {
 		else
 		    echo -ne "${yellow}Warning:${reset} \"${bold}${wait}${reset}\" is not a valid time construct.\nProvide an integer as interval in seconds\n" >&2
 		fi ;;
-	    "replay")
+	    "showimg")
 		shift
 		tail -n "${1:-1}" "${wplg}"|head -n 1|awk '{print $NF}';;
 	    "showlog")
