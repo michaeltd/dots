@@ -98,7 +98,7 @@ funky4tune(){
     type -P fortune &>/dev/null && \
 	type -P cowsay &>/dev/null && \
 	type -P lolcat &>/dev/null || \
-	    { echo -e "${myusage}"; return 1; }
+	    { echo -e "${myusage}" >&2; return 1; }
     fortune -o|cowsay -f "${1:-eyes}"|lolcat
 }
 
@@ -107,7 +107,7 @@ mycountdown() {
     type -P figlet &>/dev/null && \
 	type -P lolcat &>/dev/null && \
 	type -P play &>/dev/null || \
-	    { echo -e "${myusage}"; return 1; }
+	    { echo -e "${myusage}" >&2; return 1; }
     clear
     for i in $(seq "${1:-10}" -1 0); do
 	printf "%04d\n" "${i}" |figlet |lolcat

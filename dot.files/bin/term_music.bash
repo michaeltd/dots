@@ -43,7 +43,16 @@ term_music() {
     else
 	local -ar dir_list=( "${!genres[$(shuf -n 1 -i 0-"${#genres[*]}")]}" )
     fi
-    cvlc --random "${dir_list[@]}"
+
+    # is VLC running?
+    local -ar pids=( $(pgrep -U "${USER}" -f vlc) )
+    if [[ "${#pids[*]}" -gt "0" ]]; then
+	echo -ne "VLC already started!\n" >&2
+	play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
+	return 1
+    else
+	cvlc --random "${dir_list[@]}"
+    fi
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"
