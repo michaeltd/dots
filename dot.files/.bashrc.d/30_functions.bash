@@ -286,7 +286,7 @@ cif2(){
     [[ "${#}" -ne "2" ]] && \
 	echo -ne "\n\tUsage: ${FUNCNAME[0]} from to\n\tConvert Image(s) From - To formats.\n\teg: ${FUNCNAME[0]} png jpg\n\n" && \
 	return 1
-    for i in *"${1}"; do
+    for i in *".${1}"; do
 	convert "${i}" "${i/%.${1}/.${2}}" # && rm "${i}"
     done
 }
