@@ -216,6 +216,10 @@ rcm() {
 
 # NET ==========================================================================
 
+is_port_open(){
+    sudo lsof -i TCP:"${1:-443}"
+}
+
 ping_subnet() {
     # One liner: for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
     for x in {1..254}; do
@@ -234,7 +238,7 @@ tcp_port_scan() {
 listening_on() {
     # Returns service listening on given port
     [[ -z "${1}" ]] && \
-	printf "Usage: %s port-number\n" "${FUNCNAME[0]}" >&2 && \
+	printf 'Usage: %s port-number\n' "${FUNCNAME[0]}" >&2 && \
 	return 1
     while [[ -n "${1}" ]]; do
 	sudo lsof -niTCP:"${1}" |grep LISTEN
