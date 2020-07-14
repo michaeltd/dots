@@ -2,6 +2,13 @@
 # cryptographic functions
 #shellcheck shell=bash
 
+get_rand() {
+    #shellcheck disable=SC2005
+    tr -dc "[:digit:]" < /dev/urandom | \
+	head -c "${1:-8}"
+    echo
+}
+
 gen_pass() {
     #shellcheck disable=SC2005
     tr -dc "[:graph:]" < /dev/urandom | \
