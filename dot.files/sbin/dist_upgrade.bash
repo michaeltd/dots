@@ -11,7 +11,6 @@ IFS=$'\t\n'
 #shellcheck disable=SC2155,SC2034
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly sne="${sbn%.*}"
 
 dist_upgrade() {
 
@@ -32,11 +31,11 @@ dist_upgrade() {
 
     local -r notfound="404"
 
-    local pmidx="${notfound}" x=""
+    local pmidx="${notfound}"
 
     # Which is the first available pm in this system?
     for x in "${!pms[@]}"; do
-	if type -P "${!pms[x]:0:1}"&>/dev/null; then
+	if type -P "${!pms[x]:0:1}" &> /dev/null; then
 	    local -r pmidx="${x}"
 	    break # break on first match.
 	fi
@@ -51,4 +50,4 @@ dist_upgrade() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"

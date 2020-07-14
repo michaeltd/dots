@@ -37,6 +37,10 @@ hello_world() {
 
 # UTILS =======================================================================
 
+full_command_line_from_pid() {
+    ps -aux |grep "${1:-${$}}"|head -n 1|awk -v f=1 -v t=10 '{for(i=1;i<=NF;i++)if(i>=f&&i<=t)continue;else printf("%s%s",$i,(i!=NF)?OFS:ORS)}'
+}
+
 is_executable() {
     [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} executable" >&2 && return 1
     command -v "${1}" >/dev/null 2>&1 
@@ -276,23 +280,33 @@ extract() {
 
 s4strInDir() {
     # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
+    local -r myusage="
+\tDescription: ${FUNCNAME[0]} will search for given string in current (if not given) directory.
+\tUsage: ${FUNCNAME[0]} search-term [directory]
+\tExample: ${FUNCNAME[0]} author ./\n\n"
+    
     [[ -z "${1}" ]] && \
-	echo -ne "\n\tUsage: ${FUNCNAME[0]} search-term [directory]\n\t(S)earch (4) (s)tring (in) (D)irectory.\n\teg: ${FUNCNAME[0]} author ./\n\n" && \
-	return 1
+	{ echo -ne "${myusage}" >&2; return 1; }
     grep -rnw "${2:-./}" -e "${1}"
 }
 
 cif2(){
-    [[ "${#}" -ne "2" ]] && \
-	echo -ne "\n\tUsage: ${FUNCNAME[0]} from to\n\tConvert Image(s) From - To formats.\n\teg: ${FUNCNAME[0]} png jpg\n\n" && \
-	return 1
+    local -r myusage="
+\tDescription: ${FUNCNAME[0]} Converts Image(s) From - To formats.
+\tUsage: ${FUNCNAME[0]} from to
+\tExample: ${FUNCNAME[0]} png jpg
+\tRequirements: Imagemagick.\n\n"
+    
+    [[ ! $(type -P convert &>/dev/null) || "${#}" -ne "2" ]] && \
+	{ echo -ne "${myusage}" >&2; return 1; }
     for i in *".${1}"; do
-	convert "${i}" "${i/%.${1}/.${2}}" # && rm "${i}"
+	convert "${i}" "${i/%.${1}/.${2}}" && rm "${i}"
     done
 }
 
 mkbkp() {
-    [[ ! -f "${1}" ]] && echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" && return 1
+    [[ ! -f "${1}" ]] && \
+	{ echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" >&2; return 1; }
     compress "${1}.$(date +%s).tgz" "${1}"
 }
 
@@ -320,7 +334,7 @@ dir_sizes() {
 lsbin() {
     # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
     # The directories in $PATH are separated by ":", so we split by it to get individual directories
-    for pdir in $(echo "$PATH" | tr ":" "\n");do
+    for pdir in $(echo "$PATH" | tr ":" "\n"); do
 	# We `find` all files in the directory which are executable and print the filename
 	find "$pdir" -maxdepth 1 -executable -type f -printf "%f "
     done
@@ -328,11 +342,15 @@ lsbin() {
 }
 
 takeascreenshot() {
-    local -r myusage="\n\tUsage: ${FUNCNAME[0]} [#delay (in seconds)]\n\tRequires imagemagick & ristretto\n"
-    type -P import &>/dev/null && \
-	type -P ristretto &>/dev/null && \
-	[[ -n "${DISPLAY}" ]] || \
-	    { echo -e "${myusage}"; return 1; }
-    local FN="${HOME}/ScreenShot-$(date +%s).png"
-    import -delay "${1:-2}" -window root "${FN}" && ristretto "${FN}"
+    local -r myusage="
+\tUsage: ${FUNCNAME[0]} [#delay (in seconds)]
+\tRequirements: Imagemagick and ristretto\n\n"
+    
+    if type -P import &>/dev/null && type -P ristretto &>/dev/null && [[ -n "${DISPLAY}" ]]; then
+	local FN="${HOME}/ScreenShot-$(date +%s).png"
+	import -delay "${1:-2}" -window root "${FN}" && ristretto "${FN}"
+    else
+	echo -ne "${myusage}" >&2
+	return 1
+    fi
 }
