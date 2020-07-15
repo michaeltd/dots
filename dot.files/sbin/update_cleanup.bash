@@ -13,7 +13,6 @@ IFS=$'\t\n'
 #shellcheck disable=SC2155
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly sne="${sbn%.*}"
 
 update_cleanup() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
@@ -79,4 +78,4 @@ update_cleanup() {
     [[ "${nothing2do}" -eq "1" ]] && echo "Nothing left to do!" >&2
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"

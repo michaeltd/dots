@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-command -v emerge &>/dev/null || { echo -ne "\n Need a Gentoo distro!\n"; exit 1; }
+command -v emerge &>/dev/null || { echo -ne "Need a portage based distro!\n" >&2; exit 1; }
 
 while read -r i ; do
     if [[ -n "$(qdepends -Qq "${i}")" ]]; then
@@ -14,5 +14,5 @@ while read -r i ; do
     fi
 done < /var/lib/portage/world
 
-echo "Packages in tmp/deselect:"
+echo "Packages in /tmp/deselect:"
 cat /tmp/deselect

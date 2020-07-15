@@ -5,7 +5,7 @@
 
 echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
-[[ "${EUID}" != "0" ]] && echo -ne "\$EUID != 0.\nTry: sudo ${BASH_SOURCE[0]##*/}.\n" >&2 && exit 1
+[[ "${EUID}" -ne "0" ]] && echo -ne "\$EUID != 0.\nTry: sudo ${BASH_SOURCE[0]##*/}.\n" >&2 && exit 1
 
 url="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 
