@@ -1,23 +1,24 @@
 #
 # various ascii art ============================================================
 
-pukeskull(){
-##!/bin/sh
-#
-#  ┳━┓┳━┓0┏┓┓┳━┓┏━┓┓ ┳
-#  ┃┳┛┃━┫┃┃┃┃┃━┃┃ ┃┃┃┃
-#  ┃┗┛┛ ┃┃┃┗┛┻━┛┛━┛┗┻┛
-#     ┳━┓┳ ┓┳┏ ┳━┓
-#     ┃━┛┃ ┃┣┻┓┣━
-#     ┇  ┗━┛┃ ┛┻━┛
-#    ┓━┓┳┏ ┳ ┓┳  ┳
-#    ┗━┓┣┻┓┃ ┃┃  ┃
-#    ━━┛┇ ┛┗━┛┗━┛┗━┛
-#
-# the worst color script
-# by xero <http://0w.nz>
+pukeskull ()
+{
+    ##!/bin/sh
+    #
+    #  ┳━┓┳━┓0┏┓┓┳━┓┏━┓┓ ┳
+    #  ┃┳┛┃━┫┃┃┃┃┃━┃┃ ┃┃┃┃
+    #  ┃┗┛┛ ┃┃┃┗┛┻━┛┛━┛┗┻┛
+    #     ┳━┓┳ ┓┳┏ ┳━┓
+    #     ┃━┛┃ ┃┣┻┓┣━
+    #     ┇  ┗━┛┃ ┛┻━┛
+    #    ┓━┓┳┏ ┳ ┓┳  ┳
+    #    ┗━┓┣┻┓┃ ┃┃  ┃
+    #    ━━┛┇ ┛┗━┛┗━┛┗━┛
+    #
+    # the worst color script
+    # by xero <http://0w.nz>
 
-cat << 'EOF'
+    cat << 'EOF'
 [1;37m                  .................
 [1;37m             .syhhso++++++++/++osyyhys+.
 [1;37m          -oddyo+o+++++++++++++++o+oo+osdms:
@@ -65,7 +66,8 @@ cat << 'EOF'
 EOF
 }
 
-dennis_ritchie() {
+dennis_ritchie ()
+{
 #original artwork by https://sanderfocus.nl/portfolio/tech-heroes/
 #converted to shell by #nixers @ irc.unix.chat.
     cat << 'eof'
@@ -93,17 +95,36 @@ dennis_ritchie() {
 eof
 }
 
-funky4tune(){
-    local -r myusage="\n\tUsage: ${FUNCNAME[0]} [cowsay file]\n\teg: ${FUNCNAME[0]} default\n\tYou can try: 'cowsay -l' for a list of available files\n\tRequires fortune, cowsay and lolcat.\n"
+funky4tune ()
+{
+    local -r myusage="
+    Usage: ${FUNCNAME[0]} cowsay_file 'message'
+    eg: ${FUNCNAME[0]} default 'Hello Lolcat!'
+    You can try: 'cowsay -l' for a list of available files
+    Requires fortune, cowsay and lolcat.\n"
+    #shellcheck disable=SC2015
     type -P fortune &>/dev/null && \
 	type -P cowsay &>/dev/null && \
 	type -P lolcat &>/dev/null || \
 	    { echo -e "${myusage}" >&2; return 1; }
-    fortune -o|cowsay -f "${1:-eyes}"|lolcat
+    #shellcheck disable=SC2015
+    { [[ -n "${2}" ]] && echo "${2}" || fortune -o; } | cowsay -f "${1:-eyes}" | lolcat
 }
 
-mycountdown() {
-    local -r myusage="\n\tUsage: ${FUNCNAME[0]} [#countdown seconds]\n\teg: ${FUNCNAME[0]} 60\n\tRequires figlet, lolcat and sox.\n"
+list_cow_files ()
+{
+    for i in $(cowsay -l|awk 'NR!=1{print $0}'); do
+	funky4tune "${i}" "Hello ${i} !" || return 1
+    done
+}
+
+mycountdown ()
+{
+    local -r myusage="
+    Usage: ${FUNCNAME[0]} [#countdown seconds]
+    eg: ${FUNCNAME[0]} 60
+    Requires figlet, lolcat and sox.\n"
+    #shellcheck disable=SC2015
     type -P figlet &>/dev/null && \
 	type -P lolcat &>/dev/null && \
 	type -P play &>/dev/null || \

@@ -8,10 +8,9 @@ IFS=$'\t\n'
 #shellcheck disable=SC2155,SC2034
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly sne="${sbn%.*}"
 
-term_music() {
-
+term_music ()
+{
     #shellcheck disable=SC2155
     local -r usage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n"
 
@@ -45,6 +44,7 @@ term_music() {
     fi
 
     # is VLC running?
+    #shellcheck disable=SC2207
     local -ar pids=( $(pgrep -U "${USER}" -f vlc) )
     if [[ "${#pids[*]}" -gt "0" ]]; then
 	echo -ne "VLC already started!\n" >&2
@@ -55,4 +55,4 @@ term_music() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"

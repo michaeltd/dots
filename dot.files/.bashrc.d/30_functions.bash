@@ -38,6 +38,7 @@ hello_world() {
 # UTILS =======================================================================
 
 command_line_from_pid() {
+    #shellcheck disable=SC2009
     ps -aux |grep "${1:-${$}}"|head -n 1|awk -v f=1 -v t=10 '{for(i=1;i<=NF;i++)if(i>=f&&i<=t)continue;else printf("%s%s",$i,(i!=NF)?OFS:ORS)}'
 }
 
@@ -347,10 +348,11 @@ lsbin() {
 
 takeascreenshot() {
     local -r myusage="
-\tUsage: ${FUNCNAME[0]} [#delay (in seconds)]
-\tRequirements: Imagemagick and ristretto\n\n"
+    Usage: ${FUNCNAME[0]} [#delay (in seconds)]
+    Requirements: Imagemagick and ristretto\n\n"
     
     if type -P import &>/dev/null && type -P ristretto &>/dev/null && [[ -n "${DISPLAY}" ]]; then
+	#shellcheck disable=SC2155
 	local FN="${HOME}/ScreenShot-$(date +%s).png"
 	import -delay "${1:-2}" -window root "${FN}" && ristretto "${FN}"
     else
