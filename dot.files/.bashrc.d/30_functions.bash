@@ -37,12 +37,12 @@ hello_world() {
 
 # UTILS =======================================================================
 
-full_command_line_from_pid() {
+command_line_from_pid() {
     ps -aux |grep "${1:-${$}}"|head -n 1|awk -v f=1 -v t=10 '{for(i=1;i<=NF;i++)if(i>=f&&i<=t)continue;else printf("%s%s",$i,(i!=NF)?OFS:ORS)}'
 }
 
 is_executable() {
-    [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} executable" >&2 && return 1
+    [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} programm_handle\n" >&2 && return 1
     command -v "${1}" >/dev/null 2>&1 
 }
 
@@ -124,7 +124,7 @@ if command -v emerge &>/dev/null; then
 	    echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
 	    return 1
 	if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
-	    local -a srvcs=( "postgresql-12" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
+	    local -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
 	else
 	    local -a srvcs=( "${@}" )
 	    unset "srvcs[0]"

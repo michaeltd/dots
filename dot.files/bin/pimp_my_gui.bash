@@ -25,9 +25,9 @@ rcm 9 ~/bin/wallpaper_rotate.bash
 rcm 9 pasystray
 
 # Systray network manager applet || wicd-gtk -t
-if command -v nm-applet &>/dev/null 2>&1; then
+if command -v nm-applet &>/dev/null; then
     rcm 9 nm-applet
-elif command -v wicd-gtk &>/dev/null 2>&1; then
+elif command -v wicd-gtk &>/dev/null; then
     rcm 9 wicd-gtk -t
 fi
 
@@ -36,7 +36,7 @@ if [[ -r "/etc/os-release" ]]; then
     source /etc/os-release
     if [[ "${ID}" == "gentoo" ]]; then
 	rcm 9 conky -qd
-	rcm 9 electrum daemon start -w ~/.electrum/wallets/default_wallet
+	# rcm 9 electrum daemon start -w ~/.electrum/wallets/default_wallet
     elif [[ "${ID}" == "devuan" ]]; then
 	rcm 9 conky -qd
     elif [[ "${ID}" == "debian" ]]; then
