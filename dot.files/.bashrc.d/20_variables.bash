@@ -36,7 +36,8 @@ export PAGER="$(command -v less 2> /dev/null || command -v most 2> /dev/null || 
 
 # Man page wrapper
 if command -v tput > /dev/null 2>&1; then
-    man() {
+    man ()
+    {
 	# Color man pages
 	env LESS_TERMCAP_mb="$(printf "%s" "$(tput bold)$(tput setaf 1)")" \
 	    LESS_TERMCAP_md="$(printf "%s" "$(tput bold)$(tput setaf 1)")" \
@@ -48,7 +49,8 @@ if command -v tput > /dev/null 2>&1; then
 	    "$(command -v man 2> /dev/null)" "$@"
     }
 else
-    man() {
+    man ()
+    {
 	# Colorfull manpages (works with less as a pager)
 	# https://www.tecmint.com/view-colored-man-pages-in-linux/
 	env LESS_TERMCAP_mb=$'\e[1;32m' \

@@ -14,22 +14,26 @@
 
 # igor chubbin =================================================================
 
-chtsh() {
+chtsh()
+{
     # https://github.com/chubin/cheat.sh
     curl "cht.sh/${1}"
 }
 
-ccxrates() {
+ccxrates()
+{
     # https://twitter.com/igor_chubin
     curl "https://${1:-eur}.rate.sx"
 }
 
-wttrin() {
+wttrin()
+{
     # https://twitter.com/igor_chubin # Try wttr moon
     curl "https://wttr.in/${1:-moon}"
 }
 
-hello_world() {
+hello_world()
+{
     echo -ne "\n $(tput setaf 2)Hello$(tput sgr0) $(tput bold)${USER}$(tput sgr0), today is $(tput setaf 5)$(date '+%A, %B %d')$(tput sgr0)\n\n"
     curl https://wttr.in?0
     printf "\n"
@@ -37,23 +41,27 @@ hello_world() {
 
 # UTILS =======================================================================
 
-command_line_from_pid() {
+command_line_from_pid()
+{
     #shellcheck disable=SC2009
     ps -aux |grep "${1:-${$}}"|head -n 1|awk -v f=1 -v t=10 '{for(i=1;i<=NF;i++)if(i>=f&&i<=t)continue;else printf("%s%s",$i,(i!=NF)?OFS:ORS)}'
 }
 
-is_executable() {
+is_executable()
+{
     [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} programm_handle\n" >&2 && return 1
     command -v "${1}" >/dev/null 2>&1 
 }
 
-lcdfe() {
+lcdfe()
+{
     # Line Count Directory ($1), For file Extension (${2}).
     # eg: lcdfe /my/awesome/project/ \*.html, lcdfe . \*.cpp, lcdfe ${HOME} \*.rc
     find "${1}" -iname "${2}" -exec wc -l {} +
 }
 
-srwpi() {
+srwpi()
+{
     # Set Random WallPaper Image
     local -r usage="\n\tUsage: ${FUNCNAME[0]} images-directory\n\tSet a Random WallPaper Image from a directory with images.\n\n" \
 	  mypics="${HOME}/Pictures/dPic/r"
@@ -68,7 +76,8 @@ srwpi() {
     fi
 }
 
-pyhttpserv() {
+pyhttpserv()
+{
     # pyhttpserv.bash Start an http server in current directory
     # https://twitter.com/climagic/status/1224732676361461765
     # python3 -m http.server 8080 \
@@ -89,7 +98,8 @@ pyhttpserv() {
     fi
 }
 
-rncmmd(){
+rncmmd()
+{
     # Oneliner: TMPFILE=/tmp/${RANDOM}.input.box.txt && dialog --title 'Command Input' --default-button 'ok' --inputbox 'Enter command to continue' 10 40 command 2> ${TMPFILE} && $(cat ${TMPFILE})
     local -r DIALOG="$(type -P Xdialog || type -P dialog)" TMPFILE="/tmp/${$}.${RANDOM}.input.box.txt"
     "${DIALOG}" --title "Command Input" --default-button "ok" --inputbox "Enter command to continue" 10 40 command 2> "${TMPFILE}"
@@ -99,18 +109,21 @@ rncmmd(){
 }
 
 # Create a new alias
-mkalias() {
+mkalias()
+{
     echo alias "${*}" >> "${HOME}/.bashrc.d/aliases.bash"
     alias "${*}"
 }
 
 # Remove an alias
-rmalias() {
+rmalias()
+{
     unalias "${1}" && sed --follow-symlinks -i "/alias $1\=/d" "${HOME}/.bashrc.d/aliases.bash"
 }
 
 # Traverse directory structure given # of steps
-up() {
+up()
+{
     local -r deep="${1}"
     for i in $(seq 1 "${deep:-1}"); do
 	cd ..
@@ -120,7 +133,8 @@ up() {
 # SYSTEM =======================================================================
 
 if command -v emerge &>/dev/null; then
-    services() {
+    services()
+    {
 	[[ -z "${1}" ]] && \
 	    echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
 	    return 1
@@ -135,13 +149,15 @@ if command -v emerge &>/dev/null; then
 	done
     }
 
-    list_cat() {
+    list_cat()
+    {
 	#shellcheck disable=SC2230
 	/bin/ls --color "/usr/portage/${1}"
     }
 fi
 
-fixel() {
+fixel()
+{
     if [[ -d /mnt/el/Documents ]]; then
 	ls /mnt/el/
     else
@@ -151,13 +167,15 @@ fixel() {
 
 # SYS INFO =====================================================================
 
-show_uptime() {
+show_uptime()
+{
     #shellcheck disable=SC2154
     echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
     uptime|awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
 
-mem_sum() {
+mem_sum()
+{
     ps -eo size,pid,user,command --sort -size | \
 	awk '{ hr=$1/1024 ; printf("%13.2f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' | \
 	cut -d "" -f2 | \
@@ -165,7 +183,8 @@ mem_sum() {
 	grep "${1}"
 }
 
-mem_useage() {
+mem_usage()
+{
     #Report Total Used and Available mem in human readable format
     total=$(head -1 /proc/meminfo |awk '{print $2}')
     avail=$(head -2 /proc/meminfo |tail -1 |awk '{print $2}')
@@ -178,34 +197,38 @@ mem_useage() {
 
 # PROCESSES ====================================================================
 
-logmeout() {
+logmeout()
+{
     # Can't log out root like that
     [[ "${EUID}" -eq "0" ]] && printf "Can't log out root this way\n" >&2 && return 1
     kill -15 -1
 }
 
-# # End stuff
-termproc() {
-    # kill -s 15 $(pgrep "${1}")
+# End stuff
+termproc()
+{
     if [[ -n "${1}" ]]; then
 	pkill -TERM -u "${USER}" "${1}"
+	# kill -s 15 $(pgrep "${1}") # kill version
     else
-	echo -ne "Usage: ${FUNCNAME[0]} process-2-TERM\n" >&2
+	echo -ne "Usage: ${FUNCNAME[0]} process-2-TERM (sig #15)\n" >&2
 	return 1
     fi
 }
 
-killproc() {
-    # kill -s 9 $(pgrep "${1}")
+killproc()
+{
     if [[ -n "${1}" ]]; then
 	pkill -KILL -u "${USER}" "${1}"
+	# kill -s 9 $(pgrep "${1}") # kill version
     else
-	echo -ne "Usage: ${FUNCNAME[0]} process-2-KILL\n" >&2
+	echo -ne "Usage: ${FUNCNAME[0]} process-2-KILL (sig #9)\n" >&2
 	return 1
     fi
 }
 
-rcm() {
+rcm()
+{
     # (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
     # Usage : rcm niceness executable command line arguments
     # Example: rcm 9 conky -qdc ~/.conkyrc
@@ -217,11 +240,13 @@ rcm() {
 
 # NET ==========================================================================
 
-is_port_open(){
+is_port_open()
+{
     sudo lsof -i TCP:"${1:-443}"
 }
 
-ping_subnet() {
+ping_subnet()
+{
     # One liner: for sn in {1..254}.{1..254}; do (ping -c 1 -w 2 192.168.${sn} > /dev/null && echo "UP 192.168.${sn}" &); done
     for x in {1..254}; do
 	for y in {1..254}; do
@@ -230,13 +255,15 @@ ping_subnet() {
     done
 }
 
-tcp_port_scan() {
+tcp_port_scan()
+{
     for p in {1..1023}; do
 	(echo > "/dev/tcp/localhost/${p}") > /dev/null 2>&1 && echo "${p}"
     done
 }
 
-listening_on() {
+listening_on()
+{
     # Returns service listening on given port
     [[ -z "${1}" ]] && \
 	printf 'Usage: %s port-number\n' "${FUNCNAME[0]}" >&2 && \
@@ -247,14 +274,16 @@ listening_on() {
     done
 }
 
-show_interfaces() {
+show_interfaces()
+{
     ip -brief -color address show
 }
 
 # FS ===========================================================================
 
 # Functions to unify archive management in linux CLI environments
-compress() {
+compress()
+{
     #shellcheck disable=SC2154,SC2068
     case "${1,,}" in
 	*.tar.bz2|*.tbz2) tar cjf $@;;
@@ -266,7 +295,8 @@ compress() {
     esac
 }
 
-extract() {
+extract()
+{
     case "${1,,}" in # Compare lowercased filename for known extensions.
 	*.7z|*.7za|*.exe|*.cab) 7z x "${1}";;
 	*.tar) tar -xf "${1}";;
@@ -283,24 +313,26 @@ extract() {
     esac
 }
 
-s4strInDir() {
+s4strInDir()
+{
     # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
     local -r myusage="
-\tDescription: ${FUNCNAME[0]} will search for given string in current (if not given) directory.
-\tUsage: ${FUNCNAME[0]} search-term [directory]
-\tExample: ${FUNCNAME[0]} author ./\n\n"
+    Description: ${FUNCNAME[0]} will search for given string in current (if not given) directory.
+    Usage: ${FUNCNAME[0]} search-term [directory]
+    Example: ${FUNCNAME[0]} author ./\n\n"
     
     [[ -z "${1}" ]] && \
 	{ echo -ne "${myusage}" >&2; return 1; }
     grep -rnw "${2:-./}" -e "${1}"
 }
 
-cif2(){
+cif2()
+{
     local -r myusage="
-\tDescription: ${FUNCNAME[0]} Converts Image(s) From - To formats.
-\tUsage: ${FUNCNAME[0]} from to
-\tExample: ${FUNCNAME[0]} png jpg
-\tRequirements: Imagemagick.\n\n"
+    Description: ${FUNCNAME[0]} Converts Image(s) From - To formats.
+    Usage: ${FUNCNAME[0]} from to
+    Example: ${FUNCNAME[0]} png jpg
+    Requirements: Imagemagick.\n\n"
     
     [[ ! $(type -P convert &>/dev/null) || "${#}" -ne "2" ]] && \
 	{ echo -ne "${myusage}" >&2; return 1; }
@@ -309,21 +341,25 @@ cif2(){
     done
 }
 
-mkbkp() {
+mkbkp()
+{
     [[ ! -f "${1}" ]] && \
 	{ echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" >&2; return 1; }
     compress "${1}.$(date +%s).tgz" "${1}"
 }
 
-get_mime_type(){
+get_mime_type()
+{
     file -b --mime-type "${1}"
 }
 
-get_file_type(){
+get_file_type()
+{
     file -b "${1}"|awk '{print $1}'
 }
 
-dir_sizes() {
+dir_sizes()
+{
     # Report first params directory sizes in human readable format
     #shellcheck disable=SC2230,SC2155
     local ls=$(which ls) du=$(which du)
@@ -336,7 +372,8 @@ dir_sizes() {
     fi
 }
 
-lsbin() {
+lsbin()
+{
     # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
     # The directories in $PATH are separated by ":", so we split by it to get individual directories
     for pdir in $(echo "$PATH" | tr ":" "\n"); do
@@ -346,7 +383,8 @@ lsbin() {
     printf "\n"
 }
 
-takeascreenshot() {
+takeascreenshot()
+{
     local -r myusage="
     Usage: ${FUNCNAME[0]} [#delay (in seconds)]
     Requirements: Imagemagick and ristretto\n\n"

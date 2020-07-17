@@ -59,6 +59,8 @@ for_window [class="electrum"] floating enable
 for_window [class="Audacious"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Xscreensaver-demo"] floating enable
+for_window [class="FlightGear*"] floating enable
+for_window [class="osgViewer"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next

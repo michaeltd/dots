@@ -2,7 +2,8 @@
 # string related functions
 #shellcheck shell=bash
 
-ascii2bin() {
+ascii2bin()
+{
     # https://unix.stackexchange.com/questions/98948/ascii-to-binary-and-binary-to-ascii-conversion-tools
     #shellcheck disable=SC2048,SC2086
     echo -n $* | while IFS= read -r -n1 char
@@ -13,8 +14,10 @@ ascii2bin() {
     printf "\n"
 }
 
-bin2ascii() {
-    chrbin() {
+bin2ascii()
+{
+    chrbin()
+    {
 	#shellcheck disable=SC2046,SC2005,SC2059
 	echo $(printf \\$(echo "ibase=2; obase=8; $1" | bc))
     }
@@ -27,37 +30,44 @@ bin2ascii() {
     printf "\n"
 }
 
-split() {
+split()
+{
     # from pure-bash-bible
     # Usage: split "string" "delimiter"
     IFS=$'\n' read -d "" -ra arr <<< "${1//${2}/$'\n'}"
     printf "%s\n" "${arr[*]}"
 }
 
-2lower_case() {
+2lower_case()
+{
     printf '%s\n' "${*,,}"
 }
 
-2upper_case() {
+2upper_case()
+{
     printf '%s\n' "${*^^}"
 }
 
-alphabetic_only() {
+alphabetic_only()
+{
     # echo -ne "${@//[![:alpha:]]}\n"
     printf "%s\n" "${*//[![:alpha:]]}"
 }
 
-alphanumeric_only() {
+alphanumeric_only()
+{
     # echo -ne "${@//[![:alnum:]]}\n"
     printf "%s\n" "${*//[![:alnum:]]}"
 }
 
-digits_only() {
+digits_only()
+{
     # echo -ne "${@//[![:digit:]]}\n"
     printf "%s\n" "${*//[![:digit:]]}"
 }
 
-remove_spaces() {
+remove_spaces()
+{
     # https://stackoverflow.com/questions/13659318/how-to-remove-space-from-string
     # echo "${@}"|sed 's/ //g'
     # pure-bash-bible
@@ -71,7 +81,8 @@ remove_spaces() {
     shopt -u extglob
 }
 
-trim() {
+trim()
+{
     # # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
     # local var="$*"
     # # remove leading whitespace characters
@@ -88,7 +99,8 @@ trim() {
     printf "%s\n" "${var}"
 }
 
-left_pad() {
+left_pad()
+{
     # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
     # local var="$*"
     # remove leading whitespace characters
@@ -99,7 +111,8 @@ left_pad() {
     printf "%s\n" "${@#"${@%%[![:space:]]*}"}"
 }
 
-right_pad() {
+right_pad()
+{
     # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
     # local var="$*"
     # remove leading whitespace characters

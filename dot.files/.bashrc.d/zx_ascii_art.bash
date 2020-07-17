@@ -1,7 +1,7 @@
 #
 # various ascii art ============================================================
 
-pukeskull ()
+pukeskull()
 {
     ##!/bin/sh
     #
@@ -66,7 +66,7 @@ pukeskull ()
 EOF
 }
 
-dennis_ritchie ()
+dennis_ritchie()
 {
 #original artwork by https://sanderfocus.nl/portfolio/tech-heroes/
 #converted to shell by #nixers @ irc.unix.chat.
@@ -95,7 +95,7 @@ dennis_ritchie ()
 eof
 }
 
-funky4tune ()
+funky4tune()
 {
     local -r myusage="
     Usage: ${FUNCNAME[0]} cowsay_file 'message'
@@ -111,14 +111,14 @@ funky4tune ()
     { [[ -n "${2}" ]] && echo "${2}" || fortune -o; } | cowsay -f "${1:-eyes}" | lolcat
 }
 
-list_cow_files ()
+list_cow_files()
 {
-    for i in $(cowsay -l|awk 'NR!=1{print $0}'); do
+    for i in $(cowsay -l|awk 'NR != 1 { print $0 }'); do
 	funky4tune "${i}" "Hello ${i} !" || return 1
     done
 }
 
-mycountdown ()
+mycountdown()
 {
     local -r myusage="
     Usage: ${FUNCNAME[0]} [#countdown seconds]
