@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
-# This will work for any directory containing *.tar.gz* backups (eg: name.tar.gz, name.tar.gz.pgp)
-# that have an epoch date field in their filename (eg: 190326.1553569476.enc.tar.gz.pgp).
+# This will work for any directory containing ${HOSTNAME}.*.tar.gz* backups (eg: tuxbox.name.tar.gz, tuxbox.name.tar.gz.pgp)
+# that have an epoch date field in their filename (eg: tuxbox.190326.1553569476.enc.tar.gz.pgp).
 #
 #shellcheck source=/dev/null
 
@@ -40,7 +40,7 @@ update_cleanup() {
     # Source explicitly for non interactive shells.
     srcspath="${sdn}/../.bashrc.d/.stdlib"
 
-    local -ra sources=( "${srcspath}"/*.bash ) backups=( "${backup_dir}"/*.tar.gz* )
+    local -ra sources=( "${srcspath}"/*.bash ) backups=( "${backup_dir}/${HOSTNAME}."*.tar.gz* )
 
     for src in "${sources[@]}"; do
 	source "${src}" || { echo -ne "${src} not readable.\n" >&2; return 1; }
