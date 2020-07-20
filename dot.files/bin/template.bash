@@ -6,7 +6,6 @@
 #shellcheck disable=SC2155,SC2034
 readonly script_dir_name="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 readonly script_base_name="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly script_no_extension="${script_base_name%.*}"
 readonly script_pid="${$}"
 readonly version=1.0
 readonly version_text="Boilerplate for new scripts v$version"
@@ -120,4 +119,4 @@ template() {
     [ -t 0 ] || info "stdin is not a terminal"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${script_no_extension}" "$@"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${script_base_name%.*}" "$@"
