@@ -2,7 +2,7 @@
 # cryptographic functions
 #shellcheck shell=bash
 
-get_rand()
+gen_rand()
 {
     #shellcheck disable=SC2005
     tr -dc "[:digit:]" < /dev/urandom | \
