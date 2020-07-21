@@ -157,4 +157,4 @@ alias termbindotcom='nc termbin.com 9999'
 alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 
-. ~/.other.src
+[[ -f ~/.other.src ]] && . ~/.other.src
