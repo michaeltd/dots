@@ -157,8 +157,4 @@ alias termbindotcom='nc termbin.com 9999'
 alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 
-alias bitcoin-cli='bitcoin-cli -datadir=/mnt/el/.bitcoin'
-alias bitcoin-qt='bitcoin-qt -datadir=/mnt/el/.bitcoin'
-alias bitcoin-tx='bitcoin-tx -datadir=/mnt/el/.bitcoin'
-alias bitcoin-wallet='bitcoin-wallet -datadir=/mnt/el/.bitcoin'
-alias bitcoind='bitcoind -datadir=/mnt/el/.bitcoin'
+. ~/.other.src
