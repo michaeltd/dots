@@ -61,6 +61,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Xscreensaver-demo"] floating enable
 for_window [class="FlightGear*"] floating enable
 for_window [class="osgViewer"] floating enable
+for_window [class="Bitcoin-Qt"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next

@@ -36,8 +36,8 @@ if [[ -r "/etc/os-release" ]]; then
     source /etc/os-release
     if [[ "${ID}" == "gentoo" ]]; then
 	rcm 9 conky -qd
-	rcm 9 electrum daemon start -w ~/.electrum/wallets/default_wallet
-	rcm 9 bitcoind -daemon -datadir=/mnt/el/.bitcoin
+	rcm 9 electrum -w ~/.electrum/wallets daemon start
+	rcm 9 bitcoind -datadir=/mnt/el/.bitcoin -daemon
     elif [[ "${ID}" == "devuan" ]]; then
 	rcm 9 conky -qd
     elif [[ "${ID}" == "debian" ]]; then
