@@ -29,7 +29,7 @@ export TERMINAL="$(type -P xterm||type -P konsole||type -P gnome-terminal||type 
 
 # most > less > more in order of preference
 #shellcheck disable=SC2155
-export PAGER="$(command -v less 2> /dev/null || command -v most 2> /dev/null || type -P more 2> /dev/null)"
+export PAGER="$(command -v less 2>/dev/null || command -v most 2>/dev/null || type -P more 2>/dev/null)"
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
