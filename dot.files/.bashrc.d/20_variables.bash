@@ -90,31 +90,44 @@ export GIT_PS1_SHOWUPSTREAM=yes
 # MONGODB
 [[ -d "/opt/mongodb" ]] && export MONGODB="/opt/mongodb"
 
+checkpath()
+{
+    [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
+}
 # Path with += op and each tool in it's own line for practical reasons
-[[ -d ~/".local/bin" ]] && export PATH+=":${HOME}/.local/bin"
+# [[ "${PATH}" == *${HOME}/.local/bin* ]] || { [[ -d ~/".local/bin" ]] && export PATH+=":${HOME}/.local/bin"; }
+checkpath ${HOME}/.local/bin
 # OPT
-[[ -n "${OPT}" ]] && export PATH+=":${OPT}/bin"
-[[ -d ~/"bin" ]] && export PATH+=":${HOME}/bin"
+[[ -n "${OPT}" ]] && checkpath "${OPT}/bin"
+checkpath "${HOME}/bin"
 # JAVA
-[[ -n "${JAVA_HOME}" ]] && export PATH+=":${JAVA_HOME}/bin"
-[[ -n "${ANT}" ]] && export PATH+=":${ANT}/bin"
-[[ -n "${MAVEN}" ]] && export PATH+=":${MAVEN}/bin"
-[[ -n "${GRADLE}" ]] && export PATH+=":${GRADLE}/bin"
-[[ -n "${GOPATH}" ]] && export PATH+=":${GOPATH}/bin"
+[[ -n "${JAVA_HOME}" ]] && checkpath "${JAVA_HOME}/bin"
+[[ -n "${ANT}" ]] && checkpath "${ANT}/bin"
+[[ -n "${MAVEN}" ]] && checkpath "${MAVEN}/bin"
+[[ -n "${GRADLE}" ]] && checkpath "${GRADLE}/bin"
+[[ -n "${GOPATH}" ]] && checkpath "${GOPATH}/bin"
 # RUST
-[[ -n "${RUST}" ]] && export PATH+=":${RUST}/bin"
+[[ -n "${RUST}" ]] && checkpath "${RUST}/bin"
 # NODE
-[[ -n "${NODE}" ]] && export PATH+=":${NODE}/bin"
+[[ -n "${NODE}" ]] && checkpath "${NODE}/bin"
 # DENO
-[[ -n "${DENO}" ]] && export PATH+=":${DENO}/bin"
+[[ -n "${DENO}" ]] && checkpath "${DENO}/bin"
 # MONGODB
-[[ -n "${MONGODB}" ]] && export PATH+=":${MONGODB}/bin"
+[[ -n "${MONGODB}" ]] && checkpath "${MONGODB}/bin"
 
 # MANPATH
-[[ -d "${HOME}/.local/share/man" ]] && export MANPATH+=":${HOME}/.local/share/man"
-[[ -d "${HOME}/opt/share/man" ]] && export MANPATH+=":${HOME}/opt/share/man"
+checkmpath()
+{
+    [[ "${MANPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export MANPATH+=":${1}"
+}
+checkmpath "${HOME}/.local/share/man"
+checkmpath "${HOME}/opt/share/man"
 
 # JAVA classpath
-[[ -n "${JAVA_HOME}" ]] && export CLASSPATH+=":${JAVA_HOME}/lib"
-[[ -n "${ANT}" ]] && export CLASSPATH+=":${ANT}/lib"
-[[ -n "${MAVEN}" ]] && export CLASSPATH+=":${MAVEN}/lib"
+checkcpath()
+{
+    [[ "${CLASSPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export CLASSPATH+=":${1}"
+}
+[[ -n "${JAVA_HOME}" ]] && checkcpath "${JAVA_HOME}/lib"
+[[ -n "${ANT}" ]] && checkcpath "${ANT}/lib"
+[[ -n "${MAVEN}" ]] && checkcpath "${MAVEN}/lib"
