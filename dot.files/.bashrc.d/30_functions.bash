@@ -265,18 +265,26 @@ tcp_port_scan()
 listening_on()
 {
     # Returns service listening on given port
-    [[ -z "${1}" ]] && \
-	printf 'Usage: %s port-number\n' "${FUNCNAME[0]}" >&2 && \
+    if [[ -z "${1}" ]]; then
+	printf 'Usage: %s port-number\n' "${FUNCNAME[0]}" >&2
 	return 1
-    while [[ -n "${1}" ]]; do
-	sudo lsof -niTCP:"${1}" |grep LISTEN
-	shift
-    done
+    else
+	while [[ -n "${1}" ]]; do
+	    sudo lsof -niTCP:"${1}" |grep LISTEN
+	    shift
+	done
+    fi
 }
 
 show_interfaces()
 {
     ip -brief -color address show
+}
+
+lsports()
+{
+    sudo lsof -i TCP
+    sudo lsof -i UDP
 }
 
 # FS ===========================================================================
