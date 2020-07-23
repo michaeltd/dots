@@ -165,8 +165,6 @@ fixel()
     fi
 }
 
-# SYS INFO =====================================================================
-
 show_uptime()
 {
     #shellcheck disable=SC2154
@@ -340,13 +338,16 @@ cif2()
     Description: ${FUNCNAME[0]} Converts Image(s) From - To formats.
     Usage: ${FUNCNAME[0]} from to
     Example: ${FUNCNAME[0]} png jpg
-    Requirements: Imagemagick.\n\n"
-    
-    [[ ! $(type -P convert &>/dev/null) || "${#}" -ne "2" ]] && \
-	{ echo -ne "${myusage}" >&2; return 1; }
-    for i in *".${1}"; do
-	convert "${i}" "${i/%.${1}/.${2}}" && rm "${i}"
-    done
+    Requires: Imagemagick.\n\n"
+
+    if type -P convert &>/dev/null && [[ "${#}" -eq "2" ]]; then
+	for i in *."${1}"; do
+	    convert "${i}" "${i/%.${1}/.${2}}" && rm -i "${i}"
+	done
+    else
+	echo -ne "${myusage}" >&2
+	return 1
+    fi
 }
 
 mkbkp()

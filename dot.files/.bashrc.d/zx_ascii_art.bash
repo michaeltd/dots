@@ -98,12 +98,13 @@ eof
 funky4tune()
 {
     local -r myusage="
+    Description: Funky fortune.
     Usage: ${FUNCNAME[0]} cowsay_file 'message'
-    eg: ${FUNCNAME[0]} default 'Hello Lolcat!'
+    Example: ${FUNCNAME[0]} default 'Hello Lolcat!'
     You can try: 'cowsay -l' for a list of available files
-    Requires fortune, cowsay and lolcat.\n"
+    Requires: fortune, cowsay and lolcat.\n"
     #shellcheck disable=SC2015
-    type -P fortune &>/dev/null && \
+    type -P asdffortune &>/dev/null && \
 	type -P cowsay &>/dev/null && \
 	type -P lolcat &>/dev/null || \
 	    { echo -e "${myusage}" >&2; return 1; }
@@ -121,9 +122,10 @@ list_cow_files()
 mycountdown()
 {
     local -r myusage="
+    Description: Fancy countdown.
     Usage: ${FUNCNAME[0]} [#countdown seconds]
-    eg: ${FUNCNAME[0]} 60
-    Requires figlet, lolcat and sox.\n"
+    Example: ${FUNCNAME[0]} 60
+    Requires: figlet, lolcat and sox.\n"
     #shellcheck disable=SC2015
     type -P figlet &>/dev/null && \
 	type -P lolcat &>/dev/null && \
