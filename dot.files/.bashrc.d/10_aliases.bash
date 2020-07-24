@@ -159,7 +159,7 @@ alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-
 
 # Bitcoin
 alias btccli='rcm 10 bitcoin-cli -datadir=/mnt/el/.bitcoin'
-alias btcgui='rcm 10 bitcoin-qt -datadir=/mnt/el/.bitcoin'
+alias btcgui='rcm 10 bitcoin-qt -datadir=/mnt/el/.bitcoin &>/dev/null'
 alias btchex='rcm 10 bitcoin-tx -datadir=/mnt/el/.bitcoin'
 alias btcwlt='rcm 10 bitcoin-wallet -datadir=/mnt/el/.bitcoin'
 alias btcdmn='rcm 10 bitcoind -datadir=/mnt/el/.bitcoin'
