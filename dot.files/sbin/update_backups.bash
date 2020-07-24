@@ -68,7 +68,7 @@ update_backups() {
     done
 
     local -ra includes=( "${definitions}"/.backup_include.* )
-    local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date +%y%m%d.%H%M.%s)"
+    local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date -u +%y%m%d.%H%M.%s)"
 
     [[ -e "${includes[0]}" ]] || { echo -ne "No job file definitions found.\nNothing left to do!\n" >&2; return 1; }
     [[ -d "${backup_to}" ]] || { echo -ne "${backup_to} is not a directory.\n" >&2; return 1; }
