@@ -76,7 +76,7 @@ wallpaper_rotate() {
     source "${wprc}"
 
     timestamp() {
-	date +%y%m%d-%H%M%S
+	date -u +%y%m%d-%H%M%S
     }
 
     # If options, proccess, else rotate things
