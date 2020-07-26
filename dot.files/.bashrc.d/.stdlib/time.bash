@@ -39,7 +39,7 @@ unix_epoch()
     if [[ -n "${1}" ]]; then
 	date +%s --date="${1}"
     else
-	date +%s
+	date -u +%s
     fi
 }
 

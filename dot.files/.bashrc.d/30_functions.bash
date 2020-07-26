@@ -400,7 +400,7 @@ takeascreenshot()
     
     if type -P import &>/dev/null && type -P ristretto &>/dev/null && [[ -n "${DISPLAY}" ]]; then
 	#shellcheck disable=SC2155
-	local FN="${HOME}/ScreenShot-$(date +%s).png"
+	local FN="${HOME}/ScreenShot-$(date -u +%s).png"
 	import -delay "${1:-2}" -window root "${FN}" && ristretto "${FN}"
     else
 	echo -ne "${myusage}" >&2
