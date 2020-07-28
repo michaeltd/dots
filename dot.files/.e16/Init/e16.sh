@@ -11,7 +11,7 @@ type rcm &>/dev/null || . ~/.bashrc.d/30_functions.bash
 
 # rcm 9 orage
 
-PMG="${HOME}/bin/pimp_my_gui.bash"
+PMG="${HOME}/.local/bin/pimp_my_gui.bash"
 if [ -x "${PMG}" ]; then # If spice ...
     "${PMG}" # Spice things up
 fi

@@ -254,4 +254,4 @@ focus_follows_mouse no
 
 # StartUp
 exec_always compton
-exec_always ~/bin/pimp_my_gui.bash
+exec_always ~/.local/bin/pimp_my_gui.bash
