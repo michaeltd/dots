@@ -42,10 +42,10 @@ bindsym $mod+r exec rofi -show run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+l exec ~/bin/xlock.sh
+bindsym $mod+l exec ~/.local/bin/xlock.sh
 #bindsym $mod+shift+l exit
-bindsym $mod+Up exec ~/bin/sndvol +
-bindsym $mod+Down exec ~/bin/sndvol -
+bindsym $mod+Up exec ~/.local/bin/sndvol +
+bindsym $mod+Down exec ~/.local/bin/sndvol -
 bindsym Print exec xfce4-screenshooter
 
 # enable floating mode for all Xdialog windows (xprop)
