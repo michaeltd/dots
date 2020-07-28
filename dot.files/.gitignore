@@ -20,5 +20,5 @@
 !.xsession
 !GNUstep
 !Mwm
-!bin
+!.local/bin
 !sbin
