@@ -12,7 +12,6 @@ IFS=$'\t\n'
 #shellcheck disable=SC2155,SC2034
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly sne="${sbn%.*}"
 
 wallpaper_rotate() {
     # Font attributes, Colors, bg colors
@@ -159,4 +158,4 @@ wallpaper_rotate() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
