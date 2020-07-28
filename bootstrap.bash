@@ -46,14 +46,11 @@ declare -ra music=( 'dot.files/.config/mpd/mpd.conf' \
 		   'dot.files/.bash_profile' \
 		   'dot.files/.bashrc' 'dot.files/.bashrc.d' \
 		   'dot.files/.profile' \
-		   'dot.files/.local/bin/checkbc.bash' \
 		   'dot.files/.local/bin/michaeltd' \
 		   'dot.files/.local/bin/notes_cli' \
 		   'dot.files/.local/bin/pimp_my_gui.bash' \
 		   'dot.files/.local/bin/showkb.sh' \
 		   'dot.files/.local/bin/sndvol' \
-		   'dot.files/.local/bin/template.bash' \
-		   'dot.files/.local/bin/template.sh' \
 		   'dot.files/.local/bin/term_music.bash' \
 		   'dot.files/.local/bin/todos_cli' \
 		   'dot.files/.local/bin/wallpaper_rotate.bash' \
