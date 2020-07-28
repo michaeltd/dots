@@ -50,7 +50,7 @@ command_line_from_pid()
 is_executable()
 {
     [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} programm_handle\n" >&2 && return 1
-    command -v "${1}" >/dev/null 2>&1 
+    type -P "${1}" &>/dev/null
 }
 
 lcdfe()
@@ -63,7 +63,7 @@ lcdfe()
 srwpi()
 {
     # Set Random WallPaper Image
-    local -r usage="\n\tUsage: ${FUNCNAME[0]} images-directory\n\tSet a Random WallPaper Image from a directory with images.\n\n" \
+    local -r myusage="\n\tUsage: ${FUNCNAME[0]} images-directory\n\tSet a Random WallPaper Image from a directory with images.\n\n" \
 	  mypics="${HOME}/Pictures/dPic/r"
     if [[ -d "${1}" ]]; then
 	feh -rz --bg-scale "${1}"
@@ -72,7 +72,7 @@ srwpi()
     elif [[ -d "${mypics}" ]]; then
 	feh -rz --bg-scale "${mypics}"
     else
-	echo -ne "${usage}"
+	echo -ne "${myusage}"
     fi
 }
 
@@ -141,9 +141,7 @@ if command -v emerge &>/dev/null; then
 	if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
 	    # local -a srvcs=( "postgresql-12" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
 	    type -P postgres &>/dev/null && local -a srvcs+=( "postgresql-12" )
-	    type -P mongod &>/dev/null && local -a srvcs+=( "mongodb" )
 	    type -P apache2 &>/dev/null && local -a srvcs+=( "apache2" )
-	    type -P /opt/tomcat/bin/daemon.sh &>/dev/null && local -a srvcs+=( "tomcat" )
 	    type -P vsftpd &>/dev/null && local -a srvcs+=( "vsftpd" )
 	    type -P sshd &>/dev/null && local -a srvcs+=( "sshd" )
 	    type -P rsync &>/dev/null && local -a srvcs+=( "rsyncd" )
@@ -361,7 +359,7 @@ mkbkp()
 {
     [[ ! -f "${1}" ]] && \
 	{ echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" >&2; return 1; }
-    compress "${1}.$(date +%s).tgz" "${1}"
+    compress "${1}.$(date -u +%s).tgz" "${1}"
 }
 
 get_mime_type()
