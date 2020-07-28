@@ -131,3 +131,5 @@ checkcpath()
 [[ -n "${JAVA_HOME}" ]] && checkcpath "${JAVA_HOME}/lib"
 [[ -n "${ANT}" ]] && checkcpath "${ANT}/lib"
 [[ -n "${MAVEN}" ]] && checkcpath "${MAVEN}/lib"
+
+unset -f checkpath checkmpath checkcpath
