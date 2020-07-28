@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash --norc --noprofile
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
@@ -12,7 +12,7 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 term_music ()
 {
     #shellcheck disable=SC2155
-    local -r usage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n"
+    local -r myusage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n\n"
 
     #shellcheck disable=SC2034
     local -ar pop=( "file:///mnt/data/Documents/Music/All-Saints" "file:///mnt/data/Documents/Music/AVICII" "file:///mnt/data/Documents/Music/Black-Eyed-Pees" "file:///mnt/data/Documents/Music/Bruno-Mars" "file:///mnt/data/Documents/Music/Daft-Punk" "file:///mnt/data/Documents/Music/GORILLAZ" ) \
@@ -35,9 +35,9 @@ term_music ()
 	    for i in "${genres[@]}"; do
 		local gen_alpha+="${i//[![:alpha:]]} "
 	    done
-	    echo -ne "${usage}" >&2
-	    echo -ne "\n\t${1} not found.\n\tTry one of: ${gen_alpha}!\n" >&2
-	    exit 1
+	    echo -ne "${myusage}" >&2
+	    echo -ne "\n\t${1} not found.\n\tTry one of: ${gen_alpha}!\n\n" >&2
+	    return 1
 	fi
     else
 	local -ar dir_list=( "${!genres[$(shuf -n 1 -i 0-"${#genres[*]}")]}" )
