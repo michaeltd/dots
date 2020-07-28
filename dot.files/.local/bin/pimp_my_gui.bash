@@ -19,7 +19,7 @@ rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 rcm 9 xscreensaver -no-splash
 
 # Add some wallpaper variety for your desktop
-rcm 9 ~/bin/wallpaper_rotate.bash
+rcm 9 ~/.local/bin/wallpaper_rotate.bash
 
 # Systray volume control
 rcm 9 pasystray
@@ -37,7 +37,7 @@ if [[ -r "/etc/os-release" ]]; then
     if [[ "${ID}" == "gentoo" ]]; then
 	rcm 9 conky -qd
 	# rcm 9 electrum daemon start
-	bitcoind -datadir=/mnt/el/.bitcoin -daemon
+	# bitcoind -datadir=/mnt/el/.bitcoin -daemon
     elif [[ "${ID}" == "devuan" ]]; then
 	rcm 9 conky -qd
     elif [[ "${ID}" == "debian" ]]; then
