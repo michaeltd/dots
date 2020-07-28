@@ -95,8 +95,7 @@ checkpath()
     [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
 }
 # Path with += op and each tool in it's own line for practical reasons
-# [[ "${PATH}" == *${HOME}/.local/bin* ]] || { [[ -d ~/".local/bin" ]] && export PATH+=":${HOME}/.local/bin"; }
-checkpath ${HOME}/.local/bin
+checkpath "${HOME}/.local/bin"
 # OPT
 [[ -n "${OPT}" ]] && checkpath "${OPT}/bin"
 checkpath "${HOME}/bin"

@@ -27,7 +27,7 @@ shopt -s histappend
 export PROMPT_COMMAND='history -a'
 
 # Load helper functions
-sl="$(dirname $(realpath ${BASH_SOURCE[0]}))/.stdlib"
+sl="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.stdlib"
 # Load files from ~/.bashrc.d/.stdlib
 if [[ -d "${sl}" ]]; then
     for file in "${sl}/"*.bash; do
