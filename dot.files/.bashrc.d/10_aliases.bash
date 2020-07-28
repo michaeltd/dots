@@ -158,8 +158,16 @@ alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ign
 alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 
 # Bitcoin
-alias btccli='bitcoin-cli -datadir=/mnt/el/.bitcoin'
-alias btcgui='bitcoin-qt -datadir=/mnt/el/.bitcoin'
-alias btchex='bitcoin-tx -datadir=/mnt/el/.bitcoin'
-alias btcwlt='bitcoin-wallet -datadir=/mnt/el/.bitcoin'
-alias btcdmn='bitcoind -datadir=/mnt/el/.bitcoin'
+datadir="/mnt/el/.bitcoin"
+
+alias btccli="bitcoin-cli -datadir=${datadir}"
+alias btcgui="bitcoin-qt -datadir=${datadir}"
+alias btchex="bitcoin-tx -datadir=${datadir}"
+alias btcwlt="bitcoin-wallet -datadir=${datadir}"
+alias btcdmn="bitcoind -datadir=${datadir}"
+
+unset datadir
+
+alias btc_commands="btccli help"
+alias btc_info="btccli -getinfo"
+alias btc_winf="btcwlt -wallet=michaeltd info"
