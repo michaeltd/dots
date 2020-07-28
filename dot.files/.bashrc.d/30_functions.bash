@@ -139,7 +139,14 @@ if command -v emerge &>/dev/null; then
 	    echo -ne "Usage: ${FUNCNAME[0]} start|stop|restart all|service[/s...]\n" >&2 && \
 	    return 1
 	if [[ "${1}" == "start" || "${1}" == "stop" || "${1}" == "restart" || "${1}" == "status" ]] && [[ "${2}" == "all" ]]; then
-	    local -a srvcs=( "postgresql-12" "mysql" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
+	    # local -a srvcs=( "postgresql-12" "mongodb" "apache2" "tomcat" "vsftpd" "sshd" "rsyncd" )
+	    type -P postgres &>/dev/null && local -a srvcs+=( "postgresql-12" )
+	    type -P mongod &>/dev/null && local -a srvcs+=( "mongodb" )
+	    type -P apache2 &>/dev/null && local -a srvcs+=( "apache2" )
+	    type -P /opt/tomcat/bin/daemon.sh &>/dev/null && local -a srvcs+=( "tomcat" )
+	    type -P vsftpd &>/dev/null && local -a srvcs+=( "vsftpd" )
+	    type -P sshd &>/dev/null && local -a srvcs+=( "sshd" )
+	    type -P rsync &>/dev/null && local -a srvcs+=( "rsyncd" )
 	else
 	    local -a srvcs=( "${@}" )
 	    unset "srvcs[0]"
