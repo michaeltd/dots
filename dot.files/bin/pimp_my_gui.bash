@@ -37,7 +37,7 @@ if [[ -r "/etc/os-release" ]]; then
     if [[ "${ID}" == "gentoo" ]]; then
 	rcm 9 conky -qd
 	# rcm 9 electrum daemon start
-	# rcm 9 bitcoind -datadir=/mnt/el/.bitcoin -daemon
+	bitcoind -datadir=/mnt/el/.bitcoin -daemon
     elif [[ "${ID}" == "devuan" ]]; then
 	rcm 9 conky -qd
     elif [[ "${ID}" == "debian" ]]; then
