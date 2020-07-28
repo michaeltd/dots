@@ -9,17 +9,17 @@ Possible use: "git clone https://github.com/michaeltd/dots", go through this rep
 My dots tend to be opinionated so take them with a grain of rice ...err SALT, I meant salt. Take them with a grain of salt.
 
 ** [[dot.files][dot.files]]
-*** [[dot.files/.bash_profile][Shell]], [[dot.files/.xinitrc][X setup]], [[dot.files/.local/bin][bin]], [[dot.files/sbin/][sbin]] (maintenance scripts)
+*** [[dot.files/.bash_profile][Shell]], [[dot.files/.xinitrc][X setup]], [[dot.files/.local/bin][bin]], [[dot.files/.local/sbin][sbin]] (maintenance scripts)
 **** [[dot.files/.bashrc.d][.bashrc.d]]
      Is an interactive shell initialization routine and it is customization of [[http://dotshare.it/~Durag/][Durag]]'s [[http://dotshare.it/dots/1027/][Improved Terminal]] at [[http://dotshare.it/][http://dotshare.it/]].
 
-**** [[dot.files/sbin/upgrade_distro.bash][upgrade_distro.bash]]
+**** [[dot.files/.local/sbin/upgrade_distro.bash][upgrade_distro.bash]]
      Distro neutral upgrade script
 
-**** [[dot.files/sbin/update_backups.bash][update_backups.bash]]
+**** [[dot.files/.local/sbin/update_backups.bash][update_backups.bash]]
      Back up things ...
 
-**** [[dot.files/sbin/update_cleanup.bash][update_cleanup.bash]]
+**** [[dot.files/.local/sbin/update_cleanup.bash][update_cleanup.bash]]
      ... and clean up the mess.
 
 **** [[dot.files/.local/bin/wallpaper_rotate.bash][wallpaper_rotate.bash]]

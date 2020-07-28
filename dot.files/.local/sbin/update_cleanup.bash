@@ -38,7 +38,7 @@ update_cleanup() {
 	shift
     done
     # Source explicitly for non interactive shells.
-    srcspath="${sdn}/../.bashrc.d/.stdlib"
+    srcspath="${sdn}/../../.bashrc.d/.stdlib"
 
     local -ra sources=( "${srcspath}"/*.bash ) backups=( "${backup_dir}/${HOSTNAME}."*.tar.gz* )
 
