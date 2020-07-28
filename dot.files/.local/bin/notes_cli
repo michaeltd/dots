@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+#
+# https://www.reddit.com/r/bash/comments/fxxtav/simple_notes/
+#
+# Simple notes
+# I use the following to keep track of minutia and thought it might be helpful to someone else. I use it for when someone suggests a movie or TV show, or birthday gift thoughts, etc. Basically anything that you might use a post-it for.
+# All of these are in my .bash_aliases file
+# alias notes='echo $(date +%A,\ %B\ %d\ \(%D\)\ ) $* >> ~/.notes'
+# This takes notes and puts them into a file named ~/.notes
+# I use it from the prompt like this:
+# $ notes TV Better Call Saul
+# Then when I'm wondering what TV shows I should watch when I've finished binging some show, I use my notess (notes-search, real original)
+# alias notess=`grep -h "$1" ~/.notes"
+# something like this:
+# $ notess TV
+# and get a list something like:
+# Thursday, January 16 (01/16/20) TV Outsiders
+# Thursday, March 19 (03/19/20) TV Love, Death, and Robots
+# Sunday, March 22 (03/22/20) TV/Movie? Tiger King
+# Sunday, March 29 (03/29/20) TV Marc Macron's End Time Fun (Janeen)
+# Thursday, April 02 (04/02/20) zero zero zero TV
+# Monday, April 06 (04/06/20) TV Dave (Robert)
+# Monday, April 06 (04/06/20) TV Black Monday (Robert)
+# Thursday, April 09 (04/09/20) TV Better Call Saul
+# If I want to delete from my list I use notesd (notes-delete) :
+# notesd ()
+# {
+#     grep -h "$1" ~/.notes;
+#     read -r -p "Delete all this stuff from notes file? [y/N] " response;
+#     if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+#         cp ~/.notes ~/.notes.bac;
+#         grep -h -v "$1" ~/.notes.bac > ~/.notes;
+#     fi
+# }
+# something like this:
+# $ notesd Saul
+# Thursday, April 09 (04/09/20) TV Better Call Saul
+# Delete all this stuff from notes file? [y/N] y
+# Now, I know there are other ways of doing this and that this is pretty rough (I have to escape some characters), but I've found this useful over the years to keep track of Christmas or B-Day gift ideas, movie/tv suggestions, etc. Maybe one of you will find this simple system helpful. Two basic aliases, and one pretty basic function. I'm open to suggestions for improving it, I know that it's not real robust but I just haven't felt the need to tighten it up.
+
+# Unofficial Bash Strict Mode
+set -euo pipefail
+IFS=$'\t\n'
+
+notes_cli() {
+
+    local -r notes_file="${HOME}/.notes"
+    local -r notes_bak="${notes_file}.bak"
+    local -r notes_header='
+    [0m[38;5;118m    [38;5;154m  ::[38;5;148m::   [38;5;184m :::[38;5;178m :::[38;5;214m:::::[38;5;208m::::[38;5;209m::::[38;5;203m:::::[38;5;204m::::[38;5;198m::::[38;5;199m:::::[38;5;163m::: 
+    [38;5;118m   [38;5;154m  :+:[38;5;148m+:  [38;5;184m :+:[38;5;178m:+:  [38;5;214m  :+[38;5;208m:   [38;5;209m:+:  [38;5;203m  :+[38;5;204m:    [38;5;198m  :+[38;5;199m:   [38;5;163m :+: 
+    [38;5;118m   [38;5;154m :+:[38;5;148m+:+  [38;5;184m+:++[38;5;178m:+  [38;5;214m  +:+[38;5;208m   +[38;5;209m:+  [38;5;203m  +:+[38;5;204m    [38;5;198m  +:[38;5;199m+    [38;5;163m    [38;5;164m 
+    [38;5;118m   [38;5;154m+#+ [38;5;148m+:+ [38;5;184m+#++#[38;5;178m+   [38;5;214m +:+[38;5;208m   +#[38;5;209m+   [38;5;203m +#+[38;5;204m+:++#[38;5;198m +#+[38;5;199m+:++[38;5;163m#++  [38;5;164m 
+    [38;5;118m  [38;5;154m+#+ [38;5;148m +#+#[38;5;184m+#+#[38;5;178m+   [38;5;214m +#+ [38;5;208m  +#[38;5;209m+    [38;5;203m+#+ [38;5;204m    [38;5;198m     [38;5;199m   +[38;5;163m#+  [38;5;164m  
+    [38;5;118m #[38;5;154m+#  [38;5;148m #+#[38;5;184m+##+#[38;5;178m    [38;5;214m#+# [38;5;208m  #+#[38;5;209m    [38;5;203m#+# [38;5;204m     [38;5;198m#+# [38;5;199m   #[38;5;163m+#   [38;5;164m  
+    [38;5;118m#[38;5;154m##   [38;5;148m ###[38;5;184m# ##[38;5;178m#####[38;5;214m#   [38;5;208m ###[38;5;209m    #[38;5;203m####[38;5;204m####[38;5;198m#####[38;5;199m####[38;5;163m    [38;5;164m   
+
+[0m
+'
+
+    show_header() { echo "${notes_header}"; }
+
+    usage() { echo -ne "\n\tUsage: ${BASH_SOURCE[0]##*/} [add 'some notes' | search keyword | rem keyword... | list]\n\n" >&2; }
+    
+    list() { nl -b a "${notes_file}"; }
+
+    search() { grep -h "${1}" "${notes_file}"; }
+
+    rem() {
+	grep -h "${1}" "${notes_file}"
+	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
+            cp -f "${notes_file}" "${notes_bak}"
+            grep -hv "${1}" "${notes_bak}" > "${notes_file}"
+	fi
+    }
+
+    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; list; }
+
+    case "${*}" in
+	add*|rem*|search*|list*) show_header; "${@}";;
+	*) show_header; usage; return 1;;
+    esac
+}
+
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${BASH_SOURCE[0]##*/}" "${@}"
