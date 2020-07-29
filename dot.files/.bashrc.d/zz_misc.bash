@@ -14,8 +14,8 @@ eval "$(stty -ixon)"
 
 # https://twitter.com/gumnos/status/1117146713289121797
 # And a couple bash options to control how history is stored:
-export HISTCONTROL=ignoreboth # ignorespace:ignoredups
-export HISTIGNORE=gal:gst:gfc:gpl:mc:htop:jobs:fg:up:cd:ll:ls:exit:mutt:su\ -l:fixel:startx:bash
+export HISTCONTROL="ignoreboth" # "ignorespace:ignoredups"
+export HISTIGNORE="gal:gst:gfc:gpl:mc:htop:jobs:fg:up:cd:ll:ls:exit:mutt:su\ -l:fixel:startx:bash"
 
 export HISTSIZE=999999
 export HISTFILESIZE=999999
@@ -30,8 +30,10 @@ export PROMPT_COMMAND='history -a'
 sl="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.stdlib"
 # Load files from ~/.bashrc.d/.stdlib
 if [[ -d "${sl}" ]]; then
-    for file in "${sl}/"*.bash; do
+    for file in "${sl}"/*.bash; do
 	#shellcheck disable=SC1090
 	source "${file}"
     done
 fi
+
+unset sl

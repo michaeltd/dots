@@ -41,6 +41,11 @@ hello_world()
 
 # UTILS =======================================================================
 
+top5cmds()
+{
+    history | awk '{print $2}' | sort | uniq -c | sort -nr | head -n 5
+}
+
 command_line_from_pid()
 {
     #shellcheck disable=SC2009
