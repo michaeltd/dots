@@ -55,7 +55,7 @@ declare -ra music=( 'dot.files/.config/mpd/mpd.conf' \
 		   'dot.files/.local/bin/todos_cli' \
 		   'dot.files/.local/bin/wallpaper_rotate.bash' \
 		   'dot.files/.local/bin/xlock.sh' \
-		   'dot.files/sbin' )
+		   'dot.files/.local/sbin' )
 
 #shellcheck disable=SC2034
 declare -ra console=( music[@] tmux[@] top[@] mutt[@] vim[@] bash[@] )
