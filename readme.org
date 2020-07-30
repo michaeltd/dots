@@ -68,7 +68,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
    +  [[dot.files/.local/bin/michaeltd][Terminal buisiness card v1.0]]
     
-     ~curl -sL tinyurl.com/mtd-bcard|sh~
+     ~curl -sL tinyurl.com/mick-bcard|sh~
 
      Full bling business card.
 
