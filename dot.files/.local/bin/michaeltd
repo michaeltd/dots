@@ -17,7 +17,7 @@
 #          │     npm:  https://npmjs.com/~michaeltd            │
 #          │   Toots:  https://mastodon.technology/@michaeltd  │
 #          │                                                   │
-#          │    Card:  curl -sL tinyurl.com/mtd-bcard|sh       │
+#          │    Card:  curl -sL tinyurl.com/mick-bcard|sh      │
 #          │                                                   │
 #          ╰───────────────────────────────────────────────────╯
 # 
@@ -46,7 +46,7 @@ cat <<EOF
     ${green}│${reset}     ${bg_black}npm:${reset}  ${dim}https://npmjs.com/${reset}~${red}michaeltd              ${green}│${reset}
     ${green}│${reset}   ${bg_black}Toots:${reset}  ${dim}https://mastodon.technology/${reset}@${magenta}michaeltd${reset}    ${green}│${reset}
     ${green}│                                                     │${reset}
-    ${green}│${reset}    ${bg_black}Card:${reset}  ${red}curl -sL ${dim}${white}tinyurl.com/${reset}${magenta}mtd-bcard${dim}${white}|sh${reset}         ${green}│${reset}
+    ${green}│${reset}    ${bg_black}Card:${reset}  ${red}curl -sL ${dim}${white}tinyurl.com/${reset}${magenta}mick-bcard${dim}${white}|sh${reset}        ${green}│${reset}
     ${green}│                                                     │${reset}
     ${green}╰─────────────────────────────────────────────────────╯${reset}
 
