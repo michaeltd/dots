@@ -6,15 +6,12 @@
 #shellcheck disable=SC2155
 declare -r sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-#shellcheck disable=SC2155
-declare -r nes="${sbn/\.bash/}"
 
-#shellcheck disable=2164 #SHUT UP SHELLCHECK, MY CD'S DO NOT FAIL!!!
-cd "${sdn}"
+cd "${sdn}" || exit 1
 
 # Backup File Extension
 #shellcheck disable=SC2155
-declare -r bfe="dots.${nes}.${$}.$(date +%s).bkp"
+declare -r bfe="dots.${sbn/.bash/}.${$}.$(date -u +%s).bkp"
 
 #shellcheck disable=SC2034
 declare -ra compton=( 'dot.files/.config/compton.conf' ) \
@@ -52,7 +49,6 @@ declare -ra music=( 'dot.files/.config/mpd/mpd.conf' \
 		   'dot.files/.local/bin/showkb.sh' \
 		   'dot.files/.local/bin/sndvol' \
 		   'dot.files/.local/bin/term_music.bash' \
-		   'dot.files/.local/bin/todos_cli' \
 		   'dot.files/.local/bin/wallpaper_rotate.bash' \
 		   'dot.files/.local/bin/xlock.sh' \
 		   'dot.files/.local/sbin' )
@@ -94,30 +90,30 @@ declare -r usage="
 
 "
 
-__is_link_set() {
+is_link_set() {
     [[ -L "${HOME}${1:9}" ]] && [[ "$(realpath "${HOME}${1:9}")" == "$(realpath "${1}")" ]]
 }
 
-__all_links_set() {
+all_links_set() {
     eval "arr=(\"\${$1[@]}\")"
     #shellcheck disable=SC2154
     for i in "${arr[@]}"; do
-	if ! __is_link_set "${i}"; then
+	if ! is_link_set "${i}"; then
 	    return 1
 	fi
     done
 }
 
-__no_links_set() {
+no_links_set() {
     eval "arr=(\"\${$1[@]}\")"
     for i in "${arr[@]}"; do
-	if __is_link_set "${i}"; then
+	if is_link_set "${i}"; then
 	    return 1
 	fi
     done
 }
 
-__check_arr() {
+check_arr() {
     eval "arr=(\"\${$1[@]}\")"
     for i in "${arr[@]}"; do
 	if [[ ! -e "${i}" ]]; then
@@ -127,14 +123,14 @@ __check_arr() {
     done
 }
 
-__link_arr() {
+link_arr() {
     eval "arr=(\"\${$1[@]}\")"
     for i in "${arr[@]}"; do
-	__do_link "$(realpath "${i}")" "${HOME}${i:9}"
+	do_link "$(realpath "${i}")" "${HOME}${i:9}"
     done
 }
 
-__check_assoc() {
+check_assoc() {
     eval "assoc=(\"\${$1[@]}\")"
     for x in "${!assoc[@]}"; do
 	local i=0
@@ -148,7 +144,7 @@ __check_assoc() {
     done
 }
 
-__link_assoc() {
+link_assoc() {
     eval "assoc=(\"\${$1[@]}\")"
     for x in "${!assoc[@]}"; do
 	local i=0
@@ -156,40 +152,40 @@ __link_assoc() {
 	    local repofile="${!assoc[x]:i:1}"
     	    local realfile="$(realpath "${repofile}")"
 	    local homefile="${HOME}${repofile:9}"
-	    __do_link "${realfile}" "${homefile}"
+	    do_link "${realfile}" "${homefile}"
 	    (( ++i ))
 	done
     done
 }
 
-__do_link() {
+do_link() {
     # ln force switch for directory links appears broken, so there ...
     if [[ -e "${2}" ]]; then
-	$(type -P mv) -v "${2}" "${2}.${bfe}"
+	mv -v "${2}" "${2}.${bfe}"
     fi
     #ln --verbose --symbolic --force --backup --suffix=".${BFE}"  "${1}" "${2}"
-    $(type -P mkdir) -vp "$(dirname "${2}")"
-    $(type -P ln) -vs "${1}" "${2}"
+    mkdir -vp "$(dirname "${2}")"
+    ln -vs "${1}" "${2}"
 }
 
-__do_arr() {
-    __check_arr "${1}" || exit $?
-    __link_arr "${1}"
+do_arr() {
+    check_arr "${1}" || exit $?
+    link_arr "${1}"
 }
 
-__do_assoc() {
-    __check_assoc "${1}" || exit $?
-    __link_assoc "${1}"
+do_assoc() {
+    check_assoc "${1}" || exit $?
+    link_assoc "${1}"
 }
 
-__do_everything() {
+do_everything() {
     for assoc in "console" "xorg"; do
-	__check_assoc "${assoc}" || exit $?
-	__link_assoc "${assoc}"
+	check_assoc "${assoc}" || exit $?
+	link_assoc "${assoc}"
     done
 }
 
-__menu() {
+menu() {
 
     local -a TUI_MENU=( )
     local -a TUI_HMSG=( "${usage}" )
@@ -208,22 +204,22 @@ __menu() {
         case "${USRINPT}" in
             0) return "${?}";;
             1) echo -ne "${TUI_HMSG[*]}";;
-	    2) __do_"${TUI_OPS[$USRINPT]}";;
-	    [3-4]) __do_assoc "${TUI_OPS[$USRINPT]}";;
-            [5-9]|1[0-16]) __do_arr "${TUI_OPS[$USRINPT]}";;
+	    2) do_"${TUI_OPS[$USRINPT]}";;
+	    [3-4]) do_assoc "${TUI_OPS[$USRINPT]}";;
+            [5-9]|1[0-16]) do_arr "${TUI_OPS[$USRINPT]}";;
             *) echo -ne "Invalid selection: ${USRINPT}. Choose from 0 to $((${#TUI_OPS[*]}-1))\n" >&2;;
         esac
     done
 }
 
-__bootstrap() {
+bootstrap() {
     case "${1}" in
-	-a|--all) __do_everything ;;
-	-c|--console) __do_assoc "console" ;;
-	-x|--xorg) __do_assoc "xorg" ;;
-	-m|--menu) __menu ;;
+	-a|--all) do_everything ;;
+	-c|--console) do_assoc "console" ;;
+	-x|--xorg) do_assoc "xorg" ;;
+	-m|--menu) menu ;;
 	*) echo -ne "\n${usage}\n"; return 1 ;;
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "__${nes}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn/.bash/}" "${@}"
