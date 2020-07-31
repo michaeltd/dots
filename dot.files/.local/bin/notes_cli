@@ -58,13 +58,14 @@ notes_cli() {
 
     show_header() { type -P lolcat &>/dev/null && echo "${notes_header}"|lolcat || echo "${notes_header}"; }
 
-    usage() { echo -ne "\n Usage: ${BASH_SOURCE[0]##*/} [add 'some notes' | search keyword | rem keyword... | list]\n\n" >&2; }
+    usage() { show_header; echo -ne "\n Usage: ${BASH_SOURCE[0]##*/} [add 'some notes' | search keyword | rem keyword... | list]\n\n" >&2; }
     
-    list() { nl -b a "${notes_file}"; }
+    list() { while :; do clear; show_header; nl -b a "${notes_file}"; sleep 5; done; }
 
-    search() { grep -h "${1}" "${notes_file}"; }
+    search() { show_header; grep -h "${1}" "${notes_file}"; }
 
     rem() {
+	show_header; 
 	grep -h "${1}" "${notes_file}"
 	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
             cp -f "${notes_file}" "${notes_bak}"
@@ -75,8 +76,8 @@ notes_cli() {
     add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; list; }
 
     case "${*}" in
-	add*|rem*|search*|list*) show_header; "${@}";;
-	*) show_header; usage; return 1;;
+	add*|rem*|search*|list*) "${@}";;
+	*) usage; return 1;;
     esac
 }
 

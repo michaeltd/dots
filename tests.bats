@@ -27,21 +27,21 @@ source "${BATS_TEST_DIRNAME}/dot.files/.bashrc"
     [ "$status" -eq 0 ]
 }
 
-@test "ShellCheck check's out .stdlib/*.bash targets" {
+@test "ShellCheck check's out .bashrc.d/.stdlib/*.bash targets" {
     # skip
     run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.bashrc.d/.stdlib"/*.bash
     [ "$status" -eq 0 ]
 }
 
-@test "ShellCheck check's out bin/*.bash targets" {
+@test "ShellCheck check's out .local/bin/*.bash targets" {
     # skip
-    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/bin"/*.bash
+    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.local/bin"/*.bash
     [ "$status" -eq 0 ]
 }
 
-@test "ShellCheck check's out sbin/*.bash targets" {
+@test "ShellCheck check's out .local/sbin/*.bash targets" {
     # skip
-    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/sbin"/*.bash
+    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.local/sbin"/*.bash
     [ "$status" -eq 0 ]
 }
 

@@ -104,12 +104,12 @@ funky4tune()
     You can try: 'cowsay -l' for a list of available files
     Requires: fortune, cowsay and lolcat.\n"
     #shellcheck disable=SC2015
-    type -P asdffortune &>/dev/null && \
+    type -P fortune &>/dev/null && \
 	type -P cowsay &>/dev/null && \
 	type -P lolcat &>/dev/null || \
 	    { echo -e "${myusage}" >&2; return 1; }
     #shellcheck disable=SC2015
-    { [[ -n "${2}" ]] && echo "${2}" || fortune -o; } | cowsay -f "${1:-eyes}" | lolcat
+    { [[ -n "${2}" ]] && echo "${2}" || fortune -o; } | cowsay -f "${1:-small}" | lolcat
 }
 
 list_cow_files()
