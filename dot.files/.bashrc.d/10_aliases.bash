@@ -159,14 +159,14 @@ alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-
 
 # Bitcoin
 datadir="/mnt/el/.bitcoin"
+#shellcheck disable=SC2139
+alias btccli="bitcoin-cli -datadir=${datadir}" \
+      btcgui="bitcoin-qt -datadir=${datadir}" \
+      btchex="bitcoin-tx -datadir=${datadir}" \
+      btcwlt="bitcoin-wallet -datadir=${datadir}" \
+      btcdmn="bitcoind -datadir=${datadir}"
 
-alias btccli="bitcoin-cli -datadir=\${datadir}"
-alias btcgui="bitcoin-qt -datadir=\${datadir}"
-alias btchex="bitcoin-tx -datadir=\${datadir}"
-alias btcwlt="bitcoin-wallet -datadir=\${datadir}"
-alias btcdmn="bitcoind -datadir=\${datadir}"
-
-# unset datadir
+unset datadir
 
 alias btc_commands="btccli help"
 alias btc_info="btccli -getinfo"
