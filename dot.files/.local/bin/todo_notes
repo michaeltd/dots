@@ -42,9 +42,9 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-notes_cli() {
+todo_notes() {
 
-    local -r notes_file="${HOME}/.notes"
+    local -r notes_file="${HOME}/.todo_notes"
     local -r notes_bak="${notes_file}.bak"
     local -r notes_header='
           ::::    ::: ::::::::::::::::::::::::::::::::::::: 
@@ -58,11 +58,11 @@ notes_cli() {
 
     show_header() { type -P lolcat &>/dev/null && echo "${notes_header}"|lolcat || echo "${notes_header}"; }
 
-    usage() { echo -ne "\n Usage: ${BASH_SOURCE[0]##*/} [add 'some notes' | search keyword | rem keyword... | list]\n\n" >&2; }
+    usage() { echo -ne "\n Usage: ${BASH_SOURCE[0]##*/} add 'some notes' | find keyword | rem keyword... | show | halp\n\n" >&2; }
     
-    list() { nl -b a "${notes_file}"; }
+    show() { nl -b a "${notes_file}"; }
 
-    search() { grep -h "${1}" "${notes_file}"; }
+    find() { grep -h "${1}" "${notes_file}"; }
 
     rem() {
 	grep -h "${1}" "${notes_file}"
@@ -75,7 +75,7 @@ notes_cli() {
     add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; list; }
 
     case "${*}" in
-	add*|rem*|search*|list*) show_header; "${@}";;
+	add*|rem*|find*|show*) show_header; "${@}";;
 	*) show_header; usage; return 1;;
     esac
 }
