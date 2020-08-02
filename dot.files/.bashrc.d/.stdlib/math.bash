@@ -2,86 +2,71 @@
 # math related functions
 #shellcheck shell=bash
 
-dec2hex()
-{
+dec2hex() {
     # printf '%x\n' "${1}"
     echo "obase=16;${1}" | bc -l
 }
 
-dec2bin()
-{
+dec2bin() {
     echo "obase=2;${1}" | bc -l
 }
 
-hex2dec()
-{
+hex2dec() {
     # echo "$((0x$1))"
     echo "ibase=16;${1^^}" | bc -l
 }
 
-hex2bin()
-{
+hex2bin() {
     echo "obase=2;ibase=16;${1^^}" | bc -l
 }
 
-bin2dec()
-{
+bin2dec() {
     echo "ibase=2;${1}" | bc -l
 }
 
-bin2hex()
-{
+bin2hex() {
     echo "obase=16;ibase=2;${1}" | bc -l
 }
 
-is_numeric()
-{
+is_numeric() {
     [[ "${1}" =~ ^[-|+]?[0-9]+([.][0-9]+)?$ ]]
 }
 
-is_integer()
-{
+is_integer() {
     [[ "${1}" =~ ^[-|+]?[0-9]+?$ ]]
 }
 
-is_float()
-{
+is_float() {
     [[ "${1}" =~ ^[-|+]?[0-9]+[.][0-9]+?$ ]]
 }
 
-in_range()
-{
+in_range() {
     [[ "${#}" -ne "3" ]] && \
 	echo -ne "\n\tUsage: ${FUNCNAME[0]} min max num\n\n" >&2 && \
 	return 1
     [[ "${3}" -ge "${1}" && "${3}" -le "${2}" ]]
 }
 
-between()
-{
+between() {
     [[ "${#}" -ne "3" ]] && \
 	echo -ne "\n\tUsage: ${FUNCNAME[0]} lbound ubound check\n\n" >&2 && \
 	return 1
     (( $3 >= $1 && $3 <= $2 ))
 }
 
-calc()
-{
+calc() {
     echo "scale=6;${*}"| bc -l
 }
 
-max()
-{
+max() {
     printf "%d\n" "${@}" | sort -rn | head -1
 }
 
-min()
-{
+min() {
     printf "%d\n" "${@}" | sort -n | head -1
 }
 
-avg()
-{
+avg() {
     local i=0 sum=0 usage="\n\tUsage: ${FUNCNAME[0]} #1 #2 #3...\n\n"
     die() { echo -ne "${usage}" >&2; return 1; }
     [[ -z "${*}" ]] && { die; return $?; }
@@ -95,55 +80,45 @@ avg()
     printf "%f\n" "$(calc "${sum} / ${i}")"
 }
 
-sqrt()
-{
+sqrt() {
     echo "scale=6;sqrt(${1})"| bc -l
 }
 
-sqr()
-{
+sqr() {
     echo "scale=6;${1}^2"| bc -l
 }
 
-pwr()
-{
+pwr() {
     echo "scale=6;${1}^${2}"| bc -l
 }
 
 # Trigonometric functions
 # https://advantage-bash.blogspot.com/2012/12/trignometry-calculator.html
-sin()
-{
+sin() {
     echo "scale=6;s(${1})" | bc -l
 }
 
-cos()
-{
+cos() {
     echo "scale=6;c(${1})" | bc -l
 }
 
-tan()
-{
+tan() {
     echo "scale=6;s(${1})/c(${1})" | bc -l
 }
 
-csc()
-{
+csc() {
     echo "scale=6;1/s(${1})" | bc -l
 }
 
-sec()
-{
+sec() {
     echo "scale=6;1/c(${1})" | bc -l
 }
 
-ctn()
-{
+ctn() {
     echo "scale=6;c(${1})/s(${1})" | bc -l
 }
 
-asin()
-{
+asin() {
     if (( $(echo "${1} == 1" | bc -l) )); then
 	echo "90"
     elif (( $(echo "${1} < 1" | bc -l) )); then
@@ -153,8 +128,7 @@ asin()
     fi
 }
 
-acos()
-{
+acos() {
     if (( $(echo "${1} == 0" | bc -l) )); then
 	echo "90"
     elif (( $(echo "${1} <= 1" | bc -l) )); then
@@ -164,22 +138,18 @@ acos()
     fi
 }
 
-atan()
-{
+atan() {
     echo "scale=6;a(${1})" | bc -l
 }
 
-acot()
-{
+acot() {
     echo "scale=6;a(1/${1})" | bc -l
 }
 
-asec()
-{
+asec() {
     echo "scale=6;a(sqrt((${1}^2)-1))" | bc -l
 }
 
-acsc()
-{
+acsc() {
     echo "scale=6;a(1/(sqrt(${1}^2)-1))" | bc -l
 }

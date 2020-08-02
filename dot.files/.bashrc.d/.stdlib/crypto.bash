@@ -2,16 +2,14 @@
 # cryptographic functions
 #shellcheck shell=bash
 
-gen_rand()
-{
+gen_rand() {
     #shellcheck disable=SC2005
     tr -dc "[:digit:]" < /dev/urandom | \
 	head -c "${1:-8}"
     echo
 }
 
-gen_pass()
-{
+gen_pass() {
     #shellcheck disable=SC2005
     tr -dc "[:graph:]" < /dev/urandom | \
 	tr -d "[=\|=][=\"=][=\'=][=\,=]" | \
@@ -19,14 +17,12 @@ gen_pass()
     echo
 }
 
-gen_uuid()
-{
+gen_uuid() {
     # https://en.wikipedia.org/wiki/Universally_unique_identifier
     # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
     # https://gist.github.com/markusfisch/6110640
     # https://github.com/lowerpower/UUID-with-bash
-    mkpart ()
-    {
+    mkpart() {
 	tr -dc A-F0-9 < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
     }
     for i in {8,4,4,4,12}; do
@@ -36,32 +32,29 @@ gen_uuid()
     printf "%s\n" "${uuid%-}"
 }
 
-hash_stdin()
-{
+hash_stdin() {
     [[ "${#}" -ne "1" ]] && \
 	echo -ne "\n\tUsage: echo/cat \"text/file to hash\" | ${FUNCNAME[0]} cipher\n\n" >&2 && \
 	return 1
     openssl dgst -"${1}"
 }
 
-transcode_stdin()
-{
+transcode_stdin() {
     [[ "${#}" -ne "2" ]] && \
 	echo -ne "\n\tUsage: echo/cat \"text/file to encode/decode\" | ${FUNCNAME[0]} (e/d) cipher\n\teg: echo 'Hello World'|transcode_stdin e blowfish\n\n" >&2 && \
 	return 1
     openssl enc -base64 -"${2}" -"${1}"
 }
 
-transcode_pgp()
-{
-    local usage="\n\t Usage: ${FUNCNAME[0]} [file(s)|file(s).pgp...] [-(-h)elp]\n\t Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
+transcode_pgp() {
+    local myusage="\n\t Usage: ${FUNCNAME[0]} [file(s)|file(s).pgp...] [-(-h)elp]\n\t Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
 
-    [[ "${#}" -lt "1" ]] && echo -ne "${usage}" >&2 && return 1
+    [[ "${#}" -lt "1" ]] && echo -ne "${myusage}" >&2 && return 1
 
     while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    -h|--help)
-		echo -ne "${usage}" >&2 ;
+		echo -ne "${myusage}" >&2 ;
 		return 1;;
 	    *)
 		if [[ -r "${1}" ]]; then
@@ -72,7 +65,7 @@ transcode_pgp()
 		    fi
 		else
 		    echo -ne "${1} is not readable!\n" >&2
-		    echo -ne "${usage}" >&2 ;
+		    echo -ne "${myusage}" >&2 ;
 		    return 1
 		fi;;
 	esac
@@ -81,8 +74,7 @@ transcode_pgp()
     done
 }
 
-rot_13()
-{
+rot_13() {
     [[ "${1}" != "-e" && "${1}" != "-d" ]] || [[ -z "${2}" ]] && \
 	echo -ne "\n\tUsage: ${FUNCNAME[0]} [-(e|d)] [argument/(s)...]\n\n" >&2 && return 1
 
@@ -128,8 +120,7 @@ rot_13()
     echo "${_out[*]}"
 }
 
-caesar_cipher()
-{
+caesar_cipher() {
     # michaeltd 2019-11-30
     # https://en.wikipedia.org/wiki/Caesar_cipher
     # E n ( x ) = ( x + n ) mod 26.
@@ -184,8 +175,7 @@ caesar_cipher()
     echo "${_out[*]}"
 }
 
-alpha2morse()
-{
+alpha2morse() {
     local -rA alpha_assoc=( \
         [A]='.-'    [B]='-...'  [C]='-.-.'  [D]='-..'    [E]='.' [F]='..-.' \
 	[G]='--.'   [H]='....'  [I]='..'    [J]='.---'   [K]='-.-' \
@@ -225,8 +215,7 @@ alpha2morse()
     done
 }
 
-rom2dec_alt()
-{
+rom2dec_alt() {
     local -ra ROM=( I V X L C D M ) DEC=( 1 5 10 50 100 500 1000 )
     while [[ -n "${*}" ]]; do
     	local NUM="${1}" RES=0 PRE=0
@@ -249,8 +238,7 @@ rom2dec_alt()
     done
 }
 
-rom2dec()
-{
+rom2dec() {
     # https://rosettacode.org/wiki/Roman_numerals/Decode#UNIX_Shell
     local -A romans=( [M]="1000" [D]="500" [C]="100" [L]="50" [X]="10" [V]="5" [I]="1" )
     while [[ -n "${1}" ]]; do
@@ -272,8 +260,7 @@ rom2dec()
     echo
 }
 
-dec2rom()
-{
+dec2rom() {
     # https://rosettacode.org/wiki/Roman_numerals/Encode#UNIX_Shell
     local values=( 1000 900 500 400 100 90 50 40 10 9 5 4 1 )
     local roman=( [1000]=M [900]=CM [500]=D [400]=CD [100]=C [90]=XC [50]=L [40]=XL [10]=X [9]=IX [5]=V [4]=IV [1]=I )

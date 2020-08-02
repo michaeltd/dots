@@ -35,9 +35,8 @@ export PAGER="$(command -v less 2>/dev/null || command -v most 2>/dev/null || ty
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
 
 # Man page wrapper
-if command -v tput > /dev/null 2>&1; then
-    man ()
-    {
+if type -P tput &>/dev/null; then
+    man() {
 	# Color man pages
 	env LESS_TERMCAP_mb="$(printf "%s" "$(tput bold)$(tput setaf 1)")" \
 	    LESS_TERMCAP_md="$(printf "%s" "$(tput bold)$(tput setaf 1)")" \
@@ -49,8 +48,7 @@ if command -v tput > /dev/null 2>&1; then
 	    "$(command -v man 2> /dev/null)" "$@"
     }
 else
-    man ()
-    {
+    man() {
 	# Colorfull manpages (works with less as a pager)
 	# https://www.tecmint.com/view-colored-man-pages-in-linux/
 	env LESS_TERMCAP_mb=$'\e[1;32m' \
@@ -90,8 +88,7 @@ export GIT_PS1_SHOWUPSTREAM=yes
 # MONGODB
 [[ -d "/opt/mongodb" ]] && export MONGODB="/opt/mongodb"
 
-checkpath()
-{
+checkpath() {
     [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
 }
 # Path with += op and each tool in it's own line for practical reasons
@@ -115,16 +112,14 @@ checkpath "${HOME}/bin"
 [[ -n "${MONGODB}" ]] && checkpath "${MONGODB}/bin"
 
 # MANPATH
-checkmpath()
-{
+checkmpath() {
     [[ "${MANPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export MANPATH+=":${1}"
 }
 checkmpath "${HOME}/.local/share/man"
 checkmpath "${HOME}/opt/share/man"
 
 # JAVA classpath
-checkcpath()
-{
+checkcpath() {
     [[ "${CLASSPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export CLASSPATH+=":${1}"
 }
 [[ -n "${JAVA_HOME}" ]] && checkcpath "${JAVA_HOME}/lib"

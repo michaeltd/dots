@@ -10,8 +10,7 @@ IFS=$'\t\n'
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
-term_music ()
-{
+term_music() {
     #shellcheck disable=SC2155
     local -r myusage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n\n"
 

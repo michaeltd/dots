@@ -1,8 +1,7 @@
 #
 # various ascii art ============================================================
 
-pukeskull()
-{
+pukeskull() {
     ##!/bin/sh
     #
     #  ┳━┓┳━┓0┏┓┓┳━┓┏━┓┓ ┳
@@ -66,8 +65,7 @@ pukeskull()
 EOF
 }
 
-dennis_ritchie()
-{
+dennis_ritchie() {
 #original artwork by https://sanderfocus.nl/portfolio/tech-heroes/
 #converted to shell by #nixers @ irc.unix.chat.
     cat << 'eof'
@@ -95,8 +93,7 @@ dennis_ritchie()
 eof
 }
 
-funky4tune()
-{
+funky4tune() {
     local -r myusage="
     Description: Funky fortune.
     Usage: ${FUNCNAME[0]} cowsay_file 'message'
@@ -112,8 +109,7 @@ funky4tune()
     { [[ -n "${2}" ]] && echo "${2}" || fortune -o; } | cowsay -f "${1:-small}" | lolcat
 }
 
-list_cow_files()
-{
+list_cow_files() {
     for i in $(cowsay -l|awk 'NR != 1 { print $0 }'); do
 	funky4tune "${i}" "Hello ${i} !" || return 1
     done
