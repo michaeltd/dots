@@ -88,8 +88,8 @@ dennis_ritchie() {
    [38;5;118m/ [38;5;20m/ [38;5;240m%[38;5;20m%%%%[38;5;240m%;,    [38;5;255m\[38;5;240m%[38;5;20m%[38;5;255ml[38;5;240m%%;// _/[38;5;20m%;,[0m [38;5;234mdmr[0m
  [38;5;20m/    [38;5;240m%[38;5;20m%%;,[0m         [38;5;255m<[38;5;20m;[38;5;240m\-=-/ /[0m
      [38;5;20m;,[0m                [38;5;240ml[0m
-         [38;5;255mUNIX is very simple, [38;5;45mIt just needs a[0m 
-         [38;5;45mGENIUS to understand its simplicity![38;5;255m[0m
+       [38;5;255mUNIX is very simple, [38;5;45mIt just needs a[0m 
+       [38;5;45mGENIUS to understand its simplicity![38;5;255m[0m
 eof
 }
 
