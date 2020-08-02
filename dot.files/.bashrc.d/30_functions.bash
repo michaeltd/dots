@@ -41,6 +41,13 @@ hello_world()
 
 # UTILS =======================================================================
 
+prunehist()
+{
+    [[ -z "${1}" ]] && \
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} expression\n\tDescription: Removes \"expression\" occurances from ~/.bash_history\n\n" >&2 && return 1
+    sed -i "/^${1}$/d" ~/.bash_history
+}
+
 top5cmds()
 {
     history | awk '{print $2}' | sort | uniq -c | sort -nr | head -n 5
