@@ -127,6 +127,20 @@ up() {
     done
 }
 
+cd() {
+    if [[ "$1" =~ ^\.\.+$ ]]; then
+	local a dir;
+	a=${#1}
+	while [ $a -ne 1 ]; do
+	    dir=${dir}"../"
+	    ((a--))
+	done
+	builtin cd $dir
+    else
+	builtin cd "$@"
+    fi
+}
+
 # SYSTEM =======================================================================
 
 if command -v emerge &>/dev/null; then
