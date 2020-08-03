@@ -150,7 +150,7 @@ if command -v emerge &>/dev/null; then
 	done
     }
 
-    list_cat() {
+    lspckgs() {
 	#shellcheck disable=SC2230
 	/bin/ls --color "/usr/portage/${1}"
     }
