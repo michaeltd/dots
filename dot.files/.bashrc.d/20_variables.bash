@@ -80,7 +80,7 @@ export GIT_PS1_SHOWUPSTREAM=yes
 # GO
 [[ -d ~/"go" ]] && export GOPATH=~/"go"
 # RUST
-[[ -d ~/"cargo" ]] && export RUST=~/".cargo"
+[[ -d ~/".cargo" ]] && export RUST=~/".cargo"
 # NODE
 [[ -d ~/".node" ]] && export NODE=~/".node"
 # DENO
