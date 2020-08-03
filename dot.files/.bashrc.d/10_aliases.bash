@@ -164,7 +164,7 @@ alias btccli="bitcoin-cli -datadir=${datadir}" \
       btcgui="bitcoin-qt -datadir=${datadir}" \
       btchex="bitcoin-tx -datadir=${datadir}" \
       btcwlt="bitcoin-wallet -datadir=${datadir}" \
-      btcdmn="bitcoind -datadir=${datadir}"
+      btcdmn="bitcoind -datadir=${datadir} -daemon -server"
 
 unset datadir
 
