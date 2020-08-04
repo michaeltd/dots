@@ -13,10 +13,10 @@ command -v rcm &>/dev/null || source ~/.bashrc.d/30_functions.bash
 # rcm 0 emacs --daemon
 
 # Xfce4 themes
-rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
+# rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 
 # XScreenSaver
-rcm 9 xscreensaver -no-splash
+# rcm 9 xscreensaver -no-splash
 
 # Add some wallpaper variety for your desktop
 rcm 9 ~/.local/bin/wallpaper_rotate.bash
@@ -35,7 +35,8 @@ fi
 if [[ -r "/etc/os-release" ]]; then 
     source /etc/os-release
     if [[ "${ID}" == "gentoo" ]]; then
-	rcm 9 conky -qd
+	:
+	# rcm 9 conky -qd
 	# rcm 9 electrum daemon start
 	# rcm 9 bitcoind -datadir=/mnt/el/.bitcoin -daemon -server
     elif [[ "${ID}" == "devuan" ]]; then

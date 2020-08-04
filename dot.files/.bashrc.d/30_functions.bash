@@ -141,6 +141,10 @@ cd() {
     fi
 }
 
+cdn(){
+    builtin cd $(printf '../%.0s' $(seq $1))
+}
+
 # SYSTEM =======================================================================
 
 if command -v emerge &>/dev/null; then
