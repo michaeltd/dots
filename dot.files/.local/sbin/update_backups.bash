@@ -78,13 +78,17 @@ update_backups() {
 	  pgp_cmd=( "gpg" "--batch" "--yes" "--quiet" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 
     compress() {
+	local job_out="${job_fn}.${1##*.}.tar.gz"
+	echo "Writing: ${job_out}"
 	#shellcheck disable=SC2046
-	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_fn}.${1##*.}.tar.gz" $(cat "${1}")
+	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_out}" $(cat "${1}")
     }
 
     encrypt() {
+	local job_out="${job_fn}.${1##*.}.tar.gz.pgp"
+	echo "Writing: ${job_out}"
 	#shellcheck disable=SC2046
-	time "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_fn}.${1##*.}.tar.gz.pgp" "--encrypt"
+	time "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_out}" "--encrypt"
     }
 
     for include in "${includes[@]}"; do
