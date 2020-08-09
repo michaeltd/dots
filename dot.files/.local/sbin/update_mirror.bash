@@ -10,8 +10,7 @@ echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 # Full path executables
 nicec=( "nice" "-n" "19" )
 
-# rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/Videos/*" )
-rsncm=( "rsync" "--recursive" "--times" "--delete" "--exclude=*/Videos/*" )
+rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/Videos/*" )
 
 elmnt="/mnt/el/Documents"
 
