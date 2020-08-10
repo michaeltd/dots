@@ -130,21 +130,21 @@ up() {
 }
 
 cd() {
-    if [[ "$1" =~ ^\.\.+$ ]]; then
+    if [[ "${1}" =~ ^\.\.+$ ]]; then
 	local a dir;
 	a=${#1}
-	while [ $a -ne 1 ]; do
-	    dir=${dir}"../"
+	while [[ "${a}" -ne 1 ]]; do
+	    dir="${dir}../"
 	    ((a--))
 	done
-	builtin cd $dir
+	builtin cd "${dir}" || return 1
     else
-	builtin cd "$@"
+	builtin cd "$@" || return 1
     fi
 }
 
 cdn(){
-    builtin cd $(printf '../%.0s' $(seq $1))
+    builtin cd "$(printf '../%.0s' "$(seq "${1}")")" || return 1
 }
 
 # SYSTEM =======================================================================

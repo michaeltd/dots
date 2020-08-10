@@ -55,7 +55,7 @@ between() {
 }
 
 calc() {
-    echo "scale=6;${*}"| bc -l
+    echo "scale=2;${*}"| bc -l
 }
 
 max() {
@@ -81,48 +81,48 @@ avg() {
 }
 
 sqrt() {
-    echo "scale=6;sqrt(${1})"| bc -l
+    echo "scale=2;sqrt(${1})"| bc -l
 }
 
 sqr() {
-    echo "scale=6;${1}^2"| bc -l
+    echo "scale=2;${1}^2"| bc -l
 }
 
 pwr() {
-    echo "scale=6;${1}^${2}"| bc -l
+    echo "scale=2;${1}^${2}"| bc -l
 }
 
 # Trigonometric functions
 # https://advantage-bash.blogspot.com/2012/12/trignometry-calculator.html
 sin() {
-    echo "scale=6;s(${1})" | bc -l
+    echo "scale=2;s(${1})" | bc -l
 }
 
 cos() {
-    echo "scale=6;c(${1})" | bc -l
+    echo "scale=2;c(${1})" | bc -l
 }
 
 tan() {
-    echo "scale=6;s(${1})/c(${1})" | bc -l
+    echo "scale=2;s(${1})/c(${1})" | bc -l
 }
 
 csc() {
-    echo "scale=6;1/s(${1})" | bc -l
+    echo "scale=2;1/s(${1})" | bc -l
 }
 
 sec() {
-    echo "scale=6;1/c(${1})" | bc -l
+    echo "scale=2;1/c(${1})" | bc -l
 }
 
 ctn() {
-    echo "scale=6;c(${1})/s(${1})" | bc -l
+    echo "scale=2;c(${1})/s(${1})" | bc -l
 }
 
 asin() {
     if (( $(echo "${1} == 1" | bc -l) )); then
 	echo "90"
     elif (( $(echo "${1} < 1" | bc -l) )); then
-	echo "scale=6;a(sqrt((1/(1-(${1}^2)))-1))" | bc -l
+	echo "scale=2;a(sqrt((1/(1-(${1}^2)))-1))" | bc -l
     elif (( $(echo "${1} > 1" | bc -l) )); then
 	echo "error"
     fi
@@ -132,24 +132,24 @@ acos() {
     if (( $(echo "${1} == 0" | bc -l) )); then
 	echo "90"
     elif (( $(echo "${1} <= 1" | bc -l) )); then
-	echo "scale=6;a(sqrt((1/(${1}^2))-1))" | bc -l
+	echo "scale=2;a(sqrt((1/(${1}^2))-1))" | bc -l
     elif (( $(echo "${1} > 1" | bc -l) )); then
 	echo "error"
     fi
 }
 
 atan() {
-    echo "scale=6;a(${1})" | bc -l
+    echo "scale=2;a(${1})" | bc -l
 }
 
 acot() {
-    echo "scale=6;a(1/${1})" | bc -l
+    echo "scale=2;a(1/${1})" | bc -l
 }
 
 asec() {
-    echo "scale=6;a(sqrt((${1}^2)-1))" | bc -l
+    echo "scale=2;a(sqrt((${1}^2)-1))" | bc -l
 }
 
 acsc() {
-    echo "scale=6;a(1/(sqrt(${1}^2)-1))" | bc -l
+    echo "scale=2;a(1/(sqrt(${1}^2)-1))" | bc -l
 }

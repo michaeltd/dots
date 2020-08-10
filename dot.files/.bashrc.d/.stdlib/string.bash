@@ -43,17 +43,14 @@ split() {
 }
 
 alphabetic_only() {
-    # echo -ne "${@//[![:alpha:]]}\n"
     printf "%s\n" "${*//[![:alpha:]]}"
 }
 
 alphanumeric_only() {
-    # echo -ne "${@//[![:alnum:]]}\n"
     printf "%s\n" "${*//[![:alnum:]]}"
 }
 
 digits_only() {
-    # echo -ne "${@//[![:digit:]]}\n"
     printf "%s\n" "${*//[![:digit:]]}"
 }
 
