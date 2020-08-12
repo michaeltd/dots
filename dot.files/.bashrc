@@ -24,6 +24,3 @@ gps="/usr/share/git/git-prompt.sh"
 [[ -r "${gps}" ]] && source "${gps}"
 unset gps
 
-# bcnf="${HOME}/git/utils/bash-insulter/src/bash.command-not-found"
-# [[ -r "${bcnf}" ]] && source "${bcnf}"
-# unset bcnf
