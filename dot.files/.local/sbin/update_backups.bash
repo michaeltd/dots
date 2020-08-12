@@ -74,8 +74,8 @@ update_backups() {
     [[ -d "${backup_to}" ]] || { echo -ne "${backup_to} is not a directory.\n" >&2; return 1; }
 
     local -ra nice_cmd=( "nice" "-n" "${niceness}" ) \
-	  tar_cmd=( "tar" "--verbose" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
-	  pgp_cmd=( "gpg" "--batch" "--yes" "--verbose" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
+	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
+	  pgp_cmd=( "gpg" "--batch" "--yes" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 
     compress() {
 	local job_out="${job_fn}.${1##*.}.tar.gz"
