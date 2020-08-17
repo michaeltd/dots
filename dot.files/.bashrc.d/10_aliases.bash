@@ -160,11 +160,11 @@ alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-
 # Bitcoin
 datadir="/mnt/el/.bitcoin"
 #shellcheck disable=SC2139
-alias btccli="bitcoin-cli -datadir=${datadir}" \
-      btcgui="bitcoin-qt -datadir=${datadir}" \
-      btchex="bitcoin-tx -datadir=${datadir}" \
-      btcwlt="bitcoin-wallet -datadir=${datadir}" \
-      btcdmn="bitcoind -datadir=${datadir}"
+alias btccli="${HOME}/git/scrap/bitcoin/src/bitcoin-cli -datadir=${datadir}" \
+      btcgui="${HOME}/git/scrap/bitcoin/src/qt/bitcoin-qt -datadir=${datadir}" \
+      btchex="${HOME}/git/scrap/bitcoin/src/bitcoin-tx -datadir=${datadir}" \
+      btcwlt="${HOME}/git/scrap/bitcoin/src/bitcoin-wallet -datadir=${datadir}" \
+      btcdmn="${HOME}/git/scrap/bitcoin/src/bitcoind -datadir=${datadir}"
 
 unset datadir
 
