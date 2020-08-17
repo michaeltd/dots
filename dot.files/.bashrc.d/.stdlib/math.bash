@@ -67,17 +67,16 @@ min() {
 }
 
 avg() {
-    local i=0 sum=0 usage="\n\tUsage: ${FUNCNAME[0]} #1 #2 #3...\n\n"
-    die() { echo -ne "${usage}" >&2; return 1; }
+    local i=0 sum=0 myusage="\n\tUsage: ${FUNCNAME[0]} #1 #2 #3...\n\n"
+    die() { echo -ne "${myusage}" >&2; return 1; }
     [[ -z "${*}" ]] && { die; return $?; }
     while [[ -n "${*}" ]]; do
 	is_numeric "${1}" || { die; return $?; }
 	(( i++ ))
-	# (( sum += $1 ))
 	sum="$(calc "${sum} + ${1}")"
 	shift
     done
-    printf "%f\n" "$(calc "${sum} / ${i}")"
+    printf "%.2f\n" "$(calc "${sum} / ${i}")"
 }
 
 sqrt() {
