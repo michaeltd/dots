@@ -64,6 +64,7 @@ for_window [class="osgViewer"] floating enable
 for_window [class="Bitcoin-Qt"] floating enable
 for_window [class="Clamtk"] floating enable
 for_window [class="Gentoo"] floating enable
+for_window [class="monero-core"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
