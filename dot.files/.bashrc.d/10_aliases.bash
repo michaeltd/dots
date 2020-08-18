@@ -173,3 +173,4 @@ alias btc_info="btccli -getinfo"
 alias btc_winf="btcwlt -wallet=michaeltd info"
 
 alias monero_daemon="${HOME}/.local/monero-gui-v0.16.0.3/monerod --detach --data-dir /mnt/data/.monero --check-updates disabled --max-concurrency 1"
+alias monero_gui="${HOME}/.local/monero-gui-v0.16.0.3/monero-wallet-gui"
