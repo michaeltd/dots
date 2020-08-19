@@ -68,7 +68,8 @@ lcdfe() {
 	Usage: ${FUNCNAME[0]} directory expression
     	Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
 	          ${FUNCNAME[0]} . *.cpp
-		  ${FUNCNAME[0]} ${HOME} .*rc\n\n"
+		  ${FUNCNAME[0]} ${HOME} .*rc\n\n" >&2
+	return 1
     fi
 }
 
