@@ -60,9 +60,16 @@ is_executable() {
 }
 
 lcdfe() {
-    # Line Count Directory ($1), For file Extension (${2}).
-    # eg: lcdfe /my/awesome/project/ \*.html, lcdfe . \*.cpp, lcdfe ${HOME} \*.rc
-    find "${1}" -iname "${2}" -exec wc -l {} +
+    if [[ -d "${1}" && -n "${2}" ]]; then
+	find "${1}" -iname "${2}" -exec wc -l {} +
+    else
+	echo -ne "
+	Description: Line Count Directory (${1}), For file Extension (${2}).
+	Usage: ${FUNCNAME[0]} directory expression
+    	Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
+	          ${FUNCNAME[0]} . *.cpp
+		  ${FUNCNAME[0]} ${HOME} .*rc\n\n"
+    fi
 }
 
 srwpi() {

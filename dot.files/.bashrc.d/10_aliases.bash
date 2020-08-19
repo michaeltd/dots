@@ -173,5 +173,5 @@ alias btc_info="btccli -getinfo"
 alias btc_winf="btcwlt -wallet=michaeltd info"
 
 #shellcheck disable=SC2139
-alias monero_daemon="${HOME}/.local/monero-gui-v0.16.0.3/monerod" \
-      monero_gui="${HOME}/.local/monero-gui-v0.16.0.3/monero-wallet-gui"
+alias monero_daemon="nice -n 19 ${HOME}/.local/monero-gui-v0.16.0.3/monerod --data-dir /mnt/data/.monero" \
+      monero_gui="nice -n 19 ${HOME}/.local/monero-gui-v0.16.0.3/monero-wallet-gui"
