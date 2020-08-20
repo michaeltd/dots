@@ -158,20 +158,23 @@ alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ign
 alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 
 # Bitcoin
-datadir="/mnt/el/.bitcoin"
+declare datadir="/mnt/el/.bitcoin" btcdir="${HOME}/git/scrap/bitcoin/src"
 #shellcheck disable=SC2139
-alias btccli="${HOME}/git/scrap/bitcoin/src/bitcoin-cli -datadir=${datadir}" \
-      btcgui="${HOME}/git/scrap/bitcoin/src/qt/bitcoin-qt -datadir=${datadir}" \
-      btchex="${HOME}/git/scrap/bitcoin/src/bitcoin-tx -datadir=${datadir}" \
-      btcwlt="${HOME}/git/scrap/bitcoin/src/bitcoin-wallet -datadir=${datadir}" \
-      btcdmn="${HOME}/git/scrap/bitcoin/src/bitcoind -datadir=${datadir}"
+alias btccli="${btcdir}/bitcoin-cli -datadir=${datadir}" \
+      btcgui="${btcdir}/qt/bitcoin-qt -datadir=${datadir}" \
+      btchex="${btcdir}/bitcoin-tx -datadir=${datadir}" \
+      btcwlt="${btcdir}/bitcoin-wallet -datadir=${datadir}" \
+      btcdmn="${btcdir}/bitcoind -datadir=${datadir}"
 
-unset datadir
+unset datadir btcdir
 
 alias btc_commands="btccli help"
 alias btc_info="btccli -getinfo"
 alias btc_winf="btcwlt -wallet=michaeltd info"
 
+declare monerodat="/mnt/data/.monero" monerodir="${HOME}/.local/monero-gui-v0.16.0.3"
 #shellcheck disable=SC2139
-alias monero_daemon="nice -n 19 ${HOME}/.local/monero-gui-v0.16.0.3/monerod --data-dir /mnt/data/.monero" \
-      monero_gui="nice -n 19 ${HOME}/.local/monero-gui-v0.16.0.3/monero-wallet-gui"
+alias monero_daemon="nice -n 9 ${monerodir}/monerod --data-dir ${monerodat} --check-updates disabled --max-concurrency 1" \
+      monero_gui="nice -n 9 ${monerodir}/monero-wallet-gui"
+
+unset monerodat monerodir
