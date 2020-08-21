@@ -28,7 +28,7 @@ wallpaper_rotate() {
     ${green}${sbn}${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
     ${green}${sbn}${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
     ${green}${sbn}${reset} ${magenta}delay${reset} ${yellow}240${reset} - set interval (seconds) \n \
-    ${green}${sbn}${reset} ${magenta}showimg${reset} [${yellow}3${reset}] - display previous image # \n \
+    ${green}${sbn}${reset} ${magenta}showimg${reset} [${yellow}#${reset}] - display previous image #num (int) \n \
     ${green}${sbn}${reset} ${magenta}help${reset} - this message\n\n")
 
     #shellcheck disable=SC2034,SC2155
@@ -46,12 +46,12 @@ wallpaper_rotate() {
     if (( "${BASH_VERSINFO[0]}" < 4 )); then
 	#shellcheck disable=SC2154
 	echo -ne "${red}Error:${reset} For this to work you'll need bash major version no less than 4.\n" >&2
-	exit 1
+	return 1
     fi
 
     # Find a setter
     for (( x = 0; x < "${#bgsrs[@]}"; x++ )); do
-	if [[ -n $(type -P "${!bgsrs[x]:0:1}" 2> /dev/null) ]]; then
+	if type -P "${!bgsrs[x]:0:1}" &> /dev/null; then
 	    bgsr="${x}"
 	    break # Break on first match.
 	fi
@@ -61,7 +61,7 @@ wallpaper_rotate() {
     if [[ -z "${bgsr}" ]]; then
 	echo -ne "${wpusage[*]}\n"
 	echo -ne "\n\n ${red}Error:${reset} No valid wallpaper setter found. Install \"${bold}feh${reset}\" and try again.\n" >&2
-	exit 1
+	return 1
     fi
 
     # If there's no readable settings file, write it...
@@ -77,51 +77,72 @@ wallpaper_rotate() {
 	date -u +%y%m%d-%H%M%S
     }
 
+    add() {
+	while [[ -n "${*}" ]]; do
+	    if [[ -d "${1}" ]]; then
+		DIRS+=( "${1}" )
+	    else
+		echo -ne "${yellow}Warning:${reset} \"${bold}${1}${reset}\" is not a directory.\n" >&2 && return 1
+	    fi
+	    shift
+	done
+	echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
+    }
+    
+    rem(){
+	while [[ -n "${*}" ]]; do
+	    for (( i = 0; i < "${#dirs[@]}"; i++ )); do
+		if [[ "${dirs[i]}" == "${1}" ]]; then
+		    unset 'dirs[i]'
+		fi
+	    done
+	    shift
+	done
+	echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
+    }
+
+    delay() {
+    	wait=${1}
+	if [[ "${wait}" =~ ^[0-9]+$ ]]; then
+	    echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
+	else
+	    echo -ne "${yellow}Warning:${reset} \"${bold}${wait}${reset}\" is not a valid time construct.\nProvide an integer as interval in seconds\n" >&2
+	    return 1
+	fi
+    }
+
+    showimg() {
+	tail -n "${1:-1}" "${wplg}"|head -n 1|awk '{print $NF}'
+    }
+
+    showlog() {
+	if [[ -n "${PAGER}" ]]; then
+	    "${PAGER}" "${wplg}"
+	else
+	    echo -ne "${yellow}Warning:${reset} Set a valid \${PAGER} first.\n" >&2
+	    return 1
+	fi
+    }
+
+    showvars() {
+	if [[ -n "${PAGER}" ]]; then
+	    "${PAGER}" "${wprc}"
+	else
+	    echo -ne "${yellow}Warning:${reset} Set a valid \${PAGER} first.\n" >&2
+	    return 1
+	fi
+    }
+
+    trimlog() {
+	local -r tempdate="$(date +%y%m%d)"
+	sed -i "/^${tempdate}/!d" "${wplg}"
+    }
+
     # If options, proccess, else rotate things
     if [[ -n "${*}" ]]; then
 	case "${1}" in
-	    "add")
-		shift
-		while [[ -n "${*}" ]]; do
-		    if [[ -d "${1}" ]]; then
-			DIRS+=( "${1}" )
-		    else
-			echo -ne "${yellow}Warning:${reset} \"${bold}${1}${reset}\" is not a directory.\n" >&2
-		    fi
-		    shift
-		done
-		echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}";;
-	    "rem")
-		shift
-		while [[ -n "${*}" ]]; do
-		    for (( i = 0; i < "${#dirs[@]}"; i++ )); do
-			if [[ "${dirs[i]}" == "${1}" ]]; then
-			    unset 'dirs[i]'
-			fi
-		    done
-		    shift
-		done
-		echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}";;
-	    "delay")
-		shift
-		wait=${1}
-		if [[ "${wait}" =~ ^[0-9]+$ ]]; then
-		    echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
-		else
-		    echo -ne "${yellow}Warning:${reset} \"${bold}${wait}${reset}\" is not a valid time construct.\nProvide an integer as interval in seconds\n" >&2
-		fi ;;
-	    "showimg")
-		shift
-		tail -n "${1:-1}" "${wplg}"|head -n 1|awk '{print $NF}';;
-	    "showlog")
-		shift
-		"${PAGER}" "${wplg}";;
-	    "trimlog")
-		shift
-		local -r tempdate="$(date +%y%m%d)"
-		sed -i "/^${tempdate}/!d" "${wplg}";;
-	    *)
-		echo -ne "${wpusage[*]}";;
+	    "add"|"rem"|"delay"|"showimg"|"showlog"|"showvars"|"trimlog") "${@}";;
+	    *) echo -ne "${wpusage[*]}" >&2; return 1;;
 	esac
     else
 	while :; do
