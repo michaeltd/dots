@@ -125,12 +125,10 @@ wallpaper_rotate() {
     }
 
     showvars() {
-	if [[ -n "${PAGER}" ]]; then
-	    "${PAGER}" "${wprc}"
-	else
-	    echo -ne "${yellow}Warning:${reset} Set a valid \${PAGER} first.\n" >&2
-	    return 1
-	fi
+	echo -ne "\tRotate delay is: ${wait}s.\n\tImage directories are:\n"
+	for d in "${dirs[@]}"; do
+	    echo -ne "\t\t${d}\n"
+	done
     }
 
     trimlog() {
