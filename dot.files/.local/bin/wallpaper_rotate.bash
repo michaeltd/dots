@@ -27,7 +27,7 @@ wallpaper_rotate() {
     Options may be: \n \
     ${green}${sbn}${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
     ${green}${sbn}${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
-    ${green}${sbn}${reset} ${magenta}delay${reset} ${yellow}240${reset} - set interval (seconds) \n \
+    ${green}${sbn}${reset} ${magenta}delay${reset} ${yellow}#${reset} - set interval (min) \n \
     ${green}${sbn}${reset} ${magenta}showimg${reset} [${yellow}#${reset}] - display previous image #num (int) \n \
     ${green}${sbn}${reset} ${magenta}help${reset} - this message\n\n")
 
@@ -103,10 +103,10 @@ wallpaper_rotate() {
 
     delay() {
     	wait=${1}
-	if [[ "${wait}" =~ ^[0-9]+$ ]]; then
+	if [[ "${wait}" =~ ^[0-9]+$ && "${wait}" -gt "0" ]]; then
 	    echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
 	else
-	    echo -ne "${yellow}Warning:${reset} \"${bold}${wait}${reset}\" is not a valid time construct.\nProvide an integer as interval in seconds\n" >&2
+	    echo -ne "${yellow}Warning:${reset} \"${bold}${wait}${reset}\" is not a valid time construct.\nProvide an integer as interval in minutes\n" >&2
 	    return 1
 	fi
     }
@@ -125,7 +125,7 @@ wallpaper_rotate() {
     }
 
     showvars() {
-	echo -ne "\tRotate delay is: ${wait}s.\n\tImage directories are:\n"
+	echo -ne "\tRotate delay is: ${wait}m.\n\tImage directories are:\n"
 	for d in "${dirs[@]}"; do
 	    echo -ne "\t\t${d}\n"
 	done
@@ -171,7 +171,7 @@ wallpaper_rotate() {
 
 	    echo "$(timestamp) ${!bgsrs[bgsr]} ${wp}" >> "${wplg}"
 
-	    sleep "${wait}"
+	    sleep "${wait}m"
 	done
     fi
 }
