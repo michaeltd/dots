@@ -47,15 +47,14 @@ transcode_stdin() {
 }
 
 transcode_pgp() {
-    local myusage="\n\t Usage: ${FUNCNAME[0]} [file(s)|file(s).pgp...] [-(-h)elp]\n\t Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
+    local myusage="\n\t Usage: ${FUNCNAME[0]} file(s)|file(s).pgp... [-(-h)elp]\n\t Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
 
     [[ "${#}" -lt "1" ]] && echo -ne "${myusage}" >&2 && return 1
 
     while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    -h|--help)
-		echo -ne "${myusage}" >&2 ;
-		return 1;;
+		echo -ne "${myusage}" >&2;;
 	    *)
 		if [[ -r "${1}" ]]; then
 		    if [[ "$(file -b "${1}")" =~ ^PGP ]]; then
@@ -186,9 +185,11 @@ alpha2morse() {
 	[5]='.....' [6]='-....' [7]='--...' [8]='----..' [9]='----.' )
 
     if [[ "${#}" -lt "1" ]]; then
-	echo -ne "\n\t Usage: ${FUNCNAME[0]} arguments...
-\t ${FUNCNAME[0]} is an IMC transmitter. 
-\t It'll transmit your messages to International Morse Code.\n\n" >&2
+	echo -ne "
+	Usage: ${FUNCNAME[0]} arguments...
+	Example: ${FUNCNAME[0]} Hello World
+	Description: ${FUNCNAME[0]} is an IMC transmitter. 
+		     It'll transmit your messages to International Morse Code.\n\n" >&2
 	return 1
     fi
 
