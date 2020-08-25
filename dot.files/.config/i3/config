@@ -65,6 +65,7 @@ for_window [class="Bitcoin-Qt"] floating enable
 for_window [class="Clamtk"] floating enable
 for_window [class="Gentoo"] floating enable
 for_window [class="monero-core"] floating enable
+for_window [class="libreoffice-startcenter"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
@@ -143,7 +144,7 @@ bindsym $mod+F2 workspace $ws2; exec firefox
 bindsym $mod+F3 workspace $ws3; exec emacs
 bindsym $mod+F4 workspace $ws4; exec i3-sensible-terminal -e mc
 bindsym $mod+F5 workspace $ws5; exec vlc
-bindsym $mod+F6 workspace $ws6; exec ooffice
+bindsym $mod+F6 workspace $ws6; exec ooffice||libreoffice
 bindsym $mod+F7 workspace $ws7; exec hexchat
 bindsym $mod+F8 workspace $ws8; exec gimp
 bindsym $mod+F9 workspace $ws9; exec pavucontrol
@@ -154,7 +155,6 @@ bindsym $mod+Shift+F2 workspace $ws2; exec seamonkey
 bindsym $mod+Shift+F3 workspace $ws3; exec codelite
 bindsym $mod+Shift+F4 workspace $ws4; exec gentoo
 bindsym $mod+Shift+F5 workspace $ws5; exec audacious
-bindsym $mod+Shift+F6 workspace $ws6; exec libreoffice
 bindsym $mod+Shift+F7 workspace $ws7; exec i3-sensible-terminal
 bindsym $mod+Shift+F8 workspace $ws8; exec ristretto
 bindsym $mod+Shift+F9 workspace $ws9; exec xscreensaver-demo
