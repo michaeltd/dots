@@ -12,13 +12,13 @@ nicec=( "nice" "-n" "19" )
 
 rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/Videos/*" )
 
-elmnt="/mnt/el/Documents"
-
 dtmnt="/mnt/data/Documents"
 
-if [[ -d "${elmnt}" && -d "${dtmnt}" ]]; then
-    time "${nicec[@]}" "${rsncm[@]}" /mnt/el/* /mnt/data/
+elmnt="/mnt/el/Documents"
+
+if [[ -d "${dtmnt}" && -d "${elmnt}" ]]; then
+    time "${nicec[@]}" "${rsncm[@]}" "${dtmnt}"/* "${elmnt}"
 else
-    echo -ne "${elmnt} or ${dtmnt} not found\n" >&2
+    echo -ne "${dtmnt} or ${elmnt} not found\n" >&2
     exit 1
 fi

@@ -42,17 +42,15 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 
 update_backups() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-    local definitions="/home/paperjam/.cronjobbkps" backup_to="/mnt/el/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
-    local usage="
+    local definitions="/home/paperjam/.cronjobbkps" backup_to="/mnt/data/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
+    local myusage="
+    Usage: ${BASH_SOURCE[0]##*/} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug]
 
- Usage: ${BASH_SOURCE[0]##*/} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug]
-
- -(-f)rom /path/to/defs       where to read definitions from.
- -(-t)o /path/to/backups      where to save backups to.
- -(-k)ey some@key.org 	      key to encrypt to.
- -(-n)iceness {0..19} 	      niceness to run with.
- -(-d)ebug		      display lots of words.
-
+    -(-f)rom /path/to/defs            where to read definitions from.
+    -(-t)o /path/to/backups           where to save backups to.
+    -(-k)ey some@key.org 	      key to encrypt to.
+    -(-n)iceness {0..19} 	      niceness to run with.
+    -(-d)ebug		      	      display lots of words.
 "
 
     while [[ -n "${*}" ]]; do
@@ -62,7 +60,7 @@ update_backups() {
 	    -k|--key) shift; recipient="${1}";;
 	    -n|--niceness) shift; [[ "${1}" =~ ^[-|+]?[0-9]+?$ ]] && (( $1 >= 0 && $1 <= 19 )) && niceness="${1}";;
 	    -d|--debug) set -x;;
-	    *) echo -ne "${usage}" >&2; return 1;;
+	    *) echo -ne "${myusage}" >&2; return 1;;
 	esac
 	shift
     done

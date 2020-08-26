@@ -16,24 +16,23 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 
 update_cleanup() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-    local backup_dir="/mnt/el/Documents/BKP/LINUX" days2keep="3" remove_backups="1" nothing2do="1"
-    local usage="
+    local backup_dir="/mnt/data/Documents/BKP/LINUX" days2keep="3" remove_backups="1" nothing2do="1"
+    local myusage="
+    Usage: ${BASH_SOURCE[0]##*/} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
 
- Usage: ${BASH_SOURCE[0]##*/} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
-
- -(-b)ackups 		      backups location, eg: /backups/directory/
- -(-k)eep # 		      backups to keep in days, eg:7
- -(-s)simulate 		      show what would be done.
- -(-d)ebug		      display lots of letters.
-
+    -(-b)ackups 	      backups location, eg: /backups/directory/
+    -(-k)eep # 		      backups to keep in days, eg:7
+    -(-s)simulate 	      show what would be done.
+    -(-d)ebug		      display lots of letters.
 "
+
     while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    -b|--backups) shift; local backup_dir="${1}";;
 	    -k|--keep) shift; local days2keep="${1}";;
 	    -s|--simulate) local remove_backups="0";;
 	    -d|--debug) set -x;;
-	    *) echo -ne "${usage}" >&2; return 1;;
+	    *) echo -ne "${myusage}" >&2; return 1;;
 	esac
 	shift
     done
