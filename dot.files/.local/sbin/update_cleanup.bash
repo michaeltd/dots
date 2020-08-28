@@ -60,7 +60,7 @@ update_cleanup() {
 	local -a name_parts=( $(split "${fns[y]}" '.') )
 	#shellcheck disable=SC2206
 	local -a same_job_backups=( ${backup_dir}/${HOSTNAME}.??????.????.??????????.${name_parts[4]}.tar.gz* )
-	if [[ "$(epoch_dd "$(max "${dts[@]}")" "${dts[y]}")" -ge "${days2keep}" && "${#same_job_backups[@]}" -ge "${days2keep}" ]]; then
+	if [[ "$(epoch_dd "$(max "${dts[@]}")" "${dts[y]}")" -ge "${days2keep}" && "${#same_job_backups[@]}" -gt "${days2keep}" ]]; then
 	    nothing2do="0"
 	    if [[ "$(last_dom "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
 	    	#shellcheck disable=SC2154
