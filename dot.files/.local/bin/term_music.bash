@@ -41,7 +41,7 @@ term_music() {
 	    return 1
 	fi
     else
-	local -ar dir_list=( "${!genres[$(shuf -n 1 -i 0-"$(( ${#genres[*]} - 1 ))")]}" )
+	local -ar dir_list=( "${!genres[$(shuf -n 1 -i 0-"$((${#genres[*]}-1))")]}" )
     fi
 
     # is VLC running?
