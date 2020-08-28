@@ -12,18 +12,19 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 
 term_music() {
     #shellcheck disable=SC2155
-    local -r myusage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n\n"
+    local -r myusage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n\n" uri="file:///mnt/data/Documents/Music"
 
     #shellcheck disable=SC2034
-    local -ar pop=( "file:///mnt/data/Documents/Music/all_saints" "file:///mnt/data/Documents/Music/avicii" "file:///mnt/data/Documents/Music/black_eyed_pees" "file:///mnt/data/Documents/Music/bruno_mars" "file:///mnt/data/Documents/Music/daft_punk" "file:///mnt/data/Documents/Music/gorillaz" ) \
-	  rock=( "file:///mnt/data/Documents/Music/bad_co" "file:///mnt/data/Documents/Music/deep_purple" "file:///mnt/data/Documents/Music/doobie_brothers" "file:///mnt/data/Documents/Music/frank_zappa" "file:///mnt/data/Documents/Music/janis_joplin" "file:///mnt/data/Documents/Music/jethro_tull" "file:///mnt/data/Documents/Music/joe_cocker" "file:///mnt/data/Documents/Music/led_zeppelin" "file:///mnt/data/Documents/Music/lenny_kravitz" "file:///mnt/data/Documents/Music/the_who" "file:///mnt/data/Documents/Music/ten_years_after" "file:///mnt/data/Documents/Music/sting" "file:///mnt/data/Documents/Music/santana" ) \
-	  reggae=( "file:///mnt/data/Documents/Music/ub40" "file:///mnt/data/Documents/Music/matisyahu" "file:///mnt/data/Documents/Music/bob_marley" ) \
-	  rnb=( "file:///mnt/data/Documents/Music/amy_winehouse" "file:///mnt/data/Documents/Music/blues_brothers" ) \
-	  jazz=( "file:///mnt/data/Documents/Music/bill_evans" "file:///mnt/data/Documents/Music/cannonball_adderley" "file:///mnt/data/Documents/Music/charlie_parker" "file:///mnt/data/Documents/Music/chick_corea" "file:///mnt/data/Documents/Music/eddie_gomez" "file:///mnt/data/Documents/Music/getz_meets_mulligan" "file:///mnt/data/Documents/Music/herbie_hancock" "file:///mnt/data/Documents/Music/john_coltrane" "file:///mnt/data/Documents/Music/miles_davis" "file:///mnt/data/Documents/Music/ron_carter" "file:///mnt/data/Documents/Music/sarah_vaughan" "file:///mnt/data/Documents/Music/stanley_clarke/" "file:///mnt/data/Documents/Music/marcus_miller/" "file:///mnt/data/Documents/Music/jaco_pastorius/" "file:///mnt/data/Documents/Music/esperanza_spalding/" "file:///mnt/data/Documents/Music/mark_king/Level-Best" "file:///mnt/data/Documents/Music/john_patitucci" "file:///mnt/data/Documents/Music/victor_wooten" ) \
-	  latin=( "file:///mnt/data/Documents/Music/irakere" "file:///mnt/data/Documents/Music/mambo_kings" "file:///mnt/data/Documents/Music/paco_de_lucia" "file:///mnt/data/Documents/Music/tito_puente" ) \
-	  funk=( "file:///mnt/data/Documents/Music/average_white_band" "file:///mnt/data/Documents/Music/blood_sweat_and_tears" "file:///mnt/data/Documents/Music/jamiroquai" "file:///mnt/data/Documents/Music/tower_of_power" "file:///mnt/data/Documents/Music/chaka_khan" ) \
-	  classical=( "file:///mnt/data/Documents/Music/carl_orff" "file:///mnt/data/Documents/Music/nikos_skalkotas" "file:///mnt/data/Documents/Music/vaggelis" ) \
-	  ost=( "file:///mnt/data/Documents/Music/ost/bf" "file:///mnt/data/Documents/Music/ost/cod" "file:///mnt/data/Documents/Music/ost/ed" "file:///mnt/data/Documents/Music/ost/halo" "file:///mnt/data/Documents/Music/ost/titanfall" )
+    local -ar pop=( "${uri}/all_saints" "${uri}/avicii" "${uri}/black_eyed_pees" "${uri}/bruno_mars" "${uri}/daft_punk" "${uri}/gorillaz" ) \
+	  disco=( "${uri}/avicii" "${uri}/black_eyed_pees" "${uri}/bruno_mars" "${uri}/daft_punk" "${uri}/gorillaz" ) \
+	  rock=( "${uri}/bad_co" "${uri}/deep_purple" "${uri}/doobie_brothers" "${uri}/frank_zappa" "${uri}/janis_joplin" "${uri}/jethro_tull" "${uri}/joe_cocker" "${uri}/led_zeppelin" "${uri}/lenny_kravitz" "${uri}/the_who" "${uri}/ten_years_after" "${uri}/sting" "${uri}/santana" ) \
+	  reggae=( "${uri}/ub40" "${uri}/matisyahu" "${uri}/bob_marley" ) \
+	  rnb=( "${uri}/amy_winehouse" "${uri}/blues_brothers" ) \
+	  jazz=( "${uri}/bill_evans" "${uri}/cannonball_adderley" "${uri}/charlie_parker" "${uri}/chick_corea" "${uri}/eddie_gomez" "${uri}/getz_meets_mulligan" "${uri}/herbie_hancock" "${uri}/john_coltrane" "${uri}/miles_davis" "${uri}/ron_carter" "${uri}/sarah_vaughan" "${uri}/stanley_clarke/" "${uri}/marcus_miller/" "${uri}/jaco_pastorius/" "${uri}/esperanza_spalding/" "${uri}/mark_king/Level-Best" "${uri}/john_patitucci" "${uri}/victor_wooten" ) \
+	  latin=( "${uri}/irakere" "${uri}/mambo_kings" "${uri}/paco_de_lucia" "${uri}/tito_puente" ) \
+	  funk=( "${uri}/average_white_band" "${uri}/blood_sweat_and_tears" "${uri}/jamiroquai" "${uri}/tower_of_power" "${uri}/chaka_khan" ) \
+	  classical=( "${uri}/carl_orff" "${uri}/nikos_skalkotas" "${uri}/vaggelis" ) \
+	  ost=( "${uri}/ost/bf" "${uri}/ost/cod" "${uri}/ost/ed" "${uri}/ost/halo" "${uri}/ost/titanfall" )
 
     local -ar genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] ost[@] )
 
