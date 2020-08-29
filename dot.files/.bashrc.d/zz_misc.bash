@@ -27,13 +27,12 @@ shopt -s histappend
 export PROMPT_COMMAND='history -a'
 
 # Load helper functions
-sl="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.stdlib"
+stdlib="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.stdlib"
 # Load files from ~/.bashrc.d/.stdlib
-if [[ -d "${sl}" ]]; then
-    for file in "${sl}"/*.bash; do
+if [[ -d "${stdlib}" ]]; then
+    for file in "${stdlib}"/*.bash; do
 	#shellcheck disable=SC1090
 	source "${file}"
     done
 fi
-
-unset sl
+unset stdlib
