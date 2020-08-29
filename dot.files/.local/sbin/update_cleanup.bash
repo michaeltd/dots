@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash --norc --noprofile
 #
 # This will work for any directory containing ${HOSTNAME}.*.tar.gz* backups (eg: tuxbox.name.tar.gz, tuxbox.name.tar.gz.pgp)
 # that have an epoch date field in their filename (eg: tuxbox.190326.1553569476.enc.tar.gz.pgp).

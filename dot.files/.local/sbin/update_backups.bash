@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash --norc --noprofile
 #
 # Configure backups with ~/.backup_include.(encrypt|compress).job_name definition files
 

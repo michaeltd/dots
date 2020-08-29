@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash --norc --noprofile
 #
 # 1) Set a strict /etc/hosts file
 # 2) Make sure you have one

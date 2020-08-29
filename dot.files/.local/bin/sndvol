@@ -7,6 +7,8 @@
 set -eo pipefail
 IFS=$'\t\n'
 
+readonly sbn="${BASH_SOURCE[0]##*/}"
+
 sndvol() {
 
     # Timeout settings for Xdialog, Xmessage
@@ -20,10 +22,9 @@ sndvol() {
 	    DIALOG_EXTRA=3 DIALOG_ITEM_HELP=4 DIALOG_ESC=255 \
 	    SIG_NONE=0 SIG_HUP=1 SIG_INT=2 SIG_QUIT=3 SIG_KILL=9 SIG_TERM=15
 
-    local -r script_name="${BASH_SOURCE[0]##*/}"
 
     # Mutexify to avoid process spam
-    # local -ar pids=( $(pgrep -U "${USER}" -f "${script_name}") )
+    # local -ar pids=( $(pgrep -U "${USER}" -f "${sbn}") )
     # [[ "${#pids[*]}" -gt "1" ]] && return 1
 
     # Pick a default available UI ...
@@ -38,17 +39,17 @@ sndvol() {
 
     display_feedback() {
 	if [[ -n "${DIALOG}" ]]; then
-            "${DIALOG}" --title "${script_name}:" --infobox "${*}" "${G[@]}"
+            "${DIALOG}" --title "${sbn}:" --infobox "${*}" "${G[@]}"
 	elif [[ -x "$(type -P xmessage)" ]]; then
             xmessage -nearmouse -timeout "${XMTO}" "${*}"
 	elif [[ -x "$(type -P notify-send)" ]]; then
-            notify-send "${script_name}:" "${*}"
+            notify-send "${sbn}:" "${*}"
 	fi
-	echo "${script_name}: ${*}" >&2
+	echo "${sbn}: ${*}" >&2
     }
 
     usage() {
-	display_feedback "Usage: $script_name [+]|[-]|[0-100]|report|halp"
+	display_feedback "Usage: ${sbn} [+]|[-]|[0-100]|report|halp"
 	return 1
     }
 
@@ -66,4 +67,4 @@ sndvol() {
     display_feedback "Master: ${VOL}"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${BASH_SOURCE[0]##*/}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn}" "${@}"
