@@ -13,7 +13,7 @@
 # /path/to/defs/.backup_include.compress|encrypt.job_name
 # '            '               '                '        '
 #       1              2                3           4
-# 1) This part will be given by your [-(-f)rom] switch (default /home/username)
+# 1) This part will be given by your [-(-f)rom] switch (default "${HOME}")
 #    The script will use it as a starting point to search for all .backup_* related files.
 # 2) .backup_include.* will be the search term for the definitions array.
 # 3) This part should be aither *.encrypt.* or *.compress.*.
@@ -42,7 +42,7 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 
 update_backups() {
     echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-    local definitions="/home/paperjam/.cronjobbkps" backup_to="/mnt/data/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
+    local definitions="${HOME}" backup_to="/mnt/data/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
     local myusage="
     Usage: ${BASH_SOURCE[0]##*/} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug]
 
@@ -68,7 +68,7 @@ update_backups() {
     local -ra includes=( "${definitions}"/.backup_include.* )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date -u +%y%m%d.%H%M.%s)"
 
-    [[ -e "${includes[0]}" ]] || { echo -ne "No job file definitions found.\nNothing left to do!\n" >&2; return 1; }
+    [[ -r "${includes[0]}" ]] || { echo -ne "No readable job file definitions found.\nNothing left to do!\n" >&2; return 1; }
     [[ -d "${backup_to}" ]] || { echo -ne "${backup_to} is not a directory.\n" >&2; return 1; }
 
     local -ra nice_cmd=( "nice" "-n" "${niceness}" ) \
