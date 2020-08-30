@@ -1,7 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash --norc --noprofile
 #
 # dots/bootstrap.bash 
 # Migrates my .dots in new systems.
+
+# Unofficial Bash Strict Mode
+set -euo pipefail
+IFS=$'\t\n'
 
 #shellcheck disable=SC2155
 declare -r sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
@@ -15,79 +19,80 @@ declare -r bfe="dots.${sbn/.bash/}.${$}.$(date -u +%s).bkp"
 
 #shellcheck disable=SC2034
 declare -ra compton=( 'dot.files/.config/compton.conf' ) \
-	tint2=( 'dot.files/.config/tint2/panel' \
-		    'dot.files/.config/tint2/taskbar' ) \
-	e16=( 'dot.files/.e16/Init/e16.sh' \
-		  'dot.files/.e16/bindings.cfg' \
-		  'dot.files/.e16/menus/user_apps.menu' ) \
-	compiz=( 'dot.files/.config/compiz/compiz.sh' \
-		     'dot.files/.config/compiz/compizconfig/Default.ini' \
-		     'dot.files/.config/compiz/compizconfig/config' ) \
-	i3wm=( 'dot.files/.config/i3/config' \
-		      'dot.files/.config/i3status/config' ) \
-	x11=( 'dot.files/.Xdefaults' 'dot.files/.Xresources' \
-		      'dot.files/.Xresources.d' 'dot.files/.xinitrc' \
-		      'dot.files/.xsession' )
+	tint2=( 'dot.files/.config/tint2/panel'
+		'dot.files/.config/tint2/taskbar' ) \
+	e16=( 'dot.files/.e16/Init/e16.sh'
+	      'dot.files/.e16/bindings.cfg'
+	      'dot.files/.e16/menus/user_apps.menu' ) \
+	compiz=( 'dot.files/.config/compiz/compiz.sh'
+		 'dot.files/.config/compiz/compizconfig/Default.ini'
+		 'dot.files/.config/compiz/compizconfig/config' ) \
+	i3wm=( 'dot.files/.config/i3/config'
+	       'dot.files/.config/i3status/config' ) \
+	x11=( 'dot.files/.Xdefaults'
+	      'dot.files/.Xresources'
+	      'dot.files/.Xresources.d'
+	      'dot.files/.xinitrc'
+	      'dot.files/.xsession' )
 
 #shellcheck disable=SC2034
 declare -ra xorg=( compton[@] tint2[@] e16[@] compiz[@] i3wm[@] x11[@] )
 
 #shellcheck disable=SC2034
-declare -ra music=( 'dot.files/.config/mpd/mpd.conf' \
-			'dot.files/.config/ncmpcpp/config' ) \
+declare -ra music=( 'dot.files/.config/mpd/mpd.conf'
+		    'dot.files/.config/ncmpcpp/config' ) \
 	tmux=( 'dot.files/.tmux.conf' ) \
 	top=( 'dot.files/.toprc' ) \
 	mutt=( 'dot.files/.muttrc' ) \
 	vim=( 'dot.files/.vimrc' 'dot.files/.gvimrc' ) \
-	bash=( 'dot.files/.bash_logout' \
-		   'dot.files/.bash_profile' \
-		   'dot.files/.bashrc' 'dot.files/.bashrc.d' \
-		   'dot.files/.profile' \
-		   'dot.files/.local/bin/michaeltd' \
-		   'dot.files/.local/bin/pimp_my_gui.bash' \
-		   'dot.files/.local/bin/showkb.sh' \
-		   'dot.files/.local/bin/sndvol' \
-		   'dot.files/.local/bin/term_music.bash' \
-		   'dot.files/.local/bin/todo_notes' \
-		   'dot.files/.local/bin/wallpaper_rotate.bash' \
-		   'dot.files/.local/bin/xlock.sh' \
-		   'dot.files/.local/sbin' )
+	bash=( 'dot.files/.bash_logout'
+	       'dot.files/.bash_profile'
+	       'dot.files/.bashrc'
+	       'dot.files/.profile'
+	       'dot.files/.local/bin/michaeltd'
+	       'dot.files/.local/bin/pimp_my_gui.bash'
+	       'dot.files/.local/bin/showkb.sh'
+	       'dot.files/.local/bin/sndvol'
+	       'dot.files/.local/bin/term_music.bash'
+	       'dot.files/.local/bin/todo_notes'
+	       'dot.files/.local/bin/wallpaper_rotate.bash'
+	       'dot.files/.local/bin/xlock.sh'
+	       'dot.files/.local/sbin' )
 
 #shellcheck disable=SC2034
 declare -ra console=( music[@] tmux[@] top[@] mutt[@] vim[@] bash[@] )
 # Build menus and help messages.
-declare -ra TUI_OPS=( "quit" "help" "everything" "xorg" "console" \
-			      "compton" "tint2" "e16" "compiz" "i3wm" "x11" \
-			      "music" "tmux" "top" "mutt" "vim" "bash" )
+declare -ra TUI_OPS=( "quit" "help" "everything" "xorg" "console"
+		      "compton" "tint2" "e16" "compiz" "i3wm" "x11"
+		      "music" "tmux" "top" "mutt" "vim" "bash" )
 
-declare -ra DESC=( "Exit this script" \
-		     "show this Help screen" \
-		     "link Everything available" \
-		     "link all Xorg related configs" \
-		     "link all Console related configs" \
-		     "link Compton config" \
-		     "link Tint2 configs" \
-		     "link E16 configs" \
-		     "link Compiz configs" \
-		     "link i3wm and i3status configs" \
-		     "link X11 rc files" \
-		     "link Music mpc, mpd, npmpcpp config files" \
-		     "link Tmux's tmux.conf" \
-		     "link Top's toprc" \
-		     "link Mutt rc" \
-		     "link Gvim/Vim rc files" \
-		     "link Bash related files" \
+declare -ra DESC=( "Exit this script"
+		   "show this Help screen"
+		   "link Everything available"
+		   "link all Xorg related configs"
+		   "link all Console related configs"
+		   "link Compton config"
+		   "link Tint2 configs" 
+		   "link E16 configs" 
+		   "link Compiz configs" 
+		   "link i3wm and i3status configs" 
+		   "link X11 rc files" 
+		   "link Music mpc, mpd, npmpcpp config files" 
+		   "link Tmux's tmux.conf" 
+		   "link Top's toprc" 
+		   "link Mutt rc" 
+		   "link Gvim/Vim rc files" 
+		   "link Bash related files"
 )
 
 declare -r usage="
- Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp
+	Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp
 
- -(-a)ll    		 to link everything
- -(-c)onsole 		 to link console related configs
- -(-x)org 		 to link Xorg related configs
- -(-m)enu 		 to show a menu with all available options
- -(-h)elp 		 for this help message
-
+	-(-a)ll    		 to link everything
+	-(-c)onsole 		 to link console related configs
+	-(-x)org 		 to link Xorg related configs
+	-(-m)enu 		 to show a menu with all available options
+	-(-h)elp 		 for this help message
 "
 
 is_link_set() {
