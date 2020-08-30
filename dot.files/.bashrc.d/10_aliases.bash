@@ -63,8 +63,8 @@ fi
 alias cp='cp -iv' mv='mv -iv' rm='rm -iv'
 
 # Add --human-readable for various commands
-alias du='du -h' df='df -h'
-alias duthis='du -x --max-depth=1 | sort -hr|head'
+alias du='du -hx' ncdu='ncdu -x' df='df -h'
+alias duthis='du -hx --max-depth=1 | sort -hr|head'
 
 # Midnight Commander Safe Terminal
 # alias mcst='mc -a' # In case of malconfigured terminals

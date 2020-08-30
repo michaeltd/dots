@@ -85,7 +85,7 @@ declare -ra DESC=( "Exit this script"
 		   "link Bash related files"
 )
 
-declare -r usage="
+declare -r myusage="
 	Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp
 
 	-(-a)ll    		 to link everything
@@ -193,7 +193,7 @@ do_everything() {
 menu() {
 
     local -a TUI_MENU=( )
-    local -a TUI_HMSG=( "${usage}" )
+    local -a TUI_HMSG=( "${myusage}" )
 
     for (( x = 0; x < ${#TUI_OPS[*]}; x++ )); do
         TUI_MENU+=( "${x}:${TUI_OPS[x]}" )
@@ -223,7 +223,7 @@ bootstrap() {
 	-c|--console) do_assoc "console" ;;
 	-x|--xorg) do_assoc "xorg" ;;
 	-m|--menu) menu ;;
-	*) echo -ne "\n${usage}\n"; return 1 ;;
+	*) echo -ne "${myusage}"; return 1 ;;
     esac
 }
 
