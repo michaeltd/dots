@@ -1,4 +1,5 @@
 #!/usr/bin/env -S bash --norc --noprofile
+#shellcheck shell=bash disable=SC1008,SC2096
 #
 # 1) Set a strict /etc/hosts file
 # 2) Make sure you have one

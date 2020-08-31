@@ -1,4 +1,5 @@
 #!/usr/bin/env -S bash --norc --noprofile
+#shellcheck shell=bash disable=SC1008,SC2096
 #
 # Distro neutral upgrade script michaeltd 171124
 # From https://en.wikipedia.org/wiki/Package_manager

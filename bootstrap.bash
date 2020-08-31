@@ -1,4 +1,5 @@
 #!/usr/bin/env -S bash --norc --noprofile
+#shellcheck shell=bash disable=SC1008,SC2096
 #
 # dots/bootstrap.bash 
 # Migrates my .dots in new systems.
