@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
 # man qcheck : qcheck - verify integrity of installed packages
-echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
 
 type -P emerge &>/dev/null || { echo -ne "Not an portage based distro!\n" >&2; exit 1; }
 type -P qcheck &>/dev/null || { echo -ne "qcheck not found!\n" >&2; exit 1; }

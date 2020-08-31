@@ -16,10 +16,9 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 update_cleanup() {
-    echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-    local backup_dir="/mnt/data/Documents/BKP/LINUX" days2keep="3" remove_backups="1" nothing2do="1"
+    local backup_dir="/mnt/data/Documents/BKP/LINUX" days2keep="3" remove_backups="1"
     local myusage="
-    Usage: ${BASH_SOURCE[0]##*/} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
+    Usage: ${sbn} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
 
     -(-b)ackups 	      backups location, eg: /backups/directory/
     -(-k)eep # 		      backups to keep in days, eg:7
@@ -62,7 +61,6 @@ update_cleanup() {
 	#shellcheck disable=SC2206
 	local -a same_job_backups=( ${backup_dir}/${HOSTNAME}.??????.????.??????????.${name_parts[4]}.tar.gz* )
 	if [[ "$(epoch_dd "$(max "${dts[@]}")" "${dts[y]}")" -ge "${days2keep}" && "${#same_job_backups[@]}" -gt "${days2keep}" ]]; then
-	    nothing2do="0"
 	    if [[ "$(last_dom "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
 	    	#shellcheck disable=SC2154
 		if [[ "${remove_backups}" -eq "1" ]]; then
@@ -78,8 +76,6 @@ update_cleanup() {
 	    fi
 	fi
     done
-
-    [[ "${nothing2do}" -eq "1" ]] && echo "Nothing left to do!" >&2
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"

@@ -6,8 +6,6 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-
 # Full path executables
 nicec=( "nice" "-n" "19" )
 

@@ -15,8 +15,6 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 
 dist_upgrade() {
 
-    echo -ne " -- ${BASH_SOURCE[0]##*/} --\n"
-
     # For this to work package manager arrays must be in following format...
     # | #1 package manager executable | #2 repo update switch | #3 distro upgrade switch(es)| #4 ...
     # PS: By ignoring dpkg and rpm we are avoiding issues with systems where alien has been installed.
