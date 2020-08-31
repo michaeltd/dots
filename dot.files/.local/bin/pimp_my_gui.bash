@@ -3,8 +3,10 @@
 # Spice for the desktop
 #shellcheck source=/dev/null
 
+brcd="$(dirname $(realpath ${BASH_SOURCE[0]}))/../../.bashrc.d"
 # No double sourcing
-command -v rcm &>/dev/null || source ~/.bashrc.d/30_functions.bash
+command -v rcm &>/dev/null || source "${brcd}/30_functions.bash"
+unset brcd
 
 # Music daemon
 # rcm 0 mpd
