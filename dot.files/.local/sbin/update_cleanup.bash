@@ -26,7 +26,7 @@ update_cleanup() {
     -(-d)ebug		      display lots of letters.
 "
 
-    msgme() { echo -ne "${sbn%.*}: ${*}\n" >&2; }
+    msgme() { echo -ne "${sbn}: ${*}\n" >&2; }
     
     while [[ -n "${*}" ]]; do
 	case "${1}" in
