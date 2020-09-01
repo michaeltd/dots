@@ -26,7 +26,7 @@ update_cleanup() {
     -(-d)ebug		      display lots of letters.
 "
 
-    msgme() { echo -ne "${sbn}: ${*}\n" >&2; }
+    log2err() { echo -ne "${sbn}: ${*}\n" >&2; }
     
     while [[ -n "${*}" ]]; do
 	case "${1}" in
@@ -34,7 +34,7 @@ update_cleanup() {
 	    -k|--keep) shift; local days2keep="${1}";;
 	    -s|--simulate) local remove_backups="0";;
 	    -d|--debug) set -x;;
-	    *) msgme "${myusage}"; return 1;;
+	    *) log2err "${myusage}"; return 1;;
 	esac
 	shift
     done
@@ -44,10 +44,10 @@ update_cleanup() {
     local -ra sources=( "${srcspath}"/*.bash ) backups=( "${backup_dir}/${HOSTNAME}."*.tar.gz* )
 
     for src in "${sources[@]}"; do
-	source "${src}" || { msgme "${src} not readable."; return 1; }
+	source "${src}" || { log2err "${src} not readable."; return 1; }
     done
 
-    [[ -e "${backups[0]}" ]] || { msgme "No backups found!"; return 1; }
+    [[ -e "${backups[0]}" ]] || { log2err "No backups found!"; return 1; }
 
     for x in "${!backups[@]}"; do
 	bfn="${backups[x]##*/}"
@@ -69,17 +69,17 @@ update_cleanup() {
 		if [[ "${remove_backups}" -eq "1" ]]; then
 		    mkdir -vp "${backup_dir}/bkp" && cp -v "${backup_dir}/${fns[y]}" "${backup_dir}/bkp/${fns[y]}"
 		else
-		    msgme "Not running: mkdir -vp ${backup_dir}/bkp && cp -v ${backup_dir}/${fns[y]} ${backup_dir}/bkp/${fns[y]}"
+		    log2err "Not running: mkdir -vp ${backup_dir}/bkp && cp -v ${backup_dir}/${fns[y]} ${backup_dir}/bkp/${fns[y]}"
 		fi
 	    fi
 	    if [[ "${remove_backups}" -eq "1" ]]; then
 		rm -v "${backup_dir}/${fns[y]}"
 	    else
-		msgme "Not running: rm -v ${backup_dir}/${fns[y]}"
+		log2err "Not running: rm -v ${backup_dir}/${fns[y]}"
 	    fi
 	fi
     done
-    [[ "${nothing2bdone}" -eq "1" ]] && msgme "It seems there's nothing to be done!"
+    [[ "${nothing2bdone}" -eq "1" ]] && log2err "It seems there's nothing to be done!"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
