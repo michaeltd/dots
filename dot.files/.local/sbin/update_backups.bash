@@ -53,6 +53,8 @@ update_backups() {
     -(-d)ebug		      	      display lots of words.
 "
 
+    msgme() { echo -ne "${sbn%.*}: ${*}\n" >&2; }
+    
     while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    -f|--from) shift; definitions="${1}";;
@@ -60,7 +62,7 @@ update_backups() {
 	    -k|--key) shift; recipient="${1}";;
 	    -n|--niceness) shift; [[ "${1}" =~ ^[-|+]?[0-9]+?$ ]] && (( $1 >= 0 && $1 <= 19 )) && niceness="${1}";;
 	    -d|--debug) set -x;;
-	    *) echo -ne "${myusage}" >&2; return 1;;
+	    *) msgme "${myusage}"; return 1;;
 	esac
 	shift
     done
@@ -68,8 +70,8 @@ update_backups() {
     local -ra includes=( "${definitions}"/.backup_include.* )
     local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date -u +%y%m%d.%H%M.%s)"
 
-    [[ -r "${includes[0]}" ]] || { echo -ne "No readable job file definitions found.\nNothing left to do!\n" >&2; return 1; }
-    [[ -d "${backup_to}" ]] || { echo -ne "${backup_to} is not a directory.\n" >&2; return 1; }
+    [[ -r "${includes[0]}" ]] || { msgme "No readable job file definitions found.\nNothing left to do!"; return 1; }
+    [[ -d "${backup_to}" ]] || { msgme "${backup_to} is not a directory."; return 1; }
 
     local -ra nice_cmd=( "nice" "-n" "${niceness}" ) \
 	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
@@ -77,14 +79,14 @@ update_backups() {
 
     compress() {
 	local job_out="${job_fn}.${1##*.}.tar.gz"
-	echo "Writing: ${job_out}"
+	msgme "Writing: ${job_out}"
 	#shellcheck disable=SC2046
 	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_out}" $(cat "${1}")
     }
 
     encrypt() {
 	local job_out="${job_fn}.${1##*.}.tar.gz.pgp"
-	echo "Writing: ${job_out}"
+	msgme "Writing: ${job_out}"
 	#shellcheck disable=SC2046
 	time "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_out}" "--encrypt"
     }

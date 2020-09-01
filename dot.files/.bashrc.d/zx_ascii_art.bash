@@ -115,7 +115,7 @@ list_cow_files() {
     done
 }
 
-magiccow() {
+magicow() {
     # https://twitter.com/climagic/status/1299435679710154753
     # Magic Cow answers for all. Works better with cowsay and lolcat.
     echo 'Yes,Moooo!,Mooost likely,Connot predict cow,Without a doubt,My horses say no,Ask again latte' | \
