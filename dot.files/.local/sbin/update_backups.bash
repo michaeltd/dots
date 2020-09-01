@@ -42,7 +42,7 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 update_backups() {
-    local definitions="${HOME}" backup_to="/mnt/data/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
+    local definitions="${HOME}" backup2="/mnt/data/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
     local myusage="
     Usage: ${sbn} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug]
 
@@ -58,7 +58,7 @@ update_backups() {
     while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    -f|--from) shift; definitions="${1}";;
-	    -t|--to) shift; backup_to="${1}";;
+	    -t|--to) shift; backup2="${1}";;
 	    -k|--key) shift; recipient="${1}";;
 	    -n|--niceness) shift; [[ "${1}" =~ ^[-|+]?[0-9]+?$ ]] && (( $1 >= 0 && $1 <= 19 )) && niceness="${1}";;
 	    -d|--debug) set -x;;
@@ -68,10 +68,10 @@ update_backups() {
     done
 
     local -ra includes=( "${definitions}"/.backup_include.* )
-    local -r exclude="${definitions}/.backup_exclude" job_fn="${backup_to}/${HOSTNAME}.$(date -u +%y%m%d.%H%M.%s)"
+    local -r exclude="${definitions}/.backup_exclude" job_fn="${backup2}/${HOSTNAME}.$(date -u +%y%m%d.%H%M.%s)"
 
     [[ -r "${includes[0]}" ]] || { log2err "No readable job file definitions found.\nNothing left to do!"; return 1; }
-    [[ -d "${backup_to}" ]] || { log2err "${backup_to} is not a directory."; return 1; }
+    [[ -d "${backup2}" ]] || { log2err "${backup2} is not a directory."; return 1; }
 
     local -ra nice_cmd=( "nice" "-n" "${niceness}" ) \
 	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
