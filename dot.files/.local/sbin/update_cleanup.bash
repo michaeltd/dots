@@ -64,7 +64,7 @@ update_cleanup() {
 	local -a same_job_backups=( ${backup_dir}/${HOSTNAME}.??????.????.??????????.${name_parts[4]}.tar.gz* )
 	if [[ "$(epoch_dd "$(max "${dts[@]}")" "${dts[y]}")" -ge "${days2keep}" && "${#same_job_backups[@]}" -gt "${days2keep}" ]]; then
 	    nothing2bdone="0"
-	    if [[ "$(last_dom "@${dts[y]}")" == "$(date +%d --date="@${dts[y]}")" ]]; then
+	    if [[ "$(last_dom "@${dts[y]}")" == "$(date -u --date="@${dts[y]}" +%d)" ]]; then
 	    	#shellcheck disable=SC2154
 		if [[ "${remove_backups}" -eq "1" ]]; then
 		    mkdir -vp "${backup_dir}/bkp" && cp -v "${backup_dir}/${fns[y]}" "${backup_dir}/bkp/${fns[y]}"

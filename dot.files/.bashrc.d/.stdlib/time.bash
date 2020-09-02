@@ -4,11 +4,11 @@
 
 is_date() {
     [[ -z "${1}" ]] && return 1  # apparently `date -d ""` echoes today's day and returns 0
-    date -d "${1}" &> /dev/null
+    date -u -d "${1}" &> /dev/null
 }
 
 is_epoch() {
-    date -d "@${1}" &> /dev/null
+    date -u -d "@${1}" &> /dev/null
 }
 
 day_diff() {
@@ -25,13 +25,13 @@ epoch_dd() {
 }
 
 date_dd() {
-    day_diff "$(date +%s --date="${1}")" "$(date +%s --date="${2}")"
+    day_diff "$(date -u --date="${1}" +%s)" "$(date -u --date="${2}" +%s)"
 }
 
 #shellcheck disable=SC2120
 unix_epoch() {
     if [[ -n "${1}" ]]; then
-	date +%s --date="${1}"
+	date -u --date="${1}" +%s
     else
 	date -u +%s
     fi
@@ -39,21 +39,21 @@ unix_epoch() {
 
 epoch2date() {
     #shellcheck disable=SC2119
-    date +%Y/%m/%d --date="@${1-$(unix_epoch)}"
+    date -u --date="@${1-$(unix_epoch)}" +%Y/%m/%d
 }
 
 epoch2time() {
     #shellcheck disable=SC2119
-    date +%H:%M:%S --date="@${1-$(unix_epoch)}"
+    date -u --date="@${1-$(unix_epoch)}" +%H:%M:%S
 }
 
 epoch2datetime() {
     #shellcheck disable=SC2119
-    date +%Y/%m/%d-%H:%M:%S --date="@${1-$(unix_epoch)}"
+    date -u --date="@${1-$(unix_epoch)}" +%Y/%m/%d-%H:%M:%S
 }
 
 week_day() {
-    date -d @"${1:-$(unix_epoch)}" +%u
+    date -u -d @"${1:-$(unix_epoch)}" +%u
 }
 
 last_dom() {
@@ -75,12 +75,12 @@ last_dom() {
 
     local y m
     if [[ -n "${1}" ]]; then
-	date --date="${1}" &>/dev/null || return 1
-	y=$(date +%Y --date="${1}")
-	m=$(date +%m --date="${1}")
+	date -u --date="${1}" &>/dev/null || return 1
+	y=$(date -u +%Y --date="${1}")
+	m=$(date -u +%m --date="${1}")
     else
-	y=$(date +%Y)
-	m=$(date +%m)
+	y=$(date -u +%Y)
+	m=$(date -u +%m)
     fi
     
     case "${m}" in
