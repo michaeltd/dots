@@ -4,6 +4,10 @@
 # dots/bootstrap.bash 
 # Migrates my .dots in new systems.
 
+# Unofficial Bash Strict Mode
+# set -euo pipefail
+# IFS=$'\t\n'
+
 #shellcheck disable=SC2155
 declare -r sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
