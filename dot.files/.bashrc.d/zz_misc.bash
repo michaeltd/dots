@@ -15,7 +15,7 @@ eval "$(stty -ixon)"
 # https://twitter.com/gumnos/status/1117146713289121797
 # And a couple bash options to control how history is stored:
 export HISTCONTROL="ignoreboth" # "ignorespace:ignoredups"
-export HISTIGNORE="gal:gst:gfc:gpl:mc:htop:jobs:fg:up:cd:ll:ls:exit:mutt:su\ -l:fixel:ytdl*:bash:startx"
+export HISTIGNORE="gal:gst:gdf:gfc:gpl:mc:htop:bashtop:tmux*:mutt:jobs:fg:up:cd:ll:ls:exit:su\ -l:fixel:ytdl*:bash:startx"
 
 export HISTSIZE=999999
 export HISTFILESIZE=999999
