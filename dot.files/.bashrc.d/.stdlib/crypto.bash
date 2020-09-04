@@ -47,10 +47,10 @@ transcode_stdin() {
 }
 
 transcode_pgp() {
-    local myusage="\n\t Usage: ${FUNCNAME[0]} file(s)|file(s).pgp... [-(-h)elp]\n\t Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
-
+    local myusage="\n\tUsage: ${FUNCNAME[0]} file(s)|file(s).pgp... [-(-h)elp]\n\tDescription: Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
+    
     [[ "${#}" -lt "1" ]] && echo -ne "${myusage}" >&2 && return 1
-
+    
     while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    -h|--help)
