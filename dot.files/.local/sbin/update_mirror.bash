@@ -9,7 +9,7 @@ IFS=$'\t\n'
 # Full path executables
 nicec=( "nice" "-n" "19" )
 
-rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/Videos/*" )
+rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/msoft/*" )
 
 dtmnt="/mnt/data/Documents"
 

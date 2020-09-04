@@ -42,7 +42,7 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 update_backups() {
-    local definitions="${HOME}" backup2="/mnt/data/Documents/BKP/LINUX" recipient="tsouchlarakis@gmail.com" niceness="19"
+    local definitions="${HOME}" backup2="/mnt/data/Documents/bkp/linux" recipient="tsouchlarakis@gmail.com" niceness="19"
     local myusage="
     Usage: ${sbn} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug]
 

@@ -16,7 +16,7 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 update_cleanup() {
-    local backup_dir="/mnt/data/Documents/BKP/LINUX" days2keep="3" remove_backups="1" nothing2bdone="1"
+    local backup_dir="/mnt/data/Documents/bkp/linux" days2keep="3" remove_backups="1" nothing2bdone="1"
     local myusage="
     Usage: ${sbn} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
 
