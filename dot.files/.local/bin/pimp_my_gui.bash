@@ -21,10 +21,10 @@ command -v rcm &>/dev/null || source "${sdn}/../../.bashrc.d/30_functions.bash"
 rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 
 # XScreenSaver
-# rcm 9 xscreensaver -no-splash
+rcm 9 xscreensaver -no-splash
 
 # Add some wallpaper variety for your desktop
-rcm 9 ~/.local/bin/wallpaper_rotate.bash
+rcm 9 "${HOME}/.local/bin/wallpaper_rotate.bash"
 
 # Systray volume control
 rcm 9 pasystray

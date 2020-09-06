@@ -157,24 +157,23 @@ alias termbindotcom='nc termbin.com 9999'
 alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 
-# Bitcoin
-declare datadir="/mnt/el/.bitcoin" btcdir="${HOME}/git/scrap/bitcoin/src"
-#shellcheck disable=SC2139
-alias btccli="${btcdir}/bitcoin-cli -datadir=${datadir}" \
-      btcgui="${btcdir}/qt/bitcoin-qt -datadir=${datadir}" \
-      btchex="${btcdir}/bitcoin-tx -datadir=${datadir}" \
-      btcwlt="${btcdir}/bitcoin-wallet -datadir=${datadir}" \
-      btcdmn="${btcdir}/bitcoind -datadir=${datadir}"
+# # Bitcoin
+# declare datadir="/mnt/el/.bitcoin" btcdir="${HOME}/git/scrap/bitcoin/src"
+# #shellcheck disable=SC2139
+# alias btccli="${btcdir}/bitcoin-cli -datadir=${datadir}" \
+#       btcgui="${btcdir}/qt/bitcoin-qt -datadir=${datadir}" \
+#       btchex="${btcdir}/bitcoin-tx -datadir=${datadir}" \
+#       btcwlt="${btcdir}/bitcoin-wallet -datadir=${datadir}" \
+#       btcdmn="${btcdir}/bitcoind -datadir=${datadir}"
 
-unset datadir btcdir
+# unset datadir btcdir
 
-alias btc_commands="btccli help"
-alias btc_info="btccli -getinfo"
-alias btc_winf="btcwlt -wallet=michaeltd info"
+# alias btc_commands="btccli help"
+# alias btc_info="btccli -getinfo"
+# alias btc_winf="btcwlt -wallet=michaeltd info"
 
-declare monerodat="/mnt/data/.monero" monerodir="${HOME}/.local/monero-gui-v0.16.0.3"
-#shellcheck disable=SC2139
-alias monero_daemon="nice -n 9 ${monerodir}/monerod --data-dir ${monerodat} --check-updates disabled --max-concurrency 1" \
-      monero_gui="nice -n 9 ${monerodir}/monero-wallet-gui"
-
-unset monerodat monerodir
+# declare monerodat="/mnt/data/.monero" monerodir="${HOME}/.local/monero-gui-v0.16.0.3"
+# #shellcheck disable=SC2139
+# alias monero_daemon="nice -n 9 ${monerodir}/monerod --data-dir ${monerodat} --check-updates disabled --max-concurrency 1" \
+#       monero_gui="nice -n 9 ${monerodir}/monero-wallet-gui"
+# unset monerodat monerodir

@@ -47,14 +47,16 @@ transcode_stdin() {
 }
 
 transcode_pgp() {
-    local myusage="\n\tUsage: ${FUNCNAME[0]} file(s)|file(s).pgp... [-(-h)elp]\n\tDescription: Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
-    
+    local myusage="\n\tUsage: ${FUNCNAME[0]} file(s)|file(s).pgp...\n\tDescription: Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
+
     [[ "${#}" -lt "1" ]] && echo -ne "${myusage}" >&2 && return 1
-    
+
     while [[ -n "${*}" ]]; do
 	case "${1}" in
 	    -h|--help)
-		echo -ne "${myusage}" >&2;;
+		shift
+		echo -ne "${myusage}" >&2
+		continue;;
 	    *)
 		if [[ -r "${1}" ]]; then
 		    if [[ "$(file -b "${1}")" =~ ^PGP ]]; then
@@ -63,9 +65,9 @@ transcode_pgp() {
 			local func="--encrypt" out="${1}.pgp"
 		    fi
 		else
-		    echo -ne "${1} is not readable!\n" >&2
-		    echo -ne "${myusage}" >&2 ;
-		    return 1
+		    echo -ne "\t${1} is not readable!\n${myusage}" >&2
+		    shift
+		    continue
 		fi;;
 	esac
 	gpg --default-recipient-self --output "${out}" "${func}" "${1}"

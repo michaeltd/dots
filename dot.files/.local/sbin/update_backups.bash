@@ -80,15 +80,19 @@ update_backups() {
     compress() {
 	local job_out="${job_fn}.${1##*.}.tar.gz"
 	log2err "Writing: ${job_out}"
+	set +e # Non fatal tar errors...
 	#shellcheck disable=SC2046
 	time "${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_out}" $(cat "${1}")
+	set -e
     }
 
     encrypt() {
 	local job_out="${job_fn}.${1##*.}.tar.gz.pgp"
 	log2err "Writing: ${job_out}"
+	set +e
 	#shellcheck disable=SC2046
 	time "${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_out}" "--encrypt"
+	set -e
     }
 
     for include in "${includes[@]}"; do
