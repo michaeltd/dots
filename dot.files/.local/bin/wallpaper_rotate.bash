@@ -40,7 +40,7 @@ wallpaper_rotate() {
     local -r wprc="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.rc}")" \
 	  wplg="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.log}")"
     local bgsr="" \
-	  wait="2m"
+	  wait="5"
 
     # bash version info check
     if (( "${BASH_VERSINFO[0]}" < 4 )); then
