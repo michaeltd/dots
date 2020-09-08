@@ -1,7 +1,7 @@
 #!/usr/bin/env -S bash --norc --noprofile
 #shellcheck shell=bash disable=SC1008,SC2096
 #
-# ~/bin/sndvol lil script to play around with volume settings
+# sndvol lil script to play around with volume settings
 
 # Unofficial Bash Strict Mode
 set -eo pipefail
@@ -21,7 +21,6 @@ sndvol() {
 	    DIALOG_OK=0 DIALOG_CANCEL=1 DIALOG_HELP=2 \
 	    DIALOG_EXTRA=3 DIALOG_ITEM_HELP=4 DIALOG_ESC=255 \
 	    SIG_NONE=0 SIG_HUP=1 SIG_INT=2 SIG_QUIT=3 SIG_KILL=9 SIG_TERM=15
-
 
     # Mutexify to avoid process spam
     # local -ar pids=( $(pgrep -U "${USER}" -f "${sbn}") )
