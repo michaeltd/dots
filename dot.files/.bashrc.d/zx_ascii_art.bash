@@ -96,13 +96,13 @@ eof
 funky4tune() {
     local -r myusage="
     Description: Funky fortune.
-    Usage: ${FUNCNAME[0]} [-f cowsay_file] [-m 'message'] [-h]
+    Usage: ${FUNCNAME[0]} [ -(-f)ile cowsay_file ] [ -(-m)sg 'message' ]
     Example: ${FUNCNAME[0]} -f default -m 'Hello Lolcat!'
     You can try: 'cowsay -l' for a list of available files
     Requires: fortune, cowsay and lolcat.\n\n"
 
     local msg file
-    
+
     #shellcheck disable=SC2015
     type -P fortune &> /dev/null && \
 	type -P cowsay &> /dev/null && \
@@ -113,14 +113,15 @@ funky4tune() {
 	case "${1}" in
 	    -m|--msg) shift; msg="${1}";;
 	    -f|--file) shift; file="${1}";;
-	    -h|--help) echo -ne "${myusage}" >&2; return 1;;
 	    *) echo -ne "${myusage}" >&2; return 1;;
 	esac
 	shift
     done
 
     #shellcheck disable=SC2015
-    { [[ -n "${msg}" ]] && echo "${msg}" || fortune -o; } | cowsay -f "${file:-default}" | lolcat	  
+    { [[ -n "${msg}" ]] && echo "${msg}" || fortune -o; } | \
+	cowsay -f "${file:-default}" | \
+	lolcat
 }
 
 list_cow_files() {
