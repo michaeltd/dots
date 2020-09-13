@@ -184,14 +184,6 @@ if command -v emerge &>/dev/null; then
     }
 fi
 
-fixel() {
-    if [[ -d /mnt/el/Documents ]]; then
-	ls /mnt/el/
-    else
-	sudo mount /mnt/el
-    fi
-}
-
 show_uptime() {
     #shellcheck disable=SC2154
     echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
