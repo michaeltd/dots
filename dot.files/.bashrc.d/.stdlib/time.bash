@@ -76,11 +76,11 @@ last_dom() {
     local y m
     if [[ -n "${1}" ]]; then
 	date -u --date="${1}" &>/dev/null || return 1
-	y=$(date -u +%Y --date="${1}")
-	m=$(date -u +%m --date="${1}")
+	y="$(date -u +%Y --date="${1}")"
+	m="$(date -u +%m --date="${1}")"
     else
-	y=$(date -u +%Y)
-	m=$(date -u +%m)
+	y="$(date -u +%Y)"
+	m="$(date -u +%m)"
     fi
     
     case "${m}" in

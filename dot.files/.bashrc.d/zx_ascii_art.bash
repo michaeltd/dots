@@ -96,22 +96,36 @@ eof
 funky4tune() {
     local -r myusage="
     Description: Funky fortune.
-    Usage: ${FUNCNAME[0]} cowsay_file 'message'
-    Example: ${FUNCNAME[0]} default 'Hello Lolcat!'
+    Usage: ${FUNCNAME[0]} [-f cowsay_file] [-m 'message'] [-h]
+    Example: ${FUNCNAME[0]} -f default -m 'Hello Lolcat!'
     You can try: 'cowsay -l' for a list of available files
-    Requires: fortune, cowsay and lolcat.\n"
+    Requires: fortune, cowsay and lolcat.\n\n"
+
+    local msg file
+    
     #shellcheck disable=SC2015
-    type -P fortune &>/dev/null && \
-	type -P cowsay &>/dev/null && \
-	type -P lolcat &>/dev/null || \
-	    { echo -e "${myusage}" >&2; return 1; }
+    type -P fortune &> /dev/null && \
+	type -P cowsay &> /dev/null && \
+	type -P lolcat &> /dev/null || \
+	    { echo -ne "${myusage}" >&2; return 1; }
+
+    while [[ -n "${1}" ]]; do
+	case "${1}" in
+	    -m|--msg) shift; msg="${1}";;
+	    -f|--file) shift; file="${1}";;
+	    -h|--help) echo -ne "${myusage}" >&2; return 1;;
+	    *) echo -ne "${myusage}" >&2; return 1;;
+	esac
+	shift
+    done
+
     #shellcheck disable=SC2015
-    { [[ -n "${2}" ]] && echo "${2}" || fortune -o; } | cowsay -f "${1:-small}" | lolcat
+    { [[ -n "${msg}" ]] && echo "${msg}" || fortune -o; } | cowsay -f "${file:-default}" | lolcat	  
 }
 
 list_cow_files() {
     for i in $(cowsay -l|awk 'NR != 1 { print $0 }'); do
-	funky4tune "${i}" "Hello ${i} !" || return 1
+	funky4tune -m "Hello ${i} !" -f "${i}" || return 1
     done
 }
 
