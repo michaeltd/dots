@@ -98,7 +98,8 @@ funky4tune() {
     Description: Funky fortune.
     Usage: ${FUNCNAME[0]} [ -(-f)ile cowsay_file ] [ -(-m)sg 'message' ]
     Example: ${FUNCNAME[0]} -f default -m 'Hello Lolcat!'
-    You can try: 'cowsay -l' for a list of available files
+    Notes: When no --file is given, a random file will be selected.
+    You can try: 'cowsay -l' for a list of available files.
     Requires: fortune, cowsay and lolcat.\n\n"
 
     local msg file
@@ -118,9 +119,12 @@ funky4tune() {
 	shift
     done
 
+    #shellcheck disable=SC2207
+    local -ar cowsay_files=( $(cowsay -l|awk 'NR != 1 { print $0 }') )
+
     #shellcheck disable=SC2015
     { [[ -n "${msg}" ]] && echo "${msg}" || fortune -o; } | \
-	cowsay -f "${file:-default}" | \
+	{ [[ -z "${file}" ]] && cowsay -f "${cowsay_files[$(shuf -n 1 -i 0-"$((${#cowsay_files[*]}-1))")]}" || cowsay -f "${file}"; } | \
 	lolcat
 }
 
@@ -137,8 +141,7 @@ magic8cow() {
     # 	tr ',' '\n' | sort -R | head -1 | { cowsay 2> /dev/null || cat; } | { lolcat 2> /dev/null || cat; }
 
     local -ar answ=( "Yes" "No" "Maybe" "Possitive" "Negative" "Neutral" "True" "False" "Undefined" )
-    local rn="$(shuf -n 1 -i 0-"$(( ${#answ[*]} - 1 ))")"
-    echo "${answ[rn]}" | { cowsay 2> /dev/null || cat; } | { lolcat 2> /dev/null || cat; }
+    echo "${answ[$(shuf -n 1 -i 0-"$((${#answ[*]}-1))")]}" | { cowsay 2> /dev/null || cat; } | { lolcat 2> /dev/null || cat; }
 }
 
 mycountdown() {
