@@ -161,7 +161,7 @@ wallpaper_rotate() {
 	    # limit a random number to upper array bounds as a RundomNumber
 	    # let "rn = ${RANDOM} % ${#wps[@]}"
 	    #shellcheck disable=SC2155
-	    local rn=$(shuf -n 1 -i 0-"${#wps[@]}")
+	    local rn="$(shuf -n 1 -i 0-"$(( ${#wps[*]} - 1 ))")"
 
 	    # Get path and name of image as a selected WallPaper
 	    local wp="${wps[rn]}"

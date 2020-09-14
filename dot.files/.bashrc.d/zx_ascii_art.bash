@@ -130,15 +130,15 @@ list_cow_files() {
     done
 }
 
-magicow() {
+magic8cow() {
     # https://twitter.com/climagic/status/1299435679710154753
     # Magic Cow answers for all. Works better with cowsay and lolcat.
-    echo 'Yes,Moooo!,Mooost likely,Connot predict cow,Without a doubt,My horses say no,Ask again latte' | \
-	tr ',' '\n' | \
-	sort -R | \
-	head -1 | \
-	{ cowsay 2> /dev/null || cat; } | \
-	{ lolcat 2> /dev/null || cat; }
+    # echo 'Yes!,Moooo!,Mooost likely!,Cannot predict cow!,Without a doubt!,My horses say no!,Ask again l8r!' | \
+    # 	tr ',' '\n' | sort -R | head -1 | { cowsay 2> /dev/null || cat; } | { lolcat 2> /dev/null || cat; }
+
+    local -ar answ=( "Yes" "No" "Maybe" "Possitive" "Negative" "Neutral" "True" "False" "Undefined" )
+    local rn="$(shuf -n 1 -i 0-"$(( ${#answ[*]} - 1 ))")"
+    echo "${answ[rn]}" | { cowsay 2> /dev/null || cat; } | { lolcat 2> /dev/null || cat; }
 }
 
 mycountdown() {
@@ -148,15 +148,15 @@ mycountdown() {
     Example: ${FUNCNAME[0]} 60
     Requires: figlet, lolcat and sox.\n"
     #shellcheck disable=SC2015
-    type -P figlet &>/dev/null && \
-	type -P lolcat &>/dev/null && \
-	type -P play &>/dev/null || \
+    type -P figlet &> /dev/null && \
+	type -P lolcat &> /dev/null && \
+	type -P play &> /dev/null || \
 	    { echo -e "${myusage}" >&2; return 1; }
-    clear
+
     for i in $(seq "${1:-10}" -1 0); do
+	clear
 	printf "%04d\n" "${i}" |figlet |lolcat
 	sleep 1
-	clear
     done
     play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
 }
