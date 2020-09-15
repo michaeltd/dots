@@ -6,18 +6,22 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-# Full path executables
-nicec=( "nice" "-n" "19" )
+#link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
+#shellcheck disable=SC2155
+readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
-rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/msoft/*" )
+update_mirror() {
 
-dtmnt="/mnt/data/Documents"
+    # Full path executables
+    local -ar nicec=( "nice" "-n" "19" ) \
+	  rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/msoft/*" )
 
-elmnt="/mnt/el/Documents"
+    local dtmnt="/mnt/data/Documents" elmnt="/mnt/el/Documents"
 
-if [[ -d "${dtmnt}" && -d "${elmnt}" ]]; then
+    [[ -d "${dtmnt}" && -d "${elmnt}" ]] || \
+	{ echo -ne "${sbn}: ${dtmnt} or ${elmnt} not found\n" >&2 && return 1; }
+
     time "${nicec[@]}" "${rsncm[@]}" "${dtmnt}"/* "${elmnt}"
-else
-    echo -ne "${dtmnt} or ${elmnt} not found\n" >&2
-    exit 1
-fi
+}
+
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
