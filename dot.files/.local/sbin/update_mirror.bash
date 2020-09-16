@@ -11,17 +11,18 @@ IFS=$'\t\n'
 readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 update_mirror() {
-
-    # Full path executables
+    
     local -ar nicec=( "nice" "-n" "19" ) \
 	  rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/msoft/*" )
 
     local dtmnt="/mnt/data/Documents" elmnt="/mnt/el/Documents"
 
-    [[ -d "${dtmnt}" && -d "${elmnt}" ]] || \
-	{ echo -ne "${sbn}: ${dtmnt} or ${elmnt} not found\n" >&2 && return 1; }
-
-    time "${nicec[@]}" "${rsncm[@]}" "${dtmnt}"/* "${elmnt}"
+    if [[ -d "${dtmnt}" && -d "${elmnt}" ]]; then
+	time "${nicec[@]}" "${rsncm[@]}" "${dtmnt}"/* "${elmnt}"
+    else
+	echo -ne "${sbn}: ${dtmnt} or ${elmnt} not found\n" >&2
+	return 1
+    fi
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
