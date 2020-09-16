@@ -2,7 +2,7 @@
 # cryptographic functions
 #shellcheck shell=bash
 
-gen_rn() {
+gen_rnum() {
     #shellcheck disable=SC2005
     tr -dc "[:digit:]" < /dev/urandom | \
 	head -c "${1:-8}"
@@ -47,11 +47,13 @@ transcode_stdin() {
 }
 
 transcode_pgp() {
-    local myusage="\n\tUsage: ${FUNCNAME[0]} file(s)|file(s).pgp...\n\tDescription: Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
+    local myusage="
+    Usage: ${FUNCNAME[0]} file(s)|file(s).pgp...
+    Description: Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
 
     [[ "${#}" -lt "1" ]] && echo -ne "${myusage}" >&2 && return 1
 
-    while [[ -n "${*}" ]]; do
+    while [[ -n "${1}" ]]; do
 	case "${1}" in
 	    -h|--help)
 		shift
