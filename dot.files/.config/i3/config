@@ -225,7 +225,7 @@ mode "  " {
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym $mod+d mode "default"
 }
 
 bindsym $mod+d mode "  "
