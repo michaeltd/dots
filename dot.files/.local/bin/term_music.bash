@@ -5,12 +5,7 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-#link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
-#shellcheck disable=SC2155,SC2034
-readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
-	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-
-term_music() {
+main() {
     #shellcheck disable=SC2155
     local -r myusage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n\n" uri="file:///mnt/data/Documents/Music"
 
@@ -27,6 +22,8 @@ term_music() {
 
     local -ar genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] ost[@] )
 
+    log2err() { echo -ne "${*}" >&2; exit 1; }
+    
     if [[ -n "${*}" ]]; then
 	if [[ "${genres[*]}" =~ ${1} ]]; then
 	    eval "param_genre=(\"\${$1[@]}\")"
@@ -35,9 +32,7 @@ term_music() {
 	    for i in "${genres[@]}"; do
 		local gen_alpha+="${i//[![:alpha:]]} "
 	    done
-	    echo -ne "${myusage}" >&2
-	    echo -ne "\n\t${1} not found.\n\tTry one of: ${gen_alpha}!\n\n" >&2
-	    return 1
+	    log2err "${myusage}\t${1} not found.\n\tTry one of: ${gen_alpha}!\n\n"
 	fi
     else
 	local -ar dir_list=( "${!genres[$(shuf -n 1 -i 0-"$((${#genres[*]}-1))")]}" )
@@ -47,12 +42,11 @@ term_music() {
     #shellcheck disable=SC2207
     local -ar pids=( $(pgrep -U "${USER}" -f vlc) )
     if [[ "${#pids[*]}" -gt "0" ]]; then
-	echo -ne "VLC already started!\n" >&2
 	play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
-	return 1
+	log2err "VLC already started!\n"
     else
 	cvlc --random "${dir_list[@]}"
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
