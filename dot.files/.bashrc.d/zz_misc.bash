@@ -16,7 +16,7 @@ eval "$(stty -ixon)"
 # And a couple bash options to control how history is stored:
 export HISTCONTROL="ignoreboth" # "ignorespace:ignoredups"
 # export HISTIGNORE="gal:gst:gdf:gfc:gpl:mc:htop:bashtop:tmux*:mutt:jobs:fg:up:cd:ll:ls:exit:su\ -l:fixel:ytdl*:bash:startx"
-export HISTIGNORE=""
+export HISTIGNORE="ytdl*"
 
 export HISTSIZE=999999
 export HISTFILESIZE=999999
