@@ -109,15 +109,6 @@ pyhttpserv() {
     fi
 }
 
-rncmmd() {
-    # Oneliner: TMPFILE=/tmp/${RANDOM}.input.box.txt && dialog --title 'Command Input' --default-button 'ok' --inputbox 'Enter command to continue' 10 40 command 2> ${TMPFILE} && $(cat ${TMPFILE})
-    local -r DIALOG="$(type -P Xdialog || type -P dialog)" TMPFILE="/tmp/${$}.${RANDOM}.input.box.txt"
-    "${DIALOG}" --title "Command Input" --default-button "ok" --inputbox "Enter command to continue" 10 40 command 2> "${TMPFILE}"
-    #shellcheck disable=SC2091
-    "$(cat "${TMPFILE}")"
-    return "${?}"
-}
-
 # Create a new alias
 mkalias() {
     echo alias "${*}" >> "${HOME}/.bashrc.d/aliases.bash"
