@@ -2,6 +2,12 @@
 # math related functions
 #shellcheck shell=bash
 
+factorial(){
+    local -i f i=$1
+    [[ $# -eq 0 ]] && { echo "Usage: ${FUNCNAME[0]} number"; return 1; }
+    [[ $i -le 2 ]] && echo $i || { f=$(( i - 1)); f=$(factorial $f); f=$(( f * i )); echo $f; }
+}
+
 dec2hex() {
     # printf '%x\n' "${1}"
     echo "obase=16;${1}" | bc -l
