@@ -218,22 +218,20 @@ logmeout() {
 }
 
 # End stuff
-termapp() {
+termproc() {
     if [[ -n "${1}" ]]; then
 	pkill -TERM -u "${USER}" "${1}"
-	# kill -s 15 $(pgrep "${1}") # kill version
     else
-	echo -ne "Usage: ${FUNCNAME[0]} process-2-TERM (sig #15)\n" >&2
+	echo -ne "Usage: ${FUNCNAME[0]} process to terminate (sig #15)\n" >&2
 	return 1
     fi
 }
 
-killapp() {
+killproc() {
     if [[ -n "${1}" ]]; then
 	pkill -KILL -u "${USER}" "${1}"
-	# kill -s 9 $(pgrep "${1}") # kill version
     else
-	echo -ne "Usage: ${FUNCNAME[0]} process-2-KILL (sig #9)\n" >&2
+	echo -ne "Usage: ${FUNCNAME[0]} process to kill (sig #9)\n" >&2
 	return 1
     fi
 }
