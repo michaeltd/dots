@@ -28,7 +28,7 @@ passcli() {
      ..:::::::::..:::::..:::......::::......::::......:::........::....::
      "
 
-    show_header() { type -P lolcat &>/dev/null && echo "${pass_header}"|lolcat || echo "${pass_header}"; }
+    show_header() { clear; type -P lolcat &>/dev/null && echo "${pass_header}"|lolcat || echo "${pass_header}"; }
 
     usage() { echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|find keywd|rem keywd|show\n\n" >&2; }
 
