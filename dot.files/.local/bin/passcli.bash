@@ -1,7 +1,9 @@
 #!/usr/bin/env -S bash --norc --noprofile
 #shellcheck shell=bash disable=SC1008,SC2096
 #
-# Simple password cli. Consistent use of ${PAGER} ensures there's no password "bleed" from terminals with persistant history configured
+# Simple password cli.
+# Consistent use of ${PAGER} ensures there's no password "bleed" from terminals with persistant history configured,
+# also ~/.bash_history gets purged for ${sbn} instances in each add function call.
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
@@ -51,10 +53,10 @@ passcli() {
 	fi
     }
 
-    add() { echo "${*}" >> "${pass_file}"; show; }
+    add() { echo "${*}" >> "${pass_file}"; show; purge_hist; }
 
     case "${*}" in
-	add*|rem*|find*|show*) show_header; decrypt; "${@}"; encrypt; purge_hist;;
+	add*|rem*|find*|show*) show_header; decrypt; "${@}"; encrypt;;
 	*) show_header; usage; return 1;;
     esac
 }
