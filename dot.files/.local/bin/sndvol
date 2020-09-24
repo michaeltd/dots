@@ -37,12 +37,12 @@ sndvol() {
     fi
 
     display_feedback() {
-	if [[ -n "${DIALOG}" ]]; then
+	if [[ -x "$(type -P notify-send)" ]]; then
+            notify-send "${sbn}:" "${*}"
+	elif [[ -n "${DIALOG}" ]]; then
             "${DIALOG}" --title "${sbn}:" --infobox "${*}" "${G[@]}"
 	elif [[ -x "$(type -P xmessage)" ]]; then
             xmessage -nearmouse -timeout "${XMTO}" "${*}"
-	elif [[ -x "$(type -P notify-send)" ]]; then
-            notify-send "${sbn}:" "${*}"
 	fi
 	echo "${sbn}: ${*}" >&2
     }
