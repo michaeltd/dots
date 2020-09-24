@@ -37,9 +37,9 @@ passcli() {
     #shellcheck disable=SC2015
     decrypt() { [[ -e "${pass_pgp}" ]] && "${pgpc[@]}" "${pass_file}" "--decrypt" "${pass_pgp}" || touch "${pass_file}"; }
 
-    show() { column -t -s $'\,' "${pass_file}" | "${PAGER}"; }
+    show() { column -t -s $',' "${pass_file}" | "${PAGER}"; }
 
-    find() { grep -h "${1}" "${pass_file}"; }
+    find() { grep -h "${1}" "${pass_file}" | column -t -s $',' | "${PAGER}"; }
 
     rem() {
 	grep -h "${1}" "${pass_file}"
