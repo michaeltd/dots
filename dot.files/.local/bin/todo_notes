@@ -39,7 +39,7 @@ todo_notes() {
 	fi
     }
 
-    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; list; }
+    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; show; }
 
     case "${*}" in
 	add*|rem*|find*|show*) show_header; "${@}";;
