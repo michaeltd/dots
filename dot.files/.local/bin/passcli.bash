@@ -33,7 +33,8 @@ passcli() {
     usage() { echo -ne "\n Usage: ${sbn} add 'domain,uname,pass' | find keyword | rem keyword... | show | halp\n\n" >&2; }
 
     encrypt() { "${pgpc[@]}" "${pass_pgp}" "--encrypt" "${pass_file}" && "${shrc[@]}" {"${pass_file}","${pass_bck}"} 2> /dev/null; }
-    
+
+    #shellcheck disable=SC2015
     decrypt() { [[ -e "${pass_pgp}" ]] && "${pgpc[@]}" "${pass_file}" "--decrypt" "${pass_pgp}" || touch "${pass_file}"; }
 
     show() { nl -b a "${pass_file}"; }
