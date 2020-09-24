@@ -42,7 +42,7 @@ passcli() {
     find() { grep -h "${1}" "${pass_file}" | column -t -s $',' | "${PAGER}"; }
 
     rem() {
-	grep -h "${1}" "${pass_file}"
+	grep -h "${1}" "${pass_file}" | column -t -s $',' | "${PAGER}"
 	if [[ "$(read -rp "Delete above entr(y/ies) from password file? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
             cp -f "${pass_file}" "${pass_bck}"
             grep -hv "${1}" "${pass_bck}" > "${pass_file}"
