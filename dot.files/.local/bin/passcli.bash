@@ -18,7 +18,7 @@ passcli() {
     local -ra pgpc=( "gpg" "--quiet" "--batch" "--yes" "--default-recipient-self" "--output" ) \
 	  shrc=( "shred" "--zero" "--remove" )
     local -r pass_file="${HOME}/.passfile"
-    local -r pass_pgp="${pass_file}.pgp" pass_bck="${pass_file}.bck"
+    local -r pass_pgp="${pass_file}.pgp" pass_bkp="${pass_file}.bkp"
     local -r pass_header="
     '########:::::'###:::::'######:::'######:::'######::'##:::::::'####:
      ##.... ##:::'## ##:::'##... ##:'##... ##:'##... ##: ##:::::::. ##::
@@ -28,28 +28,32 @@ passcli() {
      ##:::::::: ##.... ##:'##::: ##:'##::: ##: ##::: ##: ##:::::::: ##::
      ##:::::::: ##:::: ##:. ######::. ######::. ######:: ########:'####:
     ..:::::::::..:::::..:::......::::......::::......:::........::....::
-     "
-
+"
     show_header() { clear; type -P lolcat &>/dev/null && echo "${pass_header}"|lolcat || echo "${pass_header}"; }
 
     usage() { echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|find keywd|rem keywd|show\n\n" >&2; }
 
     purge_hist() { sed -i "/${sbn}/d" "${HOME}/.bash_history"; }
     
-    encrypt() { "${pgpc[@]}" "${pass_pgp}" "--encrypt" "${pass_file}" && "${shrc[@]}" {"${pass_file}","${pass_bck}"} 2> /dev/null; }
+    encrypt() { "${pgpc[@]}" "${pass_pgp}" "--encrypt" "${pass_file}" && "${shrc[@]}" {"${pass_file}","${pass_bkp}"} 2> /dev/null; }
 
-    #shellcheck disable=SC2015
-    decrypt() { [[ -e "${pass_pgp}" ]] && "${pgpc[@]}" "${pass_file}" "--decrypt" "${pass_pgp}" || echo 'domain,email,username,password' > "${pass_file}"; }
+    decrypt() {
+	if [[ -e "${pass_pgp}" ]]; then
+	    "${pgpc[@]}" "${pass_file}" "--decrypt" "${pass_pgp}"
+	else
+	    echo 'domain,email,username,password' > "${pass_file}"
+	fi
+    }
 
-    show() { column -t -s $',' "${pass_file}" | "${PAGER}"; }
+    show() { column -t -s "," "${pass_file}" | "${PAGER}"; }
 
-    find() { grep -h "${1}" "${pass_file}" | column -t -s $',' | "${PAGER}"; }
+    find() { grep -h "${1}" "${pass_file}" | column -t -s "," | "${PAGER}"; }
 
     rem() {
 	grep -h "${1}" "${pass_file}" | column -t -s $',' | "${PAGER}"
 	if [[ "$(read -rp "Delete above entr(y/ies) from password file? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
-            cp -f "${pass_file}" "${pass_bck}"
-            grep -hv "${1}" "${pass_bck}" > "${pass_file}"
+            cp -f "${pass_file}" "${pass_bkp}"
+            grep -hv "${1}" "${pass_bkp}" > "${pass_file}"
 	fi
     }
 
