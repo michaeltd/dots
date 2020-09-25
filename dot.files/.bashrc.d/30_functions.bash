@@ -37,12 +37,12 @@ hello_world() {
 
 # UTILS =======================================================================
 
-prunehist() {
+purge_hist4() {
     [[ -z "${1}" ]] && \
 	echo -ne "
 	Usage: ${FUNCNAME[0]} expression
 	Description: Removes \"expression\" occurances from ~/.bash_history\n\n" >&2 && return 1
-    sed -i "/^${1}$/d" ~/.bash_history
+    sed -i "/^${1}$/d" "${HOME}/.bash_history"
 }
 
 top5cmds() {

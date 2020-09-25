@@ -2,8 +2,8 @@
 #shellcheck shell=bash disable=SC1008,SC2096
 #
 # Simple password cli.
-# Consistent use of ${PAGER} ensures there's no password "bleed" from terminals with persistant history configured,
-# also ~/.bash_history gets purged for ${sbn} instances in each add function call.
+# Consistent use of ${PAGER} ensures there's no password "bleed" from terminals with persistant history configured.
+# Also ~/.bash_history gets purged for ${sbn} instances in each function call.
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
@@ -34,7 +34,7 @@ passcli() {
 
     usage() { echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|find keywd|rem keywd|show\n\n" >&2; }
 
-    purge_hist() { history -w; sed -i "/${sbn}/d" "${HOME}/.bash_history"; }
+    purge_hist() { sed -i "/${sbn}/d" "${HOME}/.bash_history"; }
     
     encrypt() { "${pgpc[@]}" "${pass_pgp}" "--encrypt" "${pass_file}" && "${shrc[@]}" {"${pass_file}","${pass_bck}"} 2> /dev/null; }
 
@@ -53,10 +53,10 @@ passcli() {
 	fi
     }
 
-    add() { echo "${*}" >> "${pass_file}"; show; purge_hist; }
+    add() { echo "${*}" >> "${pass_file}"; show; }
 
     case "${*}" in
-	add*|rem*|find*|show*) show_header; decrypt; "${@}"; encrypt;;
+	add*|rem*|find*|show*) show_header; decrypt; "${@}"; encrypt; purge_hist;;
 	*) show_header; usage; return 1;;
     esac
 }
