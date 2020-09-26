@@ -49,7 +49,7 @@ sndvol() {
     }
 
     usage() {
-	display_feedback "Usage: ${sbn} +|- | [0-100] | report"
+	display_feedback "Usage: ${sbn} + | - | [0-100] | report"
 	return 1
     }
 
