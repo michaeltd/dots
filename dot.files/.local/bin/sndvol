@@ -7,17 +7,17 @@
 set -eo pipefail
 IFS=$'\t\n'
 
-readonly sbn="${BASH_SOURCE[0]##*/}"
+readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 sndvol() {
 
     # Timeout settings for Xdialog, Xmessage
-    local -r XMTO="1" # xmessage timeout is in seconds...
-    local -r XDTO="$(( XMTO * 1000 ))" # Xdialog/dialog is in milliseconds.
+    local -r xmto="1" # xmessage timeout is in seconds...
+    local -r xdto="$(( xmto * 1000 ))" # Xdialog/dialog is in milliseconds.
 
     # Xdialog/dialog
     declare -rx XDIALOG_HIGH_DIALOG_COMPAT=1 XDIALOG_FORCE_AUTOSIZE=1 \
-	    XDIALOG_INFOBOX_TIMEOUT="${XDTO}" XDIALOG_NO_GMSGS=1 \
+	    XDIALOG_INFOBOX_TIMEOUT="${xdto}" XDIALOG_NO_GMSGS=1 \
 	    DIALOG_OK=0 DIALOG_CANCEL=1 DIALOG_HELP=2 \
 	    DIALOG_EXTRA=3 DIALOG_ITEM_HELP=4 DIALOG_ESC=255 \
 	    SIG_NONE=0 SIG_HUP=1 SIG_INT=2 SIG_QUIT=3 SIG_KILL=9 SIG_TERM=15
@@ -26,10 +26,10 @@ sndvol() {
     # local -ar pids=( $(pgrep -U "${USER}" -f "${sbn}") )
     # [[ "${#pids[*]}" -gt "1" ]] && return 1
 
-    # Pick a default available UI ...
+    # Pick a default available dialog impl. ...
     #shellcheck disable=SC2155
     if [[ -x "$(type -P Xdialog)" && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
-	local -r DIALOG="$(type -P Xdialog)" G=( "0" "0" "${XDTO}" )
+	local -r DIALOG="$(type -P Xdialog)" G=( "0" "0" "${xdto}" )
     elif [[ -x "$(type -P dialog)" && -z "${DISPLAY}" ]]; then
 	local -r DIALOG="$(type -P dialog)" G=( "0" "0" )
     else
@@ -38,32 +38,32 @@ sndvol() {
 
     display_feedback() {
 	if [[ -x "$(type -P notify-send)" ]]; then
-            notify-send "${sbn}:" "${*}"
-	elif [[ -n "${DIALOG}" ]]; then
-            "${DIALOG}" --title "${sbn}:" --infobox "${*}" "${G[@]}"
+            "$(type -P notify-send)" "-i" "audio-card" "-c" "notification" "-t" "${xdto}" "${sbn}:" "${*}"
+	elif [[ -x "${DIALOG}" ]]; then
+            "${DIALOG}" "--title" "${sbn}:" "--infobox" "${*}" "${G[@]}"
 	elif [[ -x "$(type -P xmessage)" ]]; then
-            xmessage -nearmouse -timeout "${XMTO}" "${*}"
+            "$(type -P xmessage)" "-nearmouse" "-timeout" "${xmto}" "${*}"
+	else
+	    echo "${sbn}: ${*}" >&2
 	fi
-	echo "${sbn}: ${*}" >&2
     }
 
     usage() {
-	display_feedback "Usage: ${sbn} [+]|[-]|[0-100]|report|halp"
+	display_feedback "Usage: ${sbn} +|- | [0-100] | report"
 	return 1
     }
 
     #shellcheck disable=SC2015
     case "${1}" in
-	+|-) VOL="$(amixer -c 0 -- sset Master "10dB${1}")";;
-	*[0-9]) [[ "${1}" =~ ^[0-9]{1,3}$ ]] && (( $1 >= 0 && $1 <= 100 )) && VOL="$(amixer -c 0 -- sset Master "${1}%")";;
-	report) VOL="$(amixer -c 0 -- sget Master)";;
-	*) usage ;;
+	+|-) vol="$(amixer -c 0 -- sset Master "10dB${1}")";;
+	*[0-9]) [[ "${1}" =~ ^[0-9]{1,3}$ ]] && (( $1 >= 0 && $1 <= 100 )) && vol="$(amixer -c 0 -- sset Master "${1}%")";;
+	report) vol="$(amixer -c 0 -- sget Master)";;
+	*) usage;;
     esac
 
-    VOL="${VOL/\]*}"
-    VOL="${VOL/*\[}"
+    vol="${vol/\]*}"; vol="${vol/*\[}"
 
-    display_feedback "Master: ${VOL}"
+    display_feedback "Master: ${vol}"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn}" "${@}"
