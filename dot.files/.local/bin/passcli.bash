@@ -6,7 +6,7 @@
 # Also ~/.bash_history gets purged for ${sbn} instances in each function call.
 
 # Unofficial Bash Strict Mode
-set -euo pipefail
+set -eo pipefail
 IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
@@ -60,7 +60,7 @@ passcli() {
     }
 
     list() {
-	if [[ -n "${*}" ]]; then
+	if [[ -n "${1}" ]]; then
 	    grep -h "${1}" "${pass_file}" | column -t -s "," | "${PAGER}"
 	else
 	    column -t -s "," "${pass_file}" | "${PAGER}"
@@ -80,7 +80,7 @@ passcli() {
 	list
     }
 
-    case "${*}" in
+    case "${1}" in
 	add*|rem*|list*)
 	    show_header
 	    decrypt
