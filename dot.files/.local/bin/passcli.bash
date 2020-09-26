@@ -29,13 +29,27 @@ passcli() {
      ##:::::::: ##:::: ##:. ######::. ######::. ######:: ########:'####:
     ..:::::::::..:::::..:::......::::......::::......:::........::....::
 "
-    show_header() { clear; type -P lolcat &>/dev/null && echo "${pass_header}"|lolcat || echo "${pass_header}"; }
+    show_header() {
+	clear
+	if type -P lolcat &> /dev/null; then
+	    echo "${pass_header}"|lolcat
+	else
+	    echo "${pass_header}"
+	fi
+    }
 
-    usage() { echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|find keywd|rem keywd|show\n\n" >&2; }
+    usage() {
+	echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|rem keywd|list [keywd]|empty for all\n\n" >&2
+    }
 
-    purge_hist() { sed -i "/${sbn}/d" "${HOME}/.bash_history"; }
+    purge_hist() {
+	sed -i "/${sbn}/d" "${HOME}/.bash_history"
+    }
     
-    encrypt() { "${pgpc[@]}" "${pass_pgp}" "--encrypt" "${pass_file}" && "${shrc[@]}" {"${pass_file}","${pass_bkp}"} 2> /dev/null; }
+    encrypt() {
+	"${pgpc[@]}" "${pass_pgp}" "--encrypt" "${pass_file}"
+	"${shrc[@]}" {"${pass_file}","${pass_bkp}"} 2> /dev/null
+    }
 
     decrypt() {
 	if [[ -e "${pass_pgp}" ]]; then
@@ -45,23 +59,38 @@ passcli() {
 	fi
     }
 
-    show() { column -t -s "," "${pass_file}" | "${PAGER}"; }
-
-    find() { grep -h "${1}" "${pass_file}" | column -t -s "," | "${PAGER}"; }
+    list() {
+	if [[ -n "${*}" ]]; then
+	    grep -h "${1}" "${pass_file}" | column -t -s "," | "${PAGER}"
+	else
+	    column -t -s "," "${pass_file}" | "${PAGER}"
+	fi
+    }
 
     rem() {
-	grep -h "${1}" "${pass_file}" | column -t -s $',' | "${PAGER}"
+	list "${1}"
 	if [[ "$(read -rp "Delete above entr(y/ies) from password file? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
             cp -f "${pass_file}" "${pass_bkp}"
             grep -hv "${1}" "${pass_bkp}" > "${pass_file}"
 	fi
     }
 
-    add() { echo "${*}" >> "${pass_file}"; show; }
+    add() {
+	echo "${*}" >> "${pass_file}"
+	list
+    }
 
     case "${*}" in
-	add*|rem*|find*|show*) show_header; decrypt; "${@}"; encrypt; purge_hist;;
-	*) show_header; usage; return 1;;
+	add*|rem*|list*)
+	    show_header
+	    decrypt
+	    "${@}"
+	    encrypt
+	    purge_hist;;
+	*)
+	    show_header
+	    usage
+	    return 1;;
     esac
 }
 
