@@ -32,14 +32,14 @@ passcli() {
     show_header() {
 	clear
 	if type -P lolcat &> /dev/null; then
-	    echo "${pass_header}"|lolcat
+	    echo "${pass_header}" | lolcat
 	else
 	    echo "${pass_header}"
 	fi
     }
 
     usage() {
-	echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|rem keywd|list [keywd]|empty for all\n\n" >&2
+	echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|rem keywd|list [keywd/(empty for all)]\n\n" >&2
     }
 
     purge_hist() {
