@@ -5,7 +5,7 @@
 factorial(){
     local -i f i=$1
     [[ $# -eq 0 ]] && { echo "Usage: ${FUNCNAME[0]} number"; return 1; }
-    #shellcheck disable=SC2015
+    #shellcheck disable=SC2015 #safe as echo won't fail.
     [[ $i -le 2 ]] && echo "${i}" || { f=$(( i - 1 )); f=$(factorial $f); f=$(( f * i )); echo "${f}"; }
 }
 
