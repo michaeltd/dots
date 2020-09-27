@@ -6,13 +6,9 @@
 # Simple notes
 # I use the following to keep track of minutia and thought it might be helpful to someone else. I use it for when someone suggests a movie or TV show, or birthday gift thoughts, etc. Basically anything that you might use a post-it for.
 
-# Unofficial Bash Strict Mode
-set -euo pipefail
-IFS=$'\t\n'
-
 todo_notes() {
     local -r notes_file="${HOME}/.todo_notes"
-    local -r notes_bak="${notes_file}.bak"
+    local -r notes_bkp="${notes_file}.bkp"
     local -r notes_header='
           ::::    ::: ::::::::::::::::::::::::::::::::::::: 
          :+:+:   :+::+:    :+:   :+:    :+:      :+:    :+: 
@@ -22,27 +18,25 @@ todo_notes() {
      #+#   #+#+##+#    #+#   #+#    #+#      #+#    #+#     
     ###    #### ########    ###    ##################       
     '
-
     show_header() { type -P lolcat &>/dev/null && echo "${notes_header}"|lolcat || echo "${notes_header}"; }
 
-    usage() { echo -ne "\n Usage: ${BASH_SOURCE[0]##*/} add 'some notes' | find keyword | rem keyword... | show\n\n" >&2; }
+    usage() { echo -ne "\n Usage: ${BASH_SOURCE[0]##*/} add 'some notes'|rem keyword...|find [keyword]/(empty for all)\n\n" >&2; }
 
-    show() { nl -b a "${notes_file}"; }
-
-    find() { grep -h "${1}" "${notes_file}"; }
+    find() { grep -h "${1}" "${notes_file}" | nl -ba; }
 
     rem() {
-	grep -h "${1}" "${notes_file}"
+	find "${1}"
 	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
-            cp -f "${notes_file}" "${notes_bak}"
-            grep -hv "${1}" "${notes_bak}" > "${notes_file}"
+            cp -f "${notes_file}" "${notes_bkp}"
+            grep -hv "${1}" "${notes_bkp}" > "${notes_file}"
+	    find
 	fi
     }
 
-    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; show; }
+    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; find "${1}"; }
 
-    case "${*}" in
-	add*|rem*|find*|show*) show_header; "${@}";;
+    case "${1}" in
+	add*|rem*|find*) show_header; "${@}";;
 	*) show_header; usage; return 1;;
     esac
 }
