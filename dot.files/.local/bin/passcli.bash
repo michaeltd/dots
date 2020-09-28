@@ -77,7 +77,6 @@ passcli() {
 
     add() {
 	echo "${*}" >> "${pass_file}"
-	list
     }
 
     case "${1}" in
