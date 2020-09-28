@@ -1,10 +1,10 @@
 #!/bin/sh
 #
 
-SDN="$(dirname "$(realpath $0)")"
-MS="${SDN}/monthly"
-if [ -d "${MS}" ]; then
-    time for SCPT in "${MS}/"*.bash; do
-        time "${SCPT}"
+sdn="$(dirname "$(realpath $0)")"
+ms="${sdn}/monthly"
+if [ -d "${ms}" ]; then
+    time for scpt in "${ms}/"*.bash; do
+        time "${scpt}"
     done
 fi
