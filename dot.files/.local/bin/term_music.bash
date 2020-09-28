@@ -1,15 +1,13 @@
 #!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096
+#shellcheck shell=bash disable=SC1008,SC2096,SC2155,SC2034,SC2207
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
 IFS=$'\t\n'
 
 main() {
-    #shellcheck disable=SC2155
     local -r myusage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n\n" uri="file:///mnt/data/Documents/Music"
 
-    #shellcheck disable=SC2034
     local -ar pop=( "${uri}/all_saints" "${uri}/avicii" "${uri}/black_eyed_pees" "${uri}/bruno_mars" "${uri}/daft_punk" "${uri}/gorillaz" ) \
 	  rock=( "${uri}/bad_co" "${uri}/deep_purple" "${uri}/doobie_brothers" "${uri}/frank_zappa" "${uri}/janis_joplin" "${uri}/jethro_tull" "${uri}/joe_cocker" "${uri}/led_zeppelin" "${uri}/lenny_kravitz" "${uri}/the_who" "${uri}/ten_years_after" "${uri}/sting" "${uri}/santana" ) \
 	  reggae=( "${uri}/ub40" "${uri}/matisyahu" "${uri}/bob_marley" ) \
@@ -39,7 +37,6 @@ main() {
     fi
 
     # is VLC running?
-    #shellcheck disable=SC2207
     local -ar pids=( $(pgrep -U "${USER}" -f vlc) )
     if [[ "${#pids[*]}" -gt "0" ]]; then
 	play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3

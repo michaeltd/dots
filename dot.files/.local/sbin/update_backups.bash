@@ -1,5 +1,5 @@
 #!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096
+#shellcheck shell=bash disable=SC1008,SC2096,SC2155,SC2034,SC2046
 #
 # Configure backups with ~/.backup_include.(encrypt|compress).job_name definition files
 
@@ -37,7 +37,6 @@ set -uo pipefail
 IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
-#shellcheck disable=SC2155,SC2034
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
@@ -80,14 +79,12 @@ update_backups() {
     compress() {
 	local job_out="${job_fn}.${1##*.}.tar.gz"
 	log2err "Writing: ${job_out}"
-	#shellcheck disable=SC2046
 	"${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_out}" $(cat "${1}")
     }
 
     encrypt() {
 	local job_out="${job_fn}.${1##*.}.tar.gz.pgp"
 	log2err "Writing: ${job_out}"
-	#shellcheck disable=SC2046
 	"${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_out}" "--encrypt"
     }
 

@@ -1,6 +1,7 @@
 #
 # date, time related functions
 #shellcheck shell=bash
+#shellcheck disable=SC2120,SC2119
 
 is_date() {
     [[ -z "${1}" ]] && return 1  # apparently `date -d ""` echoes today's day and returns 0
@@ -28,7 +29,6 @@ date_dd() {
     day_diff "$(date -u --date="${1}" +%s)" "$(date -u --date="${2}" +%s)"
 }
 
-#shellcheck disable=SC2120
 unix_epoch() {
     if [[ -n "${1}" ]]; then
 	date -u --date="${1}" +%s
@@ -38,17 +38,14 @@ unix_epoch() {
 }
 
 epoch2date() {
-    #shellcheck disable=SC2119
     date -u --date="@${1-$(unix_epoch)}" +%Y/%m/%d
 }
 
 epoch2time() {
-    #shellcheck disable=SC2119
     date -u --date="@${1-$(unix_epoch)}" +%H:%M:%S
 }
 
 epoch2datetime() {
-    #shellcheck disable=SC2119
     date -u --date="@${1-$(unix_epoch)}" +%Y/%m/%d-%H:%M:%S
 }
 

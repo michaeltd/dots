@@ -1,7 +1,7 @@
 #
 # various functions
+#shellcheck shell=bash disable=SC2207,SC2086,SC2009,SC2230,SC2154,SC2155,SC2068
 
-#shellcheck shell=bash
 # SCRAPPAD ====================================================================
 
 # allemojis() {
@@ -30,7 +30,7 @@ wttrin() {
 }
 
 hello_world() {
-    echo -ne "\n $(tput setaf 2)Hello$(tput sgr0) $(tput bold)${USER}$(tput sgr0), today is $(tput setaf 5)$(date '+%A, %B %d')$(tput sgr0)\n\n"
+    echo -ne "\n $(tput setaf 2)Hello$(tput sgr0) $(tput bold)${USER}$(tput sgr0), today is $(tput setaf 5)$(date '+%A, %B %d, %H:%M')$(tput sgr0)\n\n"
     curl https://wttr.in?0
     printf "\n"
 }
@@ -38,11 +38,17 @@ hello_world() {
 # UTILS =======================================================================
 
 purge_hist4() {
+    local -r bh="${HOME}/.bash_history"
+    local -ra prepurgelc=( $(wc -l "${bh}") )
+
     [[ -z "${1}" ]] && \
 	echo -ne "
 	Usage: ${FUNCNAME[0]} expression
-	Description: Removes \"expression\" occurances from ~/.bash_history\n\n" >&2 && return 1
-    sed -i "/^${1}$/d" "${HOME}/.bash_history"
+	Description: Removes \"expression\" occurances from ${bh}\n\n" >&2 && return 1
+
+    sed -i /^${1}$/d "${bh}"
+    local -ra postpurgelc=( $(wc -l "${bh}") )
+    echo -ne "purged: $(( prepurgelc - postpurgelc )) instances of ${1} from ${bh}\n"
 }
 
 top5cmds() {
@@ -50,7 +56,7 @@ top5cmds() {
 }
 
 command_line_from_pid() {
-    #shellcheck disable=SC2009
+
     ps -aux |grep "${1:-${$}}"|head -n 1|awk -v f=1 -v t=10 '{for(i=1;i<=NF;i++)if(i>=f&&i<=t)continue;else printf("%s%s",$i,(i!=NF)?OFS:ORS)}'
 }
 
@@ -170,13 +176,12 @@ if command -v emerge &>/dev/null; then
     }
 
     lspkgcat() {
-	#shellcheck disable=SC2230
+
 	/bin/ls --color "/usr/portage/${1}"
     }
 fi
 
 show_uptime() {
-    #shellcheck disable=SC2154
     echo -ne "${blue}${HOSTNAME}${reset} uptime is: "
     uptime|awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
@@ -231,7 +236,6 @@ rcm() {
     # (R)un things in the background with (C)ustom niceness and cli switches in a (M)utex kind of way
     # Usage : rcm niceness executable command line arguments
     # Example: rcm 9 conky -qdc ~/.conkyrc
-    #shellcheck disable=SC2155
     local thebin="$(command -v "${2}")" thepid="$(pgrep -U "${USER}" -f "${2}")"
     [[ "${#}" -lt "2" ]] && printf "\n\tUsage: %s niceness command [arguments ...]\n\teg: rcm 0 wicd-gtk -t\n\n" "${FUNCNAME[0]}" >&2 && return 1
     [[ -z "${thepid}" && -x "${thebin}" ]] && exec nice -n "${@}" &
@@ -284,7 +288,6 @@ lsports() {
 
 # Functions to unify archive management in linux CLI environments
 compress() {
-    #shellcheck disable=SC2154,SC2068
     case "${1,,}" in
 	*.tar.bz2|*.tbz2) tar cjf $@;;
 	*.tar.gz|*.tgz) tar czf $@;;
@@ -357,7 +360,6 @@ get_file_type() {
 
 dir_sizes() {
     # Report first params directory sizes in human readable format
-    #shellcheck disable=SC2230,SC2155
     local ls=$(which ls) du=$(which du)
     if [[ -x "${ls}" && -x "${du}" ]]; then
 	for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
@@ -384,7 +386,6 @@ takeascreenshot() {
     Requirements: Imagemagick and ristretto\n\n"
     
     if type -P import &>/dev/null && type -P ristretto &>/dev/null && [[ -n "${DISPLAY}" ]]; then
-	#shellcheck disable=SC2155
 	local FN="${HOME}/ScreenShot-$(date -u +%s).png"
 	import -delay "${1:-2}" -window root "${FN}" && ristretto "${FN}"
     else

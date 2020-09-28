@@ -1,5 +1,5 @@
 #!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096
+#shellcheck shell=bash disable=SC1008,SC2096,SC2155
 #
 
 # Unofficial Bash Strict Mode
@@ -7,7 +7,6 @@ set -euo pipefail
 IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
-#shellcheck disable=SC2155
 readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 update_mirror() {

@@ -1,5 +1,8 @@
 #
 # various ascii art ============================================================
+#shellcheck shell=bash disable=SC2015
+    #shellcheck disable=SC2207
+    #shellcheck disable=SC2015
 
 pukeskull() {
     ##!/bin/sh
@@ -104,7 +107,6 @@ funky4tune() {
 
     local msg file
 
-    #shellcheck disable=SC2015
     type -P fortune &> /dev/null && \
 	type -P cowsay &> /dev/null && \
 	type -P lolcat &> /dev/null || \
@@ -119,10 +121,8 @@ funky4tune() {
 	shift
     done
 
-    #shellcheck disable=SC2207
     local -ar cowsay_files=( $(cowsay -l|awk 'NR != 1 { print $0 }') )
 
-    #shellcheck disable=SC2015
     { [[ -n "${msg}" ]] && echo "${msg}" || fortune -o; } | \
 	{ [[ -z "${file}" ]] && cowsay -f "${cowsay_files[$(shuf -n 1 -i 0-"$((${#cowsay_files[*]}-1))")]}" || cowsay -f "${file}"; } | \
 	lolcat
@@ -134,7 +134,7 @@ list_cow_files() {
     done
 }
 
-magic8cow() {
+magiccow() {
     # https://twitter.com/climagic/status/1299435679710154753
     # Magic Cow answers for all. Works better with cowsay and lolcat.
     # echo 'Yes!,Moooo!,Mooost likely!,Cannot predict cow!,Without a doubt!,My horses say no!,Ask again l8r!' | \
@@ -145,7 +145,9 @@ magic8cow() {
 					"Reply hazy, try again." "Ask again later." "Better not tell you now." "Cannot predict now." "Concentrate and ask again." \
 					"Don't count on it." "My reply is no." "My sources say no." "Outlook not so good." "Very doubtful." )
 
-    echo "${answ[$(shuf -n 1 -i 0-"$((${#answ[*]}-1))")]}" | { cowsay 2> /dev/null || cat; } | { lolcat 2> /dev/null || cat; }
+    echo "${answ[$(shuf -n 1 -i 0-"$((${#answ[*]}-1))")]}" | \
+	{ type -P cowsay &> /dev/null && cowsay || cat; } | \
+	{ type -P lolcat &> /dev/null && lolcat || cat; }
 }
 
 mycountdown() {

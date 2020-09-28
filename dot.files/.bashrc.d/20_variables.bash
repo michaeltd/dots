@@ -1,34 +1,28 @@
 #
 # environment variables
-#shellcheck shell=bash
+#shellcheck shell=bash disable=SC2155
 
 # Used by mc themes
 export COLORTERM="truecolor"
 
 # SUDO_ASKPASS
-#shellcheck disable=SC2155
 export SUDO_ASKPASS="$(type -P x11-ssh-askpass||type -P ssh-askpass-fullscreen)"
 
 # Used by emacsclient in case of server not running.
-#shellcheck disable=SC2155
 export ALTERNATE_EDITOR="$(type -P emacs||type -P gvim||type -P kate||type -P gedit||type -P mousepad)" \
        TERMINAL_EDITOR="$(type -P emacs||type -P vim||type -P micro||type -P nano)"
 
 export EDITOR="${TERMINAL_EDITOR}" VISUAL="${ALTERNATE_EDITOR}"
 
 if [[ -n "${DISPLAY}" ]]; then
-    #shellcheck disable=SC2155
     export BROWSER="$(type -P firefox ||type -P seamonkey)"
 else
-    #shellcheck disable=SC2155
     export BROWSER="$(type -P w3m||type -P links||type -P lynx)"
 fi
 
-#shellcheck disable=SC2155
 export TERMINAL="$(type -P xterm||type -P konsole||type -P gnome-terminal||type -P terminology||type -P xfce4-terminal)"
 
 # most > less > more in order of preference
-#shellcheck disable=SC2155
 export PAGER="$(command -v less 2>/dev/null || command -v most 2>/dev/null || type -P more 2>/dev/null)"
 
 # manpager in case you'd like your manpages in your favorite editor

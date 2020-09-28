@@ -2,6 +2,7 @@
 # general bash options
 
 #shellcheck shell=bash
+#shellcheck disable=SC1090
 
 # Window size sanity check
 shopt -s checkwinsize
@@ -32,7 +33,6 @@ stdlib="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.stdlib"
 # Load files from ~/.bashrc.d/.stdlib
 if [[ -d "${stdlib}" ]]; then
     for file in "${stdlib}"/*.bash; do
-	#shellcheck disable=SC1090
 	source "${file}"
     done
 fi

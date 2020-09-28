@@ -1,5 +1,5 @@
 #!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096
+#shellcheck shell=bash disable=SC1008,SC2096,SC2155,SC2015
 #
 # sndvol lil script to play around with volume settings
 
@@ -27,7 +27,6 @@ sndvol() {
     # [[ "${#pids[*]}" -gt "1" ]] && return 1
 
     # Pick a default available dialog impl. ...
-    #shellcheck disable=SC2155
     if [[ -x "$(type -P Xdialog)" && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
 	local -r DIALOG="$(type -P Xdialog)" G=( "0" "0" "${xdto}" )
     elif [[ -x "$(type -P dialog)" && -z "${DISPLAY}" ]]; then
@@ -53,7 +52,6 @@ sndvol() {
 	return 1
     }
 
-    #shellcheck disable=SC2015
     case "${1}" in
 	+|-) vol="$(amixer -c 0 -- sset Master "10dB${1}")";;
 	*[0-9]) [[ "${1}" =~ ^[0-9]{1,3}$ ]] && (( $1 >= 0 && $1 <= 100 )) && vol="$(amixer -c 0 -- sset Master "${1}%")";;

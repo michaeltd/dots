@@ -1,16 +1,15 @@
 #
 # cryptographic functions
 #shellcheck shell=bash
+#shellcheck disable=SC2005,SC2155,SC2086
 
 gen_rnum() {
-    #shellcheck disable=SC2005
     tr -dc "[:digit:]" < /dev/urandom | \
 	head -c "${1:-8}"
     echo
 }
 
 gen_pass() {
-    #shellcheck disable=SC2005
     tr -dc "[:graph:]" < /dev/urandom | \
 	tr -d "[=\|=][=\"=][=\'=][=\,=]" | \
 	head -c "${1:-64}"
@@ -26,7 +25,6 @@ gen_uuid() {
 	tr -dc A-F0-9 < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
     }
     for i in {8,4,4,4,12}; do
-	# shellcheck disable=SC2155,SC2086
 	local uuid+="$(mkpart $i)-"
     done
     printf "%s\n" "${uuid%-}"

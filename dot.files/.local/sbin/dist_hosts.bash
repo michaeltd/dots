@@ -1,5 +1,5 @@
 #!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096
+#shellcheck shell=bash disable=SC1008,SC2096,SC2207
 #
 # 1) Set a strict /etc/hosts file
 # 2) Make sure you have one
@@ -14,7 +14,6 @@ random_file="/tmp/${RANDOM}.$$"
 
 curl -sS "${url}" > "${random_file}"
 
-#shellcheck disable=SC2207
 bytes=($(wc -c "${random_file}"))
 
 if [[ "${bytes[0]}" -eq "0" ]]; then

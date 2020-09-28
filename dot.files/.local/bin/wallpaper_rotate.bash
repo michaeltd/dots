@@ -1,25 +1,22 @@
 #!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096
 #
 # Script to go through a directory of background images as wallpapers in a timely fashion
+#shellcheck shell=bash source=/dev/null disable=SC1008,SC2096,SC2155,SC2034,SC2154
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
 IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
-#shellcheck disable=SC2155,SC2034
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 wallpaper_rotate() {
     # Font attributes, Colors, bg colors
-    #shellcheck disable=SC2034
     local -r reset="$(tput sgr0)" bold="$(tput bold)" dim="$(tput dim)" blink="$(tput blink)" underline="$(tput smul)" end_underline="$(tput rmul)" reverse="$(tput rev)" hidden="$(tput invis)" \
 	  black="$(tput setaf 0)" red="$(tput setaf 1)" green="$(tput setaf 2)" yellow="$(tput setaf 3)" blue="$(tput setaf 4)" magenta="$(tput setaf 5)" cyan="$(tput setaf 6)" white="$(tput setaf 7)" default="$(tput setaf 9)" \
 	  bg_black="$(tput setab 0)" bg_red="$(tput setab 1)" bg_green="$(tput setab 2)" bg_yellow="$(tput setab 3)" bg_blue="$(tput setab 4)" bg_magenta="$(tput setab 5)" bg_cyan="$(tput setab 6)" bg_white="$(tput setab 7)" bg_default="$(tput setab 9)"
 
-    #shellcheck disable=SC2034,SC2155
     local -ra wpusage=("\n \
     ${bold}Script to rotate backgrounds in wm's with out such options \n \
     like: openbox, wmaker, mwm, ...etc ${reset}\n\n \
@@ -31,12 +28,10 @@ wallpaper_rotate() {
     ${green}${sbn}${reset} ${magenta}showimg${reset} [${yellow}#${reset}] - display previous image #num (int) \n \
     ${green}${sbn}${reset} ${magenta}help${reset} - this message\n\n")
 
-    #shellcheck disable=SC2034,SC2155
     local -ra feh=( "feh" "--bg-scale" ) wmsetbg=( "wmsetbg" ) fvwm_root=( "fvwm-root" ) \
           fbsetbg=( "fbsetbg" ) bsetbg=( "bsetbg" ) hsetroot=( "hsetroot" "-fill" ) xsetbg=( "xsetbg" )
     local -a bgsrs=( feh[@] wmsetbg[@] fvwm_root[@] fbsetbg[@] bsetbg[@] hsetroot[@] xsetbg[@] ) \
 	  dirs=( "${HOME}/Pictures" ) wps=()
-    #shellcheck disable=SC2155
     local -r wprc="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.rc}")" \
 	  wplg="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.log}")"
     local bgsr="" \
@@ -44,7 +39,6 @@ wallpaper_rotate() {
 
     # bash version info check
     if (( "${BASH_VERSINFO[0]}" < 4 )); then
-	#shellcheck disable=SC2154
 	echo -ne "${red}Error:${reset} For this to work you'll need bash major version no less than 4.\n" >&2
 	return 1
     fi
@@ -70,7 +64,6 @@ wallpaper_rotate() {
     fi
 
     # and read it.
-    #shellcheck source=/dev/null
     source "${wprc}"
 
     timestamp() {
@@ -145,7 +138,6 @@ wallpaper_rotate() {
     else
 	while :; do
 	    # re-read rc (to pick up config updates).
-	    #shellcheck source=/dev/null
 	    source "${wprc}"
 
 	    # fill a WallPaperS list

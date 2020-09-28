@@ -1,10 +1,10 @@
 #
 # string related functions
 #shellcheck shell=bash
+#shellcheck disable=SC2048,SC2086,SC2046,SC2005,SC2059
 
 ascii2bin() {
     # https://unix.stackexchange.com/questions/98948/ascii-to-binary-and-binary-to-ascii-conversion-tools
-    #shellcheck disable=SC2048,SC2086
     echo -n $* | while IFS= read -r -n1 char
     do
         echo "obase=2; $(printf '%d' "'$char")" | bc | tr -d '\n'
@@ -15,13 +15,10 @@ ascii2bin() {
 
 bin2ascii() {
     chrbin() {
-	#shellcheck disable=SC2046,SC2005,SC2059
 	echo $(printf \\$(echo "ibase=2; obase=8; $1" | bc))
     }
-    #shellcheck disable=SC2048
     for bin in $*
     do
-	#shellcheck disable=SC2086
         chrbin $bin | tr -d '\n'
     done
     printf "\n"
