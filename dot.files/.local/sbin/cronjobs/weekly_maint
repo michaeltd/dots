@@ -5,6 +5,6 @@ SDN="$(dirname "$(realpath $0)")"
 WS="${SDN}/weekly"
 if [ -d "${WS}" ]; then
     time for SCPT in "${WS}/"*.bash; do
-        "${SCPT}"
+        time "${SCPT}"
     done
 fi

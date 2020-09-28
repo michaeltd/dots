@@ -5,6 +5,6 @@ SDN="$(dirname "$(realpath $0)")"
 MS="${SDN}/monthly"
 if [ -d "${MS}" ]; then
     time for SCPT in "${MS}/"*.bash; do
-        "${SCPT}"
+        time "${SCPT}"
     done
 fi

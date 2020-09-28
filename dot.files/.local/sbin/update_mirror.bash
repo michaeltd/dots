@@ -18,7 +18,7 @@ update_mirror() {
     local dtmnt="/mnt/data/Documents" elmnt="/mnt/el/Documents"
 
     if [[ -d "${dtmnt}" && -d "${elmnt}" ]]; then
-	time "${nicec[@]}" "${rsncm[@]}" "${dtmnt}"/* "${elmnt}"
+	"${nicec[@]}" "${rsncm[@]}" "${dtmnt}"/* "${elmnt}"
     else
 	echo -ne "${sbn}: ${dtmnt} or ${elmnt} not found\n" >&2
 	return 1

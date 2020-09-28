@@ -6,5 +6,5 @@ type -P emerge &>/dev/null || { echo -ne "Not an portage based distro!\n" >&2; e
 type -P qcheck &>/dev/null || { echo -ne "qcheck not found!\n" >&2; exit 1; }
 [[ "${EUID}" -eq "0" ]] || { echo -ne "Privilaged access requirements not met!\n" >&2; exit 1; }
 
-time qcheck --quiet --nocolor --badonly
+qcheck --quiet --nocolor --badonly
 
