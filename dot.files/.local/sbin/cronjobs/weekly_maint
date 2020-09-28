@@ -4,7 +4,9 @@
 sdn="$(dirname "$(realpath $0)")"
 ws="${sdn}/weekly"
 if [ -d "${ws}" ]; then
-    time for scpt in "${ws}/"*.bash; do
-        time "${scpt}"
-    done
+    time {
+	for scpt in "${ws}/"*.bash; do
+	    time "${scpt}"
+	done
+    }
 fi

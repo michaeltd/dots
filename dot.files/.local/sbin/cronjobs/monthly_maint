@@ -4,7 +4,9 @@
 sdn="$(dirname "$(realpath $0)")"
 ms="${sdn}/monthly"
 if [ -d "${ms}" ]; then
-    time for scpt in "${ms}/"*.bash; do
-        time "${scpt}"
-    done
+    time {
+	for scpt in "${ms}/"*.bash; do
+            time "${scpt}"
+	done
+    }
 fi
