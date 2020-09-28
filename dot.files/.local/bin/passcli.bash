@@ -28,18 +28,9 @@ passcli() {
      ##:::::::: ##:::: ##:. ######::. ######::. ######:: ########:'####:
     ..:::::::::..:::::..:::......::::......::::......:::........::....::
 "
-    show_header() {
-	clear
-	if type -P lolcat &> /dev/null; then
-	    echo "${pass_header}" | lolcat
-	else
-	    echo "${pass_header}"
-	fi
-    }
+    show_header() { type -P lolcat &> /dev/null && echo "${pass_header}" | lolcat || echo "${pass_header}"; }
 
-    usage() {
-	echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|rem keywd|list [keywd/(empty for all)]\n\n" >&2
-    }
+    usage() { echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|rem keywd|list [keywd/(empty for all)]\n\n" >&2; }
 
     purge_hist() { sed -i "/${sbn}/d" "${HOME}/.bash_history"; }
     
@@ -55,7 +46,7 @@ passcli() {
     rem() {
 	list "${1}"
 	if [[ "$(read -rp "Delete above entr(y/ies) from password file? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
-            cp -f "${pass_file}" "${pass_bkp}"
+	    cp -f "${pass_file}" "${pass_bkp}"
             grep -hv "${1}" "${pass_bkp}" > "${pass_file}"
 	fi
 	list

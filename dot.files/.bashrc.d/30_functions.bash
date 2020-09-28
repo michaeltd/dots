@@ -46,7 +46,7 @@ purge_hist4() {
 	Usage: ${FUNCNAME[0]} expression
 	Description: Removes \"expression\" occurances from ${bh}\n\n" >&2 && return 1
 
-    sed -i /^${1}$/d "${bh}"
+    sed -i "/^${1}$/d" "${bh}"
     local -ra postpurgelc=( $(wc -l "${bh}") )
     echo -ne "purged: $(( prepurgelc - postpurgelc )) instances of ${1} from ${bh}\n"
 }
