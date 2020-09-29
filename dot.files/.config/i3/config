@@ -49,7 +49,7 @@ bindsym $mod+Down exec ~/.local/bin/sndvol -
 bindsym Print exec xfce4-screenshooter
 
 # enable floating mode for all Xdialog windows (xprop)
-# for_window [class="Xdialog"] floating enable
+for_window [class="Xdialog"] floating enable
 for_window [class="Gtkdialog"] floating enable
 for_window [class="Xmessage"] floating enable
 for_window [class="XCalendar"] floating enable

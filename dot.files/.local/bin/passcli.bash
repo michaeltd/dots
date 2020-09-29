@@ -32,7 +32,7 @@ passcli() {
 
     usage() { echo -ne "\n Usage: ${sbn} add 'domain,mail,name,pass'|rem keywd|list [keywd/(empty for all)]\n\n" >&2; }
 
-    purge_hist() { sed -i "/${sbn}/d" "${HOME}/.bash_history"; }
+    purge_hist() { sed -i -e /${sbn}/d "${HOME}/.bash_history"; }
     
     encrypt() { "${pgpc[@]}" "${pass_pgp}" "--encrypt" "${pass_file}" && "${shrc[@]}" {"${pass_file}","${pass_bkp}"} 2> /dev/null; }
 

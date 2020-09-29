@@ -42,11 +42,12 @@ purge_hist4() {
     local -ra prepurgelc=( $(wc -l "${bh}") )
 
     [[ -z "${1}" ]] && \
-	echo -ne "
-	Usage: ${FUNCNAME[0]} expression
-	Description: Removes \"expression\" occurances from ${bh}\n\n" >&2 && return 1
+	    echo -ne "
+    Usage: ${FUNCNAME[0]} expression
+    Description: Removes \"expression\" occurances from ${bh}\n\n" >&2 && \
+        return 1
 
-    sed -i "/^${1}$/d" "${bh}"
+    sed -i -e /${1}/d "${bh}"
     local -ra postpurgelc=( $(wc -l "${bh}") )
     echo -ne "purged: $(( prepurgelc - postpurgelc )) instances of ${1} from ${bh}\n"
 }
@@ -56,7 +57,6 @@ top5cmds() {
 }
 
 command_line_from_pid() {
-
     ps -aux |grep "${1:-${$}}"|head -n 1|awk -v f=1 -v t=10 '{for(i=1;i<=NF;i++)if(i>=f&&i<=t)continue;else printf("%s%s",$i,(i!=NF)?OFS:ORS)}'
 }
 
@@ -67,14 +67,14 @@ is_executable() {
 
 lcdfe() {
     if [[ -d "${1}" && -n "${2}" ]]; then
-	find "${1}" -iname "${2}" -exec wc -l {} +
+        find "${1}" -iname "${2}" -exec wc -l {} +
     else
-	echo -ne "
-	Description: Line Count Directory (${1}), For file Extension (${2}).
-	Usage: ${FUNCNAME[0]} directory expression
-    	Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
-	          ${FUNCNAME[0]} . *.cpp
-		  ${FUNCNAME[0]} ${HOME} .*rc\n\n" >&2
+    	echo -ne "
+    Description: Line Count Directory (\${1}), For file Extension (\${2}).
+    Usage: ${FUNCNAME[0]} directory expression
+    Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
+              ${FUNCNAME[0]} . *.cpp
+              ${FUNCNAME[0]} ${HOME} .*rc\n\n" >&2
 	return 1
     fi
 }
