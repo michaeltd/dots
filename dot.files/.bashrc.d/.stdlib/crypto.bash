@@ -1,7 +1,6 @@
 #
 # cryptographic functions
-#shellcheck shell=bash
-#shellcheck disable=SC2005,SC2155,SC2086
+#shellcheck shell=bash disable=SC2005,SC2155,SC2086
 
 gen_rnum() {
     tr -dc "[:digit:]" < /dev/urandom | \

@@ -1,7 +1,6 @@
 #
 # date, time related functions
-#shellcheck shell=bash
-#shellcheck disable=SC2120,SC2119
+#shellcheck shell=bash disable=SC2120,SC2119
 
 is_date() {
     [[ -z "${1}" ]] && return 1  # apparently `date -d ""` echoes today's day and returns 0

@@ -1,6 +1,6 @@
 #
 # various parsing functions
-#shellcheck shell=bash
+#shellcheck shell=bash disable=SC2001
 
 # https://stackoverflow.com/questions/1955505/parsing-json-with-unix-tools
 json_extract() {
@@ -14,7 +14,6 @@ json_extract() {
 
     if [[ "${json}" =~ ${pair_regex} ]]; then
 	#echo $(sed 's/^"\|"$//g' <<< "${BASH_REMATCH[1]}")
-	#shellcheck disable=SC2001
 	sed 's/^"\|"$//g' <<< "${BASH_REMATCH[1]}"
     else
 	return "1"

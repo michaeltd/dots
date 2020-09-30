@@ -1,7 +1,6 @@
 #
 # Distance conversions
-#shellcheck shell=bash
-#shellcheck disable=SC2005
+#shellcheck shell=bash disable=SC2005
 
 ml2km() {
     printf "%.2f\n" "$(echo "scale=2;${1} / 0.621371192237334"|bc -ql)"
@@ -17,4 +16,12 @@ mph2kph() {
 
 kph2mph() {
     km2ml "${1}"
+}
+
+in2cm() {
+    printf "%.2f\n" "$(echo "scale=2;${1} * 2.54"|bc -ql)"
+}
+
+cm2in() {
+    printf "%.2f\n" "$(echo "scale=2;${1} / 2.54"|bc -ql)"
 }

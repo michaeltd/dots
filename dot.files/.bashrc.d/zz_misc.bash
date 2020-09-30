@@ -1,8 +1,6 @@
 #
 # general bash options
-
-#shellcheck shell=bash
-#shellcheck disable=SC1090
+#shellcheck shell=bash disable=SC1090
 
 # Window size sanity check
 shopt -s checkwinsize

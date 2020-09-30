@@ -1,11 +1,10 @@
 #
 # math related functions
-#shellcheck shell=bash
+#shellcheck shell=bash disable=SC2015
 
 factorial(){
     local -i f i=$1
     [[ $# -eq 0 ]] && { echo "Usage: ${FUNCNAME[0]} number"; return 1; }
-    #shellcheck disable=SC2015 #safe as echo won't fail.
     [[ $i -le 2 ]] && echo "${i}" || { f=$(( i - 1 )); f=$(factorial $f); f=$(( f * i )); echo "${f}"; }
 }
 
@@ -92,6 +91,10 @@ sqrt() {
 
 sqr() {
     echo "scale=2;${1}^2"| bc -l
+}
+
+cbd() {
+    echo "scale=2;${1}^3"| bc -l
 }
 
 pwr() {
