@@ -5,7 +5,11 @@
 set -euo pipefail
 IFS=$'\t\n'
 
-main() {
+#link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
+readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+
+term_music() {
     local -r myusage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n\n" uri="file:///mnt/data/Documents/Music"
 
     local -ar pop=( "${uri}/all_saints" "${uri}/avicii" "${uri}/black_eyed_pees" "${uri}/bruno_mars" "${uri}/daft_punk" "${uri}/gorillaz" ) \
@@ -20,7 +24,7 @@ main() {
 
     local -ar genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] ost[@] )
 
-    log2err() { echo -ne "${*}" >&2; exit 1; }
+    log2err() { echo -ne "${sbn}: ${*}\n" >&2; }
     
     if [[ -n "${*}" ]]; then
 	if [[ "${genres[*]}" =~ ${1} ]]; then
@@ -30,7 +34,8 @@ main() {
 	    for i in "${genres[@]}"; do
 		local gen_alpha+="${i//[![:alpha:]]} "
 	    done
-	    log2err "${myusage}\t${1} not found.\n\tTry one of: ${gen_alpha}!\n\n"
+	    log2err "${myusage}\t${1} not found.\n\tTry one of: ${gen_alpha}!\n"
+	    return 1
 	fi
     else
 	local -ar dir_list=( "${!genres[$(shuf -n 1 -i 0-"$((${#genres[*]}-1))")]}" )
@@ -41,9 +46,11 @@ main() {
     if [[ "${#pids[*]}" -gt "0" ]]; then
 	play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
 	log2err "VLC already started!\n"
+	return 1
     else
+	log2err "Randomly selecting between: ${dir_list[*]}\n"
 	cvlc --random "${dir_list[@]}"
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
