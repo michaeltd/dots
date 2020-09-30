@@ -3,15 +3,15 @@
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
-IFS=$'\t\n'
+IFS=$' \t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 term_music() {
-    local -r myusage="\n\tUsage: ${BASH_SOURCE[0]##*/} [genre]\n\n" uri="file:///mnt/data/Documents/Music"
-
+    local genre_selection='' selection_type='random' randomnum='' all_artists=()
+    local -r myusage="\n\tUsage: ${sbn} [genre]\n\n" uri="file:///mnt/data/Documents/Music"
     local -ar pop=( "${uri}/all_saints" "${uri}/avicii" "${uri}/black_eyed_pees" "${uri}/bruno_mars" "${uri}/daft_punk" "${uri}/gorillaz" ) \
 	  rock=( "${uri}/bad_co" "${uri}/deep_purple" "${uri}/doobie_brothers" "${uri}/frank_zappa" "${uri}/janis_joplin" "${uri}/jethro_tull" "${uri}/joe_cocker" "${uri}/led_zeppelin" "${uri}/lenny_kravitz" "${uri}/the_who" "${uri}/ten_years_after" "${uri}/sting" "${uri}/santana" ) \
 	  reggae=( "${uri}/ub40" "${uri}/matisyahu" "${uri}/bob_marley" ) \
@@ -21,13 +21,15 @@ term_music() {
 	  funk=( "${uri}/average_white_band" "${uri}/blood_sweat_and_tears" "${uri}/jamiroquai" "${uri}/tower_of_power" "${uri}/chaka_khan" ) \
 	  classical=( "${uri}/carl_orff" "${uri}/nikos_skalkotas" "${uri}/vaggelis" ) \
 	  ost=( "${uri}/ost/bf" "${uri}/ost/cod" "${uri}/ost/ed" "${uri}/ost/halo" "${uri}/ost/titanfall" )
-
     local -ar genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] ost[@] )
+    
 
     log2err() { echo -ne "${sbn}: ${*}\n" >&2; }
-    
+
     if [[ -n "${*}" ]]; then
 	if [[ "${genres[*]}" =~ ${1} ]]; then
+	    local selection_type="selected"
+	    local genre_selection="${1^^}"
 	    eval "param_genre=(\"\${$1[@]}\")"
 	    local -ar dir_list=( "${param_genre[@]}" )
 	else
@@ -38,7 +40,10 @@ term_music() {
 	    return 1
 	fi
     else
-	local -ar dir_list=( "${!genres[$(shuf -n 1 -i 0-"$((${#genres[*]}-1))")]}" )
+	local randomnum="$(shuf -n 1 -i 0-"$((${#genres[*]}-1))")"
+	local genre_selection="${genres[randomnum]^^}"
+	local genre_selection="${genre_selection//[![:alpha:]]}"
+	local -ar dir_list=( "${!genres[randomnum]}" )
     fi
 
     # is VLC running?
@@ -48,7 +53,10 @@ term_music() {
 	log2err "VLC already started!\n"
 	return 1
     else
-	log2err "Randomly selecting between: ${dir_list[*]}\n"
+	for __d__ in "${dir_list[@]}"; do
+	    local all_artists+=( "${__d__##*/}" )
+	done
+	log2err "Playing one of: ${all_artists[*]}, from ${genre_selection} ${selection_type} collection\n"
 	cvlc --random "${dir_list[@]}"
     fi
 }
