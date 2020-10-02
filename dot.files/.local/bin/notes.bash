@@ -41,7 +41,7 @@ notes() {
 	fi
     }
 
-    list() { grep -h "${1}" "${notes_file}" | column -t -s '|' | "${PAGER}"; }
+    list() { grep -h "${1}" "${notes_file}" | column -t -s '|' | nl -s ':' -b p[0-9] | "${PAGER}"; }
 
     rem() {
 	list "${1}"
