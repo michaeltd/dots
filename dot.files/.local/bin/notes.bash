@@ -1,14 +1,23 @@
 #!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096
+#shellcheck shell=bash disable=SC1008,SC2096,SC2155,SC2034
 #
 # https://www.reddit.com/r/bash/comments/fxxtav/simple_notes/
-#
 # Simple notes
 # I use the following to keep track of minutia and thought it might be helpful to someone else. I use it for when someone suggests a movie or TV show, or birthday gift thoughts, etc. Basically anything that you might use a post-it for.
 
-todo_notes() {
-    local -r notes_file="${HOME}/.todo_notes"
-    local -r notes_bkp="${notes_file}.bkp"
+# Unofficial Bash Strict Mode
+set -eo pipefail
+IFS=$' \t\n'
+
+#link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
+readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+
+notes() {
+    local -ra pgpc=( "gpg" "--quiet" "--batch" "--yes" "--default-recipient-self" "--output" ) \
+	  shrc=( "shred" "--zero" "--remove" )
+    local -r notes_file="${HOME}/.${sbn}"
+    local -r notes_pgp="${notes_file}.pgp" notes_bkp="${notes_file}.bkp"
     local -r notes_header='
           ::::    ::: ::::::::::::::::::::::::::::::::::::: 
          :+:+:   :+::+:    :+:   :+:    :+:      :+:    :+: 
@@ -20,9 +29,19 @@ todo_notes() {
     '
     show_header() { type -P lolcat &>/dev/null && echo "${notes_header}"|lolcat || echo "${notes_header}"; }
 
-    usage() { echo -ne "\n Usage: ${BASH_SOURCE[0]##*/} add 'some notes'|rem keyword...|list [keyword]/(empty for all)\n\n" >&2; }
+    usage() { echo -ne "\n Usage: ${sbn} add 'some notes'|rem keyword...|list [keyword]/(empty for all)\n\n" >&2; }
 
-    list() { grep -h "${1}" "${notes_file}" | nl -ba; }
+    encrypt() { "${pgpc[@]}" "${notes_pgp}" "--encrypt" "${notes_file}" && "${shrc[@]}" {"${notes_file}","${notes_bkp}"} 2> /dev/null; }
+
+    decrypt() {
+	if [[ -e "${notes_pgp}" ]]; then
+	    "${pgpc[@]}" "${notes_file}" "--decrypt" "${notes_pgp}"
+	else
+	    echo 'Date|Note' > "${notes_file}"
+	fi
+    }
+
+    list() { grep -h "${1}" "${notes_file}" | column -t -s '|' | "${PAGER}"; }
 
     rem() {
 	list "${1}"
@@ -30,15 +49,14 @@ todo_notes() {
             cp -f "${notes_file}" "${notes_bkp}"
             grep -hv "${1}" "${notes_bkp}" > "${notes_file}"
 	fi
-	list
     }
 
-    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S"): ${*}" >> "${notes_file}"; list "${1}"; }
+    add() { echo "$(date "+%Y/%m/%d-%H:%M:%S")|${*}" >> "${notes_file}"; }
 
     case "${1}" in
-	add*|rem*|list*) show_header; "${@}";;
+	add*|rem*|list*) show_header; decrypt; "${@}"; encrypt;;
 	*) show_header; usage; return 1;;
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${BASH_SOURCE[0]##*/}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
