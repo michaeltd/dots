@@ -96,35 +96,35 @@ dennis_ritchie() {
 eof
 }
 
-funky4tune() {
+fancy4tune() {
     local -r myusage="
     Description: Funky fortune.
     Usage: ${FUNCNAME[0]} [ -(-f)ile cowsay_file ] [ -(-m)sg 'message' ]
     Example: ${FUNCNAME[0]} -f default -m 'Hello Lolcat!'
-    Notes: When no --file is given, a random file will be selected.
+    Notes: When a misspelled/erratic or no --file is given, a random file will be used.
     You can try: 'cowsay -l' for a list of available files.
     Requires: fortune, cowsay and lolcat.\n\n"
 
-    local msg file
+    local msg='' file=''
 
     type -P fortune &> /dev/null && \
 	type -P cowsay &> /dev/null && \
 	type -P lolcat &> /dev/null || \
 	    { echo -ne "${myusage}" >&2; return 1; }
 
+    local -ar cowsay_files=( $(cowsay -l|awk 'NR != 1 { print $0 }') )
+
     while [[ -n "${1}" ]]; do
 	case "${1}" in
-	    -m|--msg) shift; msg="${1}";;
-	    -f|--file) shift; file="${1}";;
+	    -m|--msg) shift; local msg="${1}";;
+	    -f|--file) shift; local file="${1}";;
 	    *) echo -ne "${myusage}" >&2; return 1;;
 	esac
 	shift
     done
 
-    local -ar cowsay_files=( $(cowsay -l|awk 'NR != 1 { print $0 }') )
-
     { [[ -n "${msg}" ]] && echo "${msg}" || fortune -o; } | \
-	{ [[ -z "${file}" ]] && cowsay -f "${cowsay_files[$(shuf -n 1 -i 0-"$((${#cowsay_files[*]}-1))")]}" || cowsay -f "${file}"; } | \
+	{ [[ -n "${file}" && "${cowsay_files[*]}" =~ ${file} ]] && cowsay -f "${file}" || cowsay -f "${cowsay_files[$(shuf -n 1 -i 0-"$((${#cowsay_files[*]}-1))")]}"; } | \
 	lolcat
 }
 
