@@ -98,7 +98,7 @@ eof
 
 fancy4tune() {
     local -r myusage="
-    Description: Funky fortune.
+    Description: Fancy fortune.
     Usage: ${FUNCNAME[0]} [ -(-f)ile cowsay_file ] [ -(-m)sg 'message' ]
     Example: ${FUNCNAME[0]} -f default -m 'Hello Lolcat!'
     Notes: When a misspelled/erratic or no --file is given, a random file will be used.
