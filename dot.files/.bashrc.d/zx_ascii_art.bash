@@ -101,7 +101,7 @@ fancy4tune() {
     Description: Fancy fortune.
     Usage: ${FUNCNAME[0]} [ -(-f)ile cowsay_file ] [ -(-m)sg 'message' ]
     Example: ${FUNCNAME[0]} -f default -m 'Hello Lolcat!'
-    Notes: When a misspelled/erratic or no --file is given, a random file will be used.
+    Notes: When a misspelled/erratic or no --file is given, a random will be used.
     You can try: 'cowsay -l' for a list of available files.
     Requires: fortune, cowsay and lolcat.\n\n"
 
