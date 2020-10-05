@@ -101,7 +101,7 @@ fancy4tune() {
     Description: Fancy fortune.
     Usage: ${FUNCNAME[0]} [ -(-f)ile cowsay_file ] [ -(-m)sg 'message' ]
     Example: ${FUNCNAME[0]} -f default -m 'Hello Lolcat!'
-    Notes: When a misspelled/erratic or no --file is given, a random will be used.
+    Notes: When misspelled or no --file given, a random will be used.
     You can try: 'cowsay -l' for a list of available files.
     Requires: fortune, cowsay and lolcat.\n\n"
 
@@ -123,7 +123,7 @@ fancy4tune() {
 	shift
     done
 
-    { [[ -n "${msg}" ]] && echo "${msg}" || fortune -o; } | \
+    { [[ -n "${msg}" ]] && echo "${msg}" || fortune -s; } | \
 	{ [[ -n "${file}" && "${cowsay_files[*]}" =~ ${file} ]] && cowsay -f "${file}" || cowsay -f "${cowsay_files[$(shuf -n 1 -i 0-"$((${#cowsay_files[*]}-1))")]}"; } | \
 	lolcat
 }
