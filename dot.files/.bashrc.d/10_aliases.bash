@@ -125,22 +125,24 @@ alias hugit='sudo $(history -p \!\!)' # fuckit='sudo $(history -p \!\!)' Politic
 # curl -L -s http://whatthecommit.com/ | grep -A 1 "\"c" | tail -1 | sed 's/<p>//'
 # curl -s http://whatthecommit.com/index.txt
 
-# GIT
-alias gcl='git clone'
-alias gfc='git fetch'
-alias gst='git status'
-alias gdf='git diff'
-alias gaa='git add --all'
-alias gad='git add .'
-# alias gcm='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
-alias gcm='git commit -m "$(date +%s)"'
-alias gps='git push'
-alias gal='gaa && gcm && gps'
-alias glp='git log -p'
-alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-# alias gco='git checkout'
-alias gpl='git pull --rebase'
-# alias grb='git rebase'
+if type -P git &> /dev/null; then
+    # GIT
+    alias gcl='git clone'
+    alias gfc='git fetch'
+    alias gst='git status'
+    alias gdf='git diff'
+    alias gaa='git add --all'
+    alias gad='git add .'
+    # alias gcm='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
+    alias gcm='git commit -m "$(date +%s)"'
+    alias gps='git push'
+    alias gal='gaa && gcm && gps'
+    alias glp='git log -p'
+    alias glg='git log --graph --pretty="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+    # alias gco='git checkout'
+    alias gpl='git pull --rebase'
+    # alias grb='git rebase'
+fi
 
 # NETRIS
 # https://git.sr.ht/~tslocum/netris?0.1.2
@@ -154,8 +156,10 @@ alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];
 # Usage: "command | termbin" or termbin <<<$(command)
 alias termbindotcom='nc termbin.com 9999'
 
-alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
-alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
+if type -P youtube-dl &> /dev/null; then
+    alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
+    alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
+fi
 
 # # Bitcoin
 # declare datadir="/mnt/el/.bitcoin" btcdir="${HOME}/git/scrap/bitcoin/src"
