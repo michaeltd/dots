@@ -24,6 +24,14 @@ bin2ascii() {
     printf "\n"
 }
 
+is_ucase(){
+    [[ "${1}" == "${1^^}" ]]
+}
+
+is_lcase(){
+    [[ "${1}" == "${1,,}" ]]
+}
+
 split() {
     # from pure-bash-bible
     # Usage: split "string" "delimiter"
