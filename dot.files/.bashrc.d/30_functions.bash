@@ -383,13 +383,29 @@ lsbin() {
 takeascreenshot() {
     local -r myusage="
     Usage: ${FUNCNAME[0]} [#delay (in seconds)]
-    Requirements: Imagemagick and ristretto\n\n"
-    
-    if type -P import &>/dev/null && type -P ristretto &>/dev/null && [[ -n "${DISPLAY}" ]]; then
-	local FN="${HOME}/ScreenShot-$(date -u +%s).png"
-	import -delay "${1:-2}" -window root "${FN}" && ristretto "${FN}"
-    else
+    Requires: Imagemagick and ristretto\n\n"
+    local -r fn="${HOME}/Pictures/ScreenShot-$(date -u +%s).png"
+
+    if ! type -P import &>/dev/null || \
+	    ! type -P ristretto &>/dev/null || \
+	    [[ -z "${DISPLAY}" ]]; then
 	echo -ne "${myusage}" >&2
 	return 1
+    fi
+
+    if [[ -n "${1}" ]]; then
+	if [[ "${1}" =~ ^[0-9]+?$ ]]; then
+	    for (( i = $1; i >= 0; i-- )); do
+		printf "%s " $i
+		sleep 1
+	    done
+	    printf "\n"
+	    import -window root "${fn}" && ristretto "${fn}"
+	else
+	    echo -ne "${myusage}" >&2
+	    return 1
+	fi
+    else
+	import -window root "${fn}" && ristretto "${fn}"
     fi
 }
