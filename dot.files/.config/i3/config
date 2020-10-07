@@ -69,6 +69,7 @@ for_window [class="libreoffice-startcenter"] floating enable
 for_window [class="GParted"] floating enable
 for_window [class="Gnome*"] floating enable
 for_window [class="Ccgo"] floating enable
+for_window [class="Basicwin"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
