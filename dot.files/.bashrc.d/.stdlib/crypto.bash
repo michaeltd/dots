@@ -43,10 +43,11 @@ transcode_stdin() {
     openssl enc -base64 -"${2}" -"${1}"
 }
 
-transcode_pgp() {
+transcode_gpg() {
     local myusage="
-    Usage: ${FUNCNAME[0]} file(s)|file(s).pgp...
-    Description: Decrypt/Encrypt files from/to your default pgp keyring.\n\n"
+    Usage: ${FUNCNAME[0]} file(s)|file(s).pgp/gpg...
+    Example: ${FUNCNAME[0]} file.gpg
+    Description: Decrypt/Encrypt files from/to your default gpg keyring.\n\n"
 
     [[ "${#}" -lt "1" ]] && echo -ne "${myusage}" >&2 && return 1
 
@@ -59,9 +60,15 @@ transcode_pgp() {
 	    *)
 		if [[ -r "${1}" ]]; then
 		    if [[ "$(file -b "${1}")" =~ ^PGP ]]; then
-			local func="--decrypt" out="${1//.pgp/}"
+			if [[ "${1}" != "${1//.gpg/}" ]]; then
+			    local func="--decrypt" out="${1//.gpg/}"
+			elif [[ "${1}" != "${1//.pgp/}" ]]; then
+			    local func="--decrypt" out="${1//.pgp/}"
+			else
+			    local func="--decrypt" out="${1}.dec"
+			fi
 		    else
-			local func="--encrypt" out="${1}.pgp"
+			local func="--encrypt" out="${1}.gpg"
 		    fi
 		else
 		    echo -ne "\t${1} is not readable!\n${myusage}" >&2
