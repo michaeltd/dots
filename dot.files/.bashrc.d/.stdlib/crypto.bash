@@ -45,8 +45,7 @@ transcode_stdin() {
 
 transcode_gpg() {
     local myusage="
-    Usage: ${FUNCNAME[0]} file(s)|file(s).pgp/gpg...
-    Example: ${FUNCNAME[0]} file.gpg
+    Usage: ${FUNCNAME[0]} file(s)|file(s).gpg...
     Description: Decrypt/Encrypt files from/to your default gpg keyring.\n\n"
 
     [[ "${#}" -lt "1" ]] && echo -ne "${myusage}" >&2 && return 1
