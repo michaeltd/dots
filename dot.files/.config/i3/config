@@ -71,6 +71,7 @@ for_window [class="Gnome*"] floating enable
 for_window [class="Ccgo"] floating enable
 for_window [class="Basicwin"] floating enable
 for_window [class="Gnubg"] floating enable
+for_window [class="Ristretto"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next

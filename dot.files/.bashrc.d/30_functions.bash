@@ -12,6 +12,21 @@
 #     echo
 # }
 
+caseRandomizer() {
+    [[ -z "${1}" ]] && \
+	echo -ne "\n\tName: ${FUNCNAME}\n\tDescription: Randomize letter case of arguments\n\tExample: ${FUNCNAME} Hello World\n\n" >&2 && \
+	return 1
+
+    while [[ -n "${1}" ]]; do
+	for (( i = 0; i < ${#1}; i++ )); do
+	    local ltr="${wrd:i:1}"
+	    (( RANDOM % 2 )) && echo -n "${ltr^}" || echo -n "${ltr,}"
+	done
+	echo -n " "
+	shift
+    done
+    echo ""
+}
 # igor chubbin =================================================================
 
 chtsh() {
@@ -299,20 +314,23 @@ compress() {
 }
 
 extract() {
-    case "${1,,}" in # Compare lowercased filename for known extensions.
-	*.7z|*.7za|*.exe|*.cab) 7z x "${1}";;
-	*.tar) tar -xf "${1}";;
-	*.tar.gz|*.tgz|*.tar.z) tar -xzf "${1}";;
-	*.tar.bz2|*.tbz2) tar -xjf "${1}";;
-	*.tar.xz|*.txz) tar -xJf "${1}";;
-	*.tar.lz) tar --lzip -xf "${1}";;
-	*.bz2) bunzip2 "${1}";;
-	*.rar) rar x "${1}";;
-	*.gz) gunzip "${1}";;
-	*.zip|*.jar|*.war) unzip "${1}";;
-	*.z) uncompress "${1}";;
-	*) echo -ne "\n\tCannot operate on unknown file extension ${1}.\n\n" >&2; return 1;;
-    esac
+    while [[ -n "${1}" ]]; do
+	case "${1,,}" in # Compare lowercased filename for known extensions.
+	    *.7z|*.7za|*.exe|*.cab) 7z x "${1}";;
+	    *.tar) tar -xf "${1}";;
+	    *.tar.gz|*.tgz|*.tar.z) tar -xzf "${1}";;
+	    *.tar.bz2|*.tbz2) tar -xjf "${1}";;
+	    *.tar.xz|*.txz) tar -xJf "${1}";;
+	    *.tar.lz) tar --lzip -xf "${1}";;
+	    *.bz2) bunzip2 "${1}";;
+	    *.rar) rar x "${1}";;
+	    *.gz) gunzip "${1}";;
+	    *.zip|*.jar|*.war) unzip "${1}";;
+	    *.z) uncompress "${1}";;
+	    *) echo -ne "\n\tUnknown file extension ${1}.\n\n" >&2;;
+	esac
+	shift
+    done
 }
 
 s4strInDir() {
