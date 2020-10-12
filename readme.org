@@ -66,7 +66,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
    Shamelessly stolen from [[https://github.com/bnb/bitandbang][bitandbang]]
 
-   +  [[dot.files/.local/bin/michaeltd][Terminal buisiness card v1.0]]
+   +  [[dot.files/.local/bin/michaeltd][Terminal business card v1.0]]
     
      ~curl -sL tinyurl.com/mick-bcard|sh~
 
@@ -76,7 +76,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
      #+html:<p align="center"><a href="dot.files/.local/bin/michaeltd"><img alt="tbcv1" src="assets/tbcv1.0.png"></a></p>
 
-   +  [[card.txt][Terminal buisiness card v2.0]]
+   +  [[card.txt][Terminal business card v2.0]]
 
      ~curl -sL tinyurl.com/mick-card~
       
