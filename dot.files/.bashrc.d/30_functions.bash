@@ -62,7 +62,7 @@ purge_hist4() {
 	local pre=( $(wc -l "${bh}") )
 	sed -i -e /${1}/d "${bh}"
 	local post=( $(wc -l "${bh}") )
-	echo -ne "purged: $(( ${pre[0]} - ${post[0]} )) instances of ${1} from ${bh}\n"
+	echo -ne "purged: $(( ${pre[0]} - ${post[0]} )) instances of \"${1}\" from ${bh}\n"
 	shift
     done
 }
