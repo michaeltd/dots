@@ -53,18 +53,18 @@ hello_world() {
 # UTILS =======================================================================
 
 purge_hist4() {
-    local -r bh="${HOME}/.bash_history"
-    local -ra prepurgelc=( $(wc -l "${bh}") )
-
     [[ -z "${1}" ]] && \
-	    echo -ne "
-    Usage: ${FUNCNAME[0]} expression
-    Description: Removes \"expression\" occurances from ${bh}\n\n" >&2 && \
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} expression(s)...\n\tDescription: Removes \"expression\" occurances from ${bh}\n\n" >&2 && \
         return 1
 
-    sed -i -e /${1}/d "${bh}"
-    local -ra postpurgelc=( $(wc -l "${bh}") )
-    echo -ne "purged: $(( prepurgelc - postpurgelc )) instances of ${1} from ${bh}\n"
+    local -r bh="${HOME}/.bash_history"
+    while [[ -n "${1}" ]]; do
+	local pre=( $(wc -l "${bh}") )
+	sed -i -e /${1}/d "${bh}"
+	local post=( $(wc -l "${bh}") )
+	echo -ne "purged: $(( ${pre[0]} - ${post[0]} )) instances of ${1} from ${bh}\n"
+	shift
+    done
 }
 
 top5cmds() {
