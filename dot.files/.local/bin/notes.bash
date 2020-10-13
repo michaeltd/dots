@@ -13,7 +13,7 @@ IFS=$' \t\n'
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
-notes() {
+main() {
     local -ra pgpc=( "gpg" "--quiet" "--batch" "--yes" "--default-recipient-self" "--output" ) \
 	  shrc=( "shred" "--zero" "--remove" )
     local -r notes_file="${HOME}/.${sbn}"
@@ -59,4 +59,4 @@ notes() {
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"

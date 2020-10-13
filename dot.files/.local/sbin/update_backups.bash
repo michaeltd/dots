@@ -40,7 +40,7 @@ IFS=$'\t\n'
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
-update_backups() {
+main() {
     local definitions="${HOME}" backup2="/mnt/data/Documents/bkp/linux" recipient="tsouchlarakis@gmail.com" niceness="19"
     local myusage="
     Usage: ${sbn} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug]
@@ -93,4 +93,4 @@ update_backups() {
     done
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"

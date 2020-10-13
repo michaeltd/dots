@@ -13,7 +13,7 @@ IFS=$'\t\n'
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
-update_cleanup() {
+main() {
     local backup_dir="/mnt/data/Documents/bkp/linux" days2keep="3" remove_backups="1" nothing2bdone="1"
     local myusage="
     Usage: ${sbn} [-(-b)ackups /backups/directory/] [-(-k)eep #] [-(-s)simulate] [-(-d)ebug]
@@ -80,4 +80,4 @@ update_cleanup() {
     [[ "${nothing2bdone}" -eq "1" ]] && log2err "It seems there's nothing to be done!"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"

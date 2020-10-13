@@ -9,7 +9,7 @@ IFS=$' \t\n'
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
-term_music() {
+main() {
     local genre_selection='' selection_type='random' randomnum='' all_artists=()
     local -r myusage="\n\tUsage: ${sbn} [genre]\n\n" uri="file:///mnt/data/Documents/Music"
     local -ar pop=( "${uri}/all_saints" "${uri}/avicii" "${uri}/black_eyed_pees" "${uri}/bruno_mars" "${uri}/daft_punk" "${uri}/gorillaz" ) \
@@ -61,4 +61,4 @@ term_music() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"

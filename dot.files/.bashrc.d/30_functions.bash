@@ -12,14 +12,14 @@
 #     echo
 # }
 
-caseRandomizer() {
+case_randomizer() {
     [[ -z "${1}" ]] && \
-	echo -ne "\n\tName: ${FUNCNAME}\n\tDescription: Randomize letter case of arguments\n\tExample: ${FUNCNAME} Hello World\n\n" >&2 && \
+	echo -ne "\n\tName: ${FUNCNAME[0]}\n\tDescription: Randomize letter case of arguments\n\tExample: ${FUNCNAME[0]} Hello World\n\n" >&2 && \
 	return 1
 
     while [[ -n "${1}" ]]; do
 	for (( i = 0; i < ${#1}; i++ )); do
-	    local ltr="${wrd:i:1}"
+	    local ltr="${1:i:1}"
 	    (( RANDOM % 2 )) && echo -n "${ltr^}" || echo -n "${ltr,}"
 	done
 	echo -n " "
@@ -398,7 +398,7 @@ lsbin() {
     printf "\n"
 }
 
-takeascreenshot() {
+takeass() {
     local -r myusage="
     Usage: ${FUNCNAME[0]} [#delay (in seconds)]
     Requires: Imagemagick and ristretto\n\n"
@@ -418,12 +418,10 @@ takeascreenshot() {
 		sleep 1
 	    done
 	    printf "\n"
-	    import -window root "${fn}" && ristretto "${fn}"
 	else
 	    echo -ne "${myusage}" >&2
 	    return 1
 	fi
-    else
-	import -window root "${fn}" && ristretto "${fn}"
     fi
+    import -window root "${fn}" && ristretto "${fn}"
 }

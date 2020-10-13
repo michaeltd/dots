@@ -9,7 +9,7 @@ IFS=$'\t\n'
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
-update_mirror() {
+main() {
     
     local -ar nicec=( "nice" "-n" "19" ) \
 	  rsncm=( "rsync" "--verbose" "--recursive" "--times" "--delete" "--exclude=*/msoft/*" )
@@ -24,4 +24,4 @@ update_mirror() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn%.*}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"

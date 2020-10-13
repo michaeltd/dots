@@ -9,7 +9,7 @@ IFS=$'\t\n'
 
 readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
-sndvol() {
+main() {
 
     # Timeout settings for Xdialog, Xmessage
     local -r xmto="1" # xmessage timeout is in seconds...
@@ -64,4 +64,4 @@ sndvol() {
     display_feedback "Master: ${vol}"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"

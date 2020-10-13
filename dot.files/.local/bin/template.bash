@@ -89,7 +89,7 @@ set_defaults() {
     # IFS=\ $tab
 }
 
-template() {
+main() {
     set_defaults
     parse_options "$@"
     shift $((OPTIND-1))
@@ -118,4 +118,4 @@ template() {
     [ -t 0 ] || info "stdin is not a terminal"
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${script_base_name%.*}" "$@"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

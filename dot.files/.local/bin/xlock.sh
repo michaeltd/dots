@@ -13,7 +13,7 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 readonly sne="${sbn%.*}"
 
 
-xlock() {
+main() {
 
     local -r xsspid="$(pgrep -U "${USER}" -f "xscreensaver")"
 
@@ -31,4 +31,4 @@ xlock() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sne}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
