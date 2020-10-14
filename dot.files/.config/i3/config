@@ -74,6 +74,7 @@ for_window [class="Gnubg"] floating enable
 for_window [class="Ristretto"] floating enable
 for_window [class="Zenity"] floating enable
 for_window [class="Yad"] floating enable
+for_window [class="org-michael-*"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
