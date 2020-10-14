@@ -39,7 +39,7 @@ if type -P tput &>/dev/null; then
 	    LESS_TERMCAP_so="$(printf "%s" "$(tput bold)$(tput setab 4)$(tput setaf 3)")" \
 	    LESS_TERMCAP_ue="$(printf "%s" "$(tput sgr0)")" \
 	    LESS_TERMCAP_us="$(printf "%s" "$(tput bold)$(tput setaf 2)")" \
-	    "$(command -v man 2> /dev/null)" "$@"
+	    "$(type -P man)" "$@"
     }
 else
     man() {
@@ -52,7 +52,7 @@ else
 	    LESS_TERMCAP_so=$'\e[01;33m' \
 	    LESS_TERMCAP_ue=$'\e[0m' \
 	    LESS_TERMCAP_us=$'\e[1;4;31m' \
-	    "$(command -v man 2> /dev/null)" "${@}"
+	    "$(type -P man)" "${@}"
     }
 fi
 
@@ -67,20 +67,20 @@ export GIT_PS1_SHOWUPSTREAM=yes
 # OPT
 [[ -d "/opt" ]] && export OPT="/opt"
 # JAVA
-[[ -d "/opt/java" ]] && export JAVA_HOME="/opt/java"
-[[ -d "/opt/ant" ]] && export ANT="/opt/ant"
-[[ -d "/opt/maven" ]] && export MAVEN="/opt/maven"
-[[ -d "/opt/gradle" ]] && export GRADLE="/opt/gradle"
+[[ -d "${HOME}/.jdk" ]] && export JAVA_HOME="${HOME}/.jdk"
+[[ -d "${HOME}/.ant" ]] && export ANT="${HOME}/.ant"
+[[ -d "${HOME}/.maven" ]] && export MAVEN="${HOME}/.maven"
+[[ -d "${HOME}/.gradle" ]] && export GRADLE="${HOME}/.gradle"
 # GO
-[[ -d "${HOME}/go" ]] && export GOPATH=~/"go"
+[[ -d "${HOME}/.go" ]] && export GOPATH="${HOME}/.go"
 # RUST
-[[ -d "${HOME}/.cargo" ]] && export RUST=~/".cargo"
+[[ -d "${HOME}/.cargo" ]] && export RUST="${HOME}/.cargo"
 # NODE
-[[ -d "${HOME}/.node" ]] && export NODE=~/".node"
+[[ -d "${HOME}/.node" ]] && export NODE="${HOME}/.node"
 # DENO
-[[ -d "${HOME}/.deno" ]] && export DENO=~/".deno"
+[[ -d "${HOME}/.deno" ]] && export DENO="${HOME}/.deno"
 # MONGODB
-[[ -d "/opt/mongodb" ]] && export MONGODB="/opt/mongodb"
+[[ -d "${HOME}/.mongodb" ]] && export MONGODB="${HOME}/.mongodb"
 
 checkpath() {
     [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
