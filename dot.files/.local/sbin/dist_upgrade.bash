@@ -21,7 +21,7 @@ main() {
             yum=( "yum" "check-update" "update" ) \
             zypper=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) \
             pacman=( "pacman" "-Sy" "-Syu" ) \
-            emerge=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "${1:-@world}" ) \
+            emerge=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "@world" ) \
             pkg=( "pkg" "update" "upgrade" )
 
     local -ra pms=( apt_get[@] yum[@] zypper[@] pacman[@] emerge[@] pkg[@] )
