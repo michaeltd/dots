@@ -31,7 +31,7 @@ floating_modifier $mod
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym Control+q kill
+# bindsym Control+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
