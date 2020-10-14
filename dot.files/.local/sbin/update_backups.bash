@@ -78,13 +78,13 @@ main() {
 
     compress() {
 	local job_out="${job_fn}.${1##*.}.tar.gz"
-	log2err "Writing: ${job_out}"
+	log2err "Writing: ${job_out##*/}"
 	"${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_out}" $(cat "${1}")
     }
 
     encrypt() {
 	local job_out="${job_fn}.${1##*.}.tar.gz.pgp"
-	log2err "Writing: ${job_out}"
+	log2err "Writing: ${job_out##*/}"
 	"${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_out}" "--encrypt"
     }
 
