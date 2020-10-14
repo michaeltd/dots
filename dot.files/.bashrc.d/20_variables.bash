@@ -72,13 +72,13 @@ export GIT_PS1_SHOWUPSTREAM=yes
 [[ -d "/opt/maven" ]] && export MAVEN="/opt/maven"
 [[ -d "/opt/gradle" ]] && export GRADLE="/opt/gradle"
 # GO
-[[ -d ~/"go" ]] && export GOPATH=~/"go"
+[[ -d "${HOME}/go" ]] && export GOPATH=~/"go"
 # RUST
-[[ -d ~/".cargo" ]] && export RUST=~/".cargo"
+[[ -d "${HOME}/.cargo" ]] && export RUST=~/".cargo"
 # NODE
-[[ -d ~/".node" ]] && export NODE=~/".node"
+[[ -d "${HOME}/.node" ]] && export NODE=~/".node"
 # DENO
-[[ -d ~/".deno" ]] && export DENO=~/".deno"
+[[ -d "${HOME}/.deno" ]] && export DENO=~/".deno"
 # MONGODB
 [[ -d "/opt/mongodb" ]] && export MONGODB="/opt/mongodb"
 
