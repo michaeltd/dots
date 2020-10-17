@@ -49,12 +49,12 @@ main() {
     # is VLC running?
     local -ar pids=( $(pgrep -U "${USER}" -f vlc) )
     if [[ "${#pids[*]}" -gt "0" ]]; then
+	log2err "VLC already playing!\n"
 	play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
-	log2err "VLC already started!\n"
 	return 1
     else
-	for __d__ in "${dir_list[@]}"; do
-	    local all_artists+=( "${__d__##*/}" )
+	for dir in "${dir_list[@]}"; do
+	    local all_artists+=( "${dir##*/}" )
 	done
 	log2err "Playing one of: ${all_artists[*]}, from ${genre_selection} ${selection_type} collection\n"
 	cvlc --random "${dir_list[@]}"

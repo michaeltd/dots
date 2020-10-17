@@ -17,7 +17,7 @@ main() {
     local -ra pgpc=( "gpg" "--quiet" "--batch" "--yes" "--default-recipient-self" "--output" ) \
 	  shrc=( "shred" "--zero" "--remove" )
     local -r notes_file="${HOME}/.${sbn}"
-    local -r notes_pgp="${notes_file}.pgp" notes_bkp="${notes_file}.bkp"
+    local -r notes_gpg="${notes_file}.gpg" notes_bkp="${notes_file}.bkp"
     local -r notes_header='
           ::::    ::: ::::::::::::::::::::::::::::::::::::: 
          :+:+:   :+::+:    :+:   :+:    :+:      :+:    :+: 
@@ -27,29 +27,17 @@ main() {
      #+#   #+#+##+#    #+#   #+#    #+#      #+#    #+#     
     ###    #### ########    ###    ##################       
     '
-    show_header() { type -P lolcat &>/dev/null && echo "${notes_header}"|lolcat || echo "${notes_header}"; }
+    show_header() { clear; type -P lolcat &>/dev/null && echo "${notes_header}"|lolcat || echo "${notes_header}"; }
 
     usage() { echo -ne "\n Usage: ${sbn} add 'some notes'|rem keyword...|list [keyword]/(empty for all)\n\n" >&2; }
 
-    encrypt() { "${pgpc[@]}" "${notes_pgp}" "--encrypt" "${notes_file}" && "${shrc[@]}" {"${notes_file}","${notes_bkp}"} 2> /dev/null; }
+    encrypt() { "${pgpc[@]}" "${notes_gpg}" "--encrypt" "${notes_file}" && "${shrc[@]}" {"${notes_file}","${notes_bkp}"} 2> /dev/null; }
 
-    decrypt() {
-	if [[ -e "${notes_pgp}" ]]; then
-	    "${pgpc[@]}" "${notes_file}" "--decrypt" "${notes_pgp}"
-	else
-	    echo 'Date|Note' > "${notes_file}"
-	fi
-    }
+    decrypt() {	if [[ -e "${notes_gpg}" ]]; then "${pgpc[@]}" "${notes_file}" "--decrypt" "${notes_gpg}"; else echo 'Date|Note' > "${notes_file}"; fi; }
 
     list() { grep -h "${1}" "${notes_file}" | column -t -s '|' | nl -s ':' -b p[0-9] | "${PAGER}"; }
 
-    rem() {
-	list "${1}"
-	if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then
-            cp -f "${notes_file}" "${notes_bkp}"
-            grep -hv "${1}" "${notes_bkp}" > "${notes_file}"
-	fi
-    }
+    rem() { list "${1}"; if [[ "$(read -rp "Delete above entr(y/ies) from notes? [y/N] " r;echo "${r:-N}")" == [Yy]* ]]; then cp -f "${notes_file}" "${notes_bkp}"; grep -hv "${1}" "${notes_bkp}" > "${notes_file}"; fi; }
 
     add() { echo "$(date "+%Y/%m/%d-%H:%M:%S")|${*}" >> "${notes_file}"; }
 

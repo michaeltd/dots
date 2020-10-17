@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-sdn="$(dirname "$(realpath $0)")"
+sdn="$(dirname "$(realpath "$0")")"
 ws="${sdn}/weekly"
 if [ -d "${ws}" ]; then
     time {

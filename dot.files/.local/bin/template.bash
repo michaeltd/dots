@@ -104,7 +104,7 @@ main() {
 	$option_o && info "option 'o' has parameter '$param_o'"
 	$option_v && info "verbose mode is on"
     }
-    
+
     _i=1
 
     for _file
