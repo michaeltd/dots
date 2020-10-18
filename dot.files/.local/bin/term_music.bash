@@ -3,28 +3,68 @@
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
-IFS=$' \t\n'
+IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
+declare -r myusage="\n\tUsage: ${sbn} [genre]\n\n" \
+	uri="file:///mnt/data/Documents/Music"
+
+declare -r pop=(
+    "${uri}/mark_king/Level-Best" "${uri}/all_saints" "${uri}/avicii"
+    "${uri}/black_eyed_pees" "${uri}/bruno_mars" "${uri}/daft_punk"
+    "${uri}/gorillaz"
+)
+
+declare -r rock=(
+    "${uri}/bad_co" "${uri}/deep_purple" "${uri}/doobie_brothers"
+    "${uri}/frank_zappa" "${uri}/janis_joplin" "${uri}/jethro_tull"
+    "${uri}/joe_cocker" "${uri}/led_zeppelin" "${uri}/lenny_kravitz"
+    "${uri}/the_who" "${uri}/ten_years_after" "${uri}/sting" "${uri}/santana"
+)
+
+declare -r reggae=(
+    "${uri}/ub40" "${uri}/matisyahu" "${uri}/bob_marley"
+)
+
+declare -r rnb=(
+    "${uri}/amy_winehouse" "${uri}/blues_brothers"
+)
+
+declare -r jazz=(
+    "${uri}/bill_evans" "${uri}/cannonball_adderley" "${uri}/charlie_parker"
+    "${uri}/chick_corea" "${uri}/eddie_gomez" "${uri}/getz_meets_mulligan"
+    "${uri}/herbie_hancock" "${uri}/john_coltrane" "${uri}/miles_davis"
+    "${uri}/ron_carter" "${uri}/sarah_vaughan" "${uri}/stanley_clarke/"
+    "${uri}/marcus_miller/" "${uri}/jaco_pastorius/" "${uri}/esperanza_spalding/"
+    "${uri}/john_patitucci" "${uri}/victor_wooten" "${uri}/mode_plagal"
+)
+
+declare -r latin=(
+    "${uri}/irakere" "${uri}/mambo_kings" "${uri}/paco_de_lucia" "${uri}/tito_puente"
+)
+
+declare -r funk=(
+    "${uri}/average_white_band" "${uri}/blood_sweat_and_tears"
+    "${uri}/jamiroquai" "${uri}/tower_of_power" "${uri}/chaka_khan"
+)
+
+declare -r classical=(
+    "${uri}/carl_orff" "${uri}/nikos_skalkotas" "${uri}/vaggelis"
+)
+
+declare -r ost=(
+    "${uri}/ost/bf" "${uri}/ost/cod" "${uri}/ost/ed" "${uri}/ost/halo" "${uri}/ost/titanfall"
+)
+
+declare -r genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] ost[@] )
+
+log2err() { echo -ne "${sbn}: ${*}\n" >&2; }
+
 main() {
     local genre_selection='' selection_type='random' randomnum='' all_artists=()
-    local -r myusage="\n\tUsage: ${sbn} [genre]\n\n" uri="file:///mnt/data/Documents/Music"
-    local -ar pop=( "${uri}/all_saints" "${uri}/avicii" "${uri}/black_eyed_pees" "${uri}/bruno_mars" "${uri}/daft_punk" "${uri}/gorillaz" ) \
-	  rock=( "${uri}/bad_co" "${uri}/deep_purple" "${uri}/doobie_brothers" "${uri}/frank_zappa" "${uri}/janis_joplin" "${uri}/jethro_tull" "${uri}/joe_cocker" "${uri}/led_zeppelin" "${uri}/lenny_kravitz" "${uri}/the_who" "${uri}/ten_years_after" "${uri}/sting" "${uri}/santana" ) \
-	  reggae=( "${uri}/ub40" "${uri}/matisyahu" "${uri}/bob_marley" ) \
-	  rnb=( "${uri}/amy_winehouse" "${uri}/blues_brothers" ) \
-	  jazz=( "${uri}/bill_evans" "${uri}/cannonball_adderley" "${uri}/charlie_parker" "${uri}/chick_corea" "${uri}/eddie_gomez" "${uri}/getz_meets_mulligan" "${uri}/herbie_hancock" "${uri}/john_coltrane" "${uri}/miles_davis" "${uri}/ron_carter" "${uri}/sarah_vaughan" "${uri}/stanley_clarke/" "${uri}/marcus_miller/" "${uri}/jaco_pastorius/" "${uri}/esperanza_spalding/" "${uri}/mark_king/Level-Best" "${uri}/john_patitucci" "${uri}/victor_wooten" ) \
-	  latin=( "${uri}/irakere" "${uri}/mambo_kings" "${uri}/paco_de_lucia" "${uri}/tito_puente" ) \
-	  funk=( "${uri}/average_white_band" "${uri}/blood_sweat_and_tears" "${uri}/jamiroquai" "${uri}/tower_of_power" "${uri}/chaka_khan" ) \
-	  classical=( "${uri}/carl_orff" "${uri}/nikos_skalkotas" "${uri}/vaggelis" ) \
-	  ost=( "${uri}/ost/bf" "${uri}/ost/cod" "${uri}/ost/ed" "${uri}/ost/halo" "${uri}/ost/titanfall" )
-    local -ar genres=( pop[@] rock[@] reggae[@] rnb[@] jazz[@] latin[@] funk[@] classical[@] ost[@] )
-    
-
-    log2err() { echo -ne "${sbn}: ${*}\n" >&2; }
 
     if [[ -n "${*}" ]]; then
 	if [[ "${genres[*]}" =~ ${1} ]]; then
