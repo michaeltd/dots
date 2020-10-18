@@ -10,8 +10,6 @@ IFS=$'\t\n'
 #shellcheck disable=SC2155,SC2034
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-readonly sne="${sbn%.*}"
-
 
 main() {
 
