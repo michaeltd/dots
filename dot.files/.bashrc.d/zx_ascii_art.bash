@@ -140,10 +140,12 @@ magiccow() {
     # echo 'Yes!,Moooo!,Mooost likely!,Cannot predict cow!,Without a doubt!,My horses say no!,Ask again l8r!' | \
     # 	tr ',' '\n' | sort -R | head -1 | { cowsay 2> /dev/null || cat; } | { lolcat 2> /dev/null || cat; }
 
-    local -ar answ=( "It is certain." "It is decidedly so." "Without a doubt." "Yes – definitely." "You may rely on it." \
-					"As I see it, yes." "Most likely." "Outlook good." "Yes." "Signs point to yes." \
-					"Reply hazy, try again." "Ask again later." "Better not tell you now." "Cannot predict now." "Concentrate and ask again." \
-					"Don't count on it." "My reply is no." "My sources say no." "Outlook not so good." "Very doubtful." )
+    local -ar answ=(
+	"It is certain." "It is decidedly so." "Without a doubt." "Yes – definitely." "You may rely on it." 
+	"As I see it, yes." "Most likely." "Outlook good." "Yes." "Signs point to yes." 
+	"Reply hazy, try again." "Ask again later." "Better not tell you now." "Cannot predict now." "Concentrate and ask again." 
+	"Don't count on it." "My reply is no." "My sources say no." "Outlook not so good." "Very doubtful."
+    )
 
     echo "${answ[$(shuf -n 1 -i 0-"$((${#answ[*]}-1))")]}" | \
 	{ type -P cowsay &> /dev/null && cowsay || cat; } | \
