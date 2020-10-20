@@ -101,6 +101,13 @@ pwr() {
     echo "scale=2;${1}^${2}"| bc -l
 }
 
+prcnt() {
+    [[ "${#}" -ne "2" ]] && \
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} #percent #num\n\n" >&2 && \
+	return 1
+    echo "scale=2;(${1}*${2})/100" | bc -l
+}
+
 # Trigonometric functions
 # https://advantage-bash.blogspot.com/2012/12/trignometry-calculator.html
 sin() {

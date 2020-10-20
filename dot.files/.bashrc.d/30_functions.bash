@@ -1,6 +1,6 @@
 #
 # various functions
-#shellcheck shell=bash disable=SC2207,SC2086,SC2009,SC2230,SC2154,SC2155,SC2068
+#shellcheck shell=bash disable=SC2207,SC2086,SC2009,SC2230,SC2154,SC2155,SC2068,SC2004
 
 # SCRAPPAD ====================================================================
 
