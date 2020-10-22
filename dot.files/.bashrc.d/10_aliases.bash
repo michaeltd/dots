@@ -82,6 +82,7 @@ alias eckd='emacsclient --eval="(kill-emacs)"'
 # Various utils
 alias cronobash='time bash -ic exit'
 alias cronoemacs="time emacs --eval='(kill-emacs)'"
+alias cronothis="time"
 alias termgeom='echo "${COLUMNS}x${LINES}"'
 
 # calendar
@@ -100,6 +101,9 @@ alias netis='ping -c 1 www.gentoo.org &> /dev/null;[[ $? == 0 ]] && echo "Net is
 # Help wan-ip-howto
 alias wip4='curl ipv4.whatismyip.akamai.com;echo'
 alias wip6='curl ipv6.whatismyip.akamai.com;echo'
+
+# Show attempts to establish a TCP connection (successful or not) to the IP 1.2.3.4
+alias lsconn='sudo tcpdump -nn tcp[tcpflags] == tcp-syn and dst host'
 
 # Shutdown > halt & reboot & poweroff
 # alias halt='sudo shutdown -h'

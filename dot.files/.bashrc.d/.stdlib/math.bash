@@ -103,7 +103,7 @@ pwr() {
 
 prcnt() {
     [[ "${#}" -ne "2" ]] && \
-	echo -ne "\n\tUsage: ${FUNCNAME[0]} #percent #num\n\n" >&2 && \
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} #percent #number\n\n" >&2 && \
 	return 1
     echo "scale=2;(${1}*${2})/100" | bc -l
 }
