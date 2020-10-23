@@ -4,52 +4,76 @@
 
 is_date() {
     [[ -z "${1}" ]] && return 1  # apparently `date -d ""` echoes today's day and returns 0
-    date -u -d "${1}" &> /dev/null
+    date -d "${1}" &> /dev/null
 }
 
 is_epoch() {
-    date -u -d "@${1}" &> /dev/null
+    date -d "@${1}" &> /dev/null
 }
 
-day_diff() {
-    if [[ "${#}" -eq "2" ]]; then
-	echo -ne "$(( (${1} - ${2}) / (60 * 60 * 24) ))\n"
+# https://www.unix.com/tips-and-tutorials/31944-simple-date-time-calulation-bash.html
+time_diff() {
+    case "${1}" in
+        -s) shift; local -r sec=1;;
+        -m) shift; local -r sec=60;;
+        -h) shift; local -r sec=3600;;
+        -d) shift; local -r sec=86400;;
+        *) local -r sec=86400;;
+    esac
+    if is_date "${1}" && is_date "${2}"; then
+	local -r ep1=$(date -d "$1" "+%s")
+	local -r ep2=$(date -d "$2" "+%s")
+	local -r sec_diff=$((ep2-ep1))
+	((sec_diff < 0)) && local -r mult=-1 || local -r mult=1
+	echo $((sec_diff/sec*mult))
+    else
+	echo -ne "Usage: ${FUNCNAME[0]} [-s|-m|-h|-d (default)] date1 date2.\n" >&2
+	return 1
+    fi
+}
+
+epoch_diff() {
+    if [[ "${#}" -eq "2" ]] && is_epoch "${1}" && is_epoch "${2}"; then
+	local -r diff="$((($1-$2)/(60*60*24)))"
+	((diff < 0)) && local -r mult=-1 || local -r mult=1
+	echo $((mult*diff))
     else
 	echo -ne "Usage: ${FUNCNAME[0]} epoch1 epoch2.\n" >&2
 	return 1
     fi
 }
 
-epoch_dd() {
-    day_diff "${1}" "${2}"
-}
-
-date_dd() {
-    day_diff "$(date -u --date="${1}" +%s)" "$(date -u --date="${2}" +%s)"
+date_diff() {
+    if [[ "${#}" -eq "2" ]] && is_date "${1}" && is_date "${2}"; then
+	epoch_diff "$(date -d "${1}" +%s)" "$(date -d "${2}" +%s)"
+    else
+	echo -ne "Usage: ${FUNCNAME[0]} date1 date2.\n" >&2
+	return 1
+    fi
 }
 
 unix_epoch() {
     if [[ -n "${1}" ]]; then
-	date -u --date="${1}" +%s
+	date -d "${1}" +%s
     else
 	date -u +%s
     fi
 }
 
 epoch2date() {
-    date -u --date="@${1-$(unix_epoch)}" +%Y/%m/%d
+    date -d "@${1-$(unix_epoch)}" "+%F"
 }
 
 epoch2time() {
-    date -u --date="@${1-$(unix_epoch)}" +%H:%M:%S
+    date -d "@${1-$(unix_epoch)}" "+%T"
 }
 
 epoch2datetime() {
-    date -u --date="@${1-$(unix_epoch)}" +%Y/%m/%d-%H:%M:%S
+    date -d "@${1-$(unix_epoch)}" "+%F %T"
 }
 
 week_day() {
-    date -u -d @"${1:-$(unix_epoch)}" +%u
+    date -d "@${1:-$(unix_epoch)}" "+%u"
 }
 
 last_dom() {
@@ -71,12 +95,12 @@ last_dom() {
 
     local y m
     if [[ -n "${1}" ]]; then
-	date -u --date="${1}" &>/dev/null || return 1
-	y="$(date -u +%Y --date="${1}")"
-	m="$(date -u +%m --date="${1}")"
+	date -d "${1}" &>/dev/null || return 1
+	y="$(date -d "${1}" "+%Y" )"
+	m="$(date -d "${1}" "+%m")"
     else
-	y="$(date -u +%Y)"
-	m="$(date -u +%m)"
+	y="$(date +%Y)"
+	m="$(date +%m)"
     fi
     
     case "${m}" in
@@ -89,28 +113,4 @@ last_dom() {
 	    fi;;
 	"04"|"06"|"09"|"11") echo "30";;
     esac
-}
-
-# https://www.unix.com/tips-and-tutorials/31944-simple-date-time-calulation-bash.html
-date2stamp () {
-    date --utc --date "$1" +%s
-}
-
-stamp2date (){
-    date --utc --date "1970-01-01 $1 sec" "+%Y-%m-%d %T"
-}
-
-date_diff (){
-    case $1 in
-        -s)   sec=1;      shift;;
-        -m)   sec=60;     shift;;
-        -h)   sec=3600;   shift;;
-        -d)   sec=86400;  shift;;
-        *)    sec=86400;;
-    esac
-    dte1=$(date2stamp $1)
-    dte2=$(date2stamp $2)
-    diffSec=$((dte2-dte1))
-    if ((diffSec < 0)); then abs=-1; else abs=1; fi
-    echo $((diffSec/sec*abs))
 }
