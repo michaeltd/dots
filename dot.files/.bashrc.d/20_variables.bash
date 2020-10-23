@@ -2,6 +2,65 @@
 # environment variables
 #shellcheck shell=bash disable=SC2155
 
+# OPT
+[[ -d "/opt" ]] && export OPT="/opt"
+# JAVA
+[[ -d "${HOME}/.jdk" ]] && export JAVA_HOME="${HOME}/.jdk"
+[[ -d "${HOME}/.ant" ]] && export ANT="${HOME}/.ant"
+[[ -d "${HOME}/.maven" ]] && export MAVEN="${HOME}/.maven"
+[[ -d "${HOME}/.gradle" ]] && export GRADLE="${HOME}/.gradle"
+# GO
+[[ -d "${HOME}/.go" ]] && export GOPATH="${HOME}/.go"
+# RUST
+[[ -d "${HOME}/.cargo" ]] && export RUST="${HOME}/.cargo"
+# NODE
+[[ -d "${HOME}/.node" ]] && export NODE="${HOME}/.node"
+# DENO
+[[ -d "${HOME}/.deno" ]] && export DENO="${HOME}/.deno"
+# MONGODB
+[[ -d "${HOME}/.mongodb" ]] && export MONGODB="${HOME}/.mongodb"
+
+checkpath() {
+    [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
+}
+# Path with += op and each tool in it's own line for practical reasons
+checkpath "${HOME}/.local/bin"
+# OPT
+[[ -n "${OPT}" ]] && checkpath "${OPT}/bin"
+checkpath "${HOME}/bin"
+# JAVA
+[[ -n "${JAVA_HOME}" ]] && checkpath "${JAVA_HOME}/bin"
+[[ -n "${ANT}" ]] && checkpath "${ANT}/bin"
+[[ -n "${MAVEN}" ]] && checkpath "${MAVEN}/bin"
+[[ -n "${GRADLE}" ]] && checkpath "${GRADLE}/bin"
+[[ -n "${GOPATH}" ]] && checkpath "${GOPATH}/bin"
+# RUST
+[[ -n "${RUST}" ]] && checkpath "${RUST}/bin"
+# NODE
+[[ -n "${NODE}" ]] && checkpath "${NODE}/bin"
+# DENO
+[[ -n "${DENO}" ]] && checkpath "${DENO}/bin"
+# MONGODB
+[[ -n "${MONGODB}" ]] && checkpath "${MONGODB}/bin"
+
+# MANPATH
+checkmpath() {
+    [[ "${MANPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export MANPATH+=":${1}"
+}
+
+checkmpath "${HOME}/.local/share/man"
+checkmpath "${HOME}/opt/share/man"
+
+# JAVA classpath
+checkcpath() {
+    [[ "${CLASSPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export CLASSPATH+=":${1}"
+}
+[[ -n "${JAVA_HOME}" ]] && checkcpath "${JAVA_HOME}/lib"
+[[ -n "${ANT}" ]] && checkcpath "${ANT}/lib"
+[[ -n "${MAVEN}" ]] && checkcpath "${MAVEN}/lib"
+
+unset -f checkpath checkmpath checkcpath
+
 # Used by mc themes
 export COLORTERM="truecolor"
 
@@ -64,60 +123,3 @@ export GIT_PS1_SHOWSTASHSTATE=yes
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=yes
 
-# OPT
-[[ -d "/opt" ]] && export OPT="/opt"
-# JAVA
-[[ -d "${HOME}/.jdk" ]] && export JAVA_HOME="${HOME}/.jdk"
-[[ -d "${HOME}/.ant" ]] && export ANT="${HOME}/.ant"
-[[ -d "${HOME}/.maven" ]] && export MAVEN="${HOME}/.maven"
-[[ -d "${HOME}/.gradle" ]] && export GRADLE="${HOME}/.gradle"
-# GO
-[[ -d "${HOME}/.go" ]] && export GOPATH="${HOME}/.go"
-# RUST
-[[ -d "${HOME}/.cargo" ]] && export RUST="${HOME}/.cargo"
-# NODE
-[[ -d "${HOME}/.node" ]] && export NODE="${HOME}/.node"
-# DENO
-[[ -d "${HOME}/.deno" ]] && export DENO="${HOME}/.deno"
-# MONGODB
-[[ -d "${HOME}/.mongodb" ]] && export MONGODB="${HOME}/.mongodb"
-
-checkpath() {
-    [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
-}
-# Path with += op and each tool in it's own line for practical reasons
-checkpath "${HOME}/.local/bin"
-# OPT
-[[ -n "${OPT}" ]] && checkpath "${OPT}/bin"
-checkpath "${HOME}/bin"
-# JAVA
-[[ -n "${JAVA_HOME}" ]] && checkpath "${JAVA_HOME}/bin"
-[[ -n "${ANT}" ]] && checkpath "${ANT}/bin"
-[[ -n "${MAVEN}" ]] && checkpath "${MAVEN}/bin"
-[[ -n "${GRADLE}" ]] && checkpath "${GRADLE}/bin"
-[[ -n "${GOPATH}" ]] && checkpath "${GOPATH}/bin"
-# RUST
-[[ -n "${RUST}" ]] && checkpath "${RUST}/bin"
-# NODE
-[[ -n "${NODE}" ]] && checkpath "${NODE}/bin"
-# DENO
-[[ -n "${DENO}" ]] && checkpath "${DENO}/bin"
-# MONGODB
-[[ -n "${MONGODB}" ]] && checkpath "${MONGODB}/bin"
-
-# MANPATH
-checkmpath() {
-    [[ "${MANPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export MANPATH+=":${1}"
-}
-checkmpath "${HOME}/.local/share/man"
-checkmpath "${HOME}/opt/share/man"
-
-# JAVA classpath
-checkcpath() {
-    [[ "${CLASSPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export CLASSPATH+=":${1}"
-}
-[[ -n "${JAVA_HOME}" ]] && checkcpath "${JAVA_HOME}/lib"
-[[ -n "${ANT}" ]] && checkcpath "${ANT}/lib"
-[[ -n "${MAVEN}" ]] && checkcpath "${MAVEN}/lib"
-
-unset -f checkpath checkmpath checkcpath
