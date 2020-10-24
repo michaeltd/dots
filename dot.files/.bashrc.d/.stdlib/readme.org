@@ -14,6 +14,7 @@
     | 7B5CBAC8-F263-A887-C93B-81515DDB0FA9 |
     | 6579993046607616                     |
     | }u]=J2Q^O$f-XcUm                     |
+
   - distance.bash
     #+begin_src shell
     source distance.bash
@@ -24,6 +25,7 @@
     #+RESULTS:
     | 186.41 |
     |   12.7 |
+
   - mass.bash
     #+begin_src shell
     source mass.bash
@@ -34,6 +36,7 @@
     #+RESULTS:
     | 22.05 |
     |  4.53 |
+
   - math.bash
     #+begin_src shell
     source math.bash
@@ -46,6 +49,7 @@
     | 5.0 |
     |   5 |
     |   1 |
+
   - string.bash
     #+begin_src shell
     source string.bash
@@ -56,6 +60,7 @@
     #+RESULTS:
     | a     | weird | file | name | txt |
     | Hello | World | !    |      |     |
+
   - temp.bash
     #+begin_src shell
     source temp.bash
@@ -66,6 +71,7 @@
     #+RESULTS:
     |   32.0 |
     | -17.77 |
+
   - time.bash
     #+begin_src shell
     source time.bash
@@ -80,6 +86,7 @@
     |    24 |
     |  1440 |
     | 86400 |
+
 * Usage
   In ~\tilde/.bashrc~ :
   #+begin_src shell
