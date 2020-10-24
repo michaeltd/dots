@@ -1,0 +1,87 @@
+#+title: stdlib for bash
+#+author: michaeltd
+#+date: <2020-10-24 Sat>
+* Files
+  - crypto.bash
+    #+begin_src shell
+    source crypto.bash
+    gen_uuid
+    gen_rnum 16
+    gen_pass 16
+    #+end_src
+
+    #+RESULTS:
+    | 7B5CBAC8-F263-A887-C93B-81515DDB0FA9 |
+    | 6579993046607616                     |
+    | }u]=J2Q^O$f-XcUm                     |
+  - distance.bash
+    #+begin_src shell
+    source distance.bash
+    kph2mph 300
+    in2cm 5
+    #+end_src
+
+    #+RESULTS:
+    | 186.41 |
+    |   12.7 |
+  - mass.bash
+    #+begin_src shell
+    source mass.bash
+    kg2lb 10
+    lb2kg 10
+    #+end_src
+
+    #+RESULTS:
+    | 22.05 |
+    |  4.53 |
+  - math.bash
+    #+begin_src shell
+    source math.bash
+    avg 1 2 3 4 5 6 7 8 9
+    max 1 2 3 4 5
+    min 1 2 3 4 5
+    #+end_src
+
+    #+RESULTS:
+    | 5.0 |
+    |   5 |
+    |   1 |
+  - string.bash
+    #+begin_src shell
+    source string.bash
+    split a.weird.file.name.txt .
+    trim " Hello World ! "
+    #+end_src
+
+    #+RESULTS:
+    | a     | weird | file | name | txt |
+    | Hello | World | !    |      |     |
+  - temp.bash
+    #+begin_src shell
+    source temp.bash
+    c2f 0
+    f2c 0
+    #+end_src
+
+    #+RESULTS:
+    |   32.0 |
+    | -17.77 |
+  - time.bash
+    #+begin_src shell
+    source time.bash
+    time_diff -d 20201025 20201024
+    time_diff -h 20201025 20201024
+    time_diff -m 20201025 20201024
+    time_diff -s 20201025 20201024
+    #+end_src
+
+    #+RESULTS:
+    |     1 |
+    |    24 |
+    |  1440 |
+    | 86400 |
+* Usage
+  In ~\tilde/.bashrc~ :
+  #+begin_src shell
+    [[ -d "/path/to/stdlib" ]] && for file in "/path/to/stdlib"/*.bash; do source "${file}"; done
+  #+end_src

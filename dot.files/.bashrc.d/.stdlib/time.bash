@@ -23,9 +23,9 @@ time_diff() {
     if is_date "${1}" && is_date "${2}"; then
 	local -r ep1=$(date -d "$1" "+%s")
 	local -r ep2=$(date -d "$2" "+%s")
-	local -r sec_diff=$(( ep2 - ep1 ))
+	local -r sec_diff=$[ ep2 - ep1 ]
 	if (( sec_diff < 0 )); then local -r mult=-1; else local -r mult=1; fi
-	echo $(( sec_diff * mult / sec))
+	echo $[ sec_diff * mult / sec ]
     else
 	echo -ne "Usage: ${FUNCNAME[0]} [-s|-m|-h|-d(default)] date1 date2.\n" >&2
 	return 1
