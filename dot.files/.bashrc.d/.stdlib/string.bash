@@ -1,7 +1,6 @@
 #
 # string related functions
-#shellcheck shell=bash
-#shellcheck disable=SC2048,SC2086,SC2046,SC2005,SC2059
+#shellcheck shell=bash disable=SC2048,SC2086,SC2046,SC2005,SC2059
 
 ascii2bin() {
     # https://unix.stackexchange.com/questions/98948/ascii-to-binary-and-binary-to-ascii-conversion-tools

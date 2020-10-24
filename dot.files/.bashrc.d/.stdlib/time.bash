@@ -16,9 +16,9 @@ time_diff() {
     case "${1}" in
         -s) shift; local -r sec=1;;
         -m) shift; local -r sec=60;;
-        -h) shift; local -r sec=3600;;
-        -d) shift; local -r sec=86400;;
-        *) local -r sec=86400;;
+        -h) shift; local -r sec=$[60*60];;
+        -d) shift; local -r sec=$[60*60*24];;
+        *) local -r sec=$[60*60*24];;
     esac
     if is_date "${1}" && is_date "${2}"; then
 	local -r ep1=$(date -d "$1" "+%s")

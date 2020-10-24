@@ -11,7 +11,7 @@ gen_rnum() {
 gen_pass() {
     tr -dc "[:graph:]" < /dev/urandom | \
 	tr -d "[=\|=][=\"=][=\'=][=\,=]" | \
-	head -c "${1:-64}"
+	head -c "${1:-32}"
     echo
 }
 
