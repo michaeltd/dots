@@ -1,62 +1,62 @@
 #+title: bash lib
 #+author: michaeltd
 #+date: <2020-10-24 Sat>
-* Files
-  - crypto.bash
-    #+begin_src shell
-    source crypto.bash
-    gen_uuid    # 7B5CBAC8-F263-A887-C93B-81515DDB0FA9
-    gen_rnum 16 # 6579993046607616
-    gen_pass 16 # }u]=J2Q^O$f-XcUm
-    #+end_src
+*** Files
+    - crypto.bash
+      #+begin_src shell
+      source crypto.bash
+      gen_uuid    # 7B5CBAC8-F263-A887-C93B-81515DDB0FA9
+      gen_rnum 16 # 6579993046607616
+      gen_pass 16 # }u]=J2Q^O$f-XcUm
+      #+end_src
 
-  - distance.bash
-    #+begin_src shell
-    source distance.bash
-    kph2mph 300 # 186.41
-    in2cm 5     # 12.7
-    #+end_src
+    - distance.bash
+      #+begin_src shell
+      source distance.bash
+      kph2mph 300 # 186.41
+      in2cm 5     # 12.7
+      #+end_src
 
-  - mass.bash
-    #+begin_src shell
-    source mass.bash
-    kg2lb 10 # 22.05
-    lb2kg 10 # 4.53
-    #+end_src
+    - mass.bash
+      #+begin_src shell
+      source mass.bash
+      kg2lb 10 # 22.05
+      lb2kg 10 # 4.53
+      #+end_src
 
-  - math.bash
-    #+begin_src shell
-    source math.bash
-    avg 1 2 3 4 5 6 7 8 9 # 5
-    max 1 2 3 4 5         # 5
-    min 1 2 3 4 5         # 1
-    #+end_src
+    - math.bash
+      #+begin_src shell
+      source math.bash
+      avg 1 2 3 4 5 6 7 8 9 # 5
+      max 1 2 3 4 5         # 5
+      min 1 2 3 4 5         # 1
+      #+end_src
 
-  - string.bash
-    #+begin_src shell
-    source string.bash
-    split a.weird.file.name.txt . # a weird file name txt
-    trim ' Hello World ! '        # 'Hello World !'
-    #+end_src
+    - string.bash
+      #+begin_src shell
+      source string.bash
+      split a.weird.file.name.txt . # a weird file name txt
+      trim ' Hello World ! '        # 'Hello World !'
+      #+end_src
 
-  - temp.bash
-    #+begin_src shell
-    source temp.bash
-    c2f 0 # 32.0
-    f2c 0 # -17.77
-    #+end_src
+    - temp.bash
+      #+begin_src shell
+      source temp.bash
+      c2f 0 # 32.0
+      f2c 0 # -17.77
+      #+end_src
 
-  - time.bash
-    #+begin_src shell
-    source time.bash
-    time_diff -d 20201025 20201024 # 1
-    time_diff -h 20201025 20201024 # 24
-    time_diff -m 20201025 20201024 # 1440
-    time_diff -s 20201025 20201024 # 86400
-    #+end_src
+    - time.bash
+      #+begin_src shell
+      source time.bash
+      time_diff -d 20201025 20201024 # 1
+      time_diff -h 20201025 20201024 # 24
+      time_diff -m 20201025 20201024 # 1440
+      time_diff -s 20201025 20201024 # 86400
+      #+end_src
 
-* Usage
-  In *\tilde/.bashrc* :
-  #+begin_src shell
-    [[ -d "/path/to/stdlib" ]] && for file in "/path/to/stdlib"/*.bash; do source "${file}"; done
-  #+end_src
+*** Usage
+    In *\tilde/.bashrc* :
+    #+begin_src shell
+      [[ -d "/path/to/stdlib" ]] && for file in "/path/to/stdlib"/*.bash; do source "${file}"; done
+    #+end_src
