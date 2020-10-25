@@ -163,9 +163,3 @@ asec() {
 acsc() {
     echo "scale=2;a(1/(sqrt(${1}^2)-1))" | bc -l
 }
-
-factorial(){
-    local -i f i=$1
-    [[ $# -eq 0 ]] && { echo "Usage: ${FUNCNAME[0]} number"; return 1; }
-    [[ $i -le 2 ]] && echo "${i}" || { f=$(( i - 1 )); f=$(factorial $f); f=$(( f * i )); echo "${f}"; }
-}
