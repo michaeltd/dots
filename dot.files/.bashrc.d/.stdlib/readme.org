@@ -56,7 +56,7 @@
     #+end_src
 
 * Usage
-  In \ast~/.bashrc\ast :
+  In *\tilde/.bashrc* :
   #+begin_src shell
     [[ -d "/path/to/stdlib" ]] && for file in "/path/to/stdlib"/*.bash; do source "${file}"; done
   #+end_src
