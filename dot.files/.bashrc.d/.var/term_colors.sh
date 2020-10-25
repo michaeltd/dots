@@ -171,3 +171,13 @@ print_128_colors() {
     echo
 }
 
+rgb_colors(){
+    for _1 in {0..255};do
+	for _2 in {0..255};do
+	    for _3 in {0..255};do
+		echo -e "\033[48;2;${_1};${_2};${_3}m$_1:$_2:$_3";
+		read -t 0.001 -s;
+	    done;
+	done;
+    done;
+}
