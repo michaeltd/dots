@@ -78,6 +78,9 @@ for_window [class="org-michael-*"] floating enable
 for_window [class="Wireshark"] floating enable
 for_window [class="net-sourceforge-squirrel_sql-client-Main"] floating enable
 for_window [class="DbVisualizer"] floating enable
+for_window [class="Codelite"] floating enable
+for_window [class="Emacs"] floating enable
+for_window [class="Gvim"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
