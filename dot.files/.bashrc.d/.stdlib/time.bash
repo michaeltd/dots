@@ -16,15 +16,15 @@ time_diff() {
     case "${1}" in
         -s) shift; local -r sec=1;;
         -m) shift; local -r sec=60;;
-        -h) shift; local -r sec=$[60*60];;
-        -d) shift; local -r sec=$[60*60*24];;
-        *) local -r sec=$[60*60*24];;
+        -h) shift; local -r sec=$[60 * 60];;
+        -d) shift; local -r sec=$[60 * 60 * 24];;
+        *) local -r sec=$[60 * 60 * 24];;
     esac
     if is_date "${1}" && is_date "${2}"; then
 	local -r ep1=$(date -d "$1" "+%s") ep2=$(date -d "$2" "+%s")
-	local -r sec_diff=$[ep2-ep1]
-	((sec_diff<0)) && local -r mult=-1 || local -r mult=1
-	echo $[sec_diff*mult/sec]
+	local -r sec_diff=$[ep2 - ep1]
+	((sec_diff < 0)) && local -r mult=-1 || local -r mult=1
+	echo $[sec_diff * mult / sec]
     else
 	echo -ne "Usage: ${FUNCNAME[0]} [-s|-m|-h|-d(default)] date1 date2.\n" >&2
 	return 1
@@ -34,8 +34,8 @@ time_diff() {
 epoch_diff() {
     if [[ "${#}" -eq "2" ]] && is_epoch "${1}" && is_epoch "${2}"; then
 	local -r diff="$((($1-$2)/(60*60*24)))"
-	((diff<0)) && local -r mult=-1 || local -r mult=1
-	echo $((mult*diff))
+	((diff < 0)) && local -r mult=-1 || local -r mult=1
+	echo "$((mult * diff))"
     else
 	echo -ne "Usage: ${FUNCNAME[0]} epoch1 epoch2.\n" >&2
 	return 1
@@ -105,9 +105,9 @@ last_dom() {
     case "${m}" in
 	"01"|"03"|"05"|"07"|"08"|"10"|"12") echo "31";;
 	"02")
-	    if (( y % 4 != 0 )); then echo "28"
-	    elif (( y % 100 != 0 )); then echo "29"
-	    elif (( y % 400 != 0 )); then echo "28"
+	    if ((y % 4 != 0)); then echo "28"
+	    elif ((y % 100 != 0)); then echo "29"
+	    elif ((y % 400 != 0)); then echo "28"
 	    else echo "29"
 	    fi;;
 	"04"|"06"|"09"|"11") echo "30";;
