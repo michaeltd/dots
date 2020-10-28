@@ -14,17 +14,17 @@ is_epoch() {
 # https://www.unix.com/tips-and-tutorials/31944-simple-date-time-calulation-bash.html
 time_diff() {
     case "${1}" in
-        -s) shift; local -r sec=1;;
-        -m) shift; local -r sec=60;;
-        -h) shift; local -r sec=$[60 * 60];;
-        -d) shift; local -r sec=$[60 * 60 * 24];;
-        *) local -r sec=$[60 * 60 * 24];;
+        -s) shift; local -r sec="1";;
+        -m) shift; local -r sec="60";;
+        -h) shift; local -r sec="$((60 * 60))";;
+        -d) shift; local -r sec="$((60 * 60 * 24))";;
+        *) local -r sec="$((60 * 60 * 24))";;
     esac
     if is_date "${1}" && is_date "${2}"; then
-	local -r ep1=$(date -d "$1" "+%s") ep2=$(date -d "$2" "+%s")
-	local -r sec_diff=$[ep2 - ep1]
-	((sec_diff < 0)) && local -r mult=-1 || local -r mult=1
-	echo $[sec_diff * mult / sec]
+	local -r ep1="$(date -d "$1" "+%s")" ep2="$(date -d "$2" "+%s")"
+	local -r sec_diff="$((ep2 - ep1))"
+	if ((sec_diff < 0)); then local -r mult=-1; else local -r mult=1; fi
+	echo "$((sec_diff * mult / sec))"
     else
 	echo -ne "Usage: ${FUNCNAME[0]} [-s|-m|-h|-d(default)] date1 date2.\n" >&2
 	return 1
@@ -34,7 +34,7 @@ time_diff() {
 epoch_diff() {
     if [[ "${#}" -eq "2" ]] && is_epoch "${1}" && is_epoch "${2}"; then
 	local -r diff="$((($1-$2)/(60*60*24)))"
-	((diff < 0)) && local -r mult=-1 || local -r mult=1
+	if ((diff < 0)); then local -r mult=-1; else local -r mult=1; fi
 	echo "$((mult * diff))"
     else
 	echo -ne "Usage: ${FUNCNAME[0]} epoch1 epoch2.\n" >&2

@@ -44,4 +44,3 @@ source "${BATS_TEST_DIRNAME}/dot.files/.bashrc"
     run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.local/sbin"/*.bash
     [ "$status" -eq 0 ]
 }
-
