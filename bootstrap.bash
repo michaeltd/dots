@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bash --norc --noprofile
+#!/bin/bash
 #shellcheck shell=bash disable=SC1008,SC2096
 #
 # dots/bootstrap.bash 
@@ -192,21 +192,16 @@ do_everything() {
 }
 
 menu() {
-
-    local -a TUI_MENU=( )
-    local -a TUI_HMSG=( "${myusage}" )
-
-    for (( x = 0; x < ${#TUI_OPS[*]}; x++ )); do
-        TUI_MENU+=( "${x}:${TUI_OPS[x]}" )
-	(( (x + 1) % 4 == 0 )) && TUI_MENU+=( "\n" ) || TUI_MENU+=( "\t" )
-        TUI_HMSG+=( "Use ${x}, which will ${DESC[x]}\n" )
+    local -a TUI_MENU=() TUI_HMSG=("${myusage}")
+    for ((x = 0; x < ${#TUI_OPS[*]}; x++)); do
+        TUI_MENU+=("${x}:${TUI_OPS[x]}")
+	(((x + 1) % 4 == 0)) && TUI_MENU+=("\n") || TUI_MENU+=("\t")
+        TUI_HMSG+=("Use ${x}, which will ${DESC[x]}\n")
     done
 
     while :; do
-
 	echo -ne " ${TUI_MENU[*]}"|column -t -s $'\t'
 	read -rp "Choose[0-$((${#TUI_OPS[*]}-1))]: " USRINPT
-
         case "${USRINPT}" in
             0) return "${?}";;
             1) echo -ne "${TUI_HMSG[*]}";;
