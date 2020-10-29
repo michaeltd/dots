@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bash --norc --noprofile
+#!/bin/bash
 #shellcheck shell=bash disable=SC1008,SC2096
 #
 # Spice for the desktop
