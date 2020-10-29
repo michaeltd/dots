@@ -27,9 +27,9 @@ source "${BATS_TEST_DIRNAME}/dot.files/.bashrc"
     [ "$status" -eq 0 ]
 }
 
-@test "ShellCheck check's out .bashrc.d/.stdlib/*.bash targets" {
+@test "ShellCheck check's out .bashrc.d/stdlib/*.bash targets" {
     # skip
-    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.bashrc.d/.stdlib"/*.bash
+    run shellcheck "${BATS_TEST_DIRNAME}/dot.files/.bashrc.d/stdlib"/*.bash
     [ "$status" -eq 0 ]
 }
 
