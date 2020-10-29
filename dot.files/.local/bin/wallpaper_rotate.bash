@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bash --norc --noprofile
+#!/bin/bash
 #
 # Script to go through a directory of background images as wallpapers in a timely fashion
 #shellcheck shell=bash source=/dev/null disable=SC1008,SC2096,SC2155,SC2034,SC2154

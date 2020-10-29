@@ -1,5 +1,6 @@
-#!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096,SC2155,SC2034,SC2207
+#!/bin/bash
+#shellcheck disable=SC2034,SC2155,SC2207
+#
 
 # Unofficial Bash Strict Mode
 set -euo pipefail

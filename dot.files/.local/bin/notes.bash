@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bash --norc --noprofile
+#!/bin/bash
 #shellcheck shell=bash disable=SC1008,SC2096,SC2155,SC2034
 #
 # https://www.reddit.com/r/bash/comments/fxxtav/simple_notes/

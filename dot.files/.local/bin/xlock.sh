@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bash --norc --noprofile
+#!/bin/bash
 #
 # r/unixporn
 

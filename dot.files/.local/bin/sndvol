@@ -1,7 +1,6 @@
-#!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096,SC2155,SC2015
+#!/bin/bash
 #
-# sndvol lil script to play around with volume settings
+# sndvol - lil script to play around with volume settings
 
 # Unofficial Bash Strict Mode
 set -eo pipefail
@@ -9,24 +8,24 @@ IFS=$'\t\n'
 
 readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
+# Timeout settings for Xdialog, Xmessage
+readonly xmto="1" # xmessage timeout is in seconds...
+readonly xdto="$((xmto * 1000))" # Xdialog/dialog is in milliseconds.
+
+# Xdialog/dialog
+declare -rx XDIALOG_HIGH_DIALOG_COMPAT=1 XDIALOG_FORCE_AUTOSIZE=1 \
+	XDIALOG_INFOBOX_TIMEOUT="${xdto}" XDIALOG_NO_GMSGS=1 \
+	DIALOG_OK=0 DIALOG_CANCEL=1 DIALOG_HELP=2 \
+	DIALOG_EXTRA=3 DIALOG_ITEM_HELP=4 DIALOG_ESC=255 \
+	SIG_NONE=0 SIG_HUP=1 SIG_INT=2 SIG_QUIT=3 SIG_KILL=9 SIG_TERM=15
+
 main() {
-
-    # Timeout settings for Xdialog, Xmessage
-    local -r xmto="1" # xmessage timeout is in seconds...
-    local -r xdto="$(( xmto * 1000 ))" # Xdialog/dialog is in milliseconds.
-
-    # Xdialog/dialog
-    declare -rx XDIALOG_HIGH_DIALOG_COMPAT=1 XDIALOG_FORCE_AUTOSIZE=1 \
-	    XDIALOG_INFOBOX_TIMEOUT="${xdto}" XDIALOG_NO_GMSGS=1 \
-	    DIALOG_OK=0 DIALOG_CANCEL=1 DIALOG_HELP=2 \
-	    DIALOG_EXTRA=3 DIALOG_ITEM_HELP=4 DIALOG_ESC=255 \
-	    SIG_NONE=0 SIG_HUP=1 SIG_INT=2 SIG_QUIT=3 SIG_KILL=9 SIG_TERM=15
 
     # Mutexify to avoid process spam
     # local -ar pids=( $(pgrep -U "${USER}" -f "${sbn}") )
     # [[ "${#pids[*]}" -gt "1" ]] && return 1
 
-    # Pick a default available dialog impl. ...
+    # Pick a default available dialog impl...
     if [[ -x "$(type -P Xdialog)" && -n "${DISPLAY}" ]]; then # Check for X, Xdialog
 	local -r DIALOG="$(type -P Xdialog)" G=( "0" "0" "${xdto}" )
     elif [[ -x "$(type -P dialog)" && -z "${DISPLAY}" ]]; then
@@ -35,7 +34,7 @@ main() {
 	local -r DIALOG=''
     fi
 
-    display_feedback() {
+    log2err() {
 	if [[ -x "$(type -P notify-send)" ]]; then
             "$(type -P notify-send)" "-i" "audio-card" "-c" "notification" "-t" "${xdto}" "${sbn}:" "${*}"
 	elif [[ -x "${DIALOG}" ]]; then
@@ -47,8 +46,8 @@ main() {
 	fi
     }
 
-    usage() {
-	display_feedback "Usage: ${sbn} + | - | [0-100] | report"
+    myusage() {
+	log2err "Usage: ${sbn} +|-|[0-100]|report"
 	return 1
     }
 
@@ -56,12 +55,12 @@ main() {
 	+|-) vol="$(amixer -c 0 -- sset Master "10dB${1}")";;
 	*[0-9]) [[ "${1}" =~ ^[0-9]{1,3}$ ]] && (( $1 >= 0 && $1 <= 100 )) && vol="$(amixer -c 0 -- sset Master "${1}%")";;
 	report) vol="$(amixer -c 0 -- sget Master)";;
-	*) usage;;
+	*) myusage;;
     esac
 
     vol="${vol/\]*}"; vol="${vol/*\[}"
 
-    display_feedback "Master: ${vol}"
+    log2err "Master: ${vol}"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
