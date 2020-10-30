@@ -203,7 +203,7 @@ menu() {
 	echo -ne " ${TUI_MENU[*]}"|column -t -s $'\t'
 	read -rp "Choose[0-$((${#TUI_OPS[*]}-1))]: " USRINPT
         case "${USRINPT}" in
-            0) return "${?}";;
+            0) return $?;;
             1) echo -ne "${TUI_HMSG[*]}";;
 	    2) do_"${TUI_OPS[$USRINPT]}";;
 	    [3-4]) do_assoc "${TUI_OPS[$USRINPT]}";;

@@ -72,12 +72,15 @@ alias duthis='du -hx --max-depth=1 | sort -hr|head'
 # alias mc='source /usr/share/mc/mc-wrapper.sh'
 
 # Emacs alias
-# EmaX No X11
-alias exnx='emacs -nw'
-# EmacsClient No X11
-alias ecnx='emacsclient -t'
-# EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
-alias eckd='emacsclient --eval="(kill-emacs)"'
+if type -P emacs &> /dev/null; then
+    # EmaX No X11
+    alias exnx='emacs -nw'
+    # EmacsClient No X11
+    alias ecnx='emacsclient -t'
+    # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
+    alias eckd='emacsclient --eval="(kill-emacs)"'
+fi
+
 
 # Various utils
 alias cronobash='time bash -ic exit'
@@ -99,11 +102,17 @@ alias cal='cal -m' # First Day Monday Calendars
 alias netis='ping -c 1 www.gentoo.org &> /dev/null;[[ $? == 0 ]] && echo "Net is UP!" || echo "Net is Down!"'
 
 # Help wan-ip-howto
-alias wip4='curl ipv4.whatismyip.akamai.com;echo'
-alias wip6='curl ipv6.whatismyip.akamai.com;echo'
+if type -P curl &> /dev/null; then
+    alias wip4='curl ipv4.whatismyip.akamai.com;echo'
+    alias wip6='curl ipv6.whatismyip.akamai.com;echo'
+elif type -P wget &> /dev/null; then
+    alias wip4='wget -qO - ipv4.whatismyip.akamai.com;echo'
+    alias wip6='wget -qO - ipv6.whatismyip.akamai.com;echo'
+fi
 
 # Show attempts to establish a TCP connection (successful or not) to the IP 1.2.3.4
-alias lsconn='sudo tcpdump -nn tcp[tcpflags] == tcp-syn and dst host'
+type -P tcpdump &> /dev/null && \
+    alias lsconn='sudo tcpdump -nn tcp[tcpflags] == tcp-syn and dst host'
 
 # Shutdown > halt & reboot & poweroff
 # alias halt='sudo shutdown -h'
@@ -122,7 +131,7 @@ alias propaideia='for x in {1..9}; do for y in $(seq 1 $x); do printf "%dx%d=%2d
 # alias ttt='for x in {1..10}; do let tt="${x} * 10";for y in $(seq $x $x $tt);do printf "%4d" $y;done; printf "\n";done'
 
 # https://twitter.com/liamosaur/status/506975850596536320
-alias hugit='sudo $(history -p \!\!)' # fuckit='sudo $(history -p \!\!)' Political stup... err correctess killed this one
+alias hugit='sudo $(history -p \!\!)' # fuckit='sudo $(history -p \!\!)' Political stup... err correctess canceled this one
 
 # https://gist.github.com/seungwon0/802470
 # curl -s http://whatthecommit.com | perl -p0e '($_)=m{<p>(.+?)</p>}s'
@@ -154,10 +163,12 @@ alias netris='ssh netris.rocketnine.space'
 
 # Static, Good luck with high lvl lang implementations of lolcat.
 # Recomended lolcat is: https://github.com/jaseg/lolcat
-alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done|lolcat'
+type -P lolcat &> /dev/null && \
+    alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done|lolcat'
 
 # TermBin https://termbin.com/
 # Usage: "command | termbin" or termbin <<<$(command)
+
 alias termbindotcom='nc termbin.com 9999'
 
 if type -P youtube-dl &> /dev/null; then
@@ -165,7 +176,7 @@ if type -P youtube-dl &> /dev/null; then
     alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 fi
 
-# # Bitcoin
+# Bitcoin
 # declare datadir="/mnt/el/.bitcoin" btcdir="${HOME}/git/scrap/bitcoin/src"
 # #shellcheck disable=SC2139
 # alias btccli="${btcdir}/bitcoin-cli -datadir=${datadir}" \
@@ -185,3 +196,7 @@ fi
 # alias monero_daemon="nice -n 9 ${monerodir}/monerod --data-dir ${monerodat} --check-updates disabled --max-concurrency 1" \
 #       monero_gui="nice -n 9 ${monerodir}/monero-wallet-gui"
 # unset monerodat monerodir
+
+if [[ -r ~/git/hoover/databases/database.db ]] && type -P sqlite3 &> /dev/null; then
+    alias sql2data="sqlite3 \${HOME}/git/hoover/databases/database.db"
+fi
