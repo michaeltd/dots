@@ -213,7 +213,7 @@ menu() {
     done
 }
 
-bootstrap() {
+main() {
     case "${1}" in
 	-a|--all) do_everything ;;
 	-c|--console) do_assoc "console" ;;
@@ -223,4 +223,4 @@ bootstrap() {
     esac
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${sbn/.bash/}" "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
