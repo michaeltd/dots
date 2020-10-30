@@ -58,7 +58,7 @@ checkcpath() {
 [[ -n "${JAVA_HOME}" ]] && checkcpath "${JAVA_HOME}/lib"
 [[ -n "${ANT}" ]] && checkcpath "${ANT}/lib"
 [[ -n "${MAVEN}" ]] && checkcpath "${MAVEN}/lib"
-
+# Clean up
 unset -f checkpath checkmpath checkcpath
 
 # Used by mc themes

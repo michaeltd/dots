@@ -132,7 +132,7 @@ main() {
     # If options, proccess, else rotate things
     if [[ -n "${*}" ]]; then
 	case "${1}" in
-	    "add"|"rem"|"delay"|"showimg"|"showlog"|"showvars"|"trimlog") "${@}";;
+	    add|rem|delay|showimg|showlog|showvars|trimlog) "${@}";;
 	    *) echo -ne "${wpusage[*]}" >&2; return 1;;
 	esac
     else
