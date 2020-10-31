@@ -82,17 +82,31 @@ is_executable() {
 }
 
 lcdfe() {
-    if [[ -d "${1}" && -n "${2}" ]]; then
-        find "${1}" -iname "${2}" -exec wc -l {} +
-    else
-    	echo -ne "
+    case $# in
+	1) find ./ -iname "${1}" -exec wc -l {} +;;
+	2) find "${1}" -iname "${2}" -exec wc -l {} +;;
+    	*) echo -ne "
     Description: Line Count Directory (\${1}), For file Extension (\${2}).
-    Usage: ${FUNCNAME[0]} directory expression
+    Usage: ${FUNCNAME[0]} [directory] expression
     Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
               ${FUNCNAME[0]} . *.cpp
-              ${FUNCNAME[0]} ${HOME} .*rc\n\n" >&2
-	return 1
-    fi
+              ${FUNCNAME[0]} \${HOME} .*rc\n\n" >&2
+	   return 1;;
+    esac
+}
+
+ftcdfe() {
+    case $# in
+	1) find ./ -iname "${1}" | wc -l;;
+	2) find "${1}" -iname "${2}" | wc -l;;
+	*) echo -ne "
+    Description: File Type Count Directory (\${1}), For file Extension (\${2}).
+    Usage: ${FUNCNAME[0]} [directory] expression
+    Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
+              ${FUNCNAME[0]} . *.cpp
+              ${FUNCNAME[0]} \${HOME} .*rc\n" >&2
+	return 1;;
+    esac
 }
 
 srwpi() {

@@ -197,6 +197,6 @@ fi
 #       monero_gui="nice -n 9 ${monerodir}/monero-wallet-gui"
 # unset monerodat monerodir
 
-if [[ -r ~/git/hoover/databases/database.db ]] && type -P sqlite3 &> /dev/null; then
+[[ -r ~/git/hoover/databases/database.db ]] && type -P sqlite3 &> /dev/null && \
     alias sql2data="sqlite3 \${HOME}/git/hoover/databases/database.db"
-fi
+
