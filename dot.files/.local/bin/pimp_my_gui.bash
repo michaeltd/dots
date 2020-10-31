@@ -9,7 +9,7 @@
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 # No double sourcing
-command -v rcm &>/dev/null || source "${sdn}/../../.bashrc.d/*func*.bash"
+command -v rcm &>/dev/null || source "${sdn}"/../../.bashrc.d/*func*.bash
 
 # Music daemon
 # rcm 0 mpd
