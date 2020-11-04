@@ -99,7 +99,7 @@ alias cal='cal -m' # First Day Monday Calendars
 
 # NET
 # alias fixnet='ping -c 1 www.gentoo.org||sudo rc-service NetworkManager restart'
-alias netis='ping -c 1 www.gentoo.org &> /dev/null;[[ $? == 0 ]] && echo "Net is UP!" || echo "Net is Down!"'
+alias netis='ping -c 1 www.gentoo.org &> /dev/null && echo "Net is UP!" || echo "Net is Down!"'
 
 # Help wan-ip-howto
 if type -P curl &> /dev/null; then
@@ -110,9 +110,9 @@ elif type -P wget &> /dev/null; then
     alias wip6='wget -qO - ipv6.whatismyip.akamai.com;echo'
 fi
 
-# Show attempts to establish a TCP connection (successful or not) to the IP 1.2.3.4
-type -P tcpdump &> /dev/null && \
-    alias lsconn='sudo tcpdump -nn tcp[tcpflags] == tcp-syn and dst host'
+# Show open ports # With sudo for service names
+type -P netstat &> /dev/null && \
+    alias open_ports='sudo netstat -tulanp' 
 
 # Shutdown > halt & reboot & poweroff
 # alias halt='sudo shutdown -h'
@@ -197,6 +197,5 @@ fi
 #       monero_gui="nice -n 9 ${monerodir}/monero-wallet-gui"
 # unset monerodat monerodir
 
-[[ -r ~/git/hoover/databases/database.db ]] && type -P sqlite3 &> /dev/null && \
-    alias sql2data="sqlite3 \${HOME}/git/hoover/databases/database.db"
-
+[[ -r ~/git/vacuum_cleaner/databases/database.db ]] && type -P sqlite3 &> /dev/null && \
+    alias sql2data="sqlite3 \${HOME}/git/vacuum_cleaner/databases/database.db"
