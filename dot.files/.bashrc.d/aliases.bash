@@ -1,43 +1,44 @@
 #
-# Perfect alias candidates are one liners or functions that take no arguments.
 #shellcheck shell=bash disable=SC2154
+# Perfect alias candidates are one liners or functions that take no arguments.
+# https://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html
 
 # Distro independent utils
 # Package Search, Install, Remove
 # Distro Update, Upgrade, Cleanup
-if command -v apt-get &>/dev/null; then
+if type -P apt-get &>/dev/null; then
     alias psearch='apt search' pinstall='sudo apt-get install' \
 	  premove='sudo apt-get remove --purge'
     alias dupdate='sudo apt-get update' dupgrade='sudo apt-get dist-upgrade' \
 	  dcleanup='sudo apt-get autoremove'
-elif command -v zypper &>/dev/null; then
+elif type -P zypper &>/dev/null; then
     alias psearch='zypper search' pinstall='sudo zypper install' \
 	  premove='sudo zypper remove --clean-deps'
     alias dupdate='sudo zypper refresh' dupgrade='sudo zypper update' \
 	  dcleanup='sudo zypper rm -u'
-elif command -v yum &>/dev/null; then
+elif type -P yum &>/dev/null; then
     alias psearch='yum search' pinstall='sudo yum install' \
 	  premove='sudo yum remove'
     alias dupdate='sudo yum check-update' dupgrade='sudo yum update' \
 	  dcleanup='sudo yum autoremove'
-elif command -v pacman &>/dev/null; then
+elif type -P pacman &>/dev/null; then
     alias psearch='pacman -Ss' pinstall='sudo pacman -S' \
 	  premove='sudo pacman -R'
     alias dupdate='sudo pacman -Sy' dupgrade='sudo pacman -Syu' \
 	  dcleanup='sudo pacman -Rsn'
-elif command -v emerge &>/dev/null; then
+elif type -P emerge &>/dev/null; then
     alias psearch='emerge -s' pinstall='sudo emerge -av --autounmask' \
 	  premove='sudo emerge -avC'
     alias dupdate='sudo emerge --sync' dupgrade='sudo emerge -avuND @world' \
 	  dcleanup='sudo emerge --ask --depclean'
-elif command -v pkg &>/dev/null; then
+elif type -P pkg &>/dev/null; then
     alias psearch='pkg -o search' pinstall='sudo pkg install' \
 	  premove='sudo pkg remove'
     alias dupdate='sudo pkg update' dupgrade='sudo pkg upgrade' \
 	  dcleanup='sudo pkg autoremove'
 fi
 
-if command -v dircolors &>/dev/null; then
+if type -P dircolors &>/dev/null; then
     # Color support
     # if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
     # 	  eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
@@ -80,7 +81,6 @@ if type -P emacs &> /dev/null; then
     # EmacsClient Kill Daemon # Kill an emacs --daemon gracefully
     alias eckd='emacsclient --eval="(kill-emacs)"'
 fi
-
 
 # Various utils
 alias cronobash='time bash -ic exit'
@@ -167,8 +167,7 @@ type -P lolcat &> /dev/null && \
 
 # TermBin https://termbin.com/
 # Usage: "command | termbin" or termbin <<<$(command)
-
-alias termbindotcom='nc termbin.com 9999'
+alias termbin='nc termbin.com 9999'
 
 if type -P youtube-dl &> /dev/null; then
     alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
