@@ -1,6 +1,6 @@
 #
 # Perfect alias candidates are one liners or functions that take no arguments.
-#shellcheck shell=bash
+#shellcheck shell=bash disable=SC2154
 
 # Distro independent utils
 # Package Search, Install, Remove
@@ -126,7 +126,6 @@ alias rmdl='find -L . -name . -o -type d -prune -o -type l -exec rm -i {} +'
 # Print a multiplication table. Great for those 3rd grader CLI users but also a great demo. :)
 # alias multab='printf "%3d %3d %3d %3d %3d %3d %3d %3d %3d %3d\n" $( echo {1..10}\*{1..10}\; | bc )'
 alias multab='printf "$(echo %3d$_{1..10})\n" $(echo {1..10}\*{1..10}\;|bc)'
-#shellcheck disable=SC2154
 alias propaideia='for x in {1..9}; do for y in $(seq 1 $x); do printf "%dx%d=%2d\t" $y $x $((y*x));done;printf "\n";done'
 # alias ttt='for x in {1..10}; do let tt="${x} * 10";for y in $(seq $x $x $tt);do printf "%4d" $y;done; printf "\n";done'
 
@@ -175,27 +174,6 @@ if type -P youtube-dl &> /dev/null; then
     alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
     alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 fi
-
-# Bitcoin
-# declare datadir="/mnt/el/.bitcoin" btcdir="${HOME}/git/scrap/bitcoin/src"
-# #shellcheck disable=SC2139
-# alias btccli="${btcdir}/bitcoin-cli -datadir=${datadir}" \
-#       btcgui="${btcdir}/qt/bitcoin-qt -datadir=${datadir}" \
-#       btchex="${btcdir}/bitcoin-tx -datadir=${datadir}" \
-#       btcwlt="${btcdir}/bitcoin-wallet -datadir=${datadir}" \
-#       btcdmn="${btcdir}/bitcoind -datadir=${datadir}"
-
-# unset datadir btcdir
-
-# alias btc_commands="btccli help"
-# alias btc_info="btccli -getinfo"
-# alias btc_winf="btcwlt -wallet=michaeltd info"
-
-# declare monerodat="/mnt/data/.monero" monerodir="${HOME}/.local/monero-gui-v0.16.0.3"
-# #shellcheck disable=SC2139
-# alias monero_daemon="nice -n 9 ${monerodir}/monerod --data-dir ${monerodat} --check-updates disabled --max-concurrency 1" \
-#       monero_gui="nice -n 9 ${monerodir}/monero-wallet-gui"
-# unset monerodat monerodir
 
 [[ -r ~/git/vacuum_cleaner/databases/database.db ]] && type -P sqlite3 &> /dev/null && \
     alias sql2data="sqlite3 \${HOME}/git/vacuum_cleaner/databases/database.db"
