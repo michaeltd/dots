@@ -171,3 +171,10 @@ mycountdown() {
     done
     play -q -n synth .8 sine 4100 fade q 0.1 .3 0.1 repeat 3
 }
+
+touch_type(){
+    # https://twitter.com/climagic/status/1324072754228899840
+    # Simulate someone slowly typing out characters from a file.
+    # cat /etc/passwd | while read -N1 l ; do printf "$l" ; sleep 0.$[5000+$RANDOM] ; done
+    while read -N1 l ; do printf "%c" "${l}" ; sleep "0.0$((1000+RANDOM))" ; done
+}
