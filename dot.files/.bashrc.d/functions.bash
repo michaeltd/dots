@@ -81,6 +81,24 @@ is_executable() {
     type -P "${1}" &>/dev/null
 }
 
+pnewest(){
+    unset -v newest
+    for file in ./*; do
+	# [[ -d "${file}" ]] && continue
+	[[ -z "${newest}" || "${file}" -nt "${newest}" ]] && local newest="${file}"
+    done
+    echo "${newest##*/}"
+}
+
+poldest(){
+    unset -v oldest
+    for file in ./*; do
+	# [[ -d "${file}" ]] && continue
+	[[ -z "${oldest}" || "${file}" -ot "${oldest}" ]] && local oldest="${file}"
+    done
+    echo "${oldest##*/}"
+}
+
 lcdfe() {
     case $# in
 	1) find ./ -iname "${1}" -exec wc -l {} +;;
