@@ -4,7 +4,7 @@
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
-IFS=$'\t\n'
+IFS=$' \t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
