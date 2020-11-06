@@ -141,9 +141,9 @@ magiccow() {
     # 	tr ',' '\n' | sort -R | head -1 | { cowsay 2> /dev/null || cat; } | { lolcat 2> /dev/null || cat; }
 
     local -ar answ=(
-	"It is certain." "It is decidedly so." "Without a doubt." "Yes – definitely." "You may rely on it." 
-	"As I see it, yes." "Most likely." "Outlook good." "Yes." "Signs point to yes." 
-	"Reply hazy, try again." "Ask again later." "Better not tell you now." "Cannot predict now." "Concentrate and ask again." 
+	"It is certain." "It is decidedly so." "Without a doubt." "Yes – definitely." "You may rely on it."
+	"As I see it, yes." "Most likely." "Outlook good." "Yes." "Signs point to yes."
+	"Reply hazy, try again." "Ask again later." "Better not tell you now." "Cannot predict now." "Concentrate and ask again."
 	"Don't count on it." "My reply is no." "My sources say no." "Outlook not so good." "Very doubtful."
     )
 
@@ -176,5 +176,5 @@ touch_type(){
     # https://twitter.com/climagic/status/1324072754228899840
     # Simulate someone slowly typing out characters from a file.
     # cat /etc/passwd | while read -N1 l ; do printf "$l" ; sleep 0.$[5000+$RANDOM] ; done
-    while read -N1 l ; do printf "%c" "${l}" ; sleep "0.0$((1000+RANDOM))" ; done
+    while read -rN1 l ; do printf "%c" "${l}" ; sleep "0.0$((1000+RANDOM))" ; done
 }

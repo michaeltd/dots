@@ -3,7 +3,7 @@
 #
 
 # Unofficial Bash Strict Mode
-set -euo pipefail
+set -eo pipefail
 IFS=$' \t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
@@ -67,7 +67,7 @@ main() {
 
     local genre_selection='' selection_type='random' randomnum='' all_artists=()
 
-    if [[ -n "${*}" ]]; then
+    if [[ -n "${1}" ]]; then
 	if [[ "${genres[*]}" =~ ${1} ]]; then
 	    local selection_type="selected"
 	    local genre_selection="${1^^}"
