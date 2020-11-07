@@ -83,6 +83,7 @@ for_window [class="Emacs"] floating enable
 for_window [class="Gvim"] floating enable
 for_window [class="Denemo"] floating enable
 for_window [class="Thunar"] floating enable
+for_window [class="KeePassXC"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next

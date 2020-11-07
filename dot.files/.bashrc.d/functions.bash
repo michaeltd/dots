@@ -81,24 +81,6 @@ is_executable() {
     type -P "${1}" &>/dev/null
 }
 
-pnewest(){
-    unset -v newest
-    for file in ./*; do
-	# [[ -d "${file}" ]] && continue
-	[[ -z "${newest}" || "${file}" -nt "${newest}" ]] && local newest="${file}"
-    done
-    echo "${newest##*/}"
-}
-
-poldest(){
-    unset -v oldest
-    for file in ./*; do
-	# [[ -d "${file}" ]] && continue
-	[[ -z "${oldest}" || "${file}" -ot "${oldest}" ]] && local oldest="${file}"
-    done
-    echo "${oldest##*/}"
-}
-
 lcdfe() {
     case $# in
 	1) find ./ -iname "${1}" -exec wc -l {} +;;
@@ -200,6 +182,9 @@ cdn(){
     builtin cd "$(printf '../%.0s' "$(seq "${1}")")" || return 1
 }
 
+fixdevnull(){
+    su -lc "rm -rf /dev/null && mknod /dev/null c 1 3 && chmod 777 /dev/null"
+}
 # SYSTEM =======================================================================
 
 if command -v emerge &>/dev/null; then
@@ -323,15 +308,6 @@ listening_on() {
     fi
 }
 
-show_interfaces() {
-    ip -brief -color address show
-}
-
-lsports() {
-    sudo lsof -i TCP
-    sudo lsof -i UDP
-}
-
 # FS ===========================================================================
 
 # Functions to unify archive management in linux CLI environments
@@ -419,6 +395,49 @@ dir_sizes() {
 	    fi
 	done
     fi
+}
+
+print_newest(){
+    [[ -z "${fpwd}" ]] && fpwd="$(pwd)"
+    unset -v newest
+    for file in "${1:-./}"*; do
+	[[ -z "${newest}" || "${file}" -nt "${newest}" ]] && local newest="${file}"
+    done
+    if [[ -d "${newest}" ]]; then
+	cd "${newest}" || return
+	"${FUNCNAME[0]}"
+    else
+	realpath "${newest}"
+    fi
+    cd "${fpwd}" || return
+}
+
+print_oldest(){
+    [[ -z "${fpwd}" ]] && fpwd="$(pwd)"
+    unset -v oldest
+    for file in "${1:-./}"*; do
+	[[ -z "${oldest}" || "${file}" -ot "${oldest}" ]] && local oldest="${file}"
+    done
+    if [[ -d "${oldest}" ]]; then
+	cd "${oldest}" || return
+	"${FUNCNAME[0]}"
+    else
+	realpath "${oldest}"
+    fi
+    cd "${fpwd}" || return
+}
+
+# https://stackoverflow.com/questions/4561895/how-to-recursively-find-the-latest-modified-file-in-a-directory
+print_newest_alt() {
+    # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
+    find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} #  |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
+    # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | xargs ls -U -l
+}
+
+print_oldest_alt() {
+    # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
+    find . -type f -printf '%T@ %p\n' | sort -n | head -${1:-1} #  |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
+    # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | xargs ls -U -l
 }
 
 lsbin() {

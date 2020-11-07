@@ -47,7 +47,7 @@ if type -P dircolors &>/dev/null; then
     # fi
     alias ls='ls --color=auto --group-directories-first'
     alias la='ls --all --human-readable --color=auto --group-directories-first'
-    alias ll='ls -l --all --human-readable --color=auto --group-directories-first'
+    alias ll='ls -l --all --human-readable --color=auto --group-directories-first --time-style="+%F %T"'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
     alias grep='grep --color=auto -in'
@@ -56,7 +56,7 @@ if type -P dircolors &>/dev/null; then
 else
     alias ls='ls --group-directories-first'
     alias la='ls --all --human-readable --group-directories-first'
-    alias ll='ls -l --all --human-readable --group-directories-first'
+    alias ll='ls -l --all --human-readable --group-directories-first --time-style="+%F %T"'
     alias grep='grep -in'
 fi
 
@@ -99,7 +99,10 @@ alias cal='cal -m' # First Day Monday Calendars
 
 # NET
 # alias fixnet='ping -c 1 www.gentoo.org||sudo rc-service NetworkManager restart'
-alias netis='ping -c 1 www.gentoo.org &> /dev/null && echo "Net is UP!" || echo "Net is Down!"'
+alias netis='if ping -c 1 www.gentoo.org &> /dev/null; then echo "... UP!"; else echo "... Down!"; fi;'
+
+type -P ip &> /dev/null && \
+    alias show_interfaces="sudo ip -brief -color address show"
 
 # Help wan-ip-howto
 if type -P curl &> /dev/null; then
@@ -112,7 +115,10 @@ fi
 
 # Show open ports # With sudo for service names
 type -P netstat &> /dev/null && \
-    alias open_ports='sudo netstat -tulanp' 
+    alias lsnet='sudo netstat -tulapn'
+
+type -P lsof &> /dev/null && \
+    alias lsports="sudo lsof -i TCP -i UDP"
 
 # Shutdown > halt & reboot & poweroff
 # alias halt='sudo shutdown -h'
