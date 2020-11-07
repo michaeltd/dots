@@ -427,6 +427,34 @@ print_oldest(){
     cd "${fpwd}" || return
 }
 
+print_newmt() (
+    shopt -s globstar
+    newfn=''
+    newmt=0
+    for file in "${1:-./}"**; do
+	thismt="$(stat -c "%Y" "$file")"
+	if [[ "${thismt}" -gt "${newmt}" ]]; then
+	    newfn="${file}"
+	    newmt="${thismt}"
+	fi
+    done
+    printf "%s %s %s\n" "$(date -d @${newmt} +%F)" "$(date -d @${newmt} +%T)" "${newfn}"
+)
+
+print_oldmt() (
+    shopt -s globstar
+    oldfn=''
+    oldmt="$(date -u +%s)"
+    for file in "${1:-./}"**; do
+	thismt="$(stat -c "%Y" "$file")"
+	if [[ "${thismt}" -lt "${oldmt}" ]]; then
+	    oldfn="${file}"
+	    oldmt="${thismt}"
+	fi
+    done
+    printf "%s %s %s\n" "$(date -d @${oldmt} +%F)" "$(date -d @${oldmt} +%T)" "${oldfn}"
+)
+
 # https://stackoverflow.com/questions/4561895/how-to-recursively-find-the-latest-modified-file-in-a-directory
 print_newest_alt() {
     # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
