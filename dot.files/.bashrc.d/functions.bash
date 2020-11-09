@@ -14,7 +14,10 @@
 
 case_randomizer() {
     [[ -z "${1}" ]] && \
-	echo -ne "\n\tName: ${FUNCNAME[0]}\n\tDescription: Randomize letter case of arguments\n\tExample: ${FUNCNAME[0]} Hello World\n\n" >&2 && \
+	echo -ne "
+	Name: ${FUNCNAME[0]}
+	Description: Randomize letter case of arguments
+	Example: ${FUNCNAME[0]} Hello World\n" >&2 && \
 	return 1
 
     while [[ -n "${1}" ]]; do
@@ -88,9 +91,9 @@ lcdfe() {
     	*) echo -ne "
     Description: Line Count Directory (\${1}), For file Extension (\${2}).
     Usage: ${FUNCNAME[0]} [directory] expression
-    Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
-              ${FUNCNAME[0]} . *.cpp
-              ${FUNCNAME[0]} \${HOME} .*rc\n\n" >&2
+    Examples: ${FUNCNAME[0]} /my/awesome/project/ '*.html'
+              ${FUNCNAME[0]} . '*.cpp'
+              ${FUNCNAME[0]} \${HOME} '.*rc'\n\n" >&2
 	   return 1;;
     esac
 }
@@ -102,9 +105,9 @@ ftcdfe() {
 	*) echo -ne "
     Description: File Type Count Directory (\${1}), For file Extension (\${2}).
     Usage: ${FUNCNAME[0]} [directory] expression
-    Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
-              ${FUNCNAME[0]} . *.cpp
-              ${FUNCNAME[0]} \${HOME} .*rc\n" >&2
+    Examples: ${FUNCNAME[0]} /my/awesome/project/ '*.html'
+              ${FUNCNAME[0]} . '*.cpp'
+              ${FUNCNAME[0]} \${HOME} '.*rc'\n" >&2
 	return 1;;
     esac
 }
@@ -145,41 +148,12 @@ pyhttpserv() {
     fi
 }
 
-# Create a new alias
-mkalias() {
-    echo alias "${*}" >> "${HOME}/.bashrc.d/aliases.bash"
-    alias "${*}"
-}
-
-# Remove an alias
-rmalias() {
-    unalias "${1}" && sed --follow-symlinks -i "/alias $1\=/d" "${HOME}/.bashrc.d/aliases.bash"
-}
-
 # Traverse directory structure given # of steps
 up() {
     local -r deep="${1}"
     for i in $(seq 1 "${deep:-1}"); do
 	cd ..
     done
-}
-
-cd() {
-    if [[ "${1}" =~ ^\.\.+$ ]]; then
-	local a dir;
-	a=${#1}
-	while [[ "${a}" -ne 1 ]]; do
-	    dir="${dir}../"
-	    ((a--))
-	done
-	builtin cd "${dir}" || return 1
-    else
-	builtin cd "$@" || return 1
-    fi
-}
-
-cdn(){
-    builtin cd "$(printf '../%.0s' "$(seq "${1}")")" || return 1
 }
 
 fixdevnull(){
@@ -373,7 +347,7 @@ cif2() {
 
 mkbkp() {
     [[ ! -f "${1}" ]] && \
-	{ echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" >&2; return 1; }
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" >&2 && return 1
     compress "${1}.$(date -u +%s).tgz" "${1}"
 }
 
@@ -385,87 +359,28 @@ get_file_type() {
     file -b "${1}"|awk '{print $1}'
 }
 
-dir_sizes() {
-    # Report first params directory sizes in human readable format
-    local ls=$(which ls) du=$(which du)
-    if [[ -x "${ls}" && -x "${du}" ]]; then
-	for d in $( "${ls}" --directory "${1-${HOME}}"/* ); do
-	    if [[ -d "${d}" ]]; then
-		"${du}" -hs "${d}"
-	    fi
-	done
-    fi
+dir_size() {
+    # Report first params directory sizes summary in human readable format
+    du -xhs "${1:-.}"
 }
-
-print_newest(){
-    [[ -z "${fpwd}" ]] && fpwd="$(pwd)"
-    unset -v newest
-    for file in "${1:-./}"*; do
-	[[ -z "${newest}" || "${file}" -nt "${newest}" ]] && local newest="${file}"
-    done
-    if [[ -d "${newest}" ]]; then
-	cd "${newest}" || return
-	"${FUNCNAME[0]}"
-    else
-	realpath "${newest}"
-    fi
-    cd "${fpwd}" || return
-}
-
-print_oldest(){
-    [[ -z "${fpwd}" ]] && fpwd="$(pwd)"
-    unset -v oldest
-    for file in "${1:-./}"*; do
-	[[ -z "${oldest}" || "${file}" -ot "${oldest}" ]] && local oldest="${file}"
-    done
-    if [[ -d "${oldest}" ]]; then
-	cd "${oldest}" || return
-	"${FUNCNAME[0]}"
-    else
-	realpath "${oldest}"
-    fi
-    cd "${fpwd}" || return
-}
-
-print_newmt() (
-    shopt -s globstar
-    newfn=''
-    newmt=0
-    for file in "${1:-./}"**; do
-	thismt="$(stat -c "%Y" "$file")"
-	if [[ "${thismt}" -gt "${newmt}" ]]; then
-	    newfn="${file}"
-	    newmt="${thismt}"
-	fi
-    done
-    printf "%s %s %s\n" "$(date -d @${newmt} +%F)" "$(date -d @${newmt} +%T)" "${newfn}"
-)
-
-print_oldmt() (
-    shopt -s globstar
-    oldfn=''
-    oldmt="$(date -u +%s)"
-    for file in "${1:-./}"**; do
-	thismt="$(stat -c "%Y" "$file")"
-	if [[ "${thismt}" -lt "${oldmt}" ]]; then
-	    oldfn="${file}"
-	    oldmt="${thismt}"
-	fi
-    done
-    printf "%s %s %s\n" "$(date -d @${oldmt} +%F)" "$(date -d @${oldmt} +%T)" "${oldfn}"
-)
 
 # https://stackoverflow.com/questions/4561895/how-to-recursively-find-the-latest-modified-file-in-a-directory
-print_newest_alt() {
-    # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
-    find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} #  |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
-    # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | xargs ls -U -l
+print_newest() {
+    [[ -d "${1}" ]] || local dir='.'
+    local results=($(find "${1:-${dir}}" -type f -printf '%T@ %p\n' | sort -nr | head -1))
+    local stamp="$(date -d "@${results[0]}" +%s)"
+    local datim="$(date -d "@${results[0]}" +%F\ %T)"
+    local rpath="$(realpath "${results[*]:1}")"
+    echo "${stamp} ${datim} \"${rpath}\""
 }
 
-print_oldest_alt() {
-    # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
-    find . -type f -printf '%T@ %p\n' | sort -n | head -${1:-1} #  |  cut -f2- -d" " | sed -e 's,^\./,,' | xargs ls -U -l
-    # find . -type f -printf '%T@ %p\n' | sort -n -r | head -${1:-1} |  cut -f2- -d" " | xargs ls -U -l
+print_oldest() {
+    [[ -d "${1}" ]] || local dir='.'
+    local results=($(find "${1:-${dir}}" -type f -printf '%T@ %p\n' | sort -n | head -1))
+    local stamp="$(date -d "@${results[0]}" +%s)"
+    local datim="$(date -d "@${results[0]}" +%F\ %T)"
+    local rpath="$(realpath "${results[*]:1}")"
+    echo "${stamp} ${datim} \"${rpath}\""
 }
 
 lsbin() {
@@ -480,7 +395,7 @@ lsbin() {
 
 takeass() {
     local -r myusage="
-    Usage: ${FUNCNAME[0]} [#delay (in seconds)]
+    Usage: ${FUNCNAME[0]} [#delay (in seconds, [0-9])]
     Requires: Imagemagick and ristretto\n\n"
     local -r fn="${HOME}/Pictures/ScreenShot-$(date -u +%s).png"
 
@@ -492,7 +407,7 @@ takeass() {
     fi
 
     if [[ -n "${1}" ]]; then
-	if [[ "${1}" =~ ^[0-9]+?$ ]]; then
+	if [[ "${1}" =~ ^[0-9]$ ]]; then
 	    for (( i = $1; i >= 0; i-- )); do
 		printf "%s " $i
 		sleep 1
