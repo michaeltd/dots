@@ -11,17 +11,19 @@ gen_rnum() {
 gen_pass() {
     tr -dc "[:graph:]" < /dev/urandom | \
 	tr -d "[=\|=][=\"=][=\'=][=\,=]" | \
-	head -c "${1:-32}"
+	head -c "${1:-16}"
     echo
 }
 
 gen_uuid() {
+    # local uuid="$(cat /proc/sys/kernel/random/uuid)"
+    # echo "${uuid}"
     # https://en.wikipedia.org/wiki/Universally_unique_identifier
     # https://github.com/niieani/bash-oo-framework/blob/master/lib/String/UUID.sh
     # https://gist.github.com/markusfisch/6110640
     # https://github.com/lowerpower/UUID-with-bash
     mkpart() {
-	tr -dc A-F0-9 < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
+	tr -dc a-f0-9 < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
     }
     for i in {8,4,4,4,12}; do
 	local uuid+="$(mkpart $i)-"
@@ -46,7 +48,9 @@ transcode_stdin() {
 transcode_gpg() {
     local myusage="
     Usage: ${FUNCNAME[0]} file(s)|file(s).gpg...
-    Description: Decrypt/Encrypt files from/to your default gpg keyring.\n\n"
+    Description: Decrypt/Encrypt files from/to your default gpg keyring.
+    Examples: ${FUNCNAME[0]} *.txt *.gpg 
+              # will encrypt .txt files and decrypt .gpg files in current dir.\n\n"
 
     [[ "${#}" -lt "1" ]] && echo -ne "${myusage}" >&2 && return 1
 
@@ -57,7 +61,7 @@ transcode_gpg() {
 		echo -ne "${myusage}" >&2
 		continue;;
 	    *)
-		if [[ -r "${1}" ]]; then
+		if [[ -f "${1}" && -r "${1}" ]]; then
 		    if [[ "$(file -b "${1}")" =~ ^PGP ]]; then
 			if [[ "${1}" != "${1//.gpg/}" ]]; then
 			    local func="--decrypt" out="${1//.gpg/}"
@@ -70,7 +74,7 @@ transcode_gpg() {
 			local func="--encrypt" out="${1}.gpg"
 		    fi
 		else
-		    echo -ne "\t${1} is not readable!\n${myusage}" >&2
+		    echo -ne "\t${1} is not a readable file!\n${myusage}" >&2
 		    shift
 		    continue
 		fi;;
@@ -220,43 +224,4 @@ alpha2morse() {
 	sleep .35
 	shift
     done
-}
-
-rom2dec() {
-    # https://rosettacode.org/wiki/Roman_numerals/Decode#UNIX_Shell
-    local -A romans=( [M]="1000" [D]="500" [C]="100" [L]="50" [X]="10" [V]="5" [I]="1" )
-    while [[ -n "${1}" ]]; do
-	local rnum="${1^^}" n="0" prev="0"
-	for (( i = ${#rnum}-1; i >= 0; i-- )); do
-	    local a="${romans[${rnum:$i:1}]}"
-     	    if [[ "${a}" -lt "${prev}" ]]; then
-		(( n -= a ))
-	    else
-		(( n += a))
-	    fi
-     	    prev="${a}"
-	done
-	echo -n "${n} "
-	shift
-    done
-    echo
-}
-
-dec2rom() {
-    # https://rosettacode.org/wiki/Roman_numerals/Encode#UNIX_Shell
-    local values=( 1000 900 500 400 100 90 50 40 10 9 5 4 1 )
-    local roman=( [1000]=M [900]=CM [500]=D [400]=CD [100]=C [90]=XC [50]=L [40]=XL [10]=X [9]=IX [5]=V [4]=IV [1]=I )
-    while [[ -n "${1}" ]]; do
-	local num="${1}"
-	local nvmber=""
-	for value in "${values[@]}"; do
-            while (( num >= value )); do
-		nvmber+="${roman[value]}"
-		(( num -= value ))
-            done
-	done
-	echo -n "${nvmber} "
-	shift
-    done
-    echo
 }

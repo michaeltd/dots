@@ -2,15 +2,6 @@
 #
 # r/unixporn
 
-# Unofficial Bash Strict Mode
-set -euo pipefail
-IFS=$'\t\n'
-
-#link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
-#shellcheck disable=SC2155,SC2034
-readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
-	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
-
 main() {
 
     local -r xsspid="$(pgrep -U "${USER}" -f "xscreensaver")"
@@ -29,4 +20,4 @@ main() {
     fi
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "${@}"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main

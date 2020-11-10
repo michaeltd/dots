@@ -84,34 +84,6 @@ is_executable() {
     type -P "${1}" &>/dev/null
 }
 
-lcdfe() {
-    case $# in
-	1) find ./ -iname "${1}" -exec wc -l {} +;;
-	2) find "${1}" -iname "${2}" -exec wc -l {} +;;
-    	*) echo -ne "
-    Description: Line Count Directory (\${1}), For file Extension (\${2}).
-    Usage: ${FUNCNAME[0]} [directory] expression
-    Examples: ${FUNCNAME[0]} /my/awesome/project/ '*.html'
-              ${FUNCNAME[0]} . '*.cpp'
-              ${FUNCNAME[0]} \${HOME} '.*rc'\n\n" >&2
-	   return 1;;
-    esac
-}
-
-ftcdfe() {
-    case $# in
-	1) find ./ -iname "${1}" | wc -l;;
-	2) find "${1}" -iname "${2}" | wc -l;;
-	*) echo -ne "
-    Description: File Type Count Directory (\${1}), For file Extension (\${2}).
-    Usage: ${FUNCNAME[0]} [directory] expression
-    Examples: ${FUNCNAME[0]} /my/awesome/project/ '*.html'
-              ${FUNCNAME[0]} . '*.cpp'
-              ${FUNCNAME[0]} \${HOME} '.*rc'\n" >&2
-	return 1;;
-    esac
-}
-
 srwpi() {
     # Set Random WallPaper Image
     local -r myusage="\n\tUsage: ${FUNCNAME[0]} images-directory\n\tSet a Random WallPaper Image from a directory with images.\n\n" \
@@ -183,7 +155,6 @@ if command -v emerge &>/dev/null; then
     }
 
     lspkgcat() {
-
 	/bin/ls --color "/usr/portage/${1}"
     }
 fi
@@ -316,6 +287,34 @@ extract() {
     done
 }
 
+count_lines_4ext() {
+    case $# in
+	1) find ./ -mount -iname "${1}" -exec wc -l {} +;;
+	2) find "${1}" -mount -iname "${2}" -exec wc -l {} +;;
+    	*) echo -ne "
+    Description: Count lines of files with given extension.
+    Usage: ${FUNCNAME[0]} [directory] expression
+    Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
+              ${FUNCNAME[0]} *.cpp
+              ${FUNCNAME[0]} .*rc\n\n" >&2
+	   return 1;;
+    esac
+}
+
+count_files_4ext() {
+    case $# in
+	1) find ./ -mount -iname "${1}" | wc -l;;
+	2) find "${1}" -mount -iname "${2}" | wc -l;;
+	*) echo -ne "
+    Description: Count files of given extension.
+    Usage: ${FUNCNAME[0]} [directory] expression
+    Examples: ${FUNCNAME[0]} /my/awesome/project/ *.html
+              ${FUNCNAME[0]} *.cpp
+              ${FUNCNAME[0]} .*rc\n" >&2
+	return 1;;
+    esac
+}
+
 s4strInDir() {
     # https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
     local -r myusage="
@@ -360,7 +359,7 @@ get_file_type() {
 }
 
 dir_size() {
-    # Report first params directory sizes summary in human readable format
+    # Report directory size summary (-s), in same fs (-x), in human readable format (-h)
     du -xhs "${1:-.}"
 }
 
@@ -383,7 +382,7 @@ print_oldest() {
     echo "${stamp} ${datim} \"${rpath}\""
 }
 
-lsbin() {
+ls_executables() {
     # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
     # The directories in $PATH are separated by ":", so we split by it to get individual directories
     for pdir in $(echo "$PATH" | tr ":" "\n"); do

@@ -2,10 +2,6 @@
 #shellcheck disable=SC2034,SC2155,SC2207
 #
 
-# Unofficial Bash Strict Mode
-set -eo pipefail
-IFS=$' \t\n'
-
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"

@@ -1,8 +1,6 @@
-#!/usr/bin/env -S bash --norc --noprofile
-#shellcheck shell=bash disable=SC1008,SC2096
-#
+#!/bin/bash
+#shellcheck disable=SC2034
 
-#shellcheck disable=SC2155,SC2034
 readonly script_dir_name="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 readonly script_base_name="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 readonly script_pid="${$}"

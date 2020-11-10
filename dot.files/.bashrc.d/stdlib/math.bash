@@ -28,6 +28,45 @@ bin2hex() {
     echo "obase=16;ibase=2;${1}" | bc -l
 }
 
+rom2dec() {
+    # https://rosettacode.org/wiki/Roman_numerals/Decode#UNIX_Shell
+    local -A romans=( [M]="1000" [D]="500" [C]="100" [L]="50" [X]="10" [V]="5" [I]="1" )
+    while [[ -n "${1}" ]]; do
+	local rnum="${1^^}" n="0" prev="0"
+	for (( i = ${#rnum}-1; i >= 0; i-- )); do
+	    local a="${romans[${rnum:$i:1}]}"
+     	    if [[ "${a}" -lt "${prev}" ]]; then
+		(( n -= a ))
+	    else
+		(( n += a))
+	    fi
+     	    prev="${a}"
+	done
+	echo -n "${n} "
+	shift
+    done
+    echo
+}
+
+dec2rom() {
+    # https://rosettacode.org/wiki/Roman_numerals/Encode#UNIX_Shell
+    local values=( 1000 900 500 400 100 90 50 40 10 9 5 4 1 )
+    local roman=( [1000]=M [900]=CM [500]=D [400]=CD [100]=C [90]=XC [50]=L [40]=XL [10]=X [9]=IX [5]=V [4]=IV [1]=I )
+    while [[ -n "${1}" ]]; do
+	local num="${1}"
+	local nvmber=""
+	for value in "${values[@]}"; do
+            while (( num >= value )); do
+		nvmber+="${roman[value]}"
+		(( num -= value ))
+            done
+	done
+	echo -n "${nvmber} "
+	shift
+    done
+    echo
+}
+
 is_numeric() {
     [[ "${1}" =~ ^[-|+]?[0-9]+([.][0-9]+)?$ ]]
 }
