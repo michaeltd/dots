@@ -13,6 +13,8 @@
 [[ -d "${HOME}/.go" ]] && export GOPATH="${HOME}/.go"
 # RUST
 [[ -d "${HOME}/.cargo" ]] && export RUST="${HOME}/.cargo"
+# ZIG
+[[ -d "${HOME}/.zig" ]] && export ZIGPATH="${HOME}/.zig"
 # NODE
 [[ -d "${HOME}/.node" ]] && export NODE="${HOME}/.node"
 # DENO
@@ -36,6 +38,8 @@ checkpath "${HOME}/bin"
 [[ -n "${GOPATH}" ]] && checkpath "${GOPATH}/bin"
 # RUST
 [[ -n "${RUST}" ]] && checkpath "${RUST}/bin"
+# ZIG
+[[ -n "${ZIGPATH}" ]] && checkpath "${ZIGPATH}"
 # NODE
 [[ -n "${NODE}" ]] && checkpath "${NODE}/bin"
 # DENO
