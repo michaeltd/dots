@@ -2,6 +2,10 @@
 #shellcheck disable=SC2034,SC2155,SC2207
 #
 
+# Unofficial Bash Strict Mode
+set -euo pipefail
+IFS=$'\t\n'
+
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
@@ -63,7 +67,7 @@ main() {
 
     local genre_selection='' selection_type='random' randomnum='' all_artists=()
 
-    if [[ -n "${1}" ]]; then
+    if [[ $# -eq 1 ]]; then
 	if [[ "${genres[*]}" =~ ${1} ]]; then
 	    local selection_type="selected"
 	    local genre_selection="${1^^}"
@@ -93,7 +97,7 @@ main() {
 	for dir in "${dir_list[@]}"; do
 	    local all_artists+=( "${dir##*/}" )
 	done
-	log2err "Playing one of: ${all_artists[*]}, from ${genre_selection} ${selection_type} collection\n"
+	log2err "Playing one of:\n$(echo "${all_artists[*]}"|column -t -s $'\t'),\nfrom ${genre_selection} ${selection_type} collection\n"
 	cvlc --random "${dir_list[@]}"
     fi
 }

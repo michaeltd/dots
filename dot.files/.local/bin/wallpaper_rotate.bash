@@ -8,8 +8,7 @@ set -euo pipefail
 IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
-readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
-	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
+readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 main() {
     # Font attributes, Colors, bg colors
@@ -24,16 +23,16 @@ main() {
     Options may be: \n \
     ${green}${sbn}${reset} ${magenta}add${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - add director(y/ies) \n \
     ${green}${sbn}${reset} ${magenta}rem${reset} ${yellow}path1${reset} [${yellow}path2${reset} ...] - remove director(y/ies) \n \
-    ${green}${sbn}${reset} ${magenta}delay${reset} ${yellow}#${reset} - set interval (min) \n \
-    ${green}${sbn}${reset} ${magenta}showimg${reset} [${yellow}#${reset}] - display previous image #num (int) \n \
+    ${green}${sbn}${reset} ${magenta}delay${reset} ${yellow}#(min)${reset} - set interval in minutes (int)\n \
+    ${green}${sbn}${reset} ${magenta}showimg${reset} [${yellow}#${reset}] - display previous image number (int) \n \
     ${green}${sbn}${reset} ${magenta}help${reset} - this message\n\n")
 
     local -ra feh=( "feh" "--bg-scale" ) wmsetbg=( "wmsetbg" ) fvwm_root=( "fvwm-root" ) \
           fbsetbg=( "fbsetbg" ) bsetbg=( "bsetbg" ) hsetroot=( "hsetroot" "-fill" ) xsetbg=( "xsetbg" )
     local -a bgsrs=( feh[@] wmsetbg[@] fvwm_root[@] fbsetbg[@] bsetbg[@] hsetroot[@] xsetbg[@] ) \
 	  dirs=( "${HOME}/Pictures" ) wps=()
-    local -r wprc="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.rc}")" \
-	  wplg="${HOME}/.$(basename "${BASH_SOURCE[0]/%.bash/.log}")"
+    local -r wprc="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.rc}")" \
+	  wplg="${HOME}/.$(basename "${BASH_SOURCE[0]//.bash/.log}")"
     local bgsr="" \
 	  wait="5"
 
@@ -66,12 +65,8 @@ main() {
     # and read it.
     source "${wprc}"
 
-    timestamp() {
-	date -u +%y%m%d-%H%M%S
-    }
-
     add() {
-	while [[ -n "${*}" ]]; do
+	while [[ "$#" -gt "0" ]]; do
 	    if [[ -d "${1}" ]]; then
 		DIRS+=( "${1}" )
 	    else
@@ -83,7 +78,7 @@ main() {
     }
     
     rem(){
-	while [[ -n "${*}" ]]; do
+	while [[ "$#" -gt "0" ]]; do
 	    for (( i = 0; i < "${#dirs[@]}"; i++ )); do
 		if [[ "${dirs[i]}" == "${1}" ]]; then
 		    unset 'dirs[i]'
@@ -95,11 +90,16 @@ main() {
     }
 
     delay() {
-    	wait=${1}
-	if [[ "${wait}" =~ ^[0-9]+$ && "${wait}" -gt "0" ]]; then
-	    echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
+	if [[ "$#" -eq "1" ]]; then
+    	    wait=${1}
+	    if [[ "${wait}" =~ ^[0-9]+$ && "${wait}" -gt "0" ]]; then
+		echo -ne "wait=${wait}\ndirs=( ${dirs[*]} )\n" > "${wprc}"
+	    else
+		echo -ne "${yellow}Warning:${reset} \"${bold}${wait}${reset}\" is not a valid time construct.\nProvide an integer as interval in minutes\n" >&2
+		return 1
+	    fi
 	else
-	    echo -ne "${yellow}Warning:${reset} \"${bold}${wait}${reset}\" is not a valid time construct.\nProvide an integer as interval in minutes\n" >&2
+	    echo -ne "${yellow}Warning:${reset} delay takes a numeric argument.\n" >&2
 	    return 1
 	fi
     }
@@ -125,12 +125,12 @@ main() {
     }
 
     trimlog() {
-	local -r tempdate="$(date +%y%m%d)"
+	local -r tempdate="$(date +%F)"
 	sed -i "/^${tempdate}/!d" "${wplg}"
     }
 
     # If options, proccess, else rotate things
-    if [[ -n "${*}" ]]; then
+    if [[ "${#}" -ne "0" ]]; then
 	case "${1}" in
 	    add|rem|delay|showimg|showlog|showvars|trimlog) "${@}";;
 	    *) echo -ne "${wpusage[*]}" >&2; return 1;;
@@ -156,7 +156,7 @@ main() {
 	    # Set wallpaper, write log, wait
 	    "${!bgsrs[bgsr]}" "${wp}" >> "${wplg}" 2>&1
 
-	    echo "$(timestamp) ${!bgsrs[bgsr]} ${wp}" >> "${wplg}"
+	    echo "$(date +%F\ %T) ${!bgsrs[bgsr]} ${wp}" >> "${wplg}"
 
 	    sleep "${wait}m"
 	done
