@@ -355,7 +355,7 @@ get_mime_type() {
 }
 
 get_file_type() {
-    file -b "${1}"|awk '{print $1}'
+    file -b "${1}" | awk '{print $1}'
 }
 
 dir_size() {
