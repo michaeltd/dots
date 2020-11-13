@@ -35,7 +35,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+r exec rofi -show run
+# bindsym $mod+r exec rofi -show run
+bindsym $mod+r exec bashrun
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -84,6 +85,7 @@ for_window [class="Gvim"] floating enable
 for_window [class="Denemo"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="KeePassXC"] floating enable
+for_window [title="bashrun"] floating enable
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
