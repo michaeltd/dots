@@ -182,3 +182,5 @@ fi
 
 [[ -r ~/git/vacuum_cleaner/databases/database.db ]] && type -P sqlite3 &> /dev/null && \
     alias sql2data="sqlite3 \${HOME}/git/vacuum_cleaner/databases/database.db"
+
+alias fixdevnull='su -lc "rm -rf /dev/null && mknod /dev/null c 1 3 && chmod 777 /dev/null"'

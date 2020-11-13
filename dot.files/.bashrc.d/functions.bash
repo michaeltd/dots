@@ -80,14 +80,19 @@ command_line_from_pid() {
 }
 
 is_executable() {
-    [[ -z "${1}" ]] && echo -ne "Usage: ${FUNCNAME[0]} programm_handle\n" >&2 && return 1
+    [[ -z "${1}" ]] && \
+	echo -ne "Usage: ${FUNCNAME[0]} programm_handle\n" >&2 && \
+	return 1
     type -P "${1}" &>/dev/null
 }
 
 srwpi() {
     # Set Random WallPaper Image
-    local -r myusage="\n\tUsage: ${FUNCNAME[0]} images-directory\n\tSet a Random WallPaper Image from a directory with images.\n\n" \
+    local -r myusage="
+    Description: Set a Random WallPaper Image from a directory with images.
+    Usage: ${FUNCNAME[0]} images-directory | image-file\n\n" \
 	  mypics="${HOME}/Pictures/dPic/r"
+
     if [[ -d "${1}" ]]; then
 	feh -rz --bg-scale "${1}"
     elif [[ -f "${1}" ]] && [[ "$(file "${1}")" =~ image ]]; then
@@ -128,9 +133,6 @@ up() {
     done
 }
 
-fixdevnull(){
-    su -lc "rm -rf /dev/null && mknod /dev/null c 1 3 && chmod 777 /dev/null"
-}
 # SYSTEM =======================================================================
 
 if command -v emerge &>/dev/null; then
