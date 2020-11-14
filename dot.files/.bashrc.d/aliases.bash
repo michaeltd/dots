@@ -85,7 +85,6 @@ fi
 # Various utils
 alias cronobash='time bash -ic exit'
 alias cronoemacs="time emacs --eval='(kill-emacs)'"
-alias cronothis="time"
 alias termgeom='echo "${COLUMNS}x${LINES}"'
 
 # calendar
@@ -166,18 +165,13 @@ fi
 # https://git.sr.ht/~tslocum/netris?0.1.2
 alias netris='ssh netris.rocketnine.space'
 
-# Static, Good luck with high lvl lang implementations of lolcat.
-# Recomended lolcat is: https://github.com/jaseg/lolcat
-type -P lolcat &> /dev/null && \
-    alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done|lolcat'
-
 # TermBin https://termbin.com/
 # Usage: "command | termbin" or termbin <<<$(command)
 alias termbin='nc termbin.com 9999'
 
 if type -P youtube-dl &> /dev/null; then
-    alias ytdla='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
-    alias ytdlv='youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
+    alias ytdla='${HOME}/git/scrap/youtube-dl/youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --ignore-errors --no-check-certificate'
+    alias ytdlv='${HOME}/git/scrap/youtube-dl/youtube-dl --format mp4 --prefer-ffmpeg --ignore-errors --no-check-certificate'
 fi
 
 [[ -r ~/git/vacuum_cleaner/databases/database.db ]] && type -P sqlite3 &> /dev/null && \
@@ -185,4 +179,3 @@ fi
 
 alias fixdevnull='su -lc "rm -rf /dev/null && mknod /dev/null c 1 3 && chmod 777 /dev/null"'
 
-alias sunrise='p=3.14;for i in $( seq 0 0.04 100 );do r=$( printf "128+127*s($i)\n" |bc -l |cut -d. -f1) g=$( printf "128+127*s($i+$p*(1/3))\n" |bc -l |cut -d. -f1 ) b=$( printf "128+127*s($i+$p*(2/3))\n" |bc -l |cut -d. -f1 ); printf "\e[48;2;$r;$g;${b}m\n"; done'
