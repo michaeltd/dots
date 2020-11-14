@@ -178,3 +178,11 @@ touch_type(){
     # cat /etc/passwd | while read -N1 l ; do printf "$l" ; sleep 0.$[5000+$RANDOM] ; done
     while read -rN1 l ; do printf "%c" "${l}" ; sleep "0.0$((1000+RANDOM))" ; done
 }
+
+# Static, Good luck with high lvl lang implementations of lolcat.
+# Recomended lolcat is: https://github.com/jaseg/lolcat
+type -P lolcat &> /dev/null && \
+    alias static='P=( " " █ ░ ▒ ▓ );while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done|lolcat'
+
+# https://twitter.com/climagic/status/1327689059666419725
+alias sunrise='p=3.14;for i in $( seq 0 0.04 100 );do r=$( printf "128+127*s($i)\n" |bc -l |cut -d. -f1) g=$( printf "128+127*s($i+$p*(1/3))\n" |bc -l |cut -d. -f1 ) b=$( printf "128+127*s($i+$p*(2/3))\n" |bc -l |cut -d. -f1 ); printf "\e[48;2;$r;$g;${b}m\n"; done'
