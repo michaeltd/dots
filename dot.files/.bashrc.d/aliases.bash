@@ -184,3 +184,5 @@ fi
     alias sql2data="sqlite3 \${HOME}/git/vacuum_cleaner/databases/database.db"
 
 alias fixdevnull='su -lc "rm -rf /dev/null && mknod /dev/null c 1 3 && chmod 777 /dev/null"'
+
+alias sunrise='p=3.14;for i in $( seq 0 0.04 100 );do r=$( printf "128+127*s($i)\n" |bc -l |cut -d. -f1) g=$( printf "128+127*s($i+$p*(1/3))\n" |bc -l |cut -d. -f1 ) b=$( printf "128+127*s($i+$p*(2/3))\n" |bc -l |cut -d. -f1 ); printf "\e[48;2;$r;$g;${b}m\n"; done'
