@@ -329,9 +329,9 @@ s4strInDir() {
     grep -rnw "${2:-./}" -e "${1}"
 }
 
-cif2() {
+convert_img() {
     local -r myusage="
-    Description: ${FUNCNAME[0]} Converts Image(s) From - To formats.
+    Description: ${FUNCNAME[0]} Converts image(s) from - To formats.
     Usage: ${FUNCNAME[0]} from to
     Example: ${FUNCNAME[0]} png jpg
     Requires: Imagemagick.\n\n"
