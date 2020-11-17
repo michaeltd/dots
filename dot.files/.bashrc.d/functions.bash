@@ -159,6 +159,8 @@ if command -v emerge &>/dev/null; then
     lspkgcat() {
 	/bin/ls --color "/usr/portage/${1}"
     }
+
+    alias show_deps='emerge -pvc'
 fi
 
 show_uptime() {

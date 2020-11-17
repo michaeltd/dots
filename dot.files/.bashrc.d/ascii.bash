@@ -1,6 +1,6 @@
 #
 # various ascii art ============================================================
-#shellcheck shell=bash disable=SC2015
+#shellcheck shell=bash disable=SC2015,SC2154
     #shellcheck disable=SC2207
     #shellcheck disable=SC2015
 
