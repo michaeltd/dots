@@ -1,15 +1,14 @@
 #!/bin/bash
-#shellcheck shell=bash disable=SC1008,SC2096
+#shellcheck shell=bash disable=SC1008,SC2096,SC2155
 #
 # Spice for the desktop
 #shellcheck source=/dev/null
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
-#shellcheck disable=SC2155
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 # No double sourcing
-command -v rcm &>/dev/null || source "${sdn}"/../../.bashrc.d/*func*.bash
+type -t rcm &>/dev/null || source "${sdn}"/../../.bashrc.d/*functions*.bash
 
 # Music daemon
 # rcm 0 mpd
@@ -24,15 +23,16 @@ rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 rcm 9 xscreensaver -no-splash
 
 # Add some wallpaper variety for your desktop
-rcm 9 "${HOME}/.local/bin/wallpaper_rotate.bash"
+#rcm 9 "${HOME}/.local/bin/wallpaper_rotate.bash"
+srwpi
 
 # Systray volume control
 rcm 9 pasystray
 
 # Systray network manager applet || wicd-gtk -t
-if command -v nm-applet &>/dev/null; then
+if type -P nm-applet &>/dev/null; then
     rcm 9 nm-applet
-elif command -v wicd-gtk &>/dev/null; then
+elif type -P wicd-gtk &>/dev/null; then
     rcm 9 wicd-gtk -t
 fi
 

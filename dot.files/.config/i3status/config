@@ -6,7 +6,6 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 
-
 general {
 	output_format = "i3bar"
 	colors = true
