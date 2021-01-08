@@ -75,7 +75,7 @@ week_day() {
     date -d "@${1:-$(unix_epoch)}" "+%u"
 }
 
-last_dom() {
+is_leap() {
     # https://en.wikipedia.org/wiki/Leap_year
     # if (year is not divisible by 4) then (it is a common year)
     # else if (year is not divisible by 100) then (it is a leap year)
@@ -92,6 +92,21 @@ last_dom() {
     #
     # What about leap years in Julian calendar? And years before Julian calendar?
 
+    #if ((y % 4 != 0)); then echo "28"
+    #elif ((y % 100 != 0)); then echo "29"
+    #elif ((y % 400 != 0)); then echo "28"
+    #else echo "29"
+    #fi
+
+    if (($1 % 4 != 0)); then return 1
+    elif (($1 % 100 != 0)); then return 0
+    elif (($1 % 400 != 0)); then return 1
+    else return 0
+    fi
+
+}
+
+last_dom() {
     local y m
     if [[ -n "${1}" ]]; then
 	date -d "${1}" &>/dev/null || return 1
@@ -105,10 +120,8 @@ last_dom() {
     case "${m}" in
 	"01"|"03"|"05"|"07"|"08"|"10"|"12") echo "31";;
 	"02")
-	    if ((y % 4 != 0)); then echo "28"
-	    elif ((y % 100 != 0)); then echo "29"
-	    elif ((y % 400 != 0)); then echo "28"
-	    else echo "29"
+	    if is_leap "${y}"; then echo "29"
+	    else echo "28"
 	    fi;;
 	"04"|"06"|"09"|"11") echo "30";;
     esac
