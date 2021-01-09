@@ -75,7 +75,7 @@ week_day() {
     date -d "@${1:-$(unix_epoch)}" "+%u"
 }
 
-is_leap() {
+leap_year() {
     # https://en.wikipedia.org/wiki/Leap_year
     # if (year is not divisible by 4) then (it is a common year)
     # else if (year is not divisible by 100) then (it is a leap year)
@@ -84,45 +84,32 @@ is_leap() {
     # https://stackoverflow.com/questions/3220163/how-to-find-leap-year-programatically-in-c/11595914#11595914
     # https://www.timeanddate.com/date/leapyear.html
     # https://medium.freecodecamp.org/test-driven-development-what-it-is-and-what-it-is-not-41fa6bca02a2
-    # Feature: Every year that is exactly divisible by four is a leap year, except for years that are exactly divisible by 100, but these centurial years are leap years if they are exactly divisible by 400.
-    #
-    # - divisible by 4
-    # - but not by 100
-    # - years divisible by 400 are leap anyway
-    #
-    # What about leap years in Julian calendar? And years before Julian calendar?
 
-    #if ((y % 4 != 0)); then echo "28"
-    #elif ((y % 100 != 0)); then echo "29"
-    #elif ((y % 400 != 0)); then echo "28"
-    #else echo "29"
-    #fi
-
-    if (($1 % 4 != 0)); then return 1
-    elif (($1 % 100 != 0)); then return 0
-    elif (($1 % 400 != 0)); then return 1
-    else return 0
+    if [[ -z "${1}" ]]; then
+	echo -ne "Usage: ${FUNCNAME[0]} #year\n" >&2
+	return 2
+    else
+	if (($1 % 4 != 0)); then return 1
+	elif (($1 % 100 != 0)); then return 0
+	elif (($1 % 400 != 0)); then return 1
+	else return 0
+	fi
     fi
-
 }
 
 last_dom() {
     local y m
-    if [[ -n "${1}" ]]; then
-	date -d "${1}" &>/dev/null || return 1
-	y="$(date -d "${1}" "+%Y" )"
-	m="$(date -d "${1}" "+%m")"
+    if [[ -n "${1}" ]] && is_date "${1}"; then
+	y="$(date -d "${1}" +%Y)"
+	m="$(date -d "${1}" +%m)"
     else
-	y="$(date +%Y)"
-	m="$(date +%m)"
+	echo -ne "Usage: ${FUNCNAME[0]} iso_date (ie: YYYY-MM-DD, eg: date +%F)\n" >&2
+	return 2
     fi
     
     case "${m}" in
 	"01"|"03"|"05"|"07"|"08"|"10"|"12") echo "31";;
-	"02")
-	    if is_leap "${y}"; then echo "29"
-	    else echo "28"
-	    fi;;
+	"02") leap_year "${y}" && echo "29" || echo "28";;
 	"04"|"06"|"09"|"11") echo "30";;
     esac
 }
