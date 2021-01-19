@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S bash --norc --noprofile
 #shellcheck shell=bash disable=SC1008,SC2096,SC2155
 #
 # Spice for the desktop
@@ -23,8 +23,8 @@ rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 rcm 9 xscreensaver -no-splash
 
 # Add some wallpaper variety for your desktop
-#rcm 9 "${HOME}/.local/bin/wallpaper_rotate.bash"
-srwpi
+rcm 9 "${HOME}/.local/bin/wallpaper_rotate.bash"
+#srwpi
 
 # Systray volume control
 rcm 9 pasystray
