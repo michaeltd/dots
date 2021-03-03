@@ -36,7 +36,7 @@ main() {
     add() { echo "$(date +%F\|%T)|${*}" >> "${notes_file}"; }
 
     case "${1}" in
-	add |rem |list) show_header; decrypt; "${@}"; encrypt;;
+	add |rem |list) show_header; decrypt && "${@}" && encrypt;;
 	*) show_header; usage; return 1;;
     esac
 }

@@ -93,7 +93,7 @@ main() {
     }
 
     encrypt() {
-	local job_out="${job_fn}.${1##*.}.tar.gz.pgp"
+	local job_out="${job_fn}.${1##*.}.tar.gz.gpg"
 	"${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_out}" "--encrypt"
 	local err=$?
 	if (( err == 0 )); then
