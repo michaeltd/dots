@@ -101,7 +101,7 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
     The Bash all in one goto place.
 ** Contributing [[http://unmaintained.tech/][http://unmaintained.tech/badge.svg]]
 
-   Typos, and grammar welcome. All PR's and issues will be discust and considered.
+   Typos, and grammar welcome. All PR's and issues will be considered.
 
    If you really *must* contribute, buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:19TznUEx2QZF6hQxL64bf3x15VWNy8Xitm][₿]] (bitcoin:19TznUEx2QZF6hQxL64bf3x15VWNy8Xitm).
 
