@@ -12,6 +12,7 @@ if [[ $- != *i* ]]; then
 fi
 
 # Put your fun stuff here.
+
 brcd="$(dirname $(realpath ${BASH_SOURCE[0]}))/.bashrc.d"
 if [[ -d "${brcd}" ]]; then # Load files from ~/.bashrc.d
     for file in "${brcd}"/*.bash; do

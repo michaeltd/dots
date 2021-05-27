@@ -2,6 +2,21 @@
 # environment variables
 #shellcheck shell=bash disable=SC2155
 
+# PATH
+checkpath() {
+    [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
+}
+
+# MANPATH
+checkmpath() {
+    [[ "${MANPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export MANPATH+=":${1}"
+}
+
+# JAVA classpath
+checkcpath() {
+    [[ "${CLASSPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export CLASSPATH+=":${1}"
+}
+
 # OPT
 [[ -d "/opt" ]] && export OPT="/opt"
 # JAVA
@@ -22,9 +37,6 @@
 # MONGODB
 [[ -d "${HOME}/.mongodb" ]] && export MONGODB="${HOME}/.mongodb"
 
-checkpath() {
-    [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
-}
 # Path with += op and each tool in it's own line for practical reasons
 checkpath "${HOME}/.local/bin"
 # OPT
@@ -47,22 +59,14 @@ checkpath "${HOME}/bin"
 # MONGODB
 [[ -n "${MONGODB}" ]] && checkpath "${MONGODB}/bin"
 
-# MANPATH
-checkmpath() {
-    [[ "${MANPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export MANPATH+=":${1}"
-}
-
 checkmpath "${HOME}/.local/share/man"
 checkmpath "${HOME}/opt/share/man"
 
-# JAVA classpath
-checkcpath() {
-    [[ "${CLASSPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export CLASSPATH+=":${1}"
-}
 [[ -n "${JAVA_HOME}" ]] && checkcpath "${JAVA_HOME}/lib"
 [[ -n "${ANT}" ]] && checkcpath "${ANT}/lib"
 [[ -n "${MAVEN}" ]] && checkcpath "${MAVEN}/lib"
-# Clean up
+
+# Clean up functions
 unset -f checkpath checkmpath checkcpath
 
 # Used by mc themes
@@ -86,7 +90,7 @@ fi
 export TERMINAL="$(type -P xterm||type -P konsole||type -P gnome-terminal||type -P terminology||type -P xfce4-terminal)"
 
 # most > less > more in order of preference
-export PAGER="$(command -v less 2>/dev/null || command -v most 2>/dev/null || type -P more 2>/dev/null)"
+export PAGER="$(type -P less 2>/dev/null || type -P most 2>/dev/null || type -P more 2>/dev/null)"
 
 # manpager in case you'd like your manpages in your favorite editor
 # export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"

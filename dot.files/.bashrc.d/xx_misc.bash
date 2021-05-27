@@ -24,7 +24,7 @@ export HISTFILESIZE=999999
 shopt -s histappend
 
 # and keep synced:
-export PROMPT_COMMAND='history -a'
+# export PROMPT_COMMAND='history -a'
 
 # Load helper functions
 stdlib="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/stdlib"
@@ -34,4 +34,5 @@ if [[ -d "${stdlib}" ]]; then
 	source "${file}"
     done
 fi
+# Clean up stdlib temp var
 unset stdlib

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S bash --norc --noprofile
 #shellcheck shell=bash disable=SC1008,SC2096
 #
 # dots/bootstrap.bash 
@@ -207,7 +207,7 @@ menu() {
             1) echo -ne "${TUI_HMSG[*]}";;
 	    2) do_"${TUI_OPS[$USRINPT]}";;
 	    [3-4]) do_assoc "${TUI_OPS[$USRINPT]}";;
-            [5-9]|1[0-16]) do_arr "${TUI_OPS[$USRINPT]}";;
+            [5-9]|1[0-6]) do_arr "${TUI_OPS[$USRINPT]}";;
             *) echo -ne "Invalid selection: ${USRINPT}. Choose from 0 to $((${#TUI_OPS[*]}-1))\n" >&2;;
         esac
     done

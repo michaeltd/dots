@@ -22,7 +22,7 @@ main() {
             zypper=( "zypper" "refresh" "update" "--no-confirm" "--auto-agree-with-licenses" ) \
             pacman=( "pacman" "-Sy" "-Syu" ) \
             emerge=( "emerge" "--sync" "--pretend" "--nospinner" "--update" "--deep" "--newuse" "@world" ) \
-            pkg=( "pkg" "update" "upgrade" )
+            pkg=( "pkg" "update" "upgrade" "--quiet" "--no-repo-update" "--yes" )
 
     local -ra pms=( apt_get[@] yum[@] zypper[@] pacman[@] emerge[@] pkg[@] )
 

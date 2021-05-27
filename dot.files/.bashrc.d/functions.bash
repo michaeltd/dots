@@ -350,7 +350,8 @@ convert_img() {
 
 mkbkp() {
     [[ ! -f "${1}" ]] && \
-	echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" >&2 && return 1
+	echo -ne "\n\tUsage: ${FUNCNAME[0]} file-2-backup\n\n" >&2 && \
+	return 1
     compress "${1}.$(date -u +%s).tgz" "${1}"
 }
 
