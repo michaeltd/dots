@@ -2,19 +2,15 @@
 # environment variables
 #shellcheck shell=bash disable=SC2155
 
-# PATH
-checkpath() {
-    [[ "${PATH}" != *${1}* ]] && [[ -d "${1}" ]] && export PATH+=":${1}"
-}
+appendpath() {
 
-# MANPATH
-checkmpath() {
-    [[ "${MANPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export MANPATH+=":${1}"
-}
-
-# JAVA classpath
-checkcpath() {
-    [[ "${CLASSPATH}" != *${1}* ]] && [[ -d "${1}" ]] && export CLASSPATH+=":${1}"
+    local envar="${1}"
+    
+    if [[ -n "${envar}" ]]; then
+	[[ "${!envar}" != *${2}* ]] && [[ -d "${2}" ]] && export "${envar}"+="${2}"
+    else
+	[[ -d "${2}" ]] && export "${envar}"="${2}"
+    fi
 }
 
 # OPT
@@ -37,38 +33,36 @@ checkcpath() {
 # MONGODB
 [[ -d "${HOME}/.mongodb" ]] && export MONGODB="${HOME}/.mongodb"
 
-# Path with += op and each tool in it's own line for practical reasons
-checkpath "${HOME}/.local/bin"
+appendpath "PATH" "${HOME}/.local/bin"
 # OPT
-[[ -n "${OPT}" ]] && checkpath "${OPT}/bin"
-checkpath "${HOME}/bin"
+[[ -n "${OPT}" ]] && appendpath "PATH" "${OPT}/bin"
+appendpath "PATH" "${HOME}/bin"
 # JAVA
-[[ -n "${JAVA_HOME}" ]] && checkpath "${JAVA_HOME}/bin"
-[[ -n "${ANT}" ]] && checkpath "${ANT}/bin"
-[[ -n "${MAVEN}" ]] && checkpath "${MAVEN}/bin"
-[[ -n "${GRADLE}" ]] && checkpath "${GRADLE}/bin"
-[[ -n "${GOPATH}" ]] && checkpath "${GOPATH}/bin"
+[[ -n "${JAVA_HOME}" ]] && appendpath "PATH" "${JAVA_HOME}/bin"
+[[ -n "${ANT}" ]] && appendpath "PATH" "${ANT}/bin"
+[[ -n "${MAVEN}" ]] && appendpath "PATH" "${MAVEN}/bin"
+[[ -n "${GRADLE}" ]] && appendpath "PATH" "${GRADLE}/bin"
+[[ -n "${GOPATH}" ]] && appendpath "PATH" "${GOPATH}/bin"
 # RUST
-[[ -n "${RUST}" ]] && checkpath "${RUST}/bin"
+[[ -n "${RUST}" ]] && appendpath "PATH" "${RUST}/bin"
 # ZIG
-[[ -n "${ZIGPATH}" ]] && checkpath "${ZIGPATH}"
+[[ -n "${ZIGPATH}" ]] && appendpath "PATH" "${ZIGPATH}"
 # NODE
-[[ -n "${NODE}" ]] && checkpath "${NODE}/bin"
+[[ -n "${NODE}" ]] && appendpath "PATH" "${NODE}/bin"
 # DENO
-[[ -n "${DENO}" ]] && checkpath "${DENO}/bin"
+[[ -n "${DENO}" ]] && appendpath "PATH" "${DENO}/bin"
 # MONGODB
-[[ -n "${MONGODB}" ]] && checkpath "${MONGODB}/bin"
+[[ -n "${MONGODB}" ]] && appendpath "PATH" "${MONGODB}/bin"
 
-checkmpath "${HOME}/.local/share/man"
-checkmpath "${HOME}/opt/share/man"
+appendpath "MANPATH" "${HOME}/.local/share/man"
+appendpath "MANPATH" "${HOME}/opt/share/man"
 
-[[ -n "${JAVA_HOME}" ]] && checkcpath "${JAVA_HOME}/lib"
-[[ -n "${ANT}" ]] && checkcpath "${ANT}/lib"
-[[ -n "${MAVEN}" ]] && checkcpath "${MAVEN}/lib"
+[[ -n "${JAVA_HOME}" ]] && appendpath "CLASSPATH" "${JAVA_HOME}/lib"
+[[ -n "${ANT}" ]] && appendpath "CLASSPATH" "${ANT}/lib"
+[[ -n "${MAVEN}" ]] && appendpath "CLASSPATH" "${MAVEN}/lib"
 
 # Clean up functions
-unset -f checkpath checkmpath checkcpath
-
+unset -f appendpath
 # Used by mc themes
 export COLORTERM="truecolor"
 

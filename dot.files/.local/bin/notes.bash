@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash --norc --noprofile
 #
 # https://www.reddit.com/r/bash/comments/fxxtav/simple_notes/
 # Simple notes

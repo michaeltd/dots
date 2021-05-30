@@ -6,3 +6,4 @@ if [[ -f ~/.bashrc ]] ; then
     source ~/.bashrc
 fi
 
+if [ -x /usr/bin/fortune ] ; then /usr/bin/fortune freebsd-tips ; fi

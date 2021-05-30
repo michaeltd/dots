@@ -55,7 +55,7 @@ declare -ra music=( 'dot.files/.config/mpd/mpd.conf'
 	       'dot.files/.local/bin/showkb.sh'
 	       'dot.files/.local/bin/sndvol'
 	       'dot.files/.local/bin/term_music.bash'
-	       'dot.files/.local/bin/todo_notes'
+	       'dot.files/.local/bin/notes.bash'
 	       'dot.files/.local/bin/wallpaper_rotate.bash'
 	       'dot.files/.local/bin/xlock.sh'
 	       'dot.files/.local/sbin' )
@@ -87,6 +87,7 @@ declare -ra DESC=( "Exit this script"
 )
 
 declare -r myusage="
+
 	Usage: ${BASH_SOURCE[0]##*/} -(-a)ll|-(-c)onsole|-(-x)org|-(-m)enu|-(-h)elp
 
 	-(-a)ll    		 to link everything
@@ -94,6 +95,7 @@ declare -r myusage="
 	-(-x)org 		 to link Xorg related configs
 	-(-m)enu 		 to show a menu with all available options
 	-(-h)elp 		 for this help message
+
 "
 
 is_link_set() {
@@ -200,7 +202,8 @@ menu() {
     done
 
     while :; do
-	echo -ne " ${TUI_MENU[*]}"|column -t -s $'\t'
+	# echo -ne " ${TUI_MENU[*]}"|column -t -s $'\t' # column not playing nice on *BSD
+	echo -ne " ${TUI_MENU[*]}\n"
 	read -rp "Choose[0-$((${#TUI_OPS[*]}-1))]: " USRINPT
         case "${USRINPT}" in
             0) return $?;;

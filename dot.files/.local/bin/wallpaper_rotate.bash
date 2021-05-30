@@ -4,7 +4,7 @@
 #shellcheck shell=bash source=/dev/null disable=SC1008,SC2096,SC2155,SC2034,SC2154
 
 # Unofficial Bash Strict Mode
-set -euo pipefail
+set -eo pipefail
 IFS=$'\t\n'
 
 #link free (S)cript: (D)ir(N)ame, (B)ase(N)ame.
@@ -151,14 +151,15 @@ main() {
 	    done
 
 	    # Get path and name of image as a selected WallPaper
-	    local wp="${wps[$(shuf -n 1 -i 0-"$(( ${#wps[*]} - 1 ))")]}"
+	    # local wp="${wps[$(shuf -n 1 -i 0-"$(( ${#wps[*]} - 1 ))")]}" # shuf not available in *BSD
+	    local wp="${wps[$(( RANDOM % (${#wps[*]} - 1) ))]}"
 
 	    # Set wallpaper, write log, wait
 	    "${!bgsrs[bgsr]}" "${wp}" >> "${wplg}" 2>&1
 
 	    echo "$(date +%F\ %T) ${!bgsrs[bgsr]} ${wp}" >> "${wplg}"
 
-	    sleep "${wait}m"
+	    sleep "$(( ${wait} * 60))"
 	done
     fi
 }

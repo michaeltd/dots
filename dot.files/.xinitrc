@@ -20,6 +20,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 declare -rA WMA=( [xfce4]="xfce4-session" \
                  [compiz]="compiz.sh" \
+                 [openbox]="openbox-session" \
                  [enlightenment]="enlightenment_start" \
                  [e16]="starte16" \
                  [i3wm]="i3" \
@@ -34,6 +35,8 @@ if [[ "${ID}" == "gentoo" ]]; then
     WM="${WMA[$SWM]}"
 elif [[ "${ID}" == "devuan" ]];then
     WM="${WMA[xfce4]}"
+elif [[ "${ID}" =~ bsd$ ]];then
+    WM="${WMA[openbox]}"
 else
     # Availability check, One line version: WM=$( type -P xfce4-session||type -P compiz.sh||type -P enlightenment_start||type -P starte16||type -P openbox-session||type -P wmaker||type -P mwm||type -P awesome||type -P emacs ||type -P kodi-standalone )
     for x in "${!WMA[@]}"; do
@@ -64,5 +67,11 @@ elif [[ "${WM[0]}" =~ starte16 || "${WM[0]}" =~ enlightenment_start ]]; then
     export E_COMP_ENGINE=sw
 fi
 
-# exec "${WM[@]}"
-dbus-launch --exit-with-session "${WM[@]}"
+if [[ -x $(type -P ck-launch-session) ]] && [[ "${ID}" =~ bsd$ ]];then
+    . ~/.xprofile
+    ck-launch-session "${WM[@]}"
+elif [[ -x $(type -P dbus-launch) ]]; then
+    dbus-launch --exit-with-session "${WM[@]}"
+else
+    exec "${WM[@]}"
+fi

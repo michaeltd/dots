@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S bash --norc --noprofile
 #
 # sndvol - lil script to play around with volume settings
 

@@ -18,8 +18,8 @@ set wrap
 
 " hi Normal guibg=NONE ctermbg=NONE
 
-set spelllang=en_us,el
-set spell
+"set spelllang=en_us,el
+"set spell
 
 " Global encoding setup
 set encoding=utf-8

@@ -18,3 +18,7 @@
 
 # [[ -n "$BASH_VERSION" && -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
 
+# set ENV to a file invoked each time sh is started for interactive use.
+ENV=$HOME/.shrc; export ENV
+
+if [ -x /usr/bin/fortune ] ; then /usr/bin/fortune freebsd-tips ; fi

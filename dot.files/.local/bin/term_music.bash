@@ -1,5 +1,5 @@
-#!/bin/bash
-#shellcheck disable=SC2034,SC2155,SC2207
+#!/usr/bin/env -S bash --norc --noprofile
+#shellcheck disable=SC2034,SC2155,SC2207/
 #
 
 # Unofficial Bash Strict Mode
@@ -81,7 +81,8 @@ main() {
 	    return 1
 	fi
     else
-	local randomnum="$(shuf -n 1 -i 0-"$((${#genres[*]}-1))")"
+	# local randomnum="$(shuf -n 1 -i 0-"$((${#genres[*]}-1))")" # shuf not avail on *BSD
+	local randomnum="$(( RANDOM % ( ${#genres[*]} - 1 ) ))"
 	local genre_selection="${genres[randomnum]^^}"
 	local genre_selection="${genre_selection//[![:alpha:]]}"
 	local -ar dir_list=( "${!genres[randomnum]}" )
