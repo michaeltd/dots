@@ -99,6 +99,15 @@ My dots tend to be opinionated so take them with a grain of rice ...err SALT, I 
 
 *** [[http://www.tldp.org/LDP/abs/html/abs-guide.html][Advanced Bash Scripting Guide]] ([[http://www.tldp.org/LDP/abs/abs-guide.pdf][PDF]])
     The Bash all in one goto place.
+** Updates
+*** <2021-05-30 Sun>
+    "Kinda Works" (TM) under nomadBSD (dare I say freeBSD?).
+    You need your unicode configured though.
+    Changes from previous versions include but not limited to:
+    - Long options removed (eg: ls aliases).
+    - ~shuf~ removed in favour of ~$RANDOM % $val~.
+    - if ~shred~ is not available, ~rm~ will be used.
+    - ~#!/bin/bash~ shebangs updated to ~#!/usr/bin/env -S bash --norc --noprofile~.
 ** Contributing [[http://unmaintained.tech/][http://unmaintained.tech/badge.svg]]
 
    Typos, and grammar welcome. All PR's and issues will be considered.

@@ -75,3 +75,6 @@ elif [[ -x $(type -P dbus-launch) ]]; then
 else
     exec "${WM[@]}"
 fi
+
+# Clean up temp sources (source /etc/os-release)
+unset NAME VERSION VERSION_ID ID ANSI_COLOR PRETTY_NAME CPE_NAME HOME_URL BUG_REPORT_URL

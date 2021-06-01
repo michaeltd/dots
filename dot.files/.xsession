@@ -6,8 +6,10 @@ pf="${HOME}/.profile"
 if [ -r "${pf}" ]; then # User Profile
     source "${pf}"
 fi
+unset pf
 
 xirc="${HOME}/.xinitrc"
 if [ -x "${xirc}" ]; then # X init rc
     "${xirc}"
 fi
+unset xirc

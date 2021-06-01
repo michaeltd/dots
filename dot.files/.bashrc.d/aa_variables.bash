@@ -81,7 +81,7 @@ else
     export BROWSER="$(type -P w3m||type -P links||type -P lynx)"
 fi
 
-export TERMINAL="$(type -P xterm||type -P konsole||type -P gnome-terminal||type -P terminology||type -P xfce4-terminal)"
+export TERMINAL="$(type -P sakura||type -P xterm||type -P konsole||type -P gnome-terminal||type -P terminology||type -P xfce4-terminal)"
 
 # most > less > more in order of preference
 export PAGER="$(type -P less 2>/dev/null || type -P most 2>/dev/null || type -P more 2>/dev/null)"
@@ -117,8 +117,8 @@ else
     }
 fi
 
-export LANG="en_US.utf8"
-export LC_COLLATE="C"
+# export LANG="en_US.utf8"
+# export LC_COLLATE="C"
 
 export GIT_PS1_SHOWDIRTYSTATE=yes
 export GIT_PS1_SHOWSTASHSTATE=yes

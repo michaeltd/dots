@@ -50,4 +50,6 @@ if [[ -r "/etc/os-release" ]]; then
     else
 	rcm 9 conky -qd
     fi
+    # Clean up temp sources (source /etc/os-release)
+    unset NAME VERSION VERSION_ID ID ANSI_COLOR PRETTY_NAME CPE_NAME HOME_URL BUG_REPORT_URL
 fi
