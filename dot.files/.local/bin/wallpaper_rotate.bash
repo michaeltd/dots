@@ -126,7 +126,7 @@ main() {
 
     trimlog() {
 	local -r tempdate="$(date +%F)"
-	sed -i "/^${tempdate}/!d" "${wplg}"
+	sed -i '' "/^${tempdate}/!d" "${wplg}"
     }
 
     # If options, proccess, else rotate things

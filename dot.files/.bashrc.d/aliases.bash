@@ -106,7 +106,7 @@ alias cronoemacs="time emacs --eval='(kill-emacs)'"
 alias termgeom='echo "${COLUMNS}x${LINES}"'
 
 # calendar
-alias cal='cal -m' # First Day Monday Calendars
+# alias cal='cal -m' # First Day Monday Calendars
 
 # cloc
 #alias cloc='cloc --by-file-by-lang'

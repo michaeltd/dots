@@ -1,6 +1,12 @@
 #+title: bash lib
 #+author: michaeltd
 #+date: <2020-10-24 Sat>
+
+stdl for bash? Yeah sure, I'll take one of those, WCPGW(tm)!
+
+On a more serious note this is what happened when I've realised
+I didn't have a distance converter under my fingertips.
+
 *** Files
     - crypto.bash
       #+begin_src shell
@@ -56,7 +62,7 @@
       #+end_src
 
 *** Usage
-    In ~${HOME}/.bashrc~ :
     #+begin_src shell
+      # In ~${HOME}/.bashrc~ :
       [[ -d "/path/to/stdlib" ]] && for file in "/path/to/stdlib"/*.bash; do source "${file}"; done
     #+end_src

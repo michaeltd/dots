@@ -1,3 +1,4 @@
+Xft.dpi: 96
 ! Put this file as ~/.Xresources in your home directory
 
 #include ".Xresources.d/xterm.Xresources"

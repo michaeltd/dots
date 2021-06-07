@@ -7,7 +7,7 @@ appendpath() {
     local envar="${1}"
     
     if [[ -n "${envar}" ]]; then
-	[[ "${!envar}" != *${2}* ]] && [[ -d "${2}" ]] && export "${envar}"+="${2}"
+	[[ "${!envar}" != *${2}* ]] && [[ -d "${2}" ]] && export "${envar}"+=":${2}"
     else
 	[[ -d "${2}" ]] && export "${envar}"="${2}"
     fi
