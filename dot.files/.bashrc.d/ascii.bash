@@ -1,8 +1,6 @@
 #
 # various ascii art ============================================================
-#shellcheck shell=bash disable=SC2015,SC2154
-    #shellcheck disable=SC2207
-    #shellcheck disable=SC2015
+#shellcheck shell=bash disable=SC2015,SC2154,SC2207
 
 pukeskull() {
     ##!/bin/sh
@@ -64,7 +62,7 @@ pukeskull() {
     [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
     [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
     [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
-    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX
+    [1;31mXXXX[0;31mXXXX[1;33mXXXX[0;33mXXXX[1;35mXXXX[0;35mXXXX[1;32mXXXX[0;32mXXXX[1;34mXXXX[0;34mXXXX[1;37mXXXX[1;39m[0;49m
 EOF
 }
 
@@ -123,9 +121,12 @@ fancy4tune() {
 	shift
     done
 
+    # { [[ -n "${msg}" ]] && echo "${msg}" || fortune -s; } | \
+    # 	{ [[ -n "${file}" && "${cowsay_files[*]}" =~ ${file} ]] && cowsay -f "${file}" || cowsay -f "${cowsay_files[$(shuf -n 1 -i 0-"$((${#cowsay_files[*]}-1))")]}"; } | \
+    # 	lolcat
     { [[ -n "${msg}" ]] && echo "${msg}" || fortune -s; } | \
-	{ [[ -n "${file}" && "${cowsay_files[*]}" =~ ${file} ]] && cowsay -f "${file}" || cowsay -f "${cowsay_files[$(shuf -n 1 -i 0-"$((${#cowsay_files[*]}-1))")]}"; } | \
-	lolcat
+	{ [[ -n "${file}" && "${cowsay_files[*]}" =~ ${file} ]] && cowsay -f "${file}" || cowsay -f "${cowsay_files[$(( RANDOM % ${#cowsay_files[*]} ))]}"; } | \
+	lolcat    
 }
 
 list_cow_files() {
@@ -147,7 +148,7 @@ magiccow() {
 	"Don't count on it." "My reply is no." "My sources say no." "Outlook not so good." "Very doubtful."
     )
 
-    echo "${answ[$(shuf -n 1 -i 0-"$((${#answ[*]}-1))")]}" | \
+    echo "${answ[$(( RANDOM % ${#answ[*]} ))]}" | \
 	{ type -P cowsay &> /dev/null && cowsay || cat; } | \
 	{ type -P lolcat &> /dev/null && lolcat || cat; }
 }

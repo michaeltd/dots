@@ -1,8 +1,8 @@
-*/*~
-*~
-*.bak
-*.bkp
-*.sh.rc
-*.bash.rc
-private/*
-new.bootstrap.bash
+*
+!assets/*
+!bootstrap.bash
+!card.txt
+!dot.files/*
+!license
+!readme.org
+!tests.bats

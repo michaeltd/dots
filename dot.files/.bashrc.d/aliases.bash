@@ -41,39 +41,26 @@ fi
 # Get distro ID, NAME, etc
 source /etc/os-release
 
-# if type -P dircolors &>/dev/null; then
-    # Color support
-    # if [[ -r "${HOME}/.bashrc.d/00_colors.bash" ]]; then
-    # 	  eval "$(dircolors -b "${HOME}/.bashrc.d/00_colors.bash")"
-    # else
-    #     eval "$(dircolors -b)"
-    # fi
-    if [[ "${NAME}" =~ BSD$ ]]; then
-	alias ls='ls --color=auto'
-	alias la='ls -ah --color=auto'
-	alias ll='ls -lah --color=auto -D "+%F %T"'
-    else
-	alias ls='ls --color=auto --group-directories-first'
-	alias la='ls --all --human-readable --color=auto --group-directories-first'
-	alias ll='ls -l --all --human-readable --color=auto --group-directories-first --time-style="+%F %T"'
-    fi
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+if [[ "${NAME}" =~ BSD$ ]]; then
+    alias ls='ls --color=auto'
+    alias la='ls -ah --color=auto'
+    alias ll='ls -lah --color=auto -D "+%F %T"'
     alias grep='grep --color=auto -in'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
-# else
-#     if [[ "${NAME}" =~ BSD$ ]]; then
-# 	alias ls='ls'
-# 	alias la='ls -ah'
-# 	alias ll='ls -lah -D "+%F %T"'
-#     else
-# 	alias ls='ls --group-directories-first'
-# 	alias la='ls --all --human-readable --group-directories-first'
-# 	alias ll='ls -l --all --human-readable --group-directories-first --time-style="+%F %T"'
-#     fi
-#     alias grep='grep -in'
-# fi
+elif type -P dircolors &>/dev/null; then
+    alias ls='ls --color=auto --group-directories-first'
+    alias la='ls --all --human-readable --color=auto --group-directories-first'
+    alias ll='ls -l --all --human-readable --color=auto --group-directories-first --time-style="+%F %T"'
+    alias grep='grep --color=auto -in'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+else
+    alias ls='ls --group-directories-first'
+    alias la='ls --all --human-readable --group-directories-first'
+    alias ll='ls -l --all --human-readable --group-directories-first --time-style="+%F %T"'
+    alias grep='grep -in'
+fi
 
 # Clean up temp sources (source /etc/os-release)
 unset NAME VERSION VERSION_ID ID ANSI_COLOR PRETTY_NAME CPE_NAME HOME_URL BUG_REPORT_URL

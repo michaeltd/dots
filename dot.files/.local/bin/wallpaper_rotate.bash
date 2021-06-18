@@ -152,7 +152,7 @@ main() {
 
 	    # Get path and name of image as a selected WallPaper
 	    # local wp="${wps[$(shuf -n 1 -i 0-"$(( ${#wps[*]} - 1 ))")]}" # shuf not available in *BSD
-	    local wp="${wps[$(( RANDOM % (${#wps[*]} - 1) ))]}"
+	    local wp="${wps[$(( RANDOM % ${#wps[*]} ))]}"
 
 	    # Set wallpaper, write log, wait
 	    "${!bgsrs[bgsr]}" "${wp}" >> "${wplg}" 2>&1
