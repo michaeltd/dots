@@ -8,8 +8,8 @@
 readonly sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 main() {
-    local -ra pgpc=( "gpg" "--quiet" "--batch" "--yes" "--default-recipient-self" "--output" ) \
-	  shrc=( "shred" "--zero" "--remove" )
+    local -ra pgpc=( "gpg" "--quiet" "--batch" "--yes" "--default-recipient-self" "--output" )
+    type -P shred &> /dev/null && local -ra shrc=( "shred" "--zero" "--remove" ) || local -ra shrc=( "rm" "-f" )
     local -r notes_file="${HOME}/.${USER}.${sbn%.*}"
     local -r notes_gpg="${notes_file}.gpg" notes_bkp="${notes_file}.bkp"
     local -r notes_header='
