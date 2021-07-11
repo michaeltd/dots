@@ -8,7 +8,7 @@
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 # No double sourcing
-type -t rcm &>/dev/null || source "${sdn}"/../../.bashrc.d/*functions*.bash
+type -t rcm &>/dev/null || source "${sdn}"/../../.bashrc.d/*functions.bash
 
 # Music daemon
 # rcm 0 mpd
@@ -28,6 +28,8 @@ rcm 9 "${HOME}/.local/bin/wallpaper_rotate.bash"
 
 # Systray volume control
 rcm 9 pasystray
+
+# rcm 9 dsbautostart -a 
 
 # Systray network manager applet || wicd-gtk -t
 if type -P nm-applet &>/dev/null; then

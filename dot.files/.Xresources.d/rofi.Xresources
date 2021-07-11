@@ -50,6 +50,6 @@ rofi.scrollbar-width:                8
 ! rofi.theme:                          gruve_box_dark.rasi
 ! rofi.theme: 			     dmenu.rasi
 ! rofi.theme:			     arthur.rasi
-! rofi.theme:			     sidebar.rasi
+rofi.theme:			     sidebar.rasi
 ! rofi.theme:			     Arc-Dark.rasi
-rofi.theme: 			     gruvbox-dark
+! rofi.theme: 			     gruvbox-dark
