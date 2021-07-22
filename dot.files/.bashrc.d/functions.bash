@@ -91,7 +91,7 @@ srwpi() {
     local -r myusage="
     Description: Set a Random WallPaper Image from a directory with images.
     Usage: ${FUNCNAME[0]} images-directory | image-file\n\n" \
-	  mypics="${HOME}/Pictures/dPic/r"
+	  mypics="${HOME}/Wallpapers"
 
     if [[ -d "${1}" ]]; then
 	feh -rz --bg-scale "${1}"
