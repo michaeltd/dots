@@ -38,6 +38,16 @@ elif type -P wicd-gtk &>/dev/null; then
     rcm 9 wicd-gtk -t
 fi
 
+# Read ~/.config/autostart applications
+for i in ~/.config/autostart/*.desktop; do
+    while read -r line; do
+	if [[ "${line}" =~ ^Exec ]]; then
+	    declare -a myprog=( ${line##Exec=} )
+	    rcm 9 "${myprog[@]}"
+	fi
+    done <<<$(cat $i)
+done
+
 # Per distro setup.
 if [[ -r "/etc/os-release" ]]; then 
     source /etc/os-release

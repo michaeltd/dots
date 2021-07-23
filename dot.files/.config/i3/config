@@ -44,7 +44,8 @@ bindsym $mod+r exec dsbexec
 
 bindsym $mod+Tab exec rofi -show window
 # bindsym $mod+l exec ~/.local/bin/xlock.sh
-bindsym $mod+l exec metalock -t NomadBSD -f 'Droid Sans 12'
+# bindsym $mod+l exec metalock -t NomadBSD -f 'Droid Sans 12'
+bindsym $mod+l exec metalock
 #bindsym $mod+shift+l exit
 bindsym $mod+Up exec ~/.local/bin/sndvol +
 bindsym $mod+Down exec ~/.local/bin/sndvol -
@@ -296,7 +297,7 @@ client.background       #FFFFFF
 focus_follows_mouse no
 
 # StartUp
-exec_always dsbautostart -a
+# exec_always dsbautostart -a
 
 exec_always ~/.local/bin/pimp_my_gui.bash
 
