@@ -31,24 +31,24 @@ main() {
 
     Include/Exclude file details.
 
-    ${sbn%%.*}.include.*.* file name explanation:
-    /path/to/defs/${sbn%%.*}.include.compress|encrypt.job_name
-    '            '                      '                '        '
-          1                 2                    3            4
+    include.*.* file name explanation:
+    /path/to/defs/include.compress|encrypt.job_name
+    '            '       '                '        '
+          1          2            3            4
     1) This part will be given by your [-(-f)rom] switch (default \"${definitions}\")
-       The script will use it as a starting point to search for all ${sbn%%.*}.* related files.
-    2) ${sbn%%.*}.include.* will be the search term for the definitions files.
+       The script will use it as a starting point to search for all definition related files.
+    2) include.* will be the search term for the definitions files.
     3) This part should be aither *.encrypt.* or *.compress.*.
        encrypt file definitions will result in encrypted tarballs,
        compress file definitions will result in unencrypted tarballs.
     4) The last part serves as the jobs name.
        It will end up in the resulting *.tar.gz.pgp or *.tar.gz file name.
 
-    Sample ${sbn%%.*}.include.*.* file contents:
+    Sample include.*.* file contents:
     /home/username/git/.
     /home/username/Documents/.
 
-    Sample ${sbn%%.*}.exclude file contents:
+    Sample exclude file contents:
     */.git/*
     */.github/*
     */node_modules/*
@@ -70,14 +70,14 @@ main() {
 	shift
     done
 
-    local -ra includes=( "${definitions}/${sbn%%.*}.include".* )
-    local -r exclude="${definitions}/${sbn%%.*}.exclude" job_fn="${backup2}/${HOSTNAME}.$(date -u +%y%m%d.%H%M.%s)"
+    local -ra includes=( "${definitions}/include".* )
+    local -r exclude="${definitions}/exclude" job_fn="${backup2}/${HOSTNAME}.$(date -u +%y%m%d.%H%M.%s)"
 
     [[ -r "${includes[0]}" ]] || { log2err "No readable job file definitions found.\nNothing left to do!"; return 1; }
     [[ -d "${backup2}" ]] || { log2err "${backup2} is not a directory."; return 1; }
 
     local -ra nice_cmd=( "nice" "-n" "${niceness}" ) \
-	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--one-file-system" ) \
+	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--exclude-vcs" "--one-file-system" ) \
 	  pgp_cmd=( "gpg" "--batch" "--yes" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
 
     compress() {
