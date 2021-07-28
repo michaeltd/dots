@@ -299,6 +299,8 @@ focus_follows_mouse no
 # StartUp
 # exec_always dsbautostart -a
 
-exec_always ~/.local/bin/pimp_my_gui.bash
+# exec_always ~/.local/bin/pimp_my_gui.bash
+
+exec_always ~/.local/bin/startup.bash
 
 exec_always bash -c "sleep 10;killall plank tint2"

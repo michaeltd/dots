@@ -12,7 +12,7 @@ readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 	 sbn="$(basename "$(realpath "${BASH_SOURCE[0]}")")"
 
 main() {
-    local definitions="${HOME}/.${sbn%%.*}" backup2="/mnt/data/Documents/bkp/linux" recipient="tsouchlarakis@gmail.com" niceness="19"
+    local definitions="${HOME}/.${sbn%%.*}" backup2=~/ recipient="tsouchlarakis@gmail.com" niceness="19"
     local myusage="
     Usage: ${sbn} [-(-f)rom /path/to/defs] [-(-t)o /path/to/backups] [-(-k)ey some@key.org] [-(-n)iceness {0..19}] [-(-d)ebug] [-(-h)elp]
 
@@ -76,13 +76,16 @@ main() {
     [[ -r "${includes[0]}" ]] || { log2err "No readable job file definitions found.\nNothing left to do!"; return 1; }
     [[ -d "${backup2}" ]] || { log2err "${backup2} is not a directory."; return 1; }
 
+    # local -ra nice_cmd=( "nice" "-n" "${niceness}" ) \
+    # 	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--exclude-vcs" "--one-file-system" ) \
+    # 	  pgp_cmd=( "gpg" "--batch" "--yes" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
     local -ra nice_cmd=( "nice" "-n" "${niceness}" ) \
-	  tar_cmd=( "tar" "--create" "--gzip" "$([[ -r "${exclude}" ]] && echo -n "--exclude-from=${exclude}")" "--exclude-backups" "--exclude-vcs" "--one-file-system" ) \
+	  tar_cmd=( "tar" "--create" "--gzip" "--exclude-vcs" "--one-file-system" ) \
 	  pgp_cmd=( "gpg" "--batch" "--yes" "--recipient" "${recipient}" "--trust-model" "always" "--output" )
-
+    
     compress() {
-	local job_out="${job_fn}.${1##*.}.tar.gz"
-	"${nice_cmd[@]}" "${tar_cmd[@]}" "--file" "${job_out}" $(cat "${1}")
+	local job_out="${job_fn}.${1##*.}.tar.gz" exc_fn="${1//include/exclude}"
+	"${nice_cmd[@]}" "${tar_cmd[@]}" "$([[ -r "${exc_fn}" ]] && echo -n "--exclude-from=${exc_fn}")" "--file" "${job_out}" $(cat "${1}")
 	local err=$?
 	if (( err == 0 )); then
 	    log2err "Wrote: ${job_out##*/}"
@@ -93,8 +96,8 @@ main() {
     }
 
     encrypt() {
-	local job_out="${job_fn}.${1##*.}.tar.gz.gpg"
-	"${nice_cmd[@]}" "${tar_cmd[@]}" $(cat "${1}") | "${pgp_cmd[@]}" "${job_out}" "--encrypt"
+	local job_out="${job_fn}.${1##*.}.tar.gz.gpg" exc_fn="${1//include/exclude}"
+	"${nice_cmd[@]}" "${tar_cmd[@]}" "$([[ -r "${exc_fn}" ]] && echo -n "--exclude-from=${exc_fn}")" $(cat "${1}") | "${pgp_cmd[@]}" "${job_out}" "--encrypt"
 	local err=$?
 	if (( err == 0 )); then
 	    log2err "Wrote: ${job_out##*/}"

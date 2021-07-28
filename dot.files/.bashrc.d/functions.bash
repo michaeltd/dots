@@ -285,6 +285,7 @@ extract() {
 	    *.gz) gunzip "${1}";;
 	    *.zip|*.jar|*.war) unzip "${1}";;
 	    *.z) uncompress "${1}";;
+	    *.lzma) lzma -d "${1}";;
 	    *) echo -ne "\n\tUnknown file extension ${1}.\n\n" >&2;;
 	esac
 	shift
