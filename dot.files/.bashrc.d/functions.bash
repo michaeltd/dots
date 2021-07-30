@@ -64,7 +64,7 @@ purge_hist4() {
     local -r bh="${HOME}/.bash_history"
     while [[ -n "${1}" ]]; do
 	local pre=( $(wc -l "${bh}") )
-	sed -i -e /${1}/d "${bh}"
+	sed -i '' -e /${1}/d "${bh}"
 	local post=( $(wc -l "${bh}") )
 	echo -ne "purged: $(( ${pre[0]} - ${post[0]} )) instances of \"${1}\" from ${bh}\n"
 	shift
