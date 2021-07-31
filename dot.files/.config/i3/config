@@ -187,7 +187,7 @@ bindsym $mod+F8 workspace $ws8; exec ristretto
 bindsym $mod+F9 workspace $ws9; exec pavucontrol
 
 bindsym $mod+Shift+F10 workspace $ws0; exec gentoo-systemtools.bash
-bindsym $mod+Shift+F1 workspace $ws1; exec sakura || terminology || xfce4-terminal
+bindsym $mod+Shift+F1 workspace $ws1; exec sakura -e tmux || terminology -e tmux || xfce4-terminal -e tmux
 bindsym $mod+Shift+F2 workspace $ws2; exec seamonkey
 bindsym $mod+Shift+F3 workspace $ws3; exec codelite
 bindsym $mod+Shift+F4 workspace $ws4; exec gentoo
