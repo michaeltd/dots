@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/libexec/gnome-settings-daemon >/dev/null; then
+#  /usr/libexec/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null; then
+#  gnome-settings-daemon &
+#fi
+
+# If you want to use XFCE config tools...
+#
+#xfce-mcs-manager &
+
+# No double sourcing
+# type rcm &>/dev/null || source ~/.bashrc.d/functions.bash
+
+# rcm 9 compton
+
+# A nice status bar (before gui as we'll need that tray)
+# nice -n 9 tint2 &
+# rcm 9 tint2 -c ~/.config/tint2/taskbar
+# nice -n 9 tint2 -c ~/.config/tint2/panel
+
+# pmg="${HOME}/.local/bin/pimp_my_gui.bash"
+# if [ -x "${pmg}" ]; then # if spice, spice things up.
+#     "${pmg}"
+# fi
+# unset pmg

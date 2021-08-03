@@ -30,6 +30,12 @@ declare -ra compton=( 'dot.files/.config/compton.conf' ) \
 		 'dot.files/.config/compiz/compizconfig/config' ) \
 	i3wm=( 'dot.files/.config/i3/config'
 	       'dot.files/.config/i3status/config' ) \
+	openbox=( 'dot.files/.config/openbox/autostart'
+		  'dot.files/.config/openbox/environment'
+		  'dot.files/.config/openbox/menu.xml'
+		  'dot.files/.config/openbox/rc.xml'
+		  'dot.files/.config/openbox/scripts/date_menu.sh'
+		  'dot.files/.config/openbox/scripts/obam.pl' ) \
 	x11=( 'dot.files/.Xdefaults'
 	      'dot.files/.Xresources'
 	      'dot.files/.Xresources.d'
@@ -37,7 +43,7 @@ declare -ra compton=( 'dot.files/.config/compton.conf' ) \
 	      'dot.files/.xsession' )
 
 #shellcheck disable=SC2034
-declare -ra xorg=( compton[@] tint2[@] e16[@] compiz[@] i3wm[@] x11[@] )
+declare -ra xorg=( compton[@] tint2[@] e16[@] compiz[@] i3wm[@] openbox[@] x11[@] )
 
 #shellcheck disable=SC2034
 declare -ra music=( 'dot.files/.config/mpd/mpd.conf'
@@ -64,7 +70,7 @@ declare -ra music=( 'dot.files/.config/mpd/mpd.conf'
 declare -ra console=( music[@] tmux[@] top[@] mutt[@] vim[@] bash[@] )
 # Build menus and help messages.
 declare -ra TUI_OPS=( "quit" "help" "everything" "xorg" "console"
-		      "compton" "tint2" "e16" "compiz" "i3wm" "x11"
+		      "compton" "tint2" "e16" "compiz" "i3wm" "openbox" "x11"
 		      "music" "tmux" "top" "mutt" "vim" "bash" )
 
 declare -ra DESC=( "Exit this script"
@@ -76,7 +82,8 @@ declare -ra DESC=( "Exit this script"
 		   "link Tint2 configs" 
 		   "link E16 configs" 
 		   "link Compiz configs" 
-		   "link i3wm and i3status configs" 
+		   "link i3wm and i3status configs"
+		   "link openbox config files"
 		   "link X11 rc files" 
 		   "link Music mpc, mpd, npmpcpp config files" 
 		   "link Tmux's tmux.conf" 
@@ -210,7 +217,7 @@ menu() {
             1) echo -ne "${TUI_HMSG[*]}";;
 	    2) do_"${TUI_OPS[$USRINPT]}";;
 	    [3-4]) do_assoc "${TUI_OPS[$USRINPT]}";;
-            [5-9]|1[0-6]) do_arr "${TUI_OPS[$USRINPT]}";;
+            [5-9]|1[0-7]) do_arr "${TUI_OPS[$USRINPT]}";;
             *) echo -ne "Invalid selection: ${USRINPT}. Choose from 0 to $((${#TUI_OPS[*]}-1))\n" >&2;;
         esac
     done

@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+<menu id="Application" label="Application" comment="--- auto ---">
+	<item icon="/usr/share/icons/Humanity/devices/48/printer.svg" label="hp-uiscan" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/bin/hp-uiscan</command>
+		</action>
+	</item>
+</menu>
+<menu id="Audio" label="Audio" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/actions/audio-volume-high.svg" label="DSBMixer" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbmixer</command>
+		</action>
+	</item>
+</menu>
+<menu id="AudioVideo" label="AudioVideo" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/asunder.svg" label="Asunder CD Ripper" comment="--- auto ---">
+		<action name="Execute">
+			<command>asunder</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/audacity.svg" label="Audacity" comment="--- auto ---">
+		<action name="Execute">
+			<command>env UBUNTU_MENUPROXY=0 audacity </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/cantata.svg" label="Cantata" comment="--- auto ---">
+		<action name="Execute">
+			<command>cantata </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/deadbeef.svg" label="DeaDBeeF" comment="--- auto ---">
+		<action name="Execute">
+			<command>deadbeef </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/mpv.svg" label="mpv Media Player" comment="--- auto ---">
+		<action name="Execute">
+			<command>mpv --player-operation-mode=pseudo-gui -- </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/simplescreenrecorder.svg" label="SimpleScreenRecorder" comment="--- auto ---">
+		<action name="Execute">
+			<command>simplescreenrecorder --logfile</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/vlc.svg" label="VLC media player" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/bin/vlc --started-from-file </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/stock_xfburn.svg" label="Xfburn" comment="--- auto ---">
+		<action name="Execute">
+			<command>xfburn</command>
+		</action>
+	</item>
+</menu>
+<menu id="Development" label="Development" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/emacs.svg" label="Emacs" comment="--- auto ---">
+		<action name="Execute">
+			<command>emacs </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/geany.svg" label="Geany" comment="--- auto ---">
+		<action name="Execute">
+			<command>geany </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/pixmaps/assistant-qt5.png" label="Qt 5 Assistant" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/lib/qt5/bin/assistant</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/pixmaps/linguist-qt5.png" label="Qt 5 Linguist" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/lib/qt5/bin/linguist</command>
+		</action>
+	</item>
+</menu>
+<menu id="Graphics" label="Graphics" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/gimp.svg" label="GNU Image Manipulation Program" comment="--- auto ---">
+		<action name="Execute">
+			<command>gimp-2.10 </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/gtkam-camera.svg" label="Gtkam Digital Camera Browser" comment="--- auto ---">
+		<action name="Execute">
+			<command>gtkam</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/viewnior.svg" label="Viewnior" comment="--- auto ---">
+		<action name="Execute">
+			<command>viewnior </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/xsane.svg" label="XSane - Scanning" comment="--- auto ---">
+		<action name="Execute">
+			<command>xsane</command>
+		</action>
+	</item>
+</menu>
+<menu id="Network" label="Network" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/filezilla.svg" label="FileZilla" comment="--- auto ---">
+		<action name="Execute">
+			<command>filezilla</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/firefox.svg" label="Firefox Web Browser" comment="--- auto ---">
+		<action name="Execute">
+			<command>firefox </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/hexchat.svg" label="HexChat" comment="--- auto ---">
+		<action name="Execute">
+			<command>hexchat --existing </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/firewall-config.svg" label="ipfwGUI" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbsu ipfwGUI</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/web-browser.svg" label="Linux Browser Installer GUI" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbsu /usr/local/bin/lbi-gui</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/pidgin.svg" label="Pidgin Internet Messenger" comment="--- auto ---">
+		<action name="Execute">
+			<command>pidgin</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/thunderbird.svg" label="Thunderbird" comment="--- auto ---">
+		<action name="Execute">
+			<command>thunderbird </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/transmission-qt.svg" label="Transmission (Qt)" comment="--- auto ---">
+		<action name="Execute">
+			<command>transmission-qt </command>
+		</action>
+	</item>
+</menu>
+<menu id="Office" label="Office" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/libreoffice-startcenter.svg" label="LibreOffice" comment="--- auto ---">
+		<action name="Execute">
+			<command>libreoffice </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/libreoffice-base.svg" label="LibreOffice Base" comment="--- auto ---">
+		<action name="Execute">
+			<command>libreoffice --base </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/libreoffice-calc.svg" label="LibreOffice Calc" comment="--- auto ---">
+		<action name="Execute">
+			<command>libreoffice --calc </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/libreoffice-draw.svg" label="LibreOffice Draw" comment="--- auto ---">
+		<action name="Execute">
+			<command>libreoffice --draw </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/libreoffice-impress.svg" label="LibreOffice Impress" comment="--- auto ---">
+		<action name="Execute">
+			<command>libreoffice --impress </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/libreoffice-math.svg" label="LibreOffice Math" comment="--- auto ---">
+		<action name="Execute">
+			<command>libreoffice --math </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/libreoffice-writer.svg" label="LibreOffice Writer" comment="--- auto ---">
+		<action name="Execute">
+			<command>libreoffice --writer </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/qpdfview.svg" label="qpdfview" comment="--- auto ---">
+		<action name="Execute">
+			<command>qpdfview --unique </command>
+		</action>
+	</item>
+</menu>
+<menu id="Settings" label="Settings" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/display.im6.svg" label="ARandR" comment="--- auto ---">
+		<action name="Execute">
+			<command>arandr</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/preferences-desktop-theme.svg" label="Customize Look and Feel" comment="--- auto ---">
+		<action name="Execute">
+			<command>lxappearance</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/preferences-desktop-default-applications.svg" label="Default Desktop Applications" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/bin/dsbdefaultapps</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/preferences-desktop-personal.svg" label="Display manager settings" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbsu /usr/bin/nomadbsd-dmconfig-gui</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/devices/video-display.svg" label="Display Settings" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbds</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/actions/system-run.svg" label="DSBAutostart" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbautostart</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/org.xfce.thunar.svg" label="File Manager Settings" comment="--- auto ---">
+		<action name="Execute">
+			<command>thunar-settings</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/devices/input-mouse.svg" label="Mouse and Touchpad Configuration" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/bin/dsbxinput</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/obconf.svg" label="Openbox Configuration Manager" comment="--- auto ---">
+		<action name="Execute">
+			<command>obconf </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/plank.svg" label="Plank Preferences" comment="--- auto ---">
+		<action name="Execute">
+			<command>plank --preferences</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/preferences-desktop-theme.svg" label="Qt5 Settings" comment="--- auto ---">
+		<action name="Execute">
+			<command>qt5ct</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/preferences-desktop-wallpaper.svg" label="Set background image" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbbg</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/tint2conf.svg" label="Tint2 Settings" comment="--- auto ---">
+		<action name="Execute">
+			<command>tint2conf</command>
+		</action>
+	</item>
+</menu>
+<menu id="System" label="System" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/system-users.svg" label="Add user" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbsu /usr/bin/nomadbsd-adduser-gui</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/org.xfce.thunar.svg" label="Bulk Rename" comment="--- auto ---">
+		<action name="Execute">
+			<command>thunar --bulk-rename </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/devices/battery.svg" label="DSBBatmon" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbbatmon</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/devices/drive-removable-media-usb-pendrive.svg" label="DSBMC" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbmc</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/system-file-manager.svg" label="File Manager PCManFM" comment="--- auto ---">
+		<action name="Execute">
+			<command>pcmanfm </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/fish.svg" label="fish" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/bin/sakura -e fish</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/htop.svg" label="Htop" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/bin/sakura -e htop</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/actions/icon_user.svg" label="Manage user accounts" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbsu /usr/bin/nomadbsd-chusr</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/mc.svg" label="Midnight Commander" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/bin/sakura -e mc</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/help-browser.svg" label="NomadBSD Handbook" comment="--- auto ---">
+		<action name="Execute">
+			<command>xdg-open /usr/share/nomadbsd-handbook/handbook.html</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/octopi.svg" label="OctoPkg" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/bin/octopkg</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/devices/printer.svg" label="Printer configuration" comment="--- auto ---">
+		<action name="Execute">
+			<command>xdg-open http://localhost:631</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/org.xfce.thunar.svg" label="Thunar File Manager" comment="--- auto ---">
+		<action name="Execute">
+			<command>thunar </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/tint2.svg" label="Tint2" comment="--- auto ---">
+		<action name="Execute">
+			<command>tint2</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/xterm-color_48x48.svg" label="XTerm" comment="--- auto ---">
+		<action name="Execute">
+			<command>xterm</command>
+		</action>
+	</item>
+</menu>
+<menu id="Utility" label="Utility" comment="--- auto ---">
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/compton.svg" label="compton" comment="--- auto ---">
+		<action name="Execute">
+			<command>compton</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/galculator.svg" label="Galculator" comment="--- auto ---">
+		<action name="Execute">
+			<command>galculator</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/gpa.svg" label="gpa" comment="--- auto ---">
+		<action name="Execute">
+			<command>gpa </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/gvim.svg" label="GVim" comment="--- auto ---">
+		<action name="Execute">
+			<command>gvim -f </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/pixmaps/gxkb.xpm" label="gxkb" comment="--- auto ---">
+		<action name="Execute">
+			<command>gxkb</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/hplip/data/images/128x128/hp_logo.png" label="HP Device Manager" comment="--- auto ---">
+		<action name="Execute">
+			<command>hp-toolbox</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/keepassxc.svg" label="KeePassXC" comment="--- auto ---">
+		<action name="Execute">
+			<command>keepassxc </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/kvantum.svg" label="Kvantum Manager" comment="--- auto ---">
+		<action name="Execute">
+			<command>kvantummanager</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/leafpad.svg" label="Leafpad" comment="--- auto ---">
+		<action name="Execute">
+			<command>leafpad </command>
+		</action>
+	</item>
+	<item label="picom" comment="--- auto ---">
+		<action name="Execute">
+			<command>picom</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/plank.svg" label="Plank" comment="--- auto ---">
+		<action name="Execute">
+			<command>plank</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/actions/system-run.svg" label="Run command" comment="--- auto ---">
+		<action name="Execute">
+			<command>dsbexec</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/terminal-tango.svg" label="Sakura" comment="--- auto ---">
+		<action name="Execute">
+			<command>sakura</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/org.xfce.screenshooter.svg" label="Screenshot" comment="--- auto ---">
+		<action name="Execute">
+			<command>xfce4-screenshooter</command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/gvim.svg" label="Vim" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/local/bin/sakura -e vim </command>
+		</action>
+	</item>
+	<item icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/xarchiver.svg" label="Xarchiver" comment="--- auto ---">
+		<action name="Execute">
+			<command>xarchiver </command>
+		</action>
+	</item>
+</menu>
+<menu id="apps-installed-menu" label="Installed Apps" execute="~/.config/openbox/scripts/obam.pl"/>
+<menu id="apps-calendar-menu" label="Calendar" execute="~/.config/openbox/scripts/date_menu.sh"/>
+<menu id="root-menu" label="Openbox 3">
+	<menu id="Application" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-other.svg" comment="--- auto ---"/>
+	<menu id="Audio" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-multimedia.svg" comment="--- auto ---"/>
+	<menu id="AudioVideo" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-multimedia.svg" comment="--- auto ---"/>
+	<menu id="Development" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-development.svg" comment="--- auto ---"/>
+	<menu id="Graphics" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-graphics.svg" comment="--- auto ---"/>
+	<menu id="Network" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-internet.svg" comment="--- auto ---"/>
+	<menu id="Office" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-office.svg" comment="--- auto ---"/>
+	<menu id="Settings" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/preferences-system.svg" comment="--- auto ---"/>
+	<menu id="System" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-system.svg" comment="--- auto ---"/>
+	<menu id="Utility" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-utilities.svg" comment="--- auto ---"/>
+    <menu id="apps-installed-menu" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/applications-accessories.svg"/>
+    <menu id="apps-calendar-menu" icon="/usr/local/share/icons/Papirus-Dark/16x16/apps/calendar.svg"/>
+<separator />
+<menu id="client-list-menu" />
+<separator />
+<item label="Reconfigure">
+<action name="Reconfigure" />
+</item>
+<separator />
+<item label="Logout" icon="/usr/local/share/icons/Papirus/48x48/apps/gnome-logout.svg">
+                <action name="Execute">
+                        <command>/usr/local/bin/dsblogoutmgr -l close_session</command>
+                </action>
+        </item>
+<separator />
+	<item label="Update menu" icon="/usr/local/share/icons/Papirus-Dark/16x16/actions/view-refresh.svg" comment="--- auto ---">
+		<action name="Execute">
+			<command>/usr/bin/update_obmenu -u</command>
+		</action>
+	</item>
+</menu>
+</openbox_menu>
