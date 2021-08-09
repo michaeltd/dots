@@ -40,29 +40,15 @@ if [[ -r "/etc/os-release" ]]; then
     unset NAME VERSION VERSION_ID ID ANSI_COLOR PRETTY_NAME CPE_NAME HOME_URL BUG_REPORT_URL
 fi
 
-# Music daemon
-# rcm 0 mpd
-
-# Run emacs
-# rcm 0 emacs --daemon
-
 # Xfce4 themes
 # rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
 
 # XScreenSaver
 # rcm 9 xscreensaver -no-splash
 
-# Add some wallpaper variety for your desktop
-# rcm 9 "${HOME}/.local/bin/wallpaper_rotate.bash"
-
-
-# Systray volume control
-# rcm 9 pasystray
-
 # Systray network manager applet || wicd-gtk -t
-# if type -P nm-applet &>/dev/null; then
+# if type -P nm-applet &> /dev/null; then
 #     rcm 9 nm-applet
-# elif type -P wicd-gtk &>/dev/null; then
+# elif type -P wicd-gtk &> /dev/null; then
 #     rcm 9 wicd-gtk -t
 # fi
-
