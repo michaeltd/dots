@@ -3,13 +3,13 @@
 #shellcheck shell=bash disable=SC2005,SC2155,SC2086
 
 gen_rnum() {
-    tr -dc "[:digit:]" < /dev/urandom | \
+    LC_CTYPE=C tr -dc "[:digit:]" < /dev/urandom | \
 	head -c "${1:-8}"
     echo
 }
 
 gen_pass() {
-    tr -dc "[:graph:]" < /dev/urandom | \
+    LC_CTYPE=C tr -dc "[:graph:]" < /dev/urandom | \
 	tr -d "[=\|=][=\"=][=\'=][=\,=]" | \
 	head -c "${1:-16}"
     echo
@@ -23,7 +23,7 @@ gen_uuid() {
     # https://gist.github.com/markusfisch/6110640
     # https://github.com/lowerpower/UUID-with-bash
     mkpart() {
-	tr -dc a-f0-9 < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
+	LC_CTYPE=C tr -dc "[a-f0-9]" < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
     }
     for i in {8,4,4,4,12}; do
 	local uuid+="$(mkpart $i)-"
