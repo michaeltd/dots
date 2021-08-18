@@ -39,9 +39,10 @@ elif type -P pkg &>/dev/null; then
 fi
 
 # Get distro ID, NAME, etc
-source /etc/os-release
+# source /etc/os-release
 
-if [[ "${NAME}" =~ BSD$ ]]; then
+# if [[ "${NAME}" =~ BSD$ ]]; then
+if [[ "$(uname -s)" =~ BSD$ ]]; then
     alias ls='ls --color=auto'
     alias la='ls -ah --color=auto'
     alias ll='ls -lah --color=auto -D "+%F %T"'
@@ -63,7 +64,7 @@ else
 fi
 
 # Clean up temp sources (source /etc/os-release)
-unset NAME VERSION VERSION_ID ID ANSI_COLOR PRETTY_NAME CPE_NAME HOME_URL BUG_REPORT_URL
+# unset NAME VERSION VERSION_ID ID ANSI_COLOR PRETTY_NAME CPE_NAME HOME_URL BUG_REPORT_URL
     
 # Interactive & Verbose copy, move and remove commands
 alias cp='cp -iv' mv='mv -iv' rm='rm -iv'

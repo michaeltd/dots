@@ -20,25 +20,23 @@ for i in ~/.config/autostart/*.desktop; do
     done
 done
 
-# Per distro startup.
-if [[ -r "/etc/os-release" ]]; then 
-    source /etc/os-release
-    if [[ "${ID}" == "gentoo" ]]; then
-	rcm 9 conky -qd
-	# rcm 9 electrum daemon start
-	# rcm 9 bitcoind -datadir=/mnt/el/.bitcoin -daemon -server
-    elif [[ "${ID}" == "devuan" ]]; then
-	rcm 9 conky -qd
-    elif [[ "${ID}" == "debian" ]]; then
-	rcm 9 conky -qd
-    elif [[ "${ID}" == "freebsd" ]]; then
-	rcm 9 conky -qd
-    else
-	rcm 9 conky -qd
-    fi
-    # Clean up temp sources (source /etc/os-release)
-    unset NAME VERSION VERSION_ID ID ANSI_COLOR PRETTY_NAME CPE_NAME HOME_URL BUG_REPORT_URL
+unames="$(uname -s)"
+
+if [[ "${unames}" == "Gentoo" ]]; then
+    rcm 9 conky -qd
+    # rcm 9 electrum daemon start
+    # rcm 9 bitcoind -datadir=/mnt/el/.bitcoin -daemon -server
+elif [[ "${unames}" == "Devuan" ]]; then
+    rcm 9 conky -qd
+elif [[ "${unames}" == "Debian" ]]; then
+    rcm 9 conky -qd
+elif [[ "${unames}" == "FreeBSD" ]]; then
+    rcm 9 conky -qd
+else
+    rcm 9 conky -qd
 fi
+
+unset unames
 
 # Xfce4 themes
 # rcm 9 xfsettingsd --no-daemon --disable-server --no-desktop --sm-client-disable
