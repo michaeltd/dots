@@ -3,15 +3,15 @@
 #shellcheck shell=bash disable=SC2005,SC2155,SC2086
 
 gen_rnum() {
-    LC_CTYPE=C tr -dc "[:digit:]" < /dev/urandom | \
-	head -c "${1:-8}"
+    LC_CTYPE=C tr -dc [:digit:] < /dev/urandom | \
+	dd ibs=1 obs=1 count="${1:-8}" 2>/dev/null    
     echo
 }
 
 gen_pass() {
-    LC_CTYPE=C tr -dc "[:graph:]" < /dev/urandom | \
-	tr -d "[=\|=][=\"=][=\'=][=\,=]" | \
-	head -c "${1:-16}"
+    LC_ALL=C tr -dc [:graph:] < /dev/urandom | \
+	tr -d [=\"=][=\'=][=\|=][=\,=] | \
+	dd ibs=1 obs=1 count="${1:-16}" 2>/dev/null
     echo
 }
 
@@ -23,12 +23,15 @@ gen_uuid() {
     # https://gist.github.com/markusfisch/6110640
     # https://github.com/lowerpower/UUID-with-bash
     mkpart() {
-	LC_CTYPE=C tr -dc "[a-f0-9]" < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
+	# LC_CTYPE=C tr -dc "[a-f0-9]" < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
+	# LC_CTYPE=C tr -dc "abcdef0123456789" < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
+	LC_CTYPE=C tr -dc [:xdigit:] < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
     }
     for i in {8,4,4,4,12}; do
 	local uuid+="$(mkpart $i)-"
     done
-    printf "%s\n" "${uuid%-}"
+    local uuid="${uuid%-}"
+    printf "%s\n" "${uuid,,}"
 }
 
 hash_stdin() {
