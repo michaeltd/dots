@@ -7,7 +7,7 @@
 readonly sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 # No double sourcing
-type -t rcm &>/dev/null || source "${sdn}"/../../.bashrc.d/functions.bash
+type -t rcm &>/dev/null || source "${sdn}"/../../.bashrc.d/functions.bash || exit 1
 
 # Read trough '~/.config/autostart' entries
 for i in ~/.config/autostart/*.desktop; do
