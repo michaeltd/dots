@@ -4,7 +4,7 @@
 
 gen_rnum() {
     LC_CTYPE=C tr -dc [:digit:] < /dev/urandom | \
-	dd ibs=1 obs=1 count="${1:-8}" 2>/dev/null    
+	dd ibs=1 obs=1 count="${1:-16}" 2>/dev/null    
     echo
 }
 
