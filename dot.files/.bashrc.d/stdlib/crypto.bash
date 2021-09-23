@@ -49,6 +49,7 @@ transcode_stdin() {
 }
 
 transcode_gpg() {
+    declare -x GPG_TTY="$(tty)"
     local myusage="
     Usage: ${FUNCNAME[0]} file(s)|file(s).gpg...
     Description: Decrypt/Encrypt files from/to your default gpg keyring.
@@ -60,21 +61,21 @@ transcode_gpg() {
     while [[ -n "${1}" ]]; do
 	case "${1}" in
 	    -h|--help)
-		shift
 		echo -ne "${myusage}" >&2
+		shift
 		continue;;
 	    *)
 		if [[ -f "${1}" && -r "${1}" ]]; then
 		    if [[ "$(file -b "${1}")" =~ ^PGP ]]; then
 			if [[ "${1}" != "${1//.gpg/}" ]]; then
-			    local func="--decrypt" out="${1//.gpg/}"
+			    local func="-d" out="${1//.gpg/}"
 			elif [[ "${1}" != "${1//.pgp/}" ]]; then
-			    local func="--decrypt" out="${1//.pgp/}"
+			    local func="-d" out="${1//.pgp/}"
 			else
-			    local func="--decrypt" out="${1}.dec"
+			    local func="-d" out="${1}.dec"
 			fi
 		    else
-			local func="--encrypt" out="${1}.gpg"
+			local func="-e" out="${1}.gpg"
 		    fi
 		else
 		    echo -ne "\t${1} is not a readable file!\n${myusage}" >&2
@@ -82,7 +83,7 @@ transcode_gpg() {
 		    continue
 		fi;;
 	esac
-	gpg --default-recipient-self --output "${out}" "${func}" "${1}"
+	gpg --default-recipient-self "${func}" < "${1}" > "${out}"
 	shift
     done
 }

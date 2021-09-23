@@ -16,7 +16,7 @@ cd "${sdn}" || exit 1
 
 # Backup File Extension
 #shellcheck disable=SC2155
-declare -r bfe="dots.${sbn/.bash/}.${$}.$(date -u +%s).bkp"
+declare -r bfe=".${sbn%%.*}.$(date -u +%s).bkp"
 
 #shellcheck disable=SC2034
 declare -ra compton=( 'dot.files/.config/compton.conf' ) \

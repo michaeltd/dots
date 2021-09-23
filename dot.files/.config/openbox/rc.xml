@@ -437,7 +437,8 @@
         </startupnotify>
         <!-- <command>xscreensaver-command -lock</command> -->
 	<!-- <command>metalock -t NomadBSD -f 'Droid Sans 12'</command> -->
-	<command>metalock</command>
+	<!-- <command>metalock</command> -->
+	<command>xscreensaver-command -lock</command>
       </action>
     </keybind>
   </keyboard>
