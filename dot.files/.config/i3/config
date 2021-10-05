@@ -45,7 +45,8 @@ bindsym $mod+r exec dsbexec
 bindsym $mod+Tab exec rofi -show window
 # bindsym $mod+l exec ~/.local/bin/xlock.sh
 # bindsym $mod+l exec metalock -t NomadBSD -f 'Droid Sans 12'
-bindsym $mod+l exec metalock
+# bindsym $mod+l exec metalock
+bindsym $mod+l exec xscreensaver-command -lock
 #bindsym $mod+shift+l exit
 bindsym $mod+Up exec ~/.local/bin/sndvol +
 bindsym $mod+Down exec ~/.local/bin/sndvol -

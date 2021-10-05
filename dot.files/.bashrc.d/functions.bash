@@ -350,10 +350,15 @@ convert_img() {
 }
 
 mkbkp() {
-    [[ ! -r "${1}" ]] && \
-	echo -ne "\n\tUsage: ${FUNCNAME[0]} file/dir-2-backup\n\n" >&2 && \
-	return 1
-    compress "${1%%/*}.$(date -u +%s).tgz" "${1}"
+    while [[ -n "${1}" ]]; do
+	if [[ ! -r "${1}" ]]; then
+	    echo -ne "\tUsage: ${FUNCNAME[0]} files/dirs-to-backup\n\tNot readable file/dir ${1}\n" >&2
+	    shift
+	    continue
+	fi
+	compress "${1%%/*}.$(date -u +%s).tgz" "${1}"
+	shift
+    done
 }
 
 get_mime_type() {
