@@ -351,12 +351,12 @@ convert_img() {
 
 mkbkp() {
     while [[ -n "${1}" ]]; do
-	if [[ ! -r "${1}" ]]; then
-	    echo -ne "\tUsage: ${FUNCNAME[0]} files/dirs-to-backup\n\tNot readable file/dir ${1}\n" >&2
+	if [[ ! -r "${1}" ]] || [[ ! -f "${1}" ]] ; then
+	    echo -ne "\tUsage: ${FUNCNAME[0]} file(s)\n\t${1}: Not readable or not a file!\n" >&2
 	    shift
 	    continue
 	fi
-	compress "${1%%/*}.$(date -u +%s).tgz" "${1}"
+	compress "${1}.$(date -u +%s).tgz" "${1}"
 	shift
     done
 }
