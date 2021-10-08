@@ -29,7 +29,7 @@ main() {
 	case "${1}" in
 	    -b|--backups) shift; local backup_dir="${1}";;
 	    -k|--keep) shift; local days2keep="${1}";;
-	    -d|--debug) set -x;;
+	    -d|--debug) set -vx;;
 	    *) log2err "${myusage}"; return 1;;
 	esac
 	shift
