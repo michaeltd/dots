@@ -23,8 +23,8 @@ gen_uuid() {
     # https://gist.github.com/markusfisch/6110640
     # https://github.com/lowerpower/UUID-with-bash
     mkpart() {
-	# LC_CTYPE=C tr -dc "[a-f0-9]" < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
-	# LC_CTYPE=C tr -dc "abcdef0123456789" < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
+	# LC_CTYPE=C tr -dc [0-9a-fA-F] < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
+	# LC_CTYPE=C tr -dc "0123456789ABCDEFabcdef" < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
 	LC_CTYPE=C tr -dc [:xdigit:] < /dev/urandom | dd bs="${1}" count=1 2> /dev/null
     }
     for i in {8,4,4,4,12}; do
