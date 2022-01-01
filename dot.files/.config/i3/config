@@ -37,6 +37,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec dmenu_run
 # bindsym $mod+r exec rofi -show drun
 bindsym $mod+r exec dsbexec
+# bindsym $mod+e exec xterm -e mc
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -177,10 +178,10 @@ set $ws9 "9: config"
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+F10 workspace $ws0; exec gdutils
-bindsym $mod+F1 workspace $ws1; exec sakura -e tmux || i3-sensible-terminal -e tmux
+bindsym $mod+F1 workspace $ws1; exec i3-sensible-terminal -e tmux
 bindsym $mod+F2 workspace $ws2; exec firefox
 bindsym $mod+F3 workspace $ws3; exec emacs
-bindsym $mod+F4 workspace $ws4; exec sakura -e mc || i3-sensible-terminal -e mc
+bindsym $mod+F4 workspace $ws4; exec i3-sensible-terminal -e mc
 bindsym $mod+F5 workspace $ws5; exec vlc
 bindsym $mod+F6 workspace $ws6; exec ooffice || libreoffice
 bindsym $mod+F7 workspace $ws7; exec hexchat
