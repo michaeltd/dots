@@ -34,7 +34,7 @@ elif type -P emerge &>/dev/null; then
 elif type -P pkg &>/dev/null; then
     alias psearch='pkg search' pinstall='sudo pkg install' \
 	  premove='sudo pkg remove'
-    alias dupdate='sudo pkg update' dupgrade='sudo pkg upgrade' \
+    alias dupdate='sudo IGNORE_OSVERSION=yes pkg update' dupgrade='sudo IGNORE_OSVERSION=yes pkg upgrade' \
 	  dcleanup='sudo pkg autoremove'
 fi
 
