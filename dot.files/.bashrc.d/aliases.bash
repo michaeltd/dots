@@ -109,6 +109,9 @@ alias netis='if ping -c 1 www.gentoo.org &> /dev/null; then echo "... UP!"; else
 type -P ip &> /dev/null && \
     alias show_interfaces="sudo ip -brief -color address show"
 
+# https://twitter.com/qusaialhaddad/status/1577278610410307584
+# curl wtfismyip.com/json
+
 # Help wan-ip-howto
 if type -P curl &> /dev/null; then
     alias wip4='curl ipv4.whatismyip.akamai.com;echo'
