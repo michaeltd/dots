@@ -124,7 +124,7 @@ fancy4tune() {
     # { [[ -n "${msg}" ]] && echo "${msg}" || fortune -s; } | \
     # 	{ [[ -n "${file}" && "${cowsay_files[*]}" =~ ${file} ]] && cowsay -f "${file}" || cowsay -f "${cowsay_files[$(shuf -n 1 -i 0-"$((${#cowsay_files[*]}-1))")]}"; } | \
     # 	lolcat
-    { [[ -n "${msg}" ]] && echo "${msg}" || fortune -s; } | \
+    { [[ -n "${msg}" ]] && echo "${msg}" || fortune; } | \
 	{ [[ -n "${file}" && "${cowsay_files[*]}" =~ ${file} ]] && cowsay -f "${file}" || cowsay -f "${cowsay_files[$(( RANDOM % ${#cowsay_files[*]} ))]}"; } | \
 	lolcat    
 }
