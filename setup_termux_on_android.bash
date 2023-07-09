@@ -14,6 +14,8 @@ declare -r sdn="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 
 cd "${sdn}" || exit 1
 
+pkg update && pkg upgrade 
+
 pkg install git build-essential ncurses-utills vim emacs tmux htop mc cowsay fortune neofetch
 
 git clone https://GitHub.com/michaeltd/dots/ ~/.dots
