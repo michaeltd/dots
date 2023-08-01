@@ -117,6 +117,11 @@ else
     }
 fi
 
+superman() {
+  man $1 || $1 --help
+}
+
+alias man=superman
 # export LANG="en_US.utf8"
 # export LC_COLLATE="C"
 
