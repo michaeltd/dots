@@ -16,7 +16,7 @@ cd "${sdn}" || exit 1
 
 pkg update && pkg upgrade 
 
-pkg install git build-essential ncurses-utills vim emacs tmux htop mc cowsay fortune neofetch
+pkg install git build-essential ncurses-utills vim emacs tmux htop mc cowsay fortune cmatrix neofetch
 
 git clone https://GitHub.com/michaeltd/dots/ ~/.dots
 
